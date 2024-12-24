@@ -18,7 +18,7 @@
     "href": "homeworks/HW1.html#data-loading",
     "title": "Homework #1: Exploring elephant data",
     "section": "1. Data Loading",
-    "text": "1. Data Loading\n\n1. Load the dataset using read.csv(), save it to variable dataset and show the first 10 rows.\n\n# \n\n\nhead(...) - by default it returns first 5 rows, but we need 10 :)\n\n\n1.1 Make dataset a tibble\n\n# dataset = \n\n\n\n\n2. Check the structure and summary of the data.\n\n# \n\n\nJust use special functions"
+    "text": "1. Data Loading\n\n1. Load the dataset using read.csv(), save it to variable dataset and show the first 10 rows.\n\n# \n\n\nhead(...) - by default it returns first 5 rows, but we need 10 :)\n\n1.1 Make dataset a tibble\n\n# dataset = \n\n\n\n2. Check the structure and summary of the data.\n\n# \n\n\nJust use special functions"
   },
   {
     "objectID": "homeworks/HW1.html#data-cleaning",
