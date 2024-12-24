@@ -1,0 +1,326 @@
+---
+title: "Distributions"
+format: 
+  revealjs:
+      center: true
+      controls: true
+      # controlsLayout: 'bottom-left'
+      slide-number: true
+      show-slide-number: all
+      fontsize: 30px
+      style: style.css
+      progress: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = F, fig.width = 8, fig.height = 4)
+```
+
+## Differences between 
+
+## Normal distribution
+
+::: columns
+::: {.column width="50%"}
+Normal distribution is bell shaped, have equal mean ($\mu$), median, mode. "Width" depends on standard deviation ($\sigma$).
+:::
+
+::: {.column width="50%"}
+$P(x) = \frac{1}{{\sigma \sqrt{2\pi} }}e^{{\frac{ -\left( {x - \mu } \right)^2 }{2\sigma ^2 }}}$,
+
+parameters are mean ($\mu$) and sigma ($\sigma$)
+:::
+:::
+
+```{r}
+Heights = rnorm(10000, mean = 175, sd = 10)
+hist(Heights, breaks = 30, freq = T,
+     main = 'Sample distribution of 10000 people\'s heights' )
+```
+
+------------------------------------------------------------------------
+
+### Parameters of normal distribution
+
+```{r}
+Heights_sd30 = rnorm(10000, mean = 100, sd = 30)
+Heights_sd10 = rnorm(10000, mean = 120, sd = 10)
+
+hist(Heights_sd30, breaks = 30, freq = T, 
+     col = rgb(1, 0, 0, alpha = 0.5), ylim= c(0, 2000), 
+     main='', xlab='x')
+hist(Heights_sd10, breaks = 20, freq = T, 
+     col = rgb(0, 0, 1, alpha = 0.5), add = TRUE)
+
+legend("topright", legend = c("mean=100, sd = 30", "mean=120, sd = 10"), 
+       fill = c(rgb(1, 0, 0, alpha = 0.5),
+                rgb(0, 0, 1, alpha = 0.5)))
+```
+
+## Three sigma rule
+
+```{r}
+hist(Heights, breaks = 30, freq = T)
+
+abline(v=mean(Heights)+sd(Heights), col='blue', lwd=5)
+abline(v=mean(Heights)-sd(Heights), col='blue', lwd=5)
+text(mean(Heights), 500, '68%', cex=2, col = "blue")
+
+abline(v=mean(Heights)+2*sd(Heights), col='orange', lwd=5)
+abline(v=mean(Heights)-2*sd(Heights), col='orange', lwd=5)
+text(mean(Heights)+1.5*sd(Heights), 500, '95%', 
+     cex=1.7, col = "orange")
+
+abline(v=mean(Heights)+3*sd(Heights), col='red', lwd=5)
+abline(v=mean(Heights)-3*sd(Heights), col='red', lwd=5)
+text(mean(Heights)+2.5*sd(Heights), 500, '99.7%', 
+     cex=1.7, col = "red")
+
+```
+
+## Uniform distribution
+
+::: columns
+::: {.column width="70%"}
+Simple distribution of equally possible values
+:::
+
+::: {.column width="30%"}
+$P(x) = \frac{1}{a-b}$
+
+-   $a$ - starting point
+
+-   $b$ - end point
+:::
+:::
+
+```{r}
+raindrops = runif(10000, min=0, max=10)
+
+hist(raindrops, 
+     breaks = 30, 
+     freq = T,
+     xlab = 'Coordinate',
+     main = 'Sample distribution of a raindrop falling on\na line from 0 to 10 (10000 raindrops)')
+# Probability of raindrop
+```
+
+## Bernoulli distribution
+
+::: columns
+::: {.column width="50%"}
+```{r, fig.width=5, fig.height=6}
+coin_toss = rbinom(1000, size = 1, prob = 0.5)
+barplot(table(coin_toss), cex.axis = 2, cex.names = 2)
+```
+:::
+
+::: {.column width="50%"}
+$P(x) = p^x(1-p)^x$,
+
+where $p$ - "success" probability. It is the only parameter of the distribution
+
+Imagine, that $p$ is a probability of an head on a coin toss (1 - head, 0 - tails). Then The distribution will be like in the barplot on the left.
+:::
+:::
+
+## Binomial distribution
+
+::: columns
+::: {.column width="70%"}
+```{r}
+coin_toss = rbinom(10000, size = 100, p=0.5)
+hist(coin_toss, breaks = 30, freq = T,
+     xlab = 'Number of heads received (k)', 
+     ylab = "Number of experiments",
+     main = 'Sample distribution of successes in 10000 experiments of 10x coin tosses')
+```
+:::
+
+::: {.column width="30%"}
+$P(x) = \binom{n}{k}p^k(1-p)^{n-k}$,
+
+-   $n$ - number of trials *(fixed)*
+-   $p$ - probability of success *(fixed)*
+-   $k$ - observed successes
+:::
+:::
+
+Distribution is based on the **number of successes in a sequence of experiments**.
+
+If we flip a coin, the binomial distribution represents the number of successes after we flip the coin a certain number of times (e.g. 10).
+
+The histogram above shows the distribution of 10000 experiments on trying to get an head coin for a certain number of times by flipping it 10 times
+
+------------------------------------------------------------------------
+
+### Parameters of binomial distribution
+
+```{r}
+
+coin_toss_100 = rbinom(10000, size = 100, p=0.5)
+coin_toss_10 = rbinom(10000, size = 10, p=0.5)
+
+coin_toss_left = rbinom(10000, size = 10, p=0.25)
+coin_toss_right = rbinom(10000, size = 10, p=0.75)
+
+par(mfrow=c(1,2))
+hist(coin_toss_left, breaks = 10, freq = T, 
+     xlab = 'Number of heads received (k)', 
+     ylab = "Number of experiments",
+     main = "", 
+     xlim=c(0, 12), 
+     ylim = c(0,3500),
+     col = rgb(0, 0, 1, alpha = 0.5))
+
+hist(coin_toss_right, breaks = 10, freq = T, 
+     xlab = 'Number of heads received (k)', 
+     ylab = "Number of experiments",
+     main = "", add=T, 
+     col = rgb(1, 0, 0, alpha = 0.5))
+
+
+legend("topright", legend = c("p=0.75",
+                              "p=0.25"), 
+       fill = c(rgb(1, 0, 0, alpha = 0.5),
+                rgb(0, 0, 1, alpha = 0.5)))
+
+hist(coin_toss_100, breaks = 20, freq = T, 
+     xlab = 'Number of heads received (k)', 
+     ylab = "Number of experiments",
+     main = "", 
+     xlim=c(0, 100), 
+     ylim = c(0,2500),
+     col = rgb(1, 0, 0, alpha = 0.5))
+
+hist(coin_toss_10, breaks = 10, freq = T, 
+     add=T, 
+     col = rgb(0, 0, 1, alpha = 0.5))
+
+legend("topright", legend = c("n=10",
+                              "n=100"), 
+       fill = c(rgb(0, 0, 1, alpha = 0.5),
+                rgb(1, 0, 0, alpha = 0.5)))
+```
+
+## Poisson distribution
+
+*Binomial*, but $n \rightarrow \infty$,, therefore we don't utilize number of trials ($n$).\
+Now we use "**time interval**" and **expected number of successes** ($\lambda$) during this interval
+
+::: columns
+::: {.column width="70%"}
+```{r}
+pois_rand = rpois(10000, 10)
+
+hist(pois_rand, breaks = 30, freq = T, 
+     xlab = 'Number of successes',
+     main = 'Sample distribution of the number of \nlightning strikes per hour (10 expected, recorded 10000 h)',
+     xlim = c(0, 30))
+```
+:::
+
+::: {.column width="30%"}
+$P(x) = \dfrac{\lambda^k}{k!}e^{-\lambda}$, where
+
+-   $\lambda$ - mean or expected number of successes during the interval (fixed)
+-   $k$ - "observed" successes
+:::
+:::
+
+------------------------------------------------------------------------
+
+### Parameters of poisson distribution
+
+```{r}
+pois_rand = rpois(10000, 10)
+pois_rand_2 = rpois(10000, 60)
+pois_rand_3 = rpois(10000, 3)
+
+hist(pois_rand, breaks = 30, freq = T, 
+     xlab = 'Number of successes',
+     # ylab = "Number of experiments", 
+     ylim = c(0, 2800),
+     xlim = c(0, 100),
+     main = "",
+     col = rgb(0, 0, 1, alpha = 0.5),
+     )
+
+hist(pois_rand_2, breaks = 30, freq = T,
+     col = rgb(0, 1, 0, alpha = 0.5),
+     add = T)
+
+hist(pois_rand_3, breaks = 10, freq = T, 
+     col = rgb(1, 0, 0, alpha = 0.5),
+     add = T)
+
+
+legend("topright", legend = c("lambda=3", 
+                              "lambda=10",
+                              "lambda=60"), 
+       fill = c(rgb(1, 0, 0, alpha = 0.5),
+                rgb(0, 0, 1, alpha = 0.5),
+                rgb(0, 1, 0, alpha = 0.5)))
+```
+
+## Functions (for normal distribution)
+
+```{css}
+.large-code {
+  font-size: 1.3em; /* Increase as needed, e.g., 1.5em or 20px */
+}
+```
+
+1.  Random values from distribution
+
+```{r, echo = T, class="large-code"}
+rnorm(n=5, mean=100, sd=10)
+```
+
+2.  Density (the height of histogram) at the point
+
+```{r, echo = T, class="large-code"}
+dnorm(x=100, mean=100, sd=10)
+```
+
+3.  Cumulative probability at the point: prob-ty to obtain value less than specified
+
+```{r, echo = T, class="large-code"}
+pnorm(80, mean=100, sd=10) # prob to obtain any value less than 80
+pnorm(c(70,80,90,110,120,130), mean=100, sd=10)
+```
+
+4.  Value corresponding to specified cumulative probability
+
+```{r, echo = T, class="large-code"}
+qnorm(c(0.003, 0.05, 0.16, 0.84, 0.95, 0.997), mean=100, sd=10)
+```
+
+## Functions (for other distributions)
+
+**Uniform**
+
+```{r, eval=F, echo=TRUE,class="large-code"}
+runif(n, min, max)
+dunif(n, min, max)
+punif(n, min, max)
+qunif(n, min, max)
+```
+
+**Binomial**
+
+```{r, eval=F, echo=TRUE,class="large-code"}
+rbinom(n, size, prob)
+dbinom(n, size, prob)
+pbinom(n, size, prob)
+qbinom(n, size, prob)
+```
+
+**Poisson**
+
+```{r, eval=F, echo=TRUE,class="large-code"}
+rpois(n, lambda)
+dpois(n, lambda)
+ppois(n, lambda)
+qpois(n, lambda)
+```

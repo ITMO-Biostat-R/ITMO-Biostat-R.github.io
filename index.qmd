@@ -4,4 +4,10 @@ title: "Biostatistics in R"
 
 -   [Prac #1. Basic R](code/basic_r.Rmd)
 -   [Prac #2. Advanced Dataframes](code/advanced_df.Rmd)
+<<<<<<< HEAD
 -   [Prac #3. Visualization](code/Dataviz.Rmd)
+=======
+-   [Prac #3. Visualization](code/Dataviz.Rmd)
+
+[Homeworks](homeworks/index.qmd)
+>>>>>>> 52e1a05 (second_commit)

@@ -1,0 +1,5 @@
+---
+title: "Homeworks"
+---
+
+-   [HW #1](https://raw.githubusercontent.com/ITMO-Biostat-R/ITMO-Biostat-R.github.io/refs/heads/main/homeworks/HW1.Rmd)

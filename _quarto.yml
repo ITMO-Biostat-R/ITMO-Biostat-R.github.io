@@ -24,6 +24,11 @@ format:
     theme: cosmo
     css: styles.css
     toc: true
+<<<<<<< HEAD
 
+=======
+  
+  
+>>>>>>> 52e1a05 (second_commit)
 editor: visual
 

@@ -1,10 +1,143 @@
 [
   {
+<<<<<<< HEAD
+=======
+    "objectID": "presentations/dsitributions.html#differences-between",
+    "href": "presentations/dsitributions.html#differences-between",
+    "title": "Distributions",
+    "section": "Differences between",
+    "text": "Differences between"
+  },
+  {
+    "objectID": "presentations/dsitributions.html#normal-distribution",
+    "href": "presentations/dsitributions.html#normal-distribution",
+    "title": "Distributions",
+    "section": "Normal distribution",
+    "text": "Normal distribution\n\n\nNormal distribution is bell shaped, have equal mean (\\(\\mu\\)), median, mode. “Width” depends on standard deviation (\\(\\sigma\\)).\n\n\\(P(x) = \\frac{1}{{\\sigma \\sqrt{2\\pi} }}e^{{\\frac{ -\\left( {x - \\mu } \\right)^2 }{2\\sigma ^2 }}}\\),\nparameters are mean (\\(\\mu\\)) and sigma (\\(\\sigma\\))"
+  },
+  {
+    "objectID": "presentations/dsitributions.html#three-sigma-rule",
+    "href": "presentations/dsitributions.html#three-sigma-rule",
+    "title": "Distributions",
+    "section": "Three sigma rule",
+    "text": "Three sigma rule"
+  },
+  {
+    "objectID": "presentations/dsitributions.html#uniform-distribution",
+    "href": "presentations/dsitributions.html#uniform-distribution",
+    "title": "Distributions",
+    "section": "Uniform distribution",
+    "text": "Uniform distribution\n\n\nSimple distribution of equally possible values\n\n\\(P(x) = \\frac{1}{a-b}\\)\n\n\\(a\\) - starting point\n\\(b\\) - end point"
+  },
+  {
+    "objectID": "presentations/dsitributions.html#bernoulli-distribution",
+    "href": "presentations/dsitributions.html#bernoulli-distribution",
+    "title": "Distributions",
+    "section": "Bernoulli distribution",
+    "text": "Bernoulli distribution\n\n\n\n\n\n\n\n\n\n\n\n\n\\(P(x) = p^x(1-p)^x\\),\nwhere \\(p\\) - “success” probability. It is the only parameter of the distribution\nImagine, that \\(p\\) is a probability of an head on a coin toss (1 - head, 0 - tails). Then The distribution will be like in the barplot on the left."
+  },
+  {
+    "objectID": "presentations/dsitributions.html#binomial-distribution",
+    "href": "presentations/dsitributions.html#binomial-distribution",
+    "title": "Distributions",
+    "section": "Binomial distribution",
+    "text": "Binomial distribution\n\n\n\n\n\n\n\n\n\n\n\n\n\\(P(x) = \\binom{n}{k}p^k(1-p)^{n-k}\\),\n\n\\(n\\) - number of trials (fixed)\n\\(p\\) - probability of success (fixed)\n\\(k\\) - observed successes\n\n\nDistribution is based on the number of successes in a sequence of experiments.\nIf we flip a coin, the binomial distribution represents the number of successes after we flip the coin a certain number of times (e.g. 10).\nThe histogram above shows the distribution of 10000 experiments on trying to get an head coin for a certain number of times by flipping it 10 times"
+  },
+  {
+    "objectID": "presentations/dsitributions.html#poisson-distribution",
+    "href": "presentations/dsitributions.html#poisson-distribution",
+    "title": "Distributions",
+    "section": "Poisson distribution",
+    "text": "Poisson distribution\nBinomial, but \\(n \\rightarrow \\infty\\),, therefore we don’t utilize number of trials (\\(n\\)).\nNow we use “time interval” and expected number of successes (\\(\\lambda\\)) during this interval\n\n\n\n\n\n\n\n\n\n\n\n\n\\(P(x) = \\dfrac{\\lambda^k}{k!}e^{-\\lambda}\\), where\n\n\\(\\lambda\\) - mean or expected number of successes during the interval (fixed)\n\\(k\\) - “observed” successes"
+  },
+  {
+    "objectID": "presentations/dsitributions.html#functions-for-normal-distribution",
+    "href": "presentations/dsitributions.html#functions-for-normal-distribution",
+    "title": "Distributions",
+    "section": "Functions (for normal distribution)",
+    "text": "Functions (for normal distribution)\n\n\n\n\nRandom values from distribution\n\n\nrnorm(n=5, mean=100, sd=10)\n\n[1]  91.02404 100.83884 100.45623 102.90092 102.36261\n\n\n\nDensity (the height of histogram) at the point\n\n\ndnorm(x=100, mean=100, sd=10)\n\n[1] 0.03989423\n\n\n\nCumulative probability at the point: prob-ty to obtain value less than specified\n\n\npnorm(80, mean=100, sd=10) # prob to obtain any value less than 80\n\n[1] 0.02275013\n\npnorm(c(70,80,90,110,120,130), mean=100, sd=10)\n\n[1] 0.001349898 0.022750132 0.158655254 0.841344746 0.977249868 0.998650102\n\n\n\nValue corresponding to specified cumulative probability\n\n\nqnorm(c(0.003, 0.05, 0.16, 0.84, 0.95, 0.997), mean=100, sd=10)\n\n[1]  72.52219  83.55146  90.05542 109.94458 116.44854 127.47781"
+  },
+  {
+    "objectID": "presentations/dsitributions.html#functions-for-other-distributions",
+    "href": "presentations/dsitributions.html#functions-for-other-distributions",
+    "title": "Distributions",
+    "section": "Functions (for other distributions)",
+    "text": "Functions (for other distributions)\nUniform\n\nrunif(n, min, max)\ndunif(n, min, max)\npunif(n, min, max)\nqunif(n, min, max)\n\nBinomial\n\nrbinom(n, size, prob)\ndbinom(n, size, prob)\npbinom(n, size, prob)\nqbinom(n, size, prob)\n\nPoisson\n\nrpois(n, lambda)\ndpois(n, lambda)\nppois(n, lambda)\nqpois(n, lambda)"
+  },
+  {
+    "objectID": "homeworks/HW1.html",
+    "href": "homeworks/HW1.html",
+    "title": "Homework #1: Exploring elephant data",
+    "section": "",
+    "text": "Download the provided dataset ElephantsMF.csv and place it in your working directory.\nThe dataset contains the following columns:\n- rownames: Unique identifiers for each record (elephant).\n- Age: Age of the elephants (years).\n- Height: Height of the elephants (cm).\n- Sex: Sex of the elephants (M for Male, F for Female).\n\n\n\nEvery result must be shown! If you create or chabging some variable/column/dataframe, show it!\n\n\nDon’t forget to save your changes where needed\n\nFor example, dataset %&gt;% function() does not change the dataset, but dataset = dataset %&gt;% function() does\n\n\n\n\n\nlibrary(readr)\nlibrary(dplyr)\nlibrary(tidyr)"
+  },
+  {
+    "objectID": "homeworks/HW1.html#downloading-libraries",
+    "href": "homeworks/HW1.html#downloading-libraries",
+    "title": "Homework #1: Exploring elephant data",
+    "section": "",
+    "text": "library(readr)\nlibrary(dplyr)\nlibrary(tidyr)"
+  },
+  {
+    "objectID": "homeworks/HW1.html#data-loading",
+    "href": "homeworks/HW1.html#data-loading",
+    "title": "Homework #1: Exploring elephant data",
+    "section": "1. Data Loading",
+    "text": "1. Data Loading\n\n1. Load the dataset using read.csv(), save it to variable dataset and show the first 10 rows.\n\n# \n\n\nhead(...) - by default it returns first 5 rows, but we need 10 :)\n\n1.1 Make dataset a tibble\n\n# dataset = \n\n\n\n2. Check the structure and summary of the data.\n\n# \n\n\nJust use special functions"
+  },
+  {
+    "objectID": "homeworks/HW1.html#data-cleaning",
+    "href": "homeworks/HW1.html#data-cleaning",
+    "title": "Homework #1: Exploring elephant data",
+    "section": "2. Data Cleaning",
+    "text": "2. Data Cleaning\n\n3. Check for missing values in the dataset.\n\n# \n\n\nJust use special functions\n\n\n\n4. Verify that the Sex column contains only valid categories (M and F).\n\n# \n\n\nTip: just use table() or unique()"
+  },
+  {
+    "objectID": "homeworks/HW1.html#data-transformation",
+    "href": "homeworks/HW1.html#data-transformation",
+    "title": "Homework #1: Exploring elephant data",
+    "section": "3. Data Transformation",
+    "text": "3. Data Transformation\n\n5. Transform the Sex column into a factor.\n\n# \n\n\nTip: use as.factor()\nUse function and ensure that you changed column in dataset\n\n\n\n6. Create a new column Age_category categorizing elephants based on Age:\n-   \"Juvenile\" for Age \\&lt; 5\n-   \"Sub-adult\" for 5 \\&lt;= Age \\&lt; 15\n-   \"Adult\" for Age \\&gt;= 15\n\n# \n\n\ncut() - don’t forget about parameter labels = c(...)\n\n\n\n7. Create a column Height_category that categorizes Height into two categories: “Below Median” and “Above Median” based on the median height.\n\n# \n\n\nmean() and ifelse()\nDon’t forget to make new column a factor"
+  },
+  {
+    "objectID": "homeworks/HW1.html#exploratory-data-analysis",
+    "href": "homeworks/HW1.html#exploratory-data-analysis",
+    "title": "Homework #1: Exploring elephant data",
+    "section": "4. Exploratory Data Analysis",
+    "text": "4. Exploratory Data Analysis\n\n8. Compute basic statistics (mean, median, standard deviation) for the Age and Height columns.\n\n# \n\n\n\n9. Identify the row with the maximum Height and print it.\n\n# \n\n\nTip: which.max()\n\n\n\n10. Show a counts and frequency tables for the Age_category column. Show both counts and frequencies\n\n# \n\n\nUse table() and prop.table()\n\n\n\n11. Show a contingency table of Age_category and Height_category\n\n# \n\n\nUse table()\n\n\n\n12.* Group dataset by Height_category and calculate mean and sd of Age for each group.\n\n# \n\n\nuse group_by() and summarise()\n\n\n\n13. Show rows for elephants taller than the median height and select the Age and Height columns.\n\n# \n\n\nuse dplyr functions\n\n\n\n14. Arrange dataset by Height and show the first and last 5 rows and show them.\n\n# \n\n\nTip: you can use either n() or nrow()\nTip: slice()"
+  },
+  {
+    "objectID": "homeworks/HW1.html#additional-transformations",
+    "href": "homeworks/HW1.html#additional-transformations",
+    "title": "Homework #1: Exploring elephant data",
+    "section": "5. Additional Transformations",
+    "text": "5. Additional Transformations\n\n15. Create a new column that contain the Height in meters (divide by 100), delete column with Height in cm.\n\n# \n\n\nYou can set a new column name or leave the old one.\nTip: mutate(). Parameter .keep=... may be useful\nEnsure the column is created inside dataset\n\n\n\n16. Round Height in meters to two decimal places (e.g. 1.4567 -&gt; 1.46)\n\n# \n\n\nTip: round() and look for a specific parameter\nEnsure the column is modified inside dataset"
+  },
+  {
+    "objectID": "homeworks/HW1.html#summary-tasks",
+    "href": "homeworks/HW1.html#summary-tasks",
+    "title": "Homework #1: Exploring elephant data",
+    "section": "6. Summary Tasks",
+    "text": "6. Summary Tasks\n\n17. Identify the top 3 tallest elephants and extract their Age, Height, and Sex.\n\n# \n\n\nYou may be using data arranging\n\n\n\n18.* Identify 3 oldest elephants for each Sex and extract their Age, Height.\n\n#"
+  },
+  {
+    "objectID": "homeworks/HW1.html#exporting-data",
+    "href": "homeworks/HW1.html#exporting-data",
+    "title": "Homework #1: Exploring elephant data",
+    "section": "7. Exporting Data",
+    "text": "7. Exporting Data\n\n19. Save our modified dataset as a new CSV file.\n\n# \n\n\nName the file whatever you want\nSet row.names = FALSE if you are using the base function. The function from readr works fine by itself"
+  },
+  {
+>>>>>>> 52e1a05 (second_commit)
     "objectID": "code/advanced_df.html",
     "href": "code/advanced_df.html",
     "title": "Advanced Dataframes",
     "section": "",
+<<<<<<< HEAD
     "text": "students_hours = read.csv(\"../data/student_lifestyle_dataset.csv\", row.names = 1)\nhead(students_hours) # first 5 records\n\n  Study_Hours_Per_Day Extracurricular_Hours_Per_Day Sleep_Hours_Per_Day\n1                 6.9                           3.8                 8.7\n2                 5.3                           3.5                 8.0\n3                 5.1                           3.9                 9.2\n4                 6.5                           2.1                 7.2\n5                 8.1                           0.6                 6.5\n6                 6.0                           2.1                 8.0\n  Social_Hours_Per_Day Physical_Activity_Hours_Per_Day  GPA Stress_Level\n1                  2.8                             1.8 2.99     Moderate\n2                  4.2                             3.0 2.75          Low\n3                  1.2                             4.6 2.67          Low\n4                  1.7                             6.5 2.88     Moderate\n5                  2.2                             6.6 3.51         High\n6                  0.3                             7.6 2.85     Moderate\n\ntail(students_hours) # last 5 records\n\n     Study_Hours_Per_Day Extracurricular_Hours_Per_Day Sleep_Hours_Per_Day\n1995                 7.9                           3.4                 9.0\n1996                 6.5                           0.2                 7.4\n1997                 6.3                           2.8                 8.8\n1998                 6.2                           0.0                 6.2\n1999                 8.1                           0.7                 7.6\n2000                 9.0                           1.7                 7.3\n     Social_Hours_Per_Day Physical_Activity_Hours_Per_Day  GPA Stress_Level\n1995                  0.5                             3.2 3.08     Moderate\n1996                  2.1                             7.8 3.32     Moderate\n1997                  1.5                             4.6 2.65     Moderate\n1998                  0.8                            10.8 3.14     Moderate\n1999                  3.5                             4.1 3.04         High\n2000                  3.1                             2.9 3.58         High\n\n\n\nstr(students_hours)\n\n'data.frame':   2000 obs. of  7 variables:\n $ Study_Hours_Per_Day            : num  6.9 5.3 5.1 6.5 8.1 6 8 8.4 5.2 7.7 ...\n $ Extracurricular_Hours_Per_Day  : num  3.8 3.5 3.9 2.1 0.6 2.1 0.7 1.8 3.6 0.7 ...\n $ Sleep_Hours_Per_Day            : num  8.7 8 9.2 7.2 6.5 8 5.3 5.6 6.3 9.8 ...\n $ Social_Hours_Per_Day           : num  2.8 4.2 1.2 1.7 2.2 0.3 5.7 3 4 4.5 ...\n $ Physical_Activity_Hours_Per_Day: num  1.8 3 4.6 6.5 6.6 7.6 4.3 5.2 4.9 1.3 ...\n $ GPA                            : num  2.99 2.75 2.67 2.88 3.51 2.85 3.08 3.2 2.82 2.76 ...\n $ Stress_Level                   : chr  \"Moderate\" \"Low\" \"Low\" \"Moderate\" ...\n\n\nMaking stress level a factor as it has 3 levels:\n\nstudents_hours$Stress_Level = as.factor(students_hours$Stress_Level)\n\nSummary\n\nsummary(students_hours)\n\n Study_Hours_Per_Day Extracurricular_Hours_Per_Day Sleep_Hours_Per_Day\n Min.   : 5.000      Min.   :0.000                 Min.   : 5.0       \n 1st Qu.: 6.300      1st Qu.:1.000                 1st Qu.: 6.2       \n Median : 7.400      Median :2.000                 Median : 7.5       \n Mean   : 7.475      Mean   :1.991                 Mean   : 7.5       \n 3rd Qu.: 8.700      3rd Qu.:3.000                 3rd Qu.: 8.8       \n Max.   :10.000      Max.   :4.000                 Max.   :10.0       \n NA's   :1           NA's   :4                     NA's   :2          \n Social_Hours_Per_Day Physical_Activity_Hours_Per_Day      GPA       \n Min.   :0.000        Min.   : 0.00                   Min.   :2.240  \n 1st Qu.:1.200        1st Qu.: 2.40                   1st Qu.:2.900  \n Median :2.600        Median : 4.10                   Median :3.110  \n Mean   :2.706        Mean   : 4.33                   Mean   :3.116  \n 3rd Qu.:4.100        3rd Qu.: 6.10                   3rd Qu.:3.330  \n Max.   :6.000        Max.   :13.00                   Max.   :4.000  \n NA's   :4            NA's   :1                       NA's   :1      \n   Stress_Level \n         :   1  \n High    :1028  \n Low     : 297  \n Moderate: 674"
+=======
+    "text": "students_hours = read.csv('../data/student_lifestyle_dataset.csv', \n                          row.names = 1)\nhead(students_hours) # first 5 records\n\n  Study_Hours_Per_Day Extracurricular_Hours_Per_Day Sleep_Hours_Per_Day\n1                 6.9                           3.8                 8.7\n2                 5.3                           3.5                 8.0\n3                 5.1                           3.9                 9.2\n4                 6.5                           2.1                 7.2\n5                 8.1                           0.6                 6.5\n6                 6.0                           2.1                 8.0\n  Social_Hours_Per_Day Physical_Activity_Hours_Per_Day  GPA Stress_Level\n1                  2.8                             1.8 2.99     Moderate\n2                  4.2                             3.0 2.75          Low\n3                  1.2                             4.6 2.67          Low\n4                  1.7                             6.5 2.88     Moderate\n5                  2.2                             6.6 3.51         High\n6                  0.3                             7.6 2.85     Moderate\n\ntail(students_hours) # last 5 records\n\n     Study_Hours_Per_Day Extracurricular_Hours_Per_Day Sleep_Hours_Per_Day\n1995                 7.9                           3.4                 9.0\n1996                 6.5                           0.2                 7.4\n1997                 6.3                           2.8                 8.8\n1998                 6.2                           0.0                 6.2\n1999                 8.1                           0.7                 7.6\n2000                 9.0                           1.7                 7.3\n     Social_Hours_Per_Day Physical_Activity_Hours_Per_Day  GPA Stress_Level\n1995                  0.5                             3.2 3.08     Moderate\n1996                  2.1                             7.8 3.32     Moderate\n1997                  1.5                             4.6 2.65     Moderate\n1998                  0.8                            10.8 3.14     Moderate\n1999                  3.5                             4.1 3.04         High\n2000                  3.1                             2.9 3.58         High\n\n\n\nstr(students_hours)\n\n'data.frame':   2000 obs. of  7 variables:\n $ Study_Hours_Per_Day            : num  6.9 5.3 5.1 6.5 8.1 6 8 8.4 5.2 7.7 ...\n $ Extracurricular_Hours_Per_Day  : num  3.8 3.5 3.9 2.1 0.6 2.1 0.7 1.8 3.6 0.7 ...\n $ Sleep_Hours_Per_Day            : num  8.7 8 9.2 7.2 6.5 8 5.3 5.6 6.3 9.8 ...\n $ Social_Hours_Per_Day           : num  2.8 4.2 1.2 1.7 2.2 0.3 5.7 3 4 4.5 ...\n $ Physical_Activity_Hours_Per_Day: num  1.8 3 4.6 6.5 6.6 7.6 4.3 5.2 4.9 1.3 ...\n $ GPA                            : num  2.99 2.75 2.67 2.88 3.51 2.85 3.08 3.2 2.82 2.76 ...\n $ Stress_Level                   : chr  \"Moderate\" \"Low\" \"Low\" \"Moderate\" ...\n\n\nMaking stress level a factor as it has 3 levels:\n\nstudents_hours$Stress_Level = as.factor(students_hours$Stress_Level)\n\nSummary\n\nsummary(students_hours)\n\n Study_Hours_Per_Day Extracurricular_Hours_Per_Day Sleep_Hours_Per_Day\n Min.   : 5.000      Min.   :0.000                 Min.   : 5.0       \n 1st Qu.: 6.300      1st Qu.:1.000                 1st Qu.: 6.2       \n Median : 7.400      Median :2.000                 Median : 7.5       \n Mean   : 7.475      Mean   :1.991                 Mean   : 7.5       \n 3rd Qu.: 8.700      3rd Qu.:3.000                 3rd Qu.: 8.8       \n Max.   :10.000      Max.   :4.000                 Max.   :10.0       \n NA's   :1           NA's   :4                     NA's   :2          \n Social_Hours_Per_Day Physical_Activity_Hours_Per_Day      GPA       \n Min.   :0.000        Min.   : 0.00                   Min.   :2.240  \n 1st Qu.:1.200        1st Qu.: 2.40                   1st Qu.:2.900  \n Median :2.600        Median : 4.10                   Median :3.110  \n Mean   :2.706        Mean   : 4.33                   Mean   :3.116  \n 3rd Qu.:4.100        3rd Qu.: 6.10                   3rd Qu.:3.330  \n Max.   :6.000        Max.   :13.00                   Max.   :4.000  \n NA's   :4            NA's   :1                       NA's   :1      \n   Stress_Level \n         :   1  \n High    :1028  \n Low     : 297  \n Moderate: 674"
+>>>>>>> 52e1a05 (second_commit)
   },
   {
     "objectID": "code/advanced_df.html#libraries",
@@ -81,7 +214,11 @@
     "href": "code/Dataviz.html#plot",
     "title": "Data visualization",
     "section": "plot()",
+<<<<<<< HEAD
     "text": "plot()\nThe simplest graph is a points, each having x and y coordinates\n\nx = 1:10\ny = seq(2,20,2) ^ 2\nx\n\n [1]  1  2  3  4  5  6  7  8  9 10\n\ny\n\n [1]   4  16  36  64 100 144 196 256 324 400\n\n\nWe consider that the x and y coordinates at the same positions in each of the vectors correspond to one particular point. So we have points (1,2), (2,4), (3,6) and etc.\n\nseq(from_value, to_value, by_value)- returns a vector with values from from_value to to_valuewith a step by_value\n\n\nScatter plot\n\nplot(x, y)\n\n\n\n\n\n\n\n\n\n\nSepal.Length vs Sepal.Width\n\nplot(iris$Sepal.Length, iris$Sepal.Width)\n\n\n\n\n\n\n\n\nWe can make this graph prettier\n\nplot(iris$Sepal.Length, iris$Sepal.Width,\n     main = \"Sepal.Length vs. Sepal.Width\", # the title\n     xlab = \"Sepal.Length\", # Label of X-axis\n     ylab = \"Sepal.Width\", # Label of Y-axis \n     col = \"blue\", # color of plot\n     pch = 19, # type of dots - 19 corresponds to the painted (solid) points\n     cex = 1, # size of dots\n     ) \n\n\n\n\n\n\n\n\n\n\nAdding lines\nBy default plot() shows scatter plot, but we can change this behavior\n\nplot(x, y,type = 'l') \n\n\n\n\n\n\n\nplot(x, y,type = 'b')\n\n\n\n\n\n\n\nplot(x, y, type = 'o' )\n\n\n\n\n\n\n\n\n\nTerrible plot\nLine graphs should sometimes be avoided, because lines connect points in the order of their position in the vectors\n\nx = c(10,5,9,6,8,7,2,1,4,3)\ny = c(1:4, 6:8,5,10,9)\n\nplot(x, y, type = \"p\", pch=19)\n\n\n\n\n\n\n\nplot(x, y, type = \"b\",  pch=19)\n\n\n\n\n\n\n\n\nAfter sorting:\n\n# Advanced\n\n# indexes_to_sort = order(x)\n# x_sorted = x[indexes_to_sort]\n# y_sorted = y[indexes_to_sort]\n# plot(x_sorted, y_sorted, type = \"b\", pch=19)\n\ndf = data.frame(x, y) %&gt;% arrange(x)\nplot(df$x, df$y,type = \"b\", pch=19)\n\n\n\n\n\n\n\n\n\nNB! We can’t just sort one of the vectors because we must save the correspondence of x and y coordinates between two vectors."
+=======
+    "text": "plot()\nThe simplest graph is a points, each having x and y coordinates\n\nx = 1:10\ny = seq(2,20,2) ^ 2\nx\n\n [1]  1  2  3  4  5  6  7  8  9 10\n\ny\n\n [1]   4  16  36  64 100 144 196 256 324 400\n\n\nWe consider that the x and y coordinates at the same positions in each of the vectors correspond to one particular point. So we have points (1,2), (2,4), (3,6) and etc.\n\nseq(from_value, to_value, by_value)- returns a vector with values from from_value to to_valuewith a step by_value\n\n\nScatter plot\n\nplot(x, y)\n\n\n\n\n\n\n\n\n\n\nSepal.Length vs Sepal.Width\n\nplot(iris$Sepal.Length, iris$Sepal.Width)\n\n\n\n\n\n\n\n\nWe can make this graph prettier\n\nplot(iris$Sepal.Length, iris$Sepal.Width,\n     main = \"Sepal.Length vs. Sepal.Width\", # the title\n     xlab = \"Sepal.Length\", # Label of X-axis\n     ylab = \"Sepal.Width\", # Label of Y-axis \n     col = \"blue\", # color of plot\n     pch = 19, # type of dots - 19 corresponds to the painted (solid) points\n     cex = 1, # size of dots\n     ) \n\n\n\n\n\n\n\n\n\n\n\npch parameter values\n\n\n\n\nAdding lines\nBy default plot() shows scatter plot, but we can change this behavior\n\nplot(x, y,type = 'l') \n\n\n\n\n\n\n\nplot(x, y,type = 'b', lwd = 3) # lwd = linewidth\n\n\n\n\n\n\n\nplot(x, y, type = 'o')\n\n\n\n\n\n\n\n\n\nTerrible plot\nLine graphs should sometimes be avoided, because lines connect points in the order of their position in the vectors\n\nx = c(10,5,9,6,8,7,2,1,4,3)\ny = c(1:4, 6:8,5,10,9)\n\nplot(x, y, type = \"p\", pch=19)\n\n\n\n\n\n\n\nplot(x, y, type = \"b\",  pch=19)\n\n\n\n\n\n\n\n\nAfter sorting:\n\n# Advanced\n\n# indexes_to_sort = order(x)\n# x_sorted = x[indexes_to_sort]\n# y_sorted = y[indexes_to_sort]\n# plot(x_sorted, y_sorted, type = \"b\", pch=19)\n\ndf = data.frame(x, y) %&gt;% arrange(x)\nplot(df$x, df$y,type = \"b\", pch=19)\n\n\n\n\n\n\n\n\n\nNB! We can’t just sort one of the vectors because we must save the correspondence of x and y coordinates between two vectors."
+>>>>>>> 52e1a05 (second_commit)
   },
   {
     "objectID": "code/Dataviz.html#bar-plots",
@@ -119,6 +256,7 @@
     "text": "Distributions\nRandom values from distributions"
   },
   {
+<<<<<<< HEAD
     "objectID": "homeworks/HW1.html",
     "href": "homeworks/HW1.html",
     "title": "Homework #1: Exploring elephant data",
@@ -182,6 +320,8 @@
     "text": "7. Exporting Data\n\n19. Save our modified dataset as a new CSV file.\n\n# \n\n\nName the file whatever you want\nSet row.names = FALSE if you are using the base function. The function from readr works fine by itself"
   },
   {
+=======
+>>>>>>> 52e1a05 (second_commit)
     "objectID": "code/basic_r.html",
     "href": "code/basic_r.html",
     "title": "Prac #1. Basic R",
@@ -277,6 +417,38 @@
     "href": "index.html",
     "title": "Biostatistics in R",
     "section": "",
+<<<<<<< HEAD
     "text": "Prac #1. Basic R\nPrac #2. Advanced Dataframes\nPrac #3. Visualization"
+=======
+    "text": "Prac #1. Basic R\nPrac #2. Advanced Dataframes\nPrac #3. Visualization\n\nHomeworks"
+  },
+  {
+    "objectID": "homeworks/index.html",
+    "href": "homeworks/index.html",
+    "title": "Homeworks",
+    "section": "",
+    "text": "HW #1"
+  },
+  {
+    "objectID": "homeworks/HW2.html",
+    "href": "homeworks/HW2.html",
+    "title": "Homework #2",
+    "section": "",
+    "text": "This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.\nWhen you click the Knit button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:\n\nsummary(cars)\n\n     speed           dist       \n Min.   : 4.0   Min.   :  2.00  \n 1st Qu.:12.0   1st Qu.: 26.00  \n Median :15.0   Median : 36.00  \n Mean   :15.4   Mean   : 42.98  \n 3rd Qu.:19.0   3rd Qu.: 56.00  \n Max.   :25.0   Max.   :120.00"
+  },
+  {
+    "objectID": "homeworks/HW2.html#r-markdown",
+    "href": "homeworks/HW2.html#r-markdown",
+    "title": "Homework #2",
+    "section": "",
+    "text": "This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.\nWhen you click the Knit button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:\n\nsummary(cars)\n\n     speed           dist       \n Min.   : 4.0   Min.   :  2.00  \n 1st Qu.:12.0   1st Qu.: 26.00  \n Median :15.0   Median : 36.00  \n Mean   :15.4   Mean   : 42.98  \n 3rd Qu.:19.0   3rd Qu.: 56.00  \n Max.   :25.0   Max.   :120.00"
+  },
+  {
+    "objectID": "homeworks/HW2.html#including-plots",
+    "href": "homeworks/HW2.html#including-plots",
+    "title": "Homework #2",
+    "section": "Including Plots",
+    "text": "Including Plots\nYou can also embed plots, for example:\n\n\n\n\n\n\n\n\n\nNote that the echo = FALSE parameter was added to the code chunk to prevent printing of the R code that generated the plot."
+>>>>>>> 52e1a05 (second_commit)
   }
 ]
