@@ -4,15 +4,9 @@ output:
   html_document:
     toc: true
     toc_float: true
-<<<<<<< HEAD
-    highlight: zenburn #default, tango, pygments, kate, monochrome, espresso, zenburn, haddock, breezedark, textmate
-    theme: readable #default, bootstrap, cerulean, cosmo, darkly, flatly, journal, lumen, paper, readable, sandstone, simplex, spacelab, united, and yeti
-date: 10.01.2025
-=======
     highlight: default #default, tango, pygments, kate, monochrome, espresso, zenburn, haddock, breezedark, textmate
     theme: default #default, bootstrap, cerulean, cosmo, darkly, flatly, journal, lumen, paper, readable, sandstone, simplex, spacelab, united, and yeti
 date: 01/10/2025
->>>>>>> 52e1a05 (second_commit)
 editor_options: 
   chunk_output_type: inline
 ---
@@ -24,11 +18,8 @@ knitr::opts_chunk$set(echo = TRUE, message = F)
 # Reading data from files
 
 ```{r}
-<<<<<<< HEAD
+
 students_hours = read.csv("../data/student_lifestyle_dataset.csv", row.names = 1)
-=======
-students_hours = read.csv('../data/student_lifestyle_dataset.csv', 
-                          row.names = 1)
 >>>>>>> 52e1a05 (second_commit)
 head(students_hours) # first 5 records
 tail(students_hours) # last 5 records

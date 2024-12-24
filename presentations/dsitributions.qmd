@@ -16,7 +16,7 @@ format:
 knitr::opts_chunk$set(echo = F, fig.width = 8, fig.height = 4)
 ```
 
-## Differences between 
+## Differences between
 
 ## Normal distribution
 

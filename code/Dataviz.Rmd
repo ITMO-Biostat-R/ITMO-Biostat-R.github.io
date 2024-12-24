@@ -4,15 +4,10 @@ output:
   html_document:
     toc: true
     toc_float: true
-<<<<<<< HEAD
-    highlight: zenburn
-    theme: readable
-date: 17.01.2025
-=======
     highlight: default
     theme: default
-date: 01/17/2025
->>>>>>> 52e1a05 (second_commit)
+    date: 01/17/2025
+
 editor_options: 
   chunk_output_type: inline
 ---
@@ -95,24 +90,17 @@ plot(iris$Sepal.Length, iris$Sepal.Width,
      ) 
 ```
 
-<<<<<<< HEAD
-=======
 ![`pch` parameter values](../images/pch.png){width="300"}
 
->>>>>>> 52e1a05 (second_commit)
 ### Adding lines
 
 By default `plot()` shows scatter plot, but we can change this behavior
 
 ```{r}
 plot(x, y,type = 'l') 
-<<<<<<< HEAD
-plot(x, y,type = 'b')
-plot(x, y, type = 'o' )
-=======
 plot(x, y,type = 'b', lwd = 3) # lwd = linewidth
 plot(x, y, type = 'o')
->>>>>>> 52e1a05 (second_commit)
+
 ```
 
 #### Terrible plot
