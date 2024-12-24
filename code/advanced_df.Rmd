@@ -1,0 +1,443 @@
+---
+title: "Advanced Dataframes"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+    highlight: zenburn #default, tango, pygments, kate, monochrome, espresso, zenburn, haddock, breezedark, textmate
+    theme: readable #default, bootstrap, cerulean, cosmo, darkly, flatly, journal, lumen, paper, readable, sandstone, simplex, spacelab, united, and yeti
+date: 10.01.2025
+editor_options: 
+  chunk_output_type: inline
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = F)
+```
+
+# Reading data from files
+
+```{r}
+students_hours = read.csv("../data/student_lifestyle_dataset.csv", row.names = 1)
+head(students_hours) # first 5 records
+tail(students_hours) # last 5 records
+```
+
+```{r}
+str(students_hours)
+```
+
+Making stress level a factor as it has 3 levels:
+
+```{r}
+students_hours$Stress_Level = as.factor(students_hours$Stress_Level)
+```
+
+Summary
+
+```{r}
+summary(students_hours)
+```
+
+# Tidy
+
+## Libraries
+
+```{r, warning=FALSE, message=FALSE}
+# install.packages(c("dplyr", "tidyr"))
+# install.packages("tidyverse")
+
+library(dplyr)
+library(tidyr)
+library(readr)
+# library(tidyverse)
+```
+
+## Tibble
+
+-   Looks like `data.frame`
+
+-   Behave more conveniently
+
+    -   never changes input data types
+
+    -   never customises variable names
+
+    -   never prints all lines
+
+```{r}
+students_tibble = as_tibble(students_hours)
+students_tibble
+```
+
+# Pipe %\>% (\|\>)
+
+Using ``` Ctrl+Shift+M /``Cmd+Shift+M ``` you can rapidly print so-called pipe `%>%`
+
+It is very convenient way to **write code from "left to right"**.
+
+```{r}
+# sqrt(mean(students_hours$Extracurricular_Hours_Per_Day, na.rm = T))
+
+students_hours$Extracurricular_Hours_Per_Day %>% mean(na.rm = T) %>% sqrt()
+```
+
+**Larger example.** Compare two ways to reach the same result:
+
+```{r}
+
+summarise(select(filter(students_tibble, Extracurricular_Hours_Per_Day > 1), 
+                 Sleep_Hours_Per_Day), Sleep_Hours_Mean = mean(Sleep_Hours_Per_Day))
+
+students_tibble %>%
+  filter(Extracurricular_Hours_Per_Day > 1) %>%
+  select(Sleep_Hours_Per_Day) %>%
+  summarise(Sleep_Hours_Mean = mean(Sleep_Hours_Per_Day))
+```
+
+Yes, you noticed some new functions like `filter` and `select`. **They are more of them in `dplyr`**
+
+> **Pipe just apply the function to the table, but change it. To change table you shoul do something like this:** `df = df %>% some_function()`
+
+# Read file (readr package)
+
+```{r, message=FALSE}
+# read.table()
+# read.csv("../data/student_lifestyle_dataset.csv")
+
+read_csv("../data/student_lifestyle_dataset.csv")
+
+# read_tsv()
+# read_table().
+```
+
+# tidyverse functions
+
+**and comparison with what we already know**
+
+## dplyr
+
+### Glimpse (structure)
+
+```{r}
+# str(students_tibble)
+students_tibble %>% glimpse(width = 50) 
+```
+
+### Arranging (order)
+
+```{r}
+# students_tibble[order(students_tibble$Study_Hours_Per_Day),]
+students_tibble %>% arrange(Study_Hours_Per_Day)
+
+# students_tibble[order(students_tibble$Study_Hours_Per_Day, decreasing = T),]
+students_tibble %>% arrange(desc(Study_Hours_Per_Day))
+```
+
+### Select
+
+Select columns by names
+
+```{r}
+# students_tibble[, c("Extracurricular_Hours_Per_Day", "Study_Hours_Per_Day")]
+students_tibble %>% select(Extracurricular_Hours_Per_Day, Study_Hours_Per_Day)
+
+students_tibble %>%  select(-c(Study_Hours_Per_Day:Social_Hours_Per_Day))
+```
+
+Minuses are useful for easy column deletion. And also you can use `col1:col5` to select columns from the range.
+
+**`select()` is powerful function and it is possible to combine it with other functions.**
+
+```{r}
+# contains
+students_tibble %>% select(contains('Hours'))
+
+#endswith (also there is starts_with() ficntion)
+students_tibble %>% select(ends_with('Per_Day'))
+
+# only numeric columns
+students_tibble %>% select(where(is.numeric))
+```
+
+### Pull
+
+Extract column as vector
+
+```{r}
+# students_tibble$Extracurricular_Hours_Per_Day
+students_tibble %>% pull(Extracurricular_Hours_Per_Day) %>%  head(20)
+```
+
+### Filtering
+
+```{r}
+# students_tibble[students_tibble$Extracurricular_Hours_Per_Day > 2 & students_tibble$Study_Hours_Per_Day > 3,]
+
+students_tibble %>% filter(Extracurricular_Hours_Per_Day > 2, Study_Hours_Per_Day > 3)
+
+students_tibble %>% filter(between(Extracurricular_Hours_Per_Day, 1, 2))
+```
+
+### Slice
+
+```{r}
+# students_tibble[30:50,]
+students_tibble %>% slice(30:50)
+
+# students_tibble[(nrow(students_tibble)-5):(nrow(students_tibble)),]
+
+students_tibble %>% slice((n()-5):n()) # n() is number of "samples" (rows)
+```
+
+### Rename column
+
+```{r}
+# students_tibble$SHPD = students_tibble$Study_Hours_Per_Day 
+# students_tibble$Study_Hours_Per_Day = NULL
+
+students_tibble %>%  rename(SHPD = Study_Hours_Per_Day)
+```
+
+#### Advanced rename
+
+```{r}
+students_tibble %>%  rename_with(~ gsub("_Hours_Per_Day", "_h", .x))
+```
+
+### Mutate
+
+Changing columns and creation new ones
+
+```{r}
+# students_tibble$Stress_Level = as.factor(students_tibble$Stress_Level
+students_tibble %>% mutate(Stress_Level = as.factor(Stress_Level), GPA = round(GPA), 
+                           .keep='used')
+
+# students_tibble$GPA_sqrt = sqrt(students_tibble$GPA)
+students_tibble %>% 
+  mutate(Non_Study_Day_Hours_Per_Day =
+           Social_Hours_Per_Day + Physical_Activity_Hours_Per_Day, 
+         .before = 1, .keep = 'unused')
+```
+
+> By default, `.keep = 'all'`, and usually it is not worth changing it or even writing this parameter
+
+#### Advanced mutate
+
+```{r}
+students_tibble %>% 
+  mutate(across(Study_Hours_Per_Day:Extracurricular_Hours_Per_Day, ~ floor(.x)))
+
+students_tibble %>% mutate(across(where(is.numeric), ~ceiling(.x)))
+```
+
+-   `round()` - simple rounding
+
+-   `ceiling()` - upward rounding
+
+-   `floor()` - downward rounding
+
+### Distinct
+
+Extract unique rows.
+
+```{r}
+students_tibble %>%  distinct()
+```
+
+*We already have unique data*
+
+## tidyr
+
+-   `tribble()` is strange way to create `tibble`. Let's create strange dataset to show `tidyr` in work
+
+```{r}
+strange_df = 
+  tribble(
+    ~name, ~weight_height, ~marks,
+    'Robert', '80/180', '4,5,5,4,4',
+    'Daniel', '70/175', '4,3,5',
+    'Vlad', '90/185', '4,5,5,4,3'
+  )
+
+strange_df
+```
+
+### Separate
+
+```{r}
+strange_df = strange_df %>% separate(weight_height, sep = '/', 
+                       into = c("weight", "height"))
+strange_df
+```
+
+#### Separate_rows
+
+To separate rows by unique mark:
+
+```{r}
+strange_df = strange_df %>% separate_rows(marks, sep = ',')
+strange_df
+```
+
+### Unite
+
+```{r}
+strange_df %>% unite(weight, height,
+                     col = "weight_height",
+                     sep = '/', remove=T)
+
+```
+
+# Deal with empty values
+
+Returning to *students* *dataset*. Let's calculate mean of **`Extracurricular_Hours_Per_Day`**
+
+```{r}
+students_hours %>% pull(Extracurricular_Hours_Per_Day) %>%  mean()
+```
+
+Problem is `NA` values in this column. There is `na.rm` in each simple statistics function and if it is set as `TRUE` (`na.rm=T`), the function will not take `NA` into account.
+
+```{r}
+students_hours %>% pull(Extracurricular_Hours_Per_Day) %>%  mean(na.rm = T)
+students_hours %>% pull(Extracurricular_Hours_Per_Day) %>%  sd(na.rm = T)
+```
+
+To count NA values in every column:
+
+```{r}
+students_tibble %>% is.na() %>% colSums()
+```
+
+-   `colSums()` - sum of values in each column
+
+-   `rowSums()` - sum of values in each row
+
+-   `is.na()` - returns TRUE **for each value** if it is NA and FALSE otherwise.
+
+**Rows with NAs in `Extracurricular_Hours_Per_Day`:**
+
+```{r}
+students_tibble %>% filter(is.na(Extracurricular_Hours_Per_Day))
+```
+
+**Rows with any NAs (*Advanced*):**
+
+```{r}
+# students_tibble[!complete.cases(students_tibble), ]
+
+students_tibble %>% filter(if_any(everything(), is.na))
+```
+
+-   `if_any(columns, condition)` - returns `TRUE` for ***any*** of the selected columns
+
+-   `if_all(columns, condition)` - returns `TRUE` for ***all*** of the selected columns
+
+-   `everything()` - return all columns. Useful *inside* of dplyr functions
+
+**We see that one line contains only NAs, and the other lines contain 1\< NAs.**
+
+There are several ways to deal with NAs
+
+## Delete rows containing NAs
+
+```{r}
+students_tibble %>%  na.omit()
+students_tibble %>%  drop_na()
+
+#drop_na allows to concrete columns
+students_tibble %>%  drop_na(Physical_Activity_Hours_Per_Day)
+```
+
+## Replace with value
+
+### simple
+
+```{r}
+# and do it for each column
+students_tibble$GPA[is.na(students_tibble$GPA)] = mean(students_tibble$GPA)
+```
+
+### advanced
+
+```{r}
+# to secify values
+students_tibble %>%  replace_na(list(Social_Hours_Per_Day = 0,
+                                     Extracurricular_Hours_Per_Day = 0))
+
+# to fill with the nearest value in the each column
+students_tibble %>%  fill()
+```
+
+I will just delete them :)
+
+```{r}
+students_tibble = students_tibble %>%  na.omit()
+```
+
+# Writing a data into file
+
+```{r}
+# write.csv()
+write_csv(students_tibble, "students.csv") # comma-separated
+
+# write.table()
+write_tsv(students_tibble, "students.tsv") # tab-separated
+```
+
+```{r, warning=FALSE}
+# install.packages('writexl')
+library(writexl)
+```
+
+```{r}
+write_xlsx(students_tibble, "students.xlsx")
+```
+
+# P.S. for additional self-study
+
+## Joins
+
+for combining several datasets. For example, we have two dataframes with the same column - names. The first dataframe contain data about wealth and work, the second contain information about town, street and etc. We want to make one dataframe that contain info from the both dataframes.
+
+```{r, eval=F}
+# Full join: returns all rows from both df1 and df2, filling with NA where no match.
+df1 %>% full_join(df2, by = 'name')
+
+# Inner join: returns only matching rows from both df1 and df2.
+df1 %>% inner_join(df2, by = 'name')
+
+# Left join: returns all rows from df1 and matched rows from df2; unmatched in df2 are NA.
+df1 %>% left_join(df2, by = 'name')
+
+# Right join: returns all rows from df2 and matched rows from df1; unmatched in df1 are NA.
+df1 %>% right_join(df2, by = 'name')
+
+# Anti join: returns rows from df1 that do not match any rows in df2.
+df1 %>% anti_join(df2, by = 'name')
+
+# Semi join: returns rows from df1 that have matches in df2, without adding columns from df2.
+df1 %>% semi_join(df2, by = 'name')
+
+```
+
+## Grouping
+
+```{r}
+# Grouping the 'students_tibble' data frame by the 'Stress_Level' column
+# Than Calculating the mean of 'Study_Hours_Per_Day' for each stress level group, ignoring missing values (na.rm = TRUE)
+students_tibble %>% group_by(Stress_Level) %>% 
+  summarise(study_hours_mean = mean(Study_Hours_Per_Day, na.rm = T))
+```
+
+## Slice_head()
+
+almost the same as basic `head()`, but it is more suitable for grouped data:
+
+```{r}
+students_tibble %>% group_by(Stress_Level) %>% slice_head(n=3)
+```
+
+**Here we sliced first 3 rows for data in each group**

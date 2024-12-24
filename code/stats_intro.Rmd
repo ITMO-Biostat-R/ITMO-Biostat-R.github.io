@@ -1,0 +1,9 @@
+---
+title: "stats_intro"
+output: html_document
+date: "`r Sys.Date()`"
+---
+
+# Distributions
+
+Random values from distributions

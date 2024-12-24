@@ -1,0 +1,234 @@
+---
+title: "Homework #1: Exploring elephant data"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    number_sections: true
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+```
+
+# Introduction
+
+Download the provided dataset `ElephantsMF.csv` and place it in your working directory.
+
+The dataset contains the following columns:
+
+\- `rownames`: Unique identifiers for each record (elephant).\
+- `Age`: Age of the elephants (years).\
+- `Height`: Height of the elephants (cm).\
+- `Sex`: Sex of the elephants (`M` for Male, `F` for Female).
+
+### Instructions
+
+> **Every result must be shown! If you create or chabging some variable/column/dataframe, show it!**
+
+> Don't forget to save your changes where needed
+
+For example, `dataset %>% function()` does not change the `dataset`, but `dataset = dataset %>% function()` does
+
+------------------------------------------------------------------------
+
+## Downloading libraries
+
+```{r, warning=FALSE, message=FALSE}
+library(readr)
+library(dplyr)
+library(tidyr)
+```
+
+# Tasks
+
+## 1. Data Loading
+
+### 1. Load the dataset using `read.csv()`, save it to variable `dataset` and show the first 10 rows.
+
+```{r task-1}
+# 
+```
+
+-   `head(...)` - by default it returns first 5 rows, but we need 10 :)
+
+#### 1.1 Make `dataset` a tibble
+
+```{r task-1.1}
+# dataset = 
+```
+
+### 2. Check the structure and summary of the data.
+
+```{r task-2}
+# 
+```
+
+-   *Just use special functions*
+
+## 2. Data Cleaning
+
+### 3. Check for missing values in the dataset.
+
+```{r task-3}
+# 
+```
+
+-   *Just use special functions*
+
+### 4. Verify that the `Sex` column contains only valid categories (`M` and `F`).
+
+```{r task-4}
+# 
+```
+
+-   *Tip*: just use `table()` or `unique()`
+
+## 3. Data Transformation
+
+### 5. Transform the `Sex` column into a factor.
+
+```{r task-5}
+# 
+```
+
+-   *Tip*: use `as.factor()`
+-   Use function and ensure that you changed column in `dataset`
+
+### 6. Create a new column `Age_category` categorizing elephants based on `Age`:
+
+```         
+-   "Juvenile" for Age \< 5
+-   "Sub-adult" for 5 \<= Age \< 15
+-   "Adult" for Age \>= 15
+```
+
+```{r task-6}
+# 
+```
+
+-   `cut()` - don't forget about parameter `labels = c(...)`
+
+### 7. Create a column `Height_category` that categorizes `Height` into two categories: "Below Median" and "Above Median" based on the median height.
+
+```{r task-7}
+# 
+```
+
+-   `mean()` and `ifelse()`
+-   Don't forget to make new column a **factor**
+
+## 4. Exploratory Data Analysis
+
+### 8. Compute basic statistics (mean, median, standard deviation) for the `Age` and `Height` columns.
+
+```{r task-8}
+# 
+```
+
+### 9. Identify the row with the maximum `Height` and print it.
+
+```{r task-9}
+# 
+```
+
+-   *Tip:* `which.max()`
+
+### 10. Show a counts and frequency tables for the `Age_category` column. Show both counts and frequencies
+
+```{r task-10}
+# 
+```
+
+-   Use `table()` and `prop.table()`
+
+### 11. Show a contingency table of `Age_category` and `Height_category` 
+
+```{r task-11}
+# 
+```
+
+-   Use `table()`
+
+### 12.**\*** Group dataset by `Height_category` and calculate `mean` and `sd` of `Age` for each group.
+
+```{r task-12}
+# 
+```
+
+-   use `group_by()` and `summarise()`
+
+### 13. Show rows for elephants taller than the median height and select the `Age` and `Height` columns. 
+
+```{r task-13}
+# 
+```
+
+-   use `dplyr` functions
+
+### 14. Arrange dataset by `Height` and show the first and last 5 rows and show them.
+
+```{r task-14}
+# 
+```
+
+-   *Tip:* you can use either `n()` or `nrow()`
+-   *Tip:* `slice()`
+
+## 5. Additional Transformations
+
+### 15. Create a new column that contain the **Height in meters** (divide by 100), delete column with **Height in cm**.
+
+```{r task-15}
+# 
+```
+
+-   You can set a new column name or leave the old one.
+
+-   *Tip*: `mutate()`. Parameter `.keep=...` may be useful
+
+-   Ensure the column is created inside `dataset`
+
+### 16. Round Height in meters to two decimal places (*e.g.* 1.4567 -\> 1.46)
+
+```{r task-16}
+# 
+```
+
+-   *Tip:* `round()` and look for a specific parameter
+
+-   Ensure the column is modified inside `dataset`
+
+## 6. Summary Tasks
+
+### 17. Identify the top 3 tallest elephants and extract their `Age`, `Height`, and `Sex`.
+
+```{r task-17}
+# 
+```
+
+-   You may be using data arranging
+
+### 18.**\*** Identify 3 oldest elephants for each `Sex` and extract their `Age`, `Height`.
+
+```{r task-18}
+# 
+```
+
+## 7. Exporting Data
+
+### 19. Save our modified dataset as a new CSV file. 
+
+```{r task-19, eval=FALSE}
+# 
+```
+
+-   Name the file whatever you want
+
+-   Set `row.names = FALSE` if you are using the base function. The function from `readr` works fine by itself
+
+# Submission
+
+Submit your `.Rmd` file and the final outputs (csv dataset)

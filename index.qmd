@@ -1,0 +1,7 @@
+---
+title: "Biostatistics in R"
+---
+
+-   [Prac #1. Basic R](code/basic_r.Rmd)
+-   [Prac #2. Advanced Dataframes](code/advanced_df.Rmd)
+-   [Prac #3. Visualization](code/Dataviz.Rmd)

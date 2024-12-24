@@ -1,0 +1,29 @@
+project:
+  type: website
+  render:
+    - index.qmd
+    - presentations/
+    - code/
+    - homeworks/
+    - data/
+    - images/
+  output-dir: docs
+
+publish:
+  gh-pages: true
+
+website:
+  title: "Biostatistics in R"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+
+editor: visual
+
