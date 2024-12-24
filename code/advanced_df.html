@@ -6,7 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<<<<<<< HEAD
+<meta name="dcterms.date" content="2025-10-01">
+=======
 <meta name="dcterms.date" content="2025-01-10">
+>>>>>>> 52e1a05 (second_commit)
 
 <title>Advanced Dataframes – Biostatistics in R</title>
 <style>
@@ -103,6 +107,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
 
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-fixed">
@@ -205,7 +210,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
+<<<<<<< HEAD
+      <p class="date">October 1, 2025</p>
+=======
       <p class="date">January 10, 2025</p>
+>>>>>>> 52e1a05 (second_commit)
     </div>
   </div>
   
@@ -220,9 +229,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="reading-data-from-files" class="level1">
 <h1>Reading data from files</h1>
 <div class="cell">
+<<<<<<< HEAD
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>students_hours <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">"../data/student_lifestyle_dataset.csv"</span>, <span class="at">row.names =</span> <span class="dv">1</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(students_hours) <span class="co"># first 5 records</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+=======
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>students_hours <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">'../data/student_lifestyle_dataset.csv'</span>, </span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>                          <span class="at">row.names =</span> <span class="dv">1</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(students_hours) <span class="co"># first 5 records</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+>>>>>>> 52e1a05 (second_commit)
 <div class="cell-output cell-output-stdout">
 <pre><code>  Study_Hours_Per_Day Extracurricular_Hours_Per_Day Sleep_Hours_Per_Day
 1                 6.9                           3.8                 8.7
@@ -1349,7 +1363,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/ITMO-Biostat-R\.github\.io\/");
+      var filterRegex = new RegExp('/' + window.location.host + '/');
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
