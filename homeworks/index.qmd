@@ -3,3 +3,5 @@ title: "Homeworks"
 ---
 
 -   [HW #1](https://raw.githubusercontent.com/ITMO-Biostat-R/ITMO-Biostat-R.github.io/refs/heads/main/homeworks/HW1.Rmd)
+-   [HW #2](https://raw.githubusercontent.com/ITMO-Biostat-R/ITMO-Biostat-R.github.io/refs/heads/main/homeworks/HW2.Rmd)
+-   [HW #3](https://raw.githubusercontent.com/ITMO-Biostat-R/ITMO-Biostat-R.github.io/refs/heads/main/homeworks/HW3.Rmd)

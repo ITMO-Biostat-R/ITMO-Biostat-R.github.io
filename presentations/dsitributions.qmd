@@ -16,7 +16,7 @@ format:
 knitr::opts_chunk$set(echo = F, fig.width = 8, fig.height = 4)
 ```
 
-## Differences between
+<!-- ## Differences between -->
 
 ## Normal distribution
 
@@ -69,12 +69,12 @@ text(mean(Heights), 500, '68%', cex=2, col = "blue")
 abline(v=mean(Heights)+2*sd(Heights), col='orange', lwd=5)
 abline(v=mean(Heights)-2*sd(Heights), col='orange', lwd=5)
 text(mean(Heights)+1.5*sd(Heights), 500, '95%', 
-     cex=1.7, col = "orange")
+     cex=1.5, col = "orange")
 
 abline(v=mean(Heights)+3*sd(Heights), col='red', lwd=5)
 abline(v=mean(Heights)-3*sd(Heights), col='red', lwd=5)
 text(mean(Heights)+2.5*sd(Heights), 500, '99.7%', 
-     cex=1.7, col = "red")
+     cex=1.5, col = "red")
 
 ```
 
@@ -267,7 +267,7 @@ legend("topright", legend = c("lambda=3",
 
 ```{css}
 .large-code {
-  font-size: 1.3em; /* Increase as needed, e.g., 1.5em or 20px */
+  font-size: 1.25em; /* Increase as needed, e.g., 1.5em or 20px */
 }
 ```
 
