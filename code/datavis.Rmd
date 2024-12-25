@@ -53,7 +53,7 @@ iris_df = iris
 iris_df$Sepal.Length.Category = cut(x=iris_df$Sepal.Length,
                                     breaks = c(4,6,8),
                                     labels = c('short', 'long'))
-iris_df
+iris_df %>% head()
 ```
 
 # Basic Visualization
