@@ -3,9 +3,9 @@ title: "Homeworks"
 ---
 
 -   **HW #1**
-    -   [Link to file](https://raw.githubusercontent.com/ITMO-Biostat-R/ITMO-Biostat-R.github.io/refs/heads/main/homeworks/HW1.Rmd)
+    -   [Link to file](https://github.com/ITMO-Biostat-R/ITMO-Biostat-R.github.io/blob/main/homeworks/HW1.Rmd)
 -   **HW #2**
-    -   [Link to file](https://raw.githubusercontent.com/ITMO-Biostat-R/ITMO-Biostat-R.github.io/refs/heads/main/homeworks/HW2.Rmd)
+    -   [Link to file](https://github.com/ITMO-Biostat-R/ITMO-Biostat-R.github.io/blob/main/homeworks/HW2.Rmd)
     -   [HW2_reference](HW2_reference.html)
 -   **HW #3**
-    -   [Link to file](https://raw.githubusercontent.com/ITMO-Biostat-R/ITMO-Biostat-R.github.io/refs/heads/main/homeworks/HW3.Rmd)
+    -   [Link to file](https://github.com/ITMO-Biostat-R/ITMO-Biostat-R.github.io/blob/main/homeworks/HW3.Rmd)
