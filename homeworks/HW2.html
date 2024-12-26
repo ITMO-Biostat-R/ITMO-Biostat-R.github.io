@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2025-01-17">
 
-<title>Homework #2 – Biostatistics in R</title>
+<title>Homework on Statistical Distributions and Visualization – Biostatistics in R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -109,8 +142,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#lollipop" id="toc-lollipop" class="nav-link active" data-scroll-target="#lollipop">Lollipop</a></li>
-  <li><a href="#bubble-plot" id="toc-bubble-plot" class="nav-link" data-scroll-target="#bubble-plot">Bubble plot</a></li>
+  <li><a href="#palmer-penguins" id="toc-palmer-penguins" class="nav-link active" data-scroll-target="#palmer-penguins">Palmer Penguins</a></li>
   </ul>
 </nav>
     </div>
@@ -119,7 +151,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Homework #2</h1>
+<h1 class="title">Homework on Statistical Distributions and Visualization</h1>
 </div>
 
 
@@ -127,12 +159,6 @@ ul.task-list li input[type="checkbox"] {
 <div class="quarto-title-meta">
 
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">January 17, 2025</p>
-    </div>
-  </div>
   
     
   </div>
@@ -142,13 +168,160 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="lollipop" class="level2">
-<h2 class="anchored" data-anchor-id="lollipop">Lollipop</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="palmer-penguins" class="level1">
+<h1>Palmer Penguins</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">'../data/penguins.csv'</span>, </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">stringsAsFactors =</span> T, <span class="at">row.names =</span> <span class="dv">1</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(penguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   344 obs. of  7 variables:
+ $ species          : Factor w/ 3 levels "Adelie","Chinstrap",..: 1 1 1 1 1 1 1 1 1 1 ...
+ $ island           : Factor w/ 3 levels "Biscoe","Dream",..: 3 3 3 3 3 3 3 3 3 3 ...
+ $ bill_length_mm   : num  39.1 39.5 40.3 NA 36.7 39.3 38.9 39.2 34.1 42 ...
+ $ bill_depth_mm    : num  18.7 17.4 18 NA 19.3 20.6 17.8 19.6 18.1 20.2 ...
+ $ flipper_length_mm: int  181 186 195 NA 193 190 181 195 193 190 ...
+ $ body_mass_g      : int  3750 3800 3250 NA 3450 3650 3625 4675 3475 4250 ...
+ $ sex              : Factor w/ 3 levels "","female","male": 3 2 2 1 2 3 2 3 1 1 ...</code></pre>
+</div>
+</div>
+<p>The <code>penguins</code> dataset contains data collected on three penguin species (Adelie, Chinstrap, and Gentoo) from three islands (Torgersen, Biscoe, and Dream) in the Palmer Archipelago, Antarctica.</p>
+<p>It includes measurements like:</p>
+<ul>
+<li><p><code>bill_length_mm</code> and <code>bill_depth_mm</code> - dimensions of the penguin’s bill.</p></li>
+<li><p><code>flipper_length_mm</code> - length of the penguin’s flippers.</p></li>
+<li><p><code>body_mass_g</code> - weight of the penguins in grams.</p></li>
+<li><p><code>island</code> - the island where the penguins were observed.</p></li>
+<li><p><code>sex</code>: the gender of the penguin.</p></li>
+</ul>
+<p>Some rows may contain missing values (e.g., in <code>sex</code> column).</p>
+<p><img src="../images/penguin.png" class="img-fluid" width="1000"></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># str(penguins)</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># summary(penguins)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="delete-rows-containing-only-nas-in-columns-except-species-sex-island." class="level4">
+<h4 class="anchored" data-anchor-id="delete-rows-containing-only-nas-in-columns-except-species-sex-island.">1.* Delete rows containing only NAs in columns except <code>species, sex, island</code>.</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>use <code>complete.cases()</code> and remember the ways we filtered datasets</li>
+</ul>
 </section>
-<section id="bubble-plot" class="level2">
-<h2 class="anchored" data-anchor-id="bubble-plot">Bubble plot</h2>
+<section id="create-bar-plot-to-show-the-number-of-observations-rows-for-each-species-and-delete-legend-if-ggplot-used." class="level4">
+<h4 class="anchored" data-anchor-id="create-bar-plot-to-show-the-number-of-observations-rows-for-each-species-and-delete-legend-if-ggplot-used.">2. Create bar plot to show the number of observations (rows) for each <code>species</code> and delete legend (if <code>ggplot</code> used).</h4>
+<ul>
+<li><p>Label the axes and legends</p></li>
+<li><p>Colors (<code>fill</code>) should also be different for each species</p></li>
+<li><p><code>theme_classic()</code>, if <code>ggplot</code> used</p></li>
+<li><p><strong>This task can be solved using either basic R or <code>ggplot</code></strong></p></li>
+<li><p><em>Tip:</em> use <code>table()</code> (basic R and <code>ggplot</code>) or <code>geom_bar()</code> (<code>ggplot</code>)</p></li>
+<li><p><strong>Don’t forget to delete legend</strong> <em>if ggplot used</em></p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="create-stacked-barplot-scaled-from-0-to-1-to-show-the-proportion-of-species-on-each-island." class="level4">
+<h4 class="anchored" data-anchor-id="create-stacked-barplot-scaled-from-0-to-1-to-show-the-proportion-of-species-on-each-island.">3. Create stacked barplot scaled from 0 to 1 to show the proportion of <code>species</code> on each <code>island</code>.</h4>
+<ul>
+<li><p>Label the axes and legends</p></li>
+<li><p><code>theme_classic()</code></p></li>
+<li><p><code>fill</code> should represent <code>species</code>.</p></li>
+<li><p>Don’t forget change <code>position</code> parameter</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="create-a-histogram-for-the-flipper_length_mm-and-draw-the-vertical-line-to-show-mean-value" class="level4">
+<h4 class="anchored" data-anchor-id="create-a-histogram-for-the-flipper_length_mm-and-draw-the-vertical-line-to-show-mean-value">4. Create a histogram for the <code>flipper_length_mm</code> and draw the vertical line to show mean value</h4>
+<ul>
+<li><p>Label the axes</p></li>
+<li><p>Set the number of breaks to 10</p></li>
+<li><p>The histogram fill should be <code>"lightblue"</code> and border (color) should be <code>"black"</code></p></li>
+<li><p>Vertical line color = <code>'red'</code>, <code>width = 1.2</code></p></li>
+<li><p><code>theme_bw()</code>, if <code>ggplot</code> used</p></li>
+<li><p><strong>This task can be solved using either basic R or <code>ggplot</code></strong></p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="create-a-density-plot-for-the-body_mass_g-variable.-fill-the-density-regions-based-on-species." class="level4">
+<h4 class="anchored" data-anchor-id="create-a-density-plot-for-the-body_mass_g-variable.-fill-the-density-regions-based-on-species.">5. Create a density plot for the <code>body_mass_g</code> variable. Fill the density regions based on <code>species</code>.</h4>
+<ul>
+<li><p>Label the axes (y-axis is <code>Density</code>)</p></li>
+<li><p><code>fill</code> should different for each species</p></li>
+<li><p>Density plot should have <code>alpha=0.5</code></p></li>
+<li><p><code>theme_classic()</code></p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="create-a-boxplots-grouped-by-sex-to-compare-bill_length_mm-values.-save-the-plot-in-variable-and-show-the-plot." class="level4">
+<h4 class="anchored" data-anchor-id="create-a-boxplots-grouped-by-sex-to-compare-bill_length_mm-values.-save-the-plot-in-variable-and-show-the-plot.">6. Create a boxplots grouped by <code>sex</code> to compare <code>bill_length_mm</code> values. Save the plot in variable and show the plot.</h4>
+<ul>
+<li><p><strong>Filter out observations without known <code>sex</code></strong> <strong>(!)</strong></p></li>
+<li><p>Label the axes and legends</p></li>
+<li><p>Colors (<code>fill</code>) should also be different for each <code>sex</code></p></li>
+<li><p><code>theme_classic()</code></p></li>
+<li><p><strong>When you save the plot in a variable, chart is not displayed. Don’t forget to show the plot by writing the variable name on a new line!</strong></p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="change-the-chart-above-for-each-sex-there-must-be-3-colored-boxplots-for-each-species.-each-species-should-be-specifically-colored-fill." class="level4">
+<h4 class="anchored" data-anchor-id="change-the-chart-above-for-each-sex-there-must-be-3-colored-boxplots-for-each-species.-each-species-should-be-specifically-colored-fill.">7. Change the chart above: for each <code>sex</code> there must be 3 colored boxplots for each <code>species</code>. Each <code>species</code> should be <em>specifically</em> colored (<code>fill)</code>.</h4>
+<ul>
+<li><em>Tip:</em> just add (<code>+</code>) corresponding <code>aes(...)</code> to the variable</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="create-a-scatter-plot-to-show-the-relationship-between-bill_length_mm-and-bill_depth_mm." class="level4">
+<h4 class="anchored" data-anchor-id="create-a-scatter-plot-to-show-the-relationship-between-bill_length_mm-and-bill_depth_mm.">8. Create a scatter plot to show the relationship between <code>bill_length_mm</code> and <code>bill_depth_mm</code>.</h4>
+<ul>
+<li><p>Label the axes</p></li>
+<li><p>Make dots colored filled with <code>'blue'</code></p></li>
+<li><p>Use <code>theme_classic</code>, if <code>ggplot</code> used</p></li>
+<li><p><strong>This task can be solved using either basic R or <code>ggplot</code></strong></p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="create-a-bubble-plot-a-scatter-plot-depicting-the-relationships-between-length_last_mm-and-depth_last_mm-with-colored-dots-representing-species-and-sizes-reflecting-length_last_mm." class="level4">
+<h4 class="anchored" data-anchor-id="create-a-bubble-plot-a-scatter-plot-depicting-the-relationships-between-length_last_mm-and-depth_last_mm-with-colored-dots-representing-species-and-sizes-reflecting-length_last_mm.">9. Create a <u>Bubble plot</u>: a scatter plot depicting the relationships between <code>length_last_mm</code> and <code>depth_last_mm</code>, with colored dots representing <code>species</code> and sizes reflecting <code>length_last_mm</code>.</h4>
+<ul>
+<li><p>Label the axes and legends</p></li>
+<li><p>Points should have <code>alpha=0.7</code></p></li>
+<li><p><code>theme_classic()</code></p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="add-geom_smooth-to-the-above-plot-to-explore-the-linear-relationship-between-bill-depth-and-length" class="level4">
+<h4 class="anchored" data-anchor-id="add-geom_smooth-to-the-above-plot-to-explore-the-linear-relationship-between-bill-depth-and-length">10*. Add <code>geom_smooth()</code> to the above plot to explore the linear relationship between bill depth and length</h4>
+<ul>
+<li>To do that you should save plot above in variable and add <code>geom_smooth()</code></li>
+<li><code>geom_smooth()</code> parameters are: <code>method = 'lm', show.legend = F</code></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

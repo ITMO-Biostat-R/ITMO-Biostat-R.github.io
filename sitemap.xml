@@ -2,19 +2,19 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://ITMO-Biostat-R.github.io/presentations/dsitributions.html</loc>
-    <lastmod>2024-12-25T03:21:09.396Z</lastmod>
+    <lastmod>2024-12-26T02:11:09.905Z</lastmod>
   </url>
   <url>
-    <loc>https://ITMO-Biostat-R.github.io/homeworks/HW1.html</loc>
-    <lastmod>2024-12-25T03:21:09.395Z</lastmod>
+    <loc>https://ITMO-Biostat-R.github.io/homeworks/HW2.html</loc>
+    <lastmod>2024-12-26T02:03:25.238Z</lastmod>
   </url>
   <url>
-    <loc>https://ITMO-Biostat-R.github.io/code/advanced_df.html</loc>
-    <lastmod>2024-12-25T03:21:09.318Z</lastmod>
+    <loc>https://ITMO-Biostat-R.github.io/homeworks/index.html</loc>
+    <lastmod>2024-12-26T02:09:55.519Z</lastmod>
   </url>
   <url>
     <loc>https://ITMO-Biostat-R.github.io/code/datavis.html</loc>
-    <lastmod>2024-12-25T03:25:09.431Z</lastmod>
+    <lastmod>2024-12-26T02:02:26.511Z</lastmod>
   </url>
   <url>
     <loc>https://ITMO-Biostat-R.github.io/code/stats_intro.html</loc>
@@ -29,11 +29,11 @@
     <lastmod>2024-12-25T03:21:24.802Z</lastmod>
   </url>
   <url>
-    <loc>https://ITMO-Biostat-R.github.io/homeworks/index.html</loc>
-    <lastmod>2024-12-25T03:21:09.395Z</lastmod>
+    <loc>https://ITMO-Biostat-R.github.io/homeworks/HW1.html</loc>
+    <lastmod>2024-12-25T17:54:23.456Z</lastmod>
   </url>
   <url>
-    <loc>https://ITMO-Biostat-R.github.io/homeworks/HW2.html</loc>
-    <lastmod>2024-12-25T03:21:09.395Z</lastmod>
+    <loc>https://ITMO-Biostat-R.github.io/code/advanced_df.html</loc>
+    <lastmod>2024-12-25T18:22:35.259Z</lastmod>
   </url>
 </urlset>
