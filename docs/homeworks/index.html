@@ -129,9 +129,19 @@ ul.task-list li input[type="checkbox"] {
 
 
 <ul>
-<li><a href="https://raw.githubusercontent.com/ITMO-Biostat-R/ITMO-Biostat-R.github.io/refs/heads/main/homeworks/HW1.Rmd">HW #1</a></li>
-<li><a href="https://raw.githubusercontent.com/ITMO-Biostat-R/ITMO-Biostat-R.github.io/refs/heads/main/homeworks/HW2.Rmd">HW #2</a></li>
-<li><a href="https://raw.githubusercontent.com/ITMO-Biostat-R/ITMO-Biostat-R.github.io/refs/heads/main/homeworks/HW3.Rmd">HW #3</a></li>
+<li>[<strong>HW #1</strong>]
+<ul>
+<li><a href="https://raw.githubusercontent.com/ITMO-Biostat-R/ITMO-Biostat-R.github.io/refs/heads/main/homeworks/HW1.Rmd">Link to file</a></li>
+</ul></li>
+<li>[<strong>HW #2</strong>]
+<ul>
+<li><a href="https://raw.githubusercontent.com/ITMO-Biostat-R/ITMO-Biostat-R.github.io/refs/heads/main/homeworks/HW2.Rmd">Link to file</a></li>
+<li><a href="HW2_reference.html">HW2_reference</a></li>
+</ul></li>
+<li>[<strong>HW #3</strong>]
+<ul>
+<li><a href="https://raw.githubusercontent.com/ITMO-Biostat-R/ITMO-Biostat-R.github.io/refs/heads/main/homeworks/HW3.Rmd">Link to file</a></li>
+</ul></li>
 </ul>
 
 
@@ -229,7 +239,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/ITMO-Biostat-R\.github\.io\/");
+      var filterRegex = new RegExp('/' + window.location.host + '/');
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }

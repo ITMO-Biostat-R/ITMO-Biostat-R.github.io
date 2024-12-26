@@ -24,11 +24,7 @@ The dataset contains the following columns:
 - `Height`: Height of the elephants (cm).\
 - `Sex`: Sex of the elephants (`M` for Male, `F` for Female).
 
-<<<<<<< HEAD
-### Instructions
-=======
 #### Instructions
->>>>>>> 52e1a05 (second_commit)
 
 > **Every result must be shown! If you create or chabging some variable/column/dataframe, show it!**
 
@@ -50,11 +46,7 @@ library(tidyr)
 
 ## 1. Data Loading
 
-<<<<<<< HEAD
-### 1. Load the dataset using `read.csv()`, save it to variable `dataset` and show the first 10 rows.
-=======
 #### 1. Load the dataset using `read.csv()`, save it to variable `dataset` and show the first 10 rows.
->>>>>>> 52e1a05 (second_commit)
 
 ```{r task-1}
 # 
@@ -62,21 +54,18 @@ library(tidyr)
 
 -   `head(...)` - by default it returns first 5 rows, but we need 10 :)
 
-<<<<<<< HEAD
 #### 1.1 Make `dataset` a tibble
-=======
+
 **1.1 Make `dataset` a tibble**
->>>>>>> 52e1a05 (second_commit)
+
 
 ```{r task-1.1}
 # dataset = 
 ```
 
-<<<<<<< HEAD
-### 2. Check the structure and summary of the data.
-=======
+
 #### 2. Check the structure and summary of the data.
->>>>>>> 52e1a05 (second_commit)
+
 
 ```{r task-2}
 # 
@@ -86,11 +75,8 @@ library(tidyr)
 
 ## 2. Data Cleaning
 
-<<<<<<< HEAD
-### 3. Check for missing values in the dataset.
-=======
 #### 3. Check for missing values in the dataset.
->>>>>>> 52e1a05 (second_commit)
+
 
 ```{r task-3}
 # 
@@ -98,11 +84,8 @@ library(tidyr)
 
 -   *Just use special functions*
 
-<<<<<<< HEAD
-### 4. Verify that the `Sex` column contains only valid categories (`M` and `F`).
-=======
 #### 4. Verify that the `Sex` column contains only valid categories (`M` and `F`).
->>>>>>> 52e1a05 (second_commit)
+
 
 ```{r task-4}
 # 
@@ -112,11 +95,8 @@ library(tidyr)
 
 ## 3. Data Transformation
 
-<<<<<<< HEAD
-### 5. Transform the `Sex` column into a factor.
-=======
 #### 5. Transform the `Sex` column into a factor.
->>>>>>> 52e1a05 (second_commit)
+
 
 ```{r task-5}
 # 
@@ -125,11 +105,8 @@ library(tidyr)
 -   *Tip*: use `as.factor()`
 -   Use function and ensure that you changed column in `dataset`
 
-<<<<<<< HEAD
-### 6. Create a new column `Age_category` categorizing elephants based on `Age`:
-=======
 #### 6. Create a new column `Age_category` categorizing elephants based on `Age`:
->>>>>>> 52e1a05 (second_commit)
+
 
 ```         
 -   "Juvenile" for Age \< 5
@@ -143,11 +120,8 @@ library(tidyr)
 
 -   `cut()` - don't forget about parameter `labels = c(...)`
 
-<<<<<<< HEAD
-### 7. Create a column `Height_category` that categorizes `Height` into two categories: "Below Median" and "Above Median" based on the median height.
-=======
 #### 7. Create a column `Height_category` that categorizes `Height` into two categories: "Below Median" and "Above Median" based on the median height.
->>>>>>> 52e1a05 (second_commit)
+
 
 ```{r task-7}
 # 
@@ -158,21 +132,15 @@ library(tidyr)
 
 ## 4. Exploratory Data Analysis
 
-<<<<<<< HEAD
-### 8. Compute basic statistics (mean, median, standard deviation) for the `Age` and `Height` columns.
-=======
 #### 8. Compute basic statistics (mean, median, standard deviation) for the `Age` and `Height` columns.
->>>>>>> 52e1a05 (second_commit)
+
 
 ```{r task-8}
 # 
 ```
 
-<<<<<<< HEAD
-### 9. Identify the row with the maximum `Height` and print it.
-=======
 #### 9. Identify the row with the maximum `Height` and print it.
->>>>>>> 52e1a05 (second_commit)
+
 
 ```{r task-9}
 # 
@@ -180,11 +148,8 @@ library(tidyr)
 
 -   *Tip:* `which.max()`
 
-<<<<<<< HEAD
-### 10. Show a counts and frequency tables for the `Age_category` column. Show both counts and frequencies
-=======
 #### 10. Show a counts and frequency tables for the `Age_category` column. Show both counts and frequencies
->>>>>>> 52e1a05 (second_commit)
+
 
 ```{r task-10}
 # 
@@ -192,11 +157,8 @@ library(tidyr)
 
 -   Use `table()` and `prop.table()`
 
-<<<<<<< HEAD
-### 11. Show a contingency table of `Age_category` and `Height_category` 
-=======
 #### 11. Show a contingency table of `Age_category` and `Height_category`
->>>>>>> 52e1a05 (second_commit)
+
 
 ```{r task-11}
 # 
@@ -204,11 +166,8 @@ library(tidyr)
 
 -   Use `table()`
 
-<<<<<<< HEAD
-### 12.**\*** Group dataset by `Height_category` and calculate `mean` and `sd` of `Age` for each group.
-=======
 #### 12.**\*** Group dataset by `Height_category` and calculate `mean` and `sd` of `Age` for each group.
->>>>>>> 52e1a05 (second_commit)
+
 
 ```{r task-12}
 # 
@@ -216,11 +175,9 @@ library(tidyr)
 
 -   use `group_by()` and `summarise()`
 
-<<<<<<< HEAD
-### 13. Show rows for elephants taller than the median height and select the `Age` and `Height` columns. 
-=======
+
 #### 13. Show rows for elephants taller than the median height and select the `Age` and `Height` columns.
->>>>>>> 52e1a05 (second_commit)
+
 
 ```{r task-13}
 # 
@@ -228,11 +185,8 @@ library(tidyr)
 
 -   use `dplyr` functions
 
-<<<<<<< HEAD
-### 14. Arrange dataset by `Height` and show the first and last 5 rows and show them.
-=======
 #### 14. Arrange dataset by `Height` and show the first and last 5 rows and show them.
->>>>>>> 52e1a05 (second_commit)
+
 
 ```{r task-14}
 # 
@@ -243,11 +197,8 @@ library(tidyr)
 
 ## 5. Additional Transformations
 
-<<<<<<< HEAD
-### 15. Create a new column that contain the **Height in meters** (divide by 100), delete column with **Height in cm**.
-=======
 #### 15. Create a new column that contain the **Height in meters** (divide by 100), delete column with **Height in cm**.
->>>>>>> 52e1a05 (second_commit)
+
 
 ```{r task-15}
 # 
@@ -259,11 +210,8 @@ library(tidyr)
 
 -   Ensure the column is created inside `dataset`
 
-<<<<<<< HEAD
-### 16. Round Height in meters to two decimal places (*e.g.* 1.4567 -\> 1.46)
-=======
 #### 16. Round Height in meters to two decimal places (*e.g.* 1.4567 -\> 1.46)
->>>>>>> 52e1a05 (second_commit)
+
 
 ```{r task-16}
 # 
@@ -275,11 +223,8 @@ library(tidyr)
 
 ## 6. Summary Tasks
 
-<<<<<<< HEAD
-### 17. Identify the top 3 tallest elephants and extract their `Age`, `Height`, and `Sex`.
-=======
 #### 17. Identify the top 3 tallest elephants and extract their `Age`, `Height`, and `Sex`.
->>>>>>> 52e1a05 (second_commit)
+
 
 ```{r task-17}
 # 
@@ -287,11 +232,8 @@ library(tidyr)
 
 -   You may be using data arranging
 
-<<<<<<< HEAD
-### 18.**\*** Identify 3 oldest elephants for each `Sex` and extract their `Age`, `Height`.
-=======
 #### 18.**\*** Identify 3 oldest elephants for each `Sex` and extract their `Age`, `Height`.
->>>>>>> 52e1a05 (second_commit)
+
 
 ```{r task-18}
 # 
@@ -299,11 +241,9 @@ library(tidyr)
 
 ## 7. Exporting Data
 
-<<<<<<< HEAD
-### 19. Save our modified dataset as a new CSV file. 
-=======
+
 #### 19. Save our modified dataset as a new CSV file.
->>>>>>> 52e1a05 (second_commit)
+
 
 ```{r task-19, eval=FALSE}
 # 

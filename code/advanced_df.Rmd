@@ -96,11 +96,22 @@ students_tibble %>%
   summarise(Sleep_Hours_Mean = mean(Sleep_Hours_Per_Day))
 ```
 
-Yes, you noticed some new functions like `filter` and `select`. **They are more of them in `dplyr`**
-
+> **The function after `%>%` gets the dataset as the first variable and allows us not to write it**
+>
 > **Pipe just apply the function to the table, but change it. To change table you shoul do something like this:** `df = df %>% some_function()`
 
-# Read file (readr package)
+Yes, you noticed some new functions like `filter` and `select`. **They are more of them in `dplyr`**
+
+## Important feature of pipe is dot `.` (*advanced)*
+
+```{r}
+students_tibble %>% select(Study_Hours_Per_Day:Physical_Activity_Hours_Per_Day) %>% 
+  filter(rowSums(.) > 24)
+```
+
+If we need our dataset (object after which the first pipe was written) inside a function a second time, we can refer to it via dot `.`
+
+# Read file (`readr` package)
 
 ```{r, message=FALSE}
 # read.table()
@@ -116,7 +127,7 @@ read_csv("../data/student_lifestyle_dataset.csv")
 
 **and comparison with what we already know**
 
-## dplyr
+## `dplyr`
 
 ### Glimpse (structure)
 
@@ -249,9 +260,9 @@ students_tibble %>%  distinct()
 
 *We already have unique data*
 
-## tidyr
+## `tidyr`
 
--   `tribble()` is strange way to create `tibble`. Let's create strange dataset to show `tidyr` in work
+-   `tribble()` is strange way to create `tibble`. Let's create strange dataset to show `tidyr` in work *(advanced)*
 
 ```{r}
 strange_df = 
@@ -382,10 +393,10 @@ students_tibble = students_tibble %>%  na.omit()
 
 ```{r}
 # write.csv()
-write_csv(students_tibble, "students.csv") # comma-separated
+write_csv(students_tibble, "lec_output/students.csv") # comma-separated
 
 # write.table()
-write_tsv(students_tibble, "students.tsv") # tab-separated
+write_tsv(students_tibble, "lec_output/students.tsv") # tab-separated
 ```
 
 ```{r, warning=FALSE}
@@ -394,7 +405,7 @@ library(writexl)
 ```
 
 ```{r}
-write_xlsx(students_tibble, "students.xlsx")
+write_xlsx(students_tibble, "lec_output/students.xlsx")
 ```
 
 # P.S. for additional self-study

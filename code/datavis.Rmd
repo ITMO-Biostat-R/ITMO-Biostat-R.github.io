@@ -269,11 +269,19 @@ ggplot(data=iris_df, # data
 2.  `ggplot(..., mappings=aes(x=Sepal.Length, y=Sepal.Width))` - **aesthetics**, which turned into x and y axis.
 3.  `+ geom_point()` - **geom**, at least one.
 
-## Adding new aesthetics ("axes")
-
-### Color and size
+## Storing plots in variables
 
 ```{r}
+p = ggplot(data=iris_df, mapping = aes(x=Sepal.Length, y=Sepal.Width)) + geom_point()
+
+p
+```
+
+## Adding new aesthetics ("axes")
+
+### Adding right to the `ggplot()`
+
+```{r fig.width=8}
 ggplot(data=iris_df,
        mapping = aes(x=Sepal.Length, y=Sepal.Width,
                       color=Species, size = Petal.Width,
@@ -281,19 +289,32 @@ ggplot(data=iris_df,
   geom_point() 
 ```
 
-### Other aesthetics
+### Adding to variable
 
--   `shape` - shape of points
+```{r}
+p + aes(color=Species, size = Petal.Width,
+        shape=Sepal.Length.Category)
+```
+
+### Aesthetics list
+
+-   `color` - color
 
 -   `fill` - filling color
+
+-   `size` - size
+
+-   `shape` - shape of points
 
 -   `stroke` - stroke thickness
 
 -   `alpha` - transparency
 
+-   *other specific for geoms aesthetics...*
+
 ## Geoms
 
-Geometries define the types of graphs in the diagram
+Geometries define the types of graphs in the diagram.
 
 ### Geoms have specific variables
 
@@ -326,9 +347,11 @@ iris_df %>%
 
 ```
 
-### Differences between variables and aesthetics
+### Variables and aesthetics
 
 > As you have seen,`fill`, `color`, `size`, `shape`, `stroke` and `alpha` can be seen outside of `aes()`. They can also be set to a specific fixed value.
+>
+> **Each geom has a certain set of parameters. In `aes()` there are mandatory and optional parameters, and outside it there are only optional parameters**
 
 #### Inside the `aes()`
 
@@ -346,13 +369,16 @@ ggplot(data=iris_df,
   geom_point(color='blue')  # <--- here
 ```
 
-## Storing plots in variables
+### Geoms can take different data!
 
 ```{r}
-p = ggplot(data=iris_df,
-       mapping = aes(x=Sepal.Length, y=Sepal.Width, color=Species)) +
-  geom_point()
-p
+iris_df %>% 
+  ggplot(aes(x=Sepal.Length, y=Sepal.Width)) +
+  
+  geom_point(data=iris_df %>% filter(Sepal.Width > 3), # data (filtered iris)
+             aes(color=Species)) +
+  
+  geom_hex(data=iris_df %>% filter(Sepal.Width < 3)) # another data (filtered iris)
 ```
 
 ## Themes
@@ -377,9 +403,19 @@ p
 ## Labels
 
 ```{r}
-p + labs(x='Sepal length', y='Sepal width', 
-         title = 'Scatter plot', subtitle = 'Subtitle',
-         caption = 'It is the great plot', tag = 'A')
+p +  labs(x='Sepal length', 
+          y='Sepal width',
+          
+          color = 'Iris species',
+          # fill =
+          # size = 
+          # shape = 
+          # stroke =
+          
+          title = 'Scatter plot', 
+          subtitle = 'Subtitle',
+          caption = 'It is the great plot',
+          tag = 'A')
 ```
 
 Simple functions for labeling axes: `+ xlab()` and `+ ylab()`
@@ -412,10 +448,16 @@ iris_df %>% ggplot(aes(x=Petal.Width, fill=Species)) +
 
 ```{r}
 iris_df %>% ggplot(aes(x=Petal.Width, y=Species, fill=Species)) + 
-  geom_boxplot() + theme_classic()
+  geom_boxplot() + theme_classic() + theme(legend.position = "none")
 ```
 
-## Barplot
+> **Yes, we can combine custom and built-in themes in one plot**
+
+### Deleting the legend (as it duplicates `color` information)
+
+-   `+ theme(legend.position = "none")`
+
+## Barplots
 
 ```{r}
 sepal_len_stats = iris_df %>% group_by(Species) %>% 
@@ -430,7 +472,7 @@ sepal_len_stats
 ```{r}
 p_col = sepal_len_stats %>% 
   ggplot(aes(x=Species, y=mean_sepal_len, fill=Species)) + 
-  geom_col() + theme_classic()
+  geom_col() + theme_classic() + theme(legend.position = "none")
 
 p_col
 ```
@@ -455,30 +497,84 @@ p_col + geom_errorbar(aes(ymin=mean_sepal_len-sd_sepal_length,
 
 ### `geom_bar` - if heights are unknown (counting categorical data)
 
-```{r  fig.width=4}
+```{r  fig.width=3}
 iris_df %>% ggplot(aes(x=Sepal.Length.Category, 
-                       fill=Sepal.Length.Category)) + geom_bar()
+                       fill=Sepal.Length.Category)) + 
+  geom_bar() + theme_bw() + theme(legend.position = "none")
 ```
 
 ### `position="stack"` (by default)
 
 ```{r fig.width=4}
-iris_df %>% ggplot(aes(fill=Species, x=Sepal.Length.Category)) + geom_bar()
+iris_df %>% ggplot(aes(x=Sepal.Length.Category, fill=Species)) + 
+  geom_bar() + theme_bw() 
 ```
 
-### `position="fill"` - scaling from 0 to 1
+### `position="fill"` - scaled from 0 to 1
 
 ```{r fig.width=4}
 iris_df %>% ggplot(aes(fill=Species, x=Sepal.Length.Category)) + 
-  geom_bar(position = 'fill')
+  geom_bar(position = 'fill') + theme_bw()
 ```
 
 ### `position="dodge"`
 
 ```{r}
 iris_df %>% ggplot(aes(fill=Species, x=Sepal.Length.Category)) + 
-  geom_bar(position = 'dodge')
+  geom_bar(position = 'dodge')  + theme_bw()
 ```
+
+## Something big and difficult
+
+```{r, warning=FALSE}
+ggplot(iris, aes(x = Species, y = Sepal.Length)) +
+  geom_violin(aes(fill = Species), alpha = 0.4) +  # Violin plots
+  geom_boxplot(fill = "lightgray", alpha = 0.6, outliers = F, width=0.2) + 
+  geom_jitter(aes(fill = Species), width = 0.2, alpha = 0.5, shape=21, col='black') +  
+  geom_hline(aes(yintercept = mean(Sepal.Length)), col='red', linewidth=1, lty=2) +
+  geom_text(aes(label='Global mean', x = 'setosa', y=mean(Sepal.Length)+0.1), col='red') +
+  labs(title = "Boxplot of Sepal Length by Species with Jittered Points",
+       x = "Species",
+       y = "Sepal Length (cm)") +
+  theme_minimal()
+
+```
+
+### New geoms used
+
+-   `geom_violinplot()` - Violin plot
+
+-   `geom_hline()` - horizontal line
+
+-   `geom_text()` - just text
+
+## Saving the plot
+
+### To save [last]{.underline} drawn plot:
+
+```{r}
+ggsave(
+  filename = 'lec_output/bigplot.png', # specify the filename (path to file)
+  device = , # png, pdf, jpeg, svg and others
+  dpi = 320, # resolution
+  width = 1800,
+  height = 1600,
+  units = "px" #in, cm, mm
+)
+```
+
+### Save "everything between"
+
+```{r}
+pdf("lec_output/dodge_barplot.pdf", width = 6, height = 6)
+
+iris_df %>% ggplot(aes(fill=Species, x=Sepal.Length.Category)) + 
+  geom_bar(position = 'dodge')
+
+dev.off()
+```
+
+This structure allow save into pdf all graphical outputs that between `pdf()` and `dev.off()`
 
 # ggpubr (Advanced)
 
@@ -512,16 +608,68 @@ p_pubr + stat_compare_means(comparisons = comparisons,
   stat_compare_means(label.y = 10)
 ```
 
-# Choose the plot for your data (LINK)
+See more about `ggpubr` [**HERE**](https://rpkgs.datanovia.com/ggpubr/)
+
+# Choose the plot for your data ([data-to-viz.com](https://www.data-to-viz.com/))
 
 # P.S
 
-`scale_color_manual()`
-
-`scale_fill_manual()`
-
-`facet_grid()`
+## Customizing `fill` - `scale_fill_manual()`
 
 ```{r}
-p + facet_grid()
+# Advanced -------
+iris_df %>% ggplot(aes(x=Species, y=Sepal.Length)) +
+  stat_summary(aes(fill=Species), geom = 'bar', fun = mean) +
+  geom_jitter(aes(fill=Species), shape=21, width = 0.1, 
+              stroke=0.5, col='black') +
+  theme_bw() + 
+  labs(title = 'Barplots with jitter') +
+# ----------
+
+scale_fill_manual(
+  values=c("#e63946", "#ffba49", "#457b9d"),
+  labels=c('Setosa sp.', 'Versicolor sp.', 'Virginica sp.'),
+)
+
+```
+
+## Customizing `color` - `scale_color_manual()`
+
+```{r}
+iris_df %>% ggplot(aes(x=Sepal.Length, y=Sepal.Width, col=Species)) +
+  geom_point(alpha=0.6, size=4) +
+  theme_classic() + 
+
+scale_color_manual(
+  values=c("#e63946", "#ffba49", "#457b9d"),
+  labels=c('Setosa sp.', 'Versicolor sp.', 'Virginica sp.'),
+)
+```
+
+## Facets
+
+### `facet_wrap()`
+
+```{r fig.width=8, fig.height=3}
+iris_df %>% ggplot(aes(x=Petal.Length, y=Petal.Width)) +
+  geom_point(alpha=0.6, size=2) +
+  theme_bw() +
+
+# ----------------------
+
+facet_wrap(. ~ Species)
+```
+
+### `facet_grid()`
+
+```{r fig.width=8, fig.height=6}
+iris_df %>% ggplot(aes(x=Petal.Length, y=Petal.Width)) +
+  geom_point(alpha=0.6, size=2) +
+  theme_bw() +
+# ----------------------
+  facet_grid(cols = vars(Species),
+             rows=vars(Sepal.Length.Category))
+
+  # facet_wrap(Sepal.Length.Category ~ Species)
+
 ```
