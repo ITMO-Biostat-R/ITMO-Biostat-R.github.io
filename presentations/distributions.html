@@ -396,8 +396,59 @@
 </div>
 
 </section>
-<section id="normal-distribution" class="slide level2 center">
-<h2>Normal distribution</h2>
+<section id="types-of-data" class="slide level2 center">
+<h2>Types of Data</h2>
+<ul>
+<li><strong>Numerical data</strong>: Continuous (e.g., height) or discrete (e.g., number of leaves).</li>
+<li><strong>Categorical data</strong>: Nominal (e.g., species, gender) or ordinal (e.g., rankings).</li>
+</ul>
+
+<img data-src="../images/DataTypes.png" class="quarto-figure quarto-figure-center r-stretch" width="1800"></section>
+<section id="sampling" class="slide level2 center" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Sampling</h2>
+<p>Usually we <strong>cannot take the whole population</strong> for a study.</p>
+<blockquote>
+<p>For example, it is physically impossible to do a study using blood samples from all the people in the world. Sometimes the population is small, but it is extremely expensive to collect the material.</p>
+</blockquote>
+<p>Therefore, researchers use samples - <strong>random and representative</strong> groups taken from the general population that can be analysed to <strong>provide information about the whole population.</strong></p>
+<h3 id="this-is-where-statistics-come-to-the-rescue.">This is where statistics come to the rescue.</h3>
+</section>
+<section id="sampling-1" class="slide level2 center" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Sampling</h2>
+
+<img data-src="../images/sampling_types.jpg" class="quarto-figure quarto-figure-center r-stretch" width="800"></section>
+<section id="sampling-2" class="slide level2 center" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Sampling</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="distributions_files/figure-revealjs/unnamed-chunk-1-1.png" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column fragment fade-in" style="width:50%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="distributions_files/figure-revealjs/unnamed-chunk-2-1.png" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section class="slide level2 center">
+
+<h3 id="the-larger-the-sample-the-more-similar-it-is-to-the-general-population">The larger the sample, the more similar it is to the general population</h3>
+
+<img data-src="distributions_files/figure-revealjs/unnamed-chunk-3-1.png" width="768" class="r-stretch"></section>
+<section id="normal-distribution" class="slide level2 center" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Normal distribution</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p>Normal distribution is bell shaped, have equal mean (<span class="math inline">\(\mu\)</span>), median, mode. “Width” depends on standard deviation (<span class="math inline">\(\sigma\)</span>).</p>
@@ -406,16 +457,18 @@
 <p>parameters are mean (<span class="math inline">\(\mu\)</span>) and sigma (<span class="math inline">\(\sigma\)</span>)</p>
 </div></div>
 
-<img data-src="dsitributions_files/figure-revealjs/unnamed-chunk-1-1.png" width="768" class="r-stretch"></section>
-<section class="slide level2 center">
-
+<!-- ------------------------------------------------------------------------ -->
+<img data-src="distributions_files/figure-revealjs/unnamed-chunk-4-1.png" width="768" class="r-stretch"></section>
+<section id="normal-distribution-1" class="slide level2 center" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Normal distribution</h2>
 <h3 id="parameters-of-normal-distribution">Parameters of normal distribution</h3>
 
-<img data-src="dsitributions_files/figure-revealjs/unnamed-chunk-2-1.png" width="768" class="r-stretch"></section>
-<section id="three-sigma-rule" class="slide level2 center">
-<h2>Three sigma rule</h2>
+<img data-src="distributions_files/figure-revealjs/unnamed-chunk-5-1.png" width="768" class="r-stretch"></section>
+<section id="normal-distribution-2" class="slide level2 center" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Normal distribution</h2>
+<h3 id="three-sigma-rule">Three sigma rule</h3>
 
-<img data-src="dsitributions_files/figure-revealjs/unnamed-chunk-3-1.png" width="768" class="r-stretch"></section>
+<img data-src="distributions_files/figure-revealjs/unnamed-chunk-6-1.png" width="768" class="r-stretch"></section>
 <section id="uniform-distribution" class="slide level2 center">
 <h2>Uniform distribution</h2>
 <div class="columns">
@@ -429,7 +482,7 @@
 </ul>
 </div></div>
 
-<img data-src="dsitributions_files/figure-revealjs/unnamed-chunk-4-1.png" width="768" class="r-stretch"></section>
+<img data-src="distributions_files/figure-revealjs/unnamed-chunk-7-1.png" width="960" class="r-stretch"></section>
 <section id="bernoulli-distribution" class="slide level2 center">
 <h2>Bernoulli distribution</h2>
 <div class="columns">
@@ -438,26 +491,27 @@
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="dsitributions_files/figure-revealjs/unnamed-chunk-5-1.png" width="480"></p>
+<p><img data-src="distributions_files/figure-revealjs/unnamed-chunk-8-1.png" width="480"></p>
 </figure>
 </div>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
-<p><span class="math inline">\(P(x) = p^x(1-p)^x\)</span>,</p>
+<p><span class="math inline">\(P(1) = p\)</span>,<br>
+<span class="math inline">\(P(0) = 1-p\)</span>,</p>
 <p>where <span class="math inline">\(p\)</span> - “success” probability. It is the only parameter of the distribution</p>
 <p>Imagine, that <span class="math inline">\(p\)</span> is a probability of an head on a coin toss (1 - head, 0 - tails). Then The distribution will be like in the barplot on the left.</p>
 </div></div>
 </section>
-<section id="binomial-distribution" class="slide level2 center">
-<h2>Binomial distribution</h2>
+<section id="binomial-distribution" class="slide level2 center" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Binomial distribution</h2>
 <div class="columns">
 <div class="column" style="width:70%;">
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="dsitributions_files/figure-revealjs/unnamed-chunk-6-1.png" width="768"></p>
+<p><img data-src="distributions_files/figure-revealjs/unnamed-chunk-9-1.png" width="768"></p>
 </figure>
 </div>
 </div>
@@ -473,14 +527,15 @@
 <p>Distribution is based on the <strong>number of successes in a sequence of experiments</strong>.</p>
 <p>If we flip a coin, the binomial distribution represents the number of successes after we flip the coin a certain number of times (e.g.&nbsp;10).</p>
 <p>The histogram above shows the distribution of 10000 experiments on trying to get an head coin for a certain number of times by flipping it 10 times</p>
+<!-- ------------------------------------------------------------------------ -->
 </section>
-<section class="slide level2 center">
-
+<section id="binomial-distribution-1" class="slide level2 center" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Binomial distribution</h2>
 <h3 id="parameters-of-binomial-distribution">Parameters of binomial distribution</h3>
 
-<img data-src="dsitributions_files/figure-revealjs/unnamed-chunk-7-1.png" width="768" class="r-stretch"></section>
-<section id="poisson-distribution" class="slide level2 center">
-<h2>Poisson distribution</h2>
+<img data-src="distributions_files/figure-revealjs/unnamed-chunk-10-1.png" width="768" class="r-stretch"></section>
+<section id="poisson-distribution" class="slide level2 center" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Poisson distribution</h2>
 <p><em>Binomial</em>, but <span class="math inline">\(n \rightarrow \infty\)</span>,, therefore we don’t utilize number of trials (<span class="math inline">\(n\)</span>).<br>
 Now we use “<strong>time interval</strong>” and <strong>expected number of successes</strong> (<span class="math inline">\(\lambda\)</span>) during this interval</p>
 <div class="columns">
@@ -489,7 +544,7 @@ Now we use “<strong>time interval</strong>” and <strong>expected number of s
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="dsitributions_files/figure-revealjs/unnamed-chunk-8-1.png" width="768"></p>
+<p><img data-src="distributions_files/figure-revealjs/unnamed-chunk-11-1.png" width="768"></p>
 </figure>
 </div>
 </div>
@@ -501,12 +556,13 @@ Now we use “<strong>time interval</strong>” and <strong>expected number of s
 <li><span class="math inline">\(k\)</span> - “observed” successes</li>
 </ul>
 </div></div>
+<!-- ------------------------------------------------------------------------ -->
 </section>
-<section class="slide level2 center">
-
+<section id="poisson-distribution-1" class="slide level2 center" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Poisson distribution</h2>
 <h3 id="parameters-of-poisson-distribution">Parameters of poisson distribution</h3>
 
-<img data-src="dsitributions_files/figure-revealjs/unnamed-chunk-9-1.png" width="768" class="r-stretch"></section>
+<img data-src="distributions_files/figure-revealjs/unnamed-chunk-12-1.png" width="768" class="r-stretch"></section>
 <section id="functions-for-normal-distribution" class="slide level2 center">
 <h2>Functions (for normal distribution)</h2>
 <div class="cell">
@@ -522,7 +578,7 @@ Now we use “<strong>time interval</strong>” and <strong>expected number of s
 <div class="cell large-code">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">rnorm</span>(<span class="at">n=</span><span class="dv">5</span>, <span class="at">mean=</span><span class="dv">100</span>, <span class="at">sd=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 101.68694 101.02671  99.45375  86.83993 119.78028</code></pre>
+<pre><code>[1]  97.21095 104.70509 104.42304  95.63505 103.13268</code></pre>
 </div>
 </div>
 <ol start="2" type="1">
@@ -538,11 +594,11 @@ Now we use “<strong>time interval</strong>” and <strong>expected number of s
 <li>Cumulative probability at the point: prob-ty to obtain value less than specified</li>
 </ol>
 <div class="cell large-code">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">pnorm</span>(<span class="dv">80</span>, <span class="at">mean=</span><span class="dv">100</span>, <span class="at">sd=</span><span class="dv">10</span>) <span class="co"># prob to obtain any value less than 80</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">pnorm</span>(<span class="at">q =</span> <span class="dv">80</span>, <span class="at">mean=</span><span class="dv">100</span>, <span class="at">sd=</span><span class="dv">10</span>) <span class="co"># prob to obtain any value less than 80</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.02275013</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">pnorm</span>(<span class="fu">c</span>(<span class="dv">70</span>,<span class="dv">80</span>,<span class="dv">90</span>,<span class="dv">110</span>,<span class="dv">120</span>,<span class="dv">130</span>), <span class="at">mean=</span><span class="dv">100</span>, <span class="at">sd=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">pnorm</span>(<span class="at">q =</span> <span class="fu">c</span>(<span class="dv">70</span>,<span class="dv">80</span>,<span class="dv">90</span>,<span class="dv">110</span>,<span class="dv">120</span>,<span class="dv">130</span>), <span class="at">mean=</span><span class="dv">100</span>, <span class="at">sd=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.001349898 0.022750132 0.158655254 0.841344746 0.977249868 0.998650102</code></pre>
 </div>
@@ -551,7 +607,7 @@ Now we use “<strong>time interval</strong>” and <strong>expected number of s
 <li>Value corresponding to specified cumulative probability</li>
 </ol>
 <div class="cell large-code">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">qnorm</span>(<span class="fu">c</span>(<span class="fl">0.003</span>, <span class="fl">0.05</span>, <span class="fl">0.16</span>, <span class="fl">0.84</span>, <span class="fl">0.95</span>, <span class="fl">0.997</span>), <span class="at">mean=</span><span class="dv">100</span>, <span class="at">sd=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">qnorm</span>(<span class="at">p =</span> <span class="fu">c</span>(<span class="fl">0.003</span>, <span class="fl">0.05</span>, <span class="fl">0.16</span>, <span class="fl">0.84</span>, <span class="fl">0.95</span>, <span class="fl">0.997</span>), <span class="at">mean=</span><span class="dv">100</span>, <span class="at">sd=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  72.52219  83.55146  90.05542 109.94458 116.44854 127.47781</code></pre>
 </div>
@@ -580,6 +636,99 @@ Now we use “<strong>time interval</strong>” and <strong>expected number of s
 <span id="cb13-3"><a></a><span class="fu">ppois</span>(n, lambda)</span>
 <span id="cb13-4"><a></a><span class="fu">qpois</span>(n, lambda)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
+<section id="descriptive-sample-statistics" class="slide level2 center" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Descriptive sample statistics</h2>
+<h3 id="central-tendency">Central tendency</h3>
+<ul>
+<li><strong>Mean</strong> - <span class="math inline">\(\bar{X} = \frac{x_1 + x_2 + ... x_N}{N}\)</span></li>
+</ul>
+<div class="cell large-code">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a><span class="fu">mean</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><strong>Median</strong> - the <span class="math inline">\(N/2\)</span>-th element in list of sorted values <span class="math inline">\(\{x_1, x_2, ..., \pmb{x_{N/2}},...,x_{N-1}, x_N\}\)</span>, where for any <span class="math inline">\(i\)</span>: <span class="math inline">\(x_{i-1} &lt; x_i\)</span></li>
+</ul>
+<div class="cell large-code">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="fu">median</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><strong>Mode</strong> - The most frequent value <em>one of the methods:</em><br>
+<em>only for discrete data:</em></li>
+</ul>
+<div class="cell large-code">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a>x <span class="sc">%&gt;%</span> <span class="fu">table</span>() <span class="sc">%&gt;%</span> <span class="fu">sort</span>(<span class="at">decreasing =</span> T) <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">1</span>) <span class="sc">%&gt;%</span> <span class="fu">names</span>() <span class="sc">%&gt;%</span> <span class="fu">as.numeric</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell large-code">
+
+</div>
+<p><strong><em>They are equal for a normal distribution</em></strong></p>
+</section>
+<section id="descriptive-sample-statistics-1" class="slide level2 center" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Descriptive sample statistics</h2>
+<h3 id="bimodal-data">Bimodal data</h3>
+
+<img data-src="distributions_files/figure-revealjs/unnamed-chunk-25-1.png" width="768" class="r-stretch"></section>
+<section id="descriptive-sample-statistics-2" class="slide level2 center" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Descriptive sample statistics</h2>
+<h3 id="exponential-distribution">Exponential distribution</h3>
+
+<img data-src="distributions_files/figure-revealjs/unnamed-chunk-26-1.png" width="672" class="r-stretch"></section>
+<section id="descriptive-sample-statistics-3" class="slide level2 center" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Descriptive sample statistics</h2>
+<h3 id="outliers">Outliers</h3>
+<p><strong>Mean is more sensitive to outliers</strong></p>
+
+<img data-src="distributions_files/figure-revealjs/unnamed-chunk-27-1.png" width="768" class="r-stretch"></section>
+<section id="by-the-way-what-to-do-about-outliers" class="slide level2 center">
+<h2>By the way, what to do about outliers?</h2>
+<p><strong>Nothing</strong></p>
+<ul>
+<li>If they still contain some information.&nbsp;</li>
+</ul>
+<p><strong>Delete</strong></p>
+<ul>
+<li>If there are few of them.</li>
+<li>This is an obvious error and <u><strong>you are sure</strong></u> they do not contain valuable information</li>
+</ul>
+</section>
+<section id="descriptive-sample-statistics-4" class="slide level2 center" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Descriptive sample statistics</h2>
+<h3 id="variance-and-standard-deviation">Variance and Standard deviation</h3>
+<p><span class="math inline">\(Var(X) = S^2 = \dfrac{((x_1 - \bar{X})^2 + (x_2 - \bar{X})^2 + ... + (x_N - \bar{X})^2)}{N-1} = \dfrac{\sum{(x_i - \bar{X})^2}}{N-1}\)</span></p>
+<div class="cell large-code">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="fu">var</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><span class="math inline">\(SD(X) = S = \sqrt{\dfrac{\sum{(x_i - \bar{X})^2}}{N-1}}\)</span></p>
+<div class="cell large-code">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="fu">sd</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<blockquote>
+<p>For the <strong>population</strong> variance in the denominator of the formula is <span class="math inline">\(N\)</span>, not <span class="math inline">\(N-1\)</span></p>
+</blockquote>
+</section>
+<section id="descriptive-sample-statistics-5" class="slide level2 center" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Descriptive sample statistics</h2>
+<h3 id="quantiles">Quantiles</h3>
+<p><strong>Quantiles</strong> - values less than which <span class="math inline">\(X\)</span>% of the data in the distribution is found - For example, 0.75 quntile is the value that is greater of 75% of values in sample, but lower than another 25% of sample values</p>
+<div class="cell large-code">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="fu">quantile</span>(x <span class="at">probs =</span> <span class="fl">0.75</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Quartiles are 0.25,0.5,0.75 quantiles</li>
+</ul>
+<div class="cell large-code">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a><span class="fu">quantile</span>(x, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Percentiles are 1-100% qunatiles</li>
+</ul>
+<div class="cell large-code">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="fu">quantile</span>(x, <span class="at">probs =</span> <span class="fu">seq</span>(<span class="fl">0.01</span>,<span class="dv">1</span>,<span class="fl">0.01</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Median is a <strong>0.5 quantile</strong> (2nd quartile)</li>
+</ul>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
