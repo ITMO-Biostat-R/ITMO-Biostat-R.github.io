@@ -226,8 +226,8 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#view" id="toc-view" class="nav-link" data-scroll-target="#view"><code>View()</code></a></li>
   <li><a href="#aggregation" id="toc-aggregation" class="nav-link" data-scroll-target="#aggregation">Aggregation</a></li>
-  </ul></li>
   <li><a href="#matrices" id="toc-matrices" class="nav-link" data-scroll-target="#matrices">Matrices</a></li>
+  </ul></li>
   </ul></li>
   </ul>
 </nav>
@@ -1125,7 +1125,7 @@ Julia      23    172     62  Kazan   Short   (20,30]</code></pre>
 <ul>
 <li><p><code>rep(value, number)</code> - creates vector containing <code>value</code> <code>number</code> times</p></li>
 <li><p><code>ifelse(condition, value_if_true, value_if_false)</code> - returns <code>value_if_true</code>, if <code>condition</code> is <code>TRUE</code> and <code>value_if_false</code> otherwise</p></li>
-<li><p><code>cut(vector, breaks = c(...))</code> - breaks values in <code>vector</code> into ranges according to <code>breaks</code> and returns ranges in format <code>(x, y]</code></p></li>
+<li><p><code>cut(vector, breaks = c(...))</code> - breaks values in <code>vector</code> into ranges according to <code>breaks</code> and returns ranges in format <code>(x, y]</code> or return <code>labels</code> if sepcified</p></li>
 </ul>
 <section id="transforming-types" class="level4">
 <h4 class="anchored" data-anchor-id="transforming-types">Transforming types</h4>
@@ -1309,9 +1309,8 @@ Julia   23    172  Kazan   Short   (20,30]</code></pre>
 </div>
 </div>
 </section>
-</section>
-<section id="matrices" class="level2">
-<h2 class="anchored" data-anchor-id="matrices">Matrices</h2>
+<section id="matrices" class="level3">
+<h3 class="anchored" data-anchor-id="matrices">Matrices</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb227"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb227-1"><a href="#cb227-1" aria-hidden="true" tabindex="-1"></a>v <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>)</span>
 <span id="cb227-2"><a href="#cb227-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -1341,6 +1340,7 @@ Julia   23    172  Kazan   Short   (20,30]</code></pre>
 </div>
 
 
+</section>
 </section>
 </section>
 

@@ -4,13 +4,32 @@ title: "Biostatistics in R"
 
 ### Code
 
-1.  [Basic R](code/basic_r.Rmd)
-2.  [Working with Dataframes](code/advanced_df.Rmd)
+1.  [Basic R](./code/basic_r.Rmd)
+    -   [Download](./zipfiles/basic_r.zip)
+2.  [Working with Dataframes](./code/advanced_df.Rmd)
+    -   [Download](./zipfiles/advanced_df.zip)
+
 <!-- 3.  [Visualization](code/datavis.Rmd) -->
+
 <!-- 4.  [Statistical testing](code/stats.Rmd) -->
 
 <!-- ### Presentations -->
 
 <!-- 1.  [Distributions](presentations/distributions.qmd) -->
 
-[Homeworks](homeworks/index.qmd)
+### Homeworks
+
+-   [HW #1](./homeworks/HW1.Rmd)
+    - [Download](./zipfiles/HW1.zip)
+    
+<!-- -   [**HW #2**](./homeworks/HW2.Rmd) -->
+<!--     - [Download](./zipfiles/HW2.zip) -->
+
+<!-- -   [**HW #3**](./homeworks/HW3.Rmd) -->
+<!--     - [Download](./zipfiles/HW3.zip) -->
+
+
+<!-- ### How to download files: -->
+
+<!-- ![](/images/howto_download.png){fig-align="center" width="1000"} -->
+
