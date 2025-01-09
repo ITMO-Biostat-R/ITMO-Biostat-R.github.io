@@ -21,9 +21,14 @@ website:
 
 format:
   html:
-    theme: cosmo
+    # theme: cosmo
     css: styles.css
     toc: true
+    # highlight-style: zenburn #default, tango, pygments, kate, monochrome, 
+    # espresso, zenburn, haddock, breezedark, textmate
+    theme: readable #default, bootstrap, cerulean, cosmo, darkly, flatly, 
+    # journal, lumen, paper, readable, sandstone, 
+    # simplex, spacelab, united, and yeti
 
 editor: visual
 

@@ -6,8 +6,6 @@ output:
     toc_float:
       collapsed: yes
       smooth_scroll: yes
-    highlight: zenburn #default, tango, pygments, kate, monochrome, espresso, zenburn, haddock, breezedark, textmate
-    theme: readable #default, bootstrap, cerulean, cosmo, darkly, flatly, journal, lumen, paper, readable, sandstone, simplex, spacelab, united, and yeti
 date: 10.01.2025
 editor_options: 
   chunk_output_type: inline
@@ -113,6 +111,15 @@ R Markdown allows us to "knit" this project and create beautiful report in **htm
 
 # R language
 
+Citizens of R-city
+
+```{r}
+12
+"Hello world"
+TRUE
+12+2
+```
+
 ## Variables
 
 All you need to know about variables is that they can store values which we assign
@@ -157,6 +164,11 @@ sqrt(x) # square root
 
 x %% y # ‘remainder’ of division 
 x %/% y # integer division
+```
+
+```{r}
+y + 2 * 3
+(y + 2) * 3
 ```
 
 ### Logical operations
@@ -292,73 +304,81 @@ vec123 >= vec321
 ### Create vectors from vectors
 
 ```{r}
-weghts_of_seed = c(1:4, 10:15, 4:7)
-weghts_of_seed
+weights_of_seed = c(1:4, 10:15, 4:7)
+weights_of_seed
 
 ```
 
 ### Use conditions (logic) inside square brackets
 
 ```{r}
-weghts_of_seed[weghts_of_seed < 5]
+weights_of_seed[weights_of_seed < 5]
 ```
 
 Lets break out this. Firstly, logical vector is created inside the brackets to filter the data. For example, we filter data with values more than 5
 
 ```{r}
-logical_vector = weghts_of_seed < 5
+logical_vector = weights_of_seed < 5
 logical_vector
 ```
 
 Than logical vector "make" to filter out values which have "FALSE" in corresponding index
 
 ```{r}
-weghts_of_seed[logical_vector]
+weights_of_seed[logical_vector]
 ```
 
 **It is VERY useful for filtering simple data.**
 
 ```{r}
-weghts_of_seed[weghts_of_seed < 10 & weghts_of_seed > 0]
+weights_of_seed[weights_of_seed < 10 & weights_of_seed > 0]
 ```
 
 ## Basic statistics
 
+### Length
+
+```{r}
+length(weights_of_seed)
+```
+
 We can already compute some statistics on numerical vectors!
 
 ```{r}
-sum(weghts_of_seed)
-mean(weghts_of_seed)
-median(weghts_of_seed)
+sum(weights_of_seed)
+mean(weights_of_seed)
+median(weights_of_seed)
 ```
 
 ```{r}
-var(weghts_of_seed)
-sd(weghts_of_seed)
-var(weghts_of_seed) == sd(weghts_of_seed)^2
+var(weights_of_seed)
+sd(weights_of_seed)
+var(weights_of_seed) == sd(weights_of_seed)^2
 ```
 
-#### Min and max
+### Min and max
 
 ```{r}
-max(weghts_of_seed)
-min(weghts_of_seed)
+max(weights_of_seed)
+min(weights_of_seed)
+
+range(weights_of_seed) # min and max (vector!)
 ```
 
-#### Quantiles
+### Quantiles
 
 ```{r}
-quantile(weghts_of_seed)
-quantile(weghts_of_seed, probs = c(0.1, 0.5, 0.9))
+quantile(weights_of_seed)
+quantile(weights_of_seed, probs = c(0.1, 0.5, 0.9))
 
-quantile(weghts_of_seed, probs = c(0.5)) == median(weghts_of_seed)
+quantile(weights_of_seed, probs = c(0.5)) == median(weights_of_seed)
 ```
 
-#### Values above the mean
+### Values above the mean
 
 ```{r}
-mean_value = mean(weghts_of_seed)
-weghts_of_seed[weghts_of_seed > mean_value]
+mean_value = mean(weights_of_seed)
+weights_of_seed[weights_of_seed > mean_value]
 ```
 
 ## Two "associated" vectors
@@ -574,7 +594,7 @@ students_df
 
 -   `ifelse(condition, value_if_true, value_if_false)` - returns `value_if_true`, if `condition` is `TRUE` and `value_if_false` otherwise
 
--   `cut(vector, breaks = c(...))` - breaks values in `vector` into ranges according to `breaks` and returns ranges in format `(x, y]`
+-   `cut(vector, breaks = c(...))` - breaks values in `vector` into ranges according to `breaks` and returns ranges in format `(x, y]` or return `labels` if sepcified
 
 #### Transforming types
 
@@ -642,7 +662,13 @@ table(students_df$city, students_df$age_range)
 
 ## P.S.
 
-#### Aggregation
+### `View()`
+
+```{r, eval=F}
+View(students_df)
+```
+
+### Aggregation
 
 ```{r}
 aggregate(age ~ city, students_df, mean)
@@ -654,4 +680,15 @@ Median of heights inside each group of `age_range`:
 
 ```{r}
 aggregate(height ~ age_range, students_df, median)
+```
+
+### Matrices
+
+```{r}
+v = c(1,2,3,4,5,6)
+
+matrix(v)
+matrix(v, nrow = 2)
+# matrix(v, nrow = 3)
+matrix(v, nrow = 2, byrow = T)
 ```

@@ -1,9 +1,12 @@
 ---
-title: "Advanced Dataframes"
+title: "Working with Dataframes"
 output: 
   html_document:
     toc: true
-    toc_float: true
+    toc_depth: 3
+    toc_float:
+      collapsed: yes
+      smooth_scroll: yes
     highlight: default #default, tango, pygments, kate, monochrome, espresso, zenburn, haddock, breezedark, textmate
     theme: default #default, bootstrap, cerulean, cosmo, darkly, flatly, journal, lumen, paper, readable, sandstone, simplex, spacelab, united, and yeti
 date: 01/10/2025
@@ -12,14 +15,66 @@ editor_options:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, message = F)
+knitr::opts_chunk$set(echo = TRUE, message = F, warning = F)
 ```
 
 # Reading data from files
 
+## base R
+
 ```{r}
 
-students_hours = read.csv("../data/student_lifestyle_dataset.csv", row.names = 1)
+students_hours = read.csv("../data/student_lifestyle_dataset.csv", 
+                          row.names = 1,
+                          header = T,
+                          # na.strings = c('','-'),
+                          # comment.char = '#',
+                          # sep = ',',
+                          # skip = 2,
+                          stringsAsFactors = T
+                          )
+
+# read_tsv()
+# read.table()
+```
+
+-   `na.strings = c('','-')`- sometimes R interprets empty text in factor columns as one of factor levels. Therefore, this parameter is useful
+
+-   `row.names = 1` - make the first column the rows names
+
+-   `header = TRUE` - whether the data file have a header
+
+-   `comment.char = '#'` - files can contain comments which starts with specific symbol
+
+-   `sep=','` - specification of column separator in file.\
+    Specific functions (such as `read.tsv, read.csv`) usually have specific parameter value set (`tsv => '\t', csv => ','`). However, sometimes people name files `csv` and use, for instance, `';'` separator which should be specified.
+
+-   `skip = 2` - for example, if the file contains a additional text of the data in the first few lines, you must specify the number of them that should not be interpreted as part of the dataframe
+
+-   `stringsAsFactors = TRUE` - make all character columns (with text) be interpreted as factors
+
+## `readr` package
+
+```{r}
+library(readr)
+```
+
+
+```{r, message=FALSE}
+# read_tsv()
+# read_table().
+
+head(read_csv("../data/student_lifestyle_dataset.csv", 
+         na = c('', '-'),
+         # comment = '#'
+         # quote = '#',
+         # skip = 2
+         ) )
+```
+
+# Students Lifestyle dataset
+
+```{r}
 head(students_hours) # first 5 records
 tail(students_hours) # last 5 records
 ```
@@ -31,7 +86,7 @@ str(students_hours)
 Making stress level a factor as it has 3 levels:
 
 ```{r}
-students_hours$Stress_Level = as.factor(students_hours$Stress_Level)
+# students_hours$Stress_Level = as.factor(students_hours$Stress_Level)
 ```
 
 Summary
@@ -62,7 +117,7 @@ library(readr)
 
     -   never changes input data types
 
-    -   never customises variable names
+    -   never customizes variable names
 
     -   never prints all lines
 
@@ -73,7 +128,7 @@ students_tibble
 
 # Pipe %\>% (\|\>)
 
-Using ``` Ctrl+Shift+M /``Cmd+Shift+M ``` you can rapidly print so-called pipe `%>%`
+Using ``` Ctrl+Shift+M / Cmd+Shift+M ``` you can rapidly print so-called pipe `%>%`
 
 It is very convenient way to **write code from "left to right"**.
 
@@ -110,18 +165,6 @@ students_tibble %>% select(Study_Hours_Per_Day:Physical_Activity_Hours_Per_Day) 
 ```
 
 If we need our dataset (object after which the first pipe was written) inside a function a second time, we can refer to it via dot `.`
-
-# Read file (`readr` package)
-
-```{r, message=FALSE}
-# read.table()
-# read.csv("../data/student_lifestyle_dataset.csv")
-
-read_csv("../data/student_lifestyle_dataset.csv")
-
-# read_tsv()
-# read_table().
-```
 
 # tidyverse functions
 
@@ -329,17 +372,23 @@ students_tibble %>% is.na() %>% colSums()
 
 -   `is.na()` - returns TRUE **for each value** if it is NA and FALSE otherwise.
 
-**Rows with NAs in `Extracurricular_Hours_Per_Day`:**
+### Rows with NAs in `Extracurricular_Hours_Per_Day`:
 
 ```{r}
 students_tibble %>% filter(is.na(Extracurricular_Hours_Per_Day))
 ```
 
-**Rows with any NAs (*Advanced*):**
+### Rows with any NAs
 
 ```{r}
-# students_tibble[!complete.cases(students_tibble), ]
+students_tibble[!complete.cases(students_tibble), ]
+```
 
+-   `complete.cases()` - returns `TRUE` if row contain no `NA`s
+
+#### ***Advanced...***
+
+```{r}
 students_tibble %>% filter(if_any(everything(), is.na))
 ```
 

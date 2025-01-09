@@ -4,12 +4,13 @@ title: "Biostatistics in R"
 
 ### Code
 
--   [Prac #1.1 Basic R](code/basic_r.Rmd)
--   [Prac #1.2 Advanced Dataframes](code/advanced_df.Rmd)
--   [Prac #2.2 Visualization](code/datavis.Rmd)
+1.  [Basic R](code/basic_r.Rmd)
+2.  [Working with Dataframes](code/advanced_df.Rmd)
+<!-- 3.  [Visualization](code/datavis.Rmd) -->
+<!-- 4.  [Statistical testing](code/stats.Rmd) -->
 
-### Presentations
+<!-- ### Presentations -->
 
--   [Prac #2.1 Distributions](presentations/dsitributions.qmd)
+<!-- 1.  [Distributions](presentations/distributions.qmd) -->
 
 [Homeworks](homeworks/index.qmd)

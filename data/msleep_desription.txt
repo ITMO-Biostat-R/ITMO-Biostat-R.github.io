@@ -1,0 +1,25 @@
+A data frame with 83 rows and 11 variables:
+
+name - common name
+
+genus - taxonomic rank
+
+vore - the dietary category of the mammal, indicating whether it is a carnivore, omnivore, herbivore, or insectivore
+
+order - taxonomic rank
+
+conservation - the conservation status of the animal.
+
+'least concern' (lc), 'endangered' (en), 'vulnerable' (vu), 'near threatened' (nt), 'conservation dependent' (cd), or 'domesticated'.
+
+sleep_total - total amount of sleep, in hours
+
+sleep_rem - REM (Rapid Eye Movement) sleep, in hours
+
+sleep_cycle - length of single sleep cycle, in hours
+
+awake - amount of time spent awake, in hours
+
+brainwt - brain weight in kilograms
+
+bodywt - body weight in kilograms

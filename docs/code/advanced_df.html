@@ -8,7 +8,7 @@
 
 <meta name="dcterms.date" content="2025-01-10">
 
-<title>Advanced Dataframes – Biostatistics in R</title>
+<title>Working with Dataframes – Biostatistics in R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -143,7 +143,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#reading-data-from-files" id="toc-reading-data-from-files" class="nav-link active" data-scroll-target="#reading-data-from-files">Reading data from files</a></li>
+  <li><a href="#reading-data-from-files" id="toc-reading-data-from-files" class="nav-link active" data-scroll-target="#reading-data-from-files">Reading data from files</a>
+  <ul class="collapse">
+  <li><a href="#base-r" id="toc-base-r" class="nav-link" data-scroll-target="#base-r">base R</a></li>
+  <li><a href="#readr-package" id="toc-readr-package" class="nav-link" data-scroll-target="#readr-package"><code>readr</code> package</a></li>
+  </ul></li>
+  <li><a href="#students-lifestyle-dataset" id="toc-students-lifestyle-dataset" class="nav-link" data-scroll-target="#students-lifestyle-dataset">Students Lifestyle dataset</a></li>
   <li><a href="#tidy" id="toc-tidy" class="nav-link" data-scroll-target="#tidy">Tidy</a>
   <ul class="collapse">
   <li><a href="#libraries" id="toc-libraries" class="nav-link" data-scroll-target="#libraries">Libraries</a></li>
@@ -153,7 +158,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#important-feature-of-pipe-is-dot-.-advanced" id="toc-important-feature-of-pipe-is-dot-.-advanced" class="nav-link" data-scroll-target="#important-feature-of-pipe-is-dot-.-advanced">Important feature of pipe is dot <code>.</code> (<em>advanced)</em></a></li>
   </ul></li>
-  <li><a href="#read-file-readr-package" id="toc-read-file-readr-package" class="nav-link" data-scroll-target="#read-file-readr-package">Read file (<code>readr</code> package)</a></li>
   <li><a href="#tidyverse-functions" id="toc-tidyverse-functions" class="nav-link" data-scroll-target="#tidyverse-functions">tidyverse functions</a>
   <ul class="collapse">
   <li><a href="#dplyr" id="toc-dplyr" class="nav-link" data-scroll-target="#dplyr"><code>dplyr</code></a>
@@ -176,11 +180,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#deal-with-empty-values" id="toc-deal-with-empty-values" class="nav-link" data-scroll-target="#deal-with-empty-values">Deal with empty values</a>
   <ul class="collapse">
+  <li><a href="#rows-with-nas-in-extracurricular_hours_per_day" id="toc-rows-with-nas-in-extracurricular_hours_per_day" class="nav-link" data-scroll-target="#rows-with-nas-in-extracurricular_hours_per_day"><strong>Rows with NAs in <code>Extracurricular_Hours_Per_Day</code>:</strong></a></li>
+  <li><a href="#rows-with-any-nas" id="toc-rows-with-any-nas" class="nav-link" data-scroll-target="#rows-with-any-nas"><strong>Rows with any NAs</strong></a></li>
   <li><a href="#delete-rows-containing-nas" id="toc-delete-rows-containing-nas" class="nav-link" data-scroll-target="#delete-rows-containing-nas">Delete rows containing NAs</a></li>
   <li><a href="#replace-with-value" id="toc-replace-with-value" class="nav-link" data-scroll-target="#replace-with-value">Replace with value</a>
   <ul class="collapse">
   <li><a href="#simple" id="toc-simple" class="nav-link" data-scroll-target="#simple">simple</a></li>
-  <li><a href="#advanced" id="toc-advanced" class="nav-link" data-scroll-target="#advanced">advanced</a></li>
+  <li><a href="#advanced-1" id="toc-advanced-1" class="nav-link" data-scroll-target="#advanced-1">advanced</a></li>
   </ul></li>
   </ul></li>
   <li><a href="#writing-a-data-into-file" id="toc-writing-a-data-into-file" class="nav-link" data-scroll-target="#writing-a-data-into-file">Writing a data into file</a></li>
@@ -198,7 +204,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Advanced Dataframes</h1>
+<h1 class="title">Working with Dataframes</h1>
 </div>
 
 
@@ -223,9 +229,72 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="reading-data-from-files" class="level1">
 <h1>Reading data from files</h1>
+<section id="base-r" class="level2">
+<h2 class="anchored" data-anchor-id="base-r">base R</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>students_hours <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">"../data/student_lifestyle_dataset.csv"</span>, <span class="at">row.names =</span> <span class="dv">1</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(students_hours) <span class="co"># first 5 records</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>students_hours <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">"../data/student_lifestyle_dataset.csv"</span>, </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>                          <span class="at">row.names =</span> <span class="dv">1</span>,</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>                          <span class="at">header =</span> T,</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>                          <span class="co"># na.strings = c('','-'),</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>                          <span class="co"># comment.char = '#',</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>                          <span class="co"># sep = ',',</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>                          <span class="co"># skip = 2,</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>                          <span class="at">stringsAsFactors =</span> T</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>                          )</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># read_tsv()</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co"># read.table()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><p><code>na.strings = c('','-')</code>- sometimes R interprets empty text in factor columns as one of factor levels. Therefore, this parameter is useful</p></li>
+<li><p><code>row.names = 1</code> - make the first column the rows names</p></li>
+<li><p><code>header = TRUE</code> - whether the data file have a header</p></li>
+<li><p><code>comment.char = '#'</code> - files can contain comments which starts with specific symbol</p></li>
+<li><p><code>sep=','</code> - specification of column separator in file.<br>
+Specific functions (such as <code>read.tsv, read.csv</code>) usually have specific parameter value set (<code>tsv =&gt; '\t', csv =&gt; ','</code>). However, sometimes people name files <code>csv</code> and use, for instance, <code>';'</code> separator which should be specified.</p></li>
+<li><p><code>skip = 2</code> - for example, if the file contains a additional text of the data in the first few lines, you must specify the number of them that should not be interpreted as part of the dataframe</p></li>
+<li><p><code>stringsAsFactors = TRUE</code> - make all character columns (with text) be interpreted as factors</p></li>
+</ul>
+</section>
+<section id="readr-package" class="level2">
+<h2 class="anchored" data-anchor-id="readr-package"><code>readr</code> package</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: пакет 'readr' был собран под R версии 4.3.1</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># read_tsv()</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># read_table().</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">read_csv</span>(<span class="st">"../data/student_lifestyle_dataset.csv"</span>, </span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">na =</span> <span class="fu">c</span>(<span class="st">''</span>, <span class="st">'-'</span>),</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>         <span class="co"># comment = '#'</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>         <span class="co"># quote = '#',</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>         <span class="co"># skip = 2</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>         ) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 8
+  Student_ID Study_Hours_Per_Day Extracurricular_Hours_Per…¹ Sleep_Hours_Per_Day
+       &lt;dbl&gt;               &lt;dbl&gt;                       &lt;dbl&gt;               &lt;dbl&gt;
+1          1                 6.9                         3.8                 8.7
+2          2                 5.3                         3.5                 8  
+3          3                 5.1                         3.9                 9.2
+4          4                 6.5                         2.1                 7.2
+5          5                 8.1                         0.6                 6.5
+6          6                 6                           2.1                 8  
+# ℹ abbreviated name: ¹​Extracurricular_Hours_Per_Day
+# ℹ 4 more variables: Social_Hours_Per_Day &lt;dbl&gt;,
+#   Physical_Activity_Hours_Per_Day &lt;dbl&gt;, GPA &lt;dbl&gt;, Stress_Level &lt;chr&gt;</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="students-lifestyle-dataset" class="level1">
+<h1>Students Lifestyle dataset</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(students_hours) <span class="co"># first 5 records</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Study_Hours_Per_Day Extracurricular_Hours_Per_Day Sleep_Hours_Per_Day
 1                 6.9                           3.8                 8.7
@@ -242,7 +311,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 5                  2.2                             6.6 3.51         High
 6                  0.3                             7.6 2.85     Moderate</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(students_hours) <span class="co"># last 5 records</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(students_hours) <span class="co"># last 5 records</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     Study_Hours_Per_Day Extracurricular_Hours_Per_Day Sleep_Hours_Per_Day
 1995                 7.9                           3.4                 9.0
@@ -261,7 +330,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(students_hours)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(students_hours)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   2000 obs. of  7 variables:
  $ Study_Hours_Per_Day            : num  6.9 5.3 5.1 6.5 8.1 6 8 8.4 5.2 7.7 ...
@@ -270,16 +339,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  $ Social_Hours_Per_Day           : num  2.8 4.2 1.2 1.7 2.2 0.3 5.7 3 4 4.5 ...
  $ Physical_Activity_Hours_Per_Day: num  1.8 3 4.6 6.5 6.6 7.6 4.3 5.2 4.9 1.3 ...
  $ GPA                            : num  2.99 2.75 2.67 2.88 3.51 2.85 3.08 3.2 2.82 2.76 ...
- $ Stress_Level                   : chr  "Moderate" "Low" "Low" "Moderate" ...</code></pre>
+ $ Stress_Level                   : Factor w/ 4 levels "","High","Low",..: 4 3 3 4 2 4 2 2 3 4 ...</code></pre>
 </div>
 </div>
 <p>Making stress level a factor as it has 3 levels:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>students_hours<span class="sc">$</span>Stress_Level <span class="ot">=</span> <span class="fu">as.factor</span>(students_hours<span class="sc">$</span>Stress_Level)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># students_hours$Stress_Level = as.factor(students_hours$Stress_Level)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Summary</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(students_hours)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(students_hours)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> Study_Hours_Per_Day Extracurricular_Hours_Per_Day Sleep_Hours_Per_Day
  Min.   : 5.000      Min.   :0.000                 Min.   : 5.0       
@@ -313,13 +382,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="libraries" class="level2">
 <h2 class="anchored" data-anchor-id="libraries">Libraries</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(c("dplyr", "tidyr"))</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("tidyverse")</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co"># library(tidyverse)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(c("dplyr", "tidyr"))</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("tidyverse")</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="co"># library(tidyverse)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="tibble" class="level2">
@@ -329,13 +398,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Behave more conveniently</p>
 <ul>
 <li><p>never changes input data types</p></li>
-<li><p>never customises variable names</p></li>
+<li><p>never customizes variable names</p></li>
 <li><p>never prints all lines</p></li>
 </ul></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="ot">=</span> <span class="fu">as_tibble</span>(students_hours)</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>students_tibble</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="ot">=</span> <span class="fu">as_tibble</span>(students_hours)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>students_tibble</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2,000 × 7
    Study_Hours_Per_Day Extracurricular_Hours_Per_Day Sleep_Hours_Per_Day
@@ -362,27 +431,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Using <code>Ctrl+Shift+M /``Cmd+Shift+M</code> you can rapidly print so-called pipe <code>%&gt;%</code></p>
 <p>It is very convenient way to <strong>write code from “left to right”</strong>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># sqrt(mean(students_hours$Extracurricular_Hours_Per_Day, na.rm = T))</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>students_hours<span class="sc">$</span>Extracurricular_Hours_Per_Day <span class="sc">%&gt;%</span> <span class="fu">mean</span>(<span class="at">na.rm =</span> T) <span class="sc">%&gt;%</span> <span class="fu">sqrt</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># sqrt(mean(students_hours$Extracurricular_Hours_Per_Day, na.rm = T))</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>students_hours<span class="sc">$</span>Extracurricular_Hours_Per_Day <span class="sc">%&gt;%</span> <span class="fu">mean</span>(<span class="at">na.rm =</span> T) <span class="sc">%&gt;%</span> <span class="fu">sqrt</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.411128</code></pre>
 </div>
 </div>
 <p><strong>Larger example.</strong> Compare two ways to reach the same result:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summarise</span>(<span class="fu">select</span>(<span class="fu">filter</span>(students_tibble, Extracurricular_Hours_Per_Day <span class="sc">&gt;</span> <span class="dv">1</span>), </span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>                 Sleep_Hours_Per_Day), <span class="at">Sleep_Hours_Mean =</span> <span class="fu">mean</span>(Sleep_Hours_Per_Day))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summarise</span>(<span class="fu">select</span>(<span class="fu">filter</span>(students_tibble, Extracurricular_Hours_Per_Day <span class="sc">&gt;</span> <span class="dv">1</span>), </span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>                 Sleep_Hours_Per_Day), <span class="at">Sleep_Hours_Mean =</span> <span class="fu">mean</span>(Sleep_Hours_Per_Day))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 1
   Sleep_Hours_Mean
              &lt;dbl&gt;
 1             7.49</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Extracurricular_Hours_Per_Day <span class="sc">&gt;</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Sleep_Hours_Per_Day) <span class="sc">%&gt;%</span></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">Sleep_Hours_Mean =</span> <span class="fu">mean</span>(Sleep_Hours_Per_Day))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Extracurricular_Hours_Per_Day <span class="sc">&gt;</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Sleep_Hours_Per_Day) <span class="sc">%&gt;%</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">Sleep_Hours_Mean =</span> <span class="fu">mean</span>(Sleep_Hours_Per_Day))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 1
   Sleep_Hours_Mean
@@ -398,8 +467,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="important-feature-of-pipe-is-dot-.-advanced" class="level2">
 <h2 class="anchored" data-anchor-id="important-feature-of-pipe-is-dot-.-advanced">Important feature of pipe is dot <code>.</code> (<em>advanced)</em></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span> <span class="fu">select</span>(Study_Hours_Per_Day<span class="sc">:</span>Physical_Activity_Hours_Per_Day) <span class="sc">%&gt;%</span> </span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">rowSums</span>(.) <span class="sc">&gt;</span> <span class="dv">24</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span> <span class="fu">select</span>(Study_Hours_Per_Day<span class="sc">:</span>Physical_Activity_Hours_Per_Day) <span class="sc">%&gt;%</span> </span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">rowSums</span>(.) <span class="sc">&gt;</span> <span class="dv">24</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 205 × 5
    Study_Hours_Per_Day Extracurricular_Hours_Per_Day Sleep_Hours_Per_Day
@@ -422,36 +491,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>If we need our dataset (object after which the first pipe was written) inside a function a second time, we can refer to it via dot <code>.</code></p>
 </section>
 </section>
-<section id="read-file-readr-package" class="level1">
-<h1>Read file (<code>readr</code> package)</h1>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># read.table()</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="co"># read.csv("../data/student_lifestyle_dataset.csv")</span></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="fu">read_csv</span>(<span class="st">"../data/student_lifestyle_dataset.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2,000 × 8
-   Student_ID Study_Hours_Per_Day Extracurricular_Hours_Pe…¹ Sleep_Hours_Per_Day
-        &lt;dbl&gt;               &lt;dbl&gt;                      &lt;dbl&gt;               &lt;dbl&gt;
- 1          1                 6.9                        3.8                 8.7
- 2          2                 5.3                        3.5                 8  
- 3          3                 5.1                        3.9                 9.2
- 4          4                 6.5                        2.1                 7.2
- 5          5                 8.1                        0.6                 6.5
- 6          6                 6                          2.1                 8  
- 7          7                 8                          0.7                 5.3
- 8          8                 8.4                        1.8                 5.6
- 9          9                 5.2                        3.6                 6.3
-10         10                 7.7                        0.7                 9.8
-# ℹ 1,990 more rows
-# ℹ abbreviated name: ¹​Extracurricular_Hours_Per_Day
-# ℹ 4 more variables: Social_Hours_Per_Day &lt;dbl&gt;,
-#   Physical_Activity_Hours_Per_Day &lt;dbl&gt;, GPA &lt;dbl&gt;, Stress_Level &lt;chr&gt;</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># read_tsv()</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="co"># read_table().</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
 <section id="tidyverse-functions" class="level1">
 <h1>tidyverse functions</h1>
 <p><strong>and comparison with what we already know</strong></p>
@@ -460,8 +499,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="glimpse-structure" class="level3">
 <h3 class="anchored" data-anchor-id="glimpse-structure">Glimpse (structure)</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># str(students_tibble)</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span> <span class="fu">glimpse</span>(<span class="at">width =</span> <span class="dv">50</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># str(students_tibble)</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span> <span class="fu">glimpse</span>(<span class="at">width =</span> <span class="dv">50</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 2,000
 Columns: 7
@@ -478,8 +517,8 @@ $ Stress_Level                    &lt;fct&gt; Moderate…</code></pre>
 <section id="arranging-order" class="level3">
 <h3 class="anchored" data-anchor-id="arranging-order">Arranging (order)</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># students_tibble[order(students_tibble$Study_Hours_Per_Day),]</span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(Study_Hours_Per_Day)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># students_tibble[order(students_tibble$Study_Hours_Per_Day),]</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(Study_Hours_Per_Day)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2,000 × 7
    Study_Hours_Per_Day Extracurricular_Hours_Per_Day Sleep_Hours_Per_Day
@@ -498,8 +537,8 @@ $ Stress_Level                    &lt;fct&gt; Moderate…</code></pre>
 # ℹ 4 more variables: Social_Hours_Per_Day &lt;dbl&gt;,
 #   Physical_Activity_Hours_Per_Day &lt;dbl&gt;, GPA &lt;dbl&gt;, Stress_Level &lt;fct&gt;</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># students_tibble[order(students_tibble$Study_Hours_Per_Day, decreasing = T),]</span></span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(<span class="fu">desc</span>(Study_Hours_Per_Day))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># students_tibble[order(students_tibble$Study_Hours_Per_Day, decreasing = T),]</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(<span class="fu">desc</span>(Study_Hours_Per_Day))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2,000 × 7
    Study_Hours_Per_Day Extracurricular_Hours_Per_Day Sleep_Hours_Per_Day
@@ -524,8 +563,8 @@ $ Stress_Level                    &lt;fct&gt; Moderate…</code></pre>
 <h3 class="anchored" data-anchor-id="select">Select</h3>
 <p>Select columns by names</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># students_tibble[, c("Extracurricular_Hours_Per_Day", "Study_Hours_Per_Day")]</span></span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span> <span class="fu">select</span>(Extracurricular_Hours_Per_Day, Study_Hours_Per_Day)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># students_tibble[, c("Extracurricular_Hours_Per_Day", "Study_Hours_Per_Day")]</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span> <span class="fu">select</span>(Extracurricular_Hours_Per_Day, Study_Hours_Per_Day)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2,000 × 2
    Extracurricular_Hours_Per_Day Study_Hours_Per_Day
@@ -542,7 +581,7 @@ $ Stress_Level                    &lt;fct&gt; Moderate…</code></pre>
 10                           0.7                 7.7
 # ℹ 1,990 more rows</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(Study_Hours_Per_Day<span class="sc">:</span>Social_Hours_Per_Day))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(Study_Hours_Per_Day<span class="sc">:</span>Social_Hours_Per_Day))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2,000 × 3
    Physical_Activity_Hours_Per_Day   GPA Stress_Level
@@ -563,8 +602,8 @@ $ Stress_Level                    &lt;fct&gt; Moderate…</code></pre>
 <p>Minuses are useful for easy column deletion. And also you can use <code>col1:col5</code> to select columns from the range.</p>
 <p><strong><code>select()</code> is powerful function and it is possible to combine it with other functions.</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># contains</span></span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="fu">contains</span>(<span class="st">'Hours'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># contains</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="fu">contains</span>(<span class="st">'Hours'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2,000 × 5
    Study_Hours_Per_Day Extracurricular_Hours_Per_Day Sleep_Hours_Per_Day
@@ -583,8 +622,8 @@ $ Stress_Level                    &lt;fct&gt; Moderate…</code></pre>
 # ℹ 2 more variables: Social_Hours_Per_Day &lt;dbl&gt;,
 #   Physical_Activity_Hours_Per_Day &lt;dbl&gt;</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co">#endswith (also there is starts_with() ficntion)</span></span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="fu">ends_with</span>(<span class="st">'Per_Day'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co">#endswith (also there is starts_with() ficntion)</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="fu">ends_with</span>(<span class="st">'Per_Day'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2,000 × 5
    Study_Hours_Per_Day Extracurricular_Hours_Per_Day Sleep_Hours_Per_Day
@@ -603,8 +642,8 @@ $ Stress_Level                    &lt;fct&gt; Moderate…</code></pre>
 # ℹ 2 more variables: Social_Hours_Per_Day &lt;dbl&gt;,
 #   Physical_Activity_Hours_Per_Day &lt;dbl&gt;</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># only numeric columns</span></span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="fu">where</span>(is.numeric))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># only numeric columns</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="fu">where</span>(is.numeric))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2,000 × 6
    Study_Hours_Per_Day Extracurricular_Hours_Per_Day Sleep_Hours_Per_Day
@@ -629,8 +668,8 @@ $ Stress_Level                    &lt;fct&gt; Moderate…</code></pre>
 <h3 class="anchored" data-anchor-id="pull">Pull</h3>
 <p>Extract column as vector</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># students_tibble$Extracurricular_Hours_Per_Day</span></span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span> <span class="fu">pull</span>(Extracurricular_Hours_Per_Day) <span class="sc">%&gt;%</span>  <span class="fu">head</span>(<span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># students_tibble$Extracurricular_Hours_Per_Day</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span> <span class="fu">pull</span>(Extracurricular_Hours_Per_Day) <span class="sc">%&gt;%</span>  <span class="fu">head</span>(<span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] 3.8 3.5 3.9 2.1 0.6 2.1 0.7 1.8 3.6 0.7 3.6 1.1 2.2 3.3 0.3 0.3 2.6 2.2 1.7
 [20] 2.0</code></pre>
@@ -640,9 +679,9 @@ $ Stress_Level                    &lt;fct&gt; Moderate…</code></pre>
 <section id="filtering" class="level3">
 <h3 class="anchored" data-anchor-id="filtering">Filtering</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># students_tibble[students_tibble$Extracurricular_Hours_Per_Day &gt; 2 &amp; students_tibble$Study_Hours_Per_Day &gt; 3,]</span></span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Extracurricular_Hours_Per_Day <span class="sc">&gt;</span> <span class="dv">2</span>, Study_Hours_Per_Day <span class="sc">&gt;</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># students_tibble[students_tibble$Extracurricular_Hours_Per_Day &gt; 2 &amp; students_tibble$Study_Hours_Per_Day &gt; 3,]</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Extracurricular_Hours_Per_Day <span class="sc">&gt;</span> <span class="dv">2</span>, Study_Hours_Per_Day <span class="sc">&gt;</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 963 × 7
    Study_Hours_Per_Day Extracurricular_Hours_Per_Day Sleep_Hours_Per_Day
@@ -661,7 +700,7 @@ $ Stress_Level                    &lt;fct&gt; Moderate…</code></pre>
 # ℹ 4 more variables: Social_Hours_Per_Day &lt;dbl&gt;,
 #   Physical_Activity_Hours_Per_Day &lt;dbl&gt;, GPA &lt;dbl&gt;, Stress_Level &lt;fct&gt;</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="fu">between</span>(Extracurricular_Hours_Per_Day, <span class="dv">1</span>, <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="fu">between</span>(Extracurricular_Hours_Per_Day, <span class="dv">1</span>, <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 560 × 7
    Study_Hours_Per_Day Extracurricular_Hours_Per_Day Sleep_Hours_Per_Day
@@ -685,8 +724,8 @@ $ Stress_Level                    &lt;fct&gt; Moderate…</code></pre>
 <section id="slice" class="level3">
 <h3 class="anchored" data-anchor-id="slice">Slice</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># students_tibble[30:50,]</span></span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span> <span class="fu">slice</span>(<span class="dv">30</span><span class="sc">:</span><span class="dv">50</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># students_tibble[30:50,]</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span> <span class="fu">slice</span>(<span class="dv">30</span><span class="sc">:</span><span class="dv">50</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 21 × 7
    Study_Hours_Per_Day Extracurricular_Hours_Per_Day Sleep_Hours_Per_Day
@@ -705,9 +744,9 @@ $ Stress_Level                    &lt;fct&gt; Moderate…</code></pre>
 # ℹ 4 more variables: Social_Hours_Per_Day &lt;dbl&gt;,
 #   Physical_Activity_Hours_Per_Day &lt;dbl&gt;, GPA &lt;dbl&gt;, Stress_Level &lt;fct&gt;</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># students_tibble[(nrow(students_tibble)-5):(nrow(students_tibble)),]</span></span>
-<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span> <span class="fu">slice</span>((<span class="fu">n</span>()<span class="sc">-</span><span class="dv">5</span>)<span class="sc">:</span><span class="fu">n</span>()) <span class="co"># n() is number of "samples" (rows)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># students_tibble[(nrow(students_tibble)-5):(nrow(students_tibble)),]</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span> <span class="fu">slice</span>((<span class="fu">n</span>()<span class="sc">-</span><span class="dv">5</span>)<span class="sc">:</span><span class="fu">n</span>()) <span class="co"># n() is number of "samples" (rows)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 7
   Study_Hours_Per_Day Extracurricular_Hours_Per_Day Sleep_Hours_Per_Day
@@ -726,10 +765,10 @@ $ Stress_Level                    &lt;fct&gt; Moderate…</code></pre>
 <section id="rename-column" class="level3">
 <h3 class="anchored" data-anchor-id="rename-column">Rename column</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># students_tibble$SHPD = students_tibble$Study_Hours_Per_Day </span></span>
-<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="co"># students_tibble$Study_Hours_Per_Day = NULL</span></span>
-<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span>  <span class="fu">rename</span>(<span class="at">SHPD =</span> Study_Hours_Per_Day)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># students_tibble$SHPD = students_tibble$Study_Hours_Per_Day </span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="co"># students_tibble$Study_Hours_Per_Day = NULL</span></span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span>  <span class="fu">rename</span>(<span class="at">SHPD =</span> Study_Hours_Per_Day)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2,000 × 7
     SHPD Extracurricular_Hours_Per_Day Sleep_Hours_Per_Day Social_Hours_Per_Day
@@ -752,7 +791,7 @@ $ Stress_Level                    &lt;fct&gt; Moderate…</code></pre>
 <section id="advanced-rename" class="level4">
 <h4 class="anchored" data-anchor-id="advanced-rename">Advanced rename</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span>  <span class="fu">rename_with</span>(<span class="sc">~</span> <span class="fu">gsub</span>(<span class="st">"_Hours_Per_Day"</span>, <span class="st">"_h"</span>, .x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span>  <span class="fu">rename_with</span>(<span class="sc">~</span> <span class="fu">gsub</span>(<span class="st">"_Hours_Per_Day"</span>, <span class="st">"_h"</span>, .x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2,000 × 7
    Study_h Extracurricular_h Sleep_h Social_h Physical_Activity_h   GPA
@@ -777,9 +816,9 @@ $ Stress_Level                    &lt;fct&gt; Moderate…</code></pre>
 <h3 class="anchored" data-anchor-id="mutate">Mutate</h3>
 <p>Changing columns and creation new ones</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># students_tibble$Stress_Level = as.factor(students_tibble$Stress_Level</span></span>
-<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">Stress_Level =</span> <span class="fu">as.factor</span>(Stress_Level), <span class="at">GPA =</span> <span class="fu">round</span>(GPA), </span>
-<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>                           <span class="at">.keep=</span><span class="st">'used'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co"># students_tibble$Stress_Level = as.factor(students_tibble$Stress_Level</span></span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">Stress_Level =</span> <span class="fu">as.factor</span>(Stress_Level), <span class="at">GPA =</span> <span class="fu">round</span>(GPA), </span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>                           <span class="at">.keep=</span><span class="st">'used'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2,000 × 2
      GPA Stress_Level
@@ -796,11 +835,11 @@ $ Stress_Level                    &lt;fct&gt; Moderate…</code></pre>
 10     3 Moderate    
 # ℹ 1,990 more rows</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co"># students_tibble$GPA_sqrt = sqrt(students_tibble$GPA)</span></span>
-<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span> </span>
-<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Non_Study_Day_Hours_Per_Day =</span></span>
-<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>           Social_Hours_Per_Day <span class="sc">+</span> Physical_Activity_Hours_Per_Day, </span>
-<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">.before =</span> <span class="dv">1</span>, <span class="at">.keep =</span> <span class="st">'unused'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="co"># students_tibble$GPA_sqrt = sqrt(students_tibble$GPA)</span></span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span> </span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Non_Study_Day_Hours_Per_Day =</span></span>
+<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a>           Social_Hours_Per_Day <span class="sc">+</span> Physical_Activity_Hours_Per_Day, </span>
+<span id="cb58-5"><a href="#cb58-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">.before =</span> <span class="dv">1</span>, <span class="at">.keep =</span> <span class="st">'unused'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2,000 × 6
    Non_Study_Day_Hours_Per_Day Study_Hours_Per_Day Extracurricular_Hours_Per_Day
@@ -825,8 +864,8 @@ $ Stress_Level                    &lt;fct&gt; Moderate…</code></pre>
 <section id="advanced-mutate" class="level4">
 <h4 class="anchored" data-anchor-id="advanced-mutate">Advanced mutate</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span> </span>
-<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(Study_Hours_Per_Day<span class="sc">:</span>Extracurricular_Hours_Per_Day, <span class="sc">~</span> <span class="fu">floor</span>(.x)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span> </span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(Study_Hours_Per_Day<span class="sc">:</span>Extracurricular_Hours_Per_Day, <span class="sc">~</span> <span class="fu">floor</span>(.x)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2,000 × 7
    Study_Hours_Per_Day Extracurricular_Hours_Per_Day Sleep_Hours_Per_Day
@@ -845,7 +884,7 @@ $ Stress_Level                    &lt;fct&gt; Moderate…</code></pre>
 # ℹ 4 more variables: Social_Hours_Per_Day &lt;dbl&gt;,
 #   Physical_Activity_Hours_Per_Day &lt;dbl&gt;, GPA &lt;dbl&gt;, Stress_Level &lt;fct&gt;</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), <span class="sc">~</span><span class="fu">ceiling</span>(.x)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), <span class="sc">~</span><span class="fu">ceiling</span>(.x)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2,000 × 7
    Study_Hours_Per_Day Extracurricular_Hours_Per_Day Sleep_Hours_Per_Day
@@ -876,7 +915,7 @@ $ Stress_Level                    &lt;fct&gt; Moderate…</code></pre>
 <h3 class="anchored" data-anchor-id="distinct">Distinct</h3>
 <p>Extract unique rows.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span>  <span class="fu">distinct</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span>  <span class="fu">distinct</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2,000 × 7
    Study_Hours_Per_Day Extracurricular_Hours_Per_Day Sleep_Hours_Per_Day
@@ -905,15 +944,15 @@ $ Stress_Level                    &lt;fct&gt; Moderate…</code></pre>
 <li><code>tribble()</code> is strange way to create <code>tibble</code>. Let’s create strange dataset to show <code>tidyr</code> in work <em>(advanced)</em></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>strange_df <span class="ot">=</span> </span>
-<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tribble</span>(</span>
-<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a>    <span class="sc">~</span>name, <span class="sc">~</span>weight_height, <span class="sc">~</span>marks,</span>
-<span id="cb64-4"><a href="#cb64-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Robert'</span>, <span class="st">'80/180'</span>, <span class="st">'4,5,5,4,4'</span>,</span>
-<span id="cb64-5"><a href="#cb64-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Daniel'</span>, <span class="st">'70/175'</span>, <span class="st">'4,3,5'</span>,</span>
-<span id="cb64-6"><a href="#cb64-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Vlad'</span>, <span class="st">'90/185'</span>, <span class="st">'4,5,5,4,3'</span></span>
-<span id="cb64-7"><a href="#cb64-7" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb64-8"><a href="#cb64-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb64-9"><a href="#cb64-9" aria-hidden="true" tabindex="-1"></a>strange_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>strange_df <span class="ot">=</span> </span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tribble</span>(</span>
+<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a>    <span class="sc">~</span>name, <span class="sc">~</span>weight_height, <span class="sc">~</span>marks,</span>
+<span id="cb66-4"><a href="#cb66-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Robert'</span>, <span class="st">'80/180'</span>, <span class="st">'4,5,5,4,4'</span>,</span>
+<span id="cb66-5"><a href="#cb66-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Daniel'</span>, <span class="st">'70/175'</span>, <span class="st">'4,3,5'</span>,</span>
+<span id="cb66-6"><a href="#cb66-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Vlad'</span>, <span class="st">'90/185'</span>, <span class="st">'4,5,5,4,3'</span></span>
+<span id="cb66-7"><a href="#cb66-7" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb66-8"><a href="#cb66-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb66-9"><a href="#cb66-9" aria-hidden="true" tabindex="-1"></a>strange_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 3
   name   weight_height marks    
@@ -926,9 +965,9 @@ $ Stress_Level                    &lt;fct&gt; Moderate…</code></pre>
 <section id="separate" class="level3">
 <h3 class="anchored" data-anchor-id="separate">Separate</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>strange_df <span class="ot">=</span> strange_df <span class="sc">%&gt;%</span> <span class="fu">separate</span>(weight_height, <span class="at">sep =</span> <span class="st">'/'</span>, </span>
-<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>                       <span class="at">into =</span> <span class="fu">c</span>(<span class="st">"weight"</span>, <span class="st">"height"</span>))</span>
-<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a>strange_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>strange_df <span class="ot">=</span> strange_df <span class="sc">%&gt;%</span> <span class="fu">separate</span>(weight_height, <span class="at">sep =</span> <span class="st">'/'</span>, </span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>                       <span class="at">into =</span> <span class="fu">c</span>(<span class="st">"weight"</span>, <span class="st">"height"</span>))</span>
+<span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a>strange_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 4
   name   weight height marks    
@@ -942,8 +981,8 @@ $ Stress_Level                    &lt;fct&gt; Moderate…</code></pre>
 <h4 class="anchored" data-anchor-id="separate_rows">Separate_rows</h4>
 <p>To separate rows by unique mark:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>strange_df <span class="ot">=</span> strange_df <span class="sc">%&gt;%</span> <span class="fu">separate_rows</span>(marks, <span class="at">sep =</span> <span class="st">','</span>)</span>
-<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>strange_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>strange_df <span class="ot">=</span> strange_df <span class="sc">%&gt;%</span> <span class="fu">separate_rows</span>(marks, <span class="at">sep =</span> <span class="st">','</span>)</span>
+<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>strange_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 13 × 4
    name   weight height marks
@@ -968,9 +1007,9 @@ $ Stress_Level                    &lt;fct&gt; Moderate…</code></pre>
 <section id="unite" class="level3">
 <h3 class="anchored" data-anchor-id="unite">Unite</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>strange_df <span class="sc">%&gt;%</span> <span class="fu">unite</span>(weight, height,</span>
-<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">col =</span> <span class="st">"weight_height"</span>,</span>
-<span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">sep =</span> <span class="st">'/'</span>, <span class="at">remove=</span>T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>strange_df <span class="sc">%&gt;%</span> <span class="fu">unite</span>(weight, height,</span>
+<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">col =</span> <span class="st">"weight_height"</span>,</span>
+<span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">sep =</span> <span class="st">'/'</span>, <span class="at">remove=</span>T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 13 × 3
    name   weight_height marks
@@ -997,25 +1036,25 @@ $ Stress_Level                    &lt;fct&gt; Moderate…</code></pre>
 <h1>Deal with empty values</h1>
 <p>Returning to <em>students</em> <em>dataset</em>. Let’s calculate mean of <strong><code>Extracurricular_Hours_Per_Day</code></strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>students_hours <span class="sc">%&gt;%</span> <span class="fu">pull</span>(Extracurricular_Hours_Per_Day) <span class="sc">%&gt;%</span>  <span class="fu">mean</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>students_hours <span class="sc">%&gt;%</span> <span class="fu">pull</span>(Extracurricular_Hours_Per_Day) <span class="sc">%&gt;%</span>  <span class="fu">mean</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] NA</code></pre>
 </div>
 </div>
 <p>Problem is <code>NA</code> values in this column. There is <code>na.rm</code> in each simple statistics function and if it is set as <code>TRUE</code> (<code>na.rm=T</code>), the function will not take <code>NA</code> into account.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>students_hours <span class="sc">%&gt;%</span> <span class="fu">pull</span>(Extracurricular_Hours_Per_Day) <span class="sc">%&gt;%</span>  <span class="fu">mean</span>(<span class="at">na.rm =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>students_hours <span class="sc">%&gt;%</span> <span class="fu">pull</span>(Extracurricular_Hours_Per_Day) <span class="sc">%&gt;%</span>  <span class="fu">mean</span>(<span class="at">na.rm =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.991283</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>students_hours <span class="sc">%&gt;%</span> <span class="fu">pull</span>(Extracurricular_Hours_Per_Day) <span class="sc">%&gt;%</span>  <span class="fu">sd</span>(<span class="at">na.rm =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a>students_hours <span class="sc">%&gt;%</span> <span class="fu">pull</span>(Extracurricular_Hours_Per_Day) <span class="sc">%&gt;%</span>  <span class="fu">sd</span>(<span class="at">na.rm =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.155804</code></pre>
 </div>
 </div>
 <p>To count NA values in every column:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span> <span class="fu">is.na</span>() <span class="sc">%&gt;%</span> <span class="fu">colSums</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span> <span class="fu">is.na</span>() <span class="sc">%&gt;%</span> <span class="fu">colSums</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>            Study_Hours_Per_Day   Extracurricular_Hours_Per_Day 
                               1                               4 
@@ -1032,9 +1071,10 @@ Physical_Activity_Hours_Per_Day                             GPA
 <li><p><code>rowSums()</code> - sum of values in each row</p></li>
 <li><p><code>is.na()</code> - returns TRUE <strong>for each value</strong> if it is NA and FALSE otherwise.</p></li>
 </ul>
-<p><strong>Rows with NAs in <code>Extracurricular_Hours_Per_Day</code>:</strong></p>
+<section id="rows-with-nas-in-extracurricular_hours_per_day" class="level3">
+<h3 class="anchored" data-anchor-id="rows-with-nas-in-extracurricular_hours_per_day"><strong>Rows with NAs in <code>Extracurricular_Hours_Per_Day</code>:</strong></h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="fu">is.na</span>(Extracurricular_Hours_Per_Day))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="fu">is.na</span>(Extracurricular_Hours_Per_Day))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 7
   Study_Hours_Per_Day Extracurricular_Hours_Per_Day Sleep_Hours_Per_Day
@@ -1047,11 +1087,33 @@ Physical_Activity_Hours_Per_Day                             GPA
 #   Physical_Activity_Hours_Per_Day &lt;dbl&gt;, GPA &lt;dbl&gt;, Stress_Level &lt;fct&gt;</code></pre>
 </div>
 </div>
-<p><strong>Rows with any NAs (<em>Advanced</em>):</strong></p>
+</section>
+<section id="rows-with-any-nas" class="level3">
+<h3 class="anchored" data-anchor-id="rows-with-any-nas"><strong>Rows with any NAs</strong></h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="co"># students_tibble[!complete.cases(students_tibble), ]</span></span>
-<span id="cb82-2"><a href="#cb82-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb82-3"><a href="#cb82-3" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="fu">if_any</span>(<span class="fu">everything</span>(), is.na))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a>students_tibble[<span class="sc">!</span><span class="fu">complete.cases</span>(students_tibble), ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 7 × 7
+  Study_Hours_Per_Day Extracurricular_Hours_Per_Day Sleep_Hours_Per_Day
+                &lt;dbl&gt;                         &lt;dbl&gt;               &lt;dbl&gt;
+1                NA                            NA                  NA  
+2                 6                             0                  NA  
+3                 8.5                          NA                   7.8
+4                 9.9                           3.1                 5.1
+5                 9.7                          NA                   8.9
+6                 8.3                           2.4                 7.1
+7                 7.4                          NA                   9.8
+# ℹ 4 more variables: Social_Hours_Per_Day &lt;dbl&gt;,
+#   Physical_Activity_Hours_Per_Day &lt;dbl&gt;, GPA &lt;dbl&gt;, Stress_Level &lt;fct&gt;</code></pre>
+</div>
+</div>
+<ul>
+<li><code>complete.cases()</code> - returns <code>TRUE</code> if row contain no <code>NA</code>s</li>
+</ul>
+<section id="advanced" class="level4">
+<h4 class="anchored" data-anchor-id="advanced"><strong><em>Advanced…</em></strong></h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="fu">if_any</span>(<span class="fu">everything</span>(), is.na))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 7 × 7
   Study_Hours_Per_Day Extracurricular_Hours_Per_Day Sleep_Hours_Per_Day
@@ -1074,10 +1136,12 @@ Physical_Activity_Hours_Per_Day                             GPA
 </ul>
 <p><strong>We see that one line contains only NAs, and the other lines contain 1&lt; NAs.</strong></p>
 <p>There are several ways to deal with NAs</p>
+</section>
+</section>
 <section id="delete-rows-containing-nas" class="level2">
 <h2 class="anchored" data-anchor-id="delete-rows-containing-nas">Delete rows containing NAs</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span>  <span class="fu">na.omit</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span>  <span class="fu">na.omit</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,993 × 7
    Study_Hours_Per_Day Extracurricular_Hours_Per_Day Sleep_Hours_Per_Day
@@ -1096,7 +1160,7 @@ Physical_Activity_Hours_Per_Day                             GPA
 # ℹ 4 more variables: Social_Hours_Per_Day &lt;dbl&gt;,
 #   Physical_Activity_Hours_Per_Day &lt;dbl&gt;, GPA &lt;dbl&gt;, Stress_Level &lt;fct&gt;</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span>  <span class="fu">drop_na</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span>  <span class="fu">drop_na</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,993 × 7
    Study_Hours_Per_Day Extracurricular_Hours_Per_Day Sleep_Hours_Per_Day
@@ -1115,8 +1179,8 @@ Physical_Activity_Hours_Per_Day                             GPA
 # ℹ 4 more variables: Social_Hours_Per_Day &lt;dbl&gt;,
 #   Physical_Activity_Hours_Per_Day &lt;dbl&gt;, GPA &lt;dbl&gt;, Stress_Level &lt;fct&gt;</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="co">#drop_na allows to concrete columns</span></span>
-<span id="cb88-2"><a href="#cb88-2" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span>  <span class="fu">drop_na</span>(Physical_Activity_Hours_Per_Day)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="co">#drop_na allows to concrete columns</span></span>
+<span id="cb92-2"><a href="#cb92-2" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span>  <span class="fu">drop_na</span>(Physical_Activity_Hours_Per_Day)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,999 × 7
    Study_Hours_Per_Day Extracurricular_Hours_Per_Day Sleep_Hours_Per_Day
@@ -1142,16 +1206,16 @@ Physical_Activity_Hours_Per_Day                             GPA
 <section id="simple" class="level3">
 <h3 class="anchored" data-anchor-id="simple">simple</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="co"># and do it for each column</span></span>
-<span id="cb90-2"><a href="#cb90-2" aria-hidden="true" tabindex="-1"></a>students_tibble<span class="sc">$</span>GPA[<span class="fu">is.na</span>(students_tibble<span class="sc">$</span>GPA)] <span class="ot">=</span> <span class="fu">mean</span>(students_tibble<span class="sc">$</span>GPA)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="co"># and do it for each column</span></span>
+<span id="cb94-2"><a href="#cb94-2" aria-hidden="true" tabindex="-1"></a>students_tibble<span class="sc">$</span>GPA[<span class="fu">is.na</span>(students_tibble<span class="sc">$</span>GPA)] <span class="ot">=</span> <span class="fu">mean</span>(students_tibble<span class="sc">$</span>GPA)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="advanced" class="level3">
-<h3 class="anchored" data-anchor-id="advanced">advanced</h3>
+<section id="advanced-1" class="level3">
+<h3 class="anchored" data-anchor-id="advanced-1">advanced</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="co"># to secify values</span></span>
-<span id="cb91-2"><a href="#cb91-2" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span>  <span class="fu">replace_na</span>(<span class="fu">list</span>(<span class="at">Social_Hours_Per_Day =</span> <span class="dv">0</span>,</span>
-<span id="cb91-3"><a href="#cb91-3" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">Extracurricular_Hours_Per_Day =</span> <span class="dv">0</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="co"># to secify values</span></span>
+<span id="cb95-2"><a href="#cb95-2" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span>  <span class="fu">replace_na</span>(<span class="fu">list</span>(<span class="at">Social_Hours_Per_Day =</span> <span class="dv">0</span>,</span>
+<span id="cb95-3"><a href="#cb95-3" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">Extracurricular_Hours_Per_Day =</span> <span class="dv">0</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2,000 × 7
    Study_Hours_Per_Day Extracurricular_Hours_Per_Day Sleep_Hours_Per_Day
@@ -1170,8 +1234,8 @@ Physical_Activity_Hours_Per_Day                             GPA
 # ℹ 4 more variables: Social_Hours_Per_Day &lt;dbl&gt;,
 #   Physical_Activity_Hours_Per_Day &lt;dbl&gt;, GPA &lt;dbl&gt;, Stress_Level &lt;fct&gt;</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb93"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="co"># to fill with the nearest value in the each column</span></span>
-<span id="cb93-2"><a href="#cb93-2" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span>  <span class="fu">fill</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="co"># to fill with the nearest value in the each column</span></span>
+<span id="cb97-2"><a href="#cb97-2" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span>  <span class="fu">fill</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2,000 × 7
    Study_Hours_Per_Day Extracurricular_Hours_Per_Day Sleep_Hours_Per_Day
@@ -1193,7 +1257,7 @@ Physical_Activity_Hours_Per_Day                             GPA
 </div>
 <p>I will just delete them :)</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="ot">=</span> students_tibble <span class="sc">%&gt;%</span>  <span class="fu">na.omit</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb99"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="ot">=</span> students_tibble <span class="sc">%&gt;%</span>  <span class="fu">na.omit</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
@@ -1201,18 +1265,18 @@ Physical_Activity_Hours_Per_Day                             GPA
 <section id="writing-a-data-into-file" class="level1">
 <h1>Writing a data into file</h1>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb96"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="co"># write.csv()</span></span>
-<span id="cb96-2"><a href="#cb96-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(students_tibble, <span class="st">"lec_output/students.csv"</span>) <span class="co"># comma-separated</span></span>
-<span id="cb96-3"><a href="#cb96-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-4"><a href="#cb96-4" aria-hidden="true" tabindex="-1"></a><span class="co"># write.table()</span></span>
-<span id="cb96-5"><a href="#cb96-5" aria-hidden="true" tabindex="-1"></a><span class="fu">write_tsv</span>(students_tibble, <span class="st">"lec_output/students.tsv"</span>) <span class="co"># tab-separated</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb100"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="co"># write.csv()</span></span>
+<span id="cb100-2"><a href="#cb100-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(students_tibble, <span class="st">"lec_output/students.csv"</span>) <span class="co"># comma-separated</span></span>
+<span id="cb100-3"><a href="#cb100-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb100-4"><a href="#cb100-4" aria-hidden="true" tabindex="-1"></a><span class="co"># write.table()</span></span>
+<span id="cb100-5"><a href="#cb100-5" aria-hidden="true" tabindex="-1"></a><span class="fu">write_tsv</span>(students_tibble, <span class="st">"lec_output/students.tsv"</span>) <span class="co"># tab-separated</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages('writexl')</span></span>
-<span id="cb97-2"><a href="#cb97-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(writexl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb101"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb101-1"><a href="#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages('writexl')</span></span>
+<span id="cb101-2"><a href="#cb101-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(writexl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb98"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_xlsx</span>(students_tibble, <span class="st">"lec_output/students.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb102"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_xlsx</span>(students_tibble, <span class="st">"lec_output/students.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="p.s.-for-additional-self-study" class="level1">
@@ -1221,32 +1285,32 @@ Physical_Activity_Hours_Per_Day                             GPA
 <h2 class="anchored" data-anchor-id="joins">Joins</h2>
 <p>for combining several datasets. For example, we have two dataframes with the same column - names. The first dataframe contain data about wealth and work, the second contain information about town, street and etc. We want to make one dataframe that contain info from the both dataframes.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb99"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Full join: returns all rows from both df1 and df2, filling with NA where no match.</span></span>
-<span id="cb99-2"><a href="#cb99-2" aria-hidden="true" tabindex="-1"></a>df1 <span class="sc">%&gt;%</span> <span class="fu">full_join</span>(df2, <span class="at">by =</span> <span class="st">'name'</span>)</span>
-<span id="cb99-3"><a href="#cb99-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-4"><a href="#cb99-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Inner join: returns only matching rows from both df1 and df2.</span></span>
-<span id="cb99-5"><a href="#cb99-5" aria-hidden="true" tabindex="-1"></a>df1 <span class="sc">%&gt;%</span> <span class="fu">inner_join</span>(df2, <span class="at">by =</span> <span class="st">'name'</span>)</span>
-<span id="cb99-6"><a href="#cb99-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-7"><a href="#cb99-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Left join: returns all rows from df1 and matched rows from df2; unmatched in df2 are NA.</span></span>
-<span id="cb99-8"><a href="#cb99-8" aria-hidden="true" tabindex="-1"></a>df1 <span class="sc">%&gt;%</span> <span class="fu">left_join</span>(df2, <span class="at">by =</span> <span class="st">'name'</span>)</span>
-<span id="cb99-9"><a href="#cb99-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-10"><a href="#cb99-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Right join: returns all rows from df2 and matched rows from df1; unmatched in df1 are NA.</span></span>
-<span id="cb99-11"><a href="#cb99-11" aria-hidden="true" tabindex="-1"></a>df1 <span class="sc">%&gt;%</span> <span class="fu">right_join</span>(df2, <span class="at">by =</span> <span class="st">'name'</span>)</span>
-<span id="cb99-12"><a href="#cb99-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-13"><a href="#cb99-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Anti join: returns rows from df1 that do not match any rows in df2.</span></span>
-<span id="cb99-14"><a href="#cb99-14" aria-hidden="true" tabindex="-1"></a>df1 <span class="sc">%&gt;%</span> <span class="fu">anti_join</span>(df2, <span class="at">by =</span> <span class="st">'name'</span>)</span>
-<span id="cb99-15"><a href="#cb99-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb99-16"><a href="#cb99-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Semi join: returns rows from df1 that have matches in df2, without adding columns from df2.</span></span>
-<span id="cb99-17"><a href="#cb99-17" aria-hidden="true" tabindex="-1"></a>df1 <span class="sc">%&gt;%</span> <span class="fu">semi_join</span>(df2, <span class="at">by =</span> <span class="st">'name'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb103"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb103-1"><a href="#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Full join: returns all rows from both df1 and df2, filling with NA where no match.</span></span>
+<span id="cb103-2"><a href="#cb103-2" aria-hidden="true" tabindex="-1"></a>df1 <span class="sc">%&gt;%</span> <span class="fu">full_join</span>(df2, <span class="at">by =</span> <span class="st">'name'</span>)</span>
+<span id="cb103-3"><a href="#cb103-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb103-4"><a href="#cb103-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Inner join: returns only matching rows from both df1 and df2.</span></span>
+<span id="cb103-5"><a href="#cb103-5" aria-hidden="true" tabindex="-1"></a>df1 <span class="sc">%&gt;%</span> <span class="fu">inner_join</span>(df2, <span class="at">by =</span> <span class="st">'name'</span>)</span>
+<span id="cb103-6"><a href="#cb103-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb103-7"><a href="#cb103-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Left join: returns all rows from df1 and matched rows from df2; unmatched in df2 are NA.</span></span>
+<span id="cb103-8"><a href="#cb103-8" aria-hidden="true" tabindex="-1"></a>df1 <span class="sc">%&gt;%</span> <span class="fu">left_join</span>(df2, <span class="at">by =</span> <span class="st">'name'</span>)</span>
+<span id="cb103-9"><a href="#cb103-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb103-10"><a href="#cb103-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Right join: returns all rows from df2 and matched rows from df1; unmatched in df1 are NA.</span></span>
+<span id="cb103-11"><a href="#cb103-11" aria-hidden="true" tabindex="-1"></a>df1 <span class="sc">%&gt;%</span> <span class="fu">right_join</span>(df2, <span class="at">by =</span> <span class="st">'name'</span>)</span>
+<span id="cb103-12"><a href="#cb103-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb103-13"><a href="#cb103-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Anti join: returns rows from df1 that do not match any rows in df2.</span></span>
+<span id="cb103-14"><a href="#cb103-14" aria-hidden="true" tabindex="-1"></a>df1 <span class="sc">%&gt;%</span> <span class="fu">anti_join</span>(df2, <span class="at">by =</span> <span class="st">'name'</span>)</span>
+<span id="cb103-15"><a href="#cb103-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb103-16"><a href="#cb103-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Semi join: returns rows from df1 that have matches in df2, without adding columns from df2.</span></span>
+<span id="cb103-17"><a href="#cb103-17" aria-hidden="true" tabindex="-1"></a>df1 <span class="sc">%&gt;%</span> <span class="fu">semi_join</span>(df2, <span class="at">by =</span> <span class="st">'name'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="grouping" class="level2">
 <h2 class="anchored" data-anchor-id="grouping">Grouping</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb100"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Grouping the 'students_tibble' data frame by the 'Stress_Level' column</span></span>
-<span id="cb100-2"><a href="#cb100-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Than Calculating the mean of 'Study_Hours_Per_Day' for each stress level group, ignoring missing values (na.rm = TRUE)</span></span>
-<span id="cb100-3"><a href="#cb100-3" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(Stress_Level) <span class="sc">%&gt;%</span> </span>
-<span id="cb100-4"><a href="#cb100-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">study_hours_mean =</span> <span class="fu">mean</span>(Study_Hours_Per_Day, <span class="at">na.rm =</span> T))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb104"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb104-1"><a href="#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Grouping the 'students_tibble' data frame by the 'Stress_Level' column</span></span>
+<span id="cb104-2"><a href="#cb104-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Than Calculating the mean of 'Study_Hours_Per_Day' for each stress level group, ignoring missing values (na.rm = TRUE)</span></span>
+<span id="cb104-3"><a href="#cb104-3" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(Stress_Level) <span class="sc">%&gt;%</span> </span>
+<span id="cb104-4"><a href="#cb104-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">study_hours_mean =</span> <span class="fu">mean</span>(Study_Hours_Per_Day, <span class="at">na.rm =</span> T))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 2
   Stress_Level study_hours_mean
@@ -1261,7 +1325,7 @@ Physical_Activity_Hours_Per_Day                             GPA
 <h2 class="anchored" data-anchor-id="slice_head">Slice_head()</h2>
 <p>almost the same as basic <code>head()</code>, but it is more suitable for grouped data:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb102"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(Stress_Level) <span class="sc">%&gt;%</span> <span class="fu">slice_head</span>(<span class="at">n=</span><span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb106"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb106-1"><a href="#cb106-1" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(Stress_Level) <span class="sc">%&gt;%</span> <span class="fu">slice_head</span>(<span class="at">n=</span><span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 9 × 7
 # Groups:   Stress_Level [3]

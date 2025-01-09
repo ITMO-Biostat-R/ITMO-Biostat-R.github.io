@@ -1,0 +1,67 @@
+---
+title: "ANOVA"
+output: html_document
+date: "2025-01-05"
+---
+
+# ANOVA (Analysis of Variance)
+
+Used to compare means across more than two groups. ANOVA evaluates the variability within and between groups using the sum of squares.
+
+#### Assumptions
+
+-   Data are normally distributed within each group.
+-   Groups have equal variances.
+
+#### Hypotheses
+
+-   **Null Hypothesis (H0)**: All group means are equal.
+-   **Alternative Hypothesis (HA)**: At least one group mean is different.
+
+#### Formula
+
+$F = \frac{MS_{between}}{MS_{within}}$
+
+#### Example Scenario
+
+Does fertilizer type influence crop yield?
+
+#### Data
+
+```{r}
+data <- data.frame(
+  fertilizer = rep(c("Type A", "Type B", "Type C"), each = 10),
+  yield = c(rnorm(10, mean = 20, sd = 3), rnorm(10, mean = 25, sd = 3), rnorm(10, mean = 22, sd = 3))
+)
+```
+
+```{r anova-visualization}
+boxplot(yield ~ fertilizer, data = data, main = "Yield by Fertilizer Type")
+```
+
+#### Code Example
+
+```{r anova}
+
+# Using aov (Type I)
+anova_result <- aov(yield ~ fertilizer, data = data)
+summary(anova_result)
+
+# Using car package for Type II/III ANOVA
+if (!requireNamespace("car", quietly = TRUE)) install.packages("car")
+library(car)
+Anova(lm(yield ~ fertilizer, data = data), type = "II")
+```
+
+#### Output Explanation
+
+-   **F-statistic**: Ratio of variance between groups to variance within groups.
+-   **p-value**: Tests the null hypothesis that all group means are equal.
+
+#### Non-Parametric Alternative
+
+Kruskal-Wallis test can be used for non-normal data.
+
+```{r kruskal-wallis}
+kruskal.test(yield ~ fertilizer, data = data)
+```

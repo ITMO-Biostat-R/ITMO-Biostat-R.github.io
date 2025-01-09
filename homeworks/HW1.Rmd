@@ -6,7 +6,7 @@ output:
     toc_float: true
     number_sections: true
 editor_options: 
-  chunk_output_type: console
+  chunk_output_type: inline
 ---
 
 ```{r setup, include=FALSE}
@@ -44,209 +44,205 @@ library(tidyr)
 
 # Tasks
 
-## 1. Data Loading
+## Vectors
 
-#### 1. Load the dataset using `read.csv()`, save it to variable `dataset` and show the first 10 rows.
+#### 1. Create vector containing numbers from -20 to 50 and number 100
 
-```{r task-1}
+```{r}
+# vec =
+```
+
+#### 2. Subtract by 10 and [then]{.underline} divide by 2 each value in this vector
+
+```{r}
 # 
 ```
 
+## Data Loading
+
+#### 3. Load the dataset using `read.csv()`, save it to variable `dataset` and show the first 10 rows.
+
+```{r}
+# dataset <- read...
+#
+```
+
+-   Don't forget to set parameters to
+    -   specify NAs values
+    -   make character columns factors
+    -   first column a rowname
 -   `head(...)` - by default it returns first 5 rows, but we need 10 :)
 
-#### 1.1 Make `dataset` a tibble
+**3.1 Make `dataset` a tibble**
 
-**1.1 Make `dataset` a tibble**
+`{r.1} dataset = as_tibble(dataset)`
 
+#### 4. Check the structure and summary of the data.
 
-```{r task-1.1}
-# dataset = 
-```
-
-
-#### 2. Check the structure and summary of the data.
-
-
-```{r task-2}
-# 
+```{r}
+#
 ```
 
 -   *Just use special functions*
 
-## 2. Data Cleaning
+## Data Cleaning
 
-#### 3. Check for missing values in the dataset.
+#### 5. Check for missing values (`NA`) in the dataset (how many in each row?).
 
-
-```{r task-3}
-# 
+```{r}
+#
 ```
 
--   *Just use special functions*
+#### 6. Verify that the `Sex` column contains only valid categories (`M` and `F`).
 
-#### 4. Verify that the `Sex` column contains only valid categories (`M` and `F`).
-
-
-```{r task-4}
-# 
+```{r}
+#
 ```
 
 -   *Tip*: just use `table()` or `unique()`
 
-## 3. Data Transformation
+## Data Transformation
 
-#### 5. Transform the `Sex` column into a factor.
+#### 7. Create a new column `Age_category` categorizing elephants based on `Age`:
 
+-   "Young" for Age \< 5
 
-```{r task-5}
-# 
-```
-
--   *Tip*: use `as.factor()`
--   Use function and ensure that you changed column in `dataset`
-
-#### 6. Create a new column `Age_category` categorizing elephants based on `Age`:
-
-
-```         
--   "Juvenile" for Age \< 5
 -   "Sub-adult" for 5 \<= Age \< 15
+
 -   "Adult" for Age \>= 15
+
+```{r}
+##
 ```
 
-```{r task-6}
-# 
+-   Use `cut()` - don't forget about parameter `labels = c(...)`
+-   Ensure that you created column in your `dataset` !
+
+#### 8. Create a column `Height_category` that splits `Height` into two categories: "Below Median" and "Above Median" based on the median height.
+
+```{r}
+#
 ```
 
--   `cut()` - don't forget about parameter `labels = c(...)`
-
-#### 7. Create a column `Height_category` that categorizes `Height` into two categories: "Below Median" and "Above Median" based on the median height.
-
-
-```{r task-7}
-# 
-```
-
--   `mean()` and `ifelse()`
+-   `median()` and `ifelse()`
 -   Don't forget to make new column a **factor**
+-   Ensure that you created column in your `dataset` !
 
-## 4. Exploratory Data Analysis
+#### 9. Create a new column that contain the **Height in meters** (divide by 100), delete column with **Height in cm**.
 
-#### 8. Compute basic statistics (mean, median, standard deviation) for the `Age` and `Height` columns.
-
-
-```{r task-8}
-# 
+```{r}
+##
 ```
 
-#### 9. Identify the row with the maximum `Height` and print it.
+-   You can set a new name of column or leave the old one.
 
+-   Remember how to delete column
 
-```{r task-9}
-# 
-```
-
--   *Tip:* `which.max()`
-
-#### 10. Show a counts and frequency tables for the `Age_category` column. Show both counts and frequencies
-
-
-```{r task-10}
-# 
-```
-
--   Use `table()` and `prop.table()`
-
-#### 11. Show a contingency table of `Age_category` and `Height_category`
-
-
-```{r task-11}
-# 
-```
-
--   Use `table()`
-
-#### 12.**\*** Group dataset by `Height_category` and calculate `mean` and `sd` of `Age` for each group.
-
-
-```{r task-12}
-# 
-```
-
--   use `group_by()` and `summarise()`
-
-
-#### 13. Show rows for elephants taller than the median height and select the `Age` and `Height` columns.
-
-
-```{r task-13}
-# 
-```
-
--   use `dplyr` functions
-
-#### 14. Arrange dataset by `Height` and show the first and last 5 rows and show them.
-
-
-```{r task-14}
-# 
-```
-
--   *Tip:* you can use either `n()` or `nrow()`
--   *Tip:* `slice()`
-
-## 5. Additional Transformations
-
-#### 15. Create a new column that contain the **Height in meters** (divide by 100), delete column with **Height in cm**.
-
-
-```{r task-15}
-# 
-```
-
--   You can set a new column name or leave the old one.
-
--   *Tip*: `mutate()`. Parameter `.keep=...` may be useful
+-   *Tip*: `mutate()`. Parameter `.keep=...` may be useful to alternatively delete column
 
 -   Ensure the column is created inside `dataset`
 
-#### 16. Round Height in meters to two decimal places (*e.g.* 1.4567 -\> 1.46)
+#### 10. Round Height in meters to two decimal places (*e.g.* 1.4567 -\> 1.46)
 
-
-```{r task-16}
-# 
+```{r}
+#
 ```
 
 -   *Tip:* `round()` and look for a specific parameter
 
 -   Ensure the column is modified inside `dataset`
 
-## 6. Summary Tasks
+## Exploratory Data Analysis
+
+#### 11. Compute mean values of `Height` for each `Sex` *(in meters)*
+
+```{r}
+##
+```
+
+-   Don't forget that `mean()` works only on vectors
+
+    -   `%>% pull(column)` -\> vector
+
+    -   `data$column` -\> vector
+
+-   *if you are advanced user, you can use `group_by()` and `summarize()`*
+
+#### 12. Identify the row with the maximum `Height` and print it.
+
+```{r}
+#
+```
+
+-   *Tip:* `which.max()`
+
+#### 13. Show a counts and frequency tables for the `Age_category` column. Show both counts and frequencies
+
+```{r}
+##
+```
+
+-   Use `table()` and `prop.table()`
+
+#### 14. Show a contingency table of `Sex` and `Height_category` *(number of elephants for every combination of these two categories)*
+
+```{r}
+#
+```
+
+-   Use `table()`
+
+#### 15.**\*** Group dataset by `Height_category` and calculate `mean` and `sd` of `Age` for each group.
+
+```{r}
+#
+```
+
+-   use `group_by()` and `summarise()`
+
+#### 16. Show the rows for elephants taller than 2 metres but shorter than 2.5 metres, and younger than 15 years old. Then select the `Age` and `Height` columns.
+
+```{r}
+#
+```
+
+-   use special `dplyr` functions
 
 #### 17. Identify the top 3 tallest elephants and extract their `Age`, `Height`, and `Sex`.
 
+```{r}
+#
+```
 
-```{r task-17}
-# 
+-   You may be using data arranging and `head()`
+
+#### 18. Show rows of the 3 tallest and 3 the shortest elephants
+
+```{r}
+##
+
 ```
 
 -   You may be using data arranging
+-   basic functions (`head()` and `tail()`) can also be useful, but remember ***how*** ordered is your data
+-   **+1 point if you make it by one line of code (show as one data.frame)**
+    -   *Tip:* you can use either `n()` or `nrow()`
+    -   *Tip:* you can use `slice()`
 
-#### 18.**\*** Identify 3 oldest elephants for each `Sex` and extract their `Age`, `Height`.
+#### 19.\* Identify 3 oldest elephants for each `Sex` and extract their `Age` and `Height`.
 
-
-```{r task-18}
-# 
+```{r}
+#
 ```
 
-## 7. Exporting Data
+-   `group_by()` and `slice_head()`
 
+## Exporting Data
 
-#### 19. Save our modified dataset as a new CSV file.
+#### 20. Save our modified `dataset` with new columns as a new CSV file.
 
-
-```{r task-19, eval=FALSE}
-# 
+```{r, eval=FALSE}
+#
 ```
 
 -   Name the file whatever you want
@@ -255,4 +251,4 @@ library(tidyr)
 
 # Submission
 
-Submit your `.Rmd` file and the final outputs (csv dataset)
+Submit your `.Rmd` file and the final outputs (`csv` file)

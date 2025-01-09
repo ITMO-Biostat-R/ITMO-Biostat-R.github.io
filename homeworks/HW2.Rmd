@@ -48,7 +48,13 @@ Some rows may contain missing values (e.g., in `sex` column).
 #### 1.\* Delete rows containing only NAs in columns except `species, sex, island`.
 
 ```{r, eval=F}
-#
+colSums(is.na(penguins))
+penguins[!complete.cases(penguins),]
+
+penguins = penguins[complete.cases(penguins),]
+
+# penguins %>% head()
+
 ```
 
 -   use `complete.cases()` and remember the ways we filtered datasets
@@ -68,7 +74,14 @@ Some rows may contain missing values (e.g., in `sex` column).
 -   **Don't forget to delete legend** *if ggplot used*
 
 ```{r}
-#
+# species_counts <- table(penguins$species)
+# barplot(species_counts, main = "Number of Penguins by Species",
+#         xlab = "Species", ylab = "Count", col = c("blue", "red", "yellow"))
+
+penguins %>% ggplot(aes(x=species, fill=species)) + 
+  geom_bar() + labs(x='Species', fill='Species', 
+                    y='Number of penguins') +
+  theme_classic() + theme(legend.position = "none")
 ```
 
 #### 3. Create stacked barplot scaled from 0 to 1 to show the proportion of `species` on each `island`.
@@ -82,7 +95,10 @@ Some rows may contain missing values (e.g., in `sex` column).
 -   Don't forget change `position` parameter
 
 ```{r}
-#
+penguins %>% ggplot(aes(x=island, fill=species)) + 
+  geom_bar(position = 'fill') + 
+  labs(x='Species', fill='Species', y='Number of penguins') + 
+  theme_classic() 
 ```
 
 #### 4. Create a histogram for the `flipper_length_mm` and draw the vertical line to show mean value
@@ -100,7 +116,15 @@ Some rows may contain missing values (e.g., in `sex` column).
 -   **This task can be solved using either basic R or `ggplot`**
 
 ```{r}
-#
+# hist(penguins$flipper_length_mm, breaks = 10, col = "lightblue",
+#      main = "Histogram of Bill Length", 
+#      xlab = "Bill Length (mm)") 
+# abline(v=mean(penguins$flipper_length_mm), lwd=2, col='red')
+
+penguins %>% ggplot(aes(x=flipper_length_mm)) + 
+  geom_histogram(col='black', fill='lightblue',bins = 10) +
+  geom_vline(aes(xintercept = mean(flipper_length_mm, na.rm=T)), col='red', lwd=1.2) +
+  labs(x='Flipper length (mm)') + theme_bw()
 ```
 
 #### 5. Create a density plot for the `body_mass_g` variable. Fill the density regions based on `species`.
@@ -114,7 +138,11 @@ Some rows may contain missing values (e.g., in `sex` column).
 -   `theme_classic()`
 
 ```{r}
-#
+penguins %>%  ggplot(aes(x = body_mass_g, fill = species)) +
+  geom_density(alpha = 0.5) +
+  labs(x = "Body Mass (g)",
+       y = "Density") +
+  theme_classic()
 ```
 
 #### 6. Create a boxplots grouped by `sex` to compare `bill_length_mm` values. Save the plot in variable and show the plot.
@@ -130,7 +158,12 @@ Some rows may contain missing values (e.g., in `sex` column).
 -   **When you save the plot in a variable, chart is not displayed. Don't forget to show the plot by writing the variable name on a new line!**
 
 ```{r}
-#
+p = penguins %>% filter(sex != '') %>% 
+  ggplot(aes(x=sex, y=bill_length_mm, fill=sex)) + 
+  geom_boxplot() + theme_classic() +
+  xlab('Sex') + ylab('Bill length (mm)') + labs(fill='Species')
+
+p
 ```
 
 #### 7. Change the chart above: for each `sex` there must be 3 colored boxplots for each `species`. Each `species` should be *specifically* colored (`fill)`.
@@ -138,7 +171,7 @@ Some rows may contain missing values (e.g., in `sex` column).
 -   *Tip:* just add (`+`) corresponding `aes(...)` to the variable
 
 ```{r}
-#
+p + aes(fill=species) + labs(fill='Species')
 ```
 
 #### 8. Create a scatter plot to show the relationship between `bill_length_mm` and `bill_depth_mm`.
@@ -152,7 +185,15 @@ Some rows may contain missing values (e.g., in `sex` column).
 -   **This task can be solved using either basic R or `ggplot`**
 
 ```{r}
-#
+# plot(penguins$bill_length_mm, penguins$bill_depth_mm,
+#      xlab = "Bill Length (mm)", 
+#      ylab = "Bill Depth (mm)",
+#      main = "Bill Length vs Bill Depth", col = "blue", pch = 19)
+
+penguins %>% ggplot(aes(x=bill_length_mm, y=bill_depth_mm)) + 
+  geom_point(col='blue') + 
+  xlab('Bill Length (mm)') + ylab('Bill Depth (mm)') +
+  theme_classic() 
 ```
 
 #### 9. Create a [Bubble plot]{.underline}: a scatter plot depicting the relationships between `length_last_mm` and `depth_last_mm`, with colored dots representing `species` and sizes reflecting `length_last_mm`.
@@ -164,7 +205,17 @@ Some rows may contain missing values (e.g., in `sex` column).
 -   `theme_classic()`
 
 ```{r}
-#
+bubble = ggplot(penguins, aes(x = bill_length_mm, y = bill_depth_mm, 
+                     color = species, size = flipper_length_mm)) +
+  geom_point(alpha = 0.7) +
+  labs(title = "Penguin Bill Dimensions with Flipper Length as Size",
+       x = "Bill Length (mm)", 
+       y = "Bill Depth (mm)", 
+       size = "Flipper Length (mm)",
+       color = 'Species') +
+  theme_classic()
+
+bubble
 ```
 
 #### 10\*. Add `geom_smooth()` to the above plot to explore the linear relationship between bill depth and length
@@ -173,5 +224,5 @@ Some rows may contain missing values (e.g., in `sex` column).
 -   `geom_smooth()` parameters are: `method = 'lm', show.legend = F`
 
 ```{r}
-#
+bubble + geom_smooth(method = 'lm', show.legend = F)
 ```
