@@ -78,7 +78,7 @@ knitr::opts_chunk$set(echo = TRUE, out.width = 100) # (include == echo and eval)
 Press `Tab` while writing something and RStudio will help you. Often it helps even without pressing the button :)
 
 ```{r}
-xabuiliafsos
+#
 ```
 
 ## Markdown
