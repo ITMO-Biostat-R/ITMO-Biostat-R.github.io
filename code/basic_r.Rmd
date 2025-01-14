@@ -137,7 +137,7 @@ All you need to know about variables is that they can store values which we assi
 ```{r}
 variable = 37
 var_character = 'biology'
-# TRUE -> bools
+var_bool = TRUE
 ```
 
 We can just run code with name of variable to see its value
@@ -146,7 +146,6 @@ We can just run code with name of variable to see its value
 variable
 var_character
 var_bool
-bools
 ```
 
 Change the value:

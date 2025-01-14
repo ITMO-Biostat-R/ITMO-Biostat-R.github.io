@@ -168,7 +168,7 @@ library(tidyr)
 
 -   *if you are advanced user, you can use `group_by()` and `summarize()`*
 
-#### 12. Identify the row with the maximum `Height` and print it.
+#### 12. Identify the row with the maximum `Height` and print this row (not number of row!).
 
 ```{r}
 #
