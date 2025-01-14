@@ -87,7 +87,7 @@ library(tidyr)
 
 ## Data Cleaning
 
-#### 5. Check for missing values (`NA`) in the dataset (how many in each row?).
+#### 5. Check for missing values (`NA`) in the dataset (how many in each column?).
 
 ```{r}
 #

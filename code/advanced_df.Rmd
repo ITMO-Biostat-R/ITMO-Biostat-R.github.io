@@ -26,16 +26,17 @@ knitr::opts_chunk$set(echo = TRUE, message = F, warning = F)
 
 students_hours = read.csv("../data/student_lifestyle_dataset.csv", 
                           row.names = 1,
-                          header = T,
-                          # na.strings = c('','-'),
+                          # header = F,
+                          na.strings = c('','-','dead'),
                           # comment.char = '#',
-                          # sep = ',',
+                          # sep = ' ',
                           # skip = 2,
                           stringsAsFactors = T
                           )
 
-# read_tsv()
+# read.csv2()
 # read.table()
+students_hours
 ```
 
 -   `na.strings = c('','-')`- sometimes R interprets empty text in factor columns as one of factor levels. Therefore, this parameter is useful
@@ -53,12 +54,15 @@ students_hours = read.csv("../data/student_lifestyle_dataset.csv",
 
 -   `stringsAsFactors = TRUE` - make all character columns (with text) be interpreted as factors
 
+```{r}
+students_hours
+```
+
 ## `readr` package
 
 ```{r}
 library(readr)
 ```
-
 
 ```{r, message=FALSE}
 # read_tsv()
@@ -100,12 +104,12 @@ summary(students_hours)
 ## Libraries
 
 ```{r, warning=FALSE, message=FALSE}
-# install.packages(c("dplyr", "tidyr"))
+# install.packages(c("dplyr", "tidyr", 'readr'))
 # install.packages("tidyverse")
 
 library(dplyr)
 library(tidyr)
-library(readr)
+# library(readr)
 # library(tidyverse)
 ```
 
@@ -128,12 +132,12 @@ students_tibble
 
 # Pipe %\>% (\|\>)
 
-Using ``` Ctrl+Shift+M / Cmd+Shift+M ``` you can rapidly print so-called pipe `%>%`
+Using `Ctrl+Shift+M / Cmd+Shift+M` you can rapidly print so-called pipe `%>%`
 
 It is very convenient way to **write code from "left to right"**.
 
 ```{r}
-# sqrt(mean(students_hours$Extracurricular_Hours_Per_Day, na.rm = T))
+sqrt(mean(students_hours$Extracurricular_Hours_Per_Day, na.rm = T))
 
 students_hours$Extracurricular_Hours_Per_Day %>% mean(na.rm = T) %>% sqrt()
 ```
@@ -145,9 +149,9 @@ students_hours$Extracurricular_Hours_Per_Day %>% mean(na.rm = T) %>% sqrt()
 summarise(select(filter(students_tibble, Extracurricular_Hours_Per_Day > 1), 
                  Sleep_Hours_Per_Day), Sleep_Hours_Mean = mean(Sleep_Hours_Per_Day))
 
-students_tibble %>%
+students_tibble %>% 
   filter(Extracurricular_Hours_Per_Day > 1) %>%
-  select(Sleep_Hours_Per_Day) %>%
+  select(Sleep_Hours_Per_Day) %>% 
   summarise(Sleep_Hours_Mean = mean(Sleep_Hours_Per_Day))
 ```
 
@@ -175,14 +179,14 @@ If we need our dataset (object after which the first pipe was written) inside a 
 ### Glimpse (structure)
 
 ```{r}
-# str(students_tibble)
+str(students_tibble)
 students_tibble %>% glimpse(width = 50) 
 ```
 
 ### Arranging (order)
 
 ```{r}
-# students_tibble[order(students_tibble$Study_Hours_Per_Day),]
+# students_tibble[order(students_tibble$Study_Hours_Per_Day), ]
 students_tibble %>% arrange(Study_Hours_Per_Day)
 
 # students_tibble[order(students_tibble$Study_Hours_Per_Day, decreasing = T),]
@@ -197,7 +201,7 @@ Select columns by names
 # students_tibble[, c("Extracurricular_Hours_Per_Day", "Study_Hours_Per_Day")]
 students_tibble %>% select(Extracurricular_Hours_Per_Day, Study_Hours_Per_Day)
 
-students_tibble %>%  select(-c(Study_Hours_Per_Day:Social_Hours_Per_Day))
+students_tibble %>%  select(-(Study_Hours_Per_Day:Social_Hours_Per_Day))
 ```
 
 Minuses are useful for easy column deletion. And also you can use `col1:col5` to select columns from the range.
@@ -212,7 +216,7 @@ students_tibble %>% select(contains('Hours'))
 students_tibble %>% select(ends_with('Per_Day'))
 
 # only numeric columns
-students_tibble %>% select(where(is.numeric))
+students_tibble %>% select(where(is.numeric)) %>% mean(na.rm = T)
 ```
 
 ### Pull
@@ -221,7 +225,7 @@ Extract column as vector
 
 ```{r}
 # students_tibble$Extracurricular_Hours_Per_Day
-students_tibble %>% pull(Extracurricular_Hours_Per_Day) %>%  head(20)
+students_tibble %>% pull(Extracurricular_Hours_Per_Day) %>% mean(na.rm = T)
 ```
 
 ### Filtering
@@ -229,9 +233,10 @@ students_tibble %>% pull(Extracurricular_Hours_Per_Day) %>%  head(20)
 ```{r}
 # students_tibble[students_tibble$Extracurricular_Hours_Per_Day > 2 & students_tibble$Study_Hours_Per_Day > 3,]
 
-students_tibble %>% filter(Extracurricular_Hours_Per_Day > 2, Study_Hours_Per_Day > 3)
+students_tibble %>% filter(Extracurricular_Hours_Per_Day > 2, 
+                           Extracurricular_Hours_Per_Day < 3)
 
-students_tibble %>% filter(between(Extracurricular_Hours_Per_Day, 1, 2))
+students_tibble %>% filter(between(Extracurricular_Hours_Per_Day, 2, 3))
 ```
 
 ### Slice
@@ -242,7 +247,7 @@ students_tibble %>% slice(30:50)
 
 # students_tibble[(nrow(students_tibble)-5):(nrow(students_tibble)),]
 
-students_tibble %>% slice((n()-5):n()) # n() is number of "samples" (rows)
+students_tibble %>% slice(1:5, (n()-5):n()) # n() is number of "samples" (rows)
 ```
 
 ### Rename column
@@ -251,13 +256,37 @@ students_tibble %>% slice((n()-5):n()) # n() is number of "samples" (rows)
 # students_tibble$SHPD = students_tibble$Study_Hours_Per_Day 
 # students_tibble$Study_Hours_Per_Day = NULL
 
-students_tibble %>%  rename(SHPD = Study_Hours_Per_Day)
+students_tibble_2=students_tibble %>%  rename(SHPD = Study_Hours_Per_Day)
+students_tibble_2
 ```
 
-#### Advanced rename
+#### *Advanced* rename column
 
 ```{r}
 students_tibble %>%  rename_with(~ gsub("_Hours_Per_Day", "_h", .x))
+```
+
+#### *Advanced* renamevalues in column
+
+**For character columns (output is character)**
+
+```{r}
+students_tibble %>% 
+  mutate(Stress_Level = case_when(
+    Stress_Level == "High" ~ 'high',
+    Stress_Level == "Moderate" ~ 'medium',
+    Stress_Level == "Low" ~ 'low',
+    TRUE ~ as.character(Stress_Level))) #remaining characters are not modified
+```
+
+**For factor columns**
+
+```{r}
+students_tibble %>% 
+  mutate(Stress_Level = recode(Stress_Level,
+                               "High" = 'high',
+                               "Moderate" = 'medium',
+                               "Low" = 'low'))
 ```
 
 ### Mutate
@@ -265,20 +294,24 @@ students_tibble %>%  rename_with(~ gsub("_Hours_Per_Day", "_h", .x))
 Changing columns and creation new ones
 
 ```{r}
-# students_tibble$Stress_Level = as.factor(students_tibble$Stress_Level
-students_tibble %>% mutate(Stress_Level = as.factor(Stress_Level), GPA = round(GPA), 
-                           .keep='used')
+# students_tibble$Stress_Level = as.factor(students_tibble$Stress_Level)
+students_tibble %>% mutate(Stress_Level = as.factor(Stress_Level), 
+                           GPA = round(GPA), 
+                           GPA = GPA+1
+                           # .keep='used'
+                           )
 
 # students_tibble$GPA_sqrt = sqrt(students_tibble$GPA)
 students_tibble %>% 
   mutate(Non_Study_Day_Hours_Per_Day =
            Social_Hours_Per_Day + Physical_Activity_Hours_Per_Day, 
-         .before = 1, .keep = 'unused')
+         .before = 1, .keep = 'all'
+         )
 ```
 
 > By default, `.keep = 'all'`, and usually it is not worth changing it or even writing this parameter
 
-#### Advanced mutate
+#### *Advanced* mutate
 
 ```{r}
 students_tibble %>% 
@@ -421,7 +454,7 @@ students_tibble %>%  drop_na(Physical_Activity_Hours_Per_Day)
 students_tibble$GPA[is.na(students_tibble$GPA)] = mean(students_tibble$GPA)
 ```
 
-### advanced
+### *advanced*
 
 ```{r}
 # to secify values
@@ -441,7 +474,7 @@ students_tibble = students_tibble %>%  na.omit()
 # Writing a data into file
 
 ```{r}
-# write.csv()
+# write.csv(students_tibble, "lec_output/students.csv")
 write_csv(students_tibble, "lec_output/students.csv") # comma-separated
 
 # write.table()
@@ -451,6 +484,7 @@ write_tsv(students_tibble, "lec_output/students.tsv") # tab-separated
 ```{r, warning=FALSE}
 # install.packages('writexl')
 library(writexl)
+library(readxl)
 ```
 
 ```{r}

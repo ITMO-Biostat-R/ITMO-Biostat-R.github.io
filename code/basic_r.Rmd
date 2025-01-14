@@ -9,7 +9,7 @@ output:
 date: 10.01.2025
 editor_options: 
   chunk_output_type: inline
-  # wrap: 72
+  wrap: 72
 ---
 
 # RStudio
@@ -26,16 +26,12 @@ editor_options:
 
 We can create new files, projects and even presentations or websites. RStudio provides us with useful tools for programming, especially in R, but we can also do it in python, bash and other languages.
 
-## Tips for you
-
-Press `Tab` while writing something and RStudio will help you. Often it helps even without pressing the button :)
-
 ## Help
 
 Print
 
 ```{r}
-?getwd
+?getwd()
 ```
 
 To open help for a function (here, `getwd`).
@@ -48,6 +44,10 @@ Where are we? It is a R Markdown - special format, where you can write **Markdow
 
 ```{r}
 getwd()
+
+x = 2
+f = 2
+x + f
 ```
 
 **To run the whole code in chunk** - press green "play" button\
@@ -70,7 +70,15 @@ For example, set `{r warnings=FALSE, messages=FALSE, echo=FALSE, eval=FALSE}` **
 **To set global options (for every chunk):**
 
 ```{r include=TRUE}
-knitr::opts_chunk$set(echo = TRUE) # (include == echo and eval)
+knitr::opts_chunk$set(echo = TRUE, out.width = 100) # (include == echo and eval)
+```
+
+## Tips for you
+
+Press `Tab` while writing something and RStudio will help you. Often it helps even without pressing the button :)
+
+```{r}
+xabuiliafsos
 ```
 
 ## Markdown
@@ -99,15 +107,15 @@ R Markdown allows us to "knit" this project and create beautiful report in **htm
 
 ## Hotkeys
 
-| Action               | Windows/Linux    | Mac                |
-|----------------------|------------------|--------------------|
-| Knit the document    | Ctrl + Shift + K | Cmd + Shift + K    |
-| Create a chunk       | Ctrl + Alt + I   | Cmd + Option + I   |
-| Run current line     | Ctrl + Enter     | Cmd + Enter        |
-| Run current chunk    | Ctrl + Alt + C   | Cmd + Option + C   |
-| Show all shortcuts   | Alt + Shift + K  | Option + Shift + K |
-| Delete current line  | Ctrl + D         | Cmd + D            |
-| Comment current line | Ctrl + Shift + C | Cmd + Shift + C    |
+| Action               | Windows/Linux      | Mac                  |
+|----------------------|--------------------|----------------------|
+| Knit the document    | Ctrl + Shift + K   | Cmd + Shift + K      |
+| **Create a chunk**   | **Ctrl + Alt + I** | **Cmd + Option + I** |
+| **Run current line** | **Ctrl + Enter**   | **Cmd + Enter**      |
+| Run current chunk    | Ctrl + Alt + C     | Cmd + Option + C     |
+| Show all shortcuts   | Alt + Shift + K    | Option + Shift + K   |
+| Delete current line  | Ctrl + D           | Cmd + D              |
+| Comment current line | Ctrl + Shift + C   | Cmd + Shift + C      |
 
 # R language
 
@@ -115,8 +123,10 @@ Citizens of R-city
 
 ```{r}
 12
+2.2
 "Hello world"
 TRUE
+FALSE
 12+2
 ```
 
@@ -125,9 +135,9 @@ TRUE
 All you need to know about variables is that they can store values which we assign
 
 ```{r}
-variable <- 37
+variable = 37
 var_character = 'biology'
-var_bool = TRUE
+# TRUE -> bools
 ```
 
 We can just run code with name of variable to see its value
@@ -136,6 +146,7 @@ We can just run code with name of variable to see its value
 variable
 var_character
 var_bool
+bools
 ```
 
 Change the value:
@@ -150,7 +161,6 @@ variable
 ```{r}
 x = 19
 y = 9
-
 ```
 
 ```{r}
@@ -161,6 +171,7 @@ x * y
 x / y 
 x ^ y # x to the power of y
 sqrt(x) # square root
+# sum(1,2,NA,34, na.rm = TRUE)
 
 x %% y # ‘remainder’ of division 
 x %/% y # integer division
@@ -190,7 +201,7 @@ x != y # is not equal
 
 ```{r}
 x < 10 & y < 10 
-x < 10 | y <= 10
+x < 10 | y < 10
 ```
 
 ```{r}
@@ -215,6 +226,8 @@ Here we create some vectors and store them in corresponding variables:
 v_numeric = c(1,2,3,4)
 v_logical = c(T,F,F,T)
 v_character = c("1","2","3","4")
+# c(1,2,'3')
+# c(T,1,0,F)
 ```
 
 *(R allows us not to write whole FALSE and TRUE, bur write only first letter)*
@@ -224,10 +237,13 @@ Simple way to create integer vector
 ```{r}
 1:5
 5:1
+-1:1
 ```
 
 ```{r}
 c(1:5, c(11,13,14))
+c(7:10, 1:5)
+c(1:5,7:10)
 ```
 
 > ***Values in vector are not sorted and unique by default!***
@@ -240,7 +256,8 @@ We can access to the values of vector by indexes.
 vec = c("A", "B", "C", "D", "E", "F")
 vec[3]
 vec[7]
-vec[-1]
+vecnew = vec[-1]
+vecnew
 ```
 
 NA indicates a missing value. It appears here because the 7th element does not exist in the vector
@@ -264,22 +281,24 @@ What will be the result of this operation?
 
 ```{r}
 vec1234 = c(1, 2, 3, 4)
-vec1234 + 5
+vec1234 * 5
 # c(vec1234, 5)
 ```
 
 **Wow! Isn't it cool?** We can do anything with vectors not by using some operation for each value step by step, but using operation for each value **only once**
 
 ```{r}
-c(1, 2, 3, 4) * 5
+c(1, 2, 3, 4) + 5 - 2
 c(1, 2, 3, 4) ^ 2
+sqrt(vec1234)
+# !v_logical
 ```
 
 Moreover, we can perform **mathematical operations on two vectors**
 
 ```{r}
-vec123 = c(1, 2, 3) 
-vec321 = c(3, 2, 1)
+vec123 = c(1, 2, 3, 0) 
+vec321 = c(3, 2, 1, 4)
 
 vec_new = vec123 * vec321
 vec_new
@@ -331,7 +350,7 @@ weights_of_seed[logical_vector]
 **It is VERY useful for filtering simple data.**
 
 ```{r}
-weights_of_seed[weights_of_seed < 10 & weights_of_seed > 0]
+weights_of_seed[weights_of_seed < 10 & weights_of_seed > 2]
 ```
 
 ## Basic statistics
@@ -345,7 +364,7 @@ length(weights_of_seed)
 We can already compute some statistics on numerical vectors!
 
 ```{r}
-sum(weights_of_seed)
+sum(weights_of_seed) / length(weights_of_seed)
 mean(weights_of_seed)
 median(weights_of_seed)
 ```
@@ -394,7 +413,7 @@ age = c(15, 32, 18, 8, 23, 17,22, 23)
 Students older than 18
 
 ```{r}
-students_names[age > 18] # ANY logical vector
+students_names[age >= 18] # ANY logical vector
 ```
 
 Students aged **18 or more**
@@ -468,7 +487,7 @@ students_list[2] # NOT A VECTOR
 
 students_list[[2]] # VECTOR
 
-students_list$height  # vector
+students_list$weight  # vector
 ```
 
 Certain values:
@@ -524,7 +543,7 @@ We created 4 vectors for each trait.
 ```{r}
 students_names = c('Daniel', 'Sasha', 'Robert', 'Alice', 
                    'Diana', 'Anastasia', 'Alexey', 'Julia')
-age = c(15, 32, 18, 8, 23, 17,22, 23)
+vec_age = c(15, 32, 18, 8, 23, 17,22, 23)
 height = c(175, 181, 188, 120, 170, 168, 178, 172)
 weight = c(70, 75, 80, 45, 55, 50, 78, 62)
 ```
@@ -532,7 +551,7 @@ weight = c(70, 75, 80, 45, 55, 50, 78, 62)
 **Now create data-frame**
 
 ```{r}
-students_df = data.frame(age=age,
+students_df = data.frame(age=vec_age,
                          height=height,
                          weight=weight,
                          row.names = students_names)
@@ -560,11 +579,12 @@ Accessing the data in specific row **and** column:
 ```{r}
 # With two values: [row_name, column_name]
 students_df["Daniel", 'weight'] 
-students_df[1, 3] 
+students_df[1, ]
 ```
 
 ```{r}
-students_df[2:4, 2:3] 
+students_df[2:4, 2:3]
+students_df[c(3,1,5), ]
 
 students_df[c('Sasha', 'Robert', 'Alice'), c("height", "weight")]
 
@@ -576,7 +596,7 @@ students_df[c('Sasha', 'Robert', 'Alice'), ]
 
 ```{r}
 # factor variables (why to use them over character)
-# students_df$column = c(1,2,3,4,4,5,5)
+students_df$column = c(1,2,3,4,4,5,5,6)
 students_df$city = c(rep('Moscow', 3), rep('SPb', 3), rep('Kazan', 2))
 
 students_df$is_tall = ifelse(students_df$height >= 180, 'Tall', 'Short')
@@ -584,7 +604,7 @@ students_df$is_tall = ifelse(students_df$height >= 180, 'Tall', 'Short')
 students_df$age_range = cut(
   students_df$age,
   breaks = c(0, 10, 20, 30, Inf),
-  # labels = c("Child", "Sub-adult", "Adult", 'Old')
+  labels = c("Child", "Sub-adult", "Adult", 'Old')
 )
 
 students_df
@@ -610,7 +630,8 @@ students_df$city =  as.factor(students_df$city)
 ### Deleting a column
 
 ```{r}
-students_df$weight = NULL
+students_df$column = NULL
+students_df
 ```
 
 ### Ordering
@@ -631,7 +652,7 @@ students_df[students_df$height > 170, ]
 students_df[students_df$height > 170 & age > 20, ]
 
 students_df[students_df$city %in% c('Moscow', 'SPb'), ]
-subset(students_df, age > 18)
+subset(students_df, height > 170)
 ```
 
 ### Describe data-frame
@@ -650,6 +671,7 @@ dim(students_df) #rows and columns number
 ### Summary statistics
 
 ```{r}
+students_df$is_tall =as.factor(students_df$is_tall)
 summary(students_df)
 ```
 
