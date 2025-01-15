@@ -22,12 +22,12 @@ title: "Biostatistics in R"
 -   [HW #1](./homeworks/HW1.Rmd)
     -   [Download](./zipfiles/HW1.zip)
 
--   [**HW #2**](./homeworks/HW2.Rmd)
+-   [HW #2](./homeworks/HW2.Rmd)
     - [Download](./zipfiles/HW2.zip)
     - [Reference plots](./homeworks/HW2_reference.html)
 
 
-<!-- -   [**HW #3**](./homeworks/HW3.Rmd) -->
+<!-- -   [HW #3](./homeworks/HW3.Rmd) -->
 
 <!--     - [Download](./zipfiles/HW3.zip) -->
 

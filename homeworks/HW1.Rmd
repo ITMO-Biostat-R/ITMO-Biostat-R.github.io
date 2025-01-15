@@ -75,7 +75,9 @@ library(tidyr)
 
 **3.1 Make `dataset` a tibble**
 
-`{r.1} dataset = as_tibble(dataset)`
+```{r}
+#
+```
 
 #### 4. Check the structure and summary of the data.
 
