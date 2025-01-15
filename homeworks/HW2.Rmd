@@ -16,6 +16,12 @@ library(dplyr)
 
 # Palmer Penguins
 
+#### 0. Read file penguins.csv
+
+-   *Don't forget to use all necessary parameters which were used in previous work*
+
+-   Look at the data (summary? structure? something else you want)
+
 ```{r}
 #
 ```
@@ -44,7 +50,8 @@ Some rows may contain missing values (e.g., in `sex` column).
 #
 ```
 
--   use `complete.cases()` and remember the ways we filtered datasets
+-   Remember `complete.cases()` and remember the ways we filtered datasets
+-   Ensure, that dataset was filtered!
 
 #### 2. Create bar plot to show the number of observations (rows) for each `species` and delete legend (if `ggplot` used).
 
@@ -100,7 +107,7 @@ Some rows may contain missing values (e.g., in `sex` column).
 
 -   Label the axes (y-axis is `Density`)
 
--   `fill` should different for each species
+-   `fill` should be different for each species
 
 -   Density plot should have `alpha=0.5`
 
@@ -160,10 +167,10 @@ Some rows may contain missing values (e.g., in `sex` column).
 #
 ```
 
-#### 10\*. Add `geom_smooth()` to the above plot to explore the linear relationship between bill depth and length
+#### 10\*. Add `geom_rug()` to the above plot to show distribution of points across the axes
 
--   To do that you should save plot above in variable and add `geom_smooth()`
--   `geom_smooth()` parameters are: `method = 'lm', show.legend = F`
+-   To do that you should save plot above in variable and add `geom_rug()`
+-   reduce *line width* to 0.5, *alpha* to 0.8 and set `show.legend = FALSE`
 
 ```{r}
 #

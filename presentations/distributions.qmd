@@ -1,5 +1,5 @@
 ---
-title: "Distributions"
+title: "Visualization sins and Distributions"
 format: 
   revealjs:
       center: true
@@ -17,6 +17,81 @@ knitr::opts_chunk$set(echo = F, fig.width = 8, fig.height = 4)
 library(dplyr)
 library(ggplot2)
 ```
+
+# Visualization sins {auto-animate="true"}
+
+## Visualization sins {auto-animate="true"}
+
+Partly taken from
+
+1.  [**Friends Don't Let Friends Make Bad Graphs**](https://github.com/cxli233/FriendsDontLetFriends)
+2.  [**Misinformed By Visualization**](https://leoyuholo.com/bad-vis-browser/index.html)
+
+**I highly recommend to visit this web-pages!**
+
+------------------------------------------------------------------------
+
+### Just messy plot. What's going on...?
+
+![](/images/memes/justmessUSA.jpg){fig-align="center" width="600"}
+
+------------------------------------------------------------------------
+
+### Just messy plot. What's going on...?
+
+![](/images/memes/barcolor.jpg){fig-align="center" width="600"}
+
+------------------------------------------------------------------------
+
+### `Pie-chart == evil`
+
+![](/images/memes/pie.svg){fig-align="center" width="800"}
+
+------------------------------------------------------------------------
+
+### **3D = [D]{.underline}on't [D]{.underline}o 3[D]{.underline}**
+
+![](/images/memes/3dbar.jpg){fig-align="center"}
+
+------------------------------------------------------------------------
+
+### **3D = Don't Do 3D**
+
+**Twice bad**
+
+![](/images/memes/3dpie.png){fig-align="center"}
+
+------------------------------------------------------------------------
+
+### Don't misinform!
+
+![](/images/memes/misleadbarplot.jpg){fig-align="center" width="600"}
+
+------------------------------------------------------------------------
+
+### Don't misinform!
+
+![](/images/memes/misleadcorrectbar.png){fig-align="center" width="600"}
+
+------------------------------------------------------------------------
+
+### However, don't do meaningless graphs
+
+![](/images/memes/lineaxisscale.png){fig-align="center"}
+
+------------------------------------------------------------------------
+
+### Don't use [Box plots]{.underline} and [Violin plots]{.underline} for small data 
+
+![](/images/memes/smallsample.png){fig-align="center" width="2000"}
+
+------------------------------------------------------------------------
+
+### Don't use [Histograms]{.underline} for small data 
+
+![](/images/memes/smallsample_hist.png){fig-align="center" width="2000"}
+
+# Distributions
 
 ## Types of Data
 
@@ -41,7 +116,7 @@ Therefore, researchers use samples - **random and representative** groups taken 
 
 ## Sampling {auto-animate="true"}
 
-::: columns
+::::: columns
 ::: {.column width="50%"}
 ```{r, fig.height=5, fig.width=6}
 normgenpop = rnorm(100000) %>%  as.data.frame(nm = 'x')
@@ -70,7 +145,7 @@ ggplot() +
   theme(title = element_text(size=20))
 ```
 :::
-:::
+:::::
 
 ------------------------------------------------------------------------
 
@@ -92,9 +167,9 @@ ggplot() +
 
 ## Normal distribution {auto-animate="true"}
 
-::: columns
+::::: columns
 ::: {.column width="50%"}
-Normal distribution is bell shaped, have equal mean ($\mu$), median, mode. "Width" depends on standard deviation ($\sigma$).
+Normal distribution is bell shaped, have equal mean ($\mu$), median, mode. "Width" depends on standard deviation ($\sigma$). **Continious (!)**
 :::
 
 ::: {.column width="50%"}
@@ -102,15 +177,13 @@ $P(x) = \frac{1}{{\sigma \sqrt{2\pi} }}e^{{\frac{ -\left( {x - \mu } \right)^2 }
 
 parameters are mean ($\mu$) and sigma ($\sigma$)
 :::
-:::
+:::::
 
 ```{r}
 Heights = rnorm(10000, mean = 175, sd = 10)
 hist(Heights, breaks = 30, freq = T,
      main = 'Sample distribution of 10000 people\'s heights' )
 ```
-
-<!-- ------------------------------------------------------------------------ -->
 
 ## Normal distribution {auto-animate="true"}
 
@@ -166,9 +239,9 @@ text(mean(Heights)+3.4*sd(Heights), 900, ' + 3 SD', cex=1)
 
 ## Uniform distribution
 
-::: columns
+::::: columns
 ::: {.column width="70%"}
-Simple distribution of equally possible values
+Simple distribution of equally possible values. **Continious (!).**
 :::
 
 ::: {.column width="30%"}
@@ -178,7 +251,7 @@ $P(x) = \frac{1}{a-b}$
 
 -   $b$ - end point
 :::
-:::
+:::::
 
 ```{r, fig.width=10}
 raindrops = runif(10000, min=0, max=10)
@@ -193,7 +266,7 @@ hist(raindrops,
 
 ## Bernoulli distribution
 
-::: columns
+::::: columns
 ::: {.column width="50%"}
 ```{r, fig.width=5, fig.height=6}
 coin_toss = rbinom(1000, size = 1, prob = 0.5)
@@ -208,12 +281,14 @@ $P(0) = 1-p$,
 where $p$ - "success" probability. It is the only parameter of the distribution
 
 Imagine, that $p$ is a probability of an head on a coin toss (1 - head, 0 - tails). Then The distribution will be like in the barplot on the left.
+
+**Discrete (!)**
 :::
-:::
+:::::
 
 ## Binomial distribution {auto-animate="true"}
 
-::: columns
+::::: columns
 ::: {.column width="70%"}
 ```{r}
 coin_toss = rbinom(10000, size = 100, p=0.5)
@@ -231,15 +306,13 @@ $P(x) = \binom{n}{k}p^k(1-p)^{n-k}$,
 -   $p$ - probability of success *(fixed)*
 -   $k$ - observed successes
 :::
-:::
+:::::
 
-Distribution is based on the **number of successes in a sequence of experiments**.
+Distribution is based on the **number of successes in a sequence of experiments**. **Discrete (!)**
 
 If we flip a coin, the binomial distribution represents the number of successes after we flip the coin a certain number of times (e.g. 10).
 
 The histogram above shows the distribution of 10000 experiments on trying to get an head coin for a certain number of times by flipping it 10 times
-
-<!-- ------------------------------------------------------------------------ -->
 
 ## Binomial distribution {auto-animate="true"}
 
@@ -295,9 +368,9 @@ legend("topright", legend = c("n=10",
 ## Poisson distribution {auto-animate="true"}
 
 *Binomial*, but $n \rightarrow \infty$,, therefore we don't utilize number of trials ($n$).\
-Now we use "**time interval**" and **expected number of successes** ($\lambda$) during this interval
+Now we use "**time interval**" and **expected number of successes** ($\lambda$) during this interval. **Still Discrete (!)**
 
-::: columns
+::::: columns
 ::: {.column width="70%"}
 ```{r}
 pois_rand = rpois(10000, 10)
@@ -315,7 +388,7 @@ $P(x) = \dfrac{\lambda^k}{k!}e^{-\lambda}$, where
 -   $\lambda$ - mean or expected number of successes during the interval (fixed)
 -   $k$ - "observed" successes
 :::
-:::
+:::::
 
 <!-- ------------------------------------------------------------------------ -->
 
@@ -504,7 +577,7 @@ hist(normoutlier, breaks=60,
 abline(v = mean(normoutlier), lwd=3, col='blue')
 abline(v = median(normoutlier), lwd=3, col='green3')
 
-text(x=7, y=10, label='mea')
+# text(x=7, y=10, label='mean')
 
 legend("topright",
        col = c(

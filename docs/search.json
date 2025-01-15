@@ -2,154 +2,154 @@
   {
     "objectID": "presentations/distributions.html#types-of-data",
     "href": "presentations/distributions.html#types-of-data",
-    "title": "Distributions",
+    "title": "Visualization sins and Distributions",
     "section": "Types of Data",
     "text": "Types of Data\n\nNumerical data: Continuous (e.g., height) or discrete (e.g., number of leaves).\nCategorical data: Nominal (e.g., species, gender) or ordinal (e.g., rankings)."
   },
   {
     "objectID": "presentations/distributions.html#sampling",
     "href": "presentations/distributions.html#sampling",
-    "title": "Distributions",
+    "title": "Visualization sins and Distributions",
     "section": "Sampling",
     "text": "Sampling\nUsually we cannot take the whole population for a study.\n\nFor example, it is physically impossible to do a study using blood samples from all the people in the world. Sometimes the population is small, but it is extremely expensive to collect the material.\n\nTherefore, researchers use samples - random and representative groups taken from the general population that can be analysed to provide information about the whole population.\nThis is where statistics come to the rescue."
   },
   {
     "objectID": "presentations/distributions.html#sampling-1",
     "href": "presentations/distributions.html#sampling-1",
-    "title": "Distributions",
+    "title": "Visualization sins and Distributions",
     "section": "Sampling",
     "text": "Sampling"
   },
   {
     "objectID": "presentations/distributions.html#sampling-2",
     "href": "presentations/distributions.html#sampling-2",
-    "title": "Distributions",
+    "title": "Visualization sins and Distributions",
     "section": "Sampling",
     "text": "Sampling"
   },
   {
     "objectID": "presentations/distributions.html#normal-distribution",
     "href": "presentations/distributions.html#normal-distribution",
-    "title": "Distributions",
+    "title": "Visualization sins and Distributions",
     "section": "Normal distribution",
-    "text": "Normal distribution\n\n\nNormal distribution is bell shaped, have equal mean (\\(\\mu\\)), median, mode. “Width” depends on standard deviation (\\(\\sigma\\)).\n\n\\(P(x) = \\frac{1}{{\\sigma \\sqrt{2\\pi} }}e^{{\\frac{ -\\left( {x - \\mu } \\right)^2 }{2\\sigma ^2 }}}\\),\nparameters are mean (\\(\\mu\\)) and sigma (\\(\\sigma\\))"
+    "text": "Normal distribution\n\n\nNormal distribution is bell shaped, have equal mean (\\(\\mu\\)), median, mode. “Width” depends on standard deviation (\\(\\sigma\\)). Continious (!)\n\n\\(P(x) = \\frac{1}{{\\sigma \\sqrt{2\\pi} }}e^{{\\frac{ -\\left( {x - \\mu } \\right)^2 }{2\\sigma ^2 }}}\\),\nparameters are mean (\\(\\mu\\)) and sigma (\\(\\sigma\\))"
   },
   {
     "objectID": "presentations/distributions.html#normal-distribution-1",
     "href": "presentations/distributions.html#normal-distribution-1",
-    "title": "Distributions",
+    "title": "Visualization sins and Distributions",
     "section": "Normal distribution",
     "text": "Normal distribution\nParameters of normal distribution"
   },
   {
     "objectID": "presentations/distributions.html#normal-distribution-2",
     "href": "presentations/distributions.html#normal-distribution-2",
-    "title": "Distributions",
+    "title": "Visualization sins and Distributions",
     "section": "Normal distribution",
     "text": "Normal distribution\nThree sigma rule"
   },
   {
     "objectID": "presentations/distributions.html#uniform-distribution",
     "href": "presentations/distributions.html#uniform-distribution",
-    "title": "Distributions",
+    "title": "Visualization sins and Distributions",
     "section": "Uniform distribution",
-    "text": "Uniform distribution\n\n\nSimple distribution of equally possible values\n\n\\(P(x) = \\frac{1}{a-b}\\)\n\n\\(a\\) - starting point\n\\(b\\) - end point"
+    "text": "Uniform distribution\n\n\nSimple distribution of equally possible values. Continious (!).\n\n\\(P(x) = \\frac{1}{a-b}\\)\n\n\\(a\\) - starting point\n\\(b\\) - end point"
   },
   {
     "objectID": "presentations/distributions.html#bernoulli-distribution",
     "href": "presentations/distributions.html#bernoulli-distribution",
-    "title": "Distributions",
+    "title": "Visualization sins and Distributions",
     "section": "Bernoulli distribution",
-    "text": "Bernoulli distribution\n\n\n\n\n\n\n\n\n\n\n\n\n\\(P(1) = p\\),\n\\(P(0) = 1-p\\),\nwhere \\(p\\) - “success” probability. It is the only parameter of the distribution\nImagine, that \\(p\\) is a probability of an head on a coin toss (1 - head, 0 - tails). Then The distribution will be like in the barplot on the left."
+    "text": "Bernoulli distribution\n\n\n\n\n\n\n\n\n\n\n\n\n\\(P(1) = p\\),\n\\(P(0) = 1-p\\),\nwhere \\(p\\) - “success” probability. It is the only parameter of the distribution\nImagine, that \\(p\\) is a probability of an head on a coin toss (1 - head, 0 - tails). Then The distribution will be like in the barplot on the left.\nDiscrete (!)"
   },
   {
     "objectID": "presentations/distributions.html#binomial-distribution",
     "href": "presentations/distributions.html#binomial-distribution",
-    "title": "Distributions",
+    "title": "Visualization sins and Distributions",
     "section": "Binomial distribution",
-    "text": "Binomial distribution\n\n\n\n\n\n\n\n\n\n\n\n\n\\(P(x) = \\binom{n}{k}p^k(1-p)^{n-k}\\),\n\n\\(n\\) - number of trials (fixed)\n\\(p\\) - probability of success (fixed)\n\\(k\\) - observed successes\n\n\nDistribution is based on the number of successes in a sequence of experiments.\nIf we flip a coin, the binomial distribution represents the number of successes after we flip the coin a certain number of times (e.g. 10).\nThe histogram above shows the distribution of 10000 experiments on trying to get an head coin for a certain number of times by flipping it 10 times"
+    "text": "Binomial distribution\n\n\n\n\n\n\n\n\n\n\n\n\n\\(P(x) = \\binom{n}{k}p^k(1-p)^{n-k}\\),\n\n\\(n\\) - number of trials (fixed)\n\\(p\\) - probability of success (fixed)\n\\(k\\) - observed successes\n\n\nDistribution is based on the number of successes in a sequence of experiments. Discrete (!)\nIf we flip a coin, the binomial distribution represents the number of successes after we flip the coin a certain number of times (e.g. 10).\nThe histogram above shows the distribution of 10000 experiments on trying to get an head coin for a certain number of times by flipping it 10 times"
   },
   {
     "objectID": "presentations/distributions.html#binomial-distribution-1",
     "href": "presentations/distributions.html#binomial-distribution-1",
-    "title": "Distributions",
+    "title": "Visualization sins and Distributions",
     "section": "Binomial distribution",
     "text": "Binomial distribution\nParameters of binomial distribution"
   },
   {
     "objectID": "presentations/distributions.html#poisson-distribution",
     "href": "presentations/distributions.html#poisson-distribution",
-    "title": "Distributions",
+    "title": "Visualization sins and Distributions",
     "section": "Poisson distribution",
-    "text": "Poisson distribution\nBinomial, but \\(n \\rightarrow \\infty\\),, therefore we don’t utilize number of trials (\\(n\\)).\nNow we use “time interval” and expected number of successes (\\(\\lambda\\)) during this interval\n\n\n\n\n\n\n\n\n\n\n\n\n\\(P(x) = \\dfrac{\\lambda^k}{k!}e^{-\\lambda}\\), where\n\n\\(\\lambda\\) - mean or expected number of successes during the interval (fixed)\n\\(k\\) - “observed” successes"
+    "text": "Poisson distribution\nBinomial, but \\(n \\rightarrow \\infty\\),, therefore we don’t utilize number of trials (\\(n\\)).\nNow we use “time interval” and expected number of successes (\\(\\lambda\\)) during this interval. Still Discrete (!)\n\n\n\n\n\n\n\n\n\n\n\n\n\\(P(x) = \\dfrac{\\lambda^k}{k!}e^{-\\lambda}\\), where\n\n\\(\\lambda\\) - mean or expected number of successes during the interval (fixed)\n\\(k\\) - “observed” successes"
   },
   {
     "objectID": "presentations/distributions.html#poisson-distribution-1",
     "href": "presentations/distributions.html#poisson-distribution-1",
-    "title": "Distributions",
+    "title": "Visualization sins and Distributions",
     "section": "Poisson distribution",
     "text": "Poisson distribution\nParameters of poisson distribution"
   },
   {
     "objectID": "presentations/distributions.html#functions-for-normal-distribution",
     "href": "presentations/distributions.html#functions-for-normal-distribution",
-    "title": "Distributions",
+    "title": "Visualization sins and Distributions",
     "section": "Functions (for normal distribution)",
-    "text": "Functions (for normal distribution)\n\n\n\n\nRandom values from distribution\n\n\nrnorm(n=5, mean=100, sd=10)\n\n[1] 103.64035 103.18104  78.58997 118.51944 107.48427\n\n\n\nDensity (the height of histogram) at the point\n\n\ndnorm(x=100, mean=100, sd=10)\n\n[1] 0.03989423\n\n\n\nCumulative probability at the point: prob-ty to obtain value less than specified\n\n\npnorm(q = 80, mean=100, sd=10) # prob to obtain any value less than 80\n\n[1] 0.02275013\n\npnorm(q = c(70,80,90,110,120,130), mean=100, sd=10)\n\n[1] 0.001349898 0.022750132 0.158655254 0.841344746 0.977249868 0.998650102\n\n\n\nValue corresponding to specified cumulative probability\n\n\nqnorm(p = c(0.003, 0.05, 0.16, 0.84, 0.95, 0.997), mean=100, sd=10)\n\n[1]  72.52219  83.55146  90.05542 109.94458 116.44854 127.47781"
+    "text": "Functions (for normal distribution)\n\n\n\n\nRandom values from distribution\n\n\nrnorm(n=5, mean=100, sd=10)\n\n[1] 109.91736  98.13494  86.39648  84.51020  95.36183\n\n\n\nDensity (the height of histogram) at the point\n\n\ndnorm(x=100, mean=100, sd=10)\n\n[1] 0.03989423\n\n\n\nCumulative probability at the point: prob-ty to obtain value less than specified\n\n\npnorm(q = 80, mean=100, sd=10) # prob to obtain any value less than 80\n\n[1] 0.02275013\n\npnorm(q = c(70,80,90,110,120,130), mean=100, sd=10)\n\n[1] 0.001349898 0.022750132 0.158655254 0.841344746 0.977249868 0.998650102\n\n\n\nValue corresponding to specified cumulative probability\n\n\nqnorm(p = c(0.003, 0.05, 0.16, 0.84, 0.95, 0.997), mean=100, sd=10)\n\n[1]  72.52219  83.55146  90.05542 109.94458 116.44854 127.47781"
   },
   {
     "objectID": "presentations/distributions.html#functions-for-other-distributions",
     "href": "presentations/distributions.html#functions-for-other-distributions",
-    "title": "Distributions",
+    "title": "Visualization sins and Distributions",
     "section": "Functions (for other distributions)",
     "text": "Functions (for other distributions)\nUniform\n\nrunif(n, min, max)\ndunif(n, min, max)\npunif(n, min, max)\nqunif(n, min, max)\n\nBinomial\n\nrbinom(n, size, prob)\ndbinom(n, size, prob)\npbinom(n, size, prob)\nqbinom(n, size, prob)\n\nPoisson\n\nrpois(n, lambda)\ndpois(n, lambda)\nppois(n, lambda)\nqpois(n, lambda)"
   },
   {
     "objectID": "presentations/distributions.html#descriptive-sample-statistics",
     "href": "presentations/distributions.html#descriptive-sample-statistics",
-    "title": "Distributions",
+    "title": "Visualization sins and Distributions",
     "section": "Descriptive sample statistics",
     "text": "Descriptive sample statistics\nCentral tendency\n\nMean - \\(\\bar{X} = \\frac{x_1 + x_2 + ... x_N}{N}\\)\n\n\nmean(x)\n\n\nMedian - the \\(N/2\\)-th element in list of sorted values \\(\\{x_1, x_2, ..., \\pmb{x_{N/2}},...,x_{N-1}, x_N\\}\\), where for any \\(i\\): \\(x_{i-1} &lt; x_i\\)\n\n\nmedian(x)\n\n\nMode - The most frequent value one of the methods:\nonly for discrete data:\n\n\nx %&gt;% table() %&gt;% sort(decreasing = T) %&gt;% head(1) %&gt;% names() %&gt;% as.numeric()\n\n\n\n\nThey are equal for a normal distribution"
   },
   {
     "objectID": "presentations/distributions.html#descriptive-sample-statistics-1",
     "href": "presentations/distributions.html#descriptive-sample-statistics-1",
-    "title": "Distributions",
+    "title": "Visualization sins and Distributions",
     "section": "Descriptive sample statistics",
     "text": "Descriptive sample statistics\nBimodal data"
   },
   {
     "objectID": "presentations/distributions.html#descriptive-sample-statistics-2",
     "href": "presentations/distributions.html#descriptive-sample-statistics-2",
-    "title": "Distributions",
+    "title": "Visualization sins and Distributions",
     "section": "Descriptive sample statistics",
     "text": "Descriptive sample statistics\nExponential distribution"
   },
   {
     "objectID": "presentations/distributions.html#descriptive-sample-statistics-3",
     "href": "presentations/distributions.html#descriptive-sample-statistics-3",
-    "title": "Distributions",
+    "title": "Visualization sins and Distributions",
     "section": "Descriptive sample statistics",
     "text": "Descriptive sample statistics\nOutliers\nMean is more sensitive to outliers"
   },
   {
     "objectID": "presentations/distributions.html#by-the-way-what-to-do-about-outliers",
     "href": "presentations/distributions.html#by-the-way-what-to-do-about-outliers",
-    "title": "Distributions",
+    "title": "Visualization sins and Distributions",
     "section": "By the way, what to do about outliers?",
     "text": "By the way, what to do about outliers?\nNothing\n\nIf they still contain some information. \n\nDelete\n\nIf there are few of them.\nThis is an obvious error and you are sure they do not contain valuable information"
   },
   {
     "objectID": "presentations/distributions.html#descriptive-sample-statistics-4",
     "href": "presentations/distributions.html#descriptive-sample-statistics-4",
-    "title": "Distributions",
+    "title": "Visualization sins and Distributions",
     "section": "Descriptive sample statistics",
     "text": "Descriptive sample statistics\nVariance and Standard deviation\n\\(Var(X) = S^2 = \\dfrac{((x_1 - \\bar{X})^2 + (x_2 - \\bar{X})^2 + ... + (x_N - \\bar{X})^2)}{N-1} = \\dfrac{\\sum{(x_i - \\bar{X})^2}}{N-1}\\)\n\nvar(x)\n\n\\(SD(X) = S = \\sqrt{\\dfrac{\\sum{(x_i - \\bar{X})^2}}{N-1}}\\)\n\nsd(x)\n\n\nFor the population variance in the denominator of the formula is \\(N\\), not \\(N-1\\)"
   },
   {
     "objectID": "presentations/distributions.html#descriptive-sample-statistics-5",
     "href": "presentations/distributions.html#descriptive-sample-statistics-5",
-    "title": "Distributions",
+    "title": "Visualization sins and Distributions",
     "section": "Descriptive sample statistics",
     "text": "Descriptive sample statistics\nQuantiles\nQuantiles - values less than which \\(X\\)% of the data in the distribution is found - For example, 0.75 quntile is the value that is greater of 75% of values in sample, but lower than another 25% of sample values\n\nquantile(x probs = 0.75)\n\n\nQuartiles are 0.25,0.5,0.75 quantiles\n\n\nquantile(x, probs = c(0.25, 0.5, 0.75))\n\n\nPercentiles are 1-100% qunatiles\n\n\nquantile(x, probs = seq(0.01,1,0.01))\n\n\nMedian is a 0.5 quantile (2nd quartile)"
   },
@@ -845,5 +845,68 @@
     "title": "Working with Dataframes",
     "section": "Slice_head()",
     "text": "Slice_head()\nalmost the same as basic head(), but it is more suitable for grouped data:\n\nstudents_tibble %&gt;% group_by(Stress_Level) %&gt;% slice_head(n=3)\n\n# A tibble: 9 × 7\n# Groups:   Stress_Level [3]\n  Study_Hours_Per_Day Extracurricular_Hours_Per_Day Sleep_Hours_Per_Day\n                &lt;dbl&gt;                         &lt;dbl&gt;               &lt;dbl&gt;\n1                 8.1                           0.6                 6.5\n2                 8                             0.7                 5.3\n3                 8.4                           1.8                 5.6\n4                 5.3                           3.5                 8  \n5                 5.1                           3.9                 9.2\n6                 5.2                           3.6                 6.3\n7                 6.9                           3.8                 8.7\n8                 6.5                           2.1                 7.2\n9                 6                             2.1                 8  \n# ℹ 4 more variables: Social_Hours_Per_Day &lt;dbl&gt;,\n#   Physical_Activity_Hours_Per_Day &lt;dbl&gt;, GPA &lt;dbl&gt;, Stress_Level &lt;fct&gt;\n\n\nHere we sliced first 3 rows for data in each group"
+  },
+  {
+    "objectID": "presentations/distributions.html#visualization-sins",
+    "href": "presentations/distributions.html#visualization-sins",
+    "title": "Visualization sins and Distributions",
+    "section": "Visualization sins",
+    "text": "Visualization sins\nPartly taken from\n\nFriends Don’t Let Friends Make Bad Graphs\nMisinformed By Visualization\n\nI highly recommend to visit this web-pages!"
+  },
+  {
+    "objectID": "presentations/distributions.html#visualization-sins-1",
+    "href": "presentations/distributions.html#visualization-sins-1",
+    "title": "Visualization sins and Distributions",
+    "section": "Visualization sins",
+    "text": "Visualization sins\nPartly taken from\n\nFriends Don’t Let Friends Make Bad Graphs\nMisinformed By Visualization\n\nI highly recommend to visit this web-pages!"
+  },
+  {
+    "objectID": "presentations/distributions.html#visualization-sins-2",
+    "href": "presentations/distributions.html#visualization-sins-2",
+    "title": "Visualization sins and Distributions",
+    "section": "Visualization sins",
+    "text": "Visualization sins\nJust messy plot. What’s going on…?"
+  },
+  {
+    "objectID": "presentations/distributions.html#visualization-sins-3",
+    "href": "presentations/distributions.html#visualization-sins-3",
+    "title": "Visualization sins and Distributions",
+    "section": "Visualization sins",
+    "text": "Visualization sins\nPie-chart == evil"
+  },
+  {
+    "objectID": "presentations/distributions.html#visualization-sins-4",
+    "href": "presentations/distributions.html#visualization-sins-4",
+    "title": "Visualization sins and Distributions",
+    "section": "Visualization sins",
+    "text": "Visualization sins\n3D = Don’t Do 3D"
+  },
+  {
+    "objectID": "presentations/distributions.html#visualization-sins-5",
+    "href": "presentations/distributions.html#visualization-sins-5",
+    "title": "Visualization sins and Distributions",
+    "section": "Visualization sins",
+    "text": "Visualization sins\n3D = Don’t Do 3D\nTwice bad"
+  },
+  {
+    "objectID": "presentations/distributions.html#visualization-sins-6",
+    "href": "presentations/distributions.html#visualization-sins-6",
+    "title": "Visualization sins and Distributions",
+    "section": "Visualization sins",
+    "text": "Visualization sins\nDon’t misinform!"
+  },
+  {
+    "objectID": "presentations/distributions.html#visualization-sins-7",
+    "href": "presentations/distributions.html#visualization-sins-7",
+    "title": "Visualization sins and Distributions",
+    "section": "Visualization sins",
+    "text": "Visualization sins\nDon’t misinform!"
+  },
+  {
+    "objectID": "presentations/distributions.html#visualization-sins-8",
+    "href": "presentations/distributions.html#visualization-sins-8",
+    "title": "Visualization sins and Distributions",
+    "section": "Visualization sins",
+    "text": "Visualization sins\nBut don’t do meaningless plots"
   }
 ]

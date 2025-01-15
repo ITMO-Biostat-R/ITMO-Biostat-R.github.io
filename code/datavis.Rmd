@@ -16,7 +16,7 @@ editor_options:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, fig.width = 6, fig.height = 5)
+knitr::opts_chunk$set(echo = TRUE, dpi = 300, fig.width = 5, fig.height = 4)
 ```
 
 # Introduction
@@ -99,6 +99,16 @@ plot(iris_df$Sepal.Length, iris_df$Sepal.Width,
      ) 
 ```
 
+### All plot() style parameters
+
+![](../images/settings.png){width="1000"}
+
+#### All basic R graphical parameters
+
+::: {collapse="'true'"}
+![](../images/general-plot-parameters.png)
+:::
+
 ### Adding lines
 
 By default `plot()` shows scatter plot, but we can change this behavior
@@ -117,7 +127,11 @@ Line graphs should sometimes be avoided, because **lines connect points in the o
 ```{r}
 x = c(10,5,9,6,8,7,2,1,4,3)
 y = c(1:4, 6:8,5,10,9)
+x
+y
+```
 
+```{r}
 plot(x, y, type = "b",  pch=19)
 ```
 
@@ -128,8 +142,10 @@ df = data.frame(x, y) %>% arrange(x)
 plot(df$x, df$y,type = "b", pch=19)
 ```
 
+> *ggplot2 doesn't have such problem*
+
 ```{r collapse=TRUE}
-# Advanced
+# basic r advanced
 
 # indexes_to_sort = order(x)
 # x_sorted = x[indexes_to_sort]
@@ -137,20 +153,22 @@ plot(df$x, df$y,type = "b", pch=19)
 # plot(x_sorted, y_sorted, type = "b", pch=19)
 ```
 
-> **NB!** We can't just sort one of the vectors because we must save the correspondence of x and y coordinates between two vectors.
-
-### All plot() style parameters
-
-![](../images/settings.png){width="1000"}
+> **NB!** We can't just sort one of the vectors because we **must save the correspondence of x and y** coordinates between two vectors.
 
 ## Bar Plots
 
 ```{r}
-heights = c(Roman = 190, Ann = 172, Charlie = 121) # named vector
+heights = c(Roman = 190, 
+            Ann = 172, 
+            Charlie = 121,
+            Vlad = 183,
+            Sasha = 180) # named vector
+heights 
+heights = heights %>% sort(decreasing = T)
 barplot(heights)
 ```
 
-We can make this graph prettier
+We can customize this graph
 
 ```{r}
 barplot(heights, 
@@ -187,7 +205,7 @@ hist(iris_df$Sepal.Length, # only x-axis!
      )
 ```
 
-**Each bar represents frequency of iris_dfes with this particular `Sepal.Length`.\
+**Each bar represents frequency of this particular `Sepal.Length` in dataset.\
 For example, first bar have height of 5 - it mean, that there are 5 flowers with `Sepal.Length` between 4 and 4.5.**
 
 We can make bars two times thinner
@@ -232,17 +250,11 @@ boxplot(iris_df$Sepal.Length ~ iris_df$Species,
 
 ![](../images/boxplot_bad.png){width="800"}
 
-## All basic R functions
-
-::: {collapse="'true'"}
-![](../images/general-plot-parameters.png)
-:::
-
 # ggplot
 
 **`ggplot2` is the most popular package for charts creations.**
 
-## Phylosophy
+## Philosophy
 
 -   The ggplot is based on 3 things: [**data**]{.underline}, [**aesthetics**]{.underline} and [**geoms**]{.underline} **(geomertries)**
 
@@ -282,11 +294,13 @@ p
 
 ### Adding right to the `ggplot()`
 
-```{r fig.width=8}
+```{r}
 ggplot(data=iris_df,
-       mapping = aes(x=Sepal.Length, y=Sepal.Width,
-                      color=Species, size = Petal.Width,
-                     shape=Sepal.Length.Category)) +
+       mapping = aes(x=Sepal.Length, 
+                     y=Sepal.Width,
+                     color=Species, 
+                     size = Petal.Width,
+                     shape=Sepal.Length.Category)) + 
   geom_point() 
 ```
 
@@ -327,16 +341,16 @@ iris_df %>%
 
 ### Aesthetics can also be set up within the geoms
 
+-   aesthetics inside `ggplot()` are set for **all geoms**
+
+-   aesthetics inside `geom_..()` functions are set only for this geom
+
 ```{r}
 iris_df %>% 
   ggplot() + 
   geom_histogram(aes(x=Sepal.Width),
                  bins = 20, fill='lightblue', col='black')  # <--- here
 ```
-
--   aesthetics inside `ggplot()` are set for **all geoms**
-
--   aesthetics inside `geom_..()` functions are set only for this geom
 
 ### Adding several geoms
 
@@ -498,7 +512,7 @@ p_col + geom_errorbar(aes(ymin=mean_sepal_len-sd_sepal_length,
 
 ### `geom_bar` - if heights are unknown (counting categorical data)
 
-```{r  fig.width=3}
+```{r}
 iris_df %>% ggplot(aes(x=Sepal.Length.Category, 
                        fill=Sepal.Length.Category)) + 
   geom_bar() + theme_bw() + theme(legend.position = "none")
@@ -506,7 +520,7 @@ iris_df %>% ggplot(aes(x=Sepal.Length.Category,
 
 ### `position="stack"` (by default)
 
-```{r fig.width=4}
+```{r fig.width=4, fig.height=6}
 iris_df %>% ggplot(aes(x=Sepal.Length.Category, fill=Species)) + 
   geom_bar() + theme_bw() 
 ```
