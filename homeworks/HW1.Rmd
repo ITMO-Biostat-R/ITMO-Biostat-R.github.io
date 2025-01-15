@@ -218,7 +218,7 @@ library(tidyr)
 
 -   You may be using data arranging and `head()`
 
-#### 18. Show rows of the 3 tallest and 3 the shortest elephants
+#### 18. Show rows of the 3 tallest and 3 the shortest elephants (not separately, but within one dataset)
 
 ```{r}
 ##
