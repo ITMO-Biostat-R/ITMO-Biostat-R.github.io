@@ -144,7 +144,7 @@ library(tidyr)
 
 -   Ensure the column is created inside `dataset`
 
-#### 10. Round Height in meters to two decimal places (*e.g.* 1.4567 -\> 1.46)
+#### 10. Round column `Height` in meters to two decimal places (*e.g.* 1.4567 -\> 1.46), i.e. replace values in column with rounded ones 
 
 ```{r}
 #
