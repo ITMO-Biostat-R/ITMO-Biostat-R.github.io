@@ -95,7 +95,7 @@ plot(iris_df$Sepal.Length, iris_df$Sepal.Width,
      ylab = "Sepal.Width", # Label of Y-axis 
      col = "blue", # color of plot
      pch = 19, # type of dots - 19 corresponds to the painted (solid) points
-     cex = 1, # size of dots
+     cex = 1 # size of dots
      ) 
 ```
 
@@ -555,7 +555,7 @@ ggplot(iris, aes(x = Species, y = Sepal.Length)) +
 
 ```{r}
 ggsave(
-  filename = 'lec_output/bigplot.png', # specify the filename (path to file)
+  filename = 'code/lec_output/bigplot.png', # specify the filename (path to file)
   device = , # png, pdf, jpeg, svg and others
   dpi = 320, # resolution
   width = 1800,
@@ -567,7 +567,7 @@ ggsave(
 ### Save "everything between"
 
 ```{r}
-pdf("lec_output/dodge_barplot.pdf", width = 6, height = 6)
+pdf("code/lec_output/dodge_barplot.pdf", width = 6, height = 6)
 
 iris_df %>% ggplot(aes(fill=Species, x=Sepal.Length.Category)) + 
   geom_bar(position = 'dodge')
