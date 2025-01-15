@@ -10,7 +10,7 @@
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.5.57">
 
-  <title>Biostatistics in R – Distributions</title>
+  <title>Biostatistics in R – Visualization sins and Distributions</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -390,10 +390,80 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Distributions</h1>
+  <h1 class="title">Visualization sins and Distributions</h1>
 
 <div class="quarto-title-authors">
 </div>
+
+</section>
+<section>
+<section id="visualization-sins" class="title-slide slide level1 center" data-auto-animate="true">
+<h1 data-id="quarto-animate-title">Visualization sins</h1>
+
+</section>
+<section id="visualization-sins-1" class="slide level2 center" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Visualization sins</h2>
+<p>Partly taken from</p>
+<ol type="1">
+<li><a href="https://github.com/cxli233/FriendsDontLetFriends"><strong>Friends Don’t Let Friends Make Bad Graphs</strong></a></li>
+<li><a href="https://leoyuholo.com/bad-vis-browser/index.html"><strong>Misinformed By Visualization</strong></a></li>
+</ol>
+<p><strong>I highly recommend to visit this web-pages!</strong></p>
+</section>
+<section class="slide level2 center">
+
+<h3 id="just-messy-plot.-whats-going-on">Just messy plot. What’s going on…?</h3>
+
+<img data-src="../images/memes/justmessUSA.jpg" class="quarto-figure quarto-figure-center r-stretch" width="600"></section>
+<section class="slide level2 center">
+
+<h3 id="just-messy-plot.-whats-going-on-1">Just messy plot. What’s going on…?</h3>
+
+<img data-src="../images/memes/barcolor.jpg" class="quarto-figure quarto-figure-center r-stretch" width="600"></section>
+<section class="slide level2 center">
+
+<h3 id="pie-chart-evil"><code>Pie-chart == evil</code></h3>
+
+<img data-src="../images/memes/pie.svg" class="quarto-figure quarto-figure-center r-stretch" width="800"></section>
+<section class="slide level2 center">
+
+<h3 id="d-dont-do-3d"><strong>3D = <u>D</u>on’t <u>D</u>o 3<u>D</u></strong></h3>
+
+<img data-src="../images/memes/3dbar.jpg" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section class="slide level2 center">
+
+<h3 id="d-dont-do-3d-1"><strong>3D = Don’t Do 3D</strong></h3>
+<p><strong>Twice bad</strong></p>
+
+<img data-src="../images/memes/3dpie.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section class="slide level2 center">
+
+<h3 id="dont-misinform">Don’t misinform!</h3>
+
+<img data-src="../images/memes/misleadbarplot.jpg" class="quarto-figure quarto-figure-center r-stretch" width="600"></section>
+<section class="slide level2 center">
+
+<h3 id="dont-misinform-1">Don’t misinform!</h3>
+
+<img data-src="../images/memes/misleadcorrectbar.png" class="quarto-figure quarto-figure-center r-stretch" width="600"></section>
+<section class="slide level2 center">
+
+<h3 id="however-dont-do-meaningless-graphs">However, don’t do meaningless graphs</h3>
+
+<img data-src="../images/memes/lineaxisscale.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section class="slide level2 center">
+
+<h3 id="dont-use-box-plots-and-violin-plots-for-small-data">Don’t use <u>Box plots</u> and <u>Violin plots</u> for small data</h3>
+
+<img data-src="../images/memes/smallsample.png" class="quarto-figure quarto-figure-center r-stretch" width="2000"></section>
+<section class="slide level2 center">
+
+<h3 id="dont-use-histograms-for-small-data">Don’t use <u>Histograms</u> for small data</h3>
+
+<img data-src="../images/memes/smallsample_hist.png" class="quarto-figure quarto-figure-center r-stretch" width="2000"></section></section>
+<section>
+<section id="distributions" class="title-slide slide level1 center">
+<h1>Distributions</h1>
 
 </section>
 <section id="types-of-data" class="slide level2 center">
@@ -451,13 +521,12 @@
 <h2 data-id="quarto-animate-title">Normal distribution</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<p>Normal distribution is bell shaped, have equal mean (<span class="math inline">\(\mu\)</span>), median, mode. “Width” depends on standard deviation (<span class="math inline">\(\sigma\)</span>).</p>
+<p>Normal distribution is bell shaped, have equal mean (<span class="math inline">\(\mu\)</span>), median, mode. “Width” depends on standard deviation (<span class="math inline">\(\sigma\)</span>). <strong>Continious (!)</strong></p>
 </div><div class="column" style="width:50%;">
 <p><span class="math inline">\(P(x) = \frac{1}{{\sigma \sqrt{2\pi} }}e^{{\frac{ -\left( {x - \mu } \right)^2 }{2\sigma ^2 }}}\)</span>,</p>
 <p>parameters are mean (<span class="math inline">\(\mu\)</span>) and sigma (<span class="math inline">\(\sigma\)</span>)</p>
 </div></div>
 
-<!-- ------------------------------------------------------------------------ -->
 <img data-src="distributions_files/figure-revealjs/unnamed-chunk-4-1.png" width="768" class="r-stretch"></section>
 <section id="normal-distribution-1" class="slide level2 center" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Normal distribution</h2>
@@ -473,7 +542,7 @@
 <h2>Uniform distribution</h2>
 <div class="columns">
 <div class="column" style="width:70%;">
-<p>Simple distribution of equally possible values</p>
+<p>Simple distribution of equally possible values. <strong>Continious (!).</strong></p>
 </div><div class="column" style="width:30%;">
 <p><span class="math inline">\(P(x) = \frac{1}{a-b}\)</span></p>
 <ul>
@@ -501,6 +570,7 @@
 <span class="math inline">\(P(0) = 1-p\)</span>,</p>
 <p>where <span class="math inline">\(p\)</span> - “success” probability. It is the only parameter of the distribution</p>
 <p>Imagine, that <span class="math inline">\(p\)</span> is a probability of an head on a coin toss (1 - head, 0 - tails). Then The distribution will be like in the barplot on the left.</p>
+<p><strong>Discrete (!)</strong></p>
 </div></div>
 </section>
 <section id="binomial-distribution" class="slide level2 center" data-auto-animate="true">
@@ -524,10 +594,9 @@
 <li><span class="math inline">\(k\)</span> - observed successes</li>
 </ul>
 </div></div>
-<p>Distribution is based on the <strong>number of successes in a sequence of experiments</strong>.</p>
+<p>Distribution is based on the <strong>number of successes in a sequence of experiments</strong>. <strong>Discrete (!)</strong></p>
 <p>If we flip a coin, the binomial distribution represents the number of successes after we flip the coin a certain number of times (e.g.&nbsp;10).</p>
 <p>The histogram above shows the distribution of 10000 experiments on trying to get an head coin for a certain number of times by flipping it 10 times</p>
-<!-- ------------------------------------------------------------------------ -->
 </section>
 <section id="binomial-distribution-1" class="slide level2 center" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Binomial distribution</h2>
@@ -537,7 +606,7 @@
 <section id="poisson-distribution" class="slide level2 center" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Poisson distribution</h2>
 <p><em>Binomial</em>, but <span class="math inline">\(n \rightarrow \infty\)</span>,, therefore we don’t utilize number of trials (<span class="math inline">\(n\)</span>).<br>
-Now we use “<strong>time interval</strong>” and <strong>expected number of successes</strong> (<span class="math inline">\(\lambda\)</span>) during this interval</p>
+Now we use “<strong>time interval</strong>” and <strong>expected number of successes</strong> (<span class="math inline">\(\lambda\)</span>) during this interval. <strong>Still Discrete (!)</strong></p>
 <div class="columns">
 <div class="column" style="width:70%;">
 <div class="cell">
@@ -578,7 +647,7 @@ Now we use “<strong>time interval</strong>” and <strong>expected number of s
 <div class="cell large-code">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">rnorm</span>(<span class="at">n=</span><span class="dv">5</span>, <span class="at">mean=</span><span class="dv">100</span>, <span class="at">sd=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 103.64035 103.18104  78.58997 118.51944 107.48427</code></pre>
+<pre><code>[1]  94.52242  93.61846  92.18032 117.75406 114.43486</code></pre>
 </div>
 </div>
 <ol start="2" type="1">
@@ -735,7 +804,7 @@ Now we use “<strong>time interval</strong>” and <strong>expected number of s
 
 </div>
 </div>
-</section>
+</section></section>
     </div>
   </div>
 

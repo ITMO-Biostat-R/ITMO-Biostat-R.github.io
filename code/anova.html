@@ -255,9 +255,9 @@ window.Quarto = {
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>anova_result <span class="ot">&lt;-</span> <span class="fu">aov</span>(yield <span class="sc">~</span> fertilizer, <span class="at">data =</span> data)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(anova_result)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>            Df Sum Sq Mean Sq F value Pr(&gt;F)  
-fertilizer   2  120.0    60.0   3.681 0.0386 *
-Residuals   27  440.1    16.3                 
+<pre><code>            Df Sum Sq Mean Sq F value   Pr(&gt;F)    
+fertilizer   2  190.2   95.12   12.05 0.000182 ***
+Residuals   27  213.1    7.89                     
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
@@ -275,9 +275,9 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <pre><code>Anova Table (Type II tests)
 
 Response: yield
-           Sum Sq Df F value  Pr(&gt;F)  
-fertilizer 120.00  2  3.6808 0.03858 *
-Residuals  440.11 27                  
+           Sum Sq Df F value    Pr(&gt;F)    
+fertilizer 190.24  2  12.053 0.0001816 ***
+Residuals  213.08 27                      
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
@@ -300,7 +300,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
     Kruskal-Wallis rank sum test
 
 data:  yield by fertilizer
-Kruskal-Wallis chi-squared = 6.5755, df = 2, p-value = 0.03734</code></pre>
+Kruskal-Wallis chi-squared = 13.822, df = 2, p-value = 0.0009968</code></pre>
 </div>
 </div>
 
