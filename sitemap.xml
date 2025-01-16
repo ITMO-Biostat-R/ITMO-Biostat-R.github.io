@@ -2,39 +2,43 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://ITMO-Biostat-R.github.io/presentations/distributions.html</loc>
-    <lastmod>2025-01-15T18:20:10.183Z</lastmod>
+    <lastmod>2025-01-16T21:29:28.438Z</lastmod>
   </url>
   <url>
     <loc>https://ITMO-Biostat-R.github.io/code/stats.html</loc>
     <lastmod>2025-01-08T23:32:41.385Z</lastmod>
   </url>
   <url>
-    <loc>https://ITMO-Biostat-R.github.io/code/datavis.html</loc>
-    <lastmod>2025-01-15T18:52:29.928Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ITMO-Biostat-R.github.io/code/basic_r.html</loc>
-    <lastmod>2025-01-14T12:27:45.253Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ITMO-Biostat-R.github.io/code/stats_intro.html</loc>
-    <lastmod>2024-12-25T03:21:09.319Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ITMO-Biostat-R.github.io/code/anova.html</loc>
-    <lastmod>2025-01-05T15:42:48.435Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ITMO-Biostat-R.github.io/homeworks/HW1.html</loc>
-    <lastmod>2025-01-15T22:25:46.268Z</lastmod>
+    <loc>https://ITMO-Biostat-R.github.io/index.html</loc>
+    <lastmod>2025-01-16T21:46:03.628Z</lastmod>
   </url>
   <url>
     <loc>https://ITMO-Biostat-R.github.io/homeworks/HW2.html</loc>
     <lastmod>2025-01-15T12:34:36.047Z</lastmod>
   </url>
   <url>
-    <loc>https://ITMO-Biostat-R.github.io/index.html</loc>
-    <lastmod>2025-01-15T18:53:35.968Z</lastmod>
+    <loc>https://ITMO-Biostat-R.github.io/homeworks/HW1.html</loc>
+    <lastmod>2025-01-15T22:25:46.268Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ITMO-Biostat-R.github.io/code/anova.html</loc>
+    <lastmod>2025-01-05T15:42:48.435Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ITMO-Biostat-R.github.io/code/stats_intro.html</loc>
+    <lastmod>2024-12-25T03:21:09.319Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ITMO-Biostat-R.github.io/code/basic_r.html</loc>
+    <lastmod>2025-01-14T12:27:45.253Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ITMO-Biostat-R.github.io/code/datavis.html</loc>
+    <lastmod>2025-01-16T21:28:06.692Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ITMO-Biostat-R.github.io/presentations/visual_sins_inspiration.html</loc>
+    <lastmod>2025-01-16T21:43:42.779Z</lastmod>
   </url>
   <url>
     <loc>https://ITMO-Biostat-R.github.io/code/advanced_df.html</loc>

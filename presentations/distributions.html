@@ -10,7 +10,7 @@
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.5.57">
 
-  <title>Biostatistics in R – Visualization sins and Distributions</title>
+  <title>Biostatistics in R – Distributions</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -390,80 +390,10 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Visualization sins and Distributions</h1>
+  <h1 class="title">Distributions</h1>
 
 <div class="quarto-title-authors">
 </div>
-
-</section>
-<section>
-<section id="visualization-sins" class="title-slide slide level1 center" data-auto-animate="true">
-<h1 data-id="quarto-animate-title">Visualization sins</h1>
-
-</section>
-<section id="visualization-sins-1" class="slide level2 center" data-auto-animate="true">
-<h2 data-id="quarto-animate-title">Visualization sins</h2>
-<p>Partly taken from</p>
-<ol type="1">
-<li><a href="https://github.com/cxli233/FriendsDontLetFriends"><strong>Friends Don’t Let Friends Make Bad Graphs</strong></a></li>
-<li><a href="https://leoyuholo.com/bad-vis-browser/index.html"><strong>Misinformed By Visualization</strong></a></li>
-</ol>
-<p><strong>I highly recommend to visit this web-pages!</strong></p>
-</section>
-<section class="slide level2 center">
-
-<h3 id="just-messy-plot.-whats-going-on">Just messy plot. What’s going on…?</h3>
-
-<img data-src="../images/memes/justmessUSA.jpg" class="quarto-figure quarto-figure-center r-stretch" width="600"></section>
-<section class="slide level2 center">
-
-<h3 id="just-messy-plot.-whats-going-on-1">Just messy plot. What’s going on…?</h3>
-
-<img data-src="../images/memes/barcolor.jpg" class="quarto-figure quarto-figure-center r-stretch" width="600"></section>
-<section class="slide level2 center">
-
-<h3 id="pie-chart-evil"><code>Pie-chart == evil</code></h3>
-
-<img data-src="../images/memes/pie.svg" class="quarto-figure quarto-figure-center r-stretch" width="800"></section>
-<section class="slide level2 center">
-
-<h3 id="d-dont-do-3d"><strong>3D = <u>D</u>on’t <u>D</u>o 3<u>D</u></strong></h3>
-
-<img data-src="../images/memes/3dbar.jpg" class="quarto-figure quarto-figure-center r-stretch"></section>
-<section class="slide level2 center">
-
-<h3 id="d-dont-do-3d-1"><strong>3D = Don’t Do 3D</strong></h3>
-<p><strong>Twice bad</strong></p>
-
-<img data-src="../images/memes/3dpie.png" class="quarto-figure quarto-figure-center r-stretch"></section>
-<section class="slide level2 center">
-
-<h3 id="dont-misinform">Don’t misinform!</h3>
-
-<img data-src="../images/memes/misleadbarplot.jpg" class="quarto-figure quarto-figure-center r-stretch" width="600"></section>
-<section class="slide level2 center">
-
-<h3 id="dont-misinform-1">Don’t misinform!</h3>
-
-<img data-src="../images/memes/misleadcorrectbar.png" class="quarto-figure quarto-figure-center r-stretch" width="600"></section>
-<section class="slide level2 center">
-
-<h3 id="however-dont-do-meaningless-graphs">However, don’t do meaningless graphs</h3>
-
-<img data-src="../images/memes/lineaxisscale.png" class="quarto-figure quarto-figure-center r-stretch"></section>
-<section class="slide level2 center">
-
-<h3 id="dont-use-box-plots-and-violin-plots-for-small-data">Don’t use <u>Box plots</u> and <u>Violin plots</u> for small data</h3>
-
-<img data-src="../images/memes/smallsample.png" class="quarto-figure quarto-figure-center r-stretch" width="2000"></section>
-<section class="slide level2 center">
-
-<h3 id="dont-use-histograms-for-small-data">Don’t use <u>Histograms</u> for small data</h3>
-
-<img data-src="../images/memes/smallsample_hist.png" class="quarto-figure quarto-figure-center r-stretch" width="2000"></section></section>
-<section>
-<section id="distributions" class="title-slide slide level1 center">
-<h1>Distributions</h1>
 
 </section>
 <section id="types-of-data" class="slide level2 center">
@@ -647,7 +577,7 @@ Now we use “<strong>time interval</strong>” and <strong>expected number of s
 <div class="cell large-code">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">rnorm</span>(<span class="at">n=</span><span class="dv">5</span>, <span class="at">mean=</span><span class="dv">100</span>, <span class="at">sd=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 120.17333  82.40169 100.00227 107.20341 106.01711</code></pre>
+<pre><code>[1] 100.3732 110.9025 102.7433 101.4832 102.6989</code></pre>
 </div>
 </div>
 <ol start="2" type="1">
@@ -804,7 +734,7 @@ Now we use “<strong>time interval</strong>” and <strong>expected number of s
 
 </div>
 </div>
-</section></section>
+</section>
     </div>
   </div>
 
