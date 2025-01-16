@@ -542,13 +542,13 @@ window.Quarto = {
     One Sample t-test
 
 data:  x
-t = 3.1011, df = 9, p-value = 0.0127
+t = 2.242, df = 9, p-value = 0.05168
 alternative hypothesis: true mean is not equal to 0
 95 percent confidence interval:
- 0.5576547 3.5650969
+ -0.01048605  2.33929994
 sample estimates:
 mean of x 
- 2.061376 </code></pre>
+ 1.164407 </code></pre>
 </div>
 </div>
 <p><strong>Example on two samples:</strong></p>
@@ -561,13 +561,13 @@ mean of x
     Welch Two Sample t-test
 
 data:  x1 and x2
-t = 0.73231, df = 10.85, p-value = 0.4795
+t = 1.2087, df = 9.9699, p-value = 0.2547
 alternative hypothesis: true difference in means is not equal to 0
 95 percent confidence interval:
- -2.859794  5.704484
+ -2.515250  8.474077
 sample estimates:
-  mean of x   mean of y 
- 0.06522023 -1.35712433 </code></pre>
+mean of x mean of y 
+ 1.730189 -1.249224 </code></pre>
 </div>
 </div>
 <p><u><strong>Our <em>plant and sunlight</em> data:</strong></u></p>
@@ -579,13 +579,13 @@ sample estimates:
     Welch Two Sample t-test
 
 data:  height by group
-t = -4.3373, df = 55.587, p-value = 6.132e-05
+t = -5.0292, df = 55.054, p-value = 5.571e-06
 alternative hypothesis: true difference in means between group Shade and group Sunlight is not equal to 0
 95 percent confidence interval:
- -4.199788 -1.545694
+ -4.008226 -1.724056
 sample estimates:
    mean in group Shade mean in group Sunlight 
-              12.18870               15.06145 </code></pre>
+              12.17322               15.03936 </code></pre>
 </div>
 </div>
 <ul>
@@ -2036,7 +2036,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/ITMO-Biostat-R\.github\.io\/");
+      var filterRegex = new RegExp('/' + window.location.host + '/');
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }

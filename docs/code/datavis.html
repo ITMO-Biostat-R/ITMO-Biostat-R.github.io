@@ -232,7 +232,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#statisctics-inside" id="toc-statisctics-inside" class="nav-link" data-scroll-target="#statisctics-inside">Statisctics inside!</a></li>
   </ul></li>
   </ul></li>
-  <li><a href="#choose-the-plot-for-your-data-data-to-viz.com" id="toc-choose-the-plot-for-your-data-data-to-viz.com" class="nav-link" data-scroll-target="#choose-the-plot-for-your-data-data-to-viz.com">Choose the plot for your data (data-to-viz.com)</a></li>
   <li><a href="#p.s" id="toc-p.s" class="nav-link" data-scroll-target="#p.s">P.S</a>
   <ul class="collapse">
   <li><a href="#customizing-fill---scale_fill_manual" id="toc-customizing-fill---scale_fill_manual" class="nav-link" data-scroll-target="#customizing-fill---scale_fill_manual">Customizing <code>fill</code> - <code>scale_fill_manual()</code></a></li>
@@ -1215,9 +1214,6 @@ For example, first bar have height of 5 - it mean, that there are 5 flowers with
 </section>
 </section>
 </section>
-<section id="choose-the-plot-for-your-data-data-to-viz.com" class="level1">
-<h1>Choose the plot for your data (<a href="https://www.data-to-viz.com/">data-to-viz.com</a>)</h1>
-</section>
 <section id="p.s" class="level1">
 <h1>P.S</h1>
 <section id="customizing-fill---scale_fill_manual" class="level2">
@@ -1403,7 +1399,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/ITMO-Biostat-R\.github\.io\/");
+      var filterRegex = new RegExp('/' + window.location.host + '/');
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }

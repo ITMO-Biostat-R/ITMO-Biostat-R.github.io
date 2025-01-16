@@ -1,162 +1,155 @@
 [
   {
-    "objectID": "presentations/distributions.html#visualization-sins-1",
-    "href": "presentations/distributions.html#visualization-sins-1",
-    "title": "Visualization sins and Distributions",
-    "section": "Visualization sins",
-    "text": "Visualization sins\nPartly taken from\n\nFriends Don’t Let Friends Make Bad Graphs\nMisinformed By Visualization\n\nI highly recommend to visit this web-pages!"
-  },
-  {
     "objectID": "presentations/distributions.html#types-of-data",
     "href": "presentations/distributions.html#types-of-data",
-    "title": "Visualization sins and Distributions",
+    "title": "Distributions",
     "section": "Types of Data",
     "text": "Types of Data\n\nNumerical data: Continuous (e.g., height) or discrete (e.g., number of leaves).\nCategorical data: Nominal (e.g., species, gender) or ordinal (e.g., rankings)."
   },
   {
     "objectID": "presentations/distributions.html#sampling",
     "href": "presentations/distributions.html#sampling",
-    "title": "Visualization sins and Distributions",
+    "title": "Distributions",
     "section": "Sampling",
     "text": "Sampling\nUsually we cannot take the whole population for a study.\n\nFor example, it is physically impossible to do a study using blood samples from all the people in the world. Sometimes the population is small, but it is extremely expensive to collect the material.\n\nTherefore, researchers use samples - random and representative groups taken from the general population that can be analysed to provide information about the whole population.\nThis is where statistics come to the rescue."
   },
   {
     "objectID": "presentations/distributions.html#sampling-1",
     "href": "presentations/distributions.html#sampling-1",
-    "title": "Visualization sins and Distributions",
+    "title": "Distributions",
     "section": "Sampling",
     "text": "Sampling"
   },
   {
     "objectID": "presentations/distributions.html#sampling-2",
     "href": "presentations/distributions.html#sampling-2",
-    "title": "Visualization sins and Distributions",
+    "title": "Distributions",
     "section": "Sampling",
     "text": "Sampling"
   },
   {
     "objectID": "presentations/distributions.html#normal-distribution",
     "href": "presentations/distributions.html#normal-distribution",
-    "title": "Visualization sins and Distributions",
+    "title": "Distributions",
     "section": "Normal distribution",
     "text": "Normal distribution\n\n\nNormal distribution is bell shaped, have equal mean (\\(\\mu\\)), median, mode. “Width” depends on standard deviation (\\(\\sigma\\)). Continious (!)\n\n\\(P(x) = \\frac{1}{{\\sigma \\sqrt{2\\pi} }}e^{{\\frac{ -\\left( {x - \\mu } \\right)^2 }{2\\sigma ^2 }}}\\),\nparameters are mean (\\(\\mu\\)) and sigma (\\(\\sigma\\))"
   },
   {
     "objectID": "presentations/distributions.html#normal-distribution-1",
     "href": "presentations/distributions.html#normal-distribution-1",
-    "title": "Visualization sins and Distributions",
+    "title": "Distributions",
     "section": "Normal distribution",
     "text": "Normal distribution\nParameters of normal distribution"
   },
   {
     "objectID": "presentations/distributions.html#normal-distribution-2",
     "href": "presentations/distributions.html#normal-distribution-2",
-    "title": "Visualization sins and Distributions",
+    "title": "Distributions",
     "section": "Normal distribution",
     "text": "Normal distribution\nThree sigma rule"
   },
   {
     "objectID": "presentations/distributions.html#uniform-distribution",
     "href": "presentations/distributions.html#uniform-distribution",
-    "title": "Visualization sins and Distributions",
+    "title": "Distributions",
     "section": "Uniform distribution",
     "text": "Uniform distribution\n\n\nSimple distribution of equally possible values. Continious (!).\n\n\\(P(x) = \\frac{1}{a-b}\\)\n\n\\(a\\) - starting point\n\\(b\\) - end point"
   },
   {
     "objectID": "presentations/distributions.html#bernoulli-distribution",
     "href": "presentations/distributions.html#bernoulli-distribution",
-    "title": "Visualization sins and Distributions",
+    "title": "Distributions",
     "section": "Bernoulli distribution",
     "text": "Bernoulli distribution\n\n\n\n\n\n\n\n\n\n\n\n\n\\(P(1) = p\\),\n\\(P(0) = 1-p\\),\nwhere \\(p\\) - “success” probability. It is the only parameter of the distribution\nImagine, that \\(p\\) is a probability of an head on a coin toss (1 - head, 0 - tails). Then The distribution will be like in the barplot on the left.\nDiscrete (!)"
   },
   {
     "objectID": "presentations/distributions.html#binomial-distribution",
     "href": "presentations/distributions.html#binomial-distribution",
-    "title": "Visualization sins and Distributions",
+    "title": "Distributions",
     "section": "Binomial distribution",
     "text": "Binomial distribution\n\n\n\n\n\n\n\n\n\n\n\n\n\\(P(x) = \\binom{n}{k}p^k(1-p)^{n-k}\\),\n\n\\(n\\) - number of trials (fixed)\n\\(p\\) - probability of success (fixed)\n\\(k\\) - observed successes\n\n\nDistribution is based on the number of successes in a sequence of experiments. Discrete (!)\nIf we flip a coin, the binomial distribution represents the number of successes after we flip the coin a certain number of times (e.g. 10).\nThe histogram above shows the distribution of 10000 experiments on trying to get an head coin for a certain number of times by flipping it 10 times"
   },
   {
     "objectID": "presentations/distributions.html#binomial-distribution-1",
     "href": "presentations/distributions.html#binomial-distribution-1",
-    "title": "Visualization sins and Distributions",
+    "title": "Distributions",
     "section": "Binomial distribution",
     "text": "Binomial distribution\nParameters of binomial distribution"
   },
   {
     "objectID": "presentations/distributions.html#poisson-distribution",
     "href": "presentations/distributions.html#poisson-distribution",
-    "title": "Visualization sins and Distributions",
+    "title": "Distributions",
     "section": "Poisson distribution",
     "text": "Poisson distribution\nBinomial, but \\(n \\rightarrow \\infty\\),, therefore we don’t utilize number of trials (\\(n\\)).\nNow we use “time interval” and expected number of successes (\\(\\lambda\\)) during this interval. Still Discrete (!)\n\n\n\n\n\n\n\n\n\n\n\n\n\\(P(x) = \\dfrac{\\lambda^k}{k!}e^{-\\lambda}\\), where\n\n\\(\\lambda\\) - mean or expected number of successes during the interval (fixed)\n\\(k\\) - “observed” successes"
   },
   {
     "objectID": "presentations/distributions.html#poisson-distribution-1",
     "href": "presentations/distributions.html#poisson-distribution-1",
-    "title": "Visualization sins and Distributions",
+    "title": "Distributions",
     "section": "Poisson distribution",
     "text": "Poisson distribution\nParameters of poisson distribution"
   },
   {
     "objectID": "presentations/distributions.html#functions-for-normal-distribution",
     "href": "presentations/distributions.html#functions-for-normal-distribution",
-    "title": "Visualization sins and Distributions",
+    "title": "Distributions",
     "section": "Functions (for normal distribution)",
-    "text": "Functions (for normal distribution)\n\n\n\n\nRandom values from distribution\n\n\nrnorm(n=5, mean=100, sd=10)\n\n[1] 104.95717  86.24643  90.94143  86.30897 104.55492\n\n\n\nDensity (the height of histogram) at the point\n\n\ndnorm(x=100, mean=100, sd=10)\n\n[1] 0.03989423\n\n\n\nCumulative probability at the point: prob-ty to obtain value less than specified\n\n\npnorm(q = 80, mean=100, sd=10) # prob to obtain any value less than 80\n\n[1] 0.02275013\n\npnorm(q = c(70,80,90,110,120,130), mean=100, sd=10)\n\n[1] 0.001349898 0.022750132 0.158655254 0.841344746 0.977249868 0.998650102\n\n\n\nValue corresponding to specified cumulative probability\n\n\nqnorm(p = c(0.003, 0.05, 0.16, 0.84, 0.95, 0.997), mean=100, sd=10)\n\n[1]  72.52219  83.55146  90.05542 109.94458 116.44854 127.47781"
+    "text": "Functions (for normal distribution)\n\n\n\n\nRandom values from distribution\n\n\nrnorm(n=5, mean=100, sd=10)\n\n[1]  99.57482 112.27003  75.33386  90.14753 120.59206\n\n\n\nDensity (the height of histogram) at the point\n\n\ndnorm(x=100, mean=100, sd=10)\n\n[1] 0.03989423\n\n\n\nCumulative probability at the point: prob-ty to obtain value less than specified\n\n\npnorm(q = 80, mean=100, sd=10) # prob to obtain any value less than 80\n\n[1] 0.02275013\n\npnorm(q = c(70,80,90,110,120,130), mean=100, sd=10)\n\n[1] 0.001349898 0.022750132 0.158655254 0.841344746 0.977249868 0.998650102\n\n\n\nValue corresponding to specified cumulative probability\n\n\nqnorm(p = c(0.003, 0.05, 0.16, 0.84, 0.95, 0.997), mean=100, sd=10)\n\n[1]  72.52219  83.55146  90.05542 109.94458 116.44854 127.47781"
   },
   {
     "objectID": "presentations/distributions.html#functions-for-other-distributions",
     "href": "presentations/distributions.html#functions-for-other-distributions",
-    "title": "Visualization sins and Distributions",
+    "title": "Distributions",
     "section": "Functions (for other distributions)",
     "text": "Functions (for other distributions)\nUniform\n\nrunif(n, min, max)\ndunif(n, min, max)\npunif(n, min, max)\nqunif(n, min, max)\n\nBinomial\n\nrbinom(n, size, prob)\ndbinom(n, size, prob)\npbinom(n, size, prob)\nqbinom(n, size, prob)\n\nPoisson\n\nrpois(n, lambda)\ndpois(n, lambda)\nppois(n, lambda)\nqpois(n, lambda)"
   },
   {
     "objectID": "presentations/distributions.html#descriptive-sample-statistics",
     "href": "presentations/distributions.html#descriptive-sample-statistics",
-    "title": "Visualization sins and Distributions",
+    "title": "Distributions",
     "section": "Descriptive sample statistics",
     "text": "Descriptive sample statistics\nCentral tendency\n\nMean - \\(\\bar{X} = \\frac{x_1 + x_2 + ... x_N}{N}\\)\n\n\nmean(x)\n\n\nMedian - the \\(N/2\\)-th element in list of sorted values \\(\\{x_1, x_2, ..., \\pmb{x_{N/2}},...,x_{N-1}, x_N\\}\\), where for any \\(i\\): \\(x_{i-1} &lt; x_i\\)\n\n\nmedian(x)\n\n\nMode - The most frequent value one of the methods:\nonly for discrete data:\n\n\nx %&gt;% table() %&gt;% sort(decreasing = T) %&gt;% head(1) %&gt;% names() %&gt;% as.numeric()\n\n\n\n\nThey are equal for a normal distribution"
   },
   {
     "objectID": "presentations/distributions.html#descriptive-sample-statistics-1",
     "href": "presentations/distributions.html#descriptive-sample-statistics-1",
-    "title": "Visualization sins and Distributions",
+    "title": "Distributions",
     "section": "Descriptive sample statistics",
     "text": "Descriptive sample statistics\nBimodal data"
   },
   {
     "objectID": "presentations/distributions.html#descriptive-sample-statistics-2",
     "href": "presentations/distributions.html#descriptive-sample-statistics-2",
-    "title": "Visualization sins and Distributions",
+    "title": "Distributions",
     "section": "Descriptive sample statistics",
     "text": "Descriptive sample statistics\nExponential distribution"
   },
   {
     "objectID": "presentations/distributions.html#descriptive-sample-statistics-3",
     "href": "presentations/distributions.html#descriptive-sample-statistics-3",
-    "title": "Visualization sins and Distributions",
+    "title": "Distributions",
     "section": "Descriptive sample statistics",
     "text": "Descriptive sample statistics\nOutliers\nMean is more sensitive to outliers"
   },
   {
     "objectID": "presentations/distributions.html#by-the-way-what-to-do-about-outliers",
     "href": "presentations/distributions.html#by-the-way-what-to-do-about-outliers",
-    "title": "Visualization sins and Distributions",
+    "title": "Distributions",
     "section": "By the way, what to do about outliers?",
     "text": "By the way, what to do about outliers?\nNothing\n\nIf they still contain some information. \n\nDelete\n\nIf there are few of them.\nThis is an obvious error and you are sure they do not contain valuable information"
   },
   {
     "objectID": "presentations/distributions.html#descriptive-sample-statistics-4",
     "href": "presentations/distributions.html#descriptive-sample-statistics-4",
-    "title": "Visualization sins and Distributions",
+    "title": "Distributions",
     "section": "Descriptive sample statistics",
     "text": "Descriptive sample statistics\nVariance and Standard deviation\n\\(Var(X) = S^2 = \\dfrac{((x_1 - \\bar{X})^2 + (x_2 - \\bar{X})^2 + ... + (x_N - \\bar{X})^2)}{N-1} = \\dfrac{\\sum{(x_i - \\bar{X})^2}}{N-1}\\)\n\nvar(x)\n\n\\(SD(X) = S = \\sqrt{\\dfrac{\\sum{(x_i - \\bar{X})^2}}{N-1}}\\)\n\nsd(x)\n\n\nFor the population variance in the denominator of the formula is \\(N\\), not \\(N-1\\)"
   },
   {
     "objectID": "presentations/distributions.html#descriptive-sample-statistics-5",
     "href": "presentations/distributions.html#descriptive-sample-statistics-5",
-    "title": "Visualization sins and Distributions",
+    "title": "Distributions",
     "section": "Descriptive sample statistics",
     "text": "Descriptive sample statistics\nQuantiles\nQuantiles - values less than which \\(X\\)% of the data in the distribution is found - For example, 0.75 quntile is the value that is greater of 75% of values in sample, but lower than another 25% of sample values\n\nquantile(x probs = 0.75)\n\n\nQuartiles are 0.25,0.5,0.75 quantiles\n\n\nquantile(x, probs = c(0.25, 0.5, 0.75))\n\n\nPercentiles are 1-100% qunatiles\n\n\nquantile(x, probs = seq(0.01,1,0.01))\n\n\nMedian is a 0.5 quantile (2nd quartile)"
   },
@@ -214,7 +207,7 @@
     "href": "code/stats.html#unpaired-t-test-for-independent-samples",
     "title": "Statistics",
     "section": "Unpaired t-test for independent samples",
-    "text": "Unpaired t-test for independent samples\n\nFormula\nCompare means of two groups: \\(t = \\dfrac{\\bar{X}_1 - \\bar{X}_2}{\\sqrt{\\frac{s_1^2}{n_1} + \\frac{s_2^2}{n_2}}}\\)\nCompare one group mean with a zero: \\(t = \\dfrac{\\bar{X}_1}{\\sqrt{\\frac{s_1^2}{n_1}}}\\)\n\n\\(\\bar{X_1}, \\bar{X_2}\\) - means of 1st and 2nd samples\n\\(s_1, s_2\\) - standard deviations of 1st and 2nd samples\n\\(n_1, n_2\\) -number of observations in samples\n\n\n\nParameter of t-distribution\nDegrees of freedom (df) - number of independent piece of information\n\nEqual to number of observations - number of groups\n\nIf two groups are compared: \\(df = N_1 + N_2 - 2\\)\nIf group mean compared with zero: \\(df = N_1 - 1\\)\n\nCalculated by another big formula for Welch t-test\n\n\n\n\nDoes sunlight exposure affect plant height?\n\nData\n\ndata_sunlight_plant = \n  data.frame(group = factor(rep(c(\"Sunlight\", \"Shade\"), each = 30)),\n             height = c(rnorm(30, mean = 15, sd = 2), \n                        rnorm(30, mean = 12, sd = 2)))\n\ndata %&gt;% str() #!\n\nfunction (..., list = character(), package = NULL, lib.loc = NULL, verbose = getOption(\"verbose\"), \n    envir = .GlobalEnv, overwrite = TRUE)  \n\n\n\nggplant = data_sunlight_plant %&gt;%  \n  ggplot(aes(x=height,fill=group)) +\n  theme_classic()\n\nggplant + geom_boxplot(aes(y=group)) + theme(legend.position = \"none\")\n\n\n\n\n\n\n\n# ggplant + geom_density(alpha=0.5)\n# ggplant + geom_histogram(alpha=0.8, binwidth=1)\n\n\n\nTesting\nExample on one sample:\n\nx = rnorm(10, 2, 2)\nt.test(x)\n\n\n    One Sample t-test\n\ndata:  x\nt = 3.1011, df = 9, p-value = 0.0127\nalternative hypothesis: true mean is not equal to 0\n95 percent confidence interval:\n 0.5576547 3.5650969\nsample estimates:\nmean of x \n 2.061376 \n\n\nExample on two samples:\n\nx1 = rnorm(10, 2, 4)\nx2 = rnorm(10, -1, 2)\nt.test(x1,x2)\n\n\n    Welch Two Sample t-test\n\ndata:  x1 and x2\nt = 0.73231, df = 10.85, p-value = 0.4795\nalternative hypothesis: true difference in means is not equal to 0\n95 percent confidence interval:\n -2.859794  5.704484\nsample estimates:\n  mean of x   mean of y \n 0.06522023 -1.35712433 \n\n\nOur plant and sunlight data:\n\n# t.test(height ~ group, data = data_sunlight_plant, var.equal = TRUE) # Classic t-test\nt.test(height ~ group, data = data_sunlight_plant) # Welch t-test\n\n\n    Welch Two Sample t-test\n\ndata:  height by group\nt = -4.3373, df = 55.587, p-value = 6.132e-05\nalternative hypothesis: true difference in means between group Shade and group Sunlight is not equal to 0\n95 percent confidence interval:\n -4.199788 -1.545694\nsample estimates:\n   mean in group Shade mean in group Sunlight \n              12.18870               15.06145 \n\n\n\nt-value = -4.6261\np-value = 2.137e-05 = \\(2.137 * 10^{-5}\\) = \\(0.00002137\\)\n\n\\(2.137 * 10^{-5} &lt; 0.05 \\leftrightarrow p.value &lt; \\alpha\\)\nWe can with great confidence reject the \\(H_0\\)\n\n\n\n\n\nComparison of basic and Welch t-test\n\n\n\n\n\n\n\n\n\nBasic t-test\nWelch t-test\n\n\n\n\n= N ; = SD ; = MEAN\nGOOD\nGOOD\n\n\n= N ; \\(\\neq\\) SD ; = MEAN\nGOOD\nBETTER\n\n\n&gt; N ; &gt; SD ; = MEAN\nUNSTABLE\nGOOD\n\n\n&lt; N ; &gt; SD ; = MEAN\nUNSTABLE\nGOOD\n\n\n= N ; = SD ; \\(\\neq\\) MEAN\nGOOD\nGOOD\n\n\n= N ; \\(\\neq\\) SD ; \\(\\neq\\) MEAN\nGOOD\nGOOD\n\n\n&gt; N ; &gt; SD ; \\(\\neq\\) MEAN\nOK\nOK\n\n\n&lt; N ; &gt; SD ; \\(\\neq\\) MEAN\nOK\nOK"
+    "text": "Unpaired t-test for independent samples\n\nFormula\nCompare means of two groups: \\(t = \\dfrac{\\bar{X}_1 - \\bar{X}_2}{\\sqrt{\\frac{s_1^2}{n_1} + \\frac{s_2^2}{n_2}}}\\)\nCompare one group mean with a zero: \\(t = \\dfrac{\\bar{X}_1}{\\sqrt{\\frac{s_1^2}{n_1}}}\\)\n\n\\(\\bar{X_1}, \\bar{X_2}\\) - means of 1st and 2nd samples\n\\(s_1, s_2\\) - standard deviations of 1st and 2nd samples\n\\(n_1, n_2\\) -number of observations in samples\n\n\n\nParameter of t-distribution\nDegrees of freedom (df) - number of independent piece of information\n\nEqual to number of observations - number of groups\n\nIf two groups are compared: \\(df = N_1 + N_2 - 2\\)\nIf group mean compared with zero: \\(df = N_1 - 1\\)\n\nCalculated by another big formula for Welch t-test\n\n\n\n\nDoes sunlight exposure affect plant height?\n\nData\n\ndata_sunlight_plant = \n  data.frame(group = factor(rep(c(\"Sunlight\", \"Shade\"), each = 30)),\n             height = c(rnorm(30, mean = 15, sd = 2), \n                        rnorm(30, mean = 12, sd = 2)))\n\ndata %&gt;% str() #!\n\nfunction (..., list = character(), package = NULL, lib.loc = NULL, verbose = getOption(\"verbose\"), \n    envir = .GlobalEnv, overwrite = TRUE)  \n\n\n\nggplant = data_sunlight_plant %&gt;%  \n  ggplot(aes(x=height,fill=group)) +\n  theme_classic()\n\nggplant + geom_boxplot(aes(y=group)) + theme(legend.position = \"none\")\n\n\n\n\n\n\n\n# ggplant + geom_density(alpha=0.5)\n# ggplant + geom_histogram(alpha=0.8, binwidth=1)\n\n\n\nTesting\nExample on one sample:\n\nx = rnorm(10, 2, 2)\nt.test(x)\n\n\n    One Sample t-test\n\ndata:  x\nt = 2.242, df = 9, p-value = 0.05168\nalternative hypothesis: true mean is not equal to 0\n95 percent confidence interval:\n -0.01048605  2.33929994\nsample estimates:\nmean of x \n 1.164407 \n\n\nExample on two samples:\n\nx1 = rnorm(10, 2, 4)\nx2 = rnorm(10, -1, 2)\nt.test(x1,x2)\n\n\n    Welch Two Sample t-test\n\ndata:  x1 and x2\nt = 1.2087, df = 9.9699, p-value = 0.2547\nalternative hypothesis: true difference in means is not equal to 0\n95 percent confidence interval:\n -2.515250  8.474077\nsample estimates:\nmean of x mean of y \n 1.730189 -1.249224 \n\n\nOur plant and sunlight data:\n\n# t.test(height ~ group, data = data_sunlight_plant, var.equal = TRUE) # Classic t-test\nt.test(height ~ group, data = data_sunlight_plant) # Welch t-test\n\n\n    Welch Two Sample t-test\n\ndata:  height by group\nt = -5.0292, df = 55.054, p-value = 5.571e-06\nalternative hypothesis: true difference in means between group Shade and group Sunlight is not equal to 0\n95 percent confidence interval:\n -4.008226 -1.724056\nsample estimates:\n   mean in group Shade mean in group Sunlight \n              12.17322               15.03936 \n\n\n\nt-value = -4.6261\np-value = 2.137e-05 = \\(2.137 * 10^{-5}\\) = \\(0.00002137\\)\n\n\\(2.137 * 10^{-5} &lt; 0.05 \\leftrightarrow p.value &lt; \\alpha\\)\nWe can with great confidence reject the \\(H_0\\)\n\n\n\n\n\nComparison of basic and Welch t-test\n\n\n\n\n\n\n\n\n\nBasic t-test\nWelch t-test\n\n\n\n\n= N ; = SD ; = MEAN\nGOOD\nGOOD\n\n\n= N ; \\(\\neq\\) SD ; = MEAN\nGOOD\nBETTER\n\n\n&gt; N ; &gt; SD ; = MEAN\nUNSTABLE\nGOOD\n\n\n&lt; N ; &gt; SD ; = MEAN\nUNSTABLE\nGOOD\n\n\n= N ; = SD ; \\(\\neq\\) MEAN\nGOOD\nGOOD\n\n\n= N ; \\(\\neq\\) SD ; \\(\\neq\\) MEAN\nGOOD\nGOOD\n\n\n&gt; N ; &gt; SD ; \\(\\neq\\) MEAN\nOK\nOK\n\n\n&lt; N ; &gt; SD ; \\(\\neq\\) MEAN\nOK\nOK"
   },
   {
     "objectID": "code/stats.html#non-parametric-alternative-for-independent-samples",
@@ -413,6 +406,181 @@
     "text": "Are observed ratios of pea plant traits consistent with Mendel’s expected 9:3:3:1 ratio?\n\nData\n\nobserved &lt;- c(435, 150, 160, 55)\nexpected &lt;- c(9, 3, 3, 1) / sum(c(9, 3, 3, 1)) * sum(observed)\n\n\nbarplot(rbind(observed, expected), \n        beside = TRUE, \n        col = c(\"blue\", \"red\"), \n        legend = c(\"Observed\", \"Expected\"))\n\n\n\n\n\n\n\n\n\n\nCode\n\nchisq.test(x=observed, p=expected/sum(expected))\n\n\n    Chi-squared test for given probabilities\n\ndata:  observed\nX-squared = 1.6667, df = 3, p-value = 0.6444\n\n\n\np - expected proportions (instead of values)\n\\(p.value &gt; 0.05\\) and it means that the two sets of frequencies are likely to belong to the same distribution or in other words: the observed values are not significantly different from the expected values"
   },
   {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Biostatistics in R",
+    "section": "",
+    "text": "Code\n\nBasic R\n\nDownload\n\nWorking with Dataframes\n\nDownload\n\nVisualization\n\nDownload\n\n\n\n\n\nPresentations\n\nVisualization sins and inspirations \n\n\n\nHomeworks\n\nHW #1\n\nDownload\n\nHW #2\n\nDownload\nReference plots"
+  },
+  {
+    "objectID": "homeworks/HW2.html",
+    "href": "homeworks/HW2.html",
+    "title": "Homework on Statistical Distributions and Visualization",
+    "section": "",
+    "text": "library(ggplot2)\nlibrary(dplyr)\n\n\nPalmer Penguins\n\n0. Read file penguins.csv\n\nDon’t forget to use all necessary parameters which were used in previous work\nLook at the data (summary? structure? something else you want)\n\n\n#\n\nThe penguins dataset contains data collected on three penguin species (Adelie, Chinstrap, and Gentoo) from three islands (Torgersen, Biscoe, and Dream) in the Palmer Archipelago, Antarctica.\nIt includes measurements like:\n\nbill_length_mm and bill_depth_mm - dimensions of the penguin’s bill.\nflipper_length_mm - length of the penguin’s flippers.\nbody_mass_g - weight of the penguins in grams.\nisland - the island where the penguins were observed.\nsex: the gender of the penguin.\n\nSome rows may contain missing values (e.g., in sex column).\n\n\n\n1.* Delete rows containing only NAs in columns except species, sex, island.\n\n#\n\n\nRemember complete.cases() and remember the ways we filtered datasets\nEnsure, that dataset was filtered!\n\n\n\n2. Create bar plot to show the number of observations (rows) for each species and delete legend (if ggplot used).\n\nLabel the axes and legends\nColors (fill) should also be different for each species\ntheme_classic(), if ggplot used\nThis task can be solved using either basic R or ggplot\nTip: use table() (basic R and ggplot) or geom_bar() (ggplot)\nDon’t forget to delete legend if ggplot used\n\n\n#\n\n\n\n3. Create stacked barplot scaled from 0 to 1 to show the proportion of species on each island.\n\nLabel the axes and legends\ntheme_classic()\nfill should represent species.\nDon’t forget change position parameter\n\n\n#\n\n\n\n4. Create a histogram for the flipper_length_mm and draw the vertical line to show mean value\n\nLabel the axes\nSet the number of breaks to 10\nThe histogram fill should be \"lightblue\" and border (color) should be \"black\"\nVertical line color = 'red', width = 1.2\ntheme_bw(), if ggplot used\nThis task can be solved using either basic R or ggplot\n\n\n#\n\n\n\n5. Create a density plot for the body_mass_g variable. Fill the density regions based on species.\n\nLabel the axes (y-axis is Density)\nfill should be different for each species\nDensity plot should have alpha=0.5\ntheme_classic()\n\n\n#\n\n\n\n6. Create a boxplots grouped by sex to compare bill_length_mm values. Save the plot in variable and show the plot.\n\nFilter out observations without known sex (!)\nLabel the axes and legends\nColors (fill) should also be different for each sex\ntheme_classic()\nWhen you save the plot in a variable, chart is not displayed. Don’t forget to show the plot by writing the variable name on a new line!\n\n\n#\n\n\n\n7. Change the chart above: for each sex there must be 3 colored boxplots for each species. Each species should be specifically colored (fill).\n\nTip: just add (+) corresponding aes(...) to the variable\n\n\n#\n\n\n\n8. Create a scatter plot to show the relationship between bill_length_mm and bill_depth_mm.\n\nLabel the axes\nMake dots colored filled with 'blue'\nUse theme_classic, if ggplot used\nThis task can be solved using either basic R or ggplot\n\n\n#\n\n\n\n9. Create a Bubble plot: a scatter plot depicting the relationships between length_last_mm and depth_last_mm, with colored dots representing species and sizes reflecting length_last_mm.\n\nLabel the axes and legends\nPoints should have alpha=0.7\ntheme_classic()\n\n\n#\n\n\n\n10*. Add geom_rug() to the above plot to show distribution of points across the axes\n\nTo do that you should save plot above in variable and add geom_rug()\nreduce line width to 0.5, alpha to 0.8 and set show.legend = FALSE\n\n\n#"
+  },
+  {
+    "objectID": "homeworks/HW1.html",
+    "href": "homeworks/HW1.html",
+    "title": "Homework #1: Exploring elephant data",
+    "section": "",
+    "text": "Download the provided dataset ElephantsMF.csv and place it in your working directory.\nThe dataset contains the following columns:\n- rownames: Unique identifiers for each record (elephant).\n- Age: Age of the elephants (years).\n- Height: Height of the elephants (cm).\n- Sex: Sex of the elephants (M for Male, F for Female).\n\n\n\nEvery result must be shown! If you create or chabging some variable/column/dataframe, show it!\n\n\nDon’t forget to save your changes where needed\n\nFor example, dataset %&gt;% function() does not change the dataset, but dataset = dataset %&gt;% function() does\n\n\n\n\n\nlibrary(readr)\nlibrary(dplyr)\nlibrary(tidyr)"
+  },
+  {
+    "objectID": "homeworks/HW1.html#downloading-libraries",
+    "href": "homeworks/HW1.html#downloading-libraries",
+    "title": "Homework #1: Exploring elephant data",
+    "section": "",
+    "text": "library(readr)\nlibrary(dplyr)\nlibrary(tidyr)"
+  },
+  {
+    "objectID": "homeworks/HW1.html#vectors",
+    "href": "homeworks/HW1.html#vectors",
+    "title": "Homework #1: Exploring elephant data",
+    "section": "Vectors",
+    "text": "Vectors\n\n1. Create vector containing numbers from -20 to 50 and number 100\n\n# vec =\n\n\n\n2. Subtract by 10 and then divide by 2 each value in this vector\n\n#"
+  },
+  {
+    "objectID": "homeworks/HW1.html#data-loading",
+    "href": "homeworks/HW1.html#data-loading",
+    "title": "Homework #1: Exploring elephant data",
+    "section": "Data Loading",
+    "text": "Data Loading\n\n3. Load the dataset using read.csv(), save it to variable dataset and show the first 10 rows.\n\n# dataset &lt;- read...\n#\n\n\nDon’t forget to set parameters to\n\nspecify NAs values\nmake character columns factors\nfirst column a rowname\n\nhead(...) - by default it returns first 5 rows, but we need 10 :)\n\n3.1 Make dataset a tibble\n\n#\n\n\n\n4. Check the structure and summary of the data.\n\n#\n\n\nJust use special functions"
+  },
+  {
+    "objectID": "homeworks/HW1.html#data-cleaning",
+    "href": "homeworks/HW1.html#data-cleaning",
+    "title": "Homework #1: Exploring elephant data",
+    "section": "Data Cleaning",
+    "text": "Data Cleaning\n\n5. Check for missing values (NA) in the dataset (how many in each column?).\n\n#\n\n\n\n6. Verify that the Sex column contains only valid categories (M and F).\n\n#\n\n\nTip: just use table() or unique()"
+  },
+  {
+    "objectID": "homeworks/HW1.html#data-transformation",
+    "href": "homeworks/HW1.html#data-transformation",
+    "title": "Homework #1: Exploring elephant data",
+    "section": "Data Transformation",
+    "text": "Data Transformation\n\n7. Create a new column Age_category categorizing elephants based on Age:\n\n“Young” for Age &lt; 5\n“Sub-adult” for 5 &lt;= Age &lt; 15\n“Adult” for Age &gt;= 15\n\n\n##\n\n\nUse cut() - don’t forget about parameter labels = c(...)\nEnsure that you created column in your dataset !\n\n\n\n8. Create a column Height_category that splits Height into two categories: “Below Median” and “Above Median” based on the median height.\n\n#\n\n\nmedian() and ifelse()\nDon’t forget to make new column a factor\nEnsure that you created column in your dataset !\n\n\n\n9. Create a new column that contain the Height in meters (divide by 100), delete column with Height in cm.\n\n##\n\n\nYou can set a new name of column or leave the old one.\nRemember how to delete column\nTip: mutate(). Parameter .keep=... may be useful to alternatively delete column\nEnsure the column is created inside dataset\n\n\n\n10. Round column Height in meters to two decimal places (e.g. 1.4567 -&gt; 1.46), i.e. replace values in column with rounded ones\n\n#\n\n\nTip: round() and look for a specific parameter\nEnsure the column is modified inside dataset"
+  },
+  {
+    "objectID": "homeworks/HW1.html#exploratory-data-analysis",
+    "href": "homeworks/HW1.html#exploratory-data-analysis",
+    "title": "Homework #1: Exploring elephant data",
+    "section": "Exploratory Data Analysis",
+    "text": "Exploratory Data Analysis\n\n11. Compute mean values of Height for each Sex (in meters)\n\n##\n\n\nDon’t forget that mean() works only on vectors\n\n%&gt;% pull(column) -&gt; vector\ndata$column -&gt; vector\n\nif you are advanced user, you can use group_by() and summarize()\n\n\n\n12. Identify the row with the maximum Height and print this row (not number of row!).\n\n#\n\n\nTip: which.max()\n\n\n\n13. Show a counts and frequency tables for the Age_category column. Show both counts and frequencies\n\n##\n\n\nUse table() and prop.table()\n\n\n\n14. Show a contingency table of Sex and Height_category (number of elephants for every combination of these two categories)\n\n#\n\n\nUse table()\n\n\n\n15.* Group dataset by Height_category and calculate mean and sd of Age for each group.\n\n#\n\n\nuse group_by() and summarise()\n\n\n\n16. Show the rows for elephants taller than 2 metres but shorter than 2.5 metres, and younger than 15 years old. Then select the Age and Height columns.\n\n#\n\n\nuse special dplyr functions\n\n\n\n17. Identify the top 3 tallest elephants and extract their Age, Height, and Sex.\n\n#\n\n\nYou may be using data arranging and head()\n\n\n\n18. Show rows of the 3 tallest and 3 the shortest elephants (not separately, but within one dataset)\n\n##\n\n\nYou may be using data arranging\nbasic functions (head() and tail()) can also be useful, but remember how ordered is your data\n+1 point if you make it by one line of code (show as one data.frame)\n\nTip: you can use either n() or nrow()\nTip: you can use slice()\n\n\n\n\n19.* Identify 3 oldest elephants for each Sex and extract their Age and Height.\n\n#\n\n\ngroup_by() and slice_head()"
+  },
+  {
+    "objectID": "homeworks/HW1.html#exporting-data",
+    "href": "homeworks/HW1.html#exporting-data",
+    "title": "Homework #1: Exploring elephant data",
+    "section": "Exporting Data",
+    "text": "Exporting Data\n\n20. Save our modified dataset with new columns as a new CSV file.\n\n#\n\n\nName the file whatever you want\nSet row.names = FALSE if you are using the base function. The function from readr works fine by itself"
+  },
+  {
+    "objectID": "code/anova.html",
+    "href": "code/anova.html",
+    "title": "ANOVA",
+    "section": "",
+    "text": "ANOVA (Analysis of Variance)\nUsed to compare means across more than two groups. ANOVA evaluates the variability within and between groups using the sum of squares.\n\nAssumptions\n\nData are normally distributed within each group.\nGroups have equal variances.\n\n\n\nHypotheses\n\nNull Hypothesis (H0): All group means are equal.\nAlternative Hypothesis (HA): At least one group mean is different.\n\n\n\nFormula\n\\(F = \\frac{MS_{between}}{MS_{within}}\\)\n\n\nExample Scenario\nDoes fertilizer type influence crop yield?\n\n\nData\n\ndata &lt;- data.frame(\n  fertilizer = rep(c(\"Type A\", \"Type B\", \"Type C\"), each = 10),\n  yield = c(rnorm(10, mean = 20, sd = 3), rnorm(10, mean = 25, sd = 3), rnorm(10, mean = 22, sd = 3))\n)\n\n\nboxplot(yield ~ fertilizer, data = data, main = \"Yield by Fertilizer Type\")\n\n\n\n\n\n\n\n\n\n\nCode Example\n\n# Using aov (Type I)\nanova_result &lt;- aov(yield ~ fertilizer, data = data)\nsummary(anova_result)\n\n            Df Sum Sq Mean Sq F value   Pr(&gt;F)    \nfertilizer   2  170.3   85.17   15.33 3.57e-05 ***\nResiduals   27  150.1    5.56                     \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n# Using car package for Type II/III ANOVA\nif (!requireNamespace(\"car\", quietly = TRUE)) install.packages(\"car\")\nlibrary(car)\n\nWarning: пакет 'car' был собран под R версии 4.3.3\n\n\nЗагрузка требуемого пакета: carData\n\nAnova(lm(yield ~ fertilizer, data = data), type = \"II\")\n\nAnova Table (Type II tests)\n\nResponse: yield\n           Sum Sq Df F value    Pr(&gt;F)    \nfertilizer 170.34  2  15.326 3.568e-05 ***\nResiduals  150.05 27                      \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n\n\n\nOutput Explanation\n\nF-statistic: Ratio of variance between groups to variance within groups.\np-value: Tests the null hypothesis that all group means are equal.\n\n\n\nNon-Parametric Alternative\nKruskal-Wallis test can be used for non-normal data.\n\nkruskal.test(yield ~ fertilizer, data = data)\n\n\n    Kruskal-Wallis rank sum test\n\ndata:  yield by fertilizer\nKruskal-Wallis chi-squared = 16.299, df = 2, p-value = 0.0002888"
+  },
+  {
+    "objectID": "code/stats_intro.html",
+    "href": "code/stats_intro.html",
+    "title": "stats_intro",
+    "section": "",
+    "text": "Distributions\nRandom values from distributions"
+  },
+  {
+    "objectID": "code/basic_r.html",
+    "href": "code/basic_r.html",
+    "title": "Prac #1. Basic R",
+    "section": "",
+    "text": "Here you can see\n\nThis file with code on top of the screen\nConsole, where you can write code line by line. In fact, when you execute the code from the file, the entire script is run via the console\nFiles, Help etc. on the bottom right below\nEnvironment containing all created variables on the top right\n\nWe can create new files, projects and even presentations or websites. RStudio provides us with useful tools for programming, especially in R, but we can also do it in python, bash and other languages.\n\n\nPrint\n\n?getwd()\n\nTo open help for a function (here, getwd).\nOr just go to Help on the bottom right below"
+  },
+  {
+    "objectID": "code/basic_r.html#help",
+    "href": "code/basic_r.html#help",
+    "title": "Prac #1. Basic R",
+    "section": "",
+    "text": "Print\n\n?getwd()\n\nTo open help for a function (here, getwd).\nOr just go to Help on the bottom right below"
+  },
+  {
+    "objectID": "code/basic_r.html#tips-for-you",
+    "href": "code/basic_r.html#tips-for-you",
+    "title": "Prac #1. Basic R",
+    "section": "Tips for you",
+    "text": "Tips for you\nPress Tab while writing something and RStudio will help you. Often it helps even without pressing the button :)\n\n#"
+  },
+  {
+    "objectID": "code/basic_r.html#markdown",
+    "href": "code/basic_r.html#markdown",
+    "title": "Prac #1. Basic R",
+    "section": "Markdown",
+    "text": "Markdown\n\nMarkdown - is markup language for creating formatted text\n\nMost useful formattings:\n\n**bold text** - bold text\n*italic text* - italic text\n# Head - Heading as above “R markdown”. Main section.\nMultiple # (##/####/####, etc.) - Headings of subsections (as ‘Markdown’ written above)\n&gt; - quote\n\nR Markdown also supports LaTeX which useful for writing mathematical equations:\n\n$E = mc^2$ is turned into \\(E = mc^2\\)"
+  },
+  {
+    "objectID": "code/basic_r.html#knit",
+    "href": "code/basic_r.html#knit",
+    "title": "Prac #1. Basic R",
+    "section": "knit",
+    "text": "knit\nR Markdown allows us to “knit” this project and create beautiful report in html, pdf and even Word. To do that find the blue ball on top of the screen and click on it. While knitting all chunks will be executed again taking into account you options set for chunks."
+  },
+  {
+    "objectID": "code/basic_r.html#hotkeys",
+    "href": "code/basic_r.html#hotkeys",
+    "title": "Prac #1. Basic R",
+    "section": "Hotkeys",
+    "text": "Hotkeys\n\n\n\nAction\nWindows/Linux\nMac\n\n\n\n\nKnit the document\nCtrl + Shift + K\nCmd + Shift + K\n\n\nCreate a chunk\nCtrl + Alt + I\nCmd + Option + I\n\n\nRun current line\nCtrl + Enter\nCmd + Enter\n\n\nRun current chunk\nCtrl + Alt + C\nCmd + Option + C\n\n\nShow all shortcuts\nAlt + Shift + K\nOption + Shift + K\n\n\nDelete current line\nCtrl + D\nCmd + D\n\n\nComment current line\nCtrl + Shift + C\nCmd + Shift + C"
+  },
+  {
+    "objectID": "code/basic_r.html#variables",
+    "href": "code/basic_r.html#variables",
+    "title": "Prac #1. Basic R",
+    "section": "Variables",
+    "text": "Variables\nAll you need to know about variables is that they can store values which we assign\n\nvariable = 37\nvar_character = 'biology'\nvar_bool = TRUE\n\nWe can just run code with name of variable to see its value\n\nvariable\n\n[1] 37\n\nvar_character\n\n[1] \"biology\"\n\nvar_bool\n\n[1] TRUE\n\n\nChange the value:\n\nvariable = variable + 100\nvariable\n\n[1] 137\n\n\n\nMathematical operations\n\nx = 19\ny = 9\n\n\n- x\n\n[1] -19\n\nx + y\n\n[1] 28\n\nx - y\n\n[1] 10\n\nx * y\n\n[1] 171\n\nx / y \n\n[1] 2.111111\n\nx ^ y # x to the power of y\n\n[1] 322687697779\n\nsqrt(x) # square root\n\n[1] 4.358899\n\n# sum(1,2,NA,34, na.rm = TRUE)\n\nx %% y # ‘remainder’ of division \n\n[1] 1\n\nx %/% y # integer division\n\n[1] 2\n\n\n\ny + 2 * 3\n\n[1] 15\n\n(y + 2) * 3\n\n[1] 33\n\n\n\n\nLogical operations\n\nx &gt; y\n\n[1] TRUE\n\nx &lt; y\n\n[1] FALSE\n\nx == y # is equal\n\n[1] FALSE\n\nx != y # is not equal\n\n[1] TRUE\n\n\n\n10 &lt; 10\n\n[1] FALSE\n\n10 &lt;= 10\n\n[1] TRUE\n\n\n\nx &lt; 10 & y &lt; 10 \n\n[1] FALSE\n\nx &lt; 10 | y &lt; 10\n\n[1] TRUE\n\n\n\nbool1 = TRUE\nbool2 = FALSE\n\n! &lt;-&gt; “not”\n\n!bool1\n\n[1] FALSE\n\n!bool2\n\n[1] TRUE"
+  },
+  {
+    "objectID": "code/basic_r.html#vectors",
+    "href": "code/basic_r.html#vectors",
+    "title": "Prac #1. Basic R",
+    "section": "Vectors",
+    "text": "Vectors\nVector is a simple one-dimensional array. In R it can contain only one type of data. The function used to create vector is c().\nHere we create some vectors and store them in corresponding variables:\n\nv_numeric = c(1,2,3,4)\nv_logical = c(T,F,F,T)\nv_character = c(\"1\",\"2\",\"3\",\"4\")\n# c(1,2,'3')\n# c(T,1,0,F)\n\n(R allows us not to write whole FALSE and TRUE, bur write only first letter)\nSimple way to create integer vector\n\n1:5\n\n[1] 1 2 3 4 5\n\n5:1\n\n[1] 5 4 3 2 1\n\n-1:1\n\n[1] -1  0  1\n\n\n\nc(1:5, c(11,13,14))\n\n[1]  1  2  3  4  5 11 13 14\n\nc(7:10, 1:5)\n\n[1]  7  8  9 10  1  2  3  4  5\n\nc(1:5,7:10)\n\n[1]  1  2  3  4  5  7  8  9 10\n\n\n\nValues in vector are not sorted and unique by default!\n\n\nIndexes\nWe can access to the values of vector by indexes.\n\nvec = c(\"A\", \"B\", \"C\", \"D\", \"E\", \"F\")\nvec[3]\n\n[1] \"C\"\n\nvec[7]\n\n[1] NA\n\nvecnew = vec[-1]\nvecnew\n\n[1] \"B\" \"C\" \"D\" \"E\" \"F\"\n\n\nNA indicates a missing value. It appears here because the 7th element does not exist in the vector\nWhat if we use vectors as indexes…?\n\n# vec[1,2,3] # ERROR\nvec[1:3]\n\n[1] \"A\" \"B\" \"C\"\n\nvec[3:1]\n\n[1] \"C\" \"B\" \"A\"\n\nvec[c(3,1,5)]\n\n[1] \"C\" \"A\" \"E\"\n\n\nInside of [ ] vector is interpreted as a indexes of values in vec\n\n\nGreat feature of R language - vectorization\n\nMathematical operations\nWhat will be the result of this operation?\n\nvec1234 = c(1, 2, 3, 4)\nvec1234 * 5\n\n[1]  5 10 15 20\n\n# c(vec1234, 5)\n\nWow! Isn’t it cool? We can do anything with vectors not by using some operation for each value step by step, but using operation for each value only once\n\nc(1, 2, 3, 4) + 5 - 2\n\n[1] 4 5 6 7\n\nc(1, 2, 3, 4) ^ 2\n\n[1]  1  4  9 16\n\nsqrt(vec1234)\n\n[1] 1.000000 1.414214 1.732051 2.000000\n\n# !v_logical\n\nMoreover, we can perform mathematical operations on two vectors\n\nvec123 = c(1, 2, 3, 0) \nvec321 = c(3, 2, 1, 4)\n\nvec_new = vec123 * vec321\nvec_new\n\n[1] 3 4 3 0\n\n\nThe result is also vector!\n\n\nLogical operations\nAlso vectorized\n\nvec1234 &gt; 2\n\n[1] FALSE FALSE  TRUE  TRUE\n\n\n\nvec123 &gt;= vec321\n\n[1] FALSE  TRUE  TRUE FALSE"
+  },
+  {
+    "objectID": "code/basic_r.html#the-fun-is-just-started",
+    "href": "code/basic_r.html#the-fun-is-just-started",
+    "title": "Prac #1. Basic R",
+    "section": "The fun is just started!",
+    "text": "The fun is just started!\n\nCreate vectors from vectors\n\nweights_of_seed = c(1:4, 10:15, 4:7)\nweights_of_seed\n\n [1]  1  2  3  4 10 11 12 13 14 15  4  5  6  7\n\n\n\n\nUse conditions (logic) inside square brackets\n\nweights_of_seed[weights_of_seed &lt; 5]\n\n[1] 1 2 3 4 4\n\n\nLets break out this. Firstly, logical vector is created inside the brackets to filter the data. For example, we filter data with values more than 5\n\nlogical_vector = weights_of_seed &lt; 5\nlogical_vector\n\n [1]  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE\n[13] FALSE FALSE\n\n\nThan logical vector “make” to filter out values which have “FALSE” in corresponding index\n\nweights_of_seed[logical_vector]\n\n[1] 1 2 3 4 4\n\n\nIt is VERY useful for filtering simple data.\n\nweights_of_seed[weights_of_seed &lt; 10 & weights_of_seed &gt; 2]\n\n[1] 3 4 4 5 6 7"
+  },
+  {
+    "objectID": "code/basic_r.html#basic-statistics",
+    "href": "code/basic_r.html#basic-statistics",
+    "title": "Prac #1. Basic R",
+    "section": "Basic statistics",
+    "text": "Basic statistics\n\nLength\n\nlength(weights_of_seed)\n\n[1] 14\n\n\nWe can already compute some statistics on numerical vectors!\n\nsum(weights_of_seed) / length(weights_of_seed)\n\n[1] 7.642857\n\nmean(weights_of_seed)\n\n[1] 7.642857\n\nmedian(weights_of_seed)\n\n[1] 6.5\n\n\n\nvar(weights_of_seed)\n\n[1] 22.55495\n\nsd(weights_of_seed)\n\n[1] 4.749205\n\nvar(weights_of_seed) == sd(weights_of_seed)^2\n\n[1] FALSE\n\n\n\n\nMin and max\n\nmax(weights_of_seed)\n\n[1] 15\n\nmin(weights_of_seed)\n\n[1] 1\n\nrange(weights_of_seed) # min and max (vector!)\n\n[1]  1 15\n\n\n\n\nQuantiles\n\nquantile(weights_of_seed)\n\n   0%   25%   50%   75%  100% \n 1.00  4.00  6.50 11.75 15.00 \n\nquantile(weights_of_seed, probs = c(0.1, 0.5, 0.9))\n\n 10%  50%  90% \n 2.3  6.5 13.7 \n\nquantile(weights_of_seed, probs = c(0.5)) == median(weights_of_seed)\n\n 50% \nTRUE \n\n\n\n\nValues above the mean\n\nmean_value = mean(weights_of_seed)\nweights_of_seed[weights_of_seed &gt; mean_value]\n\n[1] 10 11 12 13 14 15"
+  },
+  {
+    "objectID": "code/basic_r.html#two-associated-vectors",
+    "href": "code/basic_r.html#two-associated-vectors",
+    "title": "Prac #1. Basic R",
+    "section": "Two “associated” vectors",
+    "text": "Two “associated” vectors\n\nNamed vectors\n\nstudents_names = c('Daniel', 'Sasha', 'Robert', 'Alice', \n                   'Diana', 'Anastasia', 'Alexey', 'Julia')\nage = c(15, 32, 18, 8, 23, 17,22, 23)\n\nStudents older than 18\n\nstudents_names[age &gt;= 18] # ANY logical vector\n\n[1] \"Sasha\"  \"Robert\" \"Diana\"  \"Alexey\" \"Julia\" \n\n\nStudents aged 18 or more\n\nstudents_names[age &gt;= 18]\n\n[1] \"Sasha\"  \"Robert\" \"Diana\"  \"Alexey\" \"Julia\" \n\n\nWhat if we want to extract names AND their age. We can set names for each value in vector using names() function\nnames() function returns names from vector. Vector student_age had no names:\n\nstudents_age_vec = age\nnames(students_age_vec)\n\nNULL\n\n\nAnd we can set such names as we do it with variables:\n\nnames(students_age_vec) = students_names\nstudents_age_vec\n\n   Daniel     Sasha    Robert     Alice     Diana Anastasia    Alexey     Julia \n       15        32        18         8        23        17        22        23 \n\n\nNow we can access values using names!\n\nstudents_age_vec['Alice']\n\nAlice \n    8 \n\n\nAnother way to create “named” vector:\n\nnamed_vec = c(\"vlaue1\" = 1, \"value2\" = 2, \"value3\" = 3)\nnamed_vec\n\nvlaue1 value2 value3 \n     1      2      3 \n\n\n\n\nList\n\nstudents_age_list = list(students_names, age)\nstudents_age_list\n\n[[1]]\n[1] \"Daniel\"    \"Sasha\"     \"Robert\"    \"Alice\"     \"Diana\"     \"Anastasia\"\n[7] \"Alexey\"    \"Julia\"    \n\n[[2]]\n[1] 15 32 18  8 23 17 22 23\n\n\n\n# students_age_list['Alice'] # NOTHING\n\nNow we can add several vectors inside same “structure”. Let’s add weight and height and set names to each vector:\n\nheight = c(175, 181, 188, 120, 170, 168, 178, 172)\nweight = c(70, 75, 80, 45, 55, 50, 78, 62)\n\nstudents_list = list(names = students_names,\n                     age=age,\n                     height=height,\n                     weight=weight)\n\nstudents_list\n\n$names\n[1] \"Daniel\"    \"Sasha\"     \"Robert\"    \"Alice\"     \"Diana\"     \"Anastasia\"\n[7] \"Alexey\"    \"Julia\"    \n\n$age\n[1] 15 32 18  8 23 17 22 23\n\n$height\n[1] 175 181 188 120 170 168 178 172\n\n$weight\n[1] 70 75 80 45 55 50 78 62\n\n\nEach vector represents a piece of information about each student. Vectors here are like columns in a table (data frame)\n\nList data access\nWe can access vectors in several ways\n\nstudents_list[2] # NOT A VECTOR\n\n$age\n[1] 15 32 18  8 23 17 22 23\n\nstudents_list[[2]] # VECTOR\n\n[1] 15 32 18  8 23 17 22 23\n\nstudents_list$weight  # vector\n\n[1] 70 75 80 45 55 50 78 62\n\n\nCertain values:\n\n# students_list[[2]][5]\n\nstudents_list$age[5]\n\n[1] 23\n\n\n\n\nImportant note\nThe list may contain many vectors, and not of the same length!\n\nlist(\n  c(1,2,3,4,5),\n  c('A', 'B', 'C')\n)\n\n[[1]]\n[1] 1 2 3 4 5\n\n[[2]]\n[1] \"A\" \"B\" \"C\"\n\n\nIt is not necessary to include NA (empty) values to save the “table” structure. This makes the list a little bit more flexible, but inconvenient for storing tabular data.\n\nmarks_of_students = list(\n  Alice = c(5,4,5,3,4,4),\n  Sasha = c(3,3,3),\n  Robert = c(5,5,5,5)\n)\n\nmarks_of_students\n\n$Alice\n[1] 5 4 5 3 4 4\n\n$Sasha\n[1] 3 3 3\n\n$Robert\n[1] 5 5 5 5\n\n\nIf each value in every vector represent piece of information about the same students, then we should know the student’s name index and then access all vectors by this index. In other words, how to extract the row?\n\nindex_alice = which(students_list$names == 'Alice')\n\nstudents_list$age[index_alice]\n\n[1] 8\n\nstudents_list$weight[index_alice]\n\n[1] 45\n\n# lapply(students_list, function(x) x[index_alice])\n\n\nwhich(logical_vector) - return positions where logical_vector contain TRUE\n\nIs there more convenient way to store tabular data?"
+  },
+  {
+    "objectID": "code/basic_r.html#data-frames",
+    "href": "code/basic_r.html#data-frames",
+    "title": "Prac #1. Basic R",
+    "section": "Data frames",
+    "text": "Data frames\nWe created 4 vectors for each trait.\n\nstudents_names = c('Daniel', 'Sasha', 'Robert', 'Alice', \n                   'Diana', 'Anastasia', 'Alexey', 'Julia')\nvec_age = c(15, 32, 18, 8, 23, 17,22, 23)\nheight = c(175, 181, 188, 120, 170, 168, 178, 172)\nweight = c(70, 75, 80, 45, 55, 50, 78, 62)\n\nNow create data-frame\n\nstudents_df = data.frame(age=vec_age,\n                         height=height,\n                         weight=weight,\n                         row.names = students_names)\n\nstudents_df\n\n          age height weight\nDaniel     15    175     70\nSasha      32    181     75\nRobert     18    188     80\nAlice       8    120     45\nDiana      23    170     55\nAnastasia  17    168     50\nAlexey     22    178     78\nJulia      23    172     62\n\n\nNow we have a beautiful representation of tabular data. In addition, data-frames make it easier to manipulate data.\n\nData access\nIn some principles, data.frame is similar to list\n\nstudents_df[1] # differs from list :)\n\n          age\nDaniel     15\nSasha      32\nRobert     18\nAlice       8\nDiana      23\nAnastasia  17\nAlexey     22\nJulia      23\n\nstudents_df[[1]]\n\n[1] 15 32 18  8 23 17 22 23\n\n# with one value inside [] it is iterpreted as a column name (name of vector in list)\nstudents_df[\"age\"]\n\n          age\nDaniel     15\nSasha      32\nRobert     18\nAlice       8\nDiana      23\nAnastasia  17\nAlexey     22\nJulia      23\n\nstudents_df$age\n\n[1] 15 32 18  8 23 17 22 23\n\n\nAccessing the data in specific row and column:\n\n# With two values: [row_name, column_name]\nstudents_df[\"Daniel\", 'weight'] \n\n[1] 70\n\nstudents_df[1, ]\n\n       age height weight\nDaniel  15    175     70\n\n\n\nstudents_df[2:4, 2:3]\n\n       height weight\nSasha     181     75\nRobert    188     80\nAlice     120     45\n\nstudents_df[c(3,1,5), ]\n\n       age height weight\nRobert  18    188     80\nDaniel  15    175     70\nDiana   23    170     55\n\nstudents_df[c('Sasha', 'Robert', 'Alice'), c(\"height\", \"weight\")]\n\n       height weight\nSasha     181     75\nRobert    188     80\nAlice     120     45\n\n# \"empty\" column value mean \"all columns\"\nstudents_df[c('Sasha', 'Robert', 'Alice'), ]\n\n       age height weight\nSasha   32    181     75\nRobert  18    188     80\nAlice    8    120     45\n\n\n\n\nNew column\n\n# factor variables (why to use them over character)\nstudents_df$column = c(1,2,3,4,4,5,5,6)\nstudents_df$city = c(rep('Moscow', 3), rep('SPb', 3), rep('Kazan', 2))\n\nstudents_df$is_tall = ifelse(students_df$height &gt;= 180, 'Tall', 'Short')\n\nstudents_df$age_range = cut(\n  students_df$age,\n  breaks = c(0, 10, 20, 30, Inf),\n  labels = c(\"Child\", \"Sub-adult\", \"Adult\", 'Old')\n)\n\nstudents_df\n\n          age height weight column   city is_tall age_range\nDaniel     15    175     70      1 Moscow   Short Sub-adult\nSasha      32    181     75      2 Moscow    Tall       Old\nRobert     18    188     80      3 Moscow    Tall Sub-adult\nAlice       8    120     45      4    SPb   Short     Child\nDiana      23    170     55      4    SPb   Short     Adult\nAnastasia  17    168     50      5    SPb   Short Sub-adult\nAlexey     22    178     78      5  Kazan   Short     Adult\nJulia      23    172     62      6  Kazan   Short     Adult\n\n\n\nrep(value, number) - creates vector containing value number times\nifelse(condition, value_if_true, value_if_false) - returns value_if_true, if condition is TRUE and value_if_false otherwise\ncut(vector, breaks = c(...)) - breaks values in vector into ranges according to breaks and returns ranges in format (x, y] or return labels if sepcified\n\n\nTransforming types\n\nstudents_df$is_tall = as.factor(students_df$is_tall)\nstudents_df$city =  as.factor(students_df$city)\n\n\nas.factor() - transform column with numeric or character type into factor\nas.numeric(), as.character, as.list() ….\n\n\n\n\nDeleting a column\n\nstudents_df$column = NULL\nstudents_df\n\n          age height weight   city is_tall age_range\nDaniel     15    175     70 Moscow   Short Sub-adult\nSasha      32    181     75 Moscow    Tall       Old\nRobert     18    188     80 Moscow    Tall Sub-adult\nAlice       8    120     45    SPb   Short     Child\nDiana      23    170     55    SPb   Short     Adult\nAnastasia  17    168     50    SPb   Short Sub-adult\nAlexey     22    178     78  Kazan   Short     Adult\nJulia      23    172     62  Kazan   Short     Adult\n\n\n\n\nOrdering\n\nstudents_df[order(students_df$age), ]\n\n          age height weight   city is_tall age_range\nAlice       8    120     45    SPb   Short     Child\nDaniel     15    175     70 Moscow   Short Sub-adult\nAnastasia  17    168     50    SPb   Short Sub-adult\nRobert     18    188     80 Moscow    Tall Sub-adult\nAlexey     22    178     78  Kazan   Short     Adult\nDiana      23    170     55    SPb   Short     Adult\nJulia      23    172     62  Kazan   Short     Adult\nSasha      32    181     75 Moscow    Tall       Old\n\n# vec[c(3,1,5)]\n\nstudents_df[order(students_df$age, decreasing = T),]\n\n          age height weight   city is_tall age_range\nSasha      32    181     75 Moscow    Tall       Old\nDiana      23    170     55    SPb   Short     Adult\nJulia      23    172     62  Kazan   Short     Adult\nAlexey     22    178     78  Kazan   Short     Adult\nRobert     18    188     80 Moscow    Tall Sub-adult\nAnastasia  17    168     50    SPb   Short Sub-adult\nDaniel     15    175     70 Moscow   Short Sub-adult\nAlice       8    120     45    SPb   Short     Child\n\n\n\n\nFiltering\n\nstudents_df[students_df$height &gt; 170, ]\n\n       age height weight   city is_tall age_range\nDaniel  15    175     70 Moscow   Short Sub-adult\nSasha   32    181     75 Moscow    Tall       Old\nRobert  18    188     80 Moscow    Tall Sub-adult\nAlexey  22    178     78  Kazan   Short     Adult\nJulia   23    172     62  Kazan   Short     Adult\n\nstudents_df[students_df$height &gt; 170 & age &gt; 20, ]\n\n       age height weight   city is_tall age_range\nSasha   32    181     75 Moscow    Tall       Old\nAlexey  22    178     78  Kazan   Short     Adult\nJulia   23    172     62  Kazan   Short     Adult\n\nstudents_df[students_df$city %in% c('Moscow', 'SPb'), ]\n\n          age height weight   city is_tall age_range\nDaniel     15    175     70 Moscow   Short Sub-adult\nSasha      32    181     75 Moscow    Tall       Old\nRobert     18    188     80 Moscow    Tall Sub-adult\nAlice       8    120     45    SPb   Short     Child\nDiana      23    170     55    SPb   Short     Adult\nAnastasia  17    168     50    SPb   Short Sub-adult\n\nsubset(students_df, height &gt; 170)\n\n       age height weight   city is_tall age_range\nDaniel  15    175     70 Moscow   Short Sub-adult\nSasha   32    181     75 Moscow    Tall       Old\nRobert  18    188     80 Moscow    Tall Sub-adult\nAlexey  22    178     78  Kazan   Short     Adult\nJulia   23    172     62  Kazan   Short     Adult\n\n\n\n\nDescribe data-frame\n\nstr(students_df) # useful for a first look at the data\n\n'data.frame':   8 obs. of  6 variables:\n $ age      : num  15 32 18 8 23 17 22 23\n $ height   : num  175 181 188 120 170 168 178 172\n $ weight   : num  70 75 80 45 55 50 78 62\n $ city     : Factor w/ 3 levels \"Kazan\",\"Moscow\",..: 2 2 2 3 3 3 1 1\n $ is_tall  : Factor w/ 2 levels \"Short\",\"Tall\": 1 2 2 1 1 1 1 1\n $ age_range: Factor w/ 4 levels \"Child\",\"Sub-adult\",..: 2 4 2 1 3 2 3 3\n\n\n\ncolnames(students_df)\n\n[1] \"age\"       \"height\"    \"weight\"    \"city\"      \"is_tall\"   \"age_range\"\n\nrownames(students_df)\n\n[1] \"Daniel\"    \"Sasha\"     \"Robert\"    \"Alice\"     \"Diana\"     \"Anastasia\"\n[7] \"Alexey\"    \"Julia\"    \n\ndim(students_df) #rows and columns number\n\n[1] 8 6\n\n\n\n\nSummary statistics\n\nstudents_df$is_tall =as.factor(students_df$is_tall)\nsummary(students_df)\n\n      age            height          weight          city    is_tall \n Min.   : 8.00   Min.   :120.0   Min.   :45.00   Kazan :2   Short:6  \n 1st Qu.:16.50   1st Qu.:169.5   1st Qu.:53.75   Moscow:3   Tall :2  \n Median :20.00   Median :173.5   Median :66.00   SPb   :3            \n Mean   :19.75   Mean   :169.0   Mean   :64.38                       \n 3rd Qu.:23.00   3rd Qu.:178.8   3rd Qu.:75.75                       \n Max.   :32.00   Max.   :188.0   Max.   :80.00                       \n     age_range\n Child    :1  \n Sub-adult:3  \n Adult    :3  \n Old      :1  \n              \n              \n\n\nCreate contingency table of the counts at each combination of factor levels\n\ntable(students_df$city)\n\n\n Kazan Moscow    SPb \n     2      3      3 \n\ntable(students_df$city, students_df$age_range)\n\n        \n         Child Sub-adult Adult Old\n  Kazan      0         0     2   0\n  Moscow     0         2     0   1\n  SPb        1         1     1   0"
+  },
+  {
+    "objectID": "code/basic_r.html#p.s.",
+    "href": "code/basic_r.html#p.s.",
+    "title": "Prac #1. Basic R",
+    "section": "P.S.",
+    "text": "P.S.\n\nView()\n\nView(students_df)\n\n\n\nAggregation\n\naggregate(age ~ city, students_df, mean)\n\n    city      age\n1  Kazan 22.50000\n2 Moscow 21.66667\n3    SPb 16.00000\n\n\nWe grouped ages by city and than run function (here we calculated mean) for values in these groups\nMedian of heights inside each group of age_range:\n\naggregate(height ~ age_range, students_df, median)\n\n  age_range height\n1     Child    120\n2 Sub-adult    175\n3     Adult    172\n4       Old    181\n\n\n\n\nMatrices\n\nv = c(1,2,3,4,5,6)\n\nmatrix(v)\n\n     [,1]\n[1,]    1\n[2,]    2\n[3,]    3\n[4,]    4\n[5,]    5\n[6,]    6\n\nmatrix(v, nrow = 2)\n\n     [,1] [,2] [,3]\n[1,]    1    3    5\n[2,]    2    4    6\n\n# matrix(v, nrow = 3)\nmatrix(v, nrow = 2, byrow = T)\n\n     [,1] [,2] [,3]\n[1,]    1    2    3\n[2,]    4    5    6"
+  },
+  {
     "objectID": "code/datavis.html",
     "href": "code/datavis.html",
     "title": "Data visualization",
@@ -581,179 +749,11 @@
     "text": "Facets\n\nfacet_wrap()\n\niris_df %&gt;% ggplot(aes(x=Petal.Length, y=Petal.Width)) +\n  geom_point(alpha=0.6, size=2) +\n  theme_bw() +\n\n# ----------------------\n\nfacet_wrap(. ~ Species)\n\n\n\n\n\n\n\n\n\n\nfacet_grid()\n\niris_df %&gt;% ggplot(aes(x=Petal.Length, y=Petal.Width)) +\n  geom_point(alpha=0.6, size=2) +\n  theme_bw() +\n# ----------------------\n  facet_grid(cols = vars(Species),\n             rows=vars(Sepal.Length.Category))\n\n\n\n\n\n\n\n  # facet_wrap(Sepal.Length.Category ~ Species)"
   },
   {
-    "objectID": "code/basic_r.html",
-    "href": "code/basic_r.html",
-    "title": "Prac #1. Basic R",
-    "section": "",
-    "text": "Here you can see\n\nThis file with code on top of the screen\nConsole, where you can write code line by line. In fact, when you execute the code from the file, the entire script is run via the console\nFiles, Help etc. on the bottom right below\nEnvironment containing all created variables on the top right\n\nWe can create new files, projects and even presentations or websites. RStudio provides us with useful tools for programming, especially in R, but we can also do it in python, bash and other languages.\n\n\nPrint\n\n?getwd()\n\nTo open help for a function (here, getwd).\nOr just go to Help on the bottom right below"
-  },
-  {
-    "objectID": "code/basic_r.html#help",
-    "href": "code/basic_r.html#help",
-    "title": "Prac #1. Basic R",
-    "section": "",
-    "text": "Print\n\n?getwd()\n\nTo open help for a function (here, getwd).\nOr just go to Help on the bottom right below"
-  },
-  {
-    "objectID": "code/basic_r.html#tips-for-you",
-    "href": "code/basic_r.html#tips-for-you",
-    "title": "Prac #1. Basic R",
-    "section": "Tips for you",
-    "text": "Tips for you\nPress Tab while writing something and RStudio will help you. Often it helps even without pressing the button :)\n\n#"
-  },
-  {
-    "objectID": "code/basic_r.html#markdown",
-    "href": "code/basic_r.html#markdown",
-    "title": "Prac #1. Basic R",
-    "section": "Markdown",
-    "text": "Markdown\n\nMarkdown - is markup language for creating formatted text\n\nMost useful formattings:\n\n**bold text** - bold text\n*italic text* - italic text\n# Head - Heading as above “R markdown”. Main section.\nMultiple # (##/####/####, etc.) - Headings of subsections (as ‘Markdown’ written above)\n&gt; - quote\n\nR Markdown also supports LaTeX which useful for writing mathematical equations:\n\n$E = mc^2$ is turned into \\(E = mc^2\\)"
-  },
-  {
-    "objectID": "code/basic_r.html#knit",
-    "href": "code/basic_r.html#knit",
-    "title": "Prac #1. Basic R",
-    "section": "knit",
-    "text": "knit\nR Markdown allows us to “knit” this project and create beautiful report in html, pdf and even Word. To do that find the blue ball on top of the screen and click on it. While knitting all chunks will be executed again taking into account you options set for chunks."
-  },
-  {
-    "objectID": "code/basic_r.html#hotkeys",
-    "href": "code/basic_r.html#hotkeys",
-    "title": "Prac #1. Basic R",
-    "section": "Hotkeys",
-    "text": "Hotkeys\n\n\n\nAction\nWindows/Linux\nMac\n\n\n\n\nKnit the document\nCtrl + Shift + K\nCmd + Shift + K\n\n\nCreate a chunk\nCtrl + Alt + I\nCmd + Option + I\n\n\nRun current line\nCtrl + Enter\nCmd + Enter\n\n\nRun current chunk\nCtrl + Alt + C\nCmd + Option + C\n\n\nShow all shortcuts\nAlt + Shift + K\nOption + Shift + K\n\n\nDelete current line\nCtrl + D\nCmd + D\n\n\nComment current line\nCtrl + Shift + C\nCmd + Shift + C"
-  },
-  {
-    "objectID": "code/basic_r.html#variables",
-    "href": "code/basic_r.html#variables",
-    "title": "Prac #1. Basic R",
-    "section": "Variables",
-    "text": "Variables\nAll you need to know about variables is that they can store values which we assign\n\nvariable = 37\nvar_character = 'biology'\nvar_bool = TRUE\n\nWe can just run code with name of variable to see its value\n\nvariable\n\n[1] 37\n\nvar_character\n\n[1] \"biology\"\n\nvar_bool\n\n[1] TRUE\n\n\nChange the value:\n\nvariable = variable + 100\nvariable\n\n[1] 137\n\n\n\nMathematical operations\n\nx = 19\ny = 9\n\n\n- x\n\n[1] -19\n\nx + y\n\n[1] 28\n\nx - y\n\n[1] 10\n\nx * y\n\n[1] 171\n\nx / y \n\n[1] 2.111111\n\nx ^ y # x to the power of y\n\n[1] 322687697779\n\nsqrt(x) # square root\n\n[1] 4.358899\n\n# sum(1,2,NA,34, na.rm = TRUE)\n\nx %% y # ‘remainder’ of division \n\n[1] 1\n\nx %/% y # integer division\n\n[1] 2\n\n\n\ny + 2 * 3\n\n[1] 15\n\n(y + 2) * 3\n\n[1] 33\n\n\n\n\nLogical operations\n\nx &gt; y\n\n[1] TRUE\n\nx &lt; y\n\n[1] FALSE\n\nx == y # is equal\n\n[1] FALSE\n\nx != y # is not equal\n\n[1] TRUE\n\n\n\n10 &lt; 10\n\n[1] FALSE\n\n10 &lt;= 10\n\n[1] TRUE\n\n\n\nx &lt; 10 & y &lt; 10 \n\n[1] FALSE\n\nx &lt; 10 | y &lt; 10\n\n[1] TRUE\n\n\n\nbool1 = TRUE\nbool2 = FALSE\n\n! &lt;-&gt; “not”\n\n!bool1\n\n[1] FALSE\n\n!bool2\n\n[1] TRUE"
-  },
-  {
-    "objectID": "code/basic_r.html#vectors",
-    "href": "code/basic_r.html#vectors",
-    "title": "Prac #1. Basic R",
-    "section": "Vectors",
-    "text": "Vectors\nVector is a simple one-dimensional array. In R it can contain only one type of data. The function used to create vector is c().\nHere we create some vectors and store them in corresponding variables:\n\nv_numeric = c(1,2,3,4)\nv_logical = c(T,F,F,T)\nv_character = c(\"1\",\"2\",\"3\",\"4\")\n# c(1,2,'3')\n# c(T,1,0,F)\n\n(R allows us not to write whole FALSE and TRUE, bur write only first letter)\nSimple way to create integer vector\n\n1:5\n\n[1] 1 2 3 4 5\n\n5:1\n\n[1] 5 4 3 2 1\n\n-1:1\n\n[1] -1  0  1\n\n\n\nc(1:5, c(11,13,14))\n\n[1]  1  2  3  4  5 11 13 14\n\nc(7:10, 1:5)\n\n[1]  7  8  9 10  1  2  3  4  5\n\nc(1:5,7:10)\n\n[1]  1  2  3  4  5  7  8  9 10\n\n\n\nValues in vector are not sorted and unique by default!\n\n\nIndexes\nWe can access to the values of vector by indexes.\n\nvec = c(\"A\", \"B\", \"C\", \"D\", \"E\", \"F\")\nvec[3]\n\n[1] \"C\"\n\nvec[7]\n\n[1] NA\n\nvecnew = vec[-1]\nvecnew\n\n[1] \"B\" \"C\" \"D\" \"E\" \"F\"\n\n\nNA indicates a missing value. It appears here because the 7th element does not exist in the vector\nWhat if we use vectors as indexes…?\n\n# vec[1,2,3] # ERROR\nvec[1:3]\n\n[1] \"A\" \"B\" \"C\"\n\nvec[3:1]\n\n[1] \"C\" \"B\" \"A\"\n\nvec[c(3,1,5)]\n\n[1] \"C\" \"A\" \"E\"\n\n\nInside of [ ] vector is interpreted as a indexes of values in vec\n\n\nGreat feature of R language - vectorization\n\nMathematical operations\nWhat will be the result of this operation?\n\nvec1234 = c(1, 2, 3, 4)\nvec1234 * 5\n\n[1]  5 10 15 20\n\n# c(vec1234, 5)\n\nWow! Isn’t it cool? We can do anything with vectors not by using some operation for each value step by step, but using operation for each value only once\n\nc(1, 2, 3, 4) + 5 - 2\n\n[1] 4 5 6 7\n\nc(1, 2, 3, 4) ^ 2\n\n[1]  1  4  9 16\n\nsqrt(vec1234)\n\n[1] 1.000000 1.414214 1.732051 2.000000\n\n# !v_logical\n\nMoreover, we can perform mathematical operations on two vectors\n\nvec123 = c(1, 2, 3, 0) \nvec321 = c(3, 2, 1, 4)\n\nvec_new = vec123 * vec321\nvec_new\n\n[1] 3 4 3 0\n\n\nThe result is also vector!\n\n\nLogical operations\nAlso vectorized\n\nvec1234 &gt; 2\n\n[1] FALSE FALSE  TRUE  TRUE\n\n\n\nvec123 &gt;= vec321\n\n[1] FALSE  TRUE  TRUE FALSE"
-  },
-  {
-    "objectID": "code/basic_r.html#the-fun-is-just-started",
-    "href": "code/basic_r.html#the-fun-is-just-started",
-    "title": "Prac #1. Basic R",
-    "section": "The fun is just started!",
-    "text": "The fun is just started!\n\nCreate vectors from vectors\n\nweights_of_seed = c(1:4, 10:15, 4:7)\nweights_of_seed\n\n [1]  1  2  3  4 10 11 12 13 14 15  4  5  6  7\n\n\n\n\nUse conditions (logic) inside square brackets\n\nweights_of_seed[weights_of_seed &lt; 5]\n\n[1] 1 2 3 4 4\n\n\nLets break out this. Firstly, logical vector is created inside the brackets to filter the data. For example, we filter data with values more than 5\n\nlogical_vector = weights_of_seed &lt; 5\nlogical_vector\n\n [1]  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE\n[13] FALSE FALSE\n\n\nThan logical vector “make” to filter out values which have “FALSE” in corresponding index\n\nweights_of_seed[logical_vector]\n\n[1] 1 2 3 4 4\n\n\nIt is VERY useful for filtering simple data.\n\nweights_of_seed[weights_of_seed &lt; 10 & weights_of_seed &gt; 2]\n\n[1] 3 4 4 5 6 7"
-  },
-  {
-    "objectID": "code/basic_r.html#basic-statistics",
-    "href": "code/basic_r.html#basic-statistics",
-    "title": "Prac #1. Basic R",
-    "section": "Basic statistics",
-    "text": "Basic statistics\n\nLength\n\nlength(weights_of_seed)\n\n[1] 14\n\n\nWe can already compute some statistics on numerical vectors!\n\nsum(weights_of_seed) / length(weights_of_seed)\n\n[1] 7.642857\n\nmean(weights_of_seed)\n\n[1] 7.642857\n\nmedian(weights_of_seed)\n\n[1] 6.5\n\n\n\nvar(weights_of_seed)\n\n[1] 22.55495\n\nsd(weights_of_seed)\n\n[1] 4.749205\n\nvar(weights_of_seed) == sd(weights_of_seed)^2\n\n[1] FALSE\n\n\n\n\nMin and max\n\nmax(weights_of_seed)\n\n[1] 15\n\nmin(weights_of_seed)\n\n[1] 1\n\nrange(weights_of_seed) # min and max (vector!)\n\n[1]  1 15\n\n\n\n\nQuantiles\n\nquantile(weights_of_seed)\n\n   0%   25%   50%   75%  100% \n 1.00  4.00  6.50 11.75 15.00 \n\nquantile(weights_of_seed, probs = c(0.1, 0.5, 0.9))\n\n 10%  50%  90% \n 2.3  6.5 13.7 \n\nquantile(weights_of_seed, probs = c(0.5)) == median(weights_of_seed)\n\n 50% \nTRUE \n\n\n\n\nValues above the mean\n\nmean_value = mean(weights_of_seed)\nweights_of_seed[weights_of_seed &gt; mean_value]\n\n[1] 10 11 12 13 14 15"
-  },
-  {
-    "objectID": "code/basic_r.html#two-associated-vectors",
-    "href": "code/basic_r.html#two-associated-vectors",
-    "title": "Prac #1. Basic R",
-    "section": "Two “associated” vectors",
-    "text": "Two “associated” vectors\n\nNamed vectors\n\nstudents_names = c('Daniel', 'Sasha', 'Robert', 'Alice', \n                   'Diana', 'Anastasia', 'Alexey', 'Julia')\nage = c(15, 32, 18, 8, 23, 17,22, 23)\n\nStudents older than 18\n\nstudents_names[age &gt;= 18] # ANY logical vector\n\n[1] \"Sasha\"  \"Robert\" \"Diana\"  \"Alexey\" \"Julia\" \n\n\nStudents aged 18 or more\n\nstudents_names[age &gt;= 18]\n\n[1] \"Sasha\"  \"Robert\" \"Diana\"  \"Alexey\" \"Julia\" \n\n\nWhat if we want to extract names AND their age. We can set names for each value in vector using names() function\nnames() function returns names from vector. Vector student_age had no names:\n\nstudents_age_vec = age\nnames(students_age_vec)\n\nNULL\n\n\nAnd we can set such names as we do it with variables:\n\nnames(students_age_vec) = students_names\nstudents_age_vec\n\n   Daniel     Sasha    Robert     Alice     Diana Anastasia    Alexey     Julia \n       15        32        18         8        23        17        22        23 \n\n\nNow we can access values using names!\n\nstudents_age_vec['Alice']\n\nAlice \n    8 \n\n\nAnother way to create “named” vector:\n\nnamed_vec = c(\"vlaue1\" = 1, \"value2\" = 2, \"value3\" = 3)\nnamed_vec\n\nvlaue1 value2 value3 \n     1      2      3 \n\n\n\n\nList\n\nstudents_age_list = list(students_names, age)\nstudents_age_list\n\n[[1]]\n[1] \"Daniel\"    \"Sasha\"     \"Robert\"    \"Alice\"     \"Diana\"     \"Anastasia\"\n[7] \"Alexey\"    \"Julia\"    \n\n[[2]]\n[1] 15 32 18  8 23 17 22 23\n\n\n\n# students_age_list['Alice'] # NOTHING\n\nNow we can add several vectors inside same “structure”. Let’s add weight and height and set names to each vector:\n\nheight = c(175, 181, 188, 120, 170, 168, 178, 172)\nweight = c(70, 75, 80, 45, 55, 50, 78, 62)\n\nstudents_list = list(names = students_names,\n                     age=age,\n                     height=height,\n                     weight=weight)\n\nstudents_list\n\n$names\n[1] \"Daniel\"    \"Sasha\"     \"Robert\"    \"Alice\"     \"Diana\"     \"Anastasia\"\n[7] \"Alexey\"    \"Julia\"    \n\n$age\n[1] 15 32 18  8 23 17 22 23\n\n$height\n[1] 175 181 188 120 170 168 178 172\n\n$weight\n[1] 70 75 80 45 55 50 78 62\n\n\nEach vector represents a piece of information about each student. Vectors here are like columns in a table (data frame)\n\nList data access\nWe can access vectors in several ways\n\nstudents_list[2] # NOT A VECTOR\n\n$age\n[1] 15 32 18  8 23 17 22 23\n\nstudents_list[[2]] # VECTOR\n\n[1] 15 32 18  8 23 17 22 23\n\nstudents_list$weight  # vector\n\n[1] 70 75 80 45 55 50 78 62\n\n\nCertain values:\n\n# students_list[[2]][5]\n\nstudents_list$age[5]\n\n[1] 23\n\n\n\n\nImportant note\nThe list may contain many vectors, and not of the same length!\n\nlist(\n  c(1,2,3,4,5),\n  c('A', 'B', 'C')\n)\n\n[[1]]\n[1] 1 2 3 4 5\n\n[[2]]\n[1] \"A\" \"B\" \"C\"\n\n\nIt is not necessary to include NA (empty) values to save the “table” structure. This makes the list a little bit more flexible, but inconvenient for storing tabular data.\n\nmarks_of_students = list(\n  Alice = c(5,4,5,3,4,4),\n  Sasha = c(3,3,3),\n  Robert = c(5,5,5,5)\n)\n\nmarks_of_students\n\n$Alice\n[1] 5 4 5 3 4 4\n\n$Sasha\n[1] 3 3 3\n\n$Robert\n[1] 5 5 5 5\n\n\nIf each value in every vector represent piece of information about the same students, then we should know the student’s name index and then access all vectors by this index. In other words, how to extract the row?\n\nindex_alice = which(students_list$names == 'Alice')\n\nstudents_list$age[index_alice]\n\n[1] 8\n\nstudents_list$weight[index_alice]\n\n[1] 45\n\n# lapply(students_list, function(x) x[index_alice])\n\n\nwhich(logical_vector) - return positions where logical_vector contain TRUE\n\nIs there more convenient way to store tabular data?"
-  },
-  {
-    "objectID": "code/basic_r.html#data-frames",
-    "href": "code/basic_r.html#data-frames",
-    "title": "Prac #1. Basic R",
-    "section": "Data frames",
-    "text": "Data frames\nWe created 4 vectors for each trait.\n\nstudents_names = c('Daniel', 'Sasha', 'Robert', 'Alice', \n                   'Diana', 'Anastasia', 'Alexey', 'Julia')\nvec_age = c(15, 32, 18, 8, 23, 17,22, 23)\nheight = c(175, 181, 188, 120, 170, 168, 178, 172)\nweight = c(70, 75, 80, 45, 55, 50, 78, 62)\n\nNow create data-frame\n\nstudents_df = data.frame(age=vec_age,\n                         height=height,\n                         weight=weight,\n                         row.names = students_names)\n\nstudents_df\n\n          age height weight\nDaniel     15    175     70\nSasha      32    181     75\nRobert     18    188     80\nAlice       8    120     45\nDiana      23    170     55\nAnastasia  17    168     50\nAlexey     22    178     78\nJulia      23    172     62\n\n\nNow we have a beautiful representation of tabular data. In addition, data-frames make it easier to manipulate data.\n\nData access\nIn some principles, data.frame is similar to list\n\nstudents_df[1] # differs from list :)\n\n          age\nDaniel     15\nSasha      32\nRobert     18\nAlice       8\nDiana      23\nAnastasia  17\nAlexey     22\nJulia      23\n\nstudents_df[[1]]\n\n[1] 15 32 18  8 23 17 22 23\n\n# with one value inside [] it is iterpreted as a column name (name of vector in list)\nstudents_df[\"age\"]\n\n          age\nDaniel     15\nSasha      32\nRobert     18\nAlice       8\nDiana      23\nAnastasia  17\nAlexey     22\nJulia      23\n\nstudents_df$age\n\n[1] 15 32 18  8 23 17 22 23\n\n\nAccessing the data in specific row and column:\n\n# With two values: [row_name, column_name]\nstudents_df[\"Daniel\", 'weight'] \n\n[1] 70\n\nstudents_df[1, ]\n\n       age height weight\nDaniel  15    175     70\n\n\n\nstudents_df[2:4, 2:3]\n\n       height weight\nSasha     181     75\nRobert    188     80\nAlice     120     45\n\nstudents_df[c(3,1,5), ]\n\n       age height weight\nRobert  18    188     80\nDaniel  15    175     70\nDiana   23    170     55\n\nstudents_df[c('Sasha', 'Robert', 'Alice'), c(\"height\", \"weight\")]\n\n       height weight\nSasha     181     75\nRobert    188     80\nAlice     120     45\n\n# \"empty\" column value mean \"all columns\"\nstudents_df[c('Sasha', 'Robert', 'Alice'), ]\n\n       age height weight\nSasha   32    181     75\nRobert  18    188     80\nAlice    8    120     45\n\n\n\n\nNew column\n\n# factor variables (why to use them over character)\nstudents_df$column = c(1,2,3,4,4,5,5,6)\nstudents_df$city = c(rep('Moscow', 3), rep('SPb', 3), rep('Kazan', 2))\n\nstudents_df$is_tall = ifelse(students_df$height &gt;= 180, 'Tall', 'Short')\n\nstudents_df$age_range = cut(\n  students_df$age,\n  breaks = c(0, 10, 20, 30, Inf),\n  labels = c(\"Child\", \"Sub-adult\", \"Adult\", 'Old')\n)\n\nstudents_df\n\n          age height weight column   city is_tall age_range\nDaniel     15    175     70      1 Moscow   Short Sub-adult\nSasha      32    181     75      2 Moscow    Tall       Old\nRobert     18    188     80      3 Moscow    Tall Sub-adult\nAlice       8    120     45      4    SPb   Short     Child\nDiana      23    170     55      4    SPb   Short     Adult\nAnastasia  17    168     50      5    SPb   Short Sub-adult\nAlexey     22    178     78      5  Kazan   Short     Adult\nJulia      23    172     62      6  Kazan   Short     Adult\n\n\n\nrep(value, number) - creates vector containing value number times\nifelse(condition, value_if_true, value_if_false) - returns value_if_true, if condition is TRUE and value_if_false otherwise\ncut(vector, breaks = c(...)) - breaks values in vector into ranges according to breaks and returns ranges in format (x, y] or return labels if sepcified\n\n\nTransforming types\n\nstudents_df$is_tall = as.factor(students_df$is_tall)\nstudents_df$city =  as.factor(students_df$city)\n\n\nas.factor() - transform column with numeric or character type into factor\nas.numeric(), as.character, as.list() ….\n\n\n\n\nDeleting a column\n\nstudents_df$column = NULL\nstudents_df\n\n          age height weight   city is_tall age_range\nDaniel     15    175     70 Moscow   Short Sub-adult\nSasha      32    181     75 Moscow    Tall       Old\nRobert     18    188     80 Moscow    Tall Sub-adult\nAlice       8    120     45    SPb   Short     Child\nDiana      23    170     55    SPb   Short     Adult\nAnastasia  17    168     50    SPb   Short Sub-adult\nAlexey     22    178     78  Kazan   Short     Adult\nJulia      23    172     62  Kazan   Short     Adult\n\n\n\n\nOrdering\n\nstudents_df[order(students_df$age), ]\n\n          age height weight   city is_tall age_range\nAlice       8    120     45    SPb   Short     Child\nDaniel     15    175     70 Moscow   Short Sub-adult\nAnastasia  17    168     50    SPb   Short Sub-adult\nRobert     18    188     80 Moscow    Tall Sub-adult\nAlexey     22    178     78  Kazan   Short     Adult\nDiana      23    170     55    SPb   Short     Adult\nJulia      23    172     62  Kazan   Short     Adult\nSasha      32    181     75 Moscow    Tall       Old\n\n# vec[c(3,1,5)]\n\nstudents_df[order(students_df$age, decreasing = T),]\n\n          age height weight   city is_tall age_range\nSasha      32    181     75 Moscow    Tall       Old\nDiana      23    170     55    SPb   Short     Adult\nJulia      23    172     62  Kazan   Short     Adult\nAlexey     22    178     78  Kazan   Short     Adult\nRobert     18    188     80 Moscow    Tall Sub-adult\nAnastasia  17    168     50    SPb   Short Sub-adult\nDaniel     15    175     70 Moscow   Short Sub-adult\nAlice       8    120     45    SPb   Short     Child\n\n\n\n\nFiltering\n\nstudents_df[students_df$height &gt; 170, ]\n\n       age height weight   city is_tall age_range\nDaniel  15    175     70 Moscow   Short Sub-adult\nSasha   32    181     75 Moscow    Tall       Old\nRobert  18    188     80 Moscow    Tall Sub-adult\nAlexey  22    178     78  Kazan   Short     Adult\nJulia   23    172     62  Kazan   Short     Adult\n\nstudents_df[students_df$height &gt; 170 & age &gt; 20, ]\n\n       age height weight   city is_tall age_range\nSasha   32    181     75 Moscow    Tall       Old\nAlexey  22    178     78  Kazan   Short     Adult\nJulia   23    172     62  Kazan   Short     Adult\n\nstudents_df[students_df$city %in% c('Moscow', 'SPb'), ]\n\n          age height weight   city is_tall age_range\nDaniel     15    175     70 Moscow   Short Sub-adult\nSasha      32    181     75 Moscow    Tall       Old\nRobert     18    188     80 Moscow    Tall Sub-adult\nAlice       8    120     45    SPb   Short     Child\nDiana      23    170     55    SPb   Short     Adult\nAnastasia  17    168     50    SPb   Short Sub-adult\n\nsubset(students_df, height &gt; 170)\n\n       age height weight   city is_tall age_range\nDaniel  15    175     70 Moscow   Short Sub-adult\nSasha   32    181     75 Moscow    Tall       Old\nRobert  18    188     80 Moscow    Tall Sub-adult\nAlexey  22    178     78  Kazan   Short     Adult\nJulia   23    172     62  Kazan   Short     Adult\n\n\n\n\nDescribe data-frame\n\nstr(students_df) # useful for a first look at the data\n\n'data.frame':   8 obs. of  6 variables:\n $ age      : num  15 32 18 8 23 17 22 23\n $ height   : num  175 181 188 120 170 168 178 172\n $ weight   : num  70 75 80 45 55 50 78 62\n $ city     : Factor w/ 3 levels \"Kazan\",\"Moscow\",..: 2 2 2 3 3 3 1 1\n $ is_tall  : Factor w/ 2 levels \"Short\",\"Tall\": 1 2 2 1 1 1 1 1\n $ age_range: Factor w/ 4 levels \"Child\",\"Sub-adult\",..: 2 4 2 1 3 2 3 3\n\n\n\ncolnames(students_df)\n\n[1] \"age\"       \"height\"    \"weight\"    \"city\"      \"is_tall\"   \"age_range\"\n\nrownames(students_df)\n\n[1] \"Daniel\"    \"Sasha\"     \"Robert\"    \"Alice\"     \"Diana\"     \"Anastasia\"\n[7] \"Alexey\"    \"Julia\"    \n\ndim(students_df) #rows and columns number\n\n[1] 8 6\n\n\n\n\nSummary statistics\n\nstudents_df$is_tall =as.factor(students_df$is_tall)\nsummary(students_df)\n\n      age            height          weight          city    is_tall \n Min.   : 8.00   Min.   :120.0   Min.   :45.00   Kazan :2   Short:6  \n 1st Qu.:16.50   1st Qu.:169.5   1st Qu.:53.75   Moscow:3   Tall :2  \n Median :20.00   Median :173.5   Median :66.00   SPb   :3            \n Mean   :19.75   Mean   :169.0   Mean   :64.38                       \n 3rd Qu.:23.00   3rd Qu.:178.8   3rd Qu.:75.75                       \n Max.   :32.00   Max.   :188.0   Max.   :80.00                       \n     age_range\n Child    :1  \n Sub-adult:3  \n Adult    :3  \n Old      :1  \n              \n              \n\n\nCreate contingency table of the counts at each combination of factor levels\n\ntable(students_df$city)\n\n\n Kazan Moscow    SPb \n     2      3      3 \n\ntable(students_df$city, students_df$age_range)\n\n        \n         Child Sub-adult Adult Old\n  Kazan      0         0     2   0\n  Moscow     0         2     0   1\n  SPb        1         1     1   0"
-  },
-  {
-    "objectID": "code/basic_r.html#p.s.",
-    "href": "code/basic_r.html#p.s.",
-    "title": "Prac #1. Basic R",
-    "section": "P.S.",
-    "text": "P.S.\n\nView()\n\nView(students_df)\n\n\n\nAggregation\n\naggregate(age ~ city, students_df, mean)\n\n    city      age\n1  Kazan 22.50000\n2 Moscow 21.66667\n3    SPb 16.00000\n\n\nWe grouped ages by city and than run function (here we calculated mean) for values in these groups\nMedian of heights inside each group of age_range:\n\naggregate(height ~ age_range, students_df, median)\n\n  age_range height\n1     Child    120\n2 Sub-adult    175\n3     Adult    172\n4       Old    181\n\n\n\n\nMatrices\n\nv = c(1,2,3,4,5,6)\n\nmatrix(v)\n\n     [,1]\n[1,]    1\n[2,]    2\n[3,]    3\n[4,]    4\n[5,]    5\n[6,]    6\n\nmatrix(v, nrow = 2)\n\n     [,1] [,2] [,3]\n[1,]    1    3    5\n[2,]    2    4    6\n\n# matrix(v, nrow = 3)\nmatrix(v, nrow = 2, byrow = T)\n\n     [,1] [,2] [,3]\n[1,]    1    2    3\n[2,]    4    5    6"
-  },
-  {
-    "objectID": "code/stats_intro.html",
-    "href": "code/stats_intro.html",
-    "title": "stats_intro",
-    "section": "",
-    "text": "Distributions\nRandom values from distributions"
-  },
-  {
-    "objectID": "code/anova.html",
-    "href": "code/anova.html",
-    "title": "ANOVA",
-    "section": "",
-    "text": "ANOVA (Analysis of Variance)\nUsed to compare means across more than two groups. ANOVA evaluates the variability within and between groups using the sum of squares.\n\nAssumptions\n\nData are normally distributed within each group.\nGroups have equal variances.\n\n\n\nHypotheses\n\nNull Hypothesis (H0): All group means are equal.\nAlternative Hypothesis (HA): At least one group mean is different.\n\n\n\nFormula\n\\(F = \\frac{MS_{between}}{MS_{within}}\\)\n\n\nExample Scenario\nDoes fertilizer type influence crop yield?\n\n\nData\n\ndata &lt;- data.frame(\n  fertilizer = rep(c(\"Type A\", \"Type B\", \"Type C\"), each = 10),\n  yield = c(rnorm(10, mean = 20, sd = 3), rnorm(10, mean = 25, sd = 3), rnorm(10, mean = 22, sd = 3))\n)\n\n\nboxplot(yield ~ fertilizer, data = data, main = \"Yield by Fertilizer Type\")\n\n\n\n\n\n\n\n\n\n\nCode Example\n\n# Using aov (Type I)\nanova_result &lt;- aov(yield ~ fertilizer, data = data)\nsummary(anova_result)\n\n            Df Sum Sq Mean Sq F value Pr(&gt;F)  \nfertilizer   2  44.29  22.144   3.256 0.0541 .\nResiduals   27 183.64   6.801                 \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n# Using car package for Type II/III ANOVA\nif (!requireNamespace(\"car\", quietly = TRUE)) install.packages(\"car\")\nlibrary(car)\n\nWarning: пакет 'car' был собран под R версии 4.3.3\n\n\nЗагрузка требуемого пакета: carData\n\nAnova(lm(yield ~ fertilizer, data = data), type = \"II\")\n\nAnova Table (Type II tests)\n\nResponse: yield\n            Sum Sq Df F value  Pr(&gt;F)  \nfertilizer  44.289  2  3.2559 0.05411 .\nResiduals  183.639 27                  \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n\n\n\nOutput Explanation\n\nF-statistic: Ratio of variance between groups to variance within groups.\np-value: Tests the null hypothesis that all group means are equal.\n\n\n\nNon-Parametric Alternative\nKruskal-Wallis test can be used for non-normal data.\n\nkruskal.test(yield ~ fertilizer, data = data)\n\n\n    Kruskal-Wallis rank sum test\n\ndata:  yield by fertilizer\nKruskal-Wallis chi-squared = 5.2568, df = 2, p-value = 0.07219"
-  },
-  {
-    "objectID": "homeworks/HW1.html",
-    "href": "homeworks/HW1.html",
-    "title": "Homework #1: Exploring elephant data",
-    "section": "",
-    "text": "Download the provided dataset ElephantsMF.csv and place it in your working directory.\nThe dataset contains the following columns:\n- rownames: Unique identifiers for each record (elephant).\n- Age: Age of the elephants (years).\n- Height: Height of the elephants (cm).\n- Sex: Sex of the elephants (M for Male, F for Female).\n\n\n\nEvery result must be shown! If you create or chabging some variable/column/dataframe, show it!\n\n\nDon’t forget to save your changes where needed\n\nFor example, dataset %&gt;% function() does not change the dataset, but dataset = dataset %&gt;% function() does\n\n\n\n\n\nlibrary(readr)\nlibrary(dplyr)\nlibrary(tidyr)"
-  },
-  {
-    "objectID": "homeworks/HW1.html#downloading-libraries",
-    "href": "homeworks/HW1.html#downloading-libraries",
-    "title": "Homework #1: Exploring elephant data",
-    "section": "",
-    "text": "library(readr)\nlibrary(dplyr)\nlibrary(tidyr)"
-  },
-  {
-    "objectID": "homeworks/HW1.html#vectors",
-    "href": "homeworks/HW1.html#vectors",
-    "title": "Homework #1: Exploring elephant data",
-    "section": "Vectors",
-    "text": "Vectors\n\n1. Create vector containing numbers from -20 to 50 and number 100\n\n# vec =\n\n\n\n2. Subtract by 10 and then divide by 2 each value in this vector\n\n#"
-  },
-  {
-    "objectID": "homeworks/HW1.html#data-loading",
-    "href": "homeworks/HW1.html#data-loading",
-    "title": "Homework #1: Exploring elephant data",
-    "section": "Data Loading",
-    "text": "Data Loading\n\n3. Load the dataset using read.csv(), save it to variable dataset and show the first 10 rows.\n\n# dataset &lt;- read...\n#\n\n\nDon’t forget to set parameters to\n\nspecify NAs values\nmake character columns factors\nfirst column a rowname\n\nhead(...) - by default it returns first 5 rows, but we need 10 :)\n\n3.1 Make dataset a tibble\n\n#\n\n\n\n4. Check the structure and summary of the data.\n\n#\n\n\nJust use special functions"
-  },
-  {
-    "objectID": "homeworks/HW1.html#data-cleaning",
-    "href": "homeworks/HW1.html#data-cleaning",
-    "title": "Homework #1: Exploring elephant data",
-    "section": "Data Cleaning",
-    "text": "Data Cleaning\n\n5. Check for missing values (NA) in the dataset (how many in each column?).\n\n#\n\n\n\n6. Verify that the Sex column contains only valid categories (M and F).\n\n#\n\n\nTip: just use table() or unique()"
-  },
-  {
-    "objectID": "homeworks/HW1.html#data-transformation",
-    "href": "homeworks/HW1.html#data-transformation",
-    "title": "Homework #1: Exploring elephant data",
-    "section": "Data Transformation",
-    "text": "Data Transformation\n\n7. Create a new column Age_category categorizing elephants based on Age:\n\n“Young” for Age &lt; 5\n“Sub-adult” for 5 &lt;= Age &lt; 15\n“Adult” for Age &gt;= 15\n\n\n##\n\n\nUse cut() - don’t forget about parameter labels = c(...)\nEnsure that you created column in your dataset !\n\n\n\n8. Create a column Height_category that splits Height into two categories: “Below Median” and “Above Median” based on the median height.\n\n#\n\n\nmedian() and ifelse()\nDon’t forget to make new column a factor\nEnsure that you created column in your dataset !\n\n\n\n9. Create a new column that contain the Height in meters (divide by 100), delete column with Height in cm.\n\n##\n\n\nYou can set a new name of column or leave the old one.\nRemember how to delete column\nTip: mutate(). Parameter .keep=... may be useful to alternatively delete column\nEnsure the column is created inside dataset\n\n\n\n10. Round column Height in meters to two decimal places (e.g. 1.4567 -&gt; 1.46), i.e. replace values in column with rounded ones\n\n#\n\n\nTip: round() and look for a specific parameter\nEnsure the column is modified inside dataset"
-  },
-  {
-    "objectID": "homeworks/HW1.html#exploratory-data-analysis",
-    "href": "homeworks/HW1.html#exploratory-data-analysis",
-    "title": "Homework #1: Exploring elephant data",
-    "section": "Exploratory Data Analysis",
-    "text": "Exploratory Data Analysis\n\n11. Compute mean values of Height for each Sex (in meters)\n\n##\n\n\nDon’t forget that mean() works only on vectors\n\n%&gt;% pull(column) -&gt; vector\ndata$column -&gt; vector\n\nif you are advanced user, you can use group_by() and summarize()\n\n\n\n12. Identify the row with the maximum Height and print this row (not number of row!).\n\n#\n\n\nTip: which.max()\n\n\n\n13. Show a counts and frequency tables for the Age_category column. Show both counts and frequencies\n\n##\n\n\nUse table() and prop.table()\n\n\n\n14. Show a contingency table of Sex and Height_category (number of elephants for every combination of these two categories)\n\n#\n\n\nUse table()\n\n\n\n15.* Group dataset by Height_category and calculate mean and sd of Age for each group.\n\n#\n\n\nuse group_by() and summarise()\n\n\n\n16. Show the rows for elephants taller than 2 metres but shorter than 2.5 metres, and younger than 15 years old. Then select the Age and Height columns.\n\n#\n\n\nuse special dplyr functions\n\n\n\n17. Identify the top 3 tallest elephants and extract their Age, Height, and Sex.\n\n#\n\n\nYou may be using data arranging and head()\n\n\n\n18. Show rows of the 3 tallest and 3 the shortest elephants (not separately, but within one dataset)\n\n##\n\n\nYou may be using data arranging\nbasic functions (head() and tail()) can also be useful, but remember how ordered is your data\n+1 point if you make it by one line of code (show as one data.frame)\n\nTip: you can use either n() or nrow()\nTip: you can use slice()\n\n\n\n\n19.* Identify 3 oldest elephants for each Sex and extract their Age and Height.\n\n#\n\n\ngroup_by() and slice_head()"
-  },
-  {
-    "objectID": "homeworks/HW1.html#exporting-data",
-    "href": "homeworks/HW1.html#exporting-data",
-    "title": "Homework #1: Exploring elephant data",
-    "section": "Exporting Data",
-    "text": "Exporting Data\n\n20. Save our modified dataset with new columns as a new CSV file.\n\n#\n\n\nName the file whatever you want\nSet row.names = FALSE if you are using the base function. The function from readr works fine by itself"
-  },
-  {
-    "objectID": "homeworks/HW2.html",
-    "href": "homeworks/HW2.html",
-    "title": "Homework on Statistical Distributions and Visualization",
-    "section": "",
-    "text": "library(ggplot2)\nlibrary(dplyr)\n\n\nPalmer Penguins\n\n0. Read file penguins.csv\n\nDon’t forget to use all necessary parameters which were used in previous work\nLook at the data (summary? structure? something else you want)\n\n\n#\n\nThe penguins dataset contains data collected on three penguin species (Adelie, Chinstrap, and Gentoo) from three islands (Torgersen, Biscoe, and Dream) in the Palmer Archipelago, Antarctica.\nIt includes measurements like:\n\nbill_length_mm and bill_depth_mm - dimensions of the penguin’s bill.\nflipper_length_mm - length of the penguin’s flippers.\nbody_mass_g - weight of the penguins in grams.\nisland - the island where the penguins were observed.\nsex: the gender of the penguin.\n\nSome rows may contain missing values (e.g., in sex column).\n\n\n\n1.* Delete rows containing only NAs in columns except species, sex, island.\n\n#\n\n\nRemember complete.cases() and remember the ways we filtered datasets\nEnsure, that dataset was filtered!\n\n\n\n2. Create bar plot to show the number of observations (rows) for each species and delete legend (if ggplot used).\n\nLabel the axes and legends\nColors (fill) should also be different for each species\ntheme_classic(), if ggplot used\nThis task can be solved using either basic R or ggplot\nTip: use table() (basic R and ggplot) or geom_bar() (ggplot)\nDon’t forget to delete legend if ggplot used\n\n\n#\n\n\n\n3. Create stacked barplot scaled from 0 to 1 to show the proportion of species on each island.\n\nLabel the axes and legends\ntheme_classic()\nfill should represent species.\nDon’t forget change position parameter\n\n\n#\n\n\n\n4. Create a histogram for the flipper_length_mm and draw the vertical line to show mean value\n\nLabel the axes\nSet the number of breaks to 10\nThe histogram fill should be \"lightblue\" and border (color) should be \"black\"\nVertical line color = 'red', width = 1.2\ntheme_bw(), if ggplot used\nThis task can be solved using either basic R or ggplot\n\n\n#\n\n\n\n5. Create a density plot for the body_mass_g variable. Fill the density regions based on species.\n\nLabel the axes (y-axis is Density)\nfill should be different for each species\nDensity plot should have alpha=0.5\ntheme_classic()\n\n\n#\n\n\n\n6. Create a boxplots grouped by sex to compare bill_length_mm values. Save the plot in variable and show the plot.\n\nFilter out observations without known sex (!)\nLabel the axes and legends\nColors (fill) should also be different for each sex\ntheme_classic()\nWhen you save the plot in a variable, chart is not displayed. Don’t forget to show the plot by writing the variable name on a new line!\n\n\n#\n\n\n\n7. Change the chart above: for each sex there must be 3 colored boxplots for each species. Each species should be specifically colored (fill).\n\nTip: just add (+) corresponding aes(...) to the variable\n\n\n#\n\n\n\n8. Create a scatter plot to show the relationship between bill_length_mm and bill_depth_mm.\n\nLabel the axes\nMake dots colored filled with 'blue'\nUse theme_classic, if ggplot used\nThis task can be solved using either basic R or ggplot\n\n\n#\n\n\n\n9. Create a Bubble plot: a scatter plot depicting the relationships between length_last_mm and depth_last_mm, with colored dots representing species and sizes reflecting length_last_mm.\n\nLabel the axes and legends\nPoints should have alpha=0.7\ntheme_classic()\n\n\n#\n\n\n\n10*. Add geom_rug() to the above plot to show distribution of points across the axes\n\nTo do that you should save plot above in variable and add geom_rug()\nreduce line width to 0.5, alpha to 0.8 and set show.legend = FALSE\n\n\n#"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Biostatistics in R",
-    "section": "",
-    "text": "Code\n\nBasic R\n\nDownload\n\nWorking with Dataframes\n\nDownload\n\nVisualization\n\nDownload\n\n\n\n\n\nPresentations\nVisualization sins and Distributions\n\n\nHomeworks\n\nHW #1\n\nDownload\n\nHW #2\n\nDownload\nReference plots"
+    "objectID": "presentations/visual_sins_inspiration.html#visualization-sins-1",
+    "href": "presentations/visual_sins_inspiration.html#visualization-sins-1",
+    "title": "Visualization sins and inspirations",
+    "section": "Visualization sins",
+    "text": "Visualization sins\nPartly taken from\n\nFriends Don’t Let Friends Make Bad Graphs\nMisinformed By Visualization\n\nI highly recommend to visit this web-pages!"
   },
   {
     "objectID": "code/advanced_df.html",
@@ -845,12 +845,5 @@
     "title": "Working with Dataframes",
     "section": "Slice_head()",
     "text": "Slice_head()\nalmost the same as basic head(), but it is more suitable for grouped data:\n\nstudents_tibble %&gt;% group_by(Stress_Level) %&gt;% slice_head(n=3)\n\n# A tibble: 9 × 7\n# Groups:   Stress_Level [3]\n  Study_Hours_Per_Day Extracurricular_Hours_Per_Day Sleep_Hours_Per_Day\n                &lt;dbl&gt;                         &lt;dbl&gt;               &lt;dbl&gt;\n1                 8.1                           0.6                 6.5\n2                 8                             0.7                 5.3\n3                 8.4                           1.8                 5.6\n4                 5.3                           3.5                 8  \n5                 5.1                           3.9                 9.2\n6                 5.2                           3.6                 6.3\n7                 6.9                           3.8                 8.7\n8                 6.5                           2.1                 7.2\n9                 6                             2.1                 8  \n# ℹ 4 more variables: Social_Hours_Per_Day &lt;dbl&gt;,\n#   Physical_Activity_Hours_Per_Day &lt;dbl&gt;, GPA &lt;dbl&gt;, Stress_Level &lt;fct&gt;\n\n\nHere we sliced first 3 rows for data in each group"
-  },
-  {
-    "objectID": "presentations/visual_sins_inspiration.html#visualization-sins-1",
-    "href": "presentations/visual_sins_inspiration.html#visualization-sins-1",
-    "title": "Visualization sins and inspirations",
-    "section": "Visualization sins",
-    "text": "Visualization sins\nPartly taken from\n\nFriends Don’t Let Friends Make Bad Graphs\nMisinformed By Visualization\n\nI highly recommend to visit this web-pages!"
   }
 ]

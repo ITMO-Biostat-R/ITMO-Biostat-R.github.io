@@ -110,3 +110,15 @@ Partly taken from
 ### [Science Paths by Kim Albrecht](http://sciencepaths.kimalbrecht.com/)
 
 ![](/images/sciencepaths.png){fig-align="center" width="1600"}
+
+------------------------------------------------------------------------
+
+### [Plot Parade](https://plotparade.com/)
+
+![](/images/plotparade.png){fig-align="center"}
+
+------------------------------------------------------------------------
+
+### [Information Is Beautiful Awards](https://www.informationisbeautifulawards.com/showcase?page=1&type=awards)
+
+![](/images/iib.png){fig-align="center" width="2000"}

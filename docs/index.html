@@ -156,7 +156,9 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="presentations" class="level3">
 <h3 class="anchored" data-anchor-id="presentations">Presentations</h3>
-<p><a href="./presentations/distributions.html">Visualization sins and Distributions</a></p>
+<ul>
+<li><a href="./presentations/visual_sins_inspiration.html">Visualization sins and inspirations</a> <!-- -   [Distributions](presentations/distributions.qmd) --></li>
+</ul>
 </section>
 <section id="homeworks" class="level3">
 <h3 class="anchored" data-anchor-id="homeworks">Homeworks</h3>
@@ -272,7 +274,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/ITMO-Biostat-R\.github\.io\/");
+      var filterRegex = new RegExp('/' + window.location.host + '/');
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
