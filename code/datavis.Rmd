@@ -625,8 +625,6 @@ p_pubr + stat_compare_means(comparisons = comparisons,
 
 See more about `ggpubr` [**HERE**](https://rpkgs.datanovia.com/ggpubr/)
 
-# Choose the plot for your data ([data-to-viz.com](https://www.data-to-viz.com/))
-
 # P.S
 
 ## Customizing `fill` - `scale_fill_manual()`

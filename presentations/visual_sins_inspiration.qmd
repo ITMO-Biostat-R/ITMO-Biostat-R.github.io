@@ -1,0 +1,112 @@
+---
+title: "Visualization sins and inspirations"
+format: 
+  revealjs:
+      center: true
+      controls: true
+      # controlsLayout: 'bottom-left'
+      slide-number: true
+      show-slide-number: all
+      fontsize: 30px
+      style: style.css
+      progress: true
+---
+
+# Visualization sins {auto-animate="true" style="text-align: center"}
+
+## Visualization sins {auto-animate="true"}
+
+Partly taken from
+
+1.  [**Friends Don't Let Friends Make Bad Graphs**](https://github.com/cxli233/FriendsDontLetFriends)
+2.  [**Misinformed By Visualization**](https://leoyuholo.com/bad-vis-browser/index.html)
+
+**I highly recommend to visit this web-pages!**
+
+------------------------------------------------------------------------
+
+### Just messy plot. What's going on...?
+
+![](/images/memes/justmessUSA.jpg){fig-align="center" width="600"}
+
+------------------------------------------------------------------------
+
+### Just messy plot. What's going on...?
+
+![](/images/memes/barcolor.jpg){fig-align="center" width="600"}
+
+------------------------------------------------------------------------
+
+### `Pie-chart == evil`
+
+![](/images/memes/pie.svg){fig-align="center" width="800"}
+
+------------------------------------------------------------------------
+
+### **3D = [D]{.underline}on't [D]{.underline}o 3[D]{.underline}**
+
+![](/images/memes/3dbar.jpg){fig-align="center"}
+
+------------------------------------------------------------------------
+
+### **3D = Don't Do 3D**
+
+**Twice bad**
+
+![](/images/memes/3dpie.png){fig-align="center"}
+
+------------------------------------------------------------------------
+
+### Don't misinform!
+
+![](/images/memes/misleadbarplot.jpg){fig-align="center" width="600"}
+
+------------------------------------------------------------------------
+
+### Don't misinform!
+
+![](/images/memes/misleadcorrectbar.png){fig-align="center" width="600"}
+
+------------------------------------------------------------------------
+
+### However, don't do meaningless graphs
+
+![](/images/memes/lineaxisscale.png){fig-align="center"}
+
+------------------------------------------------------------------------
+
+### Don't use [Box plots]{.underline} and [Violin plots]{.underline} for small data
+
+![](/images/memes/smallsample.png){fig-align="center" width="2000"}
+
+------------------------------------------------------------------------
+
+### Don't use [Histograms]{.underline} for small data
+
+![](/images/memes/smallsample_hist.png){fig-align="center" width="2000"}
+
+# For visual inspiration {style="text-align: center"}
+
+------------------------------------------------------------------------
+
+### [Data to viz](https://www.data-to-viz.com/)
+
+![](/images/data2viz.png){fig-align="center" width="2400"}
+
+------------------------------------------------------------------------
+
+### [Dataviz project](https://datavizproject.com/)
+
+![](/images/datavizproj.png){fig-align="center" width="2000"}
+
+------------------------------------------------------------------------
+
+### [1 Dataset -100 Visualizations](https://100.datavizproject.com/)
+
+![](/images/100viz.png){fig-align="center" width="2000"}
+
+------------------------------------------------------------------------
+
+### [Science Paths by Kim Albrecht](http://sciencepaths.kimalbrecht.com/)
+
+![](/images/sciencepaths.png){fig-align="center" width="1600"}

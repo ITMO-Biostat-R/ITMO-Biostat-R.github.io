@@ -15,7 +15,8 @@ title: "Biostatistics in R"
 
 ### Presentations
 
-[Visualization sins and Distributions](presentations/distributions.qmd)
+-   [Visualization sins and inspirations](presentations/visual_sins_inspiration.qmd)
+<!-- -   [Distributions](presentations/distributions.qmd) -->
 
 ### Homeworks
 

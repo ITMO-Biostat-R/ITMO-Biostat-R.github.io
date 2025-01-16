@@ -397,7 +397,7 @@
 
 </section>
 <section>
-<section id="visualization-sins" class="title-slide slide level1 center" data-auto-animate="true">
+<section id="visualization-sins" class="title-slide slide level1 center" data-auto-animate="true" style="text-align: center">
 <h1 data-id="quarto-animate-title">Visualization sins</h1>
 
 </section>
@@ -462,7 +462,32 @@
 
 <img data-src="../images/memes/smallsample_hist.png" class="quarto-figure quarto-figure-center r-stretch" width="2000"></section></section>
 <section>
-<section id="distributions" class="title-slide slide level1 center">
+<section id="for-visual-inspiration" class="title-slide slide level1 center" style="text-align: center">
+<h1>For visual inspiration</h1>
+
+</section>
+<section class="slide level2 center">
+
+<h3 id="data-to-viz"><a href="https://www.data-to-viz.com/">Data to viz</a></h3>
+
+<img data-src="../images/data2viz.png" class="quarto-figure quarto-figure-center r-stretch" width="2400"></section>
+<section class="slide level2 center">
+
+<h3 id="dataviz-project"><a href="https://datavizproject.com/">Dataviz project</a></h3>
+
+<img data-src="../images/datavizproj.png" class="quarto-figure quarto-figure-center r-stretch" width="2000"></section>
+<section class="slide level2 center">
+
+<h3 id="dataset--100-visualizations"><a href="https://100.datavizproject.com/">1 Dataset -100 Visualizations</a></h3>
+
+<img data-src="../images/100viz.png" class="quarto-figure quarto-figure-center r-stretch" width="2000"></section>
+<section class="slide level2 center">
+
+<h3 id="science-paths-by-kim-albrecht"><a href="http://sciencepaths.kimalbrecht.com/">Science Paths by Kim Albrecht</a></h3>
+
+<img data-src="../images/sciencepaths.png" class="quarto-figure quarto-figure-center r-stretch" width="1600"></section></section>
+<section>
+<section id="distributions" class="title-slide slide level1 center" style="text-align: center">
 <h1>Distributions</h1>
 
 </section>
@@ -647,7 +672,7 @@ Now we use “<strong>time interval</strong>” and <strong>expected number of s
 <div class="cell large-code">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">rnorm</span>(<span class="at">n=</span><span class="dv">5</span>, <span class="at">mean=</span><span class="dv">100</span>, <span class="at">sd=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1]  91.49194 108.95072  89.82009  94.27601  94.62406</code></pre>
+<pre><code>[1] 104.95717  86.24643  90.94143  86.30897 104.55492</code></pre>
 </div>
 </div>
 <ol start="2" type="1">
@@ -1142,7 +1167,7 @@ Now we use “<strong>time interval</strong>” and <strong>expected number of s
       }
         var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
         var mailtoRegex = new RegExp(/^mailto:/);
-          var filterRegex = new RegExp("https:\/\/ITMO-Biostat-R\.github\.io\/");
+          var filterRegex = new RegExp('/' + window.location.host + '/');
         var isInternal = (href) => {
             return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
         }
