@@ -15,18 +15,16 @@ title: "Biostatistics in R"
 
 ### Presentations
 
--   [Visualization sins and inspirations](presentations/visual_sins_inspiration.qmd)
+-   [Visualization sins and inspirations](presentations/visual_sins_inspiration.qmd) 
 <!-- -   [Distributions](presentations/distributions.qmd) -->
 
 ### Homeworks
 
 -   [HW #1](./homeworks/HW1.Rmd)
     -   [Download](./zipfiles/HW1.zip)
-
 -   [HW #2](./homeworks/HW2.Rmd)
-    - [Download](./zipfiles/HW2.zip)
-    - [Reference plots](./homeworks/HW2_reference.html)
-
+    -   [Download](./zipfiles/HW2.zip)
+    -   [Reference plots](./homeworks/HW2_reference.html)
 
 <!-- -   [HW #3](./homeworks/HW3.Rmd) -->
 

@@ -569,7 +569,7 @@ ggplot(iris, aes(x = Species, y = Sepal.Length)) +
 
 ```{r}
 ggsave(
-  filename = './lec_output/bigplot.png', # specify the filename (path to file)
+  filename = './bigplot.png', # specify the filename (path to file)
   device = , # png, pdf, jpeg, svg and others
   dpi = 320, # resolution
   width = 1800,
@@ -581,7 +581,7 @@ ggsave(
 ### Save "everything between"
 
 ```{r}
-pdf("./lec_output/dodge_barplot.pdf", width = 6, height = 6)
+pdf("./dodge_barplot.pdf", width = 6, height = 6)
 
 iris_df %>% ggplot(aes(fill=Species, x=Sepal.Length.Category)) + 
   geom_bar(position = 'dodge')
