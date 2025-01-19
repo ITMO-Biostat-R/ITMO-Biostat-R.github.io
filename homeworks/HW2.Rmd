@@ -46,7 +46,7 @@ Some rows may contain missing values (e.g., in `sex` column).
 
 #### 1.\* Delete rows containing only NAs in columns except `species, sex, island`.
 
-```{r, eval=F}
+```{r}
 #
 ```
 
@@ -155,7 +155,7 @@ Some rows may contain missing values (e.g., in `sex` column).
 #
 ```
 
-#### 9. Create a [Bubble plot]{.underline}: a scatter plot depicting the relationships between `length_last_mm` and `depth_last_mm`, with colored dots representing `species` and sizes reflecting `length_last_mm`.
+#### 9. Create a [Bubble plot]{.underline}: a scatter plot depicting the relationships between `length_last_mm` and `depth_last_mm`, with colored dots representing `species` and sizes reflecting `flipper_length_mm`.
 
 -   Label the axes and legends
 

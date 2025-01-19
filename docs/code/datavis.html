@@ -1134,7 +1134,7 @@ For example, first bar have height of 5 - it mean, that there are 5 flowers with
 <h3 class="anchored" data-anchor-id="to-save-last-drawn-plot">To save <u>last</u> drawn plot:</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(</span>
-<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">filename =</span> <span class="st">'./lec_output/bigplot.png'</span>, <span class="co"># specify the filename (path to file)</span></span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">filename =</span> <span class="st">'./bigplot.png'</span>, <span class="co"># specify the filename (path to file)</span></span>
 <span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">device =</span> , <span class="co"># png, pdf, jpeg, svg and others</span></span>
 <span id="cb61-4"><a href="#cb61-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">dpi =</span> <span class="dv">320</span>, <span class="co"># resolution</span></span>
 <span id="cb61-5"><a href="#cb61-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">width =</span> <span class="dv">1800</span>,</span>
@@ -1151,7 +1151,7 @@ For example, first bar have height of 5 - it mean, that there are 5 flowers with
 <section id="save-everything-between" class="level3">
 <h3 class="anchored" data-anchor-id="save-everything-between">Save “everything between”</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pdf</span>(<span class="st">"./lec_output/dodge_barplot.pdf"</span>, <span class="at">width =</span> <span class="dv">6</span>, <span class="at">height =</span> <span class="dv">6</span>)</span>
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pdf</span>(<span class="st">"./dodge_barplot.pdf"</span>, <span class="at">width =</span> <span class="dv">6</span>, <span class="at">height =</span> <span class="dv">6</span>)</span>
 <span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a>iris_df <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">fill=</span>Species, <span class="at">x=</span>Sepal.Length.Category)) <span class="sc">+</span> </span>
 <span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">'dodge'</span>)</span>
