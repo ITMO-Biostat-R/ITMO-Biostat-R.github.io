@@ -542,13 +542,13 @@ window.Quarto = {
     One Sample t-test
 
 data:  x
-t = 1.5499, df = 9, p-value = 0.1556
+t = 2.5559, df = 9, p-value = 0.03089
 alternative hypothesis: true mean is not equal to 0
 95 percent confidence interval:
- -0.5518378  2.9532674
+ 0.2131337 3.4955372
 sample estimates:
 mean of x 
- 1.200715 </code></pre>
+ 1.854335 </code></pre>
 </div>
 </div>
 <p><strong>Example on two samples:</strong></p>
@@ -561,13 +561,13 @@ mean of x
     Welch Two Sample t-test
 
 data:  x1 and x2
-t = 3.5927, df = 16.756, p-value = 0.002288
+t = 0.72786, df = 13.76, p-value = 0.4789
 alternative hypothesis: true difference in means is not equal to 0
 95 percent confidence interval:
- 1.572349 6.058647
+ -1.927918  3.903723
 sample estimates:
  mean of x  mean of y 
- 2.8932036 -0.9222945 </code></pre>
+ 0.7345675 -0.2533351 </code></pre>
 </div>
 </div>
 <p><u><strong>Our <em>plant and sunlight</em> data:</strong></u></p>
@@ -579,13 +579,13 @@ sample estimates:
     Welch Two Sample t-test
 
 data:  height by group
-t = -6.8873, df = 55.165, p-value = 5.691e-09
+t = -6.0987, df = 57.827, p-value = 9.455e-08
 alternative hypothesis: true difference in means between group Shade and group Sunlight is not equal to 0
 95 percent confidence interval:
- -4.674754 -2.567559
+ -4.858191 -2.457035
 sample estimates:
    mean in group Shade mean in group Sunlight 
-              11.93792               15.55907 </code></pre>
+              11.01109               14.66870 </code></pre>
 </div>
 </div>
 <ul>
@@ -2036,7 +2036,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
+      var filterRegex = new RegExp("https:\/\/ITMO-Biostat-R\.github\.io\/");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
