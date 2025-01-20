@@ -195,8 +195,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Some rows may contain missing values (e.g., in <code>sex</code> column).</p>
 <p><img src="../images/penguin.png" class="img-fluid" width="1000"></p>
 </section>
-<section id="delete-rows-containing-only-nas-in-columns-except-species-sex-island." class="level4">
-<h4 class="anchored" data-anchor-id="delete-rows-containing-only-nas-in-columns-except-species-sex-island.">1.* Delete rows containing only NAs in columns except <code>species, sex, island</code>.</h4>
+<section id="delete-rows-containing-nas-in-all-columns-except-species-island-sex." class="level4">
+<h4 class="anchored" data-anchor-id="delete-rows-containing-nas-in-all-columns-except-species-island-sex.">1.* Delete rows containing NAs in all columns except <code>species, island, sex</code>.</h4>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -409,7 +409,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/ITMO-Biostat-R\.github\.io\/");
+      var filterRegex = new RegExp('/' + window.location.host + '/');
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
