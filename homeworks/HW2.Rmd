@@ -44,7 +44,7 @@ Some rows may contain missing values (e.g., in `sex` column).
 
 ![](../images/penguin.png){width="1000"}
 
-#### 1.\* Delete rows containing only NAs in columns except `species, sex, island`.
+#### 1.\* Delete rows containing NAs in all columns except `species, island, sex`.
 
 ```{r}
 #
