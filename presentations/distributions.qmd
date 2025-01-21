@@ -37,6 +37,50 @@ Therefore, researchers use samples - **random and representative** groups taken 
 
 ## Sampling {auto-animate="true"}
 
+### Are these samples are representative?
+
+1.  20 ITMO Biology students to study average marks of students in ITMO
+2.  100 ITMO first-year students to study students workload in their first ever exam
+3.  Email survey on student parents' opinion of ITMO
+
+------------------------------------------------------------------------
+
+1.  20 ITMO Biology students to study average marks of students in ITMO
+    -   **Only Biology students? Which year?**
+2.  100 ITMO first-year students to study students workload
+    -   **Only ITMO? Students with high workloads are less likely to participate**
+3.  Email survey on student parents' opinion of ITMO
+    -   **Only people whose email addresses we have**
+
+------------------------------------------------------------------------
+
+### [Results of the student survey, 2024 (449 people)](https://fitp.itmo.ru/p/abit/804) 
+
+::::: columns
+::: {.column width="45%"}
+![](/images/memes/itmosurvey.png){fig-align="center" width="1000"}
+:::
+
+::: {.column width="55%"}
+![](/images/memes/itmopie.png){fig-align="center"}
+![](/images/memes/itmolegend.png){fig-align="center"}
+:::
+:::::
+
+------------------------------------------------------------------------
+
+::::: columns
+::: {.column width="50%"}
+![](/images/memes/roulette.jpg){fig-align="center" width="500"}
+:::
+
+::: {.column width="50%"}
+![](/images/memes/selection_bias.png){fig-align="center" width="500"}
+:::
+:::::
+
+## Sampling {auto-animate="true"}
+
 ![](../images/sampling_types.jpg){fig-align="center" width="800"}
 
 ## Sampling {auto-animate="true"}
@@ -161,6 +205,12 @@ text(mean(Heights)+2.5*sd(Heights), 500, '99.7%',
 text(mean(Heights)+3.4*sd(Heights), 900, ' + 3 SD', cex=1)
 
 ```
+
+--------------------------------------------------------------------------------
+
+### Three sigma rule
+
+![](/images/memes/notesdistro.jpg){fig-align="center"}
 
 ## Uniform distribution
 
@@ -567,3 +617,9 @@ quantile(x, probs = seq(0.01,1,0.01))
 ```
 
 -   Median is a **0.5 quantile** (2nd quartile)
+
+# Basics of testing
+
+## Basics of testing
+
+

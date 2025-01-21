@@ -94,7 +94,7 @@ Some rows may contain missing values (e.g., in `sex` column).
 
 -   The histogram fill should be `"lightblue"` and border (color) should be `"black"`
 
--   Vertical line color = `'red'`, `width = 1.2`
+-   Vertical line color = `'red'`, width = `1.2`
 
 -   `theme_bw()`, if `ggplot` used
 
@@ -156,7 +156,7 @@ Some rows may contain missing values (e.g., in `sex` column).
 #
 ```
 
-#### 9. Create a [Bubble plot]{.underline}: a scatter plot depicting the relationships between `length_last_mm` and `depth_last_mm`, with colored dots representing `species` and sizes reflecting `flipper_length_mm`.
+#### 9. Create a [Bubble plot]{.underline}: a scatter plot depicting the relationships between `bill_length_mm` and `bill_depth_mm`, with colored dots representing `species` and sizes reflecting `flipper_length_mm`.
 
 -   Label the axes and legends
 

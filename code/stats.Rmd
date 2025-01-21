@@ -198,16 +198,16 @@ t.test(height ~ group, data = data_sunlight_plant) # Welch t-test
 
 ### Comparison of basic and Welch t-test
 
-|                               |        Basic t-test        |       Welch t-test       |
-|-------------------------------|:--------------------------:|:------------------------:|
-| = N ; = SD ; = MEAN           |          **GOOD**          |         **GOOD**         |
-| = N ; $\neq$ SD ; = MEAN      |          **GOOD**          | [**BETTER**]{.underline} |
-| \> N ; \> SD ; = MEAN         | [**UNSTABLE**]{.underline} |         **GOOD**         |
-| \< N ; \> SD ; = MEAN         | [**UNSTABLE**]{.underline} |         **GOOD**         |
-| = N ; = SD ; $\neq$ MEAN      |          **GOOD**          |         **GOOD**         |
-| = N ; $\neq$ SD ; $\neq$ MEAN |          **GOOD**          |         **GOOD**         |
-| \> N ; \> SD ; $\neq$ MEAN    |           **OK**           |          **OK**          |
-| \< N ; \> SD ; $\neq$ MEAN    |           **OK**           |          **OK**          |
+|   | Basic t-test | Welch t-test |
+|----|:--:|:--:|
+| = N ; = SD ; = MEAN | **GOOD** | **GOOD** |
+| = N ; $\neq$ SD ; = MEAN | **GOOD** | [**BETTER**]{.underline} |
+| \> N ; \> SD ; = MEAN | [**UNSTABLE**]{.underline} | **GOOD** |
+| \< N ; \> SD ; = MEAN | [**UNSTABLE**]{.underline} | **GOOD** |
+| = N ; = SD ; $\neq$ MEAN | **GOOD** | **GOOD** |
+| = N ; $\neq$ SD ; $\neq$ MEAN | **GOOD** | **GOOD** |
+| \> N ; \> SD ; $\neq$ MEAN | **OK** | **OK** |
+| \< N ; \> SD ; $\neq$ MEAN | **OK** | **OK** |
 
 ## Non-Parametric Alternative [for independent samples]{.underline}
 
@@ -481,11 +481,11 @@ chisq.test(contingency_table,
 
 ### Data
 
-|                                  | Disease             | No disease          | [*Row Total*]{.underline} |
-|----------------------------------|---------------------|---------------------|---------------------------|
-| **Gene knockout**                | [**1**]{.underline} | [**3**]{.underline} | 4                         |
-| **Control**                      | [**4**]{.underline} | [**2**]{.underline} | 6                         |
-| [***Column Total***]{.underline} | 5                   | 5                   | 10                        |
+|   | Disease | No disease | [*Row Total*]{.underline} |
+|----|----|----|----|
+| **Gene knockout** | [**1**]{.underline} | [**3**]{.underline} | 4 |
+| **Control** | [**4**]{.underline} | [**2**]{.underline} | 6 |
+| [***Column Total***]{.underline} | 5 | 5 | 10 |
 
 ```{r}
 contingency_table <- matrix( c(1, 3, 4, 2),
