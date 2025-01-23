@@ -14,87 +14,8 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(dplyr)
+library(tidyr)
 library(ggplot2)
-```
-
-# Hypotheses
-
-In statistical testing, we will operate with **hypotheses.** *There are two basic hypotheses:*
-
--   **Null Hypothesis (**$H_0$**)** - There is **no effect** in the population.
--   **Alternative Hypothesis (**$H_A$**) -** There is **a effect** in the population.
-
-> Usually we are interested in having an effect, as it means some discovery, and **rejecting null hypothesis**
-
-# Test result
-
-The tests result in [**test statistic**]{.underline} and the [**p-value**]{.underline} .
-
--   Each test have its formula to calculate called **test statistic**. This value has its own distribution\
-    (e.g. t-distribution for the t-statistic from t-test).
-
--   **p-value** - the probability that, given a [**true null hypothesis**]{.underline}, your observations will result in such or more extreme value of test statistic
-
-> The smaller the p-value, the less likely we are to get our result under the null hypothesis, which states that there is no effect.
-
-## Type I and II errors
-
-**The probability of obtaining results under the null hypothesis, which is equal to the p-value, represents the probability that our results will be obtained at random.**
-
-### Type I error
-
-Error of rejecting $H_0$ when $H_0$ is true.
-
-Probability of Type I error ($\alpha$) (= **p-value** after testing)
-
-### **Type II error**
-
-Error of accepting $H_0$ when $H_0$ is not true.
-
-Probability of Type II error ($\beta$)
-
-![](../images/typeserror.png){width="600"}
-
-## Significance level
-
-Before testing we must define value $\alpha$ named **significance level**- **predetermined threshold of rejecting** $H_0$.
-
-For example we set $\alpha = 0.05$ and got **p-value** \< $\alpha$:
-
-> We reject the null hypothesis at the $\alpha = 0.05$ significance level, indicating that there is sufficient evidence to conclude that the observed result is unlikely to have occurred under the null hypothesis.
-
-***P.S.** Thus we fix the error of the first type, but the error of the second type can still be large. There is a value* $1-\beta$ *called the power of the test. The smaller is the probability of type II error, the more powerful is the test.*
-
-## Two-sided hypothesis
-
-```{r}
-plot(x=seq(-5,5,0.01), y=dt(seq(-5,5,0.01), df=29), 'l', lwd=2,
-     main = 'T-distribution df=29',
-     xlab='t', ylab='density')
-abline(v=qt(0.975, df=29), col='red', lwd=2) 
-abline(v=qt(0.025, df=29), col='red', lwd=2)
-text(x =c(-3,3), y = 0.3, col='red',
-     labels = c('alpha = 0.025', 'alpha = 0.975'), cex=1)
-
-
-
-points(x = c(1.5, 3.1,-3.95), y = rep(0.03, 3), pch=c(13,19,19), cex=2)
-text(x = c(1.2, 3.1,-3.95), y = rep(0.07, 3), 
-     labels = c('t = 1.5', 't = 3.1', 't = -3.95'), cex=1.5)
-```
-
-## One-sided hypothesis
-
-```{r}
-plot(x=seq(0, 10,0.01), y=dchisq(seq(0,10,0.01), df=2), 'l', lwd=2,
-     main = 'Chi-squared distribution df=2', xlab='Chisq', ylab='density')
-abline(v=qchisq(0.95, df=2), col='red', lwd=2)
-text(x =7, y = 0.3, col='red',
-     labels = 'alpha = 0.05', cex=1)
-
-points(x = c(2.1, 7.34), y = rep(0.03, 2), pch=c(13,19), cex=2)
-text(x = c(2.1, 7.34), y = rep(0.07, 3), 
-     labels = c('chisq. = 2.1', "chisq. = 7.34"), cex=1.2)
 ```
 
 # Hypotheses of means equality
@@ -141,8 +62,6 @@ Compare one group mean with a zero: $t = \dfrac{\bar{X}_1}{\sqrt{\frac{s_1^2}{n_
 
 -   Calculated by *another big formula* for **Welch t-test**
 
-![](../images/t-table.png){width="700"}
-
 ### Does sunlight exposure affect plant height?
 
 #### Data
@@ -153,7 +72,7 @@ data_sunlight_plant =
              height = c(rnorm(30, mean = 15, sd = 2), 
                         rnorm(30, mean = 12, sd = 2)))
 
-data %>% str() #!
+data_sunlight_plant %>% str() #!
 ```
 
 ```{r}
@@ -161,26 +80,27 @@ ggplant = data_sunlight_plant %>%
   ggplot(aes(x=height,fill=group)) +
   theme_classic()
 
-ggplant + geom_boxplot(aes(y=group)) + theme(legend.position = "none")
-# ggplant + geom_density(alpha=0.5)
-# ggplant + geom_histogram(alpha=0.8, binwidth=1)
+# ggplant + geom_boxplot(aes(y=group)) + theme(legend.position = "none")
+ggplant + geom_density(alpha=0.5)
+# ggplant + geom_histogram(alpha=0.8, binwidth=1, alpha=0.6, col='black')
 
 ```
 
 #### Testing
 
-**Example on one sample:**
+**Example for one sample:**
 
 ```{r}
-x = rnorm(10, 2, 2)
+x = rnorm(10, mean=2, sd=2)
 t.test(x)
 ```
 
 **Example on two samples:**
 
 ```{r}
-x1 = rnorm(10, 2, 4)
-x2 = rnorm(10, -1, 2)
+x1 = rnorm(10, mean=2, sd = 4)
+x2 = rnorm(10, mean=-1, sd=2)
+# boxplot(x1, x2, horizontal = T)
 t.test(x1,x2)
 ```
 
@@ -188,7 +108,8 @@ t.test(x1,x2)
 
 ```{r}
 # t.test(height ~ group, data = data_sunlight_plant, var.equal = TRUE) # Classic t-test
-t.test(height ~ group, data = data_sunlight_plant) # Welch t-test
+t.test(height ~ group, 
+       data = data_sunlight_plant) # Welch t-test
 ```
 
 -   **t-value** = -4.6261
@@ -243,8 +164,11 @@ data_sample %>%  ggplot(aes(x = value, fill=group)) + geom_density(alpha=0.5)
 ```
 
 ```{r wilcoxon}
-# t.test(sample1, sample2,var.equal = T)
-wilcox.test(sample1, sample2)
+t.test(value ~ group,
+       data=data_sample)
+
+wilcox.test(value ~ group,
+            data=data_sample)
 ```
 
 Base R only has `wilcox.test()`, however the documentation says Wilcoxon tests "*is also known as the Mann-Whitney test".*
@@ -290,7 +214,7 @@ data_pressure = data.frame(
  group = factor(rep(c('before', 'after'), each=20))
 )
 
-data_pressure %>% str() #!
+data_pressure %>% head() 
 ```
 
 ```{r paired-t-test-visualization}
@@ -306,8 +230,9 @@ ggpress + geom_boxplot(aes(y=group)) + theme(legend.position = "none")
 #### Testing
 
 ```{r paired-t-test}
-t.test(before, after, 
-       paired = T) # <---- !!!
+t.test(pressure ~ group,
+       data = data_pressure,
+       paired = TRUE) # <---- !!!
 ```
 
 ## Non-Parametric Alternative [for dependent samples]{.underline}
@@ -322,13 +247,17 @@ t.test(before, after,
 
 -   **Alternative Hypothesis (**$H_A$​): The median difference between paired observations is not zero (the distribution of differences is not symmetric around zero)
 
-### Testing non-normal before/after data
+### Testing before/after data
 
 ```{r}
-sample_before = c(runif(8, 5, 8), rnorm(5, 3, 10), rchisq(7, 4))
-sample_after = sample_before + rnorm(20, 0, 1)
 
-data_before_after = data.frame(group = rep(c("before", "after"), each=20),
+# sample1 = c(rnorm(20, 5, 2), 18)
+# sample2 = c(rnorm(20, 7, 2), 22)
+
+sample_before = c(rnorm(20, 5, 2), 18)
+sample_after = sample_before + rnorm(21, 1, 2)
+
+data_before_after = data.frame(group = rep(c("before", "after"), each=21),
                          value = c(sample_before, sample_after))
 ```
 
@@ -337,7 +266,8 @@ data_before_after %>%  ggplot(aes(x = value, fill=group)) + geom_density(alpha=0
 ```
 
 ```{r wilcoxon-paired}
-wilcox.test(sample_before, sample_after,  
+wilcox.test(value ~ group,
+            data=data_before_after,
             paired = TRUE) ## <---
 ```
 
@@ -422,11 +352,15 @@ $df = (N-1)(M-1)$
 
 ## Does disease outcome depend on treatment group ?
 
-|                                  | Cured | Not cured | [*Row Total*]{.underline} |
-|----------------------------------|-------|-----------|---------------------------|
-| **Treatment**                    | 12    | 8         | 20                        |
-| **Placebo**                      | 6     | 10        | 16                        |
-| [***Column Total***]{.underline} | 18    | 18        | [**36**]{.underline}      |
++----------------------------------+-------------+-------------+---------------------------+
+|                                  | Cured       | Not cured   | [*Row Total*]{.underline} |
++==================================+=============+=============+===========================+
+| **Treatment**                    | 12          | 8           | 20                        |
++----------------------------------+-------------+-------------+---------------------------+
+| **Placebo**                      | 6           | 10          | 16                        |
++----------------------------------+-------------+-------------+---------------------------+
+| [***Column Total***]{.underline} | 18          | 18          | [**36**]{.underline}      |
++----------------------------------+-------------+-------------+---------------------------+
 
 ### Expected values calculation
 
@@ -441,23 +375,30 @@ Where: - $R_i$ = Total of row $i$. - $C_j$ = Total of column $j$. - $N$ = Grand 
 | **Treatment** | $(18 \times 20)/36 = 10$ | $(18 \times 20)/36 = 10$ |
 | **Placebo**   | $(18 \times 16)/36 = 8$  | $(18 \times 16)/36 = 8$  |
 
-#### Statistic calculation
+### Statistic calculation
 
 $\chi^2 = \sum \frac{(O_i - E_i)^2}{E_i}$ where ($O_i$) are the observed frequencies, and ($E_i$) are the expected
 
-#### Code
-
-We don't need to calculate the expected values. The `chisq.test()` do it for us.
+### Code
 
 ```{r}
-contingency_table <- matrix(c(12, 8, 6, 10),
-                   nrow = 2, byrow = T,
-                   dimnames = list(
-                     "Group" = c("Treatment", "Placebo"),
-                     "Outcome" = c("Cured", "Not cured"))
-                   )
+data_cure = data.frame(
+  Outcome = factor(rep(c('Cured', 'Not cured'), e=18)),
+  Group = factor(c(rep("Treatment", 12), rep("Placebo", 6), rep("Treatment", 8), rep("Placebo", 10))))
+
+data_cure %>%  head()
+```
+
+### Contingency table
+
+```{r}
+contingency_table = table(data_cure$Outcome, data_cure$Group)
 contingency_table
 ```
+
+### Test
+
+We don't need to calculate the expected values. The `chisq.test()` do it for us.
 
 ```{r}
 chisq.test(contingency_table, 
@@ -488,20 +429,24 @@ chisq.test(contingency_table,
 | [***Column Total***]{.underline} | 5 | 5 | 10 |
 
 ```{r}
-contingency_table <- matrix( c(1, 3, 4, 2),
-                             byrow = T,
-                            nrow = 2,
-                            dimnames = list(
-                              "Knockout" = c("Yes", "No"),
-                              "Outcome" = c("Disease", "No disease"))
-                            )
-contingency_table
+data_knockout = data.frame(
+  Outcome = factor(rep(c('Disease', 'No disease'), e=5)),
+  Group = factor(c("Knockout", rep("Control", 4), rep("Knockout", 3), rep("Control", 2))))
+
+data_knockout %>%  head()
+```
+
+### Contingency table
+
+```{r}
+contingency_table_1 = table(data_knockout$Group, data_knockout$Outcome)
+contingency_table_1
 ```
 
 ### Testing
 
 ```{r fisher}
-fisher.test(contingency_table)
+fisher.test(contingency_table_1)
 ```
 
 -   $p.value > 0.05$ - We cannot reject $H_0$ about absence of association between categorical variables.
@@ -537,8 +482,9 @@ plant_height_df = data.frame(
 head(plant_height_df)
 ```
 
-```{r correlation-visualization}
-plot(x = plant_height_df$Sunlight_hrs_per_day, y=plant_height_df$Plant_height, 
+```{r}
+plot(x = plant_height_df$Sunlight_hrs_per_day, 
+     y=plant_height_df$Plant_height, 
      main = NULL, 
      xlab = "Sunlight (hrs/day)", 
      ylab = "Plant height", pch=19, col='blue')
@@ -558,19 +504,6 @@ cor(plant_height_df)
 ```{r}
 cor.test(plant_height_df$Sunlight_hrs_per_day, 
          plant_height_df$Plant_height)
-```
-
-### Correlation plot
-
-```{r}
-# install.packages('corrplot')
-library(corrplot)
-```
-
-```{r}
-corrplot(cor(mtcars), method="color",col = COL2('PRGn'),
-         addCoef.col = "black", tl.col = "black", 
-         cl.cex = 1, number.cex = 0.8)
 ```
 
 ### Correlation does not imply causation

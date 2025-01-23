@@ -15,6 +15,7 @@ format:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = F, fig.width = 8, fig.height = 4)
 library(dplyr)
+library(tidyr)
 library(ggplot2)
 ```
 
@@ -42,19 +43,22 @@ Therefore, researchers use samples - **random and representative** groups taken 
 1.  20 ITMO Biology students to study average marks of students in ITMO
 2.  100 ITMO first-year students to study students workload in their first ever exam
 3.  Email survey on student parents' opinion of ITMO
+4.  The double-blind, randomized, placebo-controlled trial in 1990
 
 ------------------------------------------------------------------------
 
 1.  20 ITMO Biology students to study average marks of students in ITMO
-    -   **Only Biology students? Which year?**
+    -   **Representive only for Biology students**
 2.  100 ITMO first-year students to study students workload
-    -   **Only ITMO? Students with high workloads are less likely to participate**
+    -   **Represetive only for ITMO. Students with high workloads are less likely to participate**
 3.  Email survey on student parents' opinion of ITMO
     -   **Only people whose email addresses we have**
+4.  The double-blind, randomized, placebo-controlled trial in 1990
+    -   **Too old**
 
 ------------------------------------------------------------------------
 
-### [Results of the student survey, 2024 (449 people)](https://fitp.itmo.ru/p/abit/804) 
+### [Results of the student survey, 2024 (449 people)](https://fitp.itmo.ru/p/abit/804)
 
 ::::: columns
 ::: {.column width="45%"}
@@ -62,8 +66,7 @@ Therefore, researchers use samples - **random and representative** groups taken 
 :::
 
 ::: {.column width="55%"}
-![](/images/memes/itmopie.png){fig-align="center"}
-![](/images/memes/itmolegend.png){fig-align="center"}
+![](/images/memes/itmopie.png){fig-align="center"} ![](/images/memes/itmolegend.png){fig-align="center"}
 :::
 :::::
 
@@ -133,6 +136,161 @@ ggplot() +
   theme_classic() + labs(title='4 samples of 1000 objects') +
   theme(title = element_text(size=20))
 ```
+
+## Descriptive sample statistics {auto-animate="true"}
+
+### Central tendency
+
+-   **Mean** - $\bar{X} = \frac{x_1 + x_2 + ... x_N}{N}$
+
+```{r, eval=F, echo=T, class="large-code"}
+mean(x)
+```
+
+-   **Median** - the $N/2$-th element in list of sorted values $\{x_1, x_2, ..., \pmb{x_{N/2}},...,x_{N-1}, x_N\}$, where for any $i$: $x_{i-1} < x_i$
+
+```{r, eval=F, echo=T, class="large-code"}
+median(x)
+```
+
+-   **Mode** - The most frequent value *one of the methods:*\
+    *only for discrete data:*
+
+```{r, eval=F, echo=T, class="large-code"}
+x %>% table() %>% sort(decreasing = T) %>% head(1) %>% names() %>% as.numeric()
+```
+
+```{r, eval=T, echo=F, class="large-code"}
+mode_fun = function(x) x %>% table() %>% sort(decreasing = T) %>% head(1) %>% names() %>% as.numeric()
+```
+
+***They are equal for a normal distribution***
+
+## Descriptive sample statistics {auto-animate="true"}
+
+### Bimodal data
+
+```{r, eval=T, echo=F,  fig.width = 8, fig.height = 5}
+twomodes = c(rbinom(10000, 31, 0.4), rbinom(10000, 31, 0.7))
+
+hist(twomodes, breaks=30, 
+     main=NULL,
+     xlab='X')
+abline(v = 30*0.4, lwd=3, col='red')
+abline(v = 31*0.7, lwd=3, col='red')
+abline(v = mean(twomodes), lwd=3, col='blue')
+abline(v = median(twomodes), lwd=3, col='green3')
+
+legend("topright",
+       col = c('red', 'blue', 'green3'), 
+       legend = c('modes', 'mean', "median"), 
+        lwd = 3, bty = "n")
+
+```
+
+## Descriptive sample statistics {auto-animate="true"}
+
+### Exponential distribution
+
+```{r, eval=T, echo=F,  fig.width = 7, fig.height = 4}
+expsmall = rexp(10000, 10)
+
+hist(expsmall, breaks=30, 
+     main=NULL,
+     xlab='X')
+abline(v = mode_fun(expsmall), lwd=3, col='red')
+abline(v = mean(expsmall), lwd=3, col='blue')
+abline(v = median(expsmall), lwd=3, col='green3')
+
+legend("topright",
+       col = c('red', 'blue', 'green3'), 
+       legend = c('mode', 'mean', "median"), 
+        lwd = 3, bty = "n")
+
+```
+
+## Descriptive sample statistics {auto-animate="true"}
+
+### Outliers
+
+**Mean is more sensitive to outliers**
+
+```{r, eval=T, echo=F,  fig.width = 8, fig.height = 4}
+normoutlier = c(rnorm(100), 50, 50, 50)
+
+hist(normoutlier, breaks=60, 
+     main=NULL,
+     xlab='X')
+# abline(v = 0, lwd=3, col='red')
+abline(v = mean(normoutlier), lwd=3, col='blue')
+abline(v = median(normoutlier), lwd=3, col='green3')
+
+# text(x=7, y=10, label='mean')
+
+legend("topright",
+       col = c(
+         # 'red',
+         'blue', 'green3'), 
+       legend = c(
+         # 'mode',
+         'mean', "median"), 
+        lwd = 3, bty = "n")
+
+```
+
+## By the way, what to do about outliers?
+
+**Nothing**
+
+-   If they still contain some information. 
+
+**Delete**
+
+-   If there are few of them.
+-   This is an obvious error and [**you are sure**]{.underline} they do not contain valuable information
+
+## Descriptive sample statistics {auto-animate="true"}
+
+### Variance and Standard deviation
+
+$Var(X) = S^2 = \dfrac{((x_1 - \bar{X})^2 + (x_2 - \bar{X})^2 + ... + (x_N - \bar{X})^2)}{N-1} = \dfrac{\sum{(x_i - \bar{X})^2}}{N-1}$
+
+```{r, eval=F, echo=T, class="large-code"}
+var(x)
+```
+
+$SD(X) = S = \sqrt{\dfrac{\sum{(x_i - \bar{X})^2}}{N-1}}$
+
+```{r, eval=F, echo=T, class="large-code"}
+sd(x)
+```
+
+> For the **population** variance in the denominator of the formula is $N$, not $N-1$
+
+## Descriptive sample statistics {auto-animate="true"}
+
+### Quantiles
+
+**Quantiles** - values less than which $X$% of the data in the distribution is found - For example, 0.75 quntile is the value that is greater of 75% of values in sample, but lower than another 25% of sample values
+
+```{r, eval=F, echo=T, class="large-code"}
+quantile(x probs = 0.75)
+```
+
+-   Quartiles are 0.25,0.5,0.75 quantiles
+
+```{r, eval=F, echo=T, class="large-code"}
+quantile(x, probs = c(0.25, 0.5, 0.75))
+```
+
+-   Percentiles are 1-100% qunatiles
+
+```{r, eval=F, echo=T, class="large-code"}
+quantile(x, probs = seq(0.01,1,0.01))
+```
+
+-   Median is a **0.5 quantile** (2nd quartile)
+
 
 ## Normal distribution {auto-animate="true"}
 
@@ -206,7 +364,7 @@ text(mean(Heights)+3.4*sd(Heights), 900, ' + 3 SD', cex=1)
 
 ```
 
---------------------------------------------------------------------------------
+------------------------------------------------------------------------
 
 ### Three sigma rule
 
@@ -464,162 +622,314 @@ ppois(n, lambda)
 qpois(n, lambda)
 ```
 
-## Descriptive sample statistics {auto-animate="true"}
-
-### Central tendency
-
--   **Mean** - $\bar{X} = \frac{x_1 + x_2 + ... x_N}{N}$
-
-```{r, eval=F, echo=T, class="large-code"}
-mean(x)
-```
-
--   **Median** - the $N/2$-th element in list of sorted values $\{x_1, x_2, ..., \pmb{x_{N/2}},...,x_{N-1}, x_N\}$, where for any $i$: $x_{i-1} < x_i$
-
-```{r, eval=F, echo=T, class="large-code"}
-median(x)
-```
-
--   **Mode** - The most frequent value *one of the methods:*\
-    *only for discrete data:*
-
-```{r, eval=F, echo=T, class="large-code"}
-x %>% table() %>% sort(decreasing = T) %>% head(1) %>% names() %>% as.numeric()
-```
-
-```{r, eval=T, echo=F, class="large-code"}
-mode_fun = function(x) x %>% table() %>% sort(decreasing = T) %>% head(1) %>% names() %>% as.numeric()
-```
-
-***They are equal for a normal distribution***
-
-## Descriptive sample statistics {auto-animate="true"}
-
-### Bimodal data
-
-```{r, eval=T, echo=F,  fig.width = 8, fig.height = 5}
-twomodes = c(rbinom(10000, 31, 0.4), rbinom(10000, 31, 0.7))
-
-hist(twomodes, breaks=30, 
-     main=NULL,
-     xlab='X')
-abline(v = 30*0.4, lwd=3, col='red')
-abline(v = 31*0.7, lwd=3, col='red')
-abline(v = mean(twomodes), lwd=3, col='blue')
-abline(v = median(twomodes), lwd=3, col='green3')
-
-legend("topright",
-       col = c('red', 'blue', 'green3'), 
-       legend = c('modes', 'mean', "median"), 
-        lwd = 3, bty = "n")
-
-```
-
-## Descriptive sample statistics {auto-animate="true"}
-
-### Exponential distribution
-
-```{r, eval=T, echo=F,  fig.width = 7, fig.height = 4}
-expsmall = rexp(10000, 10)
-
-hist(expsmall, breaks=30, 
-     main=NULL,
-     xlab='X')
-abline(v = mode_fun(expsmall), lwd=3, col='red')
-abline(v = mean(expsmall), lwd=3, col='blue')
-abline(v = median(expsmall), lwd=3, col='green3')
-
-legend("topright",
-       col = c('red', 'blue', 'green3'), 
-       legend = c('mode', 'mean', "median"), 
-        lwd = 3, bty = "n")
-
-```
-
-## Descriptive sample statistics {auto-animate="true"}
-
-### Outliers
-
-**Mean is more sensitive to outliers**
-
-```{r, eval=T, echo=F,  fig.width = 8, fig.height = 4}
-normoutlier = c(rnorm(100), 50, 50, 50)
-
-hist(normoutlier, breaks=60, 
-     main=NULL,
-     xlab='X')
-# abline(v = 0, lwd=3, col='red')
-abline(v = mean(normoutlier), lwd=3, col='blue')
-abline(v = median(normoutlier), lwd=3, col='green3')
-
-# text(x=7, y=10, label='mean')
-
-legend("topright",
-       col = c(
-         # 'red',
-         'blue', 'green3'), 
-       legend = c(
-         # 'mode',
-         'mean', "median"), 
-        lwd = 3, bty = "n")
-
-```
-
-## By the way, what to do about outliers?
-
-**Nothing**
-
--   If they still contain some information. 
-
-**Delete**
-
--   If there are few of them.
--   This is an obvious error and [**you are sure**]{.underline} they do not contain valuable information
-
-## Descriptive sample statistics {auto-animate="true"}
-
-### Variance and Standard deviation
-
-$Var(X) = S^2 = \dfrac{((x_1 - \bar{X})^2 + (x_2 - \bar{X})^2 + ... + (x_N - \bar{X})^2)}{N-1} = \dfrac{\sum{(x_i - \bar{X})^2}}{N-1}$
-
-```{r, eval=F, echo=T, class="large-code"}
-var(x)
-```
-
-$SD(X) = S = \sqrt{\dfrac{\sum{(x_i - \bar{X})^2}}{N-1}}$
-
-```{r, eval=F, echo=T, class="large-code"}
-sd(x)
-```
-
-> For the **population** variance in the denominator of the formula is $N$, not $N-1$
-
-## Descriptive sample statistics {auto-animate="true"}
-
-### Quantiles
-
-**Quantiles** - values less than which $X$% of the data in the distribution is found - For example, 0.75 quntile is the value that is greater of 75% of values in sample, but lower than another 25% of sample values
-
-```{r, eval=F, echo=T, class="large-code"}
-quantile(x probs = 0.75)
-```
-
--   Quartiles are 0.25,0.5,0.75 quantiles
-
-```{r, eval=F, echo=T, class="large-code"}
-quantile(x, probs = c(0.25, 0.5, 0.75))
-```
-
--   Percentiles are 1-100% qunatiles
-
-```{r, eval=F, echo=T, class="large-code"}
-quantile(x, probs = seq(0.01,1,0.01))
-```
-
--   Median is a **0.5 quantile** (2nd quartile)
-
 # Basics of testing
 
-## Basics of testing
+```{css}
+.faded-text {
+  opacity: 0.4;
+}
+```
+
+## Testing plan
+
+1\) What we want to test? **Hypotheses**
+
+::: faded-text
+2\) Choose significance level
+
+3\) Choose the test
+
+4\) Conduct the test
+
+5\) Conclusion
+:::
+
+## Hypotheses
+
+In statistical testing, we will operate with **hypotheses.** *There are two basic hypotheses:*
+
+-   **Null Hypothesis (**$H_0$**)** - There is **no effect** in the population.
+-   **Alternative Hypothesis (**$H_A$**) -** There is **a effect** in the population.
+
+> Usually we are interested in having an effect, as it means some discovery, and **rejecting null hypothesis**
+
+## Testing plan
+
+::: faded-text
+1\) What we want to test? **Hypotheses**
+:::
+
+2\) Choose significance level
+
+::: faded-text
+3\) Choose the test
+
+4\) Conduct the test
+
+5\) Conclusion
+:::
+
+------------------------------------------------------------------------
+
+::::: columns
+::: {.column width="50%"}
+### Type I error
+
+Error of rejecting $H_0$ when $H_0$ is true
+:::
+
+::: {.column width="50%"}
+### Type II error
+
+Error of accepting $H_0$ when $H_0$ is false
+:::
+:::::
+
+<br>
+
+|                     | Reality: **True** | Reality: **False** |
+|---------------------|:------------------|:-------------------|
+| Measured: **True**  | Correct 😊        | Type 1 Error       |
+| Measured: **False** | Type 2 Error      | Correct 😊         |
+
+------------------------------------------------------------------------
+
+Probability of Type I error ($\alpha$) (= **p-value** after testing)
+
+Probability of Type II error ($\beta$)
+
+![](../images/typeserror.png){fig-align="center" width="600"}
+
+## Significance level {auto-animate="true"}
+
+Before testing we must define value $\alpha$ named **significance level**
+
+**Significance level (**$\alpha$) - **predetermined threshold of rejecting** $H_0$.
+
+> For example we set $\alpha = 0.05$ and got **p-value** \< $\alpha$:
+>
+> We reject the $H_0$ at the $\alpha = 0.05$ significance level, indicating that there is sufficient evidence to conclude that the observed result is unlikely to have occurred under the null hypothesis.
+
+Thus we [**fix the Type 1 Error**]{.underline} , but [**Type 2 Error still can be large!**]{.underline}
+
+The value $1-\beta$ called the [**power of the test**]{.underline}. *The smaller is the probability of type II error, the more powerful is the test.*
+
+## Significance level {auto-animate="true"}
+
+### Examples
+
+-   **Medical/Pharmaceutical**: $\alpha = 0.01$ is common to avoid false positives.
+-   **Psychology/Social**: Typically $\alpha = 0.05$.
+-   **Economics/Business**: Sometimes $\alpha = 0.1$ is acceptable
+
+## Testing plan
+
+::: faded-text
+1\) What we want to test? **Hypotheses**
+
+2\) Choose significance level
+:::
+
+3\) Choose the test
+
+4\) Conduct the test
+
+::: faded-text
+5\) Conclusion
+:::
+
+## Test result
+
+The tests result in [**test statistic**]{.underline} and the [**p-value**]{.underline} .
+
+-   Each test have its formula to calculate called [**test statistic**]{.underline}. This value has its own distribution (*e.g. t-distribution for the t-statistic from t-test*).
+
+-   [**p-value**]{.underline} - the probability that, given a **true null hypothesis**, your observations will result **in such or more extreme value of test statistic**
+
+> The smaller the p-value, the less likely we are to get our result under the null hypothesis, which states that there is no effect.
+
+## "Pipeline"
+
+![](/images/pvalpipeline.png){fig-align="center"}
+
+## Parameters of test parameters' distributions
+
+### [Degrees of freedom!]{.underline}
+
+-   Often calculated based on [number of observations]{.underline}, groups and coefficients.
+
+-   [Determines the shape of distribution!]{.underline}
+
+> **-\> Amount of data affects testing results!**
+
+#### Other parameters...
+
+-   Mean, SD
+
+-   Rate, shape
+
+## t-distribution for different DFs
+
+![](/images/dfsT.png){fig-align="center" width="600"}
+
+```{r, warning=FALSE}
+# t1 = rt(100000, 3)
+# t2 = rt(100000, 3)
+# t5 = rt(100000, 5)
+# t10 = rt(100000, 10)
+# t30 = rt(100000, 30)
+# t100 = rt(100000, 100)
+# 
+# dft = data.frame(t1,t2,t5,t10,t30,t100) %>%  
+#   pivot_longer(values_to = 'value', 
+#                cols = 1:5, names_to = 't') %>% 
+#   mutate(t = as.factor(t))
+# 
+# dft %>%  ggplot(aes(col=t, 
+#                     x=value, 
+#                     y=..density..)) + 
+#   # geom_histogram(alpha=0.4, bins = 100) +
+#   geom_density() +
+#   xlim(c(-5,5))
+
+```
+
+## *p-value* calculation
+
+![](../images/memes/p-value.jpg){fig-align="center"}
+
+------------------------------------------------------------------------
+
+### *p-value* $\geq \alpha$
+
+Since the ***p-value*** greater than chosen significance level ($\alpha$) we **fail** to reject $H_0$
+
+### *p-value* $< \alpha$
+
+Since the ***p-value*** is less than chosen significance level ($\alpha$), we reject $H_0$ and conclude that there is sufficient statistical evidence to support $H_A$
+
+------------------------------------------------------------------------
+
+![](/images/memes/p_values_2x.png){fig-align="center" width="498"}
+
+## One-sided hypothesis
+
+$H_A: X_0 < X_1$
+
+```{r}
+plot(x=seq(-5,5,0.01), y=dt(seq(-5,5,0.01), df=19), 'l', lwd=2,
+     main = 'T-distribution df=19',
+     xlab='t', ylab='density')
+abline(v=qt(0.95, df=19), col='red', lwd=2) 
+text(x =3, y = 0.3, col='red',
+     labels = paste('alpha = 0.05\nt =', qt(0.95, df=19) %>%round(2)), cex=1.3)
+
+points(x = c(1.5, 3.1,-3.95), y = rep(0.03, 3), pch=c(13,19,13), cex=2)
+text(x = c(1.1, 3.1,-3.95), y = rep(0.07, 3), 
+     labels = c('t = 1.5', 't = 3.1', 't = -3.95'), cex=1.5)
+```
+
+```{r}
+# plot(x=seq(0, 10,0.01), y=dchisq(seq(0,10,0.01), df=2), 'l', lwd=2,
+#      main = 'Chi-squared distribution df=2', xlab='Chisq', ylab='density')
+# abline(v=qchisq(0.95, df=2), col='red', lwd=2)
+# text(x =7, y = 0.3, col='red',
+#      labels = 'alpha = 0.05', cex=1)
+# 
+# points(x = c(2.1, 7.34), y = rep(0.03, 2), pch=c(13,19), cex=2)
+# text(x = c(2.1, 7.34), y = rep(0.07, 3), 
+#      labels = c('chisq. = 2.1', "chisq. = 7.34"), cex=1.2)
+```
+
+## Two-sided hypothesis
+
+$H_A: X_0 \neq X_1$
+
+```{r}
+plot(x=seq(-5,5,0.01), y=dt(seq(-5,5,0.01), df=19), 'l', lwd=2,
+     main = 'T-distribution df=19',
+     xlab='t', ylab='density')
+abline(v=qt(0.975, df=19), col='red', lwd=2) 
+abline(v=qt(0.025, df=19), col='red', lwd=2)
+text(x =c(-3,3), y = 0.3, col='red',
+     labels = c(paste('alpha / 2\nt =', qt(0.025, df=19) %>% round(2)),
+                paste('alpha / 2\nt =', qt(0.975, df=19) %>% round(2))), cex=1.3)
 
 
+points(x = c(1.5, 3.1,-3.95), y = rep(0.03, 3), pch=c(13,19,19), cex=2)
+text(x = c(1.2, 3.1,-3.95), y = rep(0.07, 3), 
+     labels = c('t = 1.5', 't = 3.1', 't = -3.95'), cex=1.5)
+```
+
+## How to calculate critical value of parameter?
+
+*Example for T-distribution*
+
+### One-sided hypotheses
+
+::: large-code
+```{r, echo=T}
+qt(0.95, df=19)
+qt(0.05, df=19)
+```
+:::
+
+### Two-sided hypothesis
+
+::: large-code
+```{r, echo=T}
+qt(0.975, df=19)
+qt(0.025, df=19)
+```
+:::
+
+------------------------------------------------------------------------
+
+![](../images/t-table.png){fig-align="center" width="700"}
+
+## Another pitfalls
+
+1.  **Small sample size** or **Unbalanced groups**
+    -   Power of tests will be reduced
+2.  **Changing significance level**
+    -   $\alpha$ is defined **BEFORE** testing
+3.  **Misinterpreting *p-values***
+    -   It doesn't reject or accept $H_0$.
+
+    -   **YOU reject or accept** $H_0$
+4.  [**Multiple comparisons problem**]{.underline}
+
+## Multiple comparisons {auto-animate="true"}
+
+-   $1 - 0.05$ - probability of correctly rejected $H_0$
+
+-   $(1-0.05)^n$ - probability of correctly rejected $\space H_0$ in $n$ tests
+
+-   $1-(1-0.05)^n$ - probability of [**incorrectly rejected at least 1**]{.underline} $H_0$ in $n$ tests
+
+$$
+1 - (1 - 0.05) ^ {2} = 0.0975\\
+1 - (1 - 0.05) ^ {5} = 0.2262191\\
+1 - (1 - 0.05) ^ {20} = 0.6415141\\
+1 - (1 - 0.05) ^ {100} = 0.9940795\\
+$$
+
+## Multiple comparisons {auto-animate="true"}
+
+### Corrections!
+
+Controlling the **FWER** - probability of making at least one Type I error.
+
+-   Bonferroni
+
+-   Holm-Bonferroni
+
+-   Šidák
+
+Controlling the **FDR** - expected proportion of false positives among all significant tests.
+
+-   Benjamini-Hochberg
+
+-   Benjamini-Yekutieli
+
+# Let's go
