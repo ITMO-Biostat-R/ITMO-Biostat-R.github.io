@@ -1,5 +1,5 @@
 ---
-title: "Distributions"
+title: "Distributions and statistics"
 format: 
   revealjs:
       center: true
@@ -13,7 +13,7 @@ format:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = F, fig.width = 8, fig.height = 4)
+knitr::opts_chunk$set(echo = F, fig.width = 8, fig.height = 4, dpi = 300)
 library(dplyr)
 library(tidyr)
 library(ggplot2)
@@ -275,10 +275,11 @@ sd(x)
 
 ### Quantiles
 
-**Quantiles** - values less than which $X$% of the data in the distribution is found - For example, 0.75 quntile is the value that is greater of 75% of values in sample, but lower than another 25% of sample values
+**Quantiles** - values less than which $X$% of the data in the distribution is found\
+*For example*, 0.75 quntile is the value that is greater of 75% of values in sample, but lower than another 25% of sample values
 
 ```{r, eval=F, echo=T, class="large-code"}
-quantile(x probs = 0.75)
+quantile(x, probs = 0.75)
 ```
 
 -   Quartiles are 0.25,0.5,0.75 quantiles
@@ -290,7 +291,7 @@ quantile(x, probs = c(0.25, 0.5, 0.75))
 -   Percentiles are 1-100% qunatiles
 
 ```{r, eval=F, echo=T, class="large-code"}
-quantile(x, probs = seq(0.01,1,0.01))
+quantile(x, probs = seq(0.01, 1, 0.01))
 ```
 
 -   Median is a **0.5 quantile** (2nd quartile)
@@ -298,14 +299,15 @@ quantile(x, probs = seq(0.01,1,0.01))
 ## Normal distribution {auto-animate="true"}
 
 ::::: columns
-::: {.column width="50%"}
-Normal distribution is bell shaped, have equal mean ($\mu$), median, mode. "Width" depends on standard deviation ($\sigma$). **Continious (!)**
+::: {.column width="55%"}
+Normal distribution is bell shaped, have equal mean ($\mu$), median, mode.\
+"Width" depends on standard deviation ($\sigma$). **Continious (!)**
 :::
 
-::: {.column width="50%"}
+::: {.column width="45%"}
 $P(x) = \frac{1}{{\sigma \sqrt{2\pi} }}e^{{\frac{ -\left( {x - \mu } \right)^2 }{2\sigma ^2 }}}$,
 
-parameters are mean ($\mu$) and sigma ($\sigma$)
+parameters: mean ($\mu$) and sigma ($\sigma$)
 :::
 :::::
 
@@ -448,7 +450,7 @@ Distribution is based on the **number of successes in a sequence of experiments*
 
 If we flip a coin, the binomial distribution represents the number of successes after we flip the coin a certain number of times (e.g. 10).
 
-The histogram above shows the distribution of 10000 experiments on trying to get an head coin for a certain number of times by flipping it 10 times
+The histogram above shows the distribution of 10000 experiments on trying to get an head coin $k$ times by flipping it 10 times
 
 ## Binomial distribution {auto-animate="true"}
 
@@ -504,7 +506,8 @@ legend("topright", legend = c("n=10",
 ## Poisson distribution {auto-animate="true"}
 
 *Binomial*, but $n \rightarrow \infty$,, therefore we don't utilize number of trials ($n$).\
-Now we use "**time interval**" and **expected number of successes** ($\lambda$) during this interval. **Still Discrete (!)**
+Now we use "**time interval**" and **expected number of successes** ($\lambda$) during this interval.\
+**Still Discrete (!)**
 
 ::::: columns
 ::: {.column width="70%"}
@@ -563,7 +566,7 @@ legend("topright", legend = c("lambda=3",
                 rgb(0, 1, 0, alpha = 0.5)))
 ```
 
-## Functions (for normal distribution)
+## Functions (for normal distribution) {auto-animate="true"}
 
 ```{css}
 .large-code {
@@ -571,26 +574,28 @@ legend("topright", legend = c("lambda=3",
 }
 ```
 
-1.  Random values from distribution
+1.  **Random values from distribution**
 
 ```{r, echo = T, class="large-code"}
 rnorm(n=5, mean=100, sd=10)
 ```
 
-2.  Density (the height of histogram) at the point
+2.  **Density (the height of histogram) at the point**
 
 ```{r, echo = T, class="large-code"}
 dnorm(x=100, mean=100, sd=10)
 ```
 
-3.  Cumulative probability at the point: prob-ty to obtain value less than specified
+## Functions (for normal distribution) {auto-animate="true"}
+
+3.  **Cumulative probability at the point: prob-ty to obtain value less than specified**
 
 ```{r, echo = T, class="large-code"}
 pnorm(q = 80, mean=100, sd=10) # prob to obtain any value less than 80
 pnorm(q = c(70,80,90,110,120,130), mean=100, sd=10)
 ```
 
-4.  Value corresponding to specified cumulative probability
+4.  **Value corresponding to specified cumulative probability**
 
 ```{r, echo = T, class="large-code"}
 qnorm(p = c(0.003, 0.05, 0.16, 0.84, 0.95, 0.997), mean=100, sd=10)
@@ -651,8 +656,8 @@ qpois(n, lambda)
 
 In statistical testing, we will operate with **hypotheses.** *There are two basic hypotheses:*
 
--   **Null Hypothesis (**$H_0$**)** - There is **no effect** in the population.
--   **Alternative Hypothesis (**$H_A$**) -** There is **a effect** in the population.
+-   **Null Hypothesis (**$H_0$**)** - There is **no effect**
+-   **Alternative Hypothesis (**$H_A$**) -** There is **an effect**
 
 > Usually we are interested in having an effect, as it means some discovery, and **rejecting null hypothesis**
 
@@ -755,7 +760,7 @@ The tests result in [**test statistic**]{.underline} and the [**p-value**]{.unde
 
 ![](/images/pvalpipeline.png){fig-align="center"}
 
-## Parameters of test parameters' distributions
+## Parameters of test statistics' distributions
 
 ### [Degrees of freedom!]{.underline}
 
@@ -864,7 +869,7 @@ text(x = c(1.2, 3.1,-3.95), y = rep(0.07, 3),
      labels = c('t = 1.5', 't = 3.1', 't = -3.95'), cex=1.5)
 ```
 
-## How to calculate critical value of parameter?
+## How to calculate critical value of test statistic?
 
 *Example for T-distribution*
 
@@ -893,9 +898,9 @@ qt(0.025, df=19)
 ## Another pitfalls
 
 1.  **Small sample size** or **Unbalanced groups**
-    -   Power of tests will be reduced
+    -   Power of tests will be reduced = less sensible results
 2.  **Changing significance level**
-    -   $\alpha$ is defined **BEFORE** testing
+    -   $\alpha$ must be defined **BEFORE** testing
 3.  **Misinterpreting *p-values***
     -   It doesn't reject or accept $H_0$.
 

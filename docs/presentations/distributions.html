@@ -10,7 +10,7 @@
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.5.57">
 
-  <title>Biostatistics in R – Distributions</title>
+  <title>Biostatistics in R – Distributions and statistics</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -390,7 +390,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Distributions</h1>
+  <h1 class="title">Distributions and statistics</h1>
 
 <div class="quarto-title-authors">
 </div>
@@ -399,7 +399,7 @@
 <section class="slide level2 center">
 
 
-<img data-src="../images/memes/belike.jpg" class="quarto-figure quarto-figure-center r-stretch"></section>
+<img data-src="../images/memes/belike.jpg" class="quarto-figure quarto-figure-center r-stretch" width="1000"></section>
 <section id="types-of-data" class="slide level2 center">
 <h2>Types of Data</h2>
 <ul>
@@ -491,7 +491,7 @@
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="distributions_files/figure-revealjs/unnamed-chunk-1-1.png" width="576"></p>
+<p><img data-src="distributions_files/figure-revealjs/unnamed-chunk-1-1.png" width="1800"></p>
 </figure>
 </div>
 </div>
@@ -501,7 +501,7 @@
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="distributions_files/figure-revealjs/unnamed-chunk-2-1.png" width="576"></p>
+<p><img data-src="distributions_files/figure-revealjs/unnamed-chunk-2-1.png" width="1800"></p>
 </figure>
 </div>
 </div>
@@ -512,7 +512,7 @@
 
 <h3 id="the-larger-the-sample-the-more-similar-it-is-to-the-general-population">The larger the sample, the more similar it is to the general population</h3>
 
-<img data-src="distributions_files/figure-revealjs/unnamed-chunk-3-1.png" width="768" class="r-stretch"></section>
+<img data-src="distributions_files/figure-revealjs/unnamed-chunk-3-1.png" width="2400" class="r-stretch"></section>
 <section id="descriptive-sample-statistics" class="slide level2 center" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Descriptive sample statistics</h2>
 <h3 id="central-tendency">Central tendency</h3>
@@ -544,18 +544,18 @@
 <h2 data-id="quarto-animate-title">Descriptive sample statistics</h2>
 <h3 id="bimodal-data">Bimodal data</h3>
 
-<img data-src="distributions_files/figure-revealjs/unnamed-chunk-8-1.png" width="768" class="r-stretch"></section>
+<img data-src="distributions_files/figure-revealjs/unnamed-chunk-8-1.png" width="2400" class="r-stretch"></section>
 <section id="descriptive-sample-statistics-2" class="slide level2 center" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Descriptive sample statistics</h2>
 <h3 id="exponential-distribution">Exponential distribution</h3>
 
-<img data-src="distributions_files/figure-revealjs/unnamed-chunk-9-1.png" width="672" class="r-stretch"></section>
+<img data-src="distributions_files/figure-revealjs/unnamed-chunk-9-1.png" width="2100" class="r-stretch"></section>
 <section id="descriptive-sample-statistics-3" class="slide level2 center" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Descriptive sample statistics</h2>
 <h3 id="outliers">Outliers</h3>
 <p><strong>Mean is more sensitive to outliers</strong></p>
 
-<img data-src="distributions_files/figure-revealjs/unnamed-chunk-10-1.png" width="768" class="r-stretch"></section>
+<img data-src="distributions_files/figure-revealjs/unnamed-chunk-10-1.png" width="2400" class="r-stretch"></section>
 <section id="by-the-way-what-to-do-about-outliers" class="slide level2 center">
 <h2>By the way, what to do about outliers?</h2>
 <p><strong>Nothing</strong></p>
@@ -586,9 +586,10 @@
 <section id="descriptive-sample-statistics-5" class="slide level2 center" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Descriptive sample statistics</h2>
 <h3 id="quantiles">Quantiles</h3>
-<p><strong>Quantiles</strong> - values less than which <span class="math inline">\(X\)</span>% of the data in the distribution is found - For example, 0.75 quntile is the value that is greater of 75% of values in sample, but lower than another 25% of sample values</p>
+<p><strong>Quantiles</strong> - values less than which <span class="math inline">\(X\)</span>% of the data in the distribution is found<br>
+<em>For example</em>, 0.75 quntile is the value that is greater of 75% of values in sample, but lower than another 25% of sample values</p>
 <div class="cell large-code">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">quantile</span>(x <span class="at">probs =</span> <span class="fl">0.75</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">quantile</span>(x, <span class="at">probs =</span> <span class="fl">0.75</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li>Quartiles are 0.25,0.5,0.75 quantiles</li>
@@ -600,7 +601,7 @@
 <li>Percentiles are 1-100% qunatiles</li>
 </ul>
 <div class="cell large-code">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">quantile</span>(x, <span class="at">probs =</span> <span class="fu">seq</span>(<span class="fl">0.01</span>,<span class="dv">1</span>,<span class="fl">0.01</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">quantile</span>(x, <span class="at">probs =</span> <span class="fu">seq</span>(<span class="fl">0.01</span>, <span class="dv">1</span>, <span class="fl">0.01</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li>Median is a <strong>0.5 quantile</strong> (2nd quartile)</li>
@@ -609,24 +610,25 @@
 <section id="normal-distribution" class="slide level2 center" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Normal distribution</h2>
 <div class="columns">
-<div class="column" style="width:50%;">
-<p>Normal distribution is bell shaped, have equal mean (<span class="math inline">\(\mu\)</span>), median, mode. “Width” depends on standard deviation (<span class="math inline">\(\sigma\)</span>). <strong>Continious (!)</strong></p>
-</div><div class="column" style="width:50%;">
+<div class="column" style="width:55%;">
+<p>Normal distribution is bell shaped, have equal mean (<span class="math inline">\(\mu\)</span>), median, mode.<br>
+“Width” depends on standard deviation (<span class="math inline">\(\sigma\)</span>). <strong>Continious (!)</strong></p>
+</div><div class="column" style="width:45%;">
 <p><span class="math inline">\(P(x) = \frac{1}{{\sigma \sqrt{2\pi} }}e^{{\frac{ -\left( {x - \mu } \right)^2 }{2\sigma ^2 }}}\)</span>,</p>
-<p>parameters are mean (<span class="math inline">\(\mu\)</span>) and sigma (<span class="math inline">\(\sigma\)</span>)</p>
+<p>parameters: mean (<span class="math inline">\(\mu\)</span>) and sigma (<span class="math inline">\(\sigma\)</span>)</p>
 </div></div>
 
-<img data-src="distributions_files/figure-revealjs/unnamed-chunk-16-1.png" width="768" class="r-stretch"></section>
+<img data-src="distributions_files/figure-revealjs/unnamed-chunk-16-1.png" width="2400" class="r-stretch"></section>
 <section id="normal-distribution-1" class="slide level2 center" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Normal distribution</h2>
 <h3 id="parameters-of-normal-distribution">Parameters of normal distribution</h3>
 
-<img data-src="distributions_files/figure-revealjs/unnamed-chunk-17-1.png" width="768" class="r-stretch"></section>
+<img data-src="distributions_files/figure-revealjs/unnamed-chunk-17-1.png" width="2400" class="r-stretch"></section>
 <section id="normal-distribution-2" class="slide level2 center" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Normal distribution</h2>
 <h3 id="three-sigma-rule">Three sigma rule</h3>
 
-<img data-src="distributions_files/figure-revealjs/unnamed-chunk-18-1.png" width="768" class="r-stretch"></section>
+<img data-src="distributions_files/figure-revealjs/unnamed-chunk-18-1.png" width="2400" class="r-stretch"></section>
 <section class="slide level2 center">
 
 <h3 id="three-sigma-rule-1">Three sigma rule</h3>
@@ -645,7 +647,7 @@
 </ul>
 </div></div>
 
-<img data-src="distributions_files/figure-revealjs/unnamed-chunk-19-1.png" width="960" class="r-stretch"></section>
+<img data-src="distributions_files/figure-revealjs/unnamed-chunk-19-1.png" width="3000" class="r-stretch"></section>
 <section id="bernoulli-distribution" class="slide level2 center">
 <h2>Bernoulli distribution</h2>
 <div class="columns">
@@ -654,7 +656,7 @@
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="distributions_files/figure-revealjs/unnamed-chunk-20-1.png" width="480"></p>
+<p><img data-src="distributions_files/figure-revealjs/unnamed-chunk-20-1.png" width="1500"></p>
 </figure>
 </div>
 </div>
@@ -675,7 +677,7 @@
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="distributions_files/figure-revealjs/unnamed-chunk-21-1.png" width="768"></p>
+<p><img data-src="distributions_files/figure-revealjs/unnamed-chunk-21-1.png" width="2400"></p>
 </figure>
 </div>
 </div>
@@ -690,24 +692,25 @@
 </div></div>
 <p>Distribution is based on the <strong>number of successes in a sequence of experiments</strong>. <strong>Discrete (!)</strong></p>
 <p>If we flip a coin, the binomial distribution represents the number of successes after we flip the coin a certain number of times (e.g.&nbsp;10).</p>
-<p>The histogram above shows the distribution of 10000 experiments on trying to get an head coin for a certain number of times by flipping it 10 times</p>
+<p>The histogram above shows the distribution of 10000 experiments on trying to get an head coin <span class="math inline">\(k\)</span> times by flipping it 10 times</p>
 </section>
 <section id="binomial-distribution-1" class="slide level2 center" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Binomial distribution</h2>
 <h3 id="parameters-of-binomial-distribution">Parameters of binomial distribution</h3>
 
-<img data-src="distributions_files/figure-revealjs/unnamed-chunk-22-1.png" width="768" class="r-stretch"></section>
+<img data-src="distributions_files/figure-revealjs/unnamed-chunk-22-1.png" width="2400" class="r-stretch"></section>
 <section id="poisson-distribution" class="slide level2 center" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Poisson distribution</h2>
 <p><em>Binomial</em>, but <span class="math inline">\(n \rightarrow \infty\)</span>,, therefore we don’t utilize number of trials (<span class="math inline">\(n\)</span>).<br>
-Now we use “<strong>time interval</strong>” and <strong>expected number of successes</strong> (<span class="math inline">\(\lambda\)</span>) during this interval. <strong>Still Discrete (!)</strong></p>
+Now we use “<strong>time interval</strong>” and <strong>expected number of successes</strong> (<span class="math inline">\(\lambda\)</span>) during this interval.<br>
+<strong>Still Discrete (!)</strong></p>
 <div class="columns">
 <div class="column" style="width:70%;">
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="distributions_files/figure-revealjs/unnamed-chunk-23-1.png" width="768"></p>
+<p><img data-src="distributions_files/figure-revealjs/unnamed-chunk-23-1.png" width="2400"></p>
 </figure>
 </div>
 </div>
@@ -725,9 +728,9 @@ Now we use “<strong>time interval</strong>” and <strong>expected number of s
 <h2 data-id="quarto-animate-title">Poisson distribution</h2>
 <h3 id="parameters-of-poisson-distribution">Parameters of poisson distribution</h3>
 
-<img data-src="distributions_files/figure-revealjs/unnamed-chunk-24-1.png" width="768" class="r-stretch"></section>
-<section id="functions-for-normal-distribution" class="slide level2 center">
-<h2>Functions (for normal distribution)</h2>
+<img data-src="distributions_files/figure-revealjs/unnamed-chunk-24-1.png" width="2400" class="r-stretch"></section>
+<section id="functions-for-normal-distribution" class="slide level2 center" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Functions (for normal distribution)</h2>
 <div class="cell">
 <style type="text/css">
 .large-code {
@@ -736,16 +739,16 @@ Now we use “<strong>time interval</strong>” and <strong>expected number of s
 </style>
 </div>
 <ol type="1">
-<li>Random values from distribution</li>
+<li><strong>Random values from distribution</strong></li>
 </ol>
 <div class="cell large-code">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">rnorm</span>(<span class="at">n=</span><span class="dv">5</span>, <span class="at">mean=</span><span class="dv">100</span>, <span class="at">sd=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1]  85.06684 105.56519 101.58045  93.75085  97.65821</code></pre>
+<pre><code>[1]  85.59780 101.89288 104.90712 109.19934  84.91703</code></pre>
 </div>
 </div>
 <ol start="2" type="1">
-<li>Density (the height of histogram) at the point</li>
+<li><strong>Density (the height of histogram) at the point</strong></li>
 </ol>
 <div class="cell large-code">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">dnorm</span>(<span class="at">x=</span><span class="dv">100</span>, <span class="at">mean=</span><span class="dv">100</span>, <span class="at">sd=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -753,8 +756,11 @@ Now we use “<strong>time interval</strong>” and <strong>expected number of s
 <pre><code>[1] 0.03989423</code></pre>
 </div>
 </div>
+</section>
+<section id="functions-for-normal-distribution-1" class="slide level2 center" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Functions (for normal distribution)</h2>
 <ol start="3" type="1">
-<li>Cumulative probability at the point: prob-ty to obtain value less than specified</li>
+<li><strong>Cumulative probability at the point: prob-ty to obtain value less than specified</strong></li>
 </ol>
 <div class="cell large-code">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="fu">pnorm</span>(<span class="at">q =</span> <span class="dv">80</span>, <span class="at">mean=</span><span class="dv">100</span>, <span class="at">sd=</span><span class="dv">10</span>) <span class="co"># prob to obtain any value less than 80</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -767,7 +773,7 @@ Now we use “<strong>time interval</strong>” and <strong>expected number of s
 </div>
 </div>
 <ol start="4" type="1">
-<li>Value corresponding to specified cumulative probability</li>
+<li><strong>Value corresponding to specified cumulative probability</strong></li>
 </ol>
 <div class="cell large-code">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="fu">qnorm</span>(<span class="at">p =</span> <span class="fu">c</span>(<span class="fl">0.003</span>, <span class="fl">0.05</span>, <span class="fl">0.16</span>, <span class="fl">0.84</span>, <span class="fl">0.95</span>, <span class="fl">0.997</span>), <span class="at">mean=</span><span class="dv">100</span>, <span class="at">sd=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -825,8 +831,8 @@ Now we use “<strong>time interval</strong>” and <strong>expected number of s
 <h2>Hypotheses</h2>
 <p>In statistical testing, we will operate with <strong>hypotheses.</strong> <em>There are two basic hypotheses:</em></p>
 <ul>
-<li><strong>Null Hypothesis (</strong><span class="math inline">\(H_0\)</span><strong>)</strong> - There is <strong>no effect</strong> in the population.</li>
-<li><strong>Alternative Hypothesis (</strong><span class="math inline">\(H_A\)</span><strong>) -</strong> There is <strong>a effect</strong> in the population.</li>
+<li><strong>Null Hypothesis (</strong><span class="math inline">\(H_0\)</span><strong>)</strong> - There is <strong>no effect</strong></li>
+<li><strong>Alternative Hypothesis (</strong><span class="math inline">\(H_A\)</span><strong>) -</strong> There is <strong>an effect</strong></li>
 </ul>
 <blockquote>
 <p>Usually we are interested in having an effect, as it means some discovery, and <strong>rejecting null hypothesis</strong></p>
@@ -930,8 +936,8 @@ Now we use “<strong>time interval</strong>” and <strong>expected number of s
 <h2>“Pipeline”</h2>
 
 <img data-src="../images/pvalpipeline.png" class="quarto-figure quarto-figure-center r-stretch"></section>
-<section id="parameters-of-test-parameters-distributions" class="slide level2 center">
-<h2>Parameters of test parameters’ distributions</h2>
+<section id="parameters-of-test-statistics-distributions" class="slide level2 center">
+<h2>Parameters of test statistics’ distributions</h2>
 <h3 id="degrees-of-freedom"><u>Degrees of freedom!</u></h3>
 <ul>
 <li><p>Often calculated based on <u>number of observations</u>, groups and coefficients.</p></li>
@@ -969,14 +975,14 @@ Now we use “<strong>time interval</strong>” and <strong>expected number of s
 <h2>One-sided hypothesis</h2>
 <p><span class="math inline">\(H_A: X_0 &lt; X_1\)</span></p>
 
-<img data-src="distributions_files/figure-revealjs/unnamed-chunk-35-1.png" width="768" class="r-stretch"></section>
+<img data-src="distributions_files/figure-revealjs/unnamed-chunk-35-1.png" width="2400" class="r-stretch"></section>
 <section id="two-sided-hypothesis" class="slide level2 center">
 <h2>Two-sided hypothesis</h2>
 <p><span class="math inline">\(H_A: X_0 \neq X_1\)</span></p>
 
-<img data-src="distributions_files/figure-revealjs/unnamed-chunk-37-1.png" width="768" class="r-stretch"></section>
-<section id="how-to-calculate-critical-value-of-parameter" class="slide level2 center">
-<h2>How to calculate critical value of parameter?</h2>
+<img data-src="distributions_files/figure-revealjs/unnamed-chunk-37-1.png" width="2400" class="r-stretch"></section>
+<section id="how-to-calculate-critical-value-of-test-statistic" class="slide level2 center">
+<h2>How to calculate critical value of test statistic?</h2>
 <p><em>Example for T-distribution</em></p>
 <h3 id="one-sided-hypotheses">One-sided hypotheses</h3>
 <div class="large-code">

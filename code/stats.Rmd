@@ -115,7 +115,7 @@ t.test(height ~ group,
 -   **t-value** = -4.6261
 -   **p-value** = 2.137e-05 = $2.137 * 10^{-5}$ = $0.00002137$
     -   $2.137 * 10^{-5} < 0.05 \leftrightarrow p.value < \alpha$
-    -   We can with great confidence reject the $H_0$
+    -   We can with great confidence reject the $H_0$ and accept $H_A$ about difference of averages
 
 ### Comparison of basic and Welch t-test
 
@@ -134,15 +134,15 @@ t.test(height ~ group,
 
 Since the t-test requires calculation of the mean, it is sensitive to outliers. Therefore, it is better to use a non-parametric approach
 
-**Mann-Witney test** **(also known as** **Wilcoxon** **rank-sum test**)
+**Mann-Whitney test** **(also known as** **Wilcoxon** **rank-sum test**)
 
 ### Hypotheses
 
 [**The test does not directly compare means or medians!**]{.underline}
 
--   **Null Hypothesis** ($H_0$​): The two populations (from which the samples are drawn) have the **same distribution** (i.e., the probability distributions are identical).
+-   **Null Hypothesis** ($H_0$​): Two populations (from which the samples are drawn) have the **same distribution** in terms of relative position.
 
--   **Alternative Hypothesis** ($H_A$​): The two populations have **different distributions**, typically focusing on a **stochastic ordering** (i.e., one distribution tends to yield larger values than the other).
+-   **Alternative Hypothesis** ($H_A$​): Two populations have **different distributions** in terms of relative position (i.e., one distribution tends to yield larger values than the other).
 
 If $X$ comes from population 1 and $Y$ comes from population 2, the null hypothesis often implies:
 
@@ -151,7 +151,6 @@ $H_0: P(X>Y)=0.5$
 ### Example
 
 ```{r}
-set.seed(111)
 sample1 = c(rnorm(20, 5, 2), 18)
 sample2 = c(rnorm(20, 7, 2), 22)
 
@@ -243,17 +242,13 @@ t.test(pressure ~ group,
 
 [**Testing medians, not means**]{.underline}
 
--   **Null Hypothesis (**$H_0$​): The median difference between paired observations is zero (i.e., the distribution of the differences is symmetric around zero).
+-   **Null Hypothesis** ($H_0$​): Two dependent populations (from which the samples are drawn) have the **same distribution** in terms of relative position.
 
--   **Alternative Hypothesis (**$H_A$​): The median difference between paired observations is not zero (the distribution of differences is not symmetric around zero)
+-   **Alternative Hypothesis** ($H_A$​): Two dependent populations have **different distributions** in terms of relative position (i.e., one distribution tends to yield larger values than the other).
 
 ### Testing before/after data
 
 ```{r}
-
-# sample1 = c(rnorm(20, 5, 2), 18)
-# sample2 = c(rnorm(20, 7, 2), 22)
-
 sample_before = c(rnorm(20, 5, 2), 18)
 sample_after = sample_before + rnorm(21, 1, 2)
 
@@ -406,6 +401,10 @@ chisq.test(contingency_table,
            )
 ```
 
+-   $p.value > 0.05$
+
+-   We **failed to reject** the $H_0$ about independence of `Outcome` and `Group`
+
 # Fisher's Exact Test
 
 > Used for [**small sample sizes** where the Chi-Square test assumptions do not hold.]{.underline}
@@ -449,7 +448,8 @@ contingency_table_1
 fisher.test(contingency_table_1)
 ```
 
--   $p.value > 0.05$ - We cannot reject $H_0$ about absence of association between categorical variables.
+-   $p.value > 0.05$
+-   We failed reject $H_0$ about absence of association between categorical variables.
 
 # Correlation analysis
 
@@ -475,8 +475,10 @@ Correlation analysis measures the **strength** and **direction** of a linear rel
 
 ```{r}
 plant_height_df = data.frame(
-  Sunlight_hrs_per_day = c(4,5,5,6,6,7,8,8,9,10),
-  Plant_height = c(10.2, 11.5, 11.9, 13.4, 13.8, 14, 15, 16.2, 17.8, 18.3)
+  # Sunlight_hrs_per_day = c(4,5,5,6,6,7,8,8,9,10),
+  # Plant_height = c(10.2, 11.5, 11.9, 13.4, 13.8, 14, 15, 16.2, 17.8, 18.3)
+  Sunlight_hrs_per_day = rep(4:10, e=4),
+  Plant_height = rep(4:10, e=4) + rnorm(28,0,2)
 )
 
 head(plant_height_df)
@@ -506,13 +508,25 @@ cor.test(plant_height_df$Sunlight_hrs_per_day,
          plant_height_df$Plant_height)
 ```
 
-### Correlation does not imply causation
+## Example of 0 correlation
+
+```{r}
+x1=rnorm(500)
+y1=rnorm(500)
+plot(x1,y1)
+```
+
+```{r}
+cor.test(x1,y1)
+```
+
+## Correlation does not imply causation
 
 Website with numerous [spurious correlations](https://tylervigen.com/spurious-correlations)
 
 # Rank correlations
 
-[The problems with Pearson correlation are that it is not suitable for "strange" non-linear relationships, non-normally distributed traits and data with outliers.]{.underline}
+> [The problems with Pearson correlation are that it is not suitable for "strange" non-linear relationships, non-normally distributed traits and data with outliers.]{.underline}
 
 ## Spearman correlation
 
@@ -524,11 +538,11 @@ Website with numerous [spurious correlations](https://tylervigen.com/spurious-co
 
 ## Examples
 
-### Non-normal
+### Non-linear
 
 ```{r}
-x = runif(20, -10, 10)
-y = x ^ 3 + rnorm(20,0,5)
+x = runif(50, -10, 10)
+y = (x + rnorm(50, 0, 2))^3
 plot(x,y, pch=19)
 ```
 
@@ -589,7 +603,7 @@ $y_{pred} = \beta_0 + \beta_1x_1 + ... + \beta_nx_n$
 
 # Simple linear regression
 
-Linear regression model with **one dependent** $y$ (response) and one **independent** variable $x$ (predcitor). Simple line which estimate linear relationship between $x$ and $y$.
+Linear regression model with **one dependent** $y$ (response) and one **independent** variable $x$ (predictor). Simple line which estimate linear relationship between $x$ and $y$.
 
 ## Formula of model
 
@@ -628,13 +642,6 @@ legend("topleft",
        legend = c("y_pred"),
        col = c('red'),
        bty = 'n', lwd=3)
-```
-
-### Prediction
-
-```{r}
-newdata = data.frame(nutrients=c(5.6, 9.2, 3))
-predict(model, newdata)
 ```
 
 # Model summary
@@ -719,7 +726,7 @@ $$F = \dfrac{\frac{\sum(\overline y - y_{pred,\space i})^2}{p-1}}{\frac{\sum(y_i
 
 $p$ - number of parameters, $n$ - number of observations
 
--   ***p-values*** are claculated according to [**Fisher distribution**]{.underline}
+-   ***p-values*** are calculated according to [**Fisher distribution**]{.underline}
 -   [In simple linear regression, it is equivalent to the t-test for the slope.]{.underline}
 
 ```{r}
@@ -789,7 +796,7 @@ model_mullti_interact = lm(height ~ nutrients * sunlight_hrs, data = data_plant_
 summary(model_mullti_interact)
 ```
 
--   `x1:x2` denotes interation
+-   `x1:x2` denotes interaction
 
 -   `x1 * x2` is equivalent to `x1 + x2 + x1:x2`
 

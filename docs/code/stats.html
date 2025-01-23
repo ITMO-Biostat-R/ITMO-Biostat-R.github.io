@@ -410,7 +410,7 @@ window.Quarto = {
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   60 obs. of  2 variables:
  $ group : Factor w/ 2 levels "Shade","Sunlight": 2 2 2 2 2 2 2 2 2 2 ...
- $ height: num  21.1 12.9 17.4 14.3 15.7 ...</code></pre>
+ $ height: num  10.7 16.5 13.8 12.6 13.7 ...</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -441,13 +441,13 @@ window.Quarto = {
     One Sample t-test
 
 data:  x
-t = 2.6092, df = 9, p-value = 0.02831
+t = 7.8227, df = 9, p-value = 2.646e-05
 alternative hypothesis: true mean is not equal to 0
 95 percent confidence interval:
- 0.2142932 3.0082696
+ 2.580041 4.679269
 sample estimates:
 mean of x 
- 1.611281 </code></pre>
+ 3.629655 </code></pre>
 </div>
 </div>
 <p><strong>Example on two samples:</strong></p>
@@ -461,13 +461,13 @@ mean of x
     Welch Two Sample t-test
 
 data:  x1 and x2
-t = 2.6206, df = 11.26, p-value = 0.0234
+t = 1.0686, df = 14.128, p-value = 0.3032
 alternative hypothesis: true difference in means is not equal to 0
 95 percent confidence interval:
- 0.6685688 7.5614647
+ -1.523157  4.553239
 sample estimates:
-mean of x mean of y 
- 3.096910 -1.018107 </code></pre>
+ mean of x  mean of y 
+ 0.5933269 -0.9217142 </code></pre>
 </div>
 </div>
 <p><u><strong>Our <em>plant and sunlight</em> data:</strong></u></p>
@@ -480,13 +480,13 @@ mean of x mean of y
     Welch Two Sample t-test
 
 data:  height by group
-t = -4.7937, df = 56.859, p-value = 1.217e-05
+t = -4.5953, df = 56.833, p-value = 2.45e-05
 alternative hypothesis: true difference in means between group Shade and group Sunlight is not equal to 0
 95 percent confidence interval:
- -4.330588 -1.778522
+ -4.197056 -1.649272
 sample estimates:
    mean in group Shade mean in group Sunlight 
-              12.03566               15.09022 </code></pre>
+              11.89144               14.81460 </code></pre>
 </div>
 </div>
 <ul>
