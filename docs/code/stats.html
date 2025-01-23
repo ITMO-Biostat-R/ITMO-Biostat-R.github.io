@@ -410,7 +410,7 @@ window.Quarto = {
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   60 obs. of  2 variables:
  $ group : Factor w/ 2 levels "Shade","Sunlight": 2 2 2 2 2 2 2 2 2 2 ...
- $ height: num  14.8 13.8 11.2 16.3 12.7 ...</code></pre>
+ $ height: num  21.1 12.9 17.4 14.3 15.7 ...</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -441,13 +441,13 @@ window.Quarto = {
     One Sample t-test
 
 data:  x
-t = 4.9662, df = 9, p-value = 0.0007739
+t = 2.6092, df = 9, p-value = 0.02831
 alternative hypothesis: true mean is not equal to 0
 95 percent confidence interval:
- 1.700079 4.544565
+ 0.2142932 3.0082696
 sample estimates:
 mean of x 
- 3.122322 </code></pre>
+ 1.611281 </code></pre>
 </div>
 </div>
 <p><strong>Example on two samples:</strong></p>
@@ -461,13 +461,13 @@ mean of x
     Welch Two Sample t-test
 
 data:  x1 and x2
-t = 3.4844, df = 18, p-value = 0.002647
+t = 2.6206, df = 11.26, p-value = 0.0234
 alternative hypothesis: true difference in means is not equal to 0
 95 percent confidence interval:
- 1.733659 6.998926
+ 0.6685688 7.5614647
 sample estimates:
- mean of x  mean of y 
- 3.6347517 -0.7315411 </code></pre>
+mean of x mean of y 
+ 3.096910 -1.018107 </code></pre>
 </div>
 </div>
 <p><u><strong>Our <em>plant and sunlight</em> data:</strong></u></p>
@@ -480,13 +480,13 @@ sample estimates:
     Welch Two Sample t-test
 
 data:  height by group
-t = -4.7991, df = 57.778, p-value = 1.164e-05
+t = -4.7937, df = 56.859, p-value = 1.217e-05
 alternative hypothesis: true difference in means between group Shade and group Sunlight is not equal to 0
 95 percent confidence interval:
- -3.45619 -1.42151
+ -4.330588 -1.778522
 sample estimates:
    mean in group Shade mean in group Sunlight 
-              12.14791               14.58676 </code></pre>
+              12.03566               15.09022 </code></pre>
 </div>
 </div>
 <ul>
@@ -1958,7 +1958,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
+      var filterRegex = new RegExp("https:\/\/ITMO-Biostat-R\.github\.io\/");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }

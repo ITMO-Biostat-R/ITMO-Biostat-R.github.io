@@ -19,6 +19,10 @@ library(tidyr)
 library(ggplot2)
 ```
 
+![](../images/memes/belike.jpg){fig-align="center" width="1000"}
+
+------------------------------------------------------------------------
+
 ## Types of Data
 
 -   **Numerical data**: Continuous (e.g., height) or discrete (e.g., number of leaves).
@@ -290,7 +294,6 @@ quantile(x, probs = seq(0.01,1,0.01))
 ```
 
 -   Median is a **0.5 quantile** (2nd quartile)
-
 
 ## Normal distribution {auto-animate="true"}
 
