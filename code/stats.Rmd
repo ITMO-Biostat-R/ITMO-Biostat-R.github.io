@@ -230,8 +230,8 @@ ggpress + geom_boxplot(aes(y=group)) + theme(legend.position = "none")
 
 ```{r paired-t-test}
 t.test(pressure ~ group,
-       data = data_pressure,
-       paired = TRUE) # <---- !!!
+       data = data_pressure, 
+       pair = T) # <---- !!!
 ```
 
 ## Non-Parametric Alternative [for dependent samples]{.underline}
@@ -263,7 +263,7 @@ data_before_after %>%  ggplot(aes(x = value, fill=group)) + geom_density(alpha=0
 ```{r wilcoxon-paired}
 wilcox.test(value ~ group,
             data=data_before_after,
-            paired = TRUE) ## <---
+            pair = TRUE) ## <---
 ```
 
 # Categorical data testing
@@ -494,10 +494,10 @@ plot(x = plant_height_df$Sunlight_hrs_per_day,
 
 ### Calculation
 
--   `corr()` - calculates correlation matrix between all features of dataframe
+-   `cor()` - calculates correlation matrix between all features of dataframe
 
 ```{r}
-cor(plant_height_df)
+cor(plant_height_df$Sunlight_hrs_per_day, plant_height_df$Plant_height)
 # cor(iris %>%select(where(is.numeric)))
 ```
 
@@ -517,7 +517,7 @@ plot(x1,y1)
 ```
 
 ```{r}
-cor.test(x1,y1)
+?сor()
 ```
 
 ## Correlation does not imply causation
