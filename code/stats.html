@@ -410,7 +410,7 @@ window.Quarto = {
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   60 obs. of  2 variables:
  $ group : Factor w/ 2 levels "Shade","Sunlight": 2 2 2 2 2 2 2 2 2 2 ...
- $ height: num  17.4 16.5 16.4 15.8 13.2 ...</code></pre>
+ $ height: num  17.1 19.9 17.2 15.9 18.7 ...</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -441,13 +441,13 @@ window.Quarto = {
     One Sample t-test
 
 data:  x
-t = 3.2485, df = 9, p-value = 0.01002
+t = 3.0979, df = 9, p-value = 0.01277
 alternative hypothesis: true mean is not equal to 0
 95 percent confidence interval:
- 0.6524194 3.6449437
+ 0.4502924 2.8879952
 sample estimates:
 mean of x 
- 2.148682 </code></pre>
+ 1.669144 </code></pre>
 </div>
 </div>
 <p><strong>Example on two samples:</strong></p>
@@ -461,13 +461,13 @@ mean of x
     Welch Two Sample t-test
 
 data:  x1 and x2
-t = 1.3326, df = 11.876, p-value = 0.2077
+t = 1.029, df = 12.067, p-value = 0.3237
 alternative hypothesis: true difference in means is not equal to 0
 95 percent confidence interval:
- -1.269654  5.256724
+ -1.973754  5.510608
 sample estimates:
  mean of x  mean of y 
- 1.1434902 -0.8500446 </code></pre>
+ 1.4370646 -0.3313621 </code></pre>
 </div>
 </div>
 <p><u><strong>Our <em>plant and sunlight</em> data:</strong></u></p>
@@ -480,13 +480,13 @@ sample estimates:
     Welch Two Sample t-test
 
 data:  height by group
-t = -4.2804, df = 48.532, p-value = 8.75e-05
+t = -7.8468, df = 57.999, p-value = 1.107e-10
 alternative hypothesis: true difference in means between group Shade and group Sunlight is not equal to 0
 95 percent confidence interval:
- -3.228725 -1.165299
+ -4.634307 -2.750456
 sample estimates:
    mean in group Shade mean in group Sunlight 
-              12.65836               14.85537 </code></pre>
+              12.44958               16.14197 </code></pre>
 </div>
 </div>
 <ul>
@@ -595,13 +595,13 @@ sample estimates:
     Welch Two Sample t-test
 
 data:  value by group
-t = -2.3268, df = 39.858, p-value = 0.02515
+t = -2.1073, df = 39.14, p-value = 0.04155
 alternative hypothesis: true difference in means between group sample1 and group sample2 is not equal to 0
 95 percent confidence interval:
- -4.7952405 -0.3368707
+ -4.76474607 -0.09787383
 sample estimates:
 mean in group sample1 mean in group sample2 
-             5.515889              8.081945 </code></pre>
+             4.824335              7.255645 </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox.test</span>(value <span class="sc">~</span> group,</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>            <span class="at">data=</span>data_sample)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -610,7 +610,7 @@ mean in group sample1 mean in group sample2
     Wilcoxon rank sum exact test
 
 data:  value by group
-W = 89, p-value = 0.0006594
+W = 94, p-value = 0.0011
 alternative hypothesis: true location shift is not equal to 0</code></pre>
 </div>
 </div>
@@ -660,12 +660,12 @@ alternative hypothesis: true location shift is not equal to 0</code></pre>
 <span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>data_pressure <span class="sc">%&gt;%</span> <span class="fu">head</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  pressure  group
-1 113.0879 before
-2 123.7292 before
-3 119.2895 before
-4 113.2592 before
-5 113.4139 before
-6 128.1598 before</code></pre>
+1 122.4328 before
+2 109.7328 before
+3 119.5159 before
+4 130.5115 before
+5 116.4863 before
+6 124.2221 before</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -689,20 +689,20 @@ alternative hypothesis: true location shift is not equal to 0</code></pre>
 <h4 class="anchored" data-anchor-id="testing-1">Testing</h4>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(pressure <span class="sc">~</span> group,</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">data =</span> data_pressure,</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">paired =</span> <span class="cn">TRUE</span>) <span class="co"># &lt;---- !!!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">data =</span> data_pressure, </span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">pair =</span> T) <span class="co"># &lt;---- !!!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Paired t-test
 
 data:  pressure by group
-t = -7.2975, df = 19, p-value = 6.383e-07
+t = -4.7912, df = 19, p-value = 0.000127
 alternative hypothesis: true mean difference is not equal to 0
 95 percent confidence interval:
- -7.786072 -4.315229
+ -6.609752 -2.590588
 sample estimates:
 mean difference 
-       -6.05065 </code></pre>
+       -4.60017 </code></pre>
 </div>
 </div>
 </section>
@@ -741,13 +741,13 @@ mean difference
 <div class="cell">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox.test</span>(value <span class="sc">~</span> group,</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>            <span class="at">data=</span>data_before_after,</span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">paired =</span> <span class="cn">TRUE</span>) <span class="do">## &lt;---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">pair =</span> <span class="cn">TRUE</span>) <span class="do">## &lt;---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Wilcoxon signed rank exact test
 
 data:  value by group
-V = 208, p-value = 0.0006075
+V = 155, p-value = 0.179
 alternative hypothesis: true location shift is not equal to 0</code></pre>
 </div>
 </div>
@@ -1186,12 +1186,12 @@ odds ratio
 <span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(plant_height_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Sunlight_hrs_per_day Plant_height
-1                    4    4.9347302
-2                    4    2.8564440
-3                    4    4.2122260
-4                    4    0.8588833
-5                    5    2.5422421
-6                    5   10.6872329</code></pre>
+1                    4     3.238813
+2                    4     5.080982
+3                    4     4.327051
+4                    4     7.670930
+5                    5     2.178981
+6                    5     4.208789</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -1212,14 +1212,12 @@ odds ratio
 <section id="calculation" class="level3">
 <h3 class="anchored" data-anchor-id="calculation">Calculation</h3>
 <ul>
-<li><code>corr()</code> - calculates correlation matrix between all features of dataframe</li>
+<li><code>cor()</code> - calculates correlation matrix between all features of dataframe</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(plant_height_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(plant_height_df<span class="sc">$</span>Sunlight_hrs_per_day, plant_height_df<span class="sc">$</span>Plant_height)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>                     Sunlight_hrs_per_day Plant_height
-Sunlight_hrs_per_day            1.0000000    0.7457048
-Plant_height                    0.7457048    1.0000000</code></pre>
+<pre><code>[1] 0.6952294</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># cor(iris %&gt;%select(where(is.numeric)))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -1234,13 +1232,13 @@ Plant_height                    0.7457048    1.0000000</code></pre>
     Pearson's product-moment correlation
 
 data:  plant_height_df$Sunlight_hrs_per_day and plant_height_df$Plant_height
-t = 5.7069, df = 26, p-value = 5.261e-06
+t = 4.9319, df = 26, p-value = 4.022e-05
 alternative hypothesis: true correlation is not equal to 0
 95 percent confidence interval:
- 0.5162518 0.8752755
+ 0.4349733 0.8482836
 sample estimates:
       cor 
-0.7457048 </code></pre>
+0.6952294 </code></pre>
 </div>
 </div>
 </section>
@@ -1260,19 +1258,9 @@ sample estimates:
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(x1,y1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(x1, y1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>
-    Pearson's product-moment correlation
-
-data:  x1 and y1
-t = -0.32684, df = 498, p-value = 0.7439
-alternative hypothesis: true correlation is not equal to 0
-95 percent confidence interval:
- -0.10220382  0.07314004
-sample estimates:
-        cor 
--0.01464448 </code></pre>
+<pre><code>[1] 0.02716805</code></pre>
 </div>
 </div>
 </section>
@@ -1313,11 +1301,11 @@ sample estimates:
 <div class="cell">
 <div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(x,y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.7342613</code></pre>
+<pre><code>[1] 0.8111932</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(x,y, <span class="at">method =</span> <span class="st">"spearman"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.9405522</code></pre>
+<pre><code>[1] 0.93988</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># cor(x,y, method = "kendall")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -1339,11 +1327,11 @@ sample estimates:
 <div class="cell">
 <div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(x,y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.4685295</code></pre>
+<pre><code>[1] 0.5289408</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(x,y, <span class="at">method =</span> <span class="st">"spearman"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.8664219</code></pre>
+<pre><code>[1] 0.8528665</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="co"># cor(x,y, method = "kendall")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -1430,7 +1418,7 @@ lm(formula = height ~ nutrients, data = data_plant_nutrient)
 
 Coefficients:
 (Intercept)    nutrients  
-      1.975        1.834  </code></pre>
+     -3.293        2.243  </code></pre>
 </div>
 </div>
 <div class="cell">
@@ -1464,19 +1452,19 @@ Call:
 lm(formula = height ~ nutrients, data = data_plant_nutrient)
 
 Residuals:
-    Min      1Q  Median      3Q     Max 
--10.786  -4.008   1.526   5.184   7.509 
+     Min       1Q   Median       3Q      Max 
+-10.3306  -2.5169   0.0681   2.3787   9.9460 
 
 Coefficients:
             Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)   1.9754     2.4896   0.793    0.431    
-nutrients     1.8339     0.2484   7.382 1.92e-09 ***
+(Intercept)  -3.2929     2.3969  -1.374    0.176    
+nutrients     2.2428     0.2369   9.466 1.48e-12 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Residual standard error: 5.321 on 48 degrees of freedom
-Multiple R-squared:  0.5317,    Adjusted R-squared:  0.5219 
-F-statistic: 54.49 on 1 and 48 DF,  p-value: 1.916e-09</code></pre>
+Residual standard error: 4.521 on 48 degrees of freedom
+Multiple R-squared:  0.6512,    Adjusted R-squared:  0.6439 
+F-statistic: 89.61 on 1 and 48 DF,  p-value: 1.479e-12</code></pre>
 </div>
 </div>
 <section id="residuals" class="level3">
@@ -1503,7 +1491,7 @@ F-statistic: 54.49 on 1 and 48 DF,  p-value: 1.916e-09</code></pre>
 <span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a><span class="fu">coefficients</span>(model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>(Intercept)   nutrients 
-   1.975445    1.833918 </code></pre>
+  -3.292948    2.242810 </code></pre>
 </div>
 </div>
 </section>
@@ -1517,9 +1505,9 @@ F-statistic: 54.49 on 1 and 48 DF,  p-value: 1.916e-09</code></pre>
 <div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="co"># summary_model$coefficients[,3:4]</span></span>
 <span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a>summary_model<span class="sc">$</span>coefficients</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>            Estimate Std. Error   t value     Pr(&gt;|t|)
-(Intercept) 1.975445  2.4895759 0.7934864 4.313996e-01
-nutrients   1.833918  0.2484438 7.3816223 1.916424e-09</code></pre>
+<pre><code>             Estimate Std. Error   t value     Pr(&gt;|t|)
+(Intercept) -3.292948  2.3969394 -1.373814 1.758817e-01
+nutrients    2.242810  0.2369293  9.466157 1.479105e-12</code></pre>
 </div>
 </div>
 </section>
@@ -1530,7 +1518,7 @@ nutrients   1.833918  0.2484438 7.3816223 1.916424e-09</code></pre>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>summary_model<span class="sc">$</span>sigma</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 5.320891</code></pre>
+<pre><code>[1] 4.521198</code></pre>
 </div>
 </div>
 </section>
@@ -1546,7 +1534,7 @@ nutrients   1.833918  0.2484438 7.3816223 1.916424e-09</code></pre>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>summary_model<span class="sc">$</span>r.squared</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.5316541</code></pre>
+<pre><code>[1] 0.6511834</code></pre>
 </div>
 </div>
 </section>
@@ -1560,7 +1548,7 @@ nutrients   1.833918  0.2484438 7.3816223 1.916424e-09</code></pre>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a>summary_model<span class="sc">$</span>adj.r.squared</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.5218969</code></pre>
+<pre><code>[1] 0.6439164</code></pre>
 </div>
 </div>
 </section>
@@ -1582,7 +1570,7 @@ nutrients   1.833918  0.2484438 7.3816223 1.916424e-09</code></pre>
 <span id="cb80-4"><a href="#cb80-4" aria-hidden="true" tabindex="-1"></a>summary_model<span class="sc">$</span>fstatistic</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   value    numdf    dendf 
-54.48835  1.00000 48.00000 </code></pre>
+89.60812  1.00000 48.00000 </code></pre>
 </div>
 </div>
 <blockquote class="blockquote">
@@ -1596,9 +1584,9 @@ nutrients   1.833918  0.2484438 7.3816223 1.916424e-09</code></pre>
 <pre><code>Analysis of Variance Table
 
 Response: height
-          Df Sum Sq Mean Sq F value    Pr(&gt;F)    
-nutrients  1 1542.7 1542.67  54.488 1.916e-09 ***
-Residuals 48 1359.0   28.31                      
+          Df  Sum Sq Mean Sq F value    Pr(&gt;F)    
+nutrients  1 1831.70 1831.70  89.608 1.479e-12 ***
+Residuals 48  981.18   20.44                      
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
@@ -1621,9 +1609,9 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <span id="cb84-3"><a href="#cb84-3" aria-hidden="true" tabindex="-1"></a>data_plant_nutrient <span class="sc">%&gt;%</span> <span class="fu">str</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   50 obs. of  3 variables:
- $ nutrients   : num  4.75 3.57 7.33 5.15 6.45 ...
- $ height      : num  4.06 4.46 8.01 8.28 8.51 ...
- $ sunlight_hrs: num  5.94 4.5 5.18 7.36 5 ...</code></pre>
+ $ nutrients   : num  7.06 2.71 5.59 8.43 6.48 ...
+ $ height      : num  2.22 4.31 5.37 5.43 9.4 ...
+ $ sunlight_hrs: num  4.19 4.44 5.74 5.16 5 ...</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -1654,19 +1642,19 @@ lm(formula = height ~ sunlight_hrs + nutrients, data = data_plant_nutrient)
 
 Residuals:
     Min      1Q  Median      3Q     Max 
--9.8772 -3.2585  0.8367  3.7683  8.7886 
+-7.7031 -2.3545 -0.5388  2.4440 10.2388 
 
 Coefficients:
              Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)   -5.2707     2.6103  -2.019   0.0492 *  
-sunlight_hrs   1.9185     0.4153   4.620 3.01e-05 ***
-nutrients      1.1578     0.2545   4.549 3.79e-05 ***
+(Intercept)  -10.2685     2.3557  -4.359 7.06e-05 ***
+sunlight_hrs   2.0568     0.3971   5.179 4.57e-06 ***
+nutrients      1.5161     0.2370   6.396 6.75e-08 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Residual standard error: 4.459 on 47 degrees of freedom
-Multiple R-squared:  0.6779,    Adjusted R-squared:  0.6642 
-F-statistic: 49.46 on 2 and 47 DF,  p-value: 2.739e-12</code></pre>
+Residual standard error: 3.646 on 47 degrees of freedom
+Multiple R-squared:  0.7779,    Adjusted R-squared:  0.7685 
+F-statistic: 82.33 on 2 and 47 DF,  p-value: 4.388e-16</code></pre>
 </div>
 </div>
 </section>
@@ -1693,18 +1681,18 @@ lm(formula = height ~ nutrients * sunlight_hrs, data = data_plant_nutrient)
 
 Residuals:
     Min      1Q  Median      3Q     Max 
--9.5935 -3.3401  0.6063  3.8835  8.9542 
+-7.6656 -2.3929 -0.6526  2.5428  9.4600 
 
 Coefficients:
                        Estimate Std. Error t value Pr(&gt;|t|)
-(Intercept)             0.98195   11.03371   0.089    0.929
-nutrients               0.48891    1.17465   0.416    0.679
-sunlight_hrs            1.03358    1.57323   0.657    0.514
-nutrients:sunlight_hrs  0.09036    0.15486   0.583    0.562
+(Intercept)             -4.8273     8.6811  -0.556    0.581
+nutrients                0.9291     0.9321   0.997    0.324
+sunlight_hrs             1.2384     1.3181   0.939    0.352
+nutrients:sunlight_hrs   0.0849     0.1303   0.652    0.518
 
-Residual standard error: 4.491 on 46 degrees of freedom
-Multiple R-squared:  0.6803,    Adjusted R-squared:  0.6594 
-F-statistic: 32.62 on 3 and 46 DF,  p-value: 1.866e-11</code></pre>
+Residual standard error: 3.668 on 46 degrees of freedom
+Multiple R-squared:   0.78, Adjusted R-squared:  0.7656 
+F-statistic: 54.35 on 3 and 46 DF,  p-value: 3.682e-15</code></pre>
 </div>
 </div>
 <ul>
@@ -1722,9 +1710,9 @@ F-statistic: 32.62 on 3 and 46 DF,  p-value: 1.866e-11</code></pre>
 
 Model 1: height ~ nutrients
 Model 2: height ~ nutrients * sunlight_hrs
-  Res.Df     RSS Df Sum of Sq      F    Pr(&gt;F)    
-1     48 1358.97                                  
-2     46  927.74  2    431.23 10.691 0.0001538 ***
+  Res.Df    RSS Df Sum of Sq      F    Pr(&gt;F)    
+1     48 981.18                                  
+2     46 618.93  2    362.25 13.462 2.498e-05 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
