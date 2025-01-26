@@ -517,7 +517,7 @@ plot(x1,y1)
 ```
 
 ```{r}
-?сor()
+cor(x1, y1)
 ```
 
 ## Correlation does not imply causation
