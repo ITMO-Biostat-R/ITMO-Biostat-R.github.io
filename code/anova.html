@@ -255,9 +255,9 @@ window.Quarto = {
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>anova_result <span class="ot">&lt;-</span> <span class="fu">aov</span>(yield <span class="sc">~</span> fertilizer, <span class="at">data =</span> data)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(anova_result)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>            Df Sum Sq Mean Sq F value   Pr(&gt;F)    
-fertilizer   2  261.6  130.78   29.42 1.65e-07 ***
-Residuals   27  120.0    4.44                     
+<pre><code>            Df Sum Sq Mean Sq F value Pr(&gt;F)  
+fertilizer   2  74.94   37.47   4.728 0.0174 *
+Residuals   27 214.01    7.93                 
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
@@ -265,19 +265,16 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">"car"</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) <span class="fu">install.packages</span>(<span class="st">"car"</span>)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: пакет 'car' был собран под R версии 4.3.3</code></pre>
+<pre><code>Loading required package: carData</code></pre>
 </div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Загрузка требуемого пакета: carData</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Anova</span>(<span class="fu">lm</span>(yield <span class="sc">~</span> fertilizer, <span class="at">data =</span> data), <span class="at">type =</span> <span class="st">"II"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Anova</span>(<span class="fu">lm</span>(yield <span class="sc">~</span> fertilizer, <span class="at">data =</span> data), <span class="at">type =</span> <span class="st">"II"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Anova Table (Type II tests)
 
 Response: yield
-           Sum Sq Df F value    Pr(&gt;F)    
-fertilizer 261.57  2  29.423 1.653e-07 ***
-Residuals  120.01 27                      
+            Sum Sq Df F value  Pr(&gt;F)  
+fertilizer  74.944  2  4.7276 0.01736 *
+Residuals  214.006 27                  
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
@@ -294,13 +291,13 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <h4 class="anchored" data-anchor-id="non-parametric-alternative">Non-Parametric Alternative</h4>
 <p>Kruskal-Wallis test can be used for non-normal data.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kruskal.test</span>(yield <span class="sc">~</span> fertilizer, <span class="at">data =</span> data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kruskal.test</span>(yield <span class="sc">~</span> fertilizer, <span class="at">data =</span> data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Kruskal-Wallis rank sum test
 
 data:  yield by fertilizer
-Kruskal-Wallis chi-squared = 20.903, df = 2, p-value = 2.89e-05</code></pre>
+Kruskal-Wallis chi-squared = 7.4039, df = 2, p-value = 0.02468</code></pre>
 </div>
 </div>
 
