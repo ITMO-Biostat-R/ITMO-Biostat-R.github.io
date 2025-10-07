@@ -36,7 +36,6 @@ students_hours = read.csv("../data/student_lifestyle_dataset.csv",
 
 # read.csv2()
 # read.table()
-students_hours
 ```
 
 -   `na.strings = c('','-')`- sometimes R interprets empty text in factor columns as one of factor levels. Therefore, this parameter is useful

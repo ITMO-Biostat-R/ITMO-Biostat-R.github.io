@@ -200,7 +200,7 @@ Now we see that our data **"is balanced"**
 hist(iris_df$Sepal.Length, # only x-axis! 
      main = "Sepal.Length distribution", 
      xlab = "Sepal.length", 
-     col = "lightgreen", 
+     col = "lightgreen",
      breaks = 8 # number of x-axis splits for frequency calculation in each of the resulting ranges
      )
 ```
