@@ -54,7 +54,7 @@ students_hours = read.csv("../data/student_lifestyle_dataset.csv",
 -   `stringsAsFactors = TRUE` - make all character columns (with text) be interpreted as factors
 
 ```{r}
-students_hours
+students_hours |> str()
 ```
 
 ## `readr` package
