@@ -9,11 +9,11 @@ TBA
 <!-- 1.  [Basic R](./code/basic_r.Rmd) -->
 <!--     -   [Download](./zipfiles/basic_r.zip) -->
 <!-- 2.  [Working with Dataframes](./code/advanced_df.Rmd) -->
-    <!-- -   [Download](./zipfiles/advanced_df.zip) -->
+<!--     -   [Download](./zipfiles/advanced_df.zip) -->
 <!-- 3.  [Visualization](code/datavis.Rmd) -->
-    <!-- -   [Download](./zipfiles/datavis.zip) -->
+<!--     -   [Download](./zipfiles/datavis.zip) -->
 <!-- 4.  [Statistical testing](code/stats.Rmd) -->
-    <!-- -   [Download](./zipfiles/stats.zip) -->
+<!--     -   [Download](./zipfiles/stats.zip) -->
 
 ### Presentations
 
