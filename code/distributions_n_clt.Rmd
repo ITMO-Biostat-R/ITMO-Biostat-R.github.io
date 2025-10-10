@@ -1,0 +1,272 @@
+---
+title: "CLT"
+author: Vladislav Stanin  
+date: 01/24/2024
+output:
+  html_document:
+    toc: true
+    toc_depth: 3
+    toc_float:
+      collapsed: yes
+      smooth_scroll: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+
+theme_custom <- theme(
+    axis.text = element_text(size = 15),
+    axis.title = element_text(size = 20),
+    plot.title = element_text(size = 20, hjust = 0.5),
+    plot.subtitle = element_text(size = 15, hjust = 0.5),
+    legend.title = element_text(size = 15),
+    legend.text = element_text(size = 15),
+    panel.background = element_rect(fill = "white"), 
+    panel.grid = element_blank()
+  )
+
+theme_set(theme_custom)
+```
+
+# Distributions
+
+### Normal distribution
+
+```{r}
+# here mean and sd - parameters in "general" population 
+# n - number of elements we choose from population
+norm_sample = rnorm(n=100, mean=0, sd=1)
+
+#parameters of **sample**
+mean(norm_sample)
+sd(norm_sample)
+
+```
+
+### Exponential distribution
+
+```{r}
+
+exp_sample = rexp(n=1000, rate=2)
+
+# mean()
+# sd()
+```
+
+### Binomial distribution
+
+```{r}
+
+exp_sample = runif(n=1000, min=0, max=1)
+
+# mean()
+# sd()
+```
+
+# CLT
+
+### Standard error
+
+```{r}
+se = function(x){
+  sd(x)/sqrt(length(x))
+}
+```
+
+```{r}
+sample_size = 100 
+n_samples = 10000
+
+df_trial <- tibble(
+  sample_ID = rep(1:n_samples, each=sample_size),
+  value = runif(sample_size*n_samples, -10, 0)
+  )
+
+df_standart = 
+  df_trial |> 
+  group_by(sample_ID) |> 
+  summarize(m = mean(value)) |> 
+  mutate(z_m = (m - mean(m))/sd(m)) 
+
+mean(df_standart$z_m)
+sd(df_standart$z_m)
+
+```
+
+```{r}
+ df_standart |> 
+  ggplot() + 
+  geom_density(aes(x=m),
+               # bins=30, col='black',
+               fill='skyblue') +
+  geom_density(aes(x=z_m),
+               # bins=30, col='black', 
+               fill='red3')
+```
+
+### Sample from uniform distribution
+
+```{r}
+sample_size = 1000 
+
+sample = runif(n=sample_size, min=0, max=10)
+
+hist(sample)
+```
+
+```{r}
+n_samples = 1000
+
+df_trial <- data.frame(
+  sample_ID = rep(1:n_samples, each=sample_size),
+    value = runif(sample_size*n_samples, 0, 10) # generating sample_size*n_samples values from the same distibution
+  )
+
+df_trial |> group_by(sample_ID) |> 
+  summarize(m = mean(value)) |> 
+  ggplot() + geom_histogram(aes(x=m), bins=30, col='black', fill='skyblue')
+```
+
+### Sample from exponential distribution
+
+```{r}
+sample_size = 1000 
+
+# sample = rexp()
+
+# hist()
+```
+
+```{r, eval=F}
+n_samples = 1000
+
+df_trial <- data.frame(
+  sample_ID = rep(1:n_samples, each=sample_size),
+    # value = rexp()
+  )
+
+df_trial |>
+  group_by(sample_ID) |> 
+  # summarize(....) |> 
+  
+  ggplot() +
+  geom_histogram(aes(x=m), bins=30, col='black', fill='skyblue')
+```
+
+# Confidence intervals
+
+## Standard normal
+
+```{r}
+true_mean = 5
+true_sd = 1
+```
+### Sample
+
+```{r}
+sample_size = 50
+
+sample = rnorm(sample_size, true_mean, true_sd)
+
+sample_mean = mean(sample)
+# sample_sd = sd(sample_norm)
+sample_se = se(sample)
+
+hist(sample)
+```
+
+### CI (95%)
+
+```{r}
+quantiles = qnorm(0, 1, p = c(0.025, 0.975)) #+- 1.96
+
+c(
+  sample_mean + quantiles[1] * sample_se,
+  sample_mean + quantiles[2] * sample_se
+)
+```
+
+### Confidence level
+
+```{r}
+#| fig-height: 7
+#| fig-width: 10
+
+sample_size = 100 
+n_samples = 1000
+true_mean=5
+
+df_trial <- tibble(
+  sample_ID = rep(1:n_samples, each=sample_size),
+  value = rnorm(sample_size*n_samples, true_mean, 2)
+  )
+
+
+quantiles = qnorm(0, 1, p = c(0.025, 0.975))
+
+
+df_ci = df_trial |> group_by(sample_ID) |> 
+  summarize(mu = mean(value), 
+            se_sample = se(value), 
+            conf.min = mu + quantiles[1] * se_sample,
+            conf.max = mu + quantiles[2] * se_sample) |> 
+  mutate(out = ifelse((true_mean < conf.max) & (true_mean > conf.min), 'ok', 'missed'))
+
+# df_ci |>  
+  # ggplot(aes(y=)) +
+  # geom_errorbar(aes(xmin = , xmax = , col=)) +
+  # geom_vline(aes(xintercept = ), col='red', lty=2, size=2) +
+  # labs(y="Sample", color='CI covers true mean') 
+  
+  
+```
+
+**Try to change sample size and see what will happen!**
+
+## t-distribution
+
+```{r}
+true_mean = 5
+true_sd = 2
+
+```
+### Sample
+
+```{r}
+sample_size = 50
+
+sample = rnorm(sample_size, true_mean, true_sd)
+
+sample_mean = mean(sample)
+# sample_sd = sd(sample_norm)
+sample_se = se(sample)
+
+hist(sample)
+```
+
+### CI (95%)
+
+```{r}
+quantiles = qt(df = length(sample)-1, p = c(0.025, 0.975)) 
+quantiles
+```
+```{r}
+c(
+  sample_mean + quantiles[1] * sample_se,
+  sample_mean + quantiles[2] * sample_se
+)
+```
+
+**Try different size of sample!**
+
+### Another method for calculation CI with t-distribution
+
+Looking only on "*95 percent confidence interval:*"
+
+```{r}
+t.test(sample)
+```
+

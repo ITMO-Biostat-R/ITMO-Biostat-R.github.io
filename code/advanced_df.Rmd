@@ -106,8 +106,10 @@ summary(students_hours)
 # install.packages(c("dplyr", "tidyr", 'readr'))
 # install.packages("tidyverse")
 
-library(dplyr)
-library(tidyr)
+library(tidyverse)
+
+# library(dplyr)
+# library(tidyr)
 # library(readr)
 # library(tidyverse)
 ```

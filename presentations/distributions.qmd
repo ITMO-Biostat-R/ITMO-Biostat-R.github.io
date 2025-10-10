@@ -17,6 +17,19 @@ knitr::opts_chunk$set(echo = F, fig.width = 8, fig.height = 4, dpi = 300)
 library(dplyr)
 library(tidyr)
 library(ggplot2)
+
+theme_custom <- theme(
+    axis.text = element_text(size = 15),
+    axis.title = element_text(size = 20),
+    plot.title = element_text(size = 20, hjust = 0.5),
+    plot.subtitle = element_text(size = 15, hjust = 0.5),
+    legend.title = element_text(size = 15),
+    legend.text = element_text(size = 15),
+    panel.background = element_rect(fill = "white"), 
+    panel.grid = element_blank()
+  )
+
+theme_set(theme_custom)
 ```
 
 ![](../images/memes/belike.jpg){fig-align="center" width="1000"}
@@ -98,8 +111,8 @@ Therefore, researchers use samples - **random and representative** groups taken 
 normgenpop = rnorm(100000) %>%  as.data.frame(nm = 'x')
 normgenpop %>% ggplot(aes(x=x)) +
 geom_density(col='black', fill="lightblue") +
-theme_classic() + labs(title='General population (100000 objects)') +
-    theme(title = element_text(size=20))
+labs(title='General population (100000 objects)')
+    # theme(title = element_text(size=20))
 
 # normgenpop = rnorm(100000) 
 # hist(normgenpop, br=50, xlab='X', main = 'General population')
@@ -117,8 +130,9 @@ ggplot() +
                  aes(x=x), alpha=0.4) + 
   geom_density(data=sample_n(normgenpop, 10), fill = 'violet',
                  aes(x=x), alpha=0.4) +
-  theme_classic() + labs(title='4 samples of 10 objects') +
-  theme(title = element_text(size=20))
+  # theme_classic() +
+  labs(title='4 samples of 10 objects')
+  # theme(title = element_text(size=20))
 ```
 :::
 :::::
@@ -137,164 +151,102 @@ ggplot() +
                  aes(x=x), alpha=0.4) + 
   geom_density(data=sample_n(normgenpop, 1000), fill = 'violet',
                  aes(x=x), alpha=0.4) +
-  theme_classic() + labs(title='4 samples of 1000 objects') +
-  theme(title = element_text(size=20))
+  # theme_classic() + 
+  labs(title='4 samples of 1000 objects') 
+  # theme(title = element_text(size=20))
 ```
 
-## Descriptive sample statistics {auto-animate="true"}
+# Distributions
 
-### Central tendency
+## Distributions
 
--   **Mean** - $\bar{X} = \frac{x_1 + x_2 + ... x_N}{N}$
+::::: columns
+::: {.column width="50%"}
+### Discrete
 
-```{r, eval=F, echo=T, class="large-code"}
-mean(x)
+Countable number of values
+
+-   Bernoulli
+-   Poisson
+-   Binomial
+:::
+
+::: {.column width="50%"}
+### Continious
+
+$\infty$ number of values
+
+-   Normal
+-   Uniform
+-   Chi-squared
+:::
+:::::
+
+\[**Discrete** $\rightarrow$ Continuous\] if \[number of values $\rightarrow \infty$\]
+
+## Probability of discrete variable
+
+::::: columns
+::: {.column width="40%"}
+```{r message=FALSE}
+#| fig-height: 6
+#| fig-width: 6
+
+sample(c(-1,0,1), 10000, replace = T, prob = c(0.3, 0.4, 0.3)) |> 
+  table() |>  prop.table() |> 
+  barplot(ylim = c(0,0.6), ylab='PROBABILITY')
 ```
+:::
 
--   **Median** - the $N/2$-th element in list of sorted values $\{x_1, x_2, ..., \pmb{x_{N/2}},...,x_{N-1}, x_N\}$, where for any $i$: $x_{i-1} < x_i$
+::: {.column width="60%"}
+Increasing the discreteness
 
-```{r, eval=F, echo=T, class="large-code"}
-median(x)
-```
+```{r}
 
--   **Mode** - The most frequent value *one of the methods:*\
-    *only for discrete data:*
+#| fig-height: 6
+#| fig-width: 6
 
-```{r, eval=F, echo=T, class="large-code"}
-x %>% table() %>% sort(decreasing = T) %>% head(1) %>% names() %>% as.numeric()
-```
-
-```{r, eval=T, echo=F, class="large-code"}
-mode_fun = function(x) x %>% table() %>% sort(decreasing = T) %>% head(1) %>% names() %>% as.numeric()
-```
-
-***They are equal for a normal distribution***
-
-## Descriptive sample statistics {auto-animate="true"}
-
-### Bimodal data
-
-```{r, eval=T, echo=F,  fig.width = 8, fig.height = 5}
-twomodes = c(rbinom(10000, 31, 0.4), rbinom(10000, 31, 0.7))
-
-hist(twomodes, breaks=30, 
-     main=NULL,
-     xlab='X')
-abline(v = 30*0.4, lwd=3, col='red')
-abline(v = 31*0.7, lwd=3, col='red')
-abline(v = mean(twomodes), lwd=3, col='blue')
-abline(v = median(twomodes), lwd=3, col='green3')
-
-legend("topright",
-       col = c('red', 'blue', 'green3'), 
-       legend = c('modes', 'mean', "median"), 
-        lwd = 3, bty = "n")
-
-```
-
-## Descriptive sample statistics {auto-animate="true"}
-
-### Exponential distribution
-
-```{r, eval=T, echo=F,  fig.width = 7, fig.height = 4}
-expsmall = rexp(10000, 10)
-
-hist(expsmall, breaks=30, 
-     main=NULL,
-     xlab='X')
-abline(v = mode_fun(expsmall), lwd=3, col='red')
-abline(v = mean(expsmall), lwd=3, col='blue')
-abline(v = median(expsmall), lwd=3, col='green3')
-
-legend("topright",
-       col = c('red', 'blue', 'green3'), 
-       legend = c('mode', 'mean', "median"), 
-        lwd = 3, bty = "n")
+sample(seq(-1,1,0.25), 10000, replace = T) |> 
+  table() |>  prop.table() |> 
+  barplot(ylim = c(0,0.6), ylab='PROBABILITY')
 
 ```
+:::
+:::::
 
-## Descriptive sample statistics {auto-animate="true"}
+The probability of each value $\rightarrow 0$
 
-### Outliers
+## Probability of continious variable {auto-animate="true"}
 
-**Mean is more sensitive to outliers**
+$\infty$ values and $\infty$ discreteness
 
-```{r, eval=T, echo=F,  fig.width = 8, fig.height = 4}
-normoutlier = c(rnorm(100), 50, 50, 50)
+### Probability of each value = 0 ???
 
-hist(normoutlier, breaks=60, 
-     main=NULL,
-     xlab='X')
-# abline(v = 0, lwd=3, col='red')
-abline(v = mean(normoutlier), lwd=3, col='blue')
-abline(v = median(normoutlier), lwd=3, col='green3')
+## Probability of continious variable {auto-animate="true"}
 
-# text(x=7, y=10, label='mean')
+$\infty$ values and $\infty$ discreteness
 
-legend("topright",
-       col = c(
-         # 'red',
-         'blue', 'green3'), 
-       legend = c(
-         # 'mode',
-         'mean', "median"), 
-        lwd = 3, bty = "n")
+### NO!
 
+but Probability of each particular value $\rightarrow 0$
+
+## Probability density
+
+### The way how continious distributions are described
+
+*Area under the plot should be = 1*
+
+```{r, warning=FALSE}
+rnorm(mean=0, sd = 0.01, n = 10000) |> as.data.frame(nm='value') |> 
+ggplot() + 
+  geom_histogram(aes(x = value, y = after_stat(density)), 
+                 # binwidth=0.2, 
+                 col='black', fill='lightblue') +
+  # xlim(c(-1,11)) + 
+  ylab('DENSITY')
 ```
 
-## By the way, what to do about outliers?
-
-**Nothing**
-
--   If they still contain some information. 
-
-**Delete**
-
--   If there are few of them.
--   This is an obvious error and [**you are sure**]{.underline} they do not contain valuable information
-
-## Descriptive sample statistics {auto-animate="true"}
-
-### Variance and Standard deviation
-
-$Var(X) = S^2 = \dfrac{((x_1 - \bar{X})^2 + (x_2 - \bar{X})^2 + ... + (x_N - \bar{X})^2)}{N-1} = \dfrac{\sum{(x_i - \bar{X})^2}}{N-1}$
-
-```{r, eval=F, echo=T, class="large-code"}
-var(x)
-```
-
-$SD(X) = S = \sqrt{\dfrac{\sum{(x_i - \bar{X})^2}}{N-1}}$
-
-```{r, eval=F, echo=T, class="large-code"}
-sd(x)
-```
-
-> For the **population** variance in the denominator of the formula is $N$, not $N-1$
-
-## Descriptive sample statistics {auto-animate="true"}
-
-### Quantiles
-
-**Quantiles** - values less than which $X$% of the data in the distribution is found\
-*For example*, 0.75 quntile is the value that is greater of 75% of values in sample, but lower than another 25% of sample values
-
-```{r, eval=F, echo=T, class="large-code"}
-quantile(x, probs = 0.75)
-```
-
--   Quartiles are 0.25,0.5,0.75 quantiles
-
-```{r, eval=F, echo=T, class="large-code"}
-quantile(x, probs = c(0.25, 0.5, 0.75))
-```
-
--   Percentiles are 1-100% qunatiles
-
-```{r, eval=F, echo=T, class="large-code"}
-quantile(x, probs = seq(0.01, 1, 0.01))
-```
-
--   Median is a **0.5 quantile** (2nd quartile)
+*Density value in some point can be way greater than 1!*
 
 ## Normal distribution {auto-animate="true"}
 
@@ -307,14 +259,15 @@ Normal distribution is bell shaped, have equal mean ($\mu$), median, mode.\
 ::: {.column width="45%"}
 $P(x) = \frac{1}{{\sigma \sqrt{2\pi} }}e^{{\frac{ -\left( {x - \mu } \right)^2 }{2\sigma ^2 }}}$,
 
-parameters: mean ($\mu$) and sigma ($\sigma$)
+parameters: mean ($\mu$) and sigma ($\sigma$) [(it **does not** exist in nature)]{style="color:red;"}
 :::
 :::::
 
 ```{r}
 Heights = rnorm(10000, mean = 175, sd = 10)
 hist(Heights, breaks = 30, freq = T,
-     main = 'Sample distribution of 10000 people\'s heights' )
+     # main = 'Sample distribution of 10000 people\'s heights' 
+     )
 ```
 
 ## Normal distribution {auto-animate="true"}
@@ -402,25 +355,65 @@ hist(raindrops,
 # Probability of raindrop
 ```
 
-## Bernoulli distribution
+<!-- ## Bernoulli distribution -->
+
+<!-- ::::: columns -->
+
+<!-- ::: {.column width="50%"} -->
+
+<!-- ```{r, fig.width=5, fig.height=6} -->
+
+<!-- coin_toss = rbinom(1000, size = 1, prob = 0.5) -->
+
+<!-- barplot(table(coin_toss), cex.axis = 2, cex.names = 2) -->
+
+<!-- ``` -->
+
+<!-- ::: -->
+
+<!-- ::: {.column width="50%"} -->
+
+<!-- $P(1) = p$,\ -->
+
+<!-- $P(0) = 1-p$, -->
+
+<!-- where $p$ - "success" probability. It is the only parameter of the distribution -->
+
+<!-- Imagine, that $p$ is a probability of an head on a coin toss (1 - head, 0 - tails). Then The distribution will be like in the barplot on the left. -->
+
+<!-- **Discrete (!)** -->
+
+<!-- ::: -->
+
+<!-- ::::: -->
+
+## Exponential distribution
 
 ::::: columns
-::: {.column width="50%"}
-```{r, fig.width=5, fig.height=6}
-coin_toss = rbinom(1000, size = 1, prob = 0.5)
-barplot(table(coin_toss), cex.axis = 2, cex.names = 2)
+::: {.column width="60%"}
+```{r, fig.width=7, fig.height=4, warning=F}
+
+ggplot() +
+  geom_density(data=rexp(rate = 1, n=100000) %>% data.frame(value = .),
+               aes(x=value,  col='1'),
+               # col='red'
+               ) +
+  geom_density(data=rexp(rate = 5, n=100000) %>% data.frame(value = .), 
+               aes(x=value, col='5'),
+               # col='blue'
+               ) +
+  xlim(c(0,3)) + 
+  scale_color_manual(values=c('1'='red', '5'='blue'), 
+                     name='Lambda')
 ```
 :::
 
-::: {.column width="50%"}
-$P(1) = p$,\
-$P(0) = 1-p$,
+::: {.column width="40%"}
+$P(X) = \lambda e^{-\lambda x}$
 
-where $p$ - "success" probability. It is the only parameter of the distribution
+How fast something appears (*mortality*)
 
-Imagine, that $p$ is a probability of an head on a coin toss (1 - head, 0 - tails). Then The distribution will be like in the barplot on the left.
-
-**Discrete (!)**
+**Continious**
 :::
 :::::
 
@@ -630,314 +623,563 @@ ppois(n, lambda)
 qpois(n, lambda)
 ```
 
-# Basics of testing
+## Descriptive statistics {auto-animate="true"}
 
-```{css}
-.faded-text {
-  opacity: 0.4;
-}
+### *Central tendency*
+
+-   **Mean** - $\bar{X} (\hat\mu) = \frac{x_1 + x_2 + ... x_N}{N}$
+
+```{r, eval=F, echo=T, class="large-code"}
+mean(x)
 ```
 
-## Testing plan
+-   **Median** - the $N/2$-th element in list of sorted values $\{x_1, x_2, ..., \pmb{x_{N/2}},...,x_{N-1}, x_N\}$, where for any $i$: $x_{i-1} < x_i$
 
-1\) What we want to test? **Hypotheses**
+```{r, eval=F, echo=T, class="large-code"}
+median(x)
+```
 
-::: faded-text
-2\) Choose significance level
+-   **Mode** - The most frequent value *one of the methods: only for discrete data:*
 
-3\) Choose the test
+```{r, eval=F, echo=T, class="large-code"}
+x %>% table() %>% sort(decreasing = T) %>% head(1) %>% names() %>% as.numeric()
+```
 
-4\) Conduct the test
+```{r, eval=T, echo=F, class="large-code"}
+mode_fun = function(x) x %>% table() %>% sort(decreasing = T) %>% head(1) %>% names() %>% as.numeric()
+```
 
-5\) Conclusion
-:::
+***They are equal for a normal distribution***
 
-## Hypotheses
+## Descriptive statistics {auto-animate="true"}
 
-In statistical testing, we will operate with **hypotheses.** *There are two basic hypotheses:*
+### Bimodal data
 
--   **Null Hypothesis (**$H_0$**)** - There is **no effect**
--   **Alternative Hypothesis (**$H_A$**) -** There is **an effect**
+```{r, eval=T, echo=F,  fig.width = 8, fig.height = 5}
+twomodes = c(rbinom(10000, 31, 0.4), rbinom(10000, 31, 0.7))
 
-> Usually we are interested in having an effect, as it means some discovery, and **rejecting null hypothesis**
+hist(twomodes, breaks=30, 
+     main=NULL,
+     xlab='X')
+abline(v = 30*0.4, lwd=3, col='red')
+abline(v = 31*0.7, lwd=3, col='red')
+abline(v = mean(twomodes), lwd=3, col='blue')
+abline(v = median(twomodes), lwd=3, col='green3')
 
-## Testing plan
+legend("topright",
+       col = c('red', 'blue', 'green3'), 
+       legend = c('modes', 'mean', "median"), 
+        lwd = 3, bty = "n")
 
-::: faded-text
-1\) What we want to test? **Hypotheses**
-:::
+```
 
-2\) Choose significance level
+## Descriptive statistics {auto-animate="true"}
 
-::: faded-text
-3\) Choose the test
+### Exponential distribution
 
-4\) Conduct the test
+```{r, eval=T, echo=F,  fig.width = 7, fig.height = 4}
+expsmall = rexp(10000, 10)
 
-5\) Conclusion
-:::
+hist(expsmall, breaks=30, 
+     main=NULL,
+     xlab='X')
+abline(v = mode_fun(expsmall), lwd=3, col='red')
+abline(v = mean(expsmall), lwd=3, col='blue')
+abline(v = median(expsmall), lwd=3, col='green3')
 
-------------------------------------------------------------------------
+legend("topright",
+       col = c('red', 'blue', 'green3'), 
+       legend = c('mode', 'mean', "median"), 
+        lwd = 3, bty = "n")
+
+```
+
+## Descriptive statistics {auto-animate="true"}
+
+### Outliers
+
+**Mean is more sensitive to outliers**
+
+```{r, eval=T, echo=F,  fig.width = 8, fig.height = 4}
+normoutlier = c(rnorm(100), 50, 50, 50)
+
+hist(normoutlier, breaks=60, 
+     main=NULL,
+     xlab='X')
+# abline(v = 0, lwd=3, col='red')
+abline(v = mean(normoutlier), lwd=3, col='blue')
+abline(v = median(normoutlier), lwd=3, col='green3')
+
+# text(x=7, y=10, label='mean')
+
+legend("topright",
+       col = c(
+         # 'red',
+         'blue', 'green3'), 
+       legend = c(
+         # 'mode',
+         'mean', "median"), 
+        lwd = 3, bty = "n")
+
+```
+
+## By the way, what to do about outliers?
+
+**Nothing**
+
+-   If they still contain some information. 
+
+**Delete**
+
+-   If there are few of them.
+-   This is an obvious error and [**you are sure**]{.underline} they do not contain valuable information
+
+## Descriptive statistics {auto-animate="true"}
+
+### Variance and Standard deviation
+
+$Var(X) = S^2 = \dfrac{((x_1 - \bar{X})^2 + (x_2 - \bar{X})^2 + ... + (x_N - \bar{X})^2)}{N-1} = \dfrac{\sum{(x_i - \bar{X})^2}}{N-1}$
+
+```{r, eval=F, echo=T, class="large-code"}
+var(x)
+```
+
+$SD(X) = S = \sqrt{\dfrac{\sum{(x_i - \bar{X})^2}}{N-1}}$
+
+```{r, eval=F, echo=T, class="large-code"}
+sd(x)
+```
+
+> For the **population** variance in the denominator of the formula is $N$, not $N-1$
+
+## Descriptive statistics {auto-animate="true"}
+
+### Quantiles
+
+**Quantiles** - values less than which $X$% of the data in the distribution is found\
+*For example*, 0.75 quntile is the value that is greater of 75% of values in sample, but lower than another 25% of sample values
+
+```{r, eval=F, echo=T, class="large-code"}
+quantile(x, probs = 0.75)
+```
+
+-   Quartiles are 0.25,0.5,0.75 quantiles
+
+```{r, eval=F, echo=T, class="large-code"}
+quantile(x, probs = c(0.25, 0.5, 0.75))
+```
+
+-   Percentiles are 1-100% qunatiles
+
+```{r, eval=F, echo=T, class="large-code"}
+quantile(x, probs = seq(0.01, 1, 0.01))
+```
+
+-   Median is a **0.5 quantile** (2nd quartile)
+
+# Central limit theorem
+
+## Standard error (SE) {auto-animate="true"}
+
+*"SD of means of samples"*
 
 ::::: columns
-::: {.column width="50%"}
-### Type I error
-
-Error of rejecting $H_0$ when $H_0$ is true
+::: {.column width="30%"}
+$SE = \dfrac{SD}{\sqrt n}$
 :::
 
-::: {.column width="50%"}
-### Type II error
-
-Error of accepting $H_0$ when $H_0$ is false
+::: {.column width="70%"}
+1.  Several samples
+2.  Calculate mean in each sample
+3.  Build the means distribution
+4.  Calculate resulting distribution's SD
 :::
 :::::
 
-<br>
+## Standard error (SE) {auto-animate="true"}
 
-|                     | Reality: **True** | Reality: **False** |
-|---------------------|:------------------|:-------------------|
-| Measured: **True**  | Correct 😊        | Type 1 Error       |
-| Measured: **False** | Type 2 Error      | Correct 😊         |
+*"SD of means of samples"*
 
-------------------------------------------------------------------------
+::::: columns
+::: {.column width="15%"}
+$SE = \dfrac{SD}{\sqrt n}$
+:::
 
-Probability of Type I error ($\alpha$) (= **p-value** after testing)
+::: {.column width="85%"}
+```{r}
+sample_size = 100 
+n_samples = 1000
 
-Probability of Type II error ($\beta$)
+df_trial <- data.frame(
+  sample_ID = rep(1:n_samples, each=sample_size),
+  value = runif(sample_size*n_samples, 0, 10)
+  # value = rnorm(sample_size*n_samples, 0, 2)
+  # value = rexp(sample_size*n_samples, 1)
+  )
 
-![](../images/typeserror.png){fig-align="center" width="600"}
+df_trial |> group_by(sample_ID) |> 
+  summarize(m = mean(value)) |> 
+  ggplot() + geom_histogram(aes(x=m), bins=30, col='black', fill='skyblue')
+```
+:::
+:::::
 
-## Significance level {auto-animate="true"}
+## Magic of Central Limit Theorem {auto-animate="true"}
 
-Before testing we must define value $\alpha$ named **significance level**
+This means' distribution was built from **uniform distribution** samples! $a=0, b=10 \Rightarrow \hat\mu=5$
 
-**Significance level (**$\alpha$) - **predetermined threshold of rejecting** $H_0$.
+```{r}
+sample_size = 1000
+n_samples = 1000
 
-> For example we set $\alpha = 0.05$ and got **p-value** \< $\alpha$:
+df_trial <- data.frame(
+  sample_ID = rep(1:n_samples, each=sample_size),
+  value = runif(sample_size*n_samples, 0, 10)
+  # value = rnorm(sample_size*n_samples, 0, 2)
+  # value = rexp(sample_size*n_samples, 1)
+  )
+
+df_trial |> group_by(sample_ID) |> 
+  summarize(m = mean(value)) |> 
+  ggplot() + geom_histogram(aes(x=m), bins=30, col='black', fill='skyblue')
+```
+
+**Mean is also = 5!**
+
+## Magic of Central Limit Theorem {auto-animate="true"}
+
+**Let's do it with exponential distribution samples** ($\lambda=2$)
+
+```{r}
+sample_size = 1000
+n_samples = 1000
+
+df_trial <- data.frame(
+  sample_ID = rep(1:n_samples, each=sample_size),
+  # value = runif(sample_size*n_samples, 0, 10)
+  # value = rnorm(sample_size*n_samples, 0, 2)
+  value = rexp(sample_size*n_samples, 2)
+  )
+
+df_trial |> group_by(sample_ID) |> 
+  summarize(m = mean(value)) |> 
+  ggplot() + geom_histogram(aes(x=m), bins=30, col='black', fill='skyblue')
+```
+
+*Looks familiar...*
+
+## Magic of Central Limit Theorem {auto-animate="true"}
+
+1.  Several samples
+2.  Calculate mean ($\bar{X}$) in each sample
+3.  Build the means distribution
+
+**It is normally distributed!** *(almost)*
+
+> If samples are small, distribution of means may not look like normal.
+
+4.  Calculate resulting distribution's SD$^*$ and mean ( $\hat\mu$ )
+5.  Obtained mean is "real mean" and SD is *Standard error*
+
+# More magic!
+
+## Standartization (or normalization..?)
+
+Setting **mean=0 and sd=1**
+
+::::: columns
+::: {.column width="15%"}
+$Z = \dfrac{\bar{X} - \mu}{SE}$
+:::
+
+::: {.column width="85%"}
+```{r}
+se = function(x){
+  sd(x)/(sqrt(length(x)))
+}
+```
+
+```{r}
+sample_size = 100 
+n_samples = 10000
+
+df_trial <- tibble(
+  sample_ID = rep(1:n_samples, each=sample_size),
+  value = runif(sample_size*n_samples, 0, 10)
+  )
+
+df_standart = df_trial |> group_by(sample_ID) |> 
+  summarize(m = mean(value)) |> 
+  mutate(z_m = (m - mean(m))/sd(m)) 
+
+ df_standart |> 
+  ggplot() + 
+  geom_density(aes(x=m, fill='Before'),
+               # bins=30, col='black',
+               # fill='skyblue'
+               ) +
+  geom_density(aes(x=z_m, fill='After'),
+               # bins=30, col='black', 
+               # fill='red3'
+               ) +
+  
+   scale_fill_manual(values=c('Before'='skyblue', 'After'='red3'), 
+                     name='Standartization')
+```
+:::
+:::::
+
+## Looks familiar? {auto-animate="true"}
+
+::: fragment
+**Three sigma rule!**
+:::
+
+```{r}
+ df_standart |> 
+  ggplot() + 
+  geom_density(aes(x=z_m), fill='red3', alpha=.4
+               # bins=30, col='black', 
+               # fill='red3'
+               ) +
+  geom_vline(aes(xintercept = sd(z_m)), color='blue', lty=2, size=1.2) +
+  geom_vline(aes(xintercept = -sd(z_m)), color='blue', lty=2, size=1.2) +
+  geom_vline(aes(xintercept = 2*sd(z_m)), color='orange', lty=2, size=1.2) +
+  geom_vline(aes(xintercept = -2*sd(z_m)), color='orange', lty=2, size=1.2) +
+  geom_vline(aes(xintercept = 3*sd(z_m)), color='red', lty=2, size=1.2) +
+  geom_vline(aes(xintercept = -3*sd(z_m)), color='red', lty=2, size=1.2) +
+  xlab('Standartisized value')
+```
+
+## Three sigma rule! {auto-animate="true"}
+
+::::: columns
+::: {.column width="50%"}
+We know that \~95% of the data lies between the two orange lines ($\mu_z \pm 2 \sigma$)
+
+More precisely: $\mu_z \pm 1.96 \ \sigma$
+
+**Here** $\sigma_z$ is SE = 1
+
+$\mu_z = 0$ (standardisized mean of means)
+:::
+
+::: {.column .fade-in width="50%"}
+Distribution of means
+
+```{r}
+ df_standart |> 
+  ggplot() + 
+  geom_density(aes(x=z_m), fill='red3', alpha=.4
+               # bins=30, col='black', 
+               # fill='red3'
+               ) +
+  geom_vline(aes(xintercept = sd(z_m)), color='blue', lty=2, size=1.5) +
+  geom_vline(aes(xintercept = -sd(z_m)), color='blue', lty=2, size=1.5) +
+  geom_vline(aes(xintercept = 2*sd(z_m)), color='orange', lty=2, size=1.5) +
+  geom_vline(aes(xintercept = -2*sd(z_m)), color='orange', lty=2, size=1.5) +
+  geom_vline(aes(xintercept = 3*sd(z_m)), color='red', lty=2, size=1.5) +
+  geom_vline(aes(xintercept = -3*sd(z_m)), color='red', lty=2, size=1.5) +
+  xlab('Standartisized value')
+```
+:::
+:::::
+
+## Three sigma rule --\> confidence interval {auto-animate="true"}
+
+::::: columns
+::: {.column width="50%"}
+Thus, with probability of 0.95
+
+$$ -1.96 \sigma_z \leq \dfrac{\bar{X} - \mu}{SE} \leq 1.96 \sigma_z $$
+
+$$-1.96 \leq \dfrac{\bar{X} - \mu}{SE} \leq 1.96$$
+
+$$-1.96 \ SE \leq \bar{X} - \mu \leq 1.96 \ SE $$
+
+$$\bar{X} - 1.96 \ SE \leq \mu \leq  \bar{X} + 1.96 \ SE $$
+:::
+
+::: {.column .fade-in width="50%"}
+Distribution of means
+
+```{r}
+ df_standart |> 
+  ggplot() + 
+  geom_density(aes(x=z_m), fill='red3', alpha=.4
+               # bins=30, col='black', 
+               # fill='red3'
+               ) +
+  geom_vline(aes(xintercept = sd(z_m)), color='blue', lty=2, size=1.5) +
+  geom_vline(aes(xintercept = -sd(z_m)), color='blue', lty=2, size=1.5) +
+  geom_vline(aes(xintercept = 2*sd(z_m)), color='orange', lty=2, size=1.5) +
+  geom_vline(aes(xintercept = -2*sd(z_m)), color='orange', lty=2, size=1.5) +
+  geom_vline(aes(xintercept = 3*sd(z_m)), color='red', lty=2, size=1.5) +
+  geom_vline(aes(xintercept = -3*sd(z_m)), color='red', lty=2, size=1.5) +
+  xlab('Standartisized value')
+```
+:::
+:::::
+
+## Confidence interval {auto-animate="true"}
+
+```{css}
+.transparent-text {
+  color: rgba(0, 0, 0, 0.4);
+}
+```
+
+::::: columns
+::: {.column .transparent-text width="45%"}
+Thus, with probability of 0.95
+
+$$ -1.96 \sigma_z \leq \dfrac{\bar{X} - \mu}{SE} \leq 1.96 \sigma_z $$
+
+$$-1.96 \leq \dfrac{\bar{X} - \mu}{SE} \leq 1.96$$
+
+$$-1.96 \ SE \leq \bar{X} - \mu \leq 1.96 \ SE $$
+
+$$\bar{X} - 1.96 \ SE \leq \mu \leq  \bar{X} + 1.96 \ SE $$
+:::
+
+::: {.column width="55%"}
+We may never know the **true** value of the population mean ($\mu$), but we can estimate it from a sample and build an interval with a certain degree of *confidence* (e.g., 0.95)
+
+$$ \bar X - x_{\alpha/2} * SE  \leq \mu_{true} \leq \bar X + x_{\alpha/2} * SE$$
+
+-   $\alpha$ - Significance level (e.g. 0.05)
+
+-   $1 - \alpha$ - Confidence level (e.g. 0.95)
+
+-   $x_{\alpha/2}$ - values of $\alpha/2$ quantile in standart. normal distribution (mean=0, sd=1)
+
+(e.g. 0.025 and 0.975 quantiles for $\alpha=0.05$)
+
+((they are equal))
+:::
+:::::
+
+#### Let's calculate it in R!
+
+## What does confidence level mean?
+
+::::: columns
+::: {.column width="70%"}
+Generating 1000 samples and 1000 95% CIs
+
+```{r}
+#| fig-height: 7
+#| fig-width: 10
+
+sample_size = 100
+n_samples = 1000
+true_mean=5
+
+
+df_trial <- tibble(
+  sample_ID = rep(1:n_samples, each=sample_size),
+  value = rnorm(sample_size*n_samples, true_mean, 2)
+  )
+
+quantiles = qnorm(0, 1, p = c(0.025, 0.975))
+
+df_ci = df_trial |> group_by(sample_ID) |> 
+  summarize(mu = mean(value), 
+            se_sample = se(value), 
+            conf.min = mu + quantiles[1] * se_sample,
+            conf.max = mu + quantiles[2] * se_sample) |> 
+  mutate(out = ifelse((true_mean < conf.max) & (true_mean > conf.min), 'ok', 'missed'))
+
+df_ci |>  
+  ggplot(aes(y=sample_ID)) +
+  geom_errorbar(aes(xmin = conf.min, xmax = conf.max, col=out)) +
+  geom_vline(aes(xintercept = 5), col='red', lty=2, size=2) +
+  labs(y="Sample", color='CI covers true mean') 
+  
+  
+
+```
+:::
+
+::: {.column width="30%"}
+How many CIs do cover true mean?
+
+```{r}
+table(df_ci$out)
+```
+
+**So, 95% of new generated CIs will cover true mean**
+
+*Try to change size of samples*
+:::
+:::::
+
+# Student for students
+
+## Student's (t-) distribution {auto-animate="true"}
+
+Comparing to **standard (!) normal distribution,** t-distribution have *heavier* tails.
+
+::: {.fragment .fade-in}
+It means that t-distribution's quantiles have bigger values comparing to normal
+:::
+
+![](/images/t_vs_z.jpg){fig-align="center" width="1000"}
+
+## Student's (t-) distribution {auto-animate="true"}
+
+Comparing to **standard (!) normal distribution,** t-distribution have *heavier* tails.
+
+It means that t-distribution's quantiles have bigger values comparing to normal
+
+*Standard Normal*:
+
+```{r, echo = T, class="large-code"}
+qnorm(c(0.025, 0.975), mean=0, sd=1)
+```
+
+*Student df=13*:
+
+```{r, echo = T, class="large-code"}
+qt(c(0.025, 0.975), df=13)
+```
+
+*Student df=50*:
+
+```{r, echo = T, class="large-code"}
+qt(c(0.025, 0.975), df=50)
+```
+
+## Student's (t-) distribution {auto-animate="true"}
+
+**Degrees of freedom (df)** - the only parameter of distribution!
+
+It always have **mean = 0** and "width" defined by **df**
+
+> **Degrees of freedom = N - 1**
 >
-> We reject the $H_0$ at the $\alpha = 0.05$ significance level, indicating that there is sufficient evidence to conclude that the observed result is unlikely to have occurred under the null hypothesis.
+> N - size of sample
 
-Thus we [**fix the Type 1 Error**]{.underline} , but [**Type 2 Error still can be large!**]{.underline}
+## Confidence interval using quantiles from t-distribution {auto-animate="true"}
 
-The value $1-\beta$ called the [**power of the test**]{.underline}. *The smaller is the probability of type II error, the more powerful is the test.*
+$$ \bar X - t_{\alpha/2} * SE  \leq \mu_{true} \leq \bar X + t_{\alpha/2} * SE$$
 
-## Significance level {auto-animate="true"}
+-   $\alpha$ - Significance level (e.g. 0.05)
 
-### Examples
+-   $1 - \alpha$ - Confidence level (e.g. 0.95)
 
--   **Medical/Pharmaceutical**: $\alpha = 0.01$ is common to avoid false positives.
--   **Psychology/Social**: Typically $\alpha = 0.05$.
--   **Economics/Business**: Sometimes $\alpha = 0.1$ is acceptable
+-   $t_{\alpha/2}$ - values of $\alpha/2$ quantile in **t-distribution**
 
-## Testing plan
+## Confidence interval using quantiles from t-distribution {auto-animate="true"}
 
-::: faded-text
-1\) What we want to test? **Hypotheses**
+$$ \bar X - t_{\alpha/2} * SE  \leq \mu_{true} \leq \bar X + t_{\alpha/2} * SE$$
 
-2\) Choose significance level
-:::
+> Because of heavier tails, such CI can be more accurate for small $n$
+>
+> **And for large** $n$ **it looks like standard normal**
 
-3\) Choose the test
+#### Let's calculate it in R!
 
-4\) Conduct the test
+# One-sided CI
 
-::: faded-text
-5\) Conclusion
-:::
-
-## Test result
-
-The tests result in [**test statistic**]{.underline} and the [**p-value**]{.underline} .
-
--   Each test have its formula to calculate called [**test statistic**]{.underline}. This value has its own distribution (*e.g. t-distribution for the t-statistic from t-test*).
-
--   [**p-value**]{.underline} - the probability that, given a **true null hypothesis**, your observations will result **in such or more extreme value of test statistic**
-
-> The smaller the p-value, the less likely we are to get our result under the null hypothesis, which states that there is no effect.
-
-## "Pipeline"
-
-![](/images/pvalpipeline.png){fig-align="center"}
-
-## Parameters of test statistics' distributions
-
-### [Degrees of freedom!]{.underline}
-
--   Often calculated based on [number of observations]{.underline}, groups and coefficients.
-
--   [Determines the shape of distribution!]{.underline}
-
-> **-\> Amount of data affects testing results!**
-
-#### Other parameters...
-
--   Mean, SD
-
--   Rate, shape
-
-## t-distribution for different DFs
-
-![](/images/dfsT.png){fig-align="center" width="600"}
-
-```{r, warning=FALSE}
-# t1 = rt(100000, 3)
-# t2 = rt(100000, 3)
-# t5 = rt(100000, 5)
-# t10 = rt(100000, 10)
-# t30 = rt(100000, 30)
-# t100 = rt(100000, 100)
-# 
-# dft = data.frame(t1,t2,t5,t10,t30,t100) %>%  
-#   pivot_longer(values_to = 'value', 
-#                cols = 1:5, names_to = 't') %>% 
-#   mutate(t = as.factor(t))
-# 
-# dft %>%  ggplot(aes(col=t, 
-#                     x=value, 
-#                     y=..density..)) + 
-#   # geom_histogram(alpha=0.4, bins = 100) +
-#   geom_density() +
-#   xlim(c(-5,5))
-
-```
-
-## *p-value* calculation
-
-![](../images/memes/p-value.jpg){fig-align="center"}
-
-------------------------------------------------------------------------
-
-### *p-value* $\geq \alpha$
-
-Since the ***p-value*** greater than chosen significance level ($\alpha$) we **fail** to reject $H_0$
-
-### *p-value* $< \alpha$
-
-Since the ***p-value*** is less than chosen significance level ($\alpha$), we reject $H_0$ and conclude that there is sufficient statistical evidence to support $H_A$
-
-------------------------------------------------------------------------
-
-![](/images/memes/p_values_2x.png){fig-align="center" width="498"}
-
-## One-sided hypothesis
-
-$H_A: X_0 < X_1$
-
-```{r}
-plot(x=seq(-5,5,0.01), y=dt(seq(-5,5,0.01), df=19), 'l', lwd=2,
-     main = 'T-distribution df=19',
-     xlab='t', ylab='density')
-abline(v=qt(0.95, df=19), col='red', lwd=2) 
-text(x =3, y = 0.3, col='red',
-     labels = paste('alpha = 0.05\nt =', qt(0.95, df=19) %>%round(2)), cex=1.3)
-
-points(x = c(1.5, 3.1,-3.95), y = rep(0.03, 3), pch=c(13,19,13), cex=2)
-text(x = c(1.1, 3.1,-3.95), y = rep(0.07, 3), 
-     labels = c('t = 1.5', 't = 3.1', 't = -3.95'), cex=1.5)
-```
-
-```{r}
-# plot(x=seq(0, 10,0.01), y=dchisq(seq(0,10,0.01), df=2), 'l', lwd=2,
-#      main = 'Chi-squared distribution df=2', xlab='Chisq', ylab='density')
-# abline(v=qchisq(0.95, df=2), col='red', lwd=2)
-# text(x =7, y = 0.3, col='red',
-#      labels = 'alpha = 0.05', cex=1)
-# 
-# points(x = c(2.1, 7.34), y = rep(0.03, 2), pch=c(13,19), cex=2)
-# text(x = c(2.1, 7.34), y = rep(0.07, 3), 
-#      labels = c('chisq. = 2.1', "chisq. = 7.34"), cex=1.2)
-```
-
-## Two-sided hypothesis
-
-$H_A: X_0 \neq X_1$
-
-```{r}
-plot(x=seq(-5,5,0.01), y=dt(seq(-5,5,0.01), df=19), 'l', lwd=2,
-     main = 'T-distribution df=19',
-     xlab='t', ylab='density')
-abline(v=qt(0.975, df=19), col='red', lwd=2) 
-abline(v=qt(0.025, df=19), col='red', lwd=2)
-text(x =c(-3,3), y = 0.3, col='red',
-     labels = c(paste('alpha / 2\nt =', qt(0.025, df=19) %>% round(2)),
-                paste('alpha / 2\nt =', qt(0.975, df=19) %>% round(2))), cex=1.3)
-
-
-points(x = c(1.5, 3.1,-3.95), y = rep(0.03, 3), pch=c(13,19,19), cex=2)
-text(x = c(1.2, 3.1,-3.95), y = rep(0.07, 3), 
-     labels = c('t = 1.5', 't = 3.1', 't = -3.95'), cex=1.5)
-```
-
-## How to calculate critical value of test statistic?
-
-*Example for T-distribution*
-
-### One-sided hypotheses
-
-::: large-code
-```{r, echo=T}
-qt(0.95, df=19)
-qt(0.05, df=19)
-```
-:::
-
-### Two-sided hypothesis
-
-::: large-code
-```{r, echo=T}
-qt(0.975, df=19)
-qt(0.025, df=19)
-```
-:::
-
-------------------------------------------------------------------------
-
-![](../images/t-table.png){fig-align="center" width="700"}
-
-## Another pitfalls
-
-1.  **Small sample size** or **Unbalanced groups**
-    -   Power of tests will be reduced = less sensible results
-2.  **Changing significance level**
-    -   $\alpha$ must be defined **BEFORE** testing
-3.  **Misinterpreting *p-values***
-    -   It doesn't reject or accept $H_0$.
-
-    -   **YOU reject or accept** $H_0$
-4.  [**Multiple comparisons problem**]{.underline}
-
-## Multiple comparisons {auto-animate="true"}
-
--   $1 - 0.05$ - probability of correctly rejected $H_0$
-
--   $(1-0.05)^n$ - probability of correctly rejected $\space H_0$ in $n$ tests
-
--   $1-(1-0.05)^n$ - probability of [**incorrectly rejected at least 1**]{.underline} $H_0$ in $n$ tests
-
-$$
-1 - (1 - 0.05) ^ {2} = 0.0975\\
-1 - (1 - 0.05) ^ {5} = 0.2262191\\
-1 - (1 - 0.05) ^ {20} = 0.6415141\\
-1 - (1 - 0.05) ^ {100} = 0.9940795\\
-$$
-
-## Multiple comparisons {auto-animate="true"}
-
-### Corrections!
-
-Controlling the **FWER** - probability of making at least one Type I error.
-
--   Bonferroni
-
--   Holm-Bonferroni
-
--   Šidák
-
-Controlling the **FDR** - expected proportion of false positives among all significant tests.
-
--   Benjamini-Hochberg
-
--   Benjamini-Yekutieli
-
-# Let's go
+TBA

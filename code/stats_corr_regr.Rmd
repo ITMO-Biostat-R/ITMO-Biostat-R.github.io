@@ -1,0 +1,387 @@
+---
+title: "Statistics"
+author: Vladislav Stanin  
+date: 01/24/2024
+output:
+  html_document:
+    toc: true
+    toc_depth: 3
+    toc_float:
+      collapsed: yes
+      smooth_scroll: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+```
+
+# Correlation analysis
+
+Correlation analysis measures the **strength** and **direction** of a linear relationship between two variables. The most commonly used correlation measure is the **Pearson's correlation coefficient** which indicates [**linear**]{.underline} **relationship**
+
+## Formula
+
+-   Pearson's correlation coefficient:
+
+    $\rho = \dfrac{\sum (X_i - \bar{X})(Y_i - \bar{Y})}{\sqrt{\sum (X_i - \bar{X})^2 \sum (Y_i - \bar{Y})^2}} \in [-1;1]$
+
+### Interpretation
+
+-   $−1$ indicates a perfect negative (inverse) linear relationship.
+
+-   $+1$ indicates a perfect positive linear relationship.
+
+-   $0$ indicates no linear relationship.
+
+## Is there a relationship between temperature and metabolic rate?
+
+### Data
+
+```{r}
+plant_height_df = data.frame(
+  # Sunlight_hrs_per_day = c(4,5,5,6,6,7,8,8,9,10),
+  # Plant_height = c(10.2, 11.5, 11.9, 13.4, 13.8, 14, 15, 16.2, 17.8, 18.3)
+  Sunlight_hrs_per_day = rep(4:10, e=4),
+  Plant_height = rep(4:10, e=4) + rnorm(28,0,2)
+)
+
+head(plant_height_df)
+```
+
+```{r}
+plot(x = plant_height_df$Sunlight_hrs_per_day, 
+     y=plant_height_df$Plant_height, 
+     main = NULL, 
+     xlab = "Sunlight (hrs/day)", 
+     ylab = "Plant height", pch=19, col='blue')
+```
+
+### Calculation
+
+-   `cor()` - calculates correlation matrix between all features of dataframe
+
+```{r}
+cor(plant_height_df$Sunlight_hrs_per_day, plant_height_df$Plant_height)
+# cor(iris %>%select(where(is.numeric)))
+```
+
+-   `corr.test()` - also tests how far the coefficient is from zero *(t-test)*
+
+```{r}
+cor.test(plant_height_df$Sunlight_hrs_per_day, 
+         plant_height_df$Plant_height)
+```
+
+## Example of 0 correlation
+
+```{r}
+x1=rnorm(500)
+y1=rnorm(500)
+plot(x1,y1)
+```
+
+```{r}
+cor(x1, y1)
+```
+
+## Correlation does not imply causation
+
+Website with numerous [spurious correlations](https://tylervigen.com/spurious-correlations)
+
+# Rank correlations
+
+> [The problems with Pearson correlation are that it is not suitable for "strange" non-linear relationships, non-normally distributed traits and data with outliers.]{.underline}
+
+## Spearman correlation
+
+-   Suitable for non-linear relationships
+
+-   Less sensitive to outliers
+
+-   Calculated based on ranks
+
+## Examples
+
+### Non-linear
+
+```{r}
+x = runif(50, -10, 10)
+y = (x + rnorm(50, 0, 2))^3
+plot(x,y, pch=19)
+```
+
+```{r}
+cor(x,y)
+cor(x,y, method = "spearman")
+# cor(x,y, method = "kendall")
+```
+
+### With outliers
+
+```{r}
+x = c(rnorm(20,0,3), c(15, 19))
+y = c(x[1:20] + c(rnorm(20,0,1)), 0, 0)
+plot(x,y, pch=19)
+```
+
+```{r}
+cor(x,y)
+cor(x,y, method = "spearman")
+# cor(x,y, method = "kendall")
+```
+
+> By conducting correlation analysis, we only answered the question "Is there a significant relationship between the values?". Can we, using this knowledge, predict the values of one variable based on the second variable? **Yes!**
+
+# Linear Regression
+
+Used to predict a continuous outcome based on one *or more* predictors.
+
+## Formula
+
+$y = \beta_0 + \beta_1x_1 + ... + \beta_nx_n + \epsilon$
+
+-   $y$ - dependent variable (response)
+
+-   $x$ - independent variable (predictor)
+
+-   $\beta_0$ - intercept - value of $y$, when $x=0$
+
+-   $\beta_i$ - **coefficients** - values by which $y$ is changed when the corresponding $x_i$ is increased by 1.
+
+-   $\epsilon$ - so-called **error -** differences between real $y$ values and esimated by model values
+
+## Formula of model (linear)
+
+$y_{pred} = \beta_0 + \beta_1x_1 + ... + \beta_nx_n$
+
+## Assumptions
+
+-   [**Homoscedasticity: Residuals have constant variance (\~)**]{.underline} - $\sigma^2(\epsilon) = const$
+-   **Mean of residuals** is close to [**zero**]{.underline}
+    -   ***Stricter assumption*****: residuals are normally distributed** around zero **(\~)** - $\epsilon \sim Norm(0, \sigma^2)$\
+        This assumption is equivalent to normality of $y$
+-   Observations $y_i$ are **independent** (not correlated) **(\~)**
+-   **Linearity**: The relationship between variables is considered to be linear.
+
+> **(\~) denotes assumptions needed for hypotheses testing and confidence estimation only**
+
+# Simple linear regression
+
+Linear regression model with **one dependent** $y$ (response) and one **independent** variable $x$ (predictor). Simple line which estimate linear relationship between $x$ and $y$.
+
+## Formula of model
+
+$y_{pred} = \beta_0 + \beta_1x_1$
+
+## Can plant height be predicted based on soil nutrient levels?
+
+### Data
+
+```{r}
+nutrients <- rnorm(50, mean = 10, sd = 3)
+height <- 2 * nutrients + rnorm(50, mean = 0, sd = 5)
+
+data_plant_nutrient <- data.frame(nutrients, height)
+```
+
+```{r}
+plot(nutrients, height, main = "Nutrients vs Height",
+     xlab = "Nutrients", ylab = "Height",
+     pch=19)
+```
+
+### Model creation
+
+```{r}
+model <- lm(height ~ nutrients, data = data_plant_nutrient)
+model
+```
+
+```{r}
+plot(nutrients, height, main = "Nutrients vs Height",
+     xlab = "Nutrients", ylab = "Height",
+     pch=19)
+abline(model, col = "red", lwd=3)
+legend("topleft",
+       legend = c("y_pred"),
+       col = c('red'),
+       bty = 'n', lwd=3)
+```
+
+# Model summary
+
+```{r}
+summary_model = summary(model)
+summary_model
+```
+
+### Residuals
+
+> Difference between values of observed data ($y_i$) and estimated by linear model values $y_{pred,\space i}$ for each $x_i$
+
+-   $y_i-y_{pred,\space i}$
+
+```{r, eval=F}
+# model$residuals
+residuals(model)
+```
+
+### Coefficients:
+
+> Estimate the effect of $x$ on the value of $y$.
+
+Their values are estimated to minimize $MSE = \sum (y_i - y_{pred,\space i})^2$ **(Squared sum of errors)**
+
+```{r}
+# model$coefficients
+coefficients(model)
+```
+
+### p-values Pr(\>\|t\|): Test the null hypothesis that coefficients are zero (t-test).
+
+$$t = \dfrac{Estimated\space coefficient}{Std. Error} = \dfrac{\beta_i}{\sqrt{\frac{\sigma_{residuals}}{\sum(x_i-\overline{x})^2}}} = \dfrac{\beta_i}{\sqrt{\frac{1}{n-2}*\frac{\sum(y_i-y_{pred,\space i})^2}{\sum(x_i-\overline{x})^2}}}$$
+
+-   More informative for slope than for intercept
+
+```{r}
+# summary_model$coefficients[,3:4]
+summary_model$coefficients
+```
+
+### Residual standard error
+
+$$Residual\space Standard\space Error\space (RSE) = \sqrt{\dfrac{\sum (y_i - y_{pred})^2}{df}}$$
+
+$df = n - p$, where $n$ - number of observations and $p$ is number of estimated parameters (in our case they are **slope** and **intercept).**
+
+```{r}
+summary_model$sigma
+```
+
+### R-squared
+
+> Proportion of variance explained by the model
+
+$$R^2 = 1 - \dfrac{\sum(y_i - y_{pred})^2}{\sum(y_i-\overline{y})^2} = 1-\dfrac{SSR}{SST}$$
+
+-   For simple linear regression is equal to squared Pearson correlation coefficient $\rho^2$
+
+```{r}
+summary_model$r.squared
+```
+
+### Adjusted R-squared:
+
+> [Penalizes for the number of predictors]{.underline} to avoid overestimating the model's explanatory power when additional (possibly irrelevant) predictors are added
+
+$$\overline{R}^2 = 1 - \dfrac{\dfrac{\sum(y_i - y_{pred})^2}{n-p}}{\dfrac{\sum(y_i-\overline{y})^2}{n-1}} = 1-\dfrac{\dfrac{SSR}{n-p}}{\dfrac{SST}{n-1}}$$
+
+$p$ - number of parameters, $n$ - number of observations
+
+```{r}
+summary_model$adj.r.squared
+```
+
+### F-statistic
+
+> Tests the overall significance of the regression model.
+
+$$F = \dfrac{\frac{\sum(\overline y - y_{pred,\space i})^2}{p-1}}{\frac{\sum(y_i-y_{pred,\space i})^2}{n-p}} = \dfrac{\frac{SSR}{p-1}}{\frac{SSE}{n-p}} = \dfrac{MSR}{MSE}$$
+
+$p$ - number of parameters, $n$ - number of observations
+
+-   ***p-values*** are calculated according to [**Fisher distribution**]{.underline}
+-   [In simple linear regression, it is equivalent to the t-test for the slope.]{.underline}
+
+```{r}
+# pf(summary_model$fstatistic[1], summary_model$fstatistic[2], 
+   # summary_model$fstatistic[3], lower.tail = FALSE)
+
+summary_model$fstatistic
+```
+
+> ***A higher F-statistic indicates that the model's explained variability (MSR - Regression mean squares) is large relative to the unexplained variability (MSE - Mean of squares error), suggesting that the regression model is capturing a significant relationship.***
+
+#### F-test
+
+```{r}
+anova(model)
+```
+
+# Multiple Linear Regression
+
+[Several independent variables]{.underline} (predictors)
+
+## Formula of model
+
+$y_{pred} = \beta_0 + \beta_1x_1 + ... + \beta_nx_n$
+
+## Adding one more predictor for plant height model
+
+```{r}
+sunlight_hrs = rep(5:9, each=10) + rnorm(50, 0, 1)
+data_plant_nutrient = data_plant_nutrient %>% arrange(height) %>%  cbind(sunlight_hrs)
+data_plant_nutrient %>% str()
+```
+
+```{r}
+plot(data_plant_nutrient$height, data_plant_nutrient$sunlight_hrs, 
+     main = "Sunlight vs Height",
+     xlab = "Sunlight", ylab = "Height",
+     pch=19)
+```
+
+### Additive
+
+$$
+y = \beta_0 + \beta_1x_1 + \beta_2x_2
+$$
+
+```{r}
+model_mullti = lm(height ~ sunlight_hrs + nutrients, data = data_plant_nutrient)
+summary(model_mullti)
+```
+
+### With interaction
+
+$$y = \beta_0 + \beta_1x_1 + \beta_2x_2 + \beta_3x_1x_2$$
+
+**Now coefficient have different interpretation:**
+
+-   $\beta_1$​: Effect of $x_1$​ on $y$ when $x_2=0$.
+-   $\beta_2$​: Effect of $x_2$​ on $y$ when $x_1=0$.
+-   $\beta_3$: **Interaction coefficient**, showing how the relationship between $x_1$​ and $y$ changes as $x_2$​ changes.
+
+> You should include an interaction if you hypothesize that the relationship between one predictor and the dependent variable changes depending on the level of another predictor. For example, the effect of a drug might vary depending on the age of the patient.
+
+```{r}
+# model_mullti = lm(height ~ nutrients + sunlight_hrs + nutrients:sunlight_hrs, data = data_plant_nutrient)
+model_mullti_interact = lm(height ~ nutrients * sunlight_hrs, data = data_plant_nutrient)
+summary(model_mullti_interact)
+```
+
+-   `x1:x2` denotes interaction
+
+-   `x1 * x2` is equivalent to `x1 + x2 + x1:x2`
+
+## Testing if model is better with new predictors
+
+```{r}
+anova(model, model_mullti_interact)
+```
+
+-   $p.value < 0.05$ and it means that new model better reduce the residual variance
+
+## Plot the line "without" modelling
+
+```{r}
+data_plant_nutrient %>% 
+  ggplot(aes(x=nutrients, y=height)) +
+  geom_point(col='blue', show.legend = T) +
+  geom_smooth(formula = y ~ x, method = 'lm', show.legend = T) + ## <---- creates model and plots the line
+  theme_bw()
+```
+
