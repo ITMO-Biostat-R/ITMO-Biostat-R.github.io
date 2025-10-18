@@ -71,7 +71,7 @@ Therefore, researchers use samples - **random and representative** groups taken 
 3.  Email survey on student parents' opinion of ITMO
     -   **Only people whose email addresses we have**
 4.  The double-blind, randomized, placebo-controlled trial in 1990
-    -   **Too old**
+    -   **May be too old**
 
 ------------------------------------------------------------------------
 
@@ -559,78 +559,16 @@ legend("topright", legend = c("lambda=3",
                 rgb(0, 1, 0, alpha = 0.5)))
 ```
 
-## Functions (for normal distribution) {auto-animate="true"}
-
-```{css}
-.large-code {
-  font-size: 1.25em; /* Increase as needed, e.g., 1.5em or 20px */
-}
-```
-
-1.  **Random values from distribution**
-
-```{r, echo = T, class="large-code"}
-rnorm(n=5, mean=100, sd=10)
-```
-
-2.  **Density (the height of histogram) at the point**
-
-```{r, echo = T, class="large-code"}
-dnorm(x=100, mean=100, sd=10)
-```
-
-## Functions (for normal distribution) {auto-animate="true"}
-
-3.  **Cumulative probability at the point: prob-ty to obtain value less than specified**
-
-```{r, echo = T, class="large-code"}
-pnorm(q = 80, mean=100, sd=10) # prob to obtain any value less than 80
-pnorm(q = c(70,80,90,110,120,130), mean=100, sd=10)
-```
-
-4.  **Value corresponding to specified cumulative probability**
-
-```{r, echo = T, class="large-code"}
-qnorm(p = c(0.003, 0.05, 0.16, 0.84, 0.95, 0.997), mean=100, sd=10)
-```
-
-## Functions (for other distributions)
-
-**Uniform**
-
-```{r, eval=F, echo=TRUE,class="large-code"}
-runif(n, min, max)
-dunif(n, min, max)
-punif(n, min, max)
-qunif(n, min, max)
-```
-
-**Binomial**
-
-```{r, eval=F, echo=TRUE,class="large-code"}
-rbinom(n, size, prob)
-dbinom(n, size, prob)
-pbinom(n, size, prob)
-qbinom(n, size, prob)
-```
-
-**Poisson**
-
-```{r, eval=F, echo=TRUE,class="large-code"}
-rpois(n, lambda)
-dpois(n, lambda)
-ppois(n, lambda)
-qpois(n, lambda)
-```
-
 ## Descriptive statistics {auto-animate="true"}
 
 ### *Central tendency*
 
--   **Mean** - $\bar{X} (\hat\mu) = \frac{x_1 + x_2 + ... x_N}{N}$
+-   **Sample mean** - $\bar{X} \ or\ \hat\mu = \frac{x_1 + x_2 + ... x_N}{N}$
+-   **Population mean -** $E(X) = x_1*p_1 + x_2*p_2 + ... x_N * p_N = \sum^N_{i=1} x_i*p_i$
 
 ```{r, eval=F, echo=T, class="large-code"}
 mean(x)
+sum(x * p) # x and p are vectors
 ```
 
 -   **Median** - the $N/2$-th element in list of sorted values $\{x_1, x_2, ..., \pmb{x_{N/2}},...,x_{N-1}, x_N\}$, where for any $i$: $x_{i-1} < x_i$
@@ -776,6 +714,70 @@ quantile(x, probs = seq(0.01, 1, 0.01))
 ```
 
 -   Median is a **0.5 quantile** (2nd quartile)
+
+## Functions (for normal distribution) {auto-animate="true"}
+
+```{css}
+.large-code {
+  font-size: 1.25em; /* Increase as needed, e.g., 1.5em or 20px */
+}
+```
+
+1.  **Random values from distribution**
+
+```{r, echo = T, class="large-code"}
+rnorm(n=5, mean=100, sd=10)
+```
+
+2.  **Density (the height of histogram) at the point**
+
+```{r, echo = T, class="large-code"}
+dnorm(x=100, mean=100, sd=10)
+```
+
+## Functions (for normal distribution) {auto-animate="true"}
+
+3.  **Cumulative probability at the point: prob-ty to obtain value less than specified**
+
+```{r, echo = T, class="large-code"}
+pnorm(q = 80, mean=100, sd=10) # prob to obtain any value less than 80
+pnorm(q = c(70,80,90,110,120,130), mean=100, sd=10)
+```
+
+4.  **Value corresponding to specified cumulative probability**
+
+```{r, echo = T, class="large-code"}
+qnorm(p = c(0.003, 0.05, 0.16, 0.84, 0.95, 0.997), mean=100, sd=10)
+```
+
+## Functions (for other distributions)
+
+**Uniform**
+
+```{r, eval=F, echo=TRUE,class="large-code"}
+runif(n, min, max)
+dunif(n, min, max)
+punif(n, min, max)
+qunif(n, min, max)
+```
+
+**Binomial**
+
+```{r, eval=F, echo=TRUE,class="large-code"}
+rbinom(n, size, prob)
+dbinom(n, size, prob)
+pbinom(n, size, prob)
+qbinom(n, size, prob)
+```
+
+**Poisson**
+
+```{r, eval=F, echo=TRUE,class="large-code"}
+rpois(n, lambda)
+dpois(n, lambda)
+ppois(n, lambda)
+qpois(n, lambda)
+```
 
 # Central limit theorem
 

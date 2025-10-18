@@ -1,5 +1,5 @@
 ---
-title: "Statistics"
+title: "Association between variables"
 author: Vladislav Stanin  
 date: 01/24/2024
 output:
@@ -17,123 +17,6 @@ library(dplyr)
 library(tidyr)
 library(ggplot2)
 ```
-
-# Correlation analysis
-
-Correlation analysis measures the **strength** and **direction** of a linear relationship between two variables. The most commonly used correlation measure is the **Pearson's correlation coefficient** which indicates [**linear**]{.underline} **relationship**
-
-## Formula
-
--   Pearson's correlation coefficient:
-
-    $\rho = \dfrac{\sum (X_i - \bar{X})(Y_i - \bar{Y})}{\sqrt{\sum (X_i - \bar{X})^2 \sum (Y_i - \bar{Y})^2}} \in [-1;1]$
-
-### Interpretation
-
--   $−1$ indicates a perfect negative (inverse) linear relationship.
-
--   $+1$ indicates a perfect positive linear relationship.
-
--   $0$ indicates no linear relationship.
-
-## Is there a relationship between temperature and metabolic rate?
-
-### Data
-
-```{r}
-plant_height_df = data.frame(
-  # Sunlight_hrs_per_day = c(4,5,5,6,6,7,8,8,9,10),
-  # Plant_height = c(10.2, 11.5, 11.9, 13.4, 13.8, 14, 15, 16.2, 17.8, 18.3)
-  Sunlight_hrs_per_day = rep(4:10, e=4),
-  Plant_height = rep(4:10, e=4) + rnorm(28,0,2)
-)
-
-head(plant_height_df)
-```
-
-```{r}
-plot(x = plant_height_df$Sunlight_hrs_per_day, 
-     y=plant_height_df$Plant_height, 
-     main = NULL, 
-     xlab = "Sunlight (hrs/day)", 
-     ylab = "Plant height", pch=19, col='blue')
-```
-
-### Calculation
-
--   `cor()` - calculates correlation matrix between all features of dataframe
-
-```{r}
-cor(plant_height_df$Sunlight_hrs_per_day, plant_height_df$Plant_height)
-# cor(iris %>%select(where(is.numeric)))
-```
-
--   `corr.test()` - also tests how far the coefficient is from zero *(t-test)*
-
-```{r}
-cor.test(plant_height_df$Sunlight_hrs_per_day, 
-         plant_height_df$Plant_height)
-```
-
-## Example of 0 correlation
-
-```{r}
-x1=rnorm(500)
-y1=rnorm(500)
-plot(x1,y1)
-```
-
-```{r}
-cor(x1, y1)
-```
-
-## Correlation does not imply causation
-
-Website with numerous [spurious correlations](https://tylervigen.com/spurious-correlations)
-
-# Rank correlations
-
-> [The problems with Pearson correlation are that it is not suitable for "strange" non-linear relationships, non-normally distributed traits and data with outliers.]{.underline}
-
-## Spearman correlation
-
--   Suitable for non-linear relationships
-
--   Less sensitive to outliers
-
--   Calculated based on ranks
-
-## Examples
-
-### Non-linear
-
-```{r}
-x = runif(50, -10, 10)
-y = (x + rnorm(50, 0, 2))^3
-plot(x,y, pch=19)
-```
-
-```{r}
-cor(x,y)
-cor(x,y, method = "spearman")
-# cor(x,y, method = "kendall")
-```
-
-### With outliers
-
-```{r}
-x = c(rnorm(20,0,3), c(15, 19))
-y = c(x[1:20] + c(rnorm(20,0,1)), 0, 0)
-plot(x,y, pch=19)
-```
-
-```{r}
-cor(x,y)
-cor(x,y, method = "spearman")
-# cor(x,y, method = "kendall")
-```
-
-> By conducting correlation analysis, we only answered the question "Is there a significant relationship between the values?". Can we, using this knowledge, predict the values of one variable based on the second variable? **Yes!**
 
 # Linear Regression
 
@@ -384,4 +267,3 @@ data_plant_nutrient %>%
   geom_smooth(formula = y ~ x, method = 'lm', show.legend = T) + ## <---- creates model and plots the line
   theme_bw()
 ```
-

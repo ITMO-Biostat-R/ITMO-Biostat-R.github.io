@@ -16,7 +16,7 @@ editor_options:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, dpi = 300, fig.width = 5, fig.height = 4)
+knitr::opts_chunk$set(echo = TRUE, dpi = 200, fig.width = 5, fig.height = 4)
 ```
 
 # Introduction
@@ -29,9 +29,8 @@ We get the most information through our eyes, therefore the skill of presenting 
 
 ```{r, warning=FALSE, message=F}
 # install.packages('ggplot2')
-library(ggplot2)
-library(dplyr)
-library(tidyr)
+# install.packages('patchwork')
+library(tidyverse)
 ```
 
 # Working data
@@ -83,13 +82,13 @@ plot(x, y)
 ### Sepal.Length vs Sepal.Width
 
 ```{r}
-plot(iris_df$Sepal.Length, iris_df$Sepal.Width)
+# plot()
 ```
 
 We can make this graph prettier
 
-```{r}
-plot(iris_df$Sepal.Length, iris_df$Sepal.Width,
+```{r, eval=F}
+plot(#,
      main = "Sepal.Length vs. Sepal.Width", # the title
      xlab = "Sepal.Length", # Label of X-axis
      ylab = "Sepal.Width", # Label of Y-axis 
@@ -115,9 +114,15 @@ By default `plot()` shows scatter plot, but we can change this behavior
 
 ```{r}
 plot(x, y,type = 'l') 
-plot(x, y,type = 'b', lwd = 3) # lwd = linewidth
 plot(x, y, type = 'o')
+plot(x, y,type = 'b')
 
+```
+
+> Show scatter with line width (lwd) = 3, point character (pch) = 2 and line type (lty) =3
+
+```{r}
+# plot(x,y)
 ```
 
 #### Terrible plot
@@ -144,16 +149,18 @@ plot(df$x, df$y,type = "b", pch=19)
 
 > *ggplot2 doesn't have such problem*
 
+#### *Advanced*
+
 ```{r collapse=TRUE}
 # basic r advanced
 
-# indexes_to_sort = order(x)
-# x_sorted = x[indexes_to_sort]
-# y_sorted = y[indexes_to_sort]
-# plot(x_sorted, y_sorted, type = "b", pch=19)
+indexes_to_sort = order(x)
+x_sorted = x[indexes_to_sort]
+y_sorted = y[indexes_to_sort]
+plot(x_sorted, y_sorted, type = "b", pch=19)
 ```
 
-> **NB!** We can't just sort one of the vectors because we **must save the correspondence of x and y** coordinates between two vectors.
+**NB!** We can't just sort one of the vectors because we **must save the correspondence of x and y** coordinates between two vectors.
 
 ## Bar Plots
 
@@ -163,9 +170,18 @@ heights = c(Roman = 190,
             Charlie = 121,
             Vlad = 183,
             Sasha = 180) # named vector
-heights 
-heights = heights %>% sort(decreasing = T)
+heights
+```
+
+```{r}
 barplot(heights)
+```
+
+> Sort (`sort()`) values and create barplot again
+
+```{r}
+# heights = 
+# barplot(heights)
 ```
 
 We can customize this graph
@@ -184,20 +200,23 @@ barplot(heights,
 
 ### Number of iris_df species
 
+> Create `table()` of iris species and use it to make a barplot with color 'violet' Name the axis!
+
 ```{r}
-number_of_species = table(iris_df$Species)
-barplot(number_of_species,
-        col = 'violet')
+# number_of_species = 
+# barplot()
 ```
 
 Now we see that our data **"is balanced"**
 
 ## Histograms
 
+-   Need only one axis!
+
 ### Distribution of Sepal.Length
 
 ```{r}
-hist(iris_df$Sepal.Length, # only x-axis! 
+hist(iris_df$Sepal.Length, 
      main = "Sepal.Length distribution", 
      xlab = "Sepal.length", 
      col = "lightgreen",
@@ -216,6 +235,12 @@ hist(iris_df$Sepal.Length,
      xlab = "Sepal.length", 
      col = "lightgreen", 
      breaks = 16) # <---- changed
+```
+
+> Create histogram of Sepal.Width colored 'lightblue'. Name the axis!
+
+```{r}
+# hist()
 ```
 
 ## Boxplots
@@ -246,7 +271,13 @@ boxplot(iris_df$Sepal.Length ~ iris_df$Species,
         horizontal = F)
 ```
 
-> Boxplot is good for **unimodal** similar to normaldistributions, as it doesn't show *two peaks*
+> Create boxplot of Sepal.Length grouped by Sepal.Length.Category. Name axis and let it be horizontal.
+
+```{r}
+# boxplot()
+```
+
+**Boxplot is good for** unimodal\*\* similar to normaldistributions, as it doesn't show *two peaks*\*\*
 
 ![](../images/boxplot_bad.png){width="800"}
 
@@ -304,13 +335,6 @@ ggplot(data=iris_df,
   geom_point() 
 ```
 
-### Adding to variable
-
-```{r}
-p + aes(color=Species, size = Petal.Width,
-        shape=Sepal.Length.Category)
-```
-
 ### Aesthetics list
 
 -   `color` - color
@@ -326,6 +350,13 @@ p + aes(color=Species, size = Petal.Width,
 -   `alpha` - transparency
 
 -   *other specific for geoms aesthetics...*
+
+### Adding to variable
+
+```{r}
+p + aes(color=Species, size = Petal.Width,
+        shape=Sepal.Length.Category)
+```
 
 ## Geoms
 
@@ -358,30 +389,8 @@ iris_df %>%
 iris_df %>% 
   ggplot(aes(x=Species, y=Sepal.Length)) + 
   geom_boxplot(aes(fill=Species), outliers = F) +
-  geom_jitter(width=0.1)
+  geom_jitter(width=0.1, size=1)
 
-```
-
-### Variables and aesthetics
-
-> As you have seen,`fill`, `color`, `size`, `shape`, `stroke` and `alpha` can be seen outside of `aes()`. They can also be set to a specific fixed value.
->
-> **Each geom has a certain set of parameters. In `aes()` there are mandatory and optional parameters, and outside it there are only optional parameters**
-
-#### Inside the `aes()`
-
-```{r}
-iris_df %>% 
-  ggplot(aes(x=Sepal.Length, y=Sepal.Width)) +
-  geom_point(aes(color=Species)) # <--- here
-```
-
-#### Outside the `aes()`
-
-```{r}
-ggplot(data=iris_df,
-       mapping = aes(x=Sepal.Length, y=Sepal.Width)) +
-  geom_point(color='blue')  # <--- here
 ```
 
 ### Geoms can take different data!
@@ -394,6 +403,36 @@ iris_df %>%
              aes(color=Species)) +
   
   geom_hex(data=iris_df %>% filter(Sepal.Width < 3)) # another data (filtered iris)
+```
+
+## Variables and aesthetics
+
+> `fill`, `color`, `size`, `shape`, `stroke` and `alpha` can be seen outside of `aes()`. They can also be set to a specific fixed value.
+>
+> **Each geom has a certain set of parameters. In `aes()` there are mandatory and optional parameters, and outside it there are only optional parameters**
+
+### Inside the `aes()`
+
+```{r}
+iris_df %>% 
+  ggplot(aes(x=Sepal.Length, y=Sepal.Width)) +
+  geom_point(aes(color=Species)) # <--- here
+```
+
+### Outside the `aes()`
+
+```{r}
+ggplot(data=iris_df,
+       mapping = aes(x=Sepal.Length, y=Sepal.Width)) +
+  geom_point(color='blue')  # <--- here
+```
+
+### (not) Blue scatter-plot
+
+```{r}
+ggplot(data=iris_df,
+       mapping = aes(x=Sepal.Length, y=Sepal.Width, color='blue')) +
+  geom_point()
 ```
 
 ## Themes
@@ -413,6 +452,23 @@ p = p + theme(axis.text = element_text(size = 15),
           axis.title = element_text(size = 20),
           panel.background = element_rect(fill = 'white', color='black'))
 p
+```
+
+### Setting theme for all plots
+
+```{r}
+theme_custom <- theme(
+    axis.text = element_text(size = 15),
+    axis.title = element_text(size = 20),
+    plot.title = element_text(size = 20, hjust = 0.5),
+    plot.subtitle = element_text(size = 15, hjust = 0.5),
+    legend.title = element_text(size = 15),
+    legend.text = element_text(size = 15),
+    panel.background = element_rect(fill = "white"), 
+    panel.grid = element_blank()
+  )
+
+theme_set(theme_custom)
 ```
 
 ## Labels
@@ -439,34 +495,37 @@ Simple functions for labeling axes: `+ xlab()` and `+ ylab()`
 
 ## Scatter plot
 
+> Draw **scatter-plot** (`geom_point`) with **x=Petal.Length, y=Petal.Width** usingclassic theme
+
 ```{r}
-iris_df %>% ggplot(aes(x=Petal.Length, y=Petal.Width)) + 
-  geom_point() + theme_classic()
+# iris_df %>% ggplot()
 ```
 
 ## Histogram
 
+> Draw **histogram** (`geom_histogram`) of **Petal.Length** using *blue* `color` and *lightblue* `fill` andclassic theme
+
 ```{r}
-iris_df %>% ggplot(aes(x=Petal.Length)) + 
-  geom_histogram(color='blue', fill='lightblue') +
-  theme_classic()
+# iris_df %>% ggplot()
 ```
 
 ## Density plot
 
+> Draw **density plot** (`geom_density`) of **Petal.Length** for every Species filled differently + alpha=0.8 and classic theme
+
 ```{r}
-iris_df %>% ggplot(aes(x=Petal.Width, fill=Species)) + 
-  geom_density(alpha=0.8) + theme_classic()
+# iris_df %>% ggplot()
 ```
 
 ## Boxplot
 
+> Draw a [horizontal]{.underline} **box plot** (`geom_boxplot`) of **Petal.Width** for each species on the y-axis with different fill. Remove legend (why?)
+
 ```{r}
-iris_df %>% ggplot(aes(x=Petal.Width, y=Species, fill=Species)) + 
-  geom_boxplot() + theme_classic() + theme(legend.position = "none")
+# iris_df %>% ggplot()
 ```
 
-> **Yes, we can combine custom and built-in themes in one plot**
+> **We can combine custom and built-in themes in one plot!**
 
 ### Deleting the legend (as it duplicates `color` information)
 
@@ -484,10 +543,14 @@ sepal_len_stats
 
 ### `geom_col` - if heights of bars are known (continuous data)
 
+> Draw a **barplot** (`geom_col`) of **mean_sepal_len** for each species on the x-axis with different fill. Remove legend.
+
 ```{r}
 p_col = sepal_len_stats %>% 
   ggplot(aes(x=Species, y=mean_sepal_len, fill=Species)) + 
-  geom_col() + theme_classic() + theme(legend.position = "none")
+  geom_col() + 
+  theme_classic() + 
+  theme(legend.position = "none")
 
 p_col
 ```
@@ -512,22 +575,24 @@ p_col + geom_errorbar(aes(ymin=mean_sepal_len-sd_sepal_length,
 
 ### `geom_bar` - if heights are unknown (counting categorical data)
 
+> Draw a **barplot** (`geom_col`) of **Sepal.Length.Category** (x-axis and fill).
+
 ```{r}
-iris_df %>% ggplot(aes(x=Sepal.Length.Category, 
-                       fill=Sepal.Length.Category)) + 
-  geom_bar() + theme_bw() + theme(legend.position = "none")
+# iris_df %>% ggplot()
 ```
 
 ### `position="stack"` (by default)
 
-```{r fig.width=4, fig.height=6}
-iris_df %>% ggplot(aes(x=Sepal.Length.Category, fill=Species)) + 
-  geom_bar() + theme_bw() 
+```{r}
+iris_df %>% 
+  ggplot(aes(x=Sepal.Length.Category, fill=Species)) + 
+  geom_bar() + 
+  theme_bw() 
 ```
 
 ### `position="fill"` - scaled from 0 to 1
 
-```{r fig.width=4}
+```{r}
 iris_df %>% ggplot(aes(fill=Species, x=Sepal.Length.Category)) + 
   geom_bar(position = 'fill') + theme_bw()
 ```
@@ -535,8 +600,10 @@ iris_df %>% ggplot(aes(fill=Species, x=Sepal.Length.Category)) +
 ### `position="dodge"`
 
 ```{r}
-iris_df %>% ggplot(aes(fill=Species, x=Sepal.Length.Category)) + 
-  geom_bar(position = 'dodge')  + theme_bw()
+iris_df %>% 
+  ggplot(aes(fill=Species, x=Sepal.Length.Category)) + 
+  geom_bar(position = 'dodge')  + 
+  theme_bw()
 ```
 
 ## Something big and difficult
@@ -561,7 +628,38 @@ ggplot(iris, aes(x = Species, y = Sepal.Length)) +
 
 -   `geom_hline()` - horizontal line
 
+    -   `geom_vline()` - vertical line
+
 -   `geom_text()` - just text
+
+    -   `geom_label()`
+
+## Plot arranging
+
+**patchwork**
+
+```{r}
+library(patchwork)
+```
+
+
+```{r}
+bar_stack = iris_df %>% 
+  ggplot(aes(x=Sepal.Length.Category, fill=Species)) + 
+  geom_bar() + 
+  theme_bw() 
+
+bar_fill = iris_df %>% ggplot(aes(fill=Species, x=Sepal.Length.Category)) + 
+  geom_bar(position = 'fill') + theme_bw()
+
+bar_dodge = iris_df %>% 
+  ggplot(aes(fill=Species, x=Sepal.Length.Category)) + 
+  geom_bar(position = 'dodge')  + 
+  theme_bw()
+
+
+(bar_stack | bar_fill) / bar_dodge
+```
 
 ## Saving the plot
 
@@ -590,6 +688,8 @@ dev.off()
 ```
 
 This structure allow save into pdf all graphical outputs that between `pdf()` and `dev.off()`
+
+## 
 
 # ggpubr (Advanced)
 

@@ -31,7 +31,7 @@ We can create new files, projects and even presentations or websites. RStudio pr
 Print
 
 ```{r}
-?getwd()
+# ?getwd()
 ```
 
 To open help for a function (here, `getwd`).
@@ -121,6 +121,8 @@ R Markdown allows us to "knit" this project and create beautiful report in **htm
 
 Citizens of R-city
 
+> Try to run the whole chunk and one line
+
 ```{r}
 12
 2.2
@@ -148,11 +150,23 @@ var_character
 var_bool
 ```
 
+> Create variable `height` and show its value
+
+```{r}
+# 
+```
+
 Change the value:
 
 ```{r}
 variable = variable + 100
 variable
+```
+
+> The kid grew up by 10. Change the value of variable `height`
+
+```{r}
+# height = 
 ```
 
 ### Mathematical operations
@@ -179,6 +193,14 @@ x %/% y # integer division
 ```{r}
 y + 2 * 3
 (y + 2) * 3
+```
+
+> We have `height` and `weight`. Let's calculate Body mass index (`bmi`) = W / H(meters)\^2
+
+```{r}
+height = 170
+weight = 68
+# bmi = 
 ```
 
 ### Logical operations
@@ -215,9 +237,18 @@ bool2 = FALSE
 !bool2
 ```
 
+> Check if obtained BMI low, normal or high
+
+```{r}
+bmi_high = 30
+bmi_low = 18
+
+# bmi
+```
+
 ## Vectors
 
-**Vector** is a simple one-dimensional array. **In R it can contain only one type of data**. The function used to create vector is `c()`.
+**Vector** is a simple one-dimensional array. **In R it can contain only [one type of data]{.underline}**. The function used to create vector is `c()`.
 
 Here we create some vectors and store them in corresponding variables:
 
@@ -245,7 +276,13 @@ c(7:10, 1:5)
 c(1:5,7:10)
 ```
 
-> ***Values in vector are not sorted and unique by default!***
+***Values in vector are not sorted and unique by default!***
+
+> Create vector `scores` containing numbers from 10 to 20 and number 30 - students' scores from exam
+
+```{r}
+# scores 
+```
 
 ### Indexes
 
@@ -271,6 +308,13 @@ vec[c(3,1,5)]
 ```
 
 Inside of **`[ ]`** vector is interpreted as a indexes of values in `vec`
+
+> Show what scores 2nd 3rd, 4th and 7th students have (use `scores` vector) and delete 5th and 6th students' scores (save new vector as `scores`)
+
+```{r}
+# scores 
+# scores =
+```
 
 ### Great feature of R language - vectorization
 
@@ -305,6 +349,14 @@ vec_new
 
 ***The result is also vector!***
 
+> We `heights` and `weights` of patients. Calculate their `BMIs` (W / H(meters)\^2) using vectorization.
+
+```{r}
+heights = c(180, 170, 175, 196)
+weights = c(120, 80, 90, 59)
+# BMIs =
+```
+
 #### Logical operations
 
 Also vectorized
@@ -315,6 +367,15 @@ vec1234 > 2
 
 ```{r}
 vec123 >= vec321
+```
+
+> Check if patients' `BMIs` high, normal or low using vectorization
+
+```{r}
+bmi_high = 30
+bmi_low = 18
+
+# BMIs 
 ```
 
 ## The fun is just started!
@@ -333,7 +394,7 @@ weights_of_seed
 weights_of_seed[weights_of_seed < 5]
 ```
 
-Lets break out this. Firstly, logical vector is created inside the brackets to filter the data. For example, we filter data with values more than 5
+**Lets break out this**. Firstly, logical vector is created inside the brackets to filter the data. For example, we filter data with values more than 5
 
 ```{r}
 logical_vector = weights_of_seed < 5
@@ -350,6 +411,15 @@ weights_of_seed[logical_vector]
 
 ```{r}
 weights_of_seed[weights_of_seed < 10 & weights_of_seed > 2]
+```
+
+> Let's extract from `BMIs` values that are **normal**
+
+```{r}
+bmi_high = 30
+bmi_low = 18
+
+# BMI[]
 ```
 
 ## Basic statistics
@@ -399,7 +469,17 @@ mean_value = mean(weights_of_seed)
 weights_of_seed[weights_of_seed > mean_value]
 ```
 
-## Two "associated" vectors
+> How many students' scores are in `scores` vector?
+>
+> Calculate mean, median of `scores`
+>
+> What's the minimal score ?
+
+```{r}
+# scores
+```
+
+## Two "connected" vectors
 
 ### Named vectors
 
@@ -409,19 +489,15 @@ students_names = c('Daniel', 'Sasha', 'Robert', 'Alice',
 age = c(15, 32, 18, 8, 23, 17,22, 23)
 ```
 
-Students older than 18
+Students **older than 18**
 
 ```{r}
-students_names[age >= 18] # ANY logical vector
+students_names[age >= 18] # ANY logical vector!
 ```
 
-Students aged **18 or more**
+*Using one vector as condition for extracting data from another*
 
-```{r}
-students_names[age >= 18]
-```
-
-What if we want to extract names AND their age. We can set names for each value in vector using `names()` function
+**What if we want to extract names AND their age**? We can set names for each value in vector using `names()` function
 
 `names()` function returns names from vector. Vector `student_age` had no names:
 
@@ -448,6 +524,13 @@ Another way to create "named" vector:
 ```{r}
 named_vec = c("vlaue1" = 1, "value2" = 2, "value3" = 3)
 named_vec
+```
+
+> Create named vector from first 6 values `scores`
+
+```{r}
+students = c('Sasha', 'Masha', 'Marina', 'Adelya', 'Negin', 'Alice')
+# scores_named = scores
 ```
 
 ### List
@@ -479,7 +562,7 @@ Each vector represents a piece of information about each student. Vectors here a
 
 #### List data access
 
-We can access **vectors** in several ways
+We can access **vectors (\~columns)** in several ways
 
 ```{r}
 students_list[2] # NOT A VECTOR
@@ -528,10 +611,17 @@ index_alice = which(students_list$names == 'Alice')
 students_list$age[index_alice]
 students_list$weight[index_alice]
 
-# lapply(students_list, function(x) x[index_alice])
 ```
 
 -   `which(logical_vector)` - return positions where `logical_vector` contain `TRUE`
+
+> Create list containing vectors `scores` and `students` vectors and name them "Marks" and "Names"
+>
+> show the 2nd name
+
+```{r}
+# somelist = 
+```
 
 Is there more convenient way to store tabular data?
 
@@ -547,12 +637,13 @@ height = c(175, 181, 188, 120, 170, 168, 178, 172)
 weight = c(70, 75, 80, 45, 55, 50, 78, 62)
 ```
 
-**Now create data-frame**
+**Now create data-frame!**
 
 ```{r}
 students_df = data.frame(age=vec_age,
                          height=height,
                          weight=weight,
+                         
                          row.names = students_names)
 
 students_df
@@ -591,11 +682,22 @@ students_df[c('Sasha', 'Robert', 'Alice'), c("height", "weight")]
 students_df[c('Sasha', 'Robert', 'Alice'), ]
 ```
 
+> Create data-frame `students_itmo` using vectors `students` and `scores` (first 6 values). Make students' names `row.names` and scores column name "Marks"
+>
+> What mark does Masha have?
+
+```{r}
+# students_itmo = 
+```
+
 ### New column
 
 ```{r}
+
 # factor variables (why to use them over character)
+
 students_df$column = c(1,2,3,4,4,5,5,6)
+
 students_df$city = c(rep('Moscow', 3), rep('SPb', 3), rep('Kazan', 2))
 
 students_df$is_tall = ifelse(students_df$height >= 180, 'Tall', 'Short')
@@ -643,6 +745,21 @@ students_df[order(students_df$age), ]
 students_df[order(students_df$age, decreasing = T),]
 ```
 
+> Add to `students_itmo` new columns "subject" and "avg_score".
+>
+> Transform "subject" into factor.
+>
+> Arrange data-frame by `avg_score`
+>
+> Delete `Marks` column
+
+```{r}
+subject = c('math', 'phys', 'math', 'statisctics', 'molevo', 'biology')
+avg_score = c(4,5,4,3,5,4)
+
+#students_itmo
+```
+
 ### Filtering
 
 ```{r}
@@ -651,7 +768,14 @@ students_df[students_df$height > 170, ]
 students_df[students_df$height > 170 & age > 20, ]
 
 students_df[students_df$city %in% c('Moscow', 'SPb'), ]
+
 subset(students_df, height > 170)
+```
+
+> Extract rows from `students_itmo` which have avg_score **4 \<=**
+
+```{r}
+# students_itmo 
 ```
 
 ### Describe data-frame
@@ -679,6 +803,20 @@ Create contingency table of the counts at each combination of factor levels
 ```{r}
 table(students_df$city)
 table(students_df$city, students_df$age_range)
+```
+
+**`addmargins()`**
+
+```{r}
+contingency_table = table(students_df$city, students_df$age_range)
+
+addmargins(contingency_table)
+```
+
+> Create `table()` of `subject` from `students_itmo` and then add margins
+
+```{r}
+# 
 ```
 
 ## P.S.

@@ -31,14 +31,18 @@ theme_custom <- theme(
 theme_set(theme_custom)
 ```
 
-# Distributions
+# Distributions and descriptive statistics
+
+```{r}
+sample_size = 100
+```
 
 ### Normal distribution
 
 ```{r}
 # here mean and sd - parameters in "general" population 
 # n - number of elements we choose from population
-norm_sample = rnorm(n=100, mean=0, sd=1)
+norm_sample = rnorm(n=sample_size, mean=0, sd=1)
 
 #parameters of **sample**
 mean(norm_sample)
@@ -49,21 +53,92 @@ sd(norm_sample)
 ### Exponential distribution
 
 ```{r}
-
-exp_sample = rexp(n=1000, rate=2)
+exp_sample = rexp(n=sample_size, rate=2)
 
 # mean()
 # sd()
 ```
 
-### Binomial distribution
+### Uniform distribution
 
 ```{r}
 
-exp_sample = runif(n=1000, min=0, max=1)
+unif_sample = runif(n=sample_size, min=0, max=1)
 
 # mean()
 # sd()
+```
+
+### Discrete (!) distributions
+
+```{r}
+rbinom(n=sample_size, size=10, prob=0.5)
+
+```
+
+```{r}
+rpois(n = sample_size, lambda = 1)
+```
+
+## Quantiles
+
+> Show **qua[rt]{.underline}iles** of `norm_sample`
+>
+> Show 2.5% and 97.5% **qua[nt]{.underline}iles** of `unif_sample`
+
+```{r}
+# quantile()
+```
+
+# Sampling
+
+## From population defined by us
+
+```{r}
+true_mean = 10
+true_sd = 2
+
+# big_population = read_csv('data.csv')
+big_population = rnorm(50000, mean = true_mean, sd = true_sd) |> round()
+
+big_population |>  hist()
+```
+
+```{r}
+sample_size = 10
+
+sample_0 = sample(x=big_population, size=sample_size)
+sample_0
+```
+
+## Setting the population by possible values and probabilities
+
+**!NB sum of probabilities should be equal to 1**
+
+```{r}
+values = c(1,100,10000)
+probs_of_values = c(0.2, 0.5, 0.3)
+
+sum(probs_of_values) == 1
+```
+
+### Sampling
+
+```{r}
+sample_size = 10
+
+sample_2 = sample(values, sample_size, replace=TRUE, prob=probs_of_values)
+```
+
+-   `replace=TRUE` for repeatable drawing same values from possible values
+
+## From mathematically defined distribution
+
+```{r}
+sample_size = 10
+
+sample_1 = rnorm(sample_size, mean=0, sd=1)
+sample_1
 ```
 
 # CLT
@@ -76,24 +151,52 @@ se = function(x){
 }
 ```
 
+### Generating samples
+
 ```{r}
+
+#uniform 
+a=0
+b=10
+## -> mean = ??
+population = runif(100000, a, b)
+
 sample_size = 100 
 n_samples = 10000
 
 df_trial <- tibble(
   sample_ID = rep(1:n_samples, each=sample_size),
-  value = runif(sample_size*n_samples, -10, 0)
+  value = sample(x=population,
+                 size=sample_size*n_samples, 
+                 replace = TRUE,
+                 prob=rep(1/length(population), length(population))
+                 )
   )
 
+df_trial
+```
+
+### Standardizing each sample
+
+```{r}
 df_standart = 
   df_trial |> 
   group_by(sample_ID) |> 
   summarize(m = mean(value)) |> 
-  mutate(z_m = (m - mean(m))/sd(m)) 
+  mutate(z_m = (m - mean(m))/sd(m) ) # <-- Formula! 
 
+df_standart
+
+```
+
+```{r}
+#for non-standard
+mean(df_standart$m)
+sd(df_standart$m)
+
+#for standard
 mean(df_standart$z_m)
 sd(df_standart$z_m)
-
 ```
 
 ```{r}
@@ -117,20 +220,29 @@ sample = runif(n=sample_size, min=0, max=10)
 hist(sample)
 ```
 
+### Generating samples
+
 ```{r}
 n_samples = 1000
 
 df_trial <- data.frame(
   sample_ID = rep(1:n_samples, each=sample_size),
-    value = runif(sample_size*n_samples, 0, 10) # generating sample_size*n_samples values from the same distibution
+    value = runif(sample_size*n_samples, 0, 10) 
+  # generating sample_size*n_samples values from the same distibution
   )
 
-df_trial |> group_by(sample_ID) |> 
-  summarize(m = mean(value)) |> 
-  ggplot() + geom_histogram(aes(x=m), bins=30, col='black', fill='skyblue')
+df_means_from_samples = 
+  df_trial |> group_by(sample_ID) |> 
+  summarize(m = mean(value)) 
+
+df_means_from_samples |> 
+  ggplot() + 
+  geom_histogram(aes(x=m), bins=30, col='black', fill='skyblue')
 ```
 
 ### Sample from exponential distribution
+
+> Write the code!
 
 ```{r}
 sample_size = 1000 
@@ -140,33 +252,37 @@ sample_size = 1000
 # hist()
 ```
 
+#### Generating samples
+
+> Write the code!
+
 ```{r, eval=F}
 n_samples = 1000
 
 df_trial <- data.frame(
   sample_ID = rep(1:n_samples, each=sample_size),
-    # value = rexp()
+    # value = 
   )
 
-df_trial |>
-  group_by(sample_ID) |> 
-  # summarize(....) |> 
-  
-  ggplot() +
-  geom_histogram(aes(x=m), bins=30, col='black', fill='skyblue')
+df_means_from_samples = df_trial |>
+  # group_by() |> 
+  # summarize()
+
+df_means_from_samples |> 
+  # ggplot() +
+  # geom_histogram()
 ```
 
 # Confidence intervals
 
-## Standard normal
+## Using standard normal
+
+### Sample
 
 ```{r}
 true_mean = 5
 true_sd = 1
-```
-### Sample
 
-```{r}
 sample_size = 50
 
 sample = rnorm(sample_size, true_mean, true_sd)
@@ -233,6 +349,7 @@ true_mean = 5
 true_sd = 2
 
 ```
+
 ### Sample
 
 ```{r}
@@ -253,6 +370,7 @@ hist(sample)
 quantiles = qt(df = length(sample)-1, p = c(0.025, 0.975)) 
 quantiles
 ```
+
 ```{r}
 c(
   sample_mean + quantiles[1] * sample_se,
@@ -269,4 +387,3 @@ Looking only on "*95 percent confidence interval:*"
 ```{r}
 t.test(sample)
 ```
-

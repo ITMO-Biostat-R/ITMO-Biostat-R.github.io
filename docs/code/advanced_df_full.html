@@ -1,0 +1,1861 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2025-01-10">
+
+<title>Working with Dataframes – Biostatistics in R</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Biostatistics in R</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#reading-data-from-files" id="toc-reading-data-from-files" class="nav-link active" data-scroll-target="#reading-data-from-files">Reading data from files</a>
+  <ul class="collapse">
+  <li><a href="#base-r" id="toc-base-r" class="nav-link" data-scroll-target="#base-r">base R</a></li>
+  <li><a href="#readr-package" id="toc-readr-package" class="nav-link" data-scroll-target="#readr-package"><code>readr</code> package</a></li>
+  </ul></li>
+  <li><a href="#students-lifestyle-dataset" id="toc-students-lifestyle-dataset" class="nav-link" data-scroll-target="#students-lifestyle-dataset">Students Lifestyle dataset</a></li>
+  <li><a href="#tidy" id="toc-tidy" class="nav-link" data-scroll-target="#tidy">Tidy</a>
+  <ul class="collapse">
+  <li><a href="#libraries" id="toc-libraries" class="nav-link" data-scroll-target="#libraries">Libraries</a></li>
+  <li><a href="#tibble" id="toc-tibble" class="nav-link" data-scroll-target="#tibble">Tibble</a></li>
+  </ul></li>
+  <li><a href="#pipe" id="toc-pipe" class="nav-link" data-scroll-target="#pipe">Pipe %&gt;% (|&gt;)</a>
+  <ul class="collapse">
+  <li><a href="#important-feature-of-pipe-is-dot-.-advanced" id="toc-important-feature-of-pipe-is-dot-.-advanced" class="nav-link" data-scroll-target="#important-feature-of-pipe-is-dot-.-advanced">Important feature of pipe is dot <code>.</code> (<em>advanced)</em></a></li>
+  </ul></li>
+  <li><a href="#tidyverse-functions" id="toc-tidyverse-functions" class="nav-link" data-scroll-target="#tidyverse-functions">tidyverse functions</a>
+  <ul class="collapse">
+  <li><a href="#dplyr" id="toc-dplyr" class="nav-link" data-scroll-target="#dplyr"><code>dplyr</code></a>
+  <ul class="collapse">
+  <li><a href="#glimpse-structure" id="toc-glimpse-structure" class="nav-link" data-scroll-target="#glimpse-structure">Glimpse (structure)</a></li>
+  <li><a href="#arranging-order" id="toc-arranging-order" class="nav-link" data-scroll-target="#arranging-order">Arranging (order)</a></li>
+  <li><a href="#select" id="toc-select" class="nav-link" data-scroll-target="#select">Select</a></li>
+  <li><a href="#pull" id="toc-pull" class="nav-link" data-scroll-target="#pull">Pull</a></li>
+  <li><a href="#filtering" id="toc-filtering" class="nav-link" data-scroll-target="#filtering">Filtering</a></li>
+  <li><a href="#slice" id="toc-slice" class="nav-link" data-scroll-target="#slice">Slice</a></li>
+  <li><a href="#rename-column" id="toc-rename-column" class="nav-link" data-scroll-target="#rename-column">Rename column</a></li>
+  <li><a href="#mutate" id="toc-mutate" class="nav-link" data-scroll-target="#mutate">Mutate</a></li>
+  <li><a href="#distinct" id="toc-distinct" class="nav-link" data-scroll-target="#distinct">Distinct</a></li>
+  </ul></li>
+  <li><a href="#tidyr" id="toc-tidyr" class="nav-link" data-scroll-target="#tidyr"><code>tidyr</code></a>
+  <ul class="collapse">
+  <li><a href="#separate" id="toc-separate" class="nav-link" data-scroll-target="#separate">Separate</a></li>
+  <li><a href="#unite" id="toc-unite" class="nav-link" data-scroll-target="#unite">Unite</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#deal-with-empty-values" id="toc-deal-with-empty-values" class="nav-link" data-scroll-target="#deal-with-empty-values">Deal with empty values</a>
+  <ul class="collapse">
+  <li><a href="#rows-with-nas-in-extracurricular_hours_per_day" id="toc-rows-with-nas-in-extracurricular_hours_per_day" class="nav-link" data-scroll-target="#rows-with-nas-in-extracurricular_hours_per_day">Rows with NAs in <code>Extracurricular_Hours_Per_Day</code>:</a></li>
+  <li><a href="#rows-with-any-nas" id="toc-rows-with-any-nas" class="nav-link" data-scroll-target="#rows-with-any-nas">Rows with any NAs</a></li>
+  <li><a href="#delete-rows-containing-nas" id="toc-delete-rows-containing-nas" class="nav-link" data-scroll-target="#delete-rows-containing-nas">Delete rows containing NAs</a></li>
+  <li><a href="#replace-with-value" id="toc-replace-with-value" class="nav-link" data-scroll-target="#replace-with-value">Replace with value</a>
+  <ul class="collapse">
+  <li><a href="#simple" id="toc-simple" class="nav-link" data-scroll-target="#simple">simple</a></li>
+  <li><a href="#advanced-1" id="toc-advanced-1" class="nav-link" data-scroll-target="#advanced-1"><em>advanced</em></a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#writing-a-data-into-file" id="toc-writing-a-data-into-file" class="nav-link" data-scroll-target="#writing-a-data-into-file">Writing a data into file</a></li>
+  <li><a href="#p.s.-for-additional-self-study" id="toc-p.s.-for-additional-self-study" class="nav-link" data-scroll-target="#p.s.-for-additional-self-study">P.S. for additional self-study</a>
+  <ul class="collapse">
+  <li><a href="#joins" id="toc-joins" class="nav-link" data-scroll-target="#joins">Joins</a></li>
+  <li><a href="#grouping" id="toc-grouping" class="nav-link" data-scroll-target="#grouping">Grouping</a></li>
+  <li><a href="#slice_head" id="toc-slice_head" class="nav-link" data-scroll-target="#slice_head">Slice_head()</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Working with Dataframes</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">January 10, 2025</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="reading-data-from-files" class="level1">
+<h1>Reading data from files</h1>
+<section id="base-r" class="level2">
+<h2 class="anchored" data-anchor-id="base-r">base R</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>students_hours <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">"../data/student_lifestyle_dataset.csv"</span>, </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>                          <span class="at">row.names =</span> <span class="dv">1</span>,</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>                          <span class="co"># header = F,</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>                          <span class="at">na.strings =</span> <span class="fu">c</span>(<span class="st">''</span>,<span class="st">'-'</span>,<span class="st">'dead'</span>),</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>                          <span class="co"># comment.char = '#',</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>                          <span class="co"># sep = ' ',</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>                          <span class="co"># skip = 2,</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>                          <span class="at">stringsAsFactors =</span> T</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>                          )</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># read.csv2()</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co"># read.table()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><p><code>na.strings = c('','-')</code>- sometimes R interprets empty text in factor columns as one of factor levels. Therefore, this parameter is useful</p></li>
+<li><p><code>row.names = 1</code> - make the first column the rows names</p></li>
+<li><p><code>header = TRUE</code> - whether the data file have a header</p></li>
+<li><p><code>comment.char = '#'</code> - files can contain comments which starts with specific symbol</p></li>
+<li><p><code>sep=','</code> - specification of column separator in file.<br>
+Specific functions (such as <code>read.tsv, read.csv</code>) usually have specific parameter value set (<code>tsv =&gt; '\t', csv =&gt; ','</code>). However, sometimes people name files <code>csv</code> and use, for instance, <code>';'</code> separator which should be specified.</p></li>
+<li><p><code>skip = 2</code> - for example, if the file contains a additional text of the data in the first few lines, you must specify the number of them that should not be interpreted as part of the dataframe</p></li>
+<li><p><code>stringsAsFactors = TRUE</code> - make all character columns (with text) be interpreted as factors</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>students_hours <span class="sc">|&gt;</span> <span class="fu">str</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   2000 obs. of  7 variables:
+ $ Study_Hours_Per_Day            : num  6.9 5.3 5.1 6.5 8.1 6 8 8.4 5.2 7.7 ...
+ $ Extracurricular_Hours_Per_Day  : num  3.8 3.5 3.9 2.1 0.6 2.1 0.7 1.8 3.6 0.7 ...
+ $ Sleep_Hours_Per_Day            : num  8.7 8 9.2 7.2 6.5 8 5.3 5.6 6.3 9.8 ...
+ $ Social_Hours_Per_Day           : num  2.8 4.2 1.2 1.7 2.2 0.3 5.7 3 4 4.5 ...
+ $ Physical_Activity_Hours_Per_Day: num  1.8 3 4.6 6.5 6.6 7.6 4.3 5.2 4.9 1.3 ...
+ $ GPA                            : num  2.99 2.75 2.67 2.88 3.51 2.85 3.08 3.2 2.82 2.76 ...
+ $ Stress_Level                   : Factor w/ 3 levels "High","Low","Moderate": 3 2 2 3 1 3 1 1 2 3 ...</code></pre>
+</div>
+</div>
+</section>
+<section id="readr-package" class="level2">
+<h2 class="anchored" data-anchor-id="readr-package"><code>readr</code> package</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># read_tsv()</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># read_table().</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">read_csv</span>(<span class="st">"../data/student_lifestyle_dataset.csv"</span>, </span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">na =</span> <span class="fu">c</span>(<span class="st">''</span>, <span class="st">'-'</span>),</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>         <span class="co"># comment = '#'</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>         <span class="co"># quote = '#',</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>         <span class="co"># skip = 2</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>         ) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 8
+  Student_ID Study_Hours_Per_Day Extracurricular_Hours_Per…¹ Sleep_Hours_Per_Day
+       &lt;dbl&gt;               &lt;dbl&gt;                       &lt;dbl&gt;               &lt;dbl&gt;
+1          1                 6.9                         3.8                 8.7
+2          2                 5.3                         3.5                 8  
+3          3                 5.1                         3.9                 9.2
+4          4                 6.5                         2.1                 7.2
+5          5                 8.1                         0.6                 6.5
+6          6                 6                           2.1                 8  
+# ℹ abbreviated name: ¹​Extracurricular_Hours_Per_Day
+# ℹ 4 more variables: Social_Hours_Per_Day &lt;dbl&gt;,
+#   Physical_Activity_Hours_Per_Day &lt;dbl&gt;, GPA &lt;dbl&gt;, Stress_Level &lt;chr&gt;</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="students-lifestyle-dataset" class="level1">
+<h1>Students Lifestyle dataset</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(students_hours) <span class="co"># first 5 records</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Study_Hours_Per_Day Extracurricular_Hours_Per_Day Sleep_Hours_Per_Day
+1                 6.9                           3.8                 8.7
+2                 5.3                           3.5                 8.0
+3                 5.1                           3.9                 9.2
+4                 6.5                           2.1                 7.2
+5                 8.1                           0.6                 6.5
+6                 6.0                           2.1                 8.0
+  Social_Hours_Per_Day Physical_Activity_Hours_Per_Day  GPA Stress_Level
+1                  2.8                             1.8 2.99     Moderate
+2                  4.2                             3.0 2.75          Low
+3                  1.2                             4.6 2.67          Low
+4                  1.7                             6.5 2.88     Moderate
+5                  2.2                             6.6 3.51         High
+6                  0.3                             7.6 2.85     Moderate</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(students_hours) <span class="co"># last 5 records</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     Study_Hours_Per_Day Extracurricular_Hours_Per_Day Sleep_Hours_Per_Day
+1995                 7.9                           3.4                 9.0
+1996                 6.5                           0.2                 7.4
+1997                 6.3                           2.8                 8.8
+1998                 6.2                           0.0                 6.2
+1999                 8.1                           0.7                 7.6
+2000                 9.0                           1.7                 7.3
+     Social_Hours_Per_Day Physical_Activity_Hours_Per_Day  GPA Stress_Level
+1995                  0.5                             3.2 3.08     Moderate
+1996                  2.1                             7.8 3.32     Moderate
+1997                  1.5                             4.6 2.65     Moderate
+1998                  0.8                            10.8 3.14     Moderate
+1999                  3.5                             4.1 3.04         High
+2000                  3.1                             2.9 3.58         High</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(students_hours)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   2000 obs. of  7 variables:
+ $ Study_Hours_Per_Day            : num  6.9 5.3 5.1 6.5 8.1 6 8 8.4 5.2 7.7 ...
+ $ Extracurricular_Hours_Per_Day  : num  3.8 3.5 3.9 2.1 0.6 2.1 0.7 1.8 3.6 0.7 ...
+ $ Sleep_Hours_Per_Day            : num  8.7 8 9.2 7.2 6.5 8 5.3 5.6 6.3 9.8 ...
+ $ Social_Hours_Per_Day           : num  2.8 4.2 1.2 1.7 2.2 0.3 5.7 3 4 4.5 ...
+ $ Physical_Activity_Hours_Per_Day: num  1.8 3 4.6 6.5 6.6 7.6 4.3 5.2 4.9 1.3 ...
+ $ GPA                            : num  2.99 2.75 2.67 2.88 3.51 2.85 3.08 3.2 2.82 2.76 ...
+ $ Stress_Level                   : Factor w/ 3 levels "High","Low","Moderate": 3 2 2 3 1 3 1 1 2 3 ...</code></pre>
+</div>
+</div>
+<p>Making stress level a factor as it has 3 levels:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># students_hours$Stress_Level = as.factor(students_hours$Stress_Level)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Summary</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(students_hours)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> Study_Hours_Per_Day Extracurricular_Hours_Per_Day Sleep_Hours_Per_Day
+ Min.   : 5.000      Min.   :0.000                 Min.   : 5.0       
+ 1st Qu.: 6.300      1st Qu.:1.000                 1st Qu.: 6.2       
+ Median : 7.400      Median :2.000                 Median : 7.5       
+ Mean   : 7.475      Mean   :1.991                 Mean   : 7.5       
+ 3rd Qu.: 8.700      3rd Qu.:3.000                 3rd Qu.: 8.8       
+ Max.   :10.000      Max.   :4.000                 Max.   :10.0       
+ NA's   :1           NA's   :4                     NA's   :2          
+ Social_Hours_Per_Day Physical_Activity_Hours_Per_Day      GPA       
+ Min.   :0.000        Min.   : 0.00                   Min.   :2.240  
+ 1st Qu.:1.200        1st Qu.: 2.40                   1st Qu.:2.900  
+ Median :2.600        Median : 4.10                   Median :3.110  
+ Mean   :2.706        Mean   : 4.33                   Mean   :3.116  
+ 3rd Qu.:4.100        3rd Qu.: 6.10                   3rd Qu.:3.330  
+ Max.   :6.000        Max.   :13.00                   Max.   :4.000  
+ NA's   :4            NA's   :1                       NA's   :1      
+   Stress_Level 
+ High    :1028  
+ Low     : 297  
+ Moderate: 674  
+ NA's    :   1  
+                
+                
+                </code></pre>
+</div>
+</div>
+</section>
+<section id="tidy" class="level1">
+<h1>Tidy</h1>
+<section id="libraries" class="level2">
+<h2 class="anchored" data-anchor-id="libraries">Libraries</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(c("dplyr", "tidyr", 'readr'))</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("tidyverse")</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="co"># library(dplyr)</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="co"># library(tidyr)</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="co"># library(readr)</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="co"># library(tidyverse)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="tibble" class="level2">
+<h2 class="anchored" data-anchor-id="tibble">Tibble</h2>
+<ul>
+<li><p>Looks like <code>data.frame</code></p></li>
+<li><p>Behave more conveniently</p>
+<ul>
+<li><p>never changes input data types</p></li>
+<li><p>never customizes variable names</p></li>
+<li><p>never prints all lines</p></li>
+</ul></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="ot">=</span> <span class="fu">as_tibble</span>(students_hours)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>students_tibble</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2,000 × 7
+   Study_Hours_Per_Day Extracurricular_Hours_Per_Day Sleep_Hours_Per_Day
+                 &lt;dbl&gt;                         &lt;dbl&gt;               &lt;dbl&gt;
+ 1                 6.9                           3.8                 8.7
+ 2                 5.3                           3.5                 8  
+ 3                 5.1                           3.9                 9.2
+ 4                 6.5                           2.1                 7.2
+ 5                 8.1                           0.6                 6.5
+ 6                 6                             2.1                 8  
+ 7                 8                             0.7                 5.3
+ 8                 8.4                           1.8                 5.6
+ 9                 5.2                           3.6                 6.3
+10                 7.7                           0.7                 9.8
+# ℹ 1,990 more rows
+# ℹ 4 more variables: Social_Hours_Per_Day &lt;dbl&gt;,
+#   Physical_Activity_Hours_Per_Day &lt;dbl&gt;, GPA &lt;dbl&gt;, Stress_Level &lt;fct&gt;</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="pipe" class="level1">
+<h1>Pipe %&gt;% (|&gt;)</h1>
+<p>Using <code>Ctrl+Shift+M / Cmd+Shift+M</code> you can rapidly print so-called pipe <code>%&gt;%</code></p>
+<p>It is very convenient way to <strong>write code from “left to right”</strong>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="fu">mean</span>(students_hours<span class="sc">$</span>Extracurricular_Hours_Per_Day, <span class="at">na.rm =</span> T))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.411128</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>students_hours<span class="sc">$</span>Extracurricular_Hours_Per_Day <span class="sc">%&gt;%</span> <span class="fu">mean</span>(<span class="at">na.rm =</span> T) <span class="sc">%&gt;%</span> <span class="fu">sqrt</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.411128</code></pre>
+</div>
+</div>
+<p><strong>Larger example.</strong> Compare two ways to reach the same result:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summarise</span>(<span class="fu">select</span>(<span class="fu">filter</span>(students_tibble, Extracurricular_Hours_Per_Day <span class="sc">&gt;</span> <span class="dv">1</span>), </span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>                 Sleep_Hours_Per_Day), <span class="at">Sleep_Hours_Mean =</span> <span class="fu">mean</span>(Sleep_Hours_Per_Day))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 1
+  Sleep_Hours_Mean
+             &lt;dbl&gt;
+1             7.49</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span> </span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Extracurricular_Hours_Per_Day <span class="sc">&gt;</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Sleep_Hours_Per_Day) <span class="sc">%&gt;%</span> </span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">Sleep_Hours_Mean =</span> <span class="fu">mean</span>(Sleep_Hours_Per_Day))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 1
+  Sleep_Hours_Mean
+             &lt;dbl&gt;
+1             7.49</code></pre>
+</div>
+</div>
+<blockquote class="blockquote">
+<p><strong>The function after <code>%&gt;%</code> gets the dataset as the first variable and allows us not to write it</strong></p>
+<p><strong>Pipe just apply the function to the table, but change it. To change table you shoul do something like this:</strong> <code>df = df %&gt;% some_function()</code></p>
+</blockquote>
+<p>Yes, you noticed some new functions like <code>filter</code> and <code>select</code>. <strong>They are more of them in <code>dplyr</code></strong></p>
+<section id="important-feature-of-pipe-is-dot-.-advanced" class="level2">
+<h2 class="anchored" data-anchor-id="important-feature-of-pipe-is-dot-.-advanced">Important feature of pipe is dot <code>.</code> (<em>advanced)</em></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span> <span class="fu">select</span>(Study_Hours_Per_Day<span class="sc">:</span>Physical_Activity_Hours_Per_Day) <span class="sc">%&gt;%</span> </span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">rowSums</span>(.) <span class="sc">&gt;</span> <span class="dv">24</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 205 × 5
+   Study_Hours_Per_Day Extracurricular_Hours_Per_Day Sleep_Hours_Per_Day
+                 &lt;dbl&gt;                         &lt;dbl&gt;               &lt;dbl&gt;
+ 1                 7.7                           0.7                 9.8
+ 2                 6.9                           1.1                 9.1
+ 3                 5                             3.3                 8.5
+ 4                 8.6                           2.6                 9.4
+ 5                 9.7                           1.3                 7.6
+ 6                 9.9                           1                   8.4
+ 7                 8.2                           0.3                 5.8
+ 8                 9.7                           3.8                 9.6
+ 9                 9.3                           1.3                 5.8
+10                 9                             2.6                 8.5
+# ℹ 195 more rows
+# ℹ 2 more variables: Social_Hours_Per_Day &lt;dbl&gt;,
+#   Physical_Activity_Hours_Per_Day &lt;dbl&gt;</code></pre>
+</div>
+</div>
+<p>If we need our dataset (object after which the first pipe was written) inside a function a second time, we can refer to it via dot <code>.</code></p>
+</section>
+</section>
+<section id="tidyverse-functions" class="level1">
+<h1>tidyverse functions</h1>
+<p><strong>and comparison with what we already know</strong></p>
+<section id="dplyr" class="level2">
+<h2 class="anchored" data-anchor-id="dplyr"><code>dplyr</code></h2>
+<section id="glimpse-structure" class="level3">
+<h3 class="anchored" data-anchor-id="glimpse-structure">Glimpse (structure)</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(students_tibble)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>tibble [2,000 × 7] (S3: tbl_df/tbl/data.frame)
+ $ Study_Hours_Per_Day            : num [1:2000] 6.9 5.3 5.1 6.5 8.1 6 8 8.4 5.2 7.7 ...
+ $ Extracurricular_Hours_Per_Day  : num [1:2000] 3.8 3.5 3.9 2.1 0.6 2.1 0.7 1.8 3.6 0.7 ...
+ $ Sleep_Hours_Per_Day            : num [1:2000] 8.7 8 9.2 7.2 6.5 8 5.3 5.6 6.3 9.8 ...
+ $ Social_Hours_Per_Day           : num [1:2000] 2.8 4.2 1.2 1.7 2.2 0.3 5.7 3 4 4.5 ...
+ $ Physical_Activity_Hours_Per_Day: num [1:2000] 1.8 3 4.6 6.5 6.6 7.6 4.3 5.2 4.9 1.3 ...
+ $ GPA                            : num [1:2000] 2.99 2.75 2.67 2.88 3.51 2.85 3.08 3.2 2.82 2.76 ...
+ $ Stress_Level                   : Factor w/ 3 levels "High","Low","Moderate": 3 2 2 3 1 3 1 1 2 3 ...</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span> <span class="fu">glimpse</span>(<span class="at">width =</span> <span class="dv">50</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 2,000
+Columns: 7
+$ Study_Hours_Per_Day             &lt;dbl&gt; 6.9, 5.3…
+$ Extracurricular_Hours_Per_Day   &lt;dbl&gt; 3.8, 3.5…
+$ Sleep_Hours_Per_Day             &lt;dbl&gt; 8.7, 8.0…
+$ Social_Hours_Per_Day            &lt;dbl&gt; 2.8, 4.2…
+$ Physical_Activity_Hours_Per_Day &lt;dbl&gt; 1.8, 3.0…
+$ GPA                             &lt;dbl&gt; 2.99, 2.…
+$ Stress_Level                    &lt;fct&gt; Moderate…</code></pre>
+</div>
+</div>
+</section>
+<section id="arranging-order" class="level3">
+<h3 class="anchored" data-anchor-id="arranging-order">Arranging (order)</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># students_tibble[order(students_tibble$Study_Hours_Per_Day), ]</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(Study_Hours_Per_Day)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2,000 × 7
+   Study_Hours_Per_Day Extracurricular_Hours_Per_Day Sleep_Hours_Per_Day
+                 &lt;dbl&gt;                         &lt;dbl&gt;               &lt;dbl&gt;
+ 1                   5                           3.3                 8.5
+ 2                   5                           2                   7.1
+ 3                   5                           0.6                 7.7
+ 4                   5                           1                   8.6
+ 5                   5                           4                   8.4
+ 6                   5                           1.7                 7.6
+ 7                   5                           1.7                 5.5
+ 8                   5                           3.5                 9  
+ 9                   5                           1.6                 6.2
+10                   5                           0.2                 9.9
+# ℹ 1,990 more rows
+# ℹ 4 more variables: Social_Hours_Per_Day &lt;dbl&gt;,
+#   Physical_Activity_Hours_Per_Day &lt;dbl&gt;, GPA &lt;dbl&gt;, Stress_Level &lt;fct&gt;</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># students_tibble[order(students_tibble$Study_Hours_Per_Day, decreasing = T),]</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(<span class="fu">desc</span>(Study_Hours_Per_Day))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2,000 × 7
+   Study_Hours_Per_Day Extracurricular_Hours_Per_Day Sleep_Hours_Per_Day
+                 &lt;dbl&gt;                         &lt;dbl&gt;               &lt;dbl&gt;
+ 1                  10                           2.2                 8.8
+ 2                  10                           0.2                 9.9
+ 3                  10                           2.6                 7.8
+ 4                  10                           3.7                 7.7
+ 5                  10                           1.5                 7.2
+ 6                  10                           3.7                 8.2
+ 7                  10                           0.5                 6.4
+ 8                  10                           3.5                 8.1
+ 9                  10                           2.2                 9.8
+10                  10                           0.2                 8.8
+# ℹ 1,990 more rows
+# ℹ 4 more variables: Social_Hours_Per_Day &lt;dbl&gt;,
+#   Physical_Activity_Hours_Per_Day &lt;dbl&gt;, GPA &lt;dbl&gt;, Stress_Level &lt;fct&gt;</code></pre>
+</div>
+</div>
+</section>
+<section id="select" class="level3">
+<h3 class="anchored" data-anchor-id="select">Select</h3>
+<p>Select columns by names</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># students_tibble[, c("Extracurricular_Hours_Per_Day", "Study_Hours_Per_Day")]</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span> <span class="fu">select</span>(Extracurricular_Hours_Per_Day, Study_Hours_Per_Day)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2,000 × 2
+   Extracurricular_Hours_Per_Day Study_Hours_Per_Day
+                           &lt;dbl&gt;               &lt;dbl&gt;
+ 1                           3.8                 6.9
+ 2                           3.5                 5.3
+ 3                           3.9                 5.1
+ 4                           2.1                 6.5
+ 5                           0.6                 8.1
+ 6                           2.1                 6  
+ 7                           0.7                 8  
+ 8                           1.8                 8.4
+ 9                           3.6                 5.2
+10                           0.7                 7.7
+# ℹ 1,990 more rows</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span>  <span class="fu">select</span>(<span class="sc">-</span>(Study_Hours_Per_Day<span class="sc">:</span>Social_Hours_Per_Day))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2,000 × 3
+   Physical_Activity_Hours_Per_Day   GPA Stress_Level
+                             &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt;       
+ 1                             1.8  2.99 Moderate    
+ 2                             3    2.75 Low         
+ 3                             4.6  2.67 Low         
+ 4                             6.5  2.88 Moderate    
+ 5                             6.6  3.51 High        
+ 6                             7.6  2.85 Moderate    
+ 7                             4.3  3.08 High        
+ 8                             5.2  3.2  High        
+ 9                             4.9  2.82 Low         
+10                             1.3  2.76 Moderate    
+# ℹ 1,990 more rows</code></pre>
+</div>
+</div>
+<p>Minuses are useful for easy column deletion. And also you can use <code>col1:col5</code> to select columns from the range.</p>
+<p><strong><code>select()</code> is powerful function and it is possible to combine it with other functions.</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># contains</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="fu">contains</span>(<span class="st">'Hours'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2,000 × 5
+   Study_Hours_Per_Day Extracurricular_Hours_Per_Day Sleep_Hours_Per_Day
+                 &lt;dbl&gt;                         &lt;dbl&gt;               &lt;dbl&gt;
+ 1                 6.9                           3.8                 8.7
+ 2                 5.3                           3.5                 8  
+ 3                 5.1                           3.9                 9.2
+ 4                 6.5                           2.1                 7.2
+ 5                 8.1                           0.6                 6.5
+ 6                 6                             2.1                 8  
+ 7                 8                             0.7                 5.3
+ 8                 8.4                           1.8                 5.6
+ 9                 5.2                           3.6                 6.3
+10                 7.7                           0.7                 9.8
+# ℹ 1,990 more rows
+# ℹ 2 more variables: Social_Hours_Per_Day &lt;dbl&gt;,
+#   Physical_Activity_Hours_Per_Day &lt;dbl&gt;</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co">#endswith (also there is starts_with() ficntion)</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="fu">ends_with</span>(<span class="st">'Per_Day'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2,000 × 5
+   Study_Hours_Per_Day Extracurricular_Hours_Per_Day Sleep_Hours_Per_Day
+                 &lt;dbl&gt;                         &lt;dbl&gt;               &lt;dbl&gt;
+ 1                 6.9                           3.8                 8.7
+ 2                 5.3                           3.5                 8  
+ 3                 5.1                           3.9                 9.2
+ 4                 6.5                           2.1                 7.2
+ 5                 8.1                           0.6                 6.5
+ 6                 6                             2.1                 8  
+ 7                 8                             0.7                 5.3
+ 8                 8.4                           1.8                 5.6
+ 9                 5.2                           3.6                 6.3
+10                 7.7                           0.7                 9.8
+# ℹ 1,990 more rows
+# ℹ 2 more variables: Social_Hours_Per_Day &lt;dbl&gt;,
+#   Physical_Activity_Hours_Per_Day &lt;dbl&gt;</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># only numeric columns</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="fu">where</span>(is.numeric)) <span class="sc">%&gt;%</span> <span class="fu">mean</span>(<span class="at">na.rm =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] NA</code></pre>
+</div>
+</div>
+</section>
+<section id="pull" class="level3">
+<h3 class="anchored" data-anchor-id="pull">Pull</h3>
+<p>Extract column as vector</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># students_tibble$Extracurricular_Hours_Per_Day</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span> <span class="fu">pull</span>(Extracurricular_Hours_Per_Day) <span class="sc">%&gt;%</span> <span class="fu">mean</span>(<span class="at">na.rm =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.991283</code></pre>
+</div>
+</div>
+</section>
+<section id="filtering" class="level3">
+<h3 class="anchored" data-anchor-id="filtering">Filtering</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># students_tibble[students_tibble$Extracurricular_Hours_Per_Day &gt; 2 &amp; students_tibble$Study_Hours_Per_Day &gt; 3,]</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Extracurricular_Hours_Per_Day <span class="sc">&gt;</span> <span class="dv">2</span>, </span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>                           Extracurricular_Hours_Per_Day <span class="sc">&lt;</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 445 × 7
+   Study_Hours_Per_Day Extracurricular_Hours_Per_Day Sleep_Hours_Per_Day
+                 &lt;dbl&gt;                         &lt;dbl&gt;               &lt;dbl&gt;
+ 1                 6.5                           2.1                 7.2
+ 2                 6                             2.1                 8  
+ 3                 6.4                           2.2                 5.7
+ 4                 8.6                           2.6                 9.4
+ 5                 8.8                           2.2                 8.9
+ 6                 6.2                           2.9                 6.8
+ 7                 5.2                           2.4                 8.4
+ 8                 9.1                           2.2                 7.6
+ 9                 9.5                           2.5                 9  
+10                 9.7                           2.8                 7.9
+# ℹ 435 more rows
+# ℹ 4 more variables: Social_Hours_Per_Day &lt;dbl&gt;,
+#   Physical_Activity_Hours_Per_Day &lt;dbl&gt;, GPA &lt;dbl&gt;, Stress_Level &lt;fct&gt;</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="fu">between</span>(Extracurricular_Hours_Per_Day, <span class="dv">2</span>, <span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 554 × 7
+   Study_Hours_Per_Day Extracurricular_Hours_Per_Day Sleep_Hours_Per_Day
+                 &lt;dbl&gt;                         &lt;dbl&gt;               &lt;dbl&gt;
+ 1                 6.5                           2.1                 7.2
+ 2                 6                             2.1                 8  
+ 3                 6.4                           2.2                 5.7
+ 4                 8.6                           2.6                 9.4
+ 5                 8.8                           2.2                 8.9
+ 6                 6.6                           2                   9.5
+ 7                 7.1                           3                   6.1
+ 8                 5                             2                   7.1
+ 9                 6.2                           2.9                 6.8
+10                 5.2                           2.4                 8.4
+# ℹ 544 more rows
+# ℹ 4 more variables: Social_Hours_Per_Day &lt;dbl&gt;,
+#   Physical_Activity_Hours_Per_Day &lt;dbl&gt;, GPA &lt;dbl&gt;, Stress_Level &lt;fct&gt;</code></pre>
+</div>
+</div>
+</section>
+<section id="slice" class="level3">
+<h3 class="anchored" data-anchor-id="slice">Slice</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># students_tibble[30:50,]</span></span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span> <span class="fu">slice</span>(<span class="dv">30</span><span class="sc">:</span><span class="dv">50</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 21 × 7
+   Study_Hours_Per_Day Extracurricular_Hours_Per_Day Sleep_Hours_Per_Day
+                 &lt;dbl&gt;                         &lt;dbl&gt;               &lt;dbl&gt;
+ 1                 9.9                           1                   8.4
+ 2                 6.2                           2.9                 6.8
+ 3                 5.5                           3.3                 6.6
+ 4                 5.2                           2.4                 8.4
+ 5                 8.2                           0.7                 8.5
+ 6                 9.7                           0.6                 6.7
+ 7                 9.1                           2.2                 7.6
+ 8                 5.5                           3.6                 9.5
+ 9                 8.6                           3.6                 9.4
+10                 8.2                           0.3                 5.8
+# ℹ 11 more rows
+# ℹ 4 more variables: Social_Hours_Per_Day &lt;dbl&gt;,
+#   Physical_Activity_Hours_Per_Day &lt;dbl&gt;, GPA &lt;dbl&gt;, Stress_Level &lt;fct&gt;</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># students_tibble[(nrow(students_tibble)-5):(nrow(students_tibble)),]</span></span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span> <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, (<span class="fu">n</span>()<span class="sc">-</span><span class="dv">5</span>)<span class="sc">:</span><span class="fu">n</span>()) <span class="co"># n() is number of "samples" (rows)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 11 × 7
+   Study_Hours_Per_Day Extracurricular_Hours_Per_Day Sleep_Hours_Per_Day
+                 &lt;dbl&gt;                         &lt;dbl&gt;               &lt;dbl&gt;
+ 1                 6.9                           3.8                 8.7
+ 2                 5.3                           3.5                 8  
+ 3                 5.1                           3.9                 9.2
+ 4                 6.5                           2.1                 7.2
+ 5                 8.1                           0.6                 6.5
+ 6                 7.9                           3.4                 9  
+ 7                 6.5                           0.2                 7.4
+ 8                 6.3                           2.8                 8.8
+ 9                 6.2                           0                   6.2
+10                 8.1                           0.7                 7.6
+11                 9                             1.7                 7.3
+# ℹ 4 more variables: Social_Hours_Per_Day &lt;dbl&gt;,
+#   Physical_Activity_Hours_Per_Day &lt;dbl&gt;, GPA &lt;dbl&gt;, Stress_Level &lt;fct&gt;</code></pre>
+</div>
+</div>
+</section>
+<section id="rename-column" class="level3">
+<h3 class="anchored" data-anchor-id="rename-column">Rename column</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co"># students_tibble$SHPD = students_tibble$Study_Hours_Per_Day </span></span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="co"># students_tibble$Study_Hours_Per_Day = NULL</span></span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a>students_tibble_2<span class="ot">=</span>students_tibble <span class="sc">%&gt;%</span>  <span class="fu">rename</span>(<span class="at">SHPD =</span> Study_Hours_Per_Day)</span>
+<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a>students_tibble_2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2,000 × 7
+    SHPD Extracurricular_Hours_Per_Day Sleep_Hours_Per_Day Social_Hours_Per_Day
+   &lt;dbl&gt;                         &lt;dbl&gt;               &lt;dbl&gt;                &lt;dbl&gt;
+ 1   6.9                           3.8                 8.7                  2.8
+ 2   5.3                           3.5                 8                    4.2
+ 3   5.1                           3.9                 9.2                  1.2
+ 4   6.5                           2.1                 7.2                  1.7
+ 5   8.1                           0.6                 6.5                  2.2
+ 6   6                             2.1                 8                    0.3
+ 7   8                             0.7                 5.3                  5.7
+ 8   8.4                           1.8                 5.6                  3  
+ 9   5.2                           3.6                 6.3                  4  
+10   7.7                           0.7                 9.8                  4.5
+# ℹ 1,990 more rows
+# ℹ 3 more variables: Physical_Activity_Hours_Per_Day &lt;dbl&gt;, GPA &lt;dbl&gt;,
+#   Stress_Level &lt;fct&gt;</code></pre>
+</div>
+</div>
+<section id="advanced-rename-column" class="level4">
+<h4 class="anchored" data-anchor-id="advanced-rename-column"><em>Advanced</em> rename column</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span>  <span class="fu">rename_with</span>(<span class="sc">~</span> <span class="fu">gsub</span>(<span class="st">"_Hours_Per_Day"</span>, <span class="st">"_h"</span>, .x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2,000 × 7
+   Study_h Extracurricular_h Sleep_h Social_h Physical_Activity_h   GPA
+     &lt;dbl&gt;             &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;               &lt;dbl&gt; &lt;dbl&gt;
+ 1     6.9               3.8     8.7      2.8                 1.8  2.99
+ 2     5.3               3.5     8        4.2                 3    2.75
+ 3     5.1               3.9     9.2      1.2                 4.6  2.67
+ 4     6.5               2.1     7.2      1.7                 6.5  2.88
+ 5     8.1               0.6     6.5      2.2                 6.6  3.51
+ 6     6                 2.1     8        0.3                 7.6  2.85
+ 7     8                 0.7     5.3      5.7                 4.3  3.08
+ 8     8.4               1.8     5.6      3                   5.2  3.2 
+ 9     5.2               3.6     6.3      4                   4.9  2.82
+10     7.7               0.7     9.8      4.5                 1.3  2.76
+# ℹ 1,990 more rows
+# ℹ 1 more variable: Stress_Level &lt;fct&gt;</code></pre>
+</div>
+</div>
+</section>
+<section id="advanced-rename-values-in-column" class="level4">
+<h4 class="anchored" data-anchor-id="advanced-rename-values-in-column"><em>Advanced</em> rename values in column</h4>
+<p><strong>For character columns (output is character)</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span> </span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Stress_Level =</span> <span class="fu">case_when</span>(</span>
+<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a>    Stress_Level <span class="sc">==</span> <span class="st">"High"</span> <span class="sc">~</span> <span class="st">'high'</span>,</span>
+<span id="cb61-4"><a href="#cb61-4" aria-hidden="true" tabindex="-1"></a>    Stress_Level <span class="sc">==</span> <span class="st">"Moderate"</span> <span class="sc">~</span> <span class="st">'medium'</span>,</span>
+<span id="cb61-5"><a href="#cb61-5" aria-hidden="true" tabindex="-1"></a>    Stress_Level <span class="sc">==</span> <span class="st">"Low"</span> <span class="sc">~</span> <span class="st">'low'</span>,</span>
+<span id="cb61-6"><a href="#cb61-6" aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> <span class="fu">as.character</span>(Stress_Level))) <span class="co">#remaining characters are not modified</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2,000 × 7
+   Study_Hours_Per_Day Extracurricular_Hours_Per_Day Sleep_Hours_Per_Day
+                 &lt;dbl&gt;                         &lt;dbl&gt;               &lt;dbl&gt;
+ 1                 6.9                           3.8                 8.7
+ 2                 5.3                           3.5                 8  
+ 3                 5.1                           3.9                 9.2
+ 4                 6.5                           2.1                 7.2
+ 5                 8.1                           0.6                 6.5
+ 6                 6                             2.1                 8  
+ 7                 8                             0.7                 5.3
+ 8                 8.4                           1.8                 5.6
+ 9                 5.2                           3.6                 6.3
+10                 7.7                           0.7                 9.8
+# ℹ 1,990 more rows
+# ℹ 4 more variables: Social_Hours_Per_Day &lt;dbl&gt;,
+#   Physical_Activity_Hours_Per_Day &lt;dbl&gt;, GPA &lt;dbl&gt;, Stress_Level &lt;chr&gt;</code></pre>
+</div>
+</div>
+<p><strong>For factor columns</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span> </span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Stress_Level =</span> <span class="fu">recode</span>(Stress_Level,</span>
+<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a>                               <span class="st">"High"</span> <span class="ot">=</span> <span class="st">'high'</span>,</span>
+<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a>                               <span class="st">"Moderate"</span> <span class="ot">=</span> <span class="st">'medium'</span>,</span>
+<span id="cb63-5"><a href="#cb63-5" aria-hidden="true" tabindex="-1"></a>                               <span class="st">"Low"</span> <span class="ot">=</span> <span class="st">'low'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2,000 × 7
+   Study_Hours_Per_Day Extracurricular_Hours_Per_Day Sleep_Hours_Per_Day
+                 &lt;dbl&gt;                         &lt;dbl&gt;               &lt;dbl&gt;
+ 1                 6.9                           3.8                 8.7
+ 2                 5.3                           3.5                 8  
+ 3                 5.1                           3.9                 9.2
+ 4                 6.5                           2.1                 7.2
+ 5                 8.1                           0.6                 6.5
+ 6                 6                             2.1                 8  
+ 7                 8                             0.7                 5.3
+ 8                 8.4                           1.8                 5.6
+ 9                 5.2                           3.6                 6.3
+10                 7.7                           0.7                 9.8
+# ℹ 1,990 more rows
+# ℹ 4 more variables: Social_Hours_Per_Day &lt;dbl&gt;,
+#   Physical_Activity_Hours_Per_Day &lt;dbl&gt;, GPA &lt;dbl&gt;, Stress_Level &lt;fct&gt;</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="mutate" class="level3">
+<h3 class="anchored" data-anchor-id="mutate">Mutate</h3>
+<p>Changing columns and creation new ones</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="co"># students_tibble$Stress_Level = as.factor(students_tibble$Stress_Level)</span></span>
+<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">Stress_Level =</span> <span class="fu">as.factor</span>(Stress_Level), </span>
+<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a>                           <span class="at">GPA =</span> <span class="fu">round</span>(GPA), </span>
+<span id="cb65-4"><a href="#cb65-4" aria-hidden="true" tabindex="-1"></a>                           <span class="at">GPA =</span> GPA<span class="sc">+</span><span class="dv">1</span></span>
+<span id="cb65-5"><a href="#cb65-5" aria-hidden="true" tabindex="-1"></a>                           <span class="co"># .keep='used'</span></span>
+<span id="cb65-6"><a href="#cb65-6" aria-hidden="true" tabindex="-1"></a>                           )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2,000 × 7
+   Study_Hours_Per_Day Extracurricular_Hours_Per_Day Sleep_Hours_Per_Day
+                 &lt;dbl&gt;                         &lt;dbl&gt;               &lt;dbl&gt;
+ 1                 6.9                           3.8                 8.7
+ 2                 5.3                           3.5                 8  
+ 3                 5.1                           3.9                 9.2
+ 4                 6.5                           2.1                 7.2
+ 5                 8.1                           0.6                 6.5
+ 6                 6                             2.1                 8  
+ 7                 8                             0.7                 5.3
+ 8                 8.4                           1.8                 5.6
+ 9                 5.2                           3.6                 6.3
+10                 7.7                           0.7                 9.8
+# ℹ 1,990 more rows
+# ℹ 4 more variables: Social_Hours_Per_Day &lt;dbl&gt;,
+#   Physical_Activity_Hours_Per_Day &lt;dbl&gt;, GPA &lt;dbl&gt;, Stress_Level &lt;fct&gt;</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="co"># students_tibble$GPA_sqrt = sqrt(students_tibble$GPA)</span></span>
+<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span> </span>
+<span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Non_Study_Day_Hours_Per_Day =</span></span>
+<span id="cb67-4"><a href="#cb67-4" aria-hidden="true" tabindex="-1"></a>           Social_Hours_Per_Day <span class="sc">+</span> Physical_Activity_Hours_Per_Day, </span>
+<span id="cb67-5"><a href="#cb67-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">.before =</span> <span class="dv">1</span>, <span class="at">.keep =</span> <span class="st">'all'</span></span>
+<span id="cb67-6"><a href="#cb67-6" aria-hidden="true" tabindex="-1"></a>         )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2,000 × 8
+   Non_Study_Day_Hours_Per_Day Study_Hours_Per_Day Extracurricular_Hours_Per_Day
+                         &lt;dbl&gt;               &lt;dbl&gt;                         &lt;dbl&gt;
+ 1                         4.6                 6.9                           3.8
+ 2                         7.2                 5.3                           3.5
+ 3                         5.8                 5.1                           3.9
+ 4                         8.2                 6.5                           2.1
+ 5                         8.8                 8.1                           0.6
+ 6                         7.9                 6                             2.1
+ 7                        10                   8                             0.7
+ 8                         8.2                 8.4                           1.8
+ 9                         8.9                 5.2                           3.6
+10                         5.8                 7.7                           0.7
+# ℹ 1,990 more rows
+# ℹ 5 more variables: Sleep_Hours_Per_Day &lt;dbl&gt;, Social_Hours_Per_Day &lt;dbl&gt;,
+#   Physical_Activity_Hours_Per_Day &lt;dbl&gt;, GPA &lt;dbl&gt;, Stress_Level &lt;fct&gt;</code></pre>
+</div>
+</div>
+<blockquote class="blockquote">
+<p>By default, <code>.keep = 'all'</code>, and usually it is not worth changing it or even writing this parameter</p>
+</blockquote>
+<section id="advanced-mutate" class="level4">
+<h4 class="anchored" data-anchor-id="advanced-mutate"><em>Advanced</em> mutate</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span> </span>
+<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># mutate(across(Study_Hours_Per_Day:Extracurricular_Hours_Per_Day, ~ floor(.x)))</span></span>
+<span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(Study_Hours_Per_Day<span class="sc">:</span>Extracurricular_Hours_Per_Day, floor))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2,000 × 7
+   Study_Hours_Per_Day Extracurricular_Hours_Per_Day Sleep_Hours_Per_Day
+                 &lt;dbl&gt;                         &lt;dbl&gt;               &lt;dbl&gt;
+ 1                   6                             3                 8.7
+ 2                   5                             3                 8  
+ 3                   5                             3                 9.2
+ 4                   6                             2                 7.2
+ 5                   8                             0                 6.5
+ 6                   6                             2                 8  
+ 7                   8                             0                 5.3
+ 8                   8                             1                 5.6
+ 9                   5                             3                 6.3
+10                   7                             0                 9.8
+# ℹ 1,990 more rows
+# ℹ 4 more variables: Social_Hours_Per_Day &lt;dbl&gt;,
+#   Physical_Activity_Hours_Per_Day &lt;dbl&gt;, GPA &lt;dbl&gt;, Stress_Level &lt;fct&gt;</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="co"># students_tibble %&gt;% mutate(across(where(is.numeric), ~ceiling(.x)))</span></span>
+<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), ceiling))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2,000 × 7
+   Study_Hours_Per_Day Extracurricular_Hours_Per_Day Sleep_Hours_Per_Day
+                 &lt;dbl&gt;                         &lt;dbl&gt;               &lt;dbl&gt;
+ 1                   7                             4                   9
+ 2                   6                             4                   8
+ 3                   6                             4                  10
+ 4                   7                             3                   8
+ 5                   9                             1                   7
+ 6                   6                             3                   8
+ 7                   8                             1                   6
+ 8                   9                             2                   6
+ 9                   6                             4                   7
+10                   8                             1                  10
+# ℹ 1,990 more rows
+# ℹ 4 more variables: Social_Hours_Per_Day &lt;dbl&gt;,
+#   Physical_Activity_Hours_Per_Day &lt;dbl&gt;, GPA &lt;dbl&gt;, Stress_Level &lt;fct&gt;</code></pre>
+</div>
+</div>
+<ul>
+<li><p><code>round()</code> - simple rounding</p></li>
+<li><p><code>ceiling()</code> - upward rounding</p></li>
+<li><p><code>floor()</code> - downward rounding</p></li>
+</ul>
+</section>
+</section>
+<section id="distinct" class="level3">
+<h3 class="anchored" data-anchor-id="distinct">Distinct</h3>
+<p>Extract unique rows.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span>  <span class="fu">distinct</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2,000 × 7
+   Study_Hours_Per_Day Extracurricular_Hours_Per_Day Sleep_Hours_Per_Day
+                 &lt;dbl&gt;                         &lt;dbl&gt;               &lt;dbl&gt;
+ 1                 6.9                           3.8                 8.7
+ 2                 5.3                           3.5                 8  
+ 3                 5.1                           3.9                 9.2
+ 4                 6.5                           2.1                 7.2
+ 5                 8.1                           0.6                 6.5
+ 6                 6                             2.1                 8  
+ 7                 8                             0.7                 5.3
+ 8                 8.4                           1.8                 5.6
+ 9                 5.2                           3.6                 6.3
+10                 7.7                           0.7                 9.8
+# ℹ 1,990 more rows
+# ℹ 4 more variables: Social_Hours_Per_Day &lt;dbl&gt;,
+#   Physical_Activity_Hours_Per_Day &lt;dbl&gt;, GPA &lt;dbl&gt;, Stress_Level &lt;fct&gt;</code></pre>
+</div>
+</div>
+<p><em>We already have unique data</em></p>
+</section>
+</section>
+<section id="tidyr" class="level2">
+<h2 class="anchored" data-anchor-id="tidyr"><code>tidyr</code></h2>
+<ul>
+<li><code>tribble()</code> is strange way to create <code>tibble</code>. Let’s create strange dataset to show <code>tidyr</code> in work <em>(advanced)</em></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>strange_df <span class="ot">=</span> </span>
+<span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tribble</span>(</span>
+<span id="cb75-3"><a href="#cb75-3" aria-hidden="true" tabindex="-1"></a>    <span class="sc">~</span>name, <span class="sc">~</span>weight_height, <span class="sc">~</span>marks,</span>
+<span id="cb75-4"><a href="#cb75-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Robert'</span>, <span class="st">'80/180'</span>, <span class="st">'4,5,5,4,4'</span>,</span>
+<span id="cb75-5"><a href="#cb75-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Daniel'</span>, <span class="st">'70/175'</span>, <span class="st">'4,3,5'</span>,</span>
+<span id="cb75-6"><a href="#cb75-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Vlad'</span>, <span class="st">'90/185'</span>, <span class="st">'4,5,5,4,3'</span></span>
+<span id="cb75-7"><a href="#cb75-7" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb75-8"><a href="#cb75-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb75-9"><a href="#cb75-9" aria-hidden="true" tabindex="-1"></a>strange_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 3
+  name   weight_height marks    
+  &lt;chr&gt;  &lt;chr&gt;         &lt;chr&gt;    
+1 Robert 80/180        4,5,5,4,4
+2 Daniel 70/175        4,3,5    
+3 Vlad   90/185        4,5,5,4,3</code></pre>
+</div>
+</div>
+<section id="separate" class="level3">
+<h3 class="anchored" data-anchor-id="separate">Separate</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a>strange_df <span class="ot">=</span> strange_df <span class="sc">%&gt;%</span> </span>
+<span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(weight_height, <span class="at">sep =</span> <span class="st">'/'</span>, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">"weight"</span>, <span class="st">"height"</span>))</span>
+<span id="cb77-3"><a href="#cb77-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-4"><a href="#cb77-4" aria-hidden="true" tabindex="-1"></a>strange_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 4
+  name   weight height marks    
+  &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;    
+1 Robert 80     180    4,5,5,4,4
+2 Daniel 70     175    4,3,5    
+3 Vlad   90     185    4,5,5,4,3</code></pre>
+</div>
+</div>
+<section id="separate_rows" class="level4">
+<h4 class="anchored" data-anchor-id="separate_rows">Separate_rows</h4>
+<p>To separate rows by unique mark:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a>strange_df <span class="ot">=</span> strange_df <span class="sc">%&gt;%</span> <span class="fu">separate_rows</span>(marks, <span class="at">sep =</span> <span class="st">','</span>)</span>
+<span id="cb79-2"><a href="#cb79-2" aria-hidden="true" tabindex="-1"></a>strange_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 13 × 4
+   name   weight height marks
+   &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;
+ 1 Robert 80     180    4    
+ 2 Robert 80     180    5    
+ 3 Robert 80     180    5    
+ 4 Robert 80     180    4    
+ 5 Robert 80     180    4    
+ 6 Daniel 70     175    4    
+ 7 Daniel 70     175    3    
+ 8 Daniel 70     175    5    
+ 9 Vlad   90     185    4    
+10 Vlad   90     185    5    
+11 Vlad   90     185    5    
+12 Vlad   90     185    4    
+13 Vlad   90     185    3    </code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="unite" class="level3">
+<h3 class="anchored" data-anchor-id="unite">Unite</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a>strange_df <span class="sc">%&gt;%</span> <span class="fu">unite</span>(weight, height,</span>
+<span id="cb81-2"><a href="#cb81-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">col =</span> <span class="st">"weight_height"</span>,</span>
+<span id="cb81-3"><a href="#cb81-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">sep =</span> <span class="st">'/'</span>, <span class="at">remove=</span>T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 13 × 3
+   name   weight_height marks
+   &lt;chr&gt;  &lt;chr&gt;         &lt;chr&gt;
+ 1 Robert 80/180        4    
+ 2 Robert 80/180        5    
+ 3 Robert 80/180        5    
+ 4 Robert 80/180        4    
+ 5 Robert 80/180        4    
+ 6 Daniel 70/175        4    
+ 7 Daniel 70/175        3    
+ 8 Daniel 70/175        5    
+ 9 Vlad   90/185        4    
+10 Vlad   90/185        5    
+11 Vlad   90/185        5    
+12 Vlad   90/185        4    
+13 Vlad   90/185        3    </code></pre>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="deal-with-empty-values" class="level1">
+<h1>Deal with empty values</h1>
+<p>Returning to <em>students</em> <em>dataset</em>. Let’s calculate mean of <strong><code>Extracurricular_Hours_Per_Day</code></strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a>students_hours <span class="sc">%&gt;%</span> <span class="fu">pull</span>(Extracurricular_Hours_Per_Day) <span class="sc">%&gt;%</span>  <span class="fu">mean</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] NA</code></pre>
+</div>
+</div>
+<p>Problem is <code>NA</code> values in this column. There is <code>na.rm</code> in each simple statistics function and if it is set as <code>TRUE</code> (<code>na.rm=T</code>), the function will not take <code>NA</code> into account.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a>students_hours <span class="sc">%&gt;%</span> <span class="fu">pull</span>(Extracurricular_Hours_Per_Day) <span class="sc">%&gt;%</span>  <span class="fu">mean</span>(<span class="at">na.rm =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.991283</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a>students_hours <span class="sc">%&gt;%</span> <span class="fu">pull</span>(Extracurricular_Hours_Per_Day) <span class="sc">%&gt;%</span>  <span class="fu">sd</span>(<span class="at">na.rm =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.155804</code></pre>
+</div>
+</div>
+<p>To count NA values in every column:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span> <span class="fu">is.na</span>() <span class="sc">%&gt;%</span> <span class="fu">colSums</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>            Study_Hours_Per_Day   Extracurricular_Hours_Per_Day 
+                              1                               4 
+            Sleep_Hours_Per_Day            Social_Hours_Per_Day 
+                              2                               4 
+Physical_Activity_Hours_Per_Day                             GPA 
+                              1                               1 
+                   Stress_Level 
+                              1 </code></pre>
+</div>
+</div>
+<ul>
+<li><p><code>colSums()</code> - sum of values in each column</p></li>
+<li><p><code>rowSums()</code> - sum of values in each row</p></li>
+<li><p><code>is.na()</code> - returns TRUE <strong>for each value</strong> if it is NA and FALSE otherwise.</p></li>
+</ul>
+<section id="rows-with-nas-in-extracurricular_hours_per_day" class="level3">
+<h3 class="anchored" data-anchor-id="rows-with-nas-in-extracurricular_hours_per_day">Rows with NAs in <code>Extracurricular_Hours_Per_Day</code>:</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="fu">is.na</span>(Extracurricular_Hours_Per_Day))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 7
+  Study_Hours_Per_Day Extracurricular_Hours_Per_Day Sleep_Hours_Per_Day
+                &lt;dbl&gt;                         &lt;dbl&gt;               &lt;dbl&gt;
+1                NA                              NA                NA  
+2                 8.5                            NA                 7.8
+3                 9.7                            NA                 8.9
+4                 7.4                            NA                 9.8
+# ℹ 4 more variables: Social_Hours_Per_Day &lt;dbl&gt;,
+#   Physical_Activity_Hours_Per_Day &lt;dbl&gt;, GPA &lt;dbl&gt;, Stress_Level &lt;fct&gt;</code></pre>
+</div>
+</div>
+</section>
+<section id="rows-with-any-nas" class="level3">
+<h3 class="anchored" data-anchor-id="rows-with-any-nas">Rows with any NAs</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb93"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a>students_tibble[<span class="sc">!</span><span class="fu">complete.cases</span>(students_tibble), ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 7 × 7
+  Study_Hours_Per_Day Extracurricular_Hours_Per_Day Sleep_Hours_Per_Day
+                &lt;dbl&gt;                         &lt;dbl&gt;               &lt;dbl&gt;
+1                NA                            NA                  NA  
+2                 6                             0                  NA  
+3                 8.5                          NA                   7.8
+4                 9.9                           3.1                 5.1
+5                 9.7                          NA                   8.9
+6                 8.3                           2.4                 7.1
+7                 7.4                          NA                   9.8
+# ℹ 4 more variables: Social_Hours_Per_Day &lt;dbl&gt;,
+#   Physical_Activity_Hours_Per_Day &lt;dbl&gt;, GPA &lt;dbl&gt;, Stress_Level &lt;fct&gt;</code></pre>
+</div>
+</div>
+<ul>
+<li><code>complete.cases()</code> - returns <code>TRUE</code> if row contain no <code>NA</code>s</li>
+</ul>
+<section id="advanced" class="level4">
+<h4 class="anchored" data-anchor-id="advanced"><strong><em>Advanced…</em></strong></h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="fu">if_any</span>(<span class="fu">everything</span>(), is.na))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 7 × 7
+  Study_Hours_Per_Day Extracurricular_Hours_Per_Day Sleep_Hours_Per_Day
+                &lt;dbl&gt;                         &lt;dbl&gt;               &lt;dbl&gt;
+1                NA                            NA                  NA  
+2                 6                             0                  NA  
+3                 8.5                          NA                   7.8
+4                 9.9                           3.1                 5.1
+5                 9.7                          NA                   8.9
+6                 8.3                           2.4                 7.1
+7                 7.4                          NA                   9.8
+# ℹ 4 more variables: Social_Hours_Per_Day &lt;dbl&gt;,
+#   Physical_Activity_Hours_Per_Day &lt;dbl&gt;, GPA &lt;dbl&gt;, Stress_Level &lt;fct&gt;</code></pre>
+</div>
+</div>
+<ul>
+<li><p><code>if_any(columns, condition)</code> - returns <code>TRUE</code> for <strong><em>any</em></strong> of the selected columns</p></li>
+<li><p><code>if_all(columns, condition)</code> - returns <code>TRUE</code> for <strong><em>all</em></strong> of the selected columns</p></li>
+<li><p><code>everything()</code> - return all columns. Useful <em>inside</em> of dplyr functions</p></li>
+</ul>
+<p><strong>We see that one line contains only NAs, and the other lines contain 1&lt; NAs.</strong></p>
+<p>There are several ways to deal with NAs</p>
+</section>
+</section>
+<section id="delete-rows-containing-nas" class="level2">
+<h2 class="anchored" data-anchor-id="delete-rows-containing-nas">Delete rows containing NAs</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span>  <span class="fu">na.omit</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1,993 × 7
+   Study_Hours_Per_Day Extracurricular_Hours_Per_Day Sleep_Hours_Per_Day
+                 &lt;dbl&gt;                         &lt;dbl&gt;               &lt;dbl&gt;
+ 1                 6.9                           3.8                 8.7
+ 2                 5.3                           3.5                 8  
+ 3                 5.1                           3.9                 9.2
+ 4                 6.5                           2.1                 7.2
+ 5                 8.1                           0.6                 6.5
+ 6                 6                             2.1                 8  
+ 7                 8                             0.7                 5.3
+ 8                 8.4                           1.8                 5.6
+ 9                 5.2                           3.6                 6.3
+10                 7.7                           0.7                 9.8
+# ℹ 1,983 more rows
+# ℹ 4 more variables: Social_Hours_Per_Day &lt;dbl&gt;,
+#   Physical_Activity_Hours_Per_Day &lt;dbl&gt;, GPA &lt;dbl&gt;, Stress_Level &lt;fct&gt;</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb99"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span>  <span class="fu">drop_na</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1,993 × 7
+   Study_Hours_Per_Day Extracurricular_Hours_Per_Day Sleep_Hours_Per_Day
+                 &lt;dbl&gt;                         &lt;dbl&gt;               &lt;dbl&gt;
+ 1                 6.9                           3.8                 8.7
+ 2                 5.3                           3.5                 8  
+ 3                 5.1                           3.9                 9.2
+ 4                 6.5                           2.1                 7.2
+ 5                 8.1                           0.6                 6.5
+ 6                 6                             2.1                 8  
+ 7                 8                             0.7                 5.3
+ 8                 8.4                           1.8                 5.6
+ 9                 5.2                           3.6                 6.3
+10                 7.7                           0.7                 9.8
+# ℹ 1,983 more rows
+# ℹ 4 more variables: Social_Hours_Per_Day &lt;dbl&gt;,
+#   Physical_Activity_Hours_Per_Day &lt;dbl&gt;, GPA &lt;dbl&gt;, Stress_Level &lt;fct&gt;</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb101"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb101-1"><a href="#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="co">#drop_na allows to concrete columns</span></span>
+<span id="cb101-2"><a href="#cb101-2" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span>  <span class="fu">drop_na</span>(Physical_Activity_Hours_Per_Day)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1,999 × 7
+   Study_Hours_Per_Day Extracurricular_Hours_Per_Day Sleep_Hours_Per_Day
+                 &lt;dbl&gt;                         &lt;dbl&gt;               &lt;dbl&gt;
+ 1                 6.9                           3.8                 8.7
+ 2                 5.3                           3.5                 8  
+ 3                 5.1                           3.9                 9.2
+ 4                 6.5                           2.1                 7.2
+ 5                 8.1                           0.6                 6.5
+ 6                 6                             2.1                 8  
+ 7                 8                             0.7                 5.3
+ 8                 8.4                           1.8                 5.6
+ 9                 5.2                           3.6                 6.3
+10                 7.7                           0.7                 9.8
+# ℹ 1,989 more rows
+# ℹ 4 more variables: Social_Hours_Per_Day &lt;dbl&gt;,
+#   Physical_Activity_Hours_Per_Day &lt;dbl&gt;, GPA &lt;dbl&gt;, Stress_Level &lt;fct&gt;</code></pre>
+</div>
+</div>
+</section>
+<section id="replace-with-value" class="level2">
+<h2 class="anchored" data-anchor-id="replace-with-value">Replace with value</h2>
+<section id="simple" class="level3">
+<h3 class="anchored" data-anchor-id="simple">simple</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb103"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb103-1"><a href="#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="co"># and do it for each column</span></span>
+<span id="cb103-2"><a href="#cb103-2" aria-hidden="true" tabindex="-1"></a>students_tibble<span class="sc">$</span>GPA[<span class="fu">is.na</span>(students_tibble<span class="sc">$</span>GPA)] <span class="ot">=</span> <span class="fu">mean</span>(students_tibble<span class="sc">$</span>GPA)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="advanced-1" class="level3">
+<h3 class="anchored" data-anchor-id="advanced-1"><em>advanced</em></h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb104"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb104-1"><a href="#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="co"># to secify values</span></span>
+<span id="cb104-2"><a href="#cb104-2" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span>  <span class="fu">replace_na</span>(<span class="fu">list</span>(<span class="at">Social_Hours_Per_Day =</span> <span class="dv">0</span>,</span>
+<span id="cb104-3"><a href="#cb104-3" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">Extracurricular_Hours_Per_Day =</span> <span class="dv">0</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2,000 × 7
+   Study_Hours_Per_Day Extracurricular_Hours_Per_Day Sleep_Hours_Per_Day
+                 &lt;dbl&gt;                         &lt;dbl&gt;               &lt;dbl&gt;
+ 1                 6.9                           3.8                 8.7
+ 2                 5.3                           3.5                 8  
+ 3                 5.1                           3.9                 9.2
+ 4                 6.5                           2.1                 7.2
+ 5                 8.1                           0.6                 6.5
+ 6                 6                             2.1                 8  
+ 7                 8                             0.7                 5.3
+ 8                 8.4                           1.8                 5.6
+ 9                 5.2                           3.6                 6.3
+10                 7.7                           0.7                 9.8
+# ℹ 1,990 more rows
+# ℹ 4 more variables: Social_Hours_Per_Day &lt;dbl&gt;,
+#   Physical_Activity_Hours_Per_Day &lt;dbl&gt;, GPA &lt;dbl&gt;, Stress_Level &lt;fct&gt;</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb106"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb106-1"><a href="#cb106-1" aria-hidden="true" tabindex="-1"></a><span class="co"># to fill with the nearest value in the each column</span></span>
+<span id="cb106-2"><a href="#cb106-2" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span>  <span class="fu">fill</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2,000 × 7
+   Study_Hours_Per_Day Extracurricular_Hours_Per_Day Sleep_Hours_Per_Day
+                 &lt;dbl&gt;                         &lt;dbl&gt;               &lt;dbl&gt;
+ 1                 6.9                           3.8                 8.7
+ 2                 5.3                           3.5                 8  
+ 3                 5.1                           3.9                 9.2
+ 4                 6.5                           2.1                 7.2
+ 5                 8.1                           0.6                 6.5
+ 6                 6                             2.1                 8  
+ 7                 8                             0.7                 5.3
+ 8                 8.4                           1.8                 5.6
+ 9                 5.2                           3.6                 6.3
+10                 7.7                           0.7                 9.8
+# ℹ 1,990 more rows
+# ℹ 4 more variables: Social_Hours_Per_Day &lt;dbl&gt;,
+#   Physical_Activity_Hours_Per_Day &lt;dbl&gt;, GPA &lt;dbl&gt;, Stress_Level &lt;fct&gt;</code></pre>
+</div>
+</div>
+<p>I will just delete them :)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb108"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb108-1"><a href="#cb108-1" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="ot">=</span> students_tibble <span class="sc">%&gt;%</span>  <span class="fu">na.omit</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="writing-a-data-into-file" class="level1">
+<h1>Writing a data into file</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb109"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb109-1"><a href="#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="co"># write.csv(students_tibble, "lec_output/students.csv")</span></span>
+<span id="cb109-2"><a href="#cb109-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(students_tibble, <span class="st">"lec_output/students.csv"</span>) <span class="co"># comma-separated</span></span>
+<span id="cb109-3"><a href="#cb109-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-4"><a href="#cb109-4" aria-hidden="true" tabindex="-1"></a><span class="co"># write.table()</span></span>
+<span id="cb109-5"><a href="#cb109-5" aria-hidden="true" tabindex="-1"></a><span class="fu">write_tsv</span>(students_tibble, <span class="st">"lec_output/students.tsv"</span>) <span class="co"># tab-separated</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb110"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb110-1"><a href="#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages('writexl')</span></span>
+<span id="cb110-2"><a href="#cb110-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(writexl)</span>
+<span id="cb110-3"><a href="#cb110-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb111"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb111-1"><a href="#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_xlsx</span>(students_tibble, <span class="st">"lec_output/students.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="p.s.-for-additional-self-study" class="level1">
+<h1>P.S. for additional self-study</h1>
+<section id="joins" class="level2">
+<h2 class="anchored" data-anchor-id="joins">Joins</h2>
+<p>for combining several datasets. For example, we have two dataframes with the same column - names. The first dataframe contain data about wealth and work, the second contain information about town, street and etc. We want to make one dataframe that contain info from the both dataframes.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb112"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb112-1"><a href="#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Full join: returns all rows from both df1 and df2, filling with NA where no match.</span></span>
+<span id="cb112-2"><a href="#cb112-2" aria-hidden="true" tabindex="-1"></a>df1 <span class="sc">%&gt;%</span> <span class="fu">full_join</span>(df2, <span class="at">by =</span> <span class="st">'name'</span>)</span>
+<span id="cb112-3"><a href="#cb112-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb112-4"><a href="#cb112-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Inner join: returns only matching rows from both df1 and df2.</span></span>
+<span id="cb112-5"><a href="#cb112-5" aria-hidden="true" tabindex="-1"></a>df1 <span class="sc">%&gt;%</span> <span class="fu">inner_join</span>(df2, <span class="at">by =</span> <span class="st">'name'</span>)</span>
+<span id="cb112-6"><a href="#cb112-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb112-7"><a href="#cb112-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Left join: returns all rows from df1 and matched rows from df2; unmatched in df2 are NA.</span></span>
+<span id="cb112-8"><a href="#cb112-8" aria-hidden="true" tabindex="-1"></a>df1 <span class="sc">%&gt;%</span> <span class="fu">left_join</span>(df2, <span class="at">by =</span> <span class="st">'name'</span>)</span>
+<span id="cb112-9"><a href="#cb112-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb112-10"><a href="#cb112-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Right join: returns all rows from df2 and matched rows from df1; unmatched in df1 are NA.</span></span>
+<span id="cb112-11"><a href="#cb112-11" aria-hidden="true" tabindex="-1"></a>df1 <span class="sc">%&gt;%</span> <span class="fu">right_join</span>(df2, <span class="at">by =</span> <span class="st">'name'</span>)</span>
+<span id="cb112-12"><a href="#cb112-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb112-13"><a href="#cb112-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Anti join: returns rows from df1 that do not match any rows in df2.</span></span>
+<span id="cb112-14"><a href="#cb112-14" aria-hidden="true" tabindex="-1"></a>df1 <span class="sc">%&gt;%</span> <span class="fu">anti_join</span>(df2, <span class="at">by =</span> <span class="st">'name'</span>)</span>
+<span id="cb112-15"><a href="#cb112-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb112-16"><a href="#cb112-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Semi join: returns rows from df1 that have matches in df2, without adding columns from df2.</span></span>
+<span id="cb112-17"><a href="#cb112-17" aria-hidden="true" tabindex="-1"></a>df1 <span class="sc">%&gt;%</span> <span class="fu">semi_join</span>(df2, <span class="at">by =</span> <span class="st">'name'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="grouping" class="level2">
+<h2 class="anchored" data-anchor-id="grouping">Grouping</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb113"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb113-1"><a href="#cb113-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Grouping the 'students_tibble' data frame by the 'Stress_Level' column</span></span>
+<span id="cb113-2"><a href="#cb113-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Than Calculating the mean of 'Study_Hours_Per_Day' for each stress level group, ignoring missing values (na.rm = TRUE)</span></span>
+<span id="cb113-3"><a href="#cb113-3" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(Stress_Level) <span class="sc">%&gt;%</span> </span>
+<span id="cb113-4"><a href="#cb113-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">study_hours_mean =</span> <span class="fu">mean</span>(Study_Hours_Per_Day, <span class="at">na.rm =</span> T))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 2
+  Stress_Level study_hours_mean
+  &lt;fct&gt;                   &lt;dbl&gt;
+1 High                     8.38
+2 Low                      5.47
+3 Moderate                 6.97</code></pre>
+</div>
+</div>
+</section>
+<section id="slice_head" class="level2">
+<h2 class="anchored" data-anchor-id="slice_head">Slice_head()</h2>
+<p>almost the same as basic <code>head()</code>, but it is more suitable for grouped data:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb115"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb115-1"><a href="#cb115-1" aria-hidden="true" tabindex="-1"></a>students_tibble <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(Stress_Level) <span class="sc">%&gt;%</span> <span class="fu">slice_head</span>(<span class="at">n=</span><span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 9 × 7
+# Groups:   Stress_Level [3]
+  Study_Hours_Per_Day Extracurricular_Hours_Per_Day Sleep_Hours_Per_Day
+                &lt;dbl&gt;                         &lt;dbl&gt;               &lt;dbl&gt;
+1                 8.1                           0.6                 6.5
+2                 8                             0.7                 5.3
+3                 8.4                           1.8                 5.6
+4                 5.3                           3.5                 8  
+5                 5.1                           3.9                 9.2
+6                 5.2                           3.6                 6.3
+7                 6.9                           3.8                 8.7
+8                 6.5                           2.1                 7.2
+9                 6                             2.1                 8  
+# ℹ 4 more variables: Social_Hours_Per_Day &lt;dbl&gt;,
+#   Physical_Activity_Hours_Per_Day &lt;dbl&gt;, GPA &lt;dbl&gt;, Stress_Level &lt;fct&gt;</code></pre>
+</div>
+</div>
+<p><strong>Here we sliced first 3 rows for data in each group</strong></p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

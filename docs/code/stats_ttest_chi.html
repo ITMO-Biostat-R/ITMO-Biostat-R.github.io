@@ -352,7 +352,7 @@ window.Quarto = {
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   60 obs. of  2 variables:
  $ group : Factor w/ 2 levels "Shade","Sunlight": 2 2 2 2 2 2 2 2 2 2 ...
- $ height: num  14.4 13.6 14.1 12.5 14.9 ...</code></pre>
+ $ height: num  14.6 16.3 15.8 15.3 13.9 ...</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -383,13 +383,13 @@ window.Quarto = {
     One Sample t-test
 
 data:  x
-t = 4.7064, df = 9, p-value = 0.00111
+t = 5.0447, df = 9, p-value = 0.0006953
 alternative hypothesis: true mean is not equal to 0
 95 percent confidence interval:
- 0.9957054 2.8387474
+ 1.055333 2.771246
 sample estimates:
 mean of x 
- 1.917226 </code></pre>
+ 1.913289 </code></pre>
 </div>
 </div>
 <p><strong>Example on two samples:</strong></p>
@@ -403,13 +403,13 @@ mean of x
     Welch Two Sample t-test
 
 data:  x1 and x2
-t = 1.717, df = 13.205, p-value = 0.1093
+t = 2.6885, df = 16.497, p-value = 0.01584
 alternative hypothesis: true difference in means is not equal to 0
 95 percent confidence interval:
- -0.6419436  5.6519587
+ 0.9348572 7.8254604
 sample estimates:
 mean of x mean of y 
- 1.602301 -0.902707 </code></pre>
+ 1.844283 -2.535876 </code></pre>
 </div>
 </div>
 <p><u><strong>Our <em>plant and sunlight</em> data:</strong></u></p>
@@ -422,13 +422,13 @@ mean of x mean of y
     Welch Two Sample t-test
 
 data:  height by group
-t = -7.5318, df = 56.337, p-value = 4.42e-10
+t = -4.8115, df = 53.623, p-value = 1.26e-05
 alternative hypothesis: true difference in means between group Shade and group Sunlight is not equal to 0
 95 percent confidence interval:
- -4.544291 -2.635042
+ -3.469483 -1.428303
 sample estimates:
    mean in group Shade mean in group Sunlight 
-              11.35874               14.94841 </code></pre>
+              12.07666               14.52555 </code></pre>
 </div>
 </div>
 <ul>
@@ -537,13 +537,13 @@ sample estimates:
     Welch Two Sample t-test
 
 data:  value by group
-t = -1.7532, df = 39.76, p-value = 0.08727
+t = -2.192, df = 39.714, p-value = 0.0343
 alternative hypothesis: true difference in means between group sample1 and group sample2 is not equal to 0
 95 percent confidence interval:
- -4.305381  0.305945
+ -4.7236115 -0.1911265
 sample estimates:
 mean in group sample1 mean in group sample2 
-             5.358920              7.358638 </code></pre>
+             5.381569              7.838938 </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox.test</span>(value <span class="sc">~</span> group,</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>            <span class="at">data=</span>data_sample)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -552,7 +552,7 @@ mean in group sample1 mean in group sample2
     Wilcoxon rank sum exact test
 
 data:  value by group
-W = 124, p-value = 0.01461
+W = 110, p-value = 0.004814
 alternative hypothesis: true location shift is not equal to 0</code></pre>
 </div>
 </div>
@@ -602,12 +602,12 @@ alternative hypothesis: true location shift is not equal to 0</code></pre>
 <span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>data_pressure <span class="sc">%&gt;%</span> <span class="fu">head</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  pressure  group
-1 122.4433 before
-2 112.6301 before
-3 103.6556 before
-4 122.0648 before
-5 110.5196 before
-6 117.7892 before</code></pre>
+1 108.8351 before
+2 126.9309 before
+3 122.9347 before
+4 152.3196 before
+5 115.1943 before
+6 129.9565 before</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -638,13 +638,13 @@ alternative hypothesis: true location shift is not equal to 0</code></pre>
     Paired t-test
 
 data:  pressure by group
-t = -5.0705, df = 19, p-value = 6.793e-05
+t = -4.7024, df = 19, p-value = 0.0001551
 alternative hypothesis: true mean difference is not equal to 0
 95 percent confidence interval:
- -8.996333 -3.739296
+ -8.321531 -3.195423
 sample estimates:
 mean difference 
-      -6.367814 </code></pre>
+      -5.758477 </code></pre>
 </div>
 </div>
 </section>
@@ -689,7 +689,7 @@ mean difference
     Wilcoxon signed rank exact test
 
 data:  value by group
-V = 163, p-value = 0.1032
+V = 162, p-value = 0.1111
 alternative hypothesis: true location shift is not equal to 0</code></pre>
 </div>
 </div>
@@ -872,10 +872,10 @@ alternative hypothesis: true location shift is not equal to 0</code></pre>
 <h2 class="anchored" data-anchor-id="does-disease-outcome-depend-on-treatment-group">Does disease outcome depend on treatment group ?</h2>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 37%">
-<col style="width: 15%">
-<col style="width: 15%">
-<col style="width: 30%">
+<col style="width: 43%">
+<col style="width: 8%">
+<col style="width: 13%">
+<col style="width: 34%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -1014,10 +1014,10 @@ X-squared = 1.0125, df = 1, p-value = 0.3143</code></pre>
 <h3 class="anchored" data-anchor-id="data-2">Data</h3>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 28%">
-<col style="width: 23%">
-<col style="width: 22%">
-<col style="width: 23%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
 </colgroup>
 <thead>
 <tr class="header">

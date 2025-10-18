@@ -26,7 +26,7 @@ The dataset contains the following columns:
 
 #### Instructions
 
-> **Every result must be shown! If you create or chabging some variable/column/dataframe, show it!**
+> **Every result must be shown! If you create or changing some variable/column/dataframe, show it!**
 
 > Don't forget to save your changes where needed
 
@@ -46,7 +46,7 @@ library(tidyr)
 
 ## Vectors
 
-#### 1. Create vector containing numbers from -20 to 50 and number 100
+#### 1. Create vector containing numbers from -20 to 50 and numbers 100, 110
 
 ```{r}
 # vec =
@@ -56,6 +56,12 @@ library(tidyr)
 
 ```{r}
 # 
+```
+
+#### 3. Create
+
+```{r}
+
 ```
 
 ## Data Loading
@@ -144,7 +150,7 @@ library(tidyr)
 
 -   Ensure the column is created inside `dataset`
 
-#### 10. Round column `Height` in meters to two decimal places (*e.g.* 1.4567 -\> 1.46), i.e. replace values in column with rounded ones 
+#### 10. Round column `Height` in meters to two decimal places (*e.g.* 1.4567 -\> 1.46), i.e. replace values in column with rounded ones
 
 ```{r}
 #
@@ -164,10 +170,6 @@ library(tidyr)
 
 -   Don't forget that `mean()` works only on vectors
 
-    -   `%>% pull(column)` -\> vector
-
-    -   `data$column` -\> vector
-
 -   *if you are advanced user, you can use `group_by()` and `summarize()`*
 
 #### 12. Identify the row with the maximum `Height` and print this row (not number of row!).
@@ -184,7 +186,7 @@ library(tidyr)
 ##
 ```
 
--   Use `table()` and `prop.table()`
+-   `table()` and `prop.table()`
 
 #### 14. Show a contingency table of `Sex` and `Height_category` *(number of elephants for every combination of these two categories)*
 
@@ -192,15 +194,13 @@ library(tidyr)
 #
 ```
 
--   Use `table()`
+-   `table()`
 
-#### 15.**\*** Group dataset by `Height_category` and calculate `mean` and `sd` of `Age` for each group.
+#### 15. Group dataset by `Height_category` and calculate `mean` and `sd` of `Age` for each group.
 
 ```{r}
 #
 ```
-
--   use `group_by()` and `summarise()`
 
 #### 16. Show the rows for elephants taller than 2 metres but shorter than 2.5 metres, and younger than 15 years old. Then select the `Age` and `Height` columns.
 
@@ -228,10 +228,9 @@ library(tidyr)
 -   You may be using data arranging
 -   basic functions (`head()` and `tail()`) can also be useful, but remember ***how*** ordered is your data
 -   **+1 point if you make it by one line of code (show as one data.frame)**
-    -   *Tip:* you can use either `n()` or `nrow()`
-    -   *Tip:* you can use `slice()`
+    -   *Tip:* you can use either `n()` or `nrow()` and `slice()`
 
-#### 19.\* Identify 3 oldest elephants for each `Sex` and extract their `Age` and `Height`.
+#### 19. Identify 3 oldest elephants for each `Sex` and extract their `Age` and `Height`.
 
 ```{r}
 #

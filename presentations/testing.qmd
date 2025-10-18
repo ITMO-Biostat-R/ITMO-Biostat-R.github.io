@@ -184,9 +184,9 @@ The value $1-\beta$ called the [**power of the test**]{.underline}. *The smaller
 
 ::::: columns
 ::: {.column width="50%"}
-1. $X$ - Days in hospital
+1.  $X$ - Days in hospital
 
-Divide patients into 2 groups by many days or few (e.g. <>15 days)
+Divide patients into 2 groups by many days or few (e.g. \<\>15 days)
 
 Red - with pneumonia
 
@@ -214,7 +214,6 @@ odttg = ggplot() +
 #| fig-width: 8
 odttg
 ```
-
 :::
 :::::
 
@@ -222,7 +221,7 @@ odttg
 
 ::::: columns
 ::: {.column width="50%"}
-2. $X$ - Students' exam scores
+2.  $X$ - Students' exam scores
 
 Red - First group
 
@@ -242,11 +241,9 @@ odttg
 :::
 :::::
 
-
 # Sometimes there is no sutable test for your hypothesis and question
 
-
-## Testing plan  
+## Testing plan
 
 ::: faded-text
 1\) What we want to test? (**Hypotheses**)

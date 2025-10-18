@@ -18,13 +18,42 @@ editor_options:
 knitr::opts_chunk$set(echo = TRUE, message = F, warning = F)
 ```
 
+# Installing libraries
+
+### Basic libraries
+
+```{r, eval=F}
+
+install.packages('name_of_library')
+```
+
+### Sometimes biological libraries
+
+```{r, eval=F}
+
+install.packages("BiocManager")
+
+BiocManager::install('name_of_package')
+```
+
+### Devtools
+
+```{r, eval=FALSE}
+install.packages("devtools")
+
+devtools::install_cran('name_of_package')
+devtools::install_bioc('name_of_package')
+devtools::install_github('user/name_of_package')
+
+```
+
 # Reading data from files
 
 ## base R
 
 ```{r}
 
-students_hours = read.csv("../data/student_lifestyle_dataset.csv", 
+students_hours = read.csv("./data/student_lifestyle_dataset.csv", 
                           row.names = 1,
                           # header = F,
                           na.strings = c('','-','dead'),
@@ -67,7 +96,7 @@ library(readr)
 # read_tsv()
 # read_table().
 
-head(read_csv("../data/student_lifestyle_dataset.csv", 
+head(read_csv("./data/student_lifestyle_dataset.csv", 
          na = c('', '-'),
          # comment = '#'
          # quote = '#',
@@ -150,10 +179,7 @@ students_hours$Extracurricular_Hours_Per_Day %>% mean(na.rm = T) %>% sqrt()
 summarise(select(filter(students_tibble, Extracurricular_Hours_Per_Day > 1), 
                  Sleep_Hours_Per_Day), Sleep_Hours_Mean = mean(Sleep_Hours_Per_Day))
 
-students_tibble %>% 
-  filter(Extracurricular_Hours_Per_Day > 1) %>%
-  select(Sleep_Hours_Per_Day) %>% 
-  summarise(Sleep_Hours_Mean = mean(Sleep_Hours_Per_Day))
+# students_tibble %>% 
 ```
 
 > **The function after `%>%` gets the dataset as the first variable and allows us not to write it**
@@ -194,6 +220,12 @@ students_tibble %>% arrange(Study_Hours_Per_Day)
 students_tibble %>% arrange(desc(Study_Hours_Per_Day))
 ```
 
+> Arrange the dataset by **Extracurricular_Hours_Per_Day** and save it
+
+```{r}
+# students_tibble = students_tibble
+```
+
 ### Select
 
 Select columns by names
@@ -217,7 +249,7 @@ students_tibble %>% select(contains('Hours'))
 students_tibble %>% select(ends_with('Per_Day'))
 
 # only numeric columns
-students_tibble %>% select(where(is.numeric)) %>% mean(na.rm = T)
+students_tibble %>% select(where(is.numeric)) 
 ```
 
 ### Pull
@@ -227,6 +259,13 @@ Extract column as vector
 ```{r}
 # students_tibble$Extracurricular_Hours_Per_Day
 students_tibble %>% pull(Extracurricular_Hours_Per_Day) %>% mean(na.rm = T)
+```
+
+> `select` and `pull` **the same column** and try to calculate the `median()`
+
+```{r}
+# students_tibble
+# students_tibble
 ```
 
 ### Filtering
@@ -240,15 +279,33 @@ students_tibble %>% filter(Extracurricular_Hours_Per_Day > 2,
 students_tibble %>% filter(between(Extracurricular_Hours_Per_Day, 2, 3))
 ```
 
+> Select `GPA` and `Stress_Level` and filter GPA \< 2.3
+
+```{r}
+# students_tibble
+```
+
 ### Slice
 
 ```{r}
 # students_tibble[30:50,]
 students_tibble %>% slice(30:50)
 
+students_tibble %>% slice_head()
+students_tibble %>% slice_head(prop = 0.1)
+
+students_tibble %>% slice_max(Study_Hours_Per_Day)
+students_tibble %>% slice_min(Study_Hours_Per_Day)
+
 # students_tibble[(nrow(students_tibble)-5):(nrow(students_tibble)),]
 
 students_tibble %>% slice(1:5, (n()-5):n()) # n() is number of "samples" (rows)
+```
+
+> Arrange dataset by the **Social_Hours_Per_Day**, choose rows with 10 highest **Social_Hours_Per_Day** and calculate their mean GPA
+
+```{r}
+# students_tibble
 ```
 
 ### Rename column
@@ -261,13 +318,19 @@ students_tibble_2=students_tibble %>%  rename(SHPD = Study_Hours_Per_Day)
 students_tibble_2
 ```
 
+> Rename column Stress_Level -\> Stress
+
+```{r}
+# students_tibble
+```
+
 #### *Advanced* rename column
 
 ```{r}
 students_tibble %>%  rename_with(~ gsub("_Hours_Per_Day", "_h", .x))
 ```
 
-#### *Advanced* renamevalues in column
+#### *Advanced* rename values in column
 
 **For character columns (output is character)**
 
@@ -290,9 +353,16 @@ students_tibble %>%
                                "Low" = 'low'))
 ```
 
+### Adding column or row (`tibble`)
+
+```{r}
+students_tibble |> add_column(ID =  1:2000, .before = 1)
+students_tibble |>  add_row(Study_Hours_Per_Day = 10, Extracurricular_Hours_Per_Day=13, .before = 1)
+```
+
 ### Mutate
 
-Changing columns and creation new ones
+Changing columns and creation new ones using others
 
 ```{r}
 # students_tibble$Stress_Level = as.factor(students_tibble$Stress_Level)
@@ -310,15 +380,25 @@ students_tibble %>%
          )
 ```
 
-> By default, `.keep = 'all'`, and usually it is not worth changing it or even writing this parameter
+By default, `.keep = 'all'`, and usually it is not worth changing it or even writing this parameter
+
+> Create column **Stress_Hours = Extracurricular_Hours_Per_Day + Study_Hours_Per_Day** before GPA column and `round()` it!
+>
+> Create column **Study = Study_Hours_Per_Day \> 7 -\> High, Study_Hours_Per_Day \< 7 -\>** Low -\> **SAVE**!
+
+```{r}
+# students_tibble 
+```
 
 #### *Advanced* mutate
 
 ```{r}
 students_tibble %>% 
-  mutate(across(Study_Hours_Per_Day:Extracurricular_Hours_Per_Day, ~ floor(.x)))
+  # mutate(across(Study_Hours_Per_Day:Extracurricular_Hours_Per_Day, ~ floor(.x)))
+  mutate(across(Study_Hours_Per_Day:Extracurricular_Hours_Per_Day, floor))
 
-students_tibble %>% mutate(across(where(is.numeric), ~ceiling(.x)))
+# students_tibble %>% mutate(across(where(is.numeric), ~ceiling(.x)))
+students_tibble %>% mutate(across(where(is.numeric), ceiling))
 ```
 
 -   `round()` - simple rounding
@@ -326,6 +406,23 @@ students_tibble %>% mutate(across(where(is.numeric), ~ceiling(.x)))
 -   `ceiling()` - upward rounding
 
 -   `floor()` - downward rounding
+
+### Grouping
+
+Grouping the 'students_tibble' data frame by the 'Stress_Level' column
+
+And than Calculating the mean of 'Study_Hours_Per_Day' for each stress level group, ignoring missing values `(na.rm = TRUE)`
+
+```{r}
+students_tibble %>% group_by(Stress_Level) %>% 
+  summarise(study_hours_mean = mean(Study_Hours_Per_Day, na.rm = T))
+```
+
+> Group by `Study` and filter by `Stress_Level == High`
+
+```{r}
+# students_tibble 
+```
 
 ### Distinct
 
@@ -356,8 +453,9 @@ strange_df
 ### Separate
 
 ```{r}
-strange_df = strange_df %>% separate(weight_height, sep = '/', 
-                       into = c("weight", "height"))
+strange_df = strange_df %>% 
+  separate(weight_height, sep = '/', into = c("weight", "height"))
+
 strange_df
 ```
 
@@ -476,10 +574,11 @@ students_tibble = students_tibble %>%  na.omit()
 
 ```{r}
 # write.csv(students_tibble, "lec_output/students.csv")
-write_csv(students_tibble, "lec_output/students.csv") # comma-separated
+dir.create("lec_output")
+write_csv(students_tibble, "./lec_output/students.csv") # comma-separated
 
 # write.table()
-write_tsv(students_tibble, "lec_output/students.tsv") # tab-separated
+write_tsv(students_tibble, "./lec_output/students.tsv") # tab-separated
 ```
 
 ```{r, warning=FALSE}
@@ -489,7 +588,7 @@ library(readxl)
 ```
 
 ```{r}
-write_xlsx(students_tibble, "lec_output/students.xlsx")
+write_xlsx(students_tibble, "./lec_output/students.xlsx")
 ```
 
 # P.S. for additional self-study
@@ -518,22 +617,3 @@ df1 %>% anti_join(df2, by = 'name')
 df1 %>% semi_join(df2, by = 'name')
 
 ```
-
-## Grouping
-
-```{r}
-# Grouping the 'students_tibble' data frame by the 'Stress_Level' column
-# Than Calculating the mean of 'Study_Hours_Per_Day' for each stress level group, ignoring missing values (na.rm = TRUE)
-students_tibble %>% group_by(Stress_Level) %>% 
-  summarise(study_hours_mean = mean(Study_Hours_Per_Day, na.rm = T))
-```
-
-## Slice_head()
-
-almost the same as basic `head()`, but it is more suitable for grouped data:
-
-```{r}
-students_tibble %>% group_by(Stress_Level) %>% slice_head(n=3)
-```
-
-**Here we sliced first 3 rows for data in each group**

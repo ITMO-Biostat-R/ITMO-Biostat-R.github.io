@@ -1,0 +1,381 @@
+---
+title: "Association between variables"
+author: Vladislav Stanin  
+date: 01/24/2024
+output:
+  html_document:
+    toc: true
+    toc_depth: 3
+    toc_float:
+      collapsed: yes
+      smooth_scroll: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+```
+
+# Two dichotomous variables (2 x 2 table)
+
+|                                  | Cured | Dead | [*Row Total*]{.underline} |
+|----------------------------------|-------|------|---------------------------|
+| **Treatment**                    | 12    | 8    | 20                        |
+| **Placebo**                      | 6     | 10   | 16                        |
+| [***Column Total***]{.underline} | 18    | 18   | [**36**]{.underline}      |
+
+```{r}
+data_cure = data.frame(
+  Patient_ID = 1:36,
+  Group = factor(c(rep("Treatment", 12), rep("Placebo", 6), rep("Treatment", 8), rep("Placebo", 10))),
+  Outcome = factor(rep(c('Cured', 'Dead'), e=18)))
+
+data_cure %>%  head()
+```
+
+```{r}
+contingency_table = table(data_cure$Group, data_cure$Outcome)
+contingency_table
+```
+
+```{r}
+contingency_table_big = addmargins(contingency_table)
+contingency_table_big
+```
+
+## Risk ratio ($RR$)
+
+-   $RR$ = 1 if two variables unassociated
+
+$Risk_{tr}$ (to be dead in case of treatment) = $\dfrac{Dead  | Treatment}{Total\ Treatment}$
+
+```{r}
+risk_tr = contingency_table_big['Treatment', 'Dead']/ contingency_table_big['Treatment', 'Sum']
+risk_tr
+```
+
+$Risk_{pl}$ (to be dead in case of Placebo) = $\dfrac{Dead  | Placebo}{Total\ Treatment}$ =
+
+```{r}
+risk_pl = contingency_table_big['Placebo', 'Dead']/ contingency_table_big['Placebo', 'Sum']
+risk_pl
+```
+
+Risk ratio ($RR$) = $\dfrac{Risk_{tr}}{Risk_{pl}} =$
+
+```{r}
+RR = risk_pl / risk_tr
+RR
+```
+
+There is some association between Treatment and Result - Placebo patients tend to be dead more often.
+
+**If there were more cured:**
+
+```{r}
+risk_tr_1 = contingency_table_big['Treatment', 'Dead'] / 1020
+risk_tr_1
+
+risk_pl_1 = contingency_table_big['Placebo', 'Dead'] / 1016
+risk_pl_1
+
+RR = risk_pl_1 / risk_tr_1
+RR
+
+```
+
+Almost the same $RR$, despite big number of cured!
+
+## Risk difference ($RD$)
+
+$RD = Risk_{tr} - Risk_{pl} =$
+
+> *Use variables created above*
+
+```{r}
+# RD = 
+# RD
+```
+
+**And if there are more Cured:**
+
+```{r}
+# RD = 
+# RD
+```
+
+**-\> Always show both RR and RD in your text!**
+
+## Odds ratio ($OR$)
+
+$Odds_{tr} = \dfrac{Dead  | Treatment}{Cured | Treatment} =$
+
+```{r}
+# odds_tr = 
+```
+
+$Odds_{pl} = \dfrac{Dead  | Placebo}{Cured | Placebo} =$
+
+```{r}
+# odds_pl = 
+```
+
+$Odds \ ratio \ (OR) = \dfrac{Odds_{tr}}{Odds_{pl}} =$
+
+```{r}
+# OR = 
+```
+
+**And if there are more Cured:**
+
+```{r}
+# 
+```
+
+***better use OR than RR ...***
+
+# Continuous x categorical
+
+## Mean difference...
+
+```{r}
+data_md = data.frame(
+  Meme_category = rep(c('A','B'), each=50) |> as.factor(),
+  Laugh_level = c(rnorm(50, 8, 1), rnorm(50, 5, 1))
+)
+
+data_md |> glimpse(width = 50)
+```
+
+```{r}
+mean_laughs = data_md |> group_by(Meme_category) |> summarise(mean_laugh = mean(Laugh_level))
+
+MD = mean_laughs$mean_laugh[mean_laughs$Meme_category == 'A'] - 
+  mean_laughs$mean_laugh[mean_laughs$Meme_category == 'B']
+
+MD
+```
+
+# Continuous vs Continuous (Pearson's correlation)
+
+**Pearson's correlation coefficient** measures the **strength** and **direction** of a linear relationship between two variables.
+
+## Formula
+
+-   Pearson's correlation coefficient:
+
+    $\rho = \dfrac{\sum (X_i - \bar{X})(Y_i - \bar{Y})}{\sqrt{\sum (X_i - \bar{X})^2 \sum (Y_i - \bar{Y})^2}} \in [-1;1]$
+
+### Interpretation
+
+-   $−1$ indicates a perfect negative (inverse) linear relationship.
+
+-   $+1$ indicates a perfect positive linear relationship.
+
+-   $0$ indicates no linear relationship.
+
+## Is there a relationship between temperature and metabolic rate?
+
+### Data
+
+```{r}
+plant_height_df = tibble(
+  Plant_ID = 1:28,
+  # Sunlight_hrs_per_day = rep(4:10, e=4),
+  Sunlight_hrs_per_day = runif(28, 4, 10),
+  Plant_height = Sunlight_hrs_per_day + rnorm(28,2,3)
+)
+
+head(plant_height_df)
+```
+
+```{r}
+plot(x = plant_height_df$Sunlight_hrs_per_day, 
+     y=plant_height_df$Plant_height, 
+     main = NULL, 
+     xlab = "Sunlight (hrs/day)", 
+     ylab = "Plant height", pch=19, col='blue')
+```
+
+### Calculation
+
+-   `cor()` - calculates correlation matrix between all features of dataframe
+
+```{r}
+cor(plant_height_df$Sunlight_hrs_per_day, plant_height_df$Plant_height)
+# cor(iris %>%select(where(is.numeric)))
+```
+
+-   `corr.test()` - also tests how far the coefficient is from zero *(t-test)*
+
+```{r}
+cor.test(plant_height_df$Sunlight_hrs_per_day, 
+         plant_height_df$Plant_height)
+```
+
+## Example of 0 correlation
+
+### 1
+
+```{r}
+x1=rnorm(500)
+y1=rnorm(500)
+plot(x1,y1)
+```
+
+```{r}
+cor(x1, y1)
+```
+
+### 2
+
+```{r}
+x2=rnorm(500)
+y2=x2^2 + rnorm(500, 0, 1)
+plot(x2,y2)
+```
+
+```{r}
+cor(x2, y2)
+```
+
+> **That's why you always should draw the scatterplot!**
+
+### P.S
+
+Game [**Guess the Correlation**](https://www.guessthecorrelation.com/)
+
+# Ordinal vs ordinal \| continuous vs ordinal
+
+## Math and Physics Grades
+
+```{r}
+grades_math_phys = data.frame(math = c(5,2,3,4,6,1,9,10,2,5),
+                             phys = c(4,2,3,1,2,2,8,8,2,4))
+grades_math_phys
+```
+
+## Rank correlations
+
+> [The problems with Pearson correlation are that it is not suitable for "strange" non-linear relationships, non-normally distributed traits and data with outliers.]{.underline}
+
+### Kendall's $\tau$
+
+```{r}
+cor(grades_math_phys, method = 'kendall')
+```
+
+### Spearman's $\rho$
+
+-   Suitable for non-linear relationships
+
+-   Less sensitive to outliers
+
+-   Calculated based on ranks
+
+```{r}
+cor(grades_math_phys, method = 'spearman')
+```
+
+#### Examples
+
+-   Non-linear
+
+```{r}
+x = runif(50, -10, 10)
+y = (x + rnorm(50, 0, 2))^3
+plot(x,y, pch=19)
+```
+
+```{r}
+cor(x,y)
+cor(x,y, method = "spearman")
+# cor(x,y, method = "kendall")
+```
+
+-   With outliers
+
+```{r}
+x = c(rnorm(20,0,3), c(15, 19))
+y = c(x[1:20] + c(rnorm(20,0,1)), 0, 0)
+plot(x,y, pch=19)
+```
+
+```{r}
+cor(x,y)
+cor(x,y, method = "spearman")
+# cor(x,y, method = "kendall")
+```
+
+# Conclusions
+
+1.  **Correlation does not imply causation**
+    -   Website with numerous [spurious correlations](https://tylervigen.com/spurious-correlations)
+2.  **Correlation indicates presence of a relationship (association)**
+3.  **Absence of correlation indicates absence of a linear relationship**
+4.  **Absence of correlation [does not]{.underline} indicate absence of a relationship (association)**
+
+# Practice
+
+## Arthritis dataset
+
+Reaction Velocity of an Enzymatic Reaction
+
+```{r}
+arth_df = read.csv('../data/Arthritis.csv', 
+                   stringsAsFactors = T)
+
+arth_df |> glimpse(width = 50)
+```
+
+```{r}
+arth_df |> summary()
+```
+
+> **Is it more likely to have "Marked Imporved" if you are female?**
+>
+> -   dichotomous vs dichotomous
+
+```{r}
+# cont_table = 
+```
+
+```{r}
+# 
+```
+
+> **Is there a significant difference in the age of women and men?**
+>
+> -   Continuous vs dichotomous
+
+```{r}
+
+```
+
+## Diamonds dataset
+
+```{r}
+diamonds_small = diamonds |> slice_sample(n=1000)
+
+diamonds_small |> glimpse(width = 50)
+```
+
+```{r}
+diamonds_small |> summary()
+```
+
+> Are there some associated variables?
+>
+> -   continuous vs continuous
+>
+> -   ordinal vs ordinal (not forget -\> `as.numeric()`)
+
+```{r}
+# 
+```
+
+```{r}
+# 
+```

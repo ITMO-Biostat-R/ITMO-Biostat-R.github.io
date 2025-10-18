@@ -1,0 +1,170 @@
+---
+title: "Virtual hospital HW"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
+
+```
+
+# Task
+
+You need to create code for a *‘virtual hospital’* — a file in which you can model your samples and analyse how different parameters can affect your results.
+
+What you have to do:
+
+1.  Create the (general) population from which you will take samples. Describe it.
+2.  Select **one** sample and analyze it
+3.  Generate a lot of samples and analyze them
+4.  Calculate error and Confidence intervals
+5.  Change the parameters (size of samples, population settings) and make a conclusion what can affect your estimation (error)
+
+**You will analyze [Glucose level (mmol/L)]{.underline} of hospital patients.**
+
+# Population settings
+
+> Set possible values of glucose - let it be **2,3,4,5,6,7,8,9**
+>
+> Set possibilities of each glucose level - it is your choice, but remember that **sum of probabilities should be equal 1**.
+>
+> **P.S.** If you want, you can make them equally probable or make **5** and **6** the most likely (as in real life).
+
+```{r echo=FALSE}
+
+possible_values = 2:9
+probabilities = rep(1 / length(possible_values), 
+                    length(possible_values))
+
+sum(probabilities) == 1
+```
+
+> Create data-frame with columns **Value** and corresponding **Probability**
+>
+> Create the **barplot** with **Value** on x-axis and **Probability** on y-axis. Name axis and make it colorful.
+
+```{r}
+population_df <- data.frame(Value = possible_values, Probability = probabilities)
+
+population_df |> 
+  ggplot(aes(x=Value, y=Probability)) +
+  geom_col(fill='lightblue') +
+  theme_bw()
+```
+
+## Characteristics of population
+
+> [**Show**]{.underline} the **population (!) mean.** Variance and standard deviation of population.
+
+```{r}
+# population_mean =
+
+# population_variance =
+
+# population_sd =
+
+```
+
+# One sample from population
+
+> Set the sample size = 50
+>
+> Take a sample from population (`sample()`)
+>
+> Show the **sample mean**
+
+```{r sample}
+
+# sample_size =
+
+# sample = (population_df$Value, population_df$Probability)
+
+# sample_mean =
+
+```
+
+## Confidence interval (CI)
+
+> Calculate the 90% confidence interval for the mean using Student's t-distribution\
+> \
+> P.S. If you want to use the `t.test` function, learn how to change the confidence level and how to display only CI information (without testing information).\
+> Otherwise, use more straightforward way to calculate CI.
+
+```{r}
+# sample
+# confidence_interval = 
+# print(confidence_interval)
+```
+
+# Generating samples
+
+## Generating
+
+> Set sample size = 100 and number of samples = 1000
+>
+> Create data-frame containing columns
+>
+> -   `Sample_ID` - numbers from 1 to number of samples. Remember `rep()` function.
+>
+> -   `Value` - values taken from population (`sample()`)
+>
+> There are 1000 samples and 100 values in each -\> 1000\*100 = 100000 rows in data-frame
+
+```{r}
+
+# sample_size = 
+
+# n_samples = 
+
+df_samples <- data.frame(
+  # sample_ID = ,
+  # value = 
+  )
+
+df_samples
+```
+
+## Distribution of means
+
+> Create data-frame where for each `Sample_ID` mean `Value` will be calculated.\
+> Remember how to group data and `summarise()`.
+>
+> Draw distribution (histogram) of obtained means. Make plot pretty, please :)
+
+```{r estimations}
+
+# df_sample_mean = df_samples %>%
+
+# df_sample_mean %>%
+  # ggplot()
+
+```
+
+## Standard error
+
+> Calculate SE using means in `df_sample_mean`
+
+```{r}
+
+# error =
+# print(error)
+
+```
+
+# Changing parameters
+
+> Repeat previous steps with smaller sample size (e.g. 10, 5, 3) and other parameters if you want. You don't need to change the population (but you can try).
+>
+> Write code below. Yes, it will be almost the same, but your report will contain all your work and pictures that You'll be able to compare.
+>
+> Write the conclusion. What did you see and why is it so?
+
+```{r}
+
+```
+
+```{r}
+
+```

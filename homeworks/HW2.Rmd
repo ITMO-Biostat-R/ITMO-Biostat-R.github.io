@@ -15,6 +15,12 @@ library(dplyr)
 library(tidyr)
 ```
 
+## {!} Important notes for every plot you create:
+
+-   Name the axis and legends
+
+-   Use some theme (e.g. ``` theme_classic``() ```) if ggplot is used. *Not necessarily the same one for all plots.*
+
 # Palmer Penguins
 
 #### 0. Read file penguins.csv
@@ -60,23 +66,17 @@ Some rows may contain missing values (e.g., in `sex` column).
 
 -   Colors (`fill`) should also be different for each species
 
--   `theme_classic()`, if `ggplot` used
-
 -   **This task can be solved using either basic R or `ggplot`**
 
--   *Tip:* use `table()` (basic R and `ggplot`) or `geom_bar()` (`ggplot`)
+-   *Tip:* you may use `table()` or just `geom_bar()`
 
--   **Don't forget to delete legend** *if ggplot used*
+-   **Is the legend needed here?** *(if ggplot used)*
 
 ```{r}
 #
 ```
 
 #### 3. Create stacked barplot scaled from 0 to 1 to show the proportion of `species` on each `island`.
-
--   Label the axes and legends
-
--   `theme_classic()`
 
 -   `fill` should represent `species`.
 
@@ -88,15 +88,11 @@ Some rows may contain missing values (e.g., in `sex` column).
 
 #### 4. Create a histogram for the `flipper_length_mm` and draw the vertical line to show mean value
 
--   Label the axes
-
 -   Set the number of breaks to 10
 
 -   The histogram fill should be `"lightblue"` and border (color) should be `"black"`
 
 -   Vertical line color = `'red'`, width = `1.2`
-
--   `theme_bw()`, if `ggplot` used
 
 -   **This task can be solved using either basic R or `ggplot`**
 
@@ -112,8 +108,6 @@ Some rows may contain missing values (e.g., in `sex` column).
 
 -   Density plot should have `alpha=0.5`
 
--   `theme_classic()`
-
 ```{r}
 #
 ```
@@ -122,11 +116,7 @@ Some rows may contain missing values (e.g., in `sex` column).
 
 -   **Filter out observations without known `sex`** **(!)**
 
--   Label the axes and legends
-
 -   Colors (`fill`) should also be different for each `sex`
-
--   `theme_classic()`
 
 -   **When you save the plot in a variable, chart is not displayed. Don't forget to show the plot by writing the variable name on a new line!**
 
@@ -144,11 +134,7 @@ Some rows may contain missing values (e.g., in `sex` column).
 
 #### 8. Create a scatter plot to show the relationship between `bill_length_mm` and `bill_depth_mm`.
 
--   Label the axes
-
 -   Make dots colored filled with `'blue'`
-
--   Use `theme_classic`, if `ggplot` used
 
 -   **This task can be solved using either basic R or `ggplot`**
 
@@ -158,21 +144,29 @@ Some rows may contain missing values (e.g., in `sex` column).
 
 #### 9. Create a [Bubble plot]{.underline}: a scatter plot depicting the relationships between `bill_length_mm` and `bill_depth_mm`, with colored dots representing `species` and sizes reflecting `flipper_length_mm`.
 
--   Label the axes and legends
-
 -   Points should have `alpha=0.7`
-
--   `theme_classic()`
 
 ```{r}
 #
 ```
 
-#### 10\*. Add `geom_rug()` to the above plot to show distribution of points across the axes
+#### 10. Add `geom_rug()` to the above plot to show distribution of points across the axes
 
--   To do that you should save plot above in variable and add `geom_rug()`
--   reduce *line width* to 0.5, *alpha* to 0.8 and set `show.legend = FALSE`
+-   To do that you should save plot above as variable
+-   reduce *line width* to 0.5, *alpha* to 0.8 and don't show the legend
 
 ```{r}
 #
+```
+
+#### 11.\* Arrange any two plots created above next to each other
+
+-   use `patchwork` library
+
+```{r}
+library(patchwork)
+```
+
+```{r}
+# 
 ```
