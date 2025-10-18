@@ -11,7 +11,7 @@ title: "Biostatistics in R"
 2.  [Working with Dataframes](./code/advanced_df.Rmd)
 
     -   [Download](./zipfiles/advanced_df.zip)
-
+    
 <!-- 3.  [Visualization](code/datavis.Rmd) -->
 
 <!--     -   [Download](./zipfiles/datavis.zip) -->
