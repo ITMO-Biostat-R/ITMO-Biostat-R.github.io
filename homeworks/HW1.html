@@ -192,7 +192,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="instructions" class="level4">
 <h4 class="anchored" data-anchor-id="instructions">Instructions</h4>
 <blockquote class="blockquote">
-<p><strong>Every result must be shown! If you create or chabging some variable/column/dataframe, show it!</strong></p>
+<p><strong>Every result must be shown! If you create or changing some variable/column/dataframe, show it!</strong></p>
 </blockquote>
 <blockquote class="blockquote">
 <p>Don’t forget to save your changes where needed</p>
@@ -213,8 +213,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1>Tasks</h1>
 <section id="vectors" class="level2">
 <h2 class="anchored" data-anchor-id="vectors">Vectors</h2>
-<section id="create-vector-containing-numbers-from--20-to-50-and-number-100" class="level4">
-<h4 class="anchored" data-anchor-id="create-vector-containing-numbers-from--20-to-50-and-number-100">1. Create vector containing numbers from -20 to 50 and number 100</h4>
+<section id="create-vector-containing-numbers-from--20-to-50-and-numbers-100-110" class="level4">
+<h4 class="anchored" data-anchor-id="create-vector-containing-numbers-from--20-to-50-and-numbers-100-110">1. Create vector containing numbers from -20 to 50 and numbers 100, 110</h4>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># vec =</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -224,6 +224,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
+<section id="create" class="level4">
+<h4 class="anchored" data-anchor-id="create">3. Create</h4>
 </section>
 </section>
 <section id="data-loading" class="level2">
@@ -335,11 +338,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="do">##</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
-<li><p>Don’t forget that <code>mean()</code> works only on vectors</p>
-<ul>
-<li><p><code>%&gt;% pull(column)</code> -&gt; vector</p></li>
-<li><p><code>data$column</code> -&gt; vector</p></li>
-</ul></li>
+<li><p>Don’t forget that <code>mean()</code> works only on vectors</p></li>
 <li><p><em>if you are advanced user, you can use <code>group_by()</code> and <code>summarize()</code></em></p></li>
 </ul>
 </section>
@@ -358,7 +357,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="do">##</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
-<li>Use <code>table()</code> and <code>prop.table()</code></li>
+<li><code>table()</code> and <code>prop.table()</code></li>
 </ul>
 </section>
 <section id="show-a-contingency-table-of-sex-and-height_category-number-of-elephants-for-every-combination-of-these-two-categories" class="level4">
@@ -367,17 +366,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
-<li>Use <code>table()</code></li>
+<li><code>table()</code></li>
 </ul>
 </section>
 <section id="group-dataset-by-height_category-and-calculate-mean-and-sd-of-age-for-each-group." class="level4">
-<h4 class="anchored" data-anchor-id="group-dataset-by-height_category-and-calculate-mean-and-sd-of-age-for-each-group.">15.<strong>*</strong> Group dataset by <code>Height_category</code> and calculate <code>mean</code> and <code>sd</code> of <code>Age</code> for each group.</h4>
+<h4 class="anchored" data-anchor-id="group-dataset-by-height_category-and-calculate-mean-and-sd-of-age-for-each-group.">15. Group dataset by <code>Height_category</code> and calculate <code>mean</code> and <code>sd</code> of <code>Age</code> for each group.</h4>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<ul>
-<li>use <code>group_by()</code> and <code>summarise()</code></li>
-</ul>
 </section>
 <section id="show-the-rows-for-elephants-taller-than-2-metres-but-shorter-than-2.5-metres-and-younger-than-15-years-old.-then-select-the-age-and-height-columns." class="level4">
 <h4 class="anchored" data-anchor-id="show-the-rows-for-elephants-taller-than-2-metres-but-shorter-than-2.5-metres-and-younger-than-15-years-old.-then-select-the-age-and-height-columns.">16. Show the rows for elephants taller than 2 metres but shorter than 2.5 metres, and younger than 15 years old. Then select the <code>Age</code> and <code>Height</code> columns.</h4>
@@ -407,13 +403,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>basic functions (<code>head()</code> and <code>tail()</code>) can also be useful, but remember <strong><em>how</em></strong> ordered is your data</li>
 <li><strong>+1 point if you make it by one line of code (show as one data.frame)</strong>
 <ul>
-<li><em>Tip:</em> you can use either <code>n()</code> or <code>nrow()</code></li>
-<li><em>Tip:</em> you can use <code>slice()</code></li>
+<li><em>Tip:</em> you can use either <code>n()</code> or <code>nrow()</code> and <code>slice()</code></li>
 </ul></li>
 </ul>
 </section>
 <section id="identify-3-oldest-elephants-for-each-sex-and-extract-their-age-and-height." class="level4">
-<h4 class="anchored" data-anchor-id="identify-3-oldest-elephants-for-each-sex-and-extract-their-age-and-height.">19.* Identify 3 oldest elephants for each <code>Sex</code> and extract their <code>Age</code> and <code>Height</code>.</h4>
+<h4 class="anchored" data-anchor-id="identify-3-oldest-elephants-for-each-sex-and-extract-their-age-and-height.">19. Identify 3 oldest elephants for each <code>Sex</code> and extract their <code>Age</code> and <code>Height</code>.</h4>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -536,7 +531,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
+      var filterRegex = new RegExp("https:\/\/ITMO-Biostat-R\.github\.io\/");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
