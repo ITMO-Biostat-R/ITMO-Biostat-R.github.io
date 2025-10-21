@@ -4,7 +4,7 @@ output:
   html_document:
     toc: true
     toc_float: true
-    number_sections: true
+    # number_sections: true
 editor_options: 
   chunk_output_type: inline
 ---
@@ -36,6 +36,8 @@ For example, `dataset %>% function()` does not change the `dataset`, but `datase
 
 ## Downloading libraries
 
+**NB! This code is needed only for 5-22 tasks**
+
 ```{r, warning=FALSE, message=FALSE}
 library(readr)
 library(dplyr)
@@ -52,21 +54,29 @@ library(tidyr)
 # vec =
 ```
 
-#### 2. Subtract by 10 and [then]{.underline} divide by 2 each value in this vector
+#### 2. Subtract by 10 and [then]{.underline} divide by 2 each value in this vector and save result to `new_vec`
 
 ```{r}
-# 
+# new_vec = 
 ```
 
-#### 3. Create
+#### 3.  Show values of `new_vec` which less than 10 and more than 0 
 
 ```{r}
+# new_vec
+```
 
+#### 4. Show mean value of `new_vec`
+
+-   Use special function :)
+
+```{r}
+# new_vec
 ```
 
 ## Data Loading
 
-#### 3. Load the dataset using `read.csv()`, save it to variable `dataset` and show the first 10 rows.
+#### 5. Load the dataset using `read.csv()`, save it to variable `dataset` and show the first 10 rows.
 
 ```{r}
 # dataset <- read...
@@ -79,13 +89,13 @@ library(tidyr)
     -   first column a rowname
 -   `head(...)` - by default it returns first 5 rows, but we need 10 :)
 
-**3.1 Make `dataset` a tibble**
+**5.1 Make `dataset` a tibble**
 
 ```{r}
 #
 ```
 
-#### 4. Check the structure and summary of the data.
+#### 6. Check the structure and summary of the data.
 
 ```{r}
 #
@@ -95,13 +105,13 @@ library(tidyr)
 
 ## Data Cleaning
 
-#### 5. Check for missing values (`NA`) in the dataset (how many in each column?).
+#### 7. Check for missing values (`NA`) in the dataset (how many in each column?).
 
 ```{r}
 #
 ```
 
-#### 6. Verify that the `Sex` column contains only valid categories (`M` and `F`).
+#### 8. Verify that the `Sex` column contains only valid categories (`M` and `F`).
 
 ```{r}
 #
@@ -111,7 +121,7 @@ library(tidyr)
 
 ## Data Transformation
 
-#### 7. Create a new column `Age_category` categorizing elephants based on `Age`:
+#### 9. Create a new column `Age_category` categorizing elephants based on `Age`:
 
 -   "Young" for Age \< 5
 
@@ -126,7 +136,7 @@ library(tidyr)
 -   Use `cut()` - don't forget about parameter `labels = c(...)`
 -   Ensure that you created column in your `dataset` !
 
-#### 8. Create a column `Height_category` that splits `Height` into two categories: "Below Median" and "Above Median" based on the median height.
+#### 10. Create a column `Height_category` that splits `Height` into two categories: "Below Median" and "Above Median" based on the median height.
 
 ```{r}
 #
@@ -136,7 +146,7 @@ library(tidyr)
 -   Don't forget to make new column a **factor**
 -   Ensure that you created column in your `dataset` !
 
-#### 9. Create a new column that contain the **Height in meters** (divide by 100), delete column with **Height in cm**.
+#### 11. Create a new column that contain the **Height in meters** (divide by 100), delete column with **Height in cm**.
 
 ```{r}
 ##
@@ -150,7 +160,7 @@ library(tidyr)
 
 -   Ensure the column is created inside `dataset`
 
-#### 10. Round column `Height` in meters to two decimal places (*e.g.* 1.4567 -\> 1.46), i.e. replace values in column with rounded ones
+#### 12. Round column `Height` in meters to two decimal places (*e.g.* 1.4567 -\> 1.46), i.e. replace values in column with rounded ones
 
 ```{r}
 #
@@ -162,7 +172,7 @@ library(tidyr)
 
 ## Exploratory Data Analysis
 
-#### 11. Compute mean values of `Height` for each `Sex` *(in meters)*
+#### 13. Compute mean values of `Height` for each `Sex` *(in meters)*
 
 ```{r}
 ##
@@ -172,7 +182,7 @@ library(tidyr)
 
 -   *if you are advanced user, you can use `group_by()` and `summarize()`*
 
-#### 12. Identify the row with the maximum `Height` and print this row (not number of row!).
+#### 14. Identify the row with the maximum `Height` and print this row (not number of row!).
 
 ```{r}
 #
@@ -180,7 +190,7 @@ library(tidyr)
 
 -   *Tip:* `which.max()`
 
-#### 13. Show a counts and frequency tables for the `Age_category` column. Show both counts and frequencies
+#### 15. Show a counts and frequency tables for the `Age_category` column. Show both counts and frequencies
 
 ```{r}
 ##
@@ -188,7 +198,7 @@ library(tidyr)
 
 -   `table()` and `prop.table()`
 
-#### 14. Show a contingency table of `Sex` and `Height_category` *(number of elephants for every combination of these two categories)*
+#### 16. Show a contingency table of `Sex` and `Height_category` *(number of elephants for every combination of these two categories)*
 
 ```{r}
 #
@@ -196,13 +206,13 @@ library(tidyr)
 
 -   `table()`
 
-#### 15. Group dataset by `Height_category` and calculate `mean` and `sd` of `Age` for each group.
+#### 17. Group dataset by `Height_category` and calculate `mean` and `sd` of `Age` for each group.
 
 ```{r}
 #
 ```
 
-#### 16. Show the rows for elephants taller than 2 metres but shorter than 2.5 metres, and younger than 15 years old. Then select the `Age` and `Height` columns.
+#### 18. Show the rows for elephants taller than 2 metres but shorter than 2.5 metres, and younger than 15 years old. Then select the `Age` and `Height` columns.
 
 ```{r}
 #
@@ -210,7 +220,7 @@ library(tidyr)
 
 -   use special `dplyr` functions
 
-#### 17. Identify the top 3 tallest elephants and extract their `Age`, `Height`, and `Sex`.
+#### 19. Identify the top 3 tallest elephants and extract their `Age`, `Height`, and `Sex`.
 
 ```{r}
 #
@@ -218,7 +228,7 @@ library(tidyr)
 
 -   You may be using data arranging and `head()`
 
-#### 18. Show rows of the 3 tallest and 3 the shortest elephants (not separately, but within one dataset)
+#### 20. Show rows of the 3 tallest and 3 the shortest elephants (not separately, but within one dataset)
 
 ```{r}
 ##
@@ -230,7 +240,7 @@ library(tidyr)
 -   **+1 point if you make it by one line of code (show as one data.frame)**
     -   *Tip:* you can use either `n()` or `nrow()` and `slice()`
 
-#### 19. Identify 3 oldest elephants for each `Sex` and extract their `Age` and `Height`.
+#### 21. Identify 3 oldest elephants for each `Sex` and extract their `Age` and `Height`.
 
 ```{r}
 #
@@ -240,7 +250,7 @@ library(tidyr)
 
 ## Exporting Data
 
-#### 20. Save our modified `dataset` with new columns as a new CSV file.
+#### 22. Save our modified `dataset` with new columns as a new CSV file.
 
 ```{r, eval=FALSE}
 #
