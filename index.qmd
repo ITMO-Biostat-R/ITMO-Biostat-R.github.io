@@ -5,13 +5,10 @@ title: "Biostatistics in R"
 ### Lecture data
 
 1.  [Basic R](./code/basic_r.Rmd)
-
     -   [Download](./zipfiles/basic_r.zip)
-
 2.  [Working with Dataframes](./code/advanced_df.Rmd)
-
     -   [Download](./zipfiles/advanced_df.zip)
-    
+
 <!-- 3.  [Visualization](code/datavis.Rmd) -->
 
 <!--     -   [Download](./zipfiles/datavis.zip) -->
@@ -22,19 +19,22 @@ title: "Biostatistics in R"
 
 ### Presentations
 
-TBA 
-<!-- -   [Visualization sins and inspirations](presentations/visual_sins_inspiration.qmd) --> 
-<!-- -   [Distributions and statistics](presentations/distributions.qmd) -->
+TBA <!-- -   [Visualization sins and inspirations](presentations/visual_sins_inspiration.qmd) --> <!-- -   [Distributions and statistics](presentations/distributions.qmd) -->
 
 ### Homeworks
 
-TBA 
-<!-- -   [HW #1](./homeworks/HW1.Rmd) --> 
-<!--     -   [Download](./zipfiles/HW1.zip) --> 
-<!-- -   [HW #2](./homeworks/HW2.Rmd) --> 
-<!--     -   [Download](./zipfiles/HW2.zip) --> 
-<!--     -   [Reference plots](./homeworks/HW2_reference.html) --> 
-<!-- -   [HW #3](./homeworks/HW3.Rmd) --> <!--     -   [Download](./zipfiles/HW3.zip) -->
+-   [HW #1](./homeworks/HW1.Rmd)
+    -   [Download](./zipfiles/HW1.zip)
+
+<!-- -   [HW #2](./homeworks/HW2.Rmd) -->
+
+<!--     -   [Download](./zipfiles/HW2.zip) -->
+
+<!--     -   [Reference plots](./homeworks/HW2_reference.html) -->
+
+<!-- -   [HW #3](./homeworks/HW3.Rmd) -->
+
+<!--     -   [Download](./zipfiles/HW3.zip) -->
 
 <!-- ### How to download files: -->
 

@@ -432,7 +432,7 @@ window.Quarto = {
 <pre><code>Rows: 100
 Columns: 2
 $ Meme_category &lt;fct&gt; A, A, A, A, A, A, A, A, A,…
-$ Laugh_level   &lt;dbl&gt; 10.582241, 7.296874, 7.607…</code></pre>
+$ Laugh_level   &lt;dbl&gt; 8.962100, 6.681892, 5.7670…</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -443,7 +443,7 @@ $ Laugh_level   &lt;dbl&gt; 10.582241, 7.296874, 7.607…</code></pre>
 <span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>MD</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 2.776112</code></pre>
+<pre><code>[1] 3.165414</code></pre>
 </div>
 </div>
 </section>
@@ -483,12 +483,12 @@ $ Laugh_level   &lt;dbl&gt; 10.582241, 7.296874, 7.607…</code></pre>
 <pre><code># A tibble: 6 × 3
   Plant_ID Sunlight_hrs_per_day Plant_height
      &lt;int&gt;                &lt;dbl&gt;        &lt;dbl&gt;
-1        1                 8.38        13.5 
-2        2                 4.45         8.70
-3        3                 4.93         8.61
-4        4                 9.11        13.6 
-5        5                 5.56         6.05
-6        6                 6.62         7.98</code></pre>
+1        1                 7.79         9.53
+2        2                 6.30         4.45
+3        3                 5.85         9.29
+4        4                 5.31         4.19
+5        5                 9.40         9.28
+6        6                 5.75         7.71</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -514,7 +514,7 @@ $ Laugh_level   &lt;dbl&gt; 10.582241, 7.296874, 7.607…</code></pre>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(plant_height_df<span class="sc">$</span>Sunlight_hrs_per_day, plant_height_df<span class="sc">$</span>Plant_height)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.4945174</code></pre>
+<pre><code>[1] 0.6474124</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># cor(iris %&gt;%select(where(is.numeric)))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -529,13 +529,13 @@ $ Laugh_level   &lt;dbl&gt; 10.582241, 7.296874, 7.607…</code></pre>
     Pearson's product-moment correlation
 
 data:  plant_height_df$Sunlight_hrs_per_day and plant_height_df$Plant_height
-t = 2.9011, df = 26, p-value = 0.007472
+t = 4.3314, df = 26, p-value = 0.0001961
 alternative hypothesis: true correlation is not equal to 0
 95 percent confidence interval:
- 0.1489141 0.7324605
+ 0.361698 0.821958
 sample estimates:
       cor 
-0.4945174 </code></pre>
+0.6474124 </code></pre>
 </div>
 </div>
 </section>
@@ -559,7 +559,7 @@ sample estimates:
 <div class="cell">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(x1, y1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.004369644</code></pre>
+<pre><code>[1] -0.01046625</code></pre>
 </div>
 </div>
 </section>
@@ -580,7 +580,7 @@ sample estimates:
 <div class="cell">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(x2, y2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.01177144</code></pre>
+<pre><code>[1] -0.05493256</code></pre>
 </div>
 </div>
 <blockquote class="blockquote">
@@ -667,11 +667,11 @@ phys 0.6775545 1.0000000</code></pre>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(x,y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.7662677</code></pre>
+<pre><code>[1] 0.7213655</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(x,y, <span class="at">method =</span> <span class="st">"spearman"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.9562065</code></pre>
+<pre><code>[1] 0.935078</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># cor(x,y, method = "kendall")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -693,11 +693,11 @@ phys 0.6775545 1.0000000</code></pre>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(x,y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.4662765</code></pre>
+<pre><code>[1] 0.4992774</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(x,y, <span class="at">method =</span> <span class="st">"spearman"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.8426998</code></pre>
+<pre><code>[1] 0.8336628</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co"># cor(x,y, method = "kendall")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -777,44 +777,44 @@ $ Improved  &lt;fct&gt; Marked, None, None, Marked, Ma…</code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 1,000
 Columns: 10
-$ carat   &lt;dbl&gt; 0.34, 0.56, 0.26, 1.22, 0.31, 0.…
-$ cut     &lt;ord&gt; Good, Ideal, Ideal, Premium, Goo…
-$ color   &lt;ord&gt; G, D, D, H, I, D, H, D, E, H, H,…
-$ clarity &lt;ord&gt; SI1, VS1, VS1, SI1, VS2, VS2, VV…
-$ depth   &lt;dbl&gt; 63.4, 60.4, 62.0, 62.4, 63.1, 60…
-$ table   &lt;dbl&gt; 57, 56, 55, 58, 54, 57, 59, 59, …
-$ price   &lt;int&gt; 507, 2026, 452, 5997, 435, 3205,…
-$ x       &lt;dbl&gt; 4.42, 5.36, 4.10, 6.82, 4.31, 5.…
-$ y       &lt;dbl&gt; 4.45, 5.33, 4.12, 6.77, 4.34, 5.…
-$ z       &lt;dbl&gt; 2.81, 3.23, 2.55, 4.24, 2.73, 3.…</code></pre>
+$ carat   &lt;dbl&gt; 0.35, 0.50, 0.70, 1.02, 1.54, 0.…
+$ cut     &lt;ord&gt; Ideal, Very Good, Very Good, Ver…
+$ color   &lt;ord&gt; G, D, F, E, I, G, F, E, H, G, E,…
+$ clarity &lt;ord&gt; VVS2, VS2, SI2, VS1, SI2, VS2, V…
+$ depth   &lt;dbl&gt; 61.0, 62.8, 63.4, 61.0, 57.9, 61…
+$ table   &lt;dbl&gt; 57, 58, 58, 58, 62, 58, 58, 58, …
+$ price   &lt;int&gt; 798, 1752, 1883, 7503, 5989, 753…
+$ x       &lt;dbl&gt; 4.54, 5.05, 5.62, 6.46, 7.63, 4.…
+$ y       &lt;dbl&gt; 4.58, 5.08, 5.58, 6.52, 7.50, 4.…
+$ z       &lt;dbl&gt; 2.78, 3.18, 3.55, 3.96, 4.38, 2.…</code></pre>
 </div>
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>diamonds_small <span class="sc">|&gt;</span> <span class="fu">summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     carat               cut      color      clarity        depth      
- Min.   :0.2300   Fair     : 20   D:138   SI1    :247   Min.   :55.80  
- 1st Qu.:0.3800   Good     :100   E:169   VS2    :213   1st Qu.:61.00  
- Median :0.7000   Very Good:229   F:165   SI2    :178   Median :61.90  
- Mean   :0.7808   Premium  :249   G:228   VS1    :163   Mean   :61.74  
- 3rd Qu.:1.0200   Ideal    :402   H:159   VVS2   : 94   3rd Qu.:62.60  
- Max.   :3.2200                   I: 94   VVS1   : 60   Max.   :68.90  
-                                  J: 47   (Other): 45                  
+ Min.   :0.2300   Fair     : 24   D:134   SI1    :232   Min.   :56.00  
+ 1st Qu.:0.4000   Good     : 87   E:175   VS2    :223   1st Qu.:61.00  
+ Median :0.7000   Very Good:218   F:170   VS1    :181   Median :61.80  
+ Mean   :0.8044   Premium  :259   G:188   SI2    :160   Mean   :61.72  
+ 3rd Qu.:1.0500   Ideal    :412   H:156   VVS2   : 92   3rd Qu.:62.50  
+ Max.   :3.0000                   I:118   VVS1   : 62   Max.   :68.80  
+                                  J: 59   (Other): 50                  
      table           price             x               y        
- Min.   :52.00   Min.   :  355   Min.   :0.000   Min.   :0.000  
- 1st Qu.:56.00   1st Qu.:  911   1st Qu.:4.660   1st Qu.:4.670  
- Median :57.00   Median : 2323   Median :5.670   Median :5.675  
- Mean   :57.42   Mean   : 3804   Mean   :5.683   Mean   :5.684  
- 3rd Qu.:59.00   3rd Qu.: 5286   3rd Qu.:6.520   3rd Qu.:6.500  
- Max.   :66.00   Max.   :18509   Max.   :9.490   Max.   :9.420  
+ Min.   :53.00   Min.   :  378   Min.   :3.920   Min.   :3.950  
+ 1st Qu.:56.00   1st Qu.:  942   1st Qu.:4.700   1st Qu.:4.710  
+ Median :57.00   Median : 2356   Median :5.660   Median :5.665  
+ Mean   :57.42   Mean   : 3967   Mean   :5.741   Mean   :5.741  
+ 3rd Qu.:59.00   3rd Qu.: 5564   3rd Qu.:6.570   3rd Qu.:6.570  
+ Max.   :65.00   Max.   :18578   Max.   :9.300   Max.   :9.140  
                                                                 
        z        
- Min.   :0.000  
- 1st Qu.:2.870  
- Median :3.490  
- Mean   :3.509  
- 3rd Qu.:4.020  
- Max.   :5.920  
+ Min.   :2.380  
+ 1st Qu.:2.890  
+ Median :3.510  
+ Mean   :3.543  
+ 3rd Qu.:4.050  
+ Max.   :5.600  
                 </code></pre>
 </div>
 </div>
@@ -929,7 +929,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
+      var filterRegex = new RegExp("https:\/\/ITMO-Biostat-R\.github\.io\/");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }

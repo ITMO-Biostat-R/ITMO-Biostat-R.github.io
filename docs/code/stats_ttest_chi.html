@@ -352,7 +352,7 @@ window.Quarto = {
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   60 obs. of  2 variables:
  $ group : Factor w/ 2 levels "Shade","Sunlight": 2 2 2 2 2 2 2 2 2 2 ...
- $ height: num  14.6 16.3 15.8 15.3 13.9 ...</code></pre>
+ $ height: num  18.6 14.4 15.9 13.2 18.5 ...</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -383,13 +383,13 @@ window.Quarto = {
     One Sample t-test
 
 data:  x
-t = 5.0447, df = 9, p-value = 0.0006953
+t = 1.925, df = 9, p-value = 0.08636
 alternative hypothesis: true mean is not equal to 0
 95 percent confidence interval:
- 1.055333 2.771246
+ -0.2540654  3.1550890
 sample estimates:
 mean of x 
- 1.913289 </code></pre>
+ 1.450512 </code></pre>
 </div>
 </div>
 <p><strong>Example on two samples:</strong></p>
@@ -403,13 +403,13 @@ mean of x
     Welch Two Sample t-test
 
 data:  x1 and x2
-t = 2.6885, df = 16.497, p-value = 0.01584
+t = 3.3874, df = 10.168, p-value = 0.006757
 alternative hypothesis: true difference in means is not equal to 0
 95 percent confidence interval:
- 0.9348572 7.8254604
+ 1.448717 6.981674
 sample estimates:
-mean of x mean of y 
- 1.844283 -2.535876 </code></pre>
+ mean of x  mean of y 
+ 3.6120525 -0.6031429 </code></pre>
 </div>
 </div>
 <p><u><strong>Our <em>plant and sunlight</em> data:</strong></u></p>
@@ -422,13 +422,13 @@ mean of x mean of y
     Welch Two Sample t-test
 
 data:  height by group
-t = -4.8115, df = 53.623, p-value = 1.26e-05
+t = -5.5478, df = 56.707, p-value = 7.916e-07
 alternative hypothesis: true difference in means between group Shade and group Sunlight is not equal to 0
 95 percent confidence interval:
- -3.469483 -1.428303
+ -4.078494 -1.914929
 sample estimates:
    mean in group Shade mean in group Sunlight 
-              12.07666               14.52555 </code></pre>
+              11.93417               14.93088 </code></pre>
 </div>
 </div>
 <ul>
@@ -537,13 +537,13 @@ sample estimates:
     Welch Two Sample t-test
 
 data:  value by group
-t = -2.192, df = 39.714, p-value = 0.0343
+t = -2.1419, df = 39.996, p-value = 0.03835
 alternative hypothesis: true difference in means between group sample1 and group sample2 is not equal to 0
 95 percent confidence interval:
- -4.7236115 -0.1911265
+ -4.5316302 -0.1315058
 sample estimates:
 mean in group sample1 mean in group sample2 
-             5.381569              7.838938 </code></pre>
+             5.650433              7.982001 </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox.test</span>(value <span class="sc">~</span> group,</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>            <span class="at">data=</span>data_sample)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -552,7 +552,7 @@ mean in group sample1 mean in group sample2
     Wilcoxon rank sum exact test
 
 data:  value by group
-W = 110, p-value = 0.004814
+W = 96, p-value = 0.001341
 alternative hypothesis: true location shift is not equal to 0</code></pre>
 </div>
 </div>
@@ -602,12 +602,12 @@ alternative hypothesis: true location shift is not equal to 0</code></pre>
 <span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>data_pressure <span class="sc">%&gt;%</span> <span class="fu">head</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  pressure  group
-1 108.8351 before
-2 126.9309 before
-3 122.9347 before
-4 152.3196 before
-5 115.1943 before
-6 129.9565 before</code></pre>
+1 123.5064 before
+2 129.9894 before
+3 135.4341 before
+4 134.5729 before
+5 120.9876 before
+6 115.7051 before</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -638,13 +638,13 @@ alternative hypothesis: true location shift is not equal to 0</code></pre>
     Paired t-test
 
 data:  pressure by group
-t = -4.7024, df = 19, p-value = 0.0001551
+t = -2.9879, df = 19, p-value = 0.007561
 alternative hypothesis: true mean difference is not equal to 0
 95 percent confidence interval:
- -8.321531 -3.195423
+ -6.205704 -1.093009
 sample estimates:
 mean difference 
-      -5.758477 </code></pre>
+      -3.649356 </code></pre>
 </div>
 </div>
 </section>
@@ -689,7 +689,7 @@ mean difference
     Wilcoxon signed rank exact test
 
 data:  value by group
-V = 162, p-value = 0.1111
+V = 165, p-value = 0.0888
 alternative hypothesis: true location shift is not equal to 0</code></pre>
 </div>
 </div>
@@ -1333,7 +1333,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
+      var filterRegex = new RegExp("https:\/\/ITMO-Biostat-R\.github\.io\/");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }

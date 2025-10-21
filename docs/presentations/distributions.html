@@ -831,7 +831,7 @@ Now we use “<strong>time interval</strong>” and <strong>expected number of s
 <div class="cell large-code">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">rnorm</span>(<span class="at">n=</span><span class="dv">5</span>, <span class="at">mean=</span><span class="dv">100</span>, <span class="at">sd=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1]  93.62246  92.73408 101.94970  96.10679 110.98832</code></pre>
+<pre><code>[1]  95.06686 102.28520  87.02476 110.21335 104.40316</code></pre>
 </div>
 </div>
 <ol start="2" type="1">
@@ -1081,7 +1081,7 @@ Now we use “<strong>time interval</strong>” and <strong>expected number of s
 <div class="cell-output cell-output-stdout">
 <pre><code>
 missed     ok 
-    61    939 </code></pre>
+    48    952 </code></pre>
 </div>
 </div>
 <p><strong>So, 95% of new generated CIs will cover true mean</strong></p>
@@ -1501,7 +1501,7 @@ missed     ok
       }
         var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
         var mailtoRegex = new RegExp(/^mailto:/);
-          var filterRegex = new RegExp('/' + window.location.host + '/');
+          var filterRegex = new RegExp("https:\/\/ITMO-Biostat-R\.github\.io\/");
         var isInternal = (href) => {
             return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
         }

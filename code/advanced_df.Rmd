@@ -53,7 +53,7 @@ devtools::install_github('user/name_of_package')
 
 ```{r}
 
-students_hours = read.csv("./data/student_lifestyle_dataset.csv", 
+students_hours = read.csv("../data/student_lifestyle_dataset.csv", 
                           row.names = 1,
                           # header = F,
                           na.strings = c('','-','dead'),
@@ -96,7 +96,7 @@ library(readr)
 # read_tsv()
 # read_table().
 
-head(read_csv("./data/student_lifestyle_dataset.csv", 
+head(read_csv("../data/student_lifestyle_dataset.csv", 
          na = c('', '-'),
          # comment = '#'
          # quote = '#',
