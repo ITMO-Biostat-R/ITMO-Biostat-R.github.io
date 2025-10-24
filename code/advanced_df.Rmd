@@ -53,14 +53,15 @@ devtools::install_github('user/name_of_package')
 
 ```{r}
 
-students_hours = read.csv("../data/student_lifestyle_dataset.csv", 
+students_hours = read.csv("papka\\student_lifestyle_dataset.csv", 
                           row.names = 1,
                           # header = F,
                           na.strings = c('','-','dead'),
                           # comment.char = '#',
                           # sep = ' ',
                           # skip = 2,
-                          stringsAsFactors = T
+                          stringsAsFactors = TRUE,
+                          col.names = c('a', 'b')
                           )
 
 # read.csv2()
@@ -96,7 +97,7 @@ library(readr)
 # read_tsv()
 # read_table().
 
-head(read_csv("../data/student_lifestyle_dataset.csv", 
+head(read_csv("./data/student_lifestyle_dataset.csv", 
          na = c('', '-'),
          # comment = '#'
          # quote = '#',
@@ -135,10 +136,10 @@ summary(students_hours)
 # install.packages(c("dplyr", "tidyr", 'readr'))
 # install.packages("tidyverse")
 
-library(tidyverse)
+# library(tidyverse)
 
-# library(dplyr)
-# library(tidyr)
+library(dplyr)
+library(tidyr)
 # library(readr)
 # library(tidyverse)
 ```
@@ -179,7 +180,10 @@ students_hours$Extracurricular_Hours_Per_Day %>% mean(na.rm = T) %>% sqrt()
 summarise(select(filter(students_tibble, Extracurricular_Hours_Per_Day > 1), 
                  Sleep_Hours_Per_Day), Sleep_Hours_Mean = mean(Sleep_Hours_Per_Day))
 
-# students_tibble %>% 
+students_tibble %>% 
+  filter(Extracurricular_Hours_Per_Day > 1) |> 
+  select(Sleep_Hours_Per_Day) |> 
+  summarise(Sleep_Hours_Mean = mean(Sleep_Hours_Per_Day))
 ```
 
 > **The function after `%>%` gets the dataset as the first variable and allows us not to write it**
@@ -207,14 +211,14 @@ If we need our dataset (object after which the first pipe was written) inside a 
 
 ```{r}
 str(students_tibble)
-students_tibble %>% glimpse(width = 50) 
+students_tibble %>% glimpse(width = 100) 
 ```
 
 ### Arranging (order)
 
 ```{r}
 # students_tibble[order(students_tibble$Study_Hours_Per_Day), ]
-students_tibble %>% arrange(Study_Hours_Per_Day)
+students_tibble %>% arrange(GPA) 
 
 # students_tibble[order(students_tibble$Study_Hours_Per_Day, decreasing = T),]
 students_tibble %>% arrange(desc(Study_Hours_Per_Day))
@@ -223,7 +227,8 @@ students_tibble %>% arrange(desc(Study_Hours_Per_Day))
 > Arrange the dataset by **Extracurricular_Hours_Per_Day** and save it
 
 ```{r}
-# students_tibble = students_tibble
+students_tibble = students_tibble %>% arrange(desc(Extracurricular_Hours_Per_Day))
+students_tibble
 ```
 
 ### Select
@@ -232,6 +237,7 @@ Select columns by names
 
 ```{r}
 # students_tibble[, c("Extracurricular_Hours_Per_Day", "Study_Hours_Per_Day")]
+
 students_tibble %>% select(Extracurricular_Hours_Per_Day, Study_Hours_Per_Day)
 
 students_tibble %>%  select(-(Study_Hours_Per_Day:Social_Hours_Per_Day))
@@ -264,8 +270,8 @@ students_tibble %>% pull(Extracurricular_Hours_Per_Day) %>% mean(na.rm = T)
 > `select` and `pull` **the same column** and try to calculate the `median()`
 
 ```{r}
-# students_tibble
-# students_tibble
+students_tibble |> pull(Extracurricular_Hours_Per_Day) |>  median(na.rm = TRUE)
+students_tibble |> select(Extracurricular_Hours_Per_Day) |> median(na.rm = TRUE)
 ```
 
 ### Filtering
@@ -282,7 +288,7 @@ students_tibble %>% filter(between(Extracurricular_Hours_Per_Day, 2, 3))
 > Select `GPA` and `Stress_Level` and filter GPA \< 2.3
 
 ```{r}
-# students_tibble
+students_tibble |> select(GPA, Stress_Level) |> filter(GPA < 2.3)
 ```
 
 ### Slice
@@ -297,6 +303,7 @@ students_tibble %>% slice_head(prop = 0.1)
 students_tibble %>% slice_max(Study_Hours_Per_Day)
 students_tibble %>% slice_min(Study_Hours_Per_Day)
 
+# students_tibble |> slice_sample(prop = 0.1)
 # students_tibble[(nrow(students_tibble)-5):(nrow(students_tibble)),]
 
 students_tibble %>% slice(1:5, (n()-5):n()) # n() is number of "samples" (rows)
@@ -305,7 +312,13 @@ students_tibble %>% slice(1:5, (n()-5):n()) # n() is number of "samples" (rows)
 > Arrange dataset by the **Social_Hours_Per_Day**, choose rows with 10 highest **Social_Hours_Per_Day** and calculate their mean GPA
 
 ```{r}
-# students_tibble
+students_tibble |> 
+  arrange(desc(Social_Hours_Per_Day)) |> 
+  head(n=10) |> 
+  # summarise(mean_gpa = mean(GPA))
+  
+  pull(GPA) |>
+  mean()
 ```
 
 ### Rename column
@@ -321,7 +334,7 @@ students_tibble_2
 > Rename column Stress_Level -\> Stress
 
 ```{r}
-# students_tibble
+students_tibble |> rename(Stress = Stress_Level)
 ```
 
 #### *Advanced* rename column
@@ -387,7 +400,19 @@ By default, `.keep = 'all'`, and usually it is not worth changing it or even wri
 > Create column **Study = Study_Hours_Per_Day \> 7 -\> High, Study_Hours_Per_Day \< 7 -\>** Low -\> **SAVE**!
 
 ```{r}
-# students_tibble 
+students_tibble = students_tibble |>  
+  mutate(Stress_Hours = Extracurricular_Hours_Per_Day + Study_Hours_Per_Day,
+         Stress_Hours = round(Stress_Hours), 
+         .before = GPA) |> 
+  mutate(Study = ifelse(Study_Hours_Per_Day > 7, 'High', 'Low'),
+         .before = Study_Hours_Per_Day)
+  # mutate(Study = case_when(
+  #   Study_Hours_Per_Day > 7 ~ 'High',
+  #   Study_Hours_Per_Day < 7 & Study_Hours_Per_Day > 5 ~ 'wow',
+  #   TRUE ~ 'Low'
+  # ))
+
+
 ```
 
 #### *Advanced* mutate
@@ -416,12 +441,17 @@ And than Calculating the mean of 'Study_Hours_Per_Day' for each stress level gro
 ```{r}
 students_tibble %>% group_by(Stress_Level) %>% 
   summarise(study_hours_mean = mean(Study_Hours_Per_Day, na.rm = T))
+
+students_tibble %>% group_by(Stress_Level) %>% 
+  arrange(desc(GPA)) |> 
+  slice_head(n=3)
 ```
 
 > Group by `Study` and filter by `Stress_Level == High`
 
 ```{r}
-# students_tibble 
+students_tibble |> group_by(Study) |> 
+  summarise(study_h_sd = sd(Study_Hours_Per_Day))
 ```
 
 ### Distinct
@@ -429,7 +459,7 @@ students_tibble %>% group_by(Stress_Level) %>%
 Extract unique rows.
 
 ```{r}
-students_tibble %>%  distinct()
+students_tibble %>% select(Study) |> distinct()
 ```
 
 *We already have unique data*
@@ -550,7 +580,8 @@ students_tibble %>%  drop_na(Physical_Activity_Hours_Per_Day)
 
 ```{r}
 # and do it for each column
-students_tibble$GPA[is.na(students_tibble$GPA)] = mean(students_tibble$GPA)
+students_tibble$GPA[is.na(students_tibble$GPA)] = 
+  mean(students_tibble$GPA, na.rm = T)
 ```
 
 ### *advanced*
@@ -573,11 +604,12 @@ students_tibble = students_tibble %>%  na.omit()
 # Writing a data into file
 
 ```{r}
-# write.csv(students_tibble, "lec_output/students.csv")
+#write.csv(students_tibble, "lec_output/students.csv",
+ #         row.names = FALSE, quote = FALSE)
 dir.create("lec_output")
 write_csv(students_tibble, "./lec_output/students.csv") # comma-separated
 
-# write.table()
+# write.table(students_tibble, "./lec_output/students.tsv")
 write_tsv(students_tibble, "./lec_output/students.tsv") # tab-separated
 ```
 

@@ -42,13 +42,15 @@ library(ggplot2)
 
 Compare means of two groups: $t = \dfrac{\bar{X}_1 - \bar{X}_2}{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}}$
 
-Compare one group mean with a zero: $t = \dfrac{\bar{X}_1}{\sqrt{\frac{s_1^2}{n_1}}}$
+Compare one group mean with a hypothesized average : $t = \dfrac{\bar{X}_1 - \mu}{\sqrt{\frac{s_1^2}{n_1}}}$
 
 -   $\bar{X_1}, \bar{X_2}$ - means of 1st and 2nd samples
 
 -   $s_1, s_2$ - standard deviations of 1st and 2nd samples
 
 -   $n_1, n_2$ -number of observations in samples
+
+-   $\mu$ - hypothesized average (often = 0)
 
 ### Parameter of t-distribution
 
@@ -92,7 +94,7 @@ ggplant + geom_density(alpha=0.5)
 
 ```{r}
 x = rnorm(10, mean=2, sd=2)
-t.test(x)
+t.test(x, mu = 0)
 ```
 
 **Example on two samples:**
@@ -349,11 +351,15 @@ $df = (N-1)(M-1)$
 
 ## Does disease outcome depend on treatment group ?
 
-|                                  | Cured | Not cured | [*Row Total*]{.underline} |
-|----------------------------------|-------|-----------|---------------------------|
-| **Treatment**                    | 12    | 8         | 20                        |
-| **Placebo**                      | 6     | 10        | 16                        |
-| [***Column Total***]{.underline} | 18    | 18        | [**36**]{.underline}      |
++----------------------------------+------------+------------+---------------------------+
+|                                  | Cured      | Not cured  | [*Row Total*]{.underline} |
++==================================+============+============+===========================+
+| **Treatment**                    | 12         | 8          | 20                        |
++----------------------------------+------------+------------+---------------------------+
+| **Placebo**                      | 6          | 10         | 16                        |
++----------------------------------+------------+------------+---------------------------+
+| [***Column Total***]{.underline} | 18         | 18         | [**36**]{.underline}      |
++----------------------------------+------------+------------+---------------------------+
 
 ### Expected values calculation
 
@@ -422,11 +428,15 @@ The test is **exact** because it computes the exact probability of the observed 
 
 ### Data
 
-|   | Expert guessed "treatment" | Expert guessed "control" | [*Row Total*]{.underline} |
-|----|----|----|----|
-| **Treatment** | [**1**]{.underline} | [**3**]{.underline} | 4 |
-| **Control** | [**3**]{.underline} | [**1**]{.underline} | 4 |
-| [***Column Total***]{.underline} | 4 | 4 | 8 |
++----------------------------------+----------------------------+--------------------------+---------------------------+
+|                                  | Expert guessed "treatment" | Expert guessed "control" | [*Row Total*]{.underline} |
++==================================+============================+==========================+===========================+
+| **Treatment**                    | [**1**]{.underline}        | [**3**]{.underline}      | 4                         |
++----------------------------------+----------------------------+--------------------------+---------------------------+
+| **Control**                      | [**3**]{.underline}        | [**1**]{.underline}      | 4                         |
++----------------------------------+----------------------------+--------------------------+---------------------------+
+| [***Column Total***]{.underline} | 4                          | 4                        | 8                         |
++----------------------------------+----------------------------+--------------------------+---------------------------+
 
 ```{r}
 data_knockout = data.frame(

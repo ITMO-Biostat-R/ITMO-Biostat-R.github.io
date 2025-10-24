@@ -60,7 +60,7 @@ library(tidyr)
 # new_vec = 
 ```
 
-#### 3.  Show values of `new_vec` which less than 10 and more than 0 
+#### 3. Show values of `new_vec` which less than 10 and more than 0
 
 ```{r}
 # new_vec
