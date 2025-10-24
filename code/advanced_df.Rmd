@@ -53,15 +53,14 @@ devtools::install_github('user/name_of_package')
 
 ```{r}
 
-students_hours = read.csv("papka\\student_lifestyle_dataset.csv", 
+students_hours = read.csv("./data/student_lifestyle_dataset.csv", 
                           row.names = 1,
                           # header = F,
                           na.strings = c('','-','dead'),
                           # comment.char = '#',
                           # sep = ' ',
                           # skip = 2,
-                          stringsAsFactors = TRUE,
-                          col.names = c('a', 'b')
+                          stringsAsFactors = TRUE
                           )
 
 # read.csv2()
@@ -136,10 +135,10 @@ summary(students_hours)
 # install.packages(c("dplyr", "tidyr", 'readr'))
 # install.packages("tidyverse")
 
-# library(tidyverse)
+library(tidyverse)
 
-library(dplyr)
-library(tidyr)
+# library(dplyr)
+# library(tidyr)
 # library(readr)
 # library(tidyverse)
 ```
@@ -271,7 +270,7 @@ students_tibble %>% pull(Extracurricular_Hours_Per_Day) %>% mean(na.rm = T)
 
 ```{r}
 students_tibble |> pull(Extracurricular_Hours_Per_Day) |>  median(na.rm = TRUE)
-students_tibble |> select(Extracurricular_Hours_Per_Day) |> median(na.rm = TRUE)
+# students_tibble |> select(Extracurricular_Hours_Per_Day) |> median(na.rm = TRUE)
 ```
 
 ### Filtering

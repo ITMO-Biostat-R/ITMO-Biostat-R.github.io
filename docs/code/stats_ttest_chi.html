@@ -319,11 +319,12 @@ window.Quarto = {
 <section id="formula" class="level3">
 <h3 class="anchored" data-anchor-id="formula">Formula</h3>
 <p>Compare means of two groups: <span class="math inline">\(t = \dfrac{\bar{X}_1 - \bar{X}_2}{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}}\)</span></p>
-<p>Compare one group mean with a zero: <span class="math inline">\(t = \dfrac{\bar{X}_1}{\sqrt{\frac{s_1^2}{n_1}}}\)</span></p>
+<p>Compare one group mean with a hypothesized average : <span class="math inline">\(t = \dfrac{\bar{X}_1 - \mu}{\sqrt{\frac{s_1^2}{n_1}}}\)</span></p>
 <ul>
 <li><p><span class="math inline">\(\bar{X_1}, \bar{X_2}\)</span> - means of 1st and 2nd samples</p></li>
 <li><p><span class="math inline">\(s_1, s_2\)</span> - standard deviations of 1st and 2nd samples</p></li>
 <li><p><span class="math inline">\(n_1, n_2\)</span> -number of observations in samples</p></li>
+<li><p><span class="math inline">\(\mu\)</span> - hypothesized average (often = 0)</p></li>
 </ul>
 </section>
 <section id="parameter-of-t-distribution" class="level3">
@@ -352,7 +353,7 @@ window.Quarto = {
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   60 obs. of  2 variables:
  $ group : Factor w/ 2 levels "Shade","Sunlight": 2 2 2 2 2 2 2 2 2 2 ...
- $ height: num  18.6 14.4 15.9 13.2 18.5 ...</code></pre>
+ $ height: num  14.9 15 15.4 14.3 15.2 ...</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -377,19 +378,19 @@ window.Quarto = {
 <p><strong>Example for one sample:</strong></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="at">mean=</span><span class="dv">2</span>, <span class="at">sd=</span><span class="dv">2</span>)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(x, <span class="at">mu =</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     One Sample t-test
 
 data:  x
-t = 1.925, df = 9, p-value = 0.08636
+t = 2.0682, df = 9, p-value = 0.06856
 alternative hypothesis: true mean is not equal to 0
 95 percent confidence interval:
- -0.2540654  3.1550890
+ -0.1567744  3.5011022
 sample estimates:
 mean of x 
- 1.450512 </code></pre>
+ 1.672164 </code></pre>
 </div>
 </div>
 <p><strong>Example on two samples:</strong></p>
@@ -403,13 +404,13 @@ mean of x
     Welch Two Sample t-test
 
 data:  x1 and x2
-t = 3.3874, df = 10.168, p-value = 0.006757
+t = 4.4625, df = 16.226, p-value = 0.0003805
 alternative hypothesis: true difference in means is not equal to 0
 95 percent confidence interval:
- 1.448717 6.981674
+ 2.765330 7.759565
 sample estimates:
- mean of x  mean of y 
- 3.6120525 -0.6031429 </code></pre>
+mean of x mean of y 
+ 3.727928 -1.534519 </code></pre>
 </div>
 </div>
 <p><u><strong>Our <em>plant and sunlight</em> data:</strong></u></p>
@@ -422,13 +423,13 @@ sample estimates:
     Welch Two Sample t-test
 
 data:  height by group
-t = -5.5478, df = 56.707, p-value = 7.916e-07
+t = -5.3771, df = 55.105, p-value = 1.586e-06
 alternative hypothesis: true difference in means between group Shade and group Sunlight is not equal to 0
 95 percent confidence interval:
- -4.078494 -1.914929
+ -4.269266 -1.951062
 sample estimates:
    mean in group Shade mean in group Sunlight 
-              11.93417               14.93088 </code></pre>
+              12.18561               15.29577 </code></pre>
 </div>
 </div>
 <ul>
@@ -537,13 +538,13 @@ sample estimates:
     Welch Two Sample t-test
 
 data:  value by group
-t = -2.1419, df = 39.996, p-value = 0.03835
+t = -1.9535, df = 39.637, p-value = 0.05785
 alternative hypothesis: true difference in means between group sample1 and group sample2 is not equal to 0
 95 percent confidence interval:
- -4.5316302 -0.1315058
+ -4.42054964  0.07583356
 sample estimates:
 mean in group sample1 mean in group sample2 
-             5.650433              7.982001 </code></pre>
+             5.606197              7.778556 </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox.test</span>(value <span class="sc">~</span> group,</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>            <span class="at">data=</span>data_sample)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -552,7 +553,7 @@ mean in group sample1 mean in group sample2
     Wilcoxon rank sum exact test
 
 data:  value by group
-W = 96, p-value = 0.001341
+W = 112, p-value = 0.005697
 alternative hypothesis: true location shift is not equal to 0</code></pre>
 </div>
 </div>
@@ -602,12 +603,12 @@ alternative hypothesis: true location shift is not equal to 0</code></pre>
 <span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>data_pressure <span class="sc">%&gt;%</span> <span class="fu">head</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  pressure  group
-1 123.5064 before
-2 129.9894 before
-3 135.4341 before
-4 134.5729 before
-5 120.9876 before
-6 115.7051 before</code></pre>
+1 111.8983 before
+2 130.1610 before
+3 118.3487 before
+4 112.3965 before
+5 101.1006 before
+6 111.8666 before</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -638,13 +639,13 @@ alternative hypothesis: true location shift is not equal to 0</code></pre>
     Paired t-test
 
 data:  pressure by group
-t = -2.9879, df = 19, p-value = 0.007561
+t = -4.3571, df = 19, p-value = 0.0003393
 alternative hypothesis: true mean difference is not equal to 0
 95 percent confidence interval:
- -6.205704 -1.093009
+ -6.343719 -2.226720
 sample estimates:
 mean difference 
-      -3.649356 </code></pre>
+       -4.28522 </code></pre>
 </div>
 </div>
 </section>
@@ -689,7 +690,7 @@ mean difference
     Wilcoxon signed rank exact test
 
 data:  value by group
-V = 165, p-value = 0.0888
+V = 188, p-value = 0.01013
 alternative hypothesis: true location shift is not equal to 0</code></pre>
 </div>
 </div>
@@ -872,10 +873,10 @@ alternative hypothesis: true location shift is not equal to 0</code></pre>
 <h2 class="anchored" data-anchor-id="does-disease-outcome-depend-on-treatment-group">Does disease outcome depend on treatment group ?</h2>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 43%">
-<col style="width: 8%">
-<col style="width: 13%">
-<col style="width: 34%">
+<col style="width: 38%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 30%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -1014,10 +1015,10 @@ X-squared = 1.0125, df = 1, p-value = 0.3143</code></pre>
 <h3 class="anchored" data-anchor-id="data-2">Data</h3>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
+<col style="width: 28%">
+<col style="width: 23%">
+<col style="width: 22%">
+<col style="width: 23%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -1333,7 +1334,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/ITMO-Biostat-R\.github\.io\/");
+      var filterRegex = new RegExp('/' + window.location.host + '/');
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }

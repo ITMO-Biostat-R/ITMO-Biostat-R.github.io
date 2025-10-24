@@ -255,9 +255,9 @@ window.Quarto = {
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>anova_result <span class="ot">&lt;-</span> <span class="fu">aov</span>(yield <span class="sc">~</span> fertilizer, <span class="at">data =</span> data)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(anova_result)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>            Df Sum Sq Mean Sq F value   Pr(&gt;F)    
-fertilizer   2  186.2   93.08   11.16 0.000293 ***
-Residuals   27  225.1    8.34                     
+<pre><code>            Df Sum Sq Mean Sq F value  Pr(&gt;F)   
+fertilizer   2  177.3   88.64    8.68 0.00123 **
+Residuals   27  275.7   10.21                   
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
@@ -272,9 +272,9 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <pre><code>Anova Table (Type II tests)
 
 Response: yield
-           Sum Sq Df F value    Pr(&gt;F)    
-fertilizer 186.16  2  11.162 0.0002931 ***
-Residuals  225.14 27                      
+           Sum Sq Df F value   Pr(&gt;F)   
+fertilizer 177.27  2  8.6798 0.001228 **
+Residuals  275.72 27                    
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
@@ -297,7 +297,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
     Kruskal-Wallis rank sum test
 
 data:  yield by fertilizer
-Kruskal-Wallis chi-squared = 13.636, df = 2, p-value = 0.001094</code></pre>
+Kruskal-Wallis chi-squared = 11.43, df = 2, p-value = 0.003297</code></pre>
 </div>
 </div>
 
@@ -398,7 +398,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/ITMO-Biostat-R\.github\.io\/");
+      var filterRegex = new RegExp('/' + window.location.host + '/');
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
