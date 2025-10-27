@@ -8,10 +8,8 @@ title: "Biostatistics in R"
     -   [Download](./zipfiles/basic_r.zip)
 2.  [Working with Dataframes](./code/advanced_df.Rmd)
     -   [Download](./zipfiles/advanced_df.zip)
-
-<!-- 3.  [Visualization](code/datavis.Rmd) -->
-
-<!--     -   [Download](./zipfiles/datavis.zip) -->
+3.  [Visualization](code/datavis.Rmd)
+    -   [Download](./zipfiles/datavis.zip)
 
 <!-- 4.  [Statistical testing](code/stats.Rmd) -->
 
@@ -19,7 +17,9 @@ title: "Biostatistics in R"
 
 ### Presentations
 
-TBA <!-- -   [Visualization sins and inspirations](presentations/visual_sins_inspiration.qmd) --> <!-- -   [Distributions and statistics](presentations/distributions.qmd) -->
+TBA <!-- -   [Visualization sins and inspirations](presentations/visual_sins_inspiration.qmd) --> 
+
+<!-- -   [Distributions and statistics](presentations/distributions.qmd) -->
 
 ### Homeworks
 

@@ -16,7 +16,7 @@ editor_options:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, dpi = 200, fig.width = 5, fig.height = 4)
+knitr::opts_chunk$set(echo = TRUE, dpi = 200, fig.widtsh = 5, fig.height = 4)
 ```
 
 # Introduction
@@ -642,7 +642,6 @@ ggplot(iris, aes(x = Species, y = Sepal.Length)) +
 library(patchwork)
 ```
 
-
 ```{r}
 bar_stack = iris_df %>% 
   ggplot(aes(x=Sepal.Length.Category, fill=Species)) + 
@@ -656,10 +655,27 @@ bar_dodge = iris_df %>%
   ggplot(aes(fill=Species, x=Sepal.Length.Category)) + 
   geom_bar(position = 'dodge')  + 
   theme_bw()
-
-
-(bar_stack | bar_fill) / bar_dodge
 ```
+
+```{r}
+bar_stack + bar_fill
+```
+### Collect axes and legends
+
+```{r}
+bar_stack + bar_fill +
+  plot_layout(guides = 'collect',
+              axes = 'collect')
+```
+
+
+```{r}
+(bar_stack | bar_fill) / bar_dodge +
+  plot_layout(guides = 'collect') +
+  plot_annotation(tag_levels = 'A')
+```
+
+
 
 ## Saving the plot
 

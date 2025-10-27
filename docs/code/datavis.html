@@ -224,7 +224,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#new-geoms-used" id="toc-new-geoms-used" class="nav-link" data-scroll-target="#new-geoms-used">New geoms used</a></li>
   </ul></li>
-  <li><a href="#plot-arranging" id="toc-plot-arranging" class="nav-link" data-scroll-target="#plot-arranging">Plot arranging</a></li>
+  <li><a href="#plot-arranging" id="toc-plot-arranging" class="nav-link" data-scroll-target="#plot-arranging">Plot arranging</a>
+  <ul class="collapse">
+  <li><a href="#collect-axes-and-legends" id="toc-collect-axes-and-legends" class="nav-link" data-scroll-target="#collect-axes-and-legends">Collect axes and legends</a></li>
+  </ul></li>
   <li><a href="#saving-the-plot" id="toc-saving-the-plot" class="nav-link" data-scroll-target="#saving-the-plot">Saving the plot</a>
   <ul class="collapse">
   <li><a href="#to-save-last-drawn-plot" id="toc-to-save-last-drawn-plot" class="nav-link" data-scroll-target="#to-save-last-drawn-plot">To save <u>last</u> drawn plot:</a></li>
@@ -294,7 +297,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <blockquote class="blockquote">
 <p>This famous (Fisher’s or Anderson’s) iris data set gives the measurements in centimeters of the variables sepal length and width and petal length and width, respectively, for 50 flowers from each of 3 species of iris. The species are <em>Iris setosa</em>, <em>versicolor</em>, and <em>virginica</em></p>
 </blockquote>
-<p><img src="../images/iris-machinelearning.png" class="img-fluid" width="1000"></p>
+<p><img src="./iris-machinelearning.png" class="img-fluid" width="1000"></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># data(iris)</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(iris)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -363,7 +366,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="datavis_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="1000"></p>
+<p><img src="datavis_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="1400"></p>
 </figure>
 </div>
 </div>
@@ -404,7 +407,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="datavis_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="1000"></p>
+<p><img src="datavis_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="1400"></p>
 </figure>
 </div>
 </div>
@@ -412,7 +415,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="datavis_files/figure-html/unnamed-chunk-8-2.png" class="img-fluid figure-img" width="1000"></p>
+<p><img src="datavis_files/figure-html/unnamed-chunk-8-2.png" class="img-fluid figure-img" width="1400"></p>
 </figure>
 </div>
 </div>
@@ -420,7 +423,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="datavis_files/figure-html/unnamed-chunk-8-3.png" class="img-fluid figure-img" width="1000"></p>
+<p><img src="datavis_files/figure-html/unnamed-chunk-8-3.png" class="img-fluid figure-img" width="1400"></p>
 </figure>
 </div>
 </div>
@@ -451,7 +454,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="datavis_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="1000"></p>
+<p><img src="datavis_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="1400"></p>
 </figure>
 </div>
 </div>
@@ -463,7 +466,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="datavis_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="1000"></p>
+<p><img src="datavis_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="1400"></p>
 </figure>
 </div>
 </div>
@@ -484,7 +487,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="datavis_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="1000"></p>
+<p><img src="datavis_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="1400"></p>
 </figure>
 </div>
 </div>
@@ -512,7 +515,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="datavis_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="1000"></p>
+<p><img src="datavis_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="1400"></p>
 </figure>
 </div>
 </div>
@@ -538,7 +541,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="datavis_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="1000"></p>
+<p><img src="datavis_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="1400"></p>
 </figure>
 </div>
 </div>
@@ -572,7 +575,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="datavis_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid figure-img" width="1000"></p>
+<p><img src="datavis_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid figure-img" width="1400"></p>
 </figure>
 </div>
 </div>
@@ -589,7 +592,7 @@ For example, first bar have height of 5 - it mean, that there are 5 flowers with
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="datavis_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" width="1000"></p>
+<p><img src="datavis_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" width="1400"></p>
 </figure>
 </div>
 </div>
@@ -617,7 +620,7 @@ For example, first bar have height of 5 - it mean, that there are 5 flowers with
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="datavis_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid figure-img" width="1000"></p>
+<p><img src="datavis_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid figure-img" width="1400"></p>
 </figure>
 </div>
 </div>
@@ -634,7 +637,7 @@ For example, first bar have height of 5 - it mean, that there are 5 flowers with
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="datavis_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid figure-img" width="1000"></p>
+<p><img src="datavis_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid figure-img" width="1400"></p>
 </figure>
 </div>
 </div>
@@ -673,7 +676,7 @@ For example, first bar have height of 5 - it mean, that there are 5 flowers with
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="datavis_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid figure-img" width="1000"></p>
+<p><img src="datavis_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid figure-img" width="1400"></p>
 </figure>
 </div>
 </div>
@@ -694,7 +697,7 @@ For example, first bar have height of 5 - it mean, that there are 5 flowers with
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="datavis_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid figure-img" width="1000"></p>
+<p><img src="datavis_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid figure-img" width="1400"></p>
 </figure>
 </div>
 </div>
@@ -715,7 +718,7 @@ For example, first bar have height of 5 - it mean, that there are 5 flowers with
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="datavis_files/figure-html/unnamed-chunk-27-1.png" class="img-fluid figure-img" width="1000"></p>
+<p><img src="datavis_files/figure-html/unnamed-chunk-27-1.png" class="img-fluid figure-img" width="1400"></p>
 </figure>
 </div>
 </div>
@@ -741,7 +744,7 @@ For example, first bar have height of 5 - it mean, that there are 5 flowers with
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="datavis_files/figure-html/unnamed-chunk-28-1.png" class="img-fluid figure-img" width="1000"></p>
+<p><img src="datavis_files/figure-html/unnamed-chunk-28-1.png" class="img-fluid figure-img" width="1400"></p>
 </figure>
 </div>
 </div>
@@ -760,7 +763,7 @@ For example, first bar have height of 5 - it mean, that there are 5 flowers with
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="datavis_files/figure-html/unnamed-chunk-29-1.png" class="img-fluid figure-img" width="1000"></p>
+<p><img src="datavis_files/figure-html/unnamed-chunk-29-1.png" class="img-fluid figure-img" width="1400"></p>
 </figure>
 </div>
 </div>
@@ -780,7 +783,7 @@ For example, first bar have height of 5 - it mean, that there are 5 flowers with
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="datavis_files/figure-html/unnamed-chunk-30-1.png" class="img-fluid figure-img" width="1000"></p>
+<p><img src="datavis_files/figure-html/unnamed-chunk-30-1.png" class="img-fluid figure-img" width="1400"></p>
 </figure>
 </div>
 </div>
@@ -796,7 +799,7 @@ For example, first bar have height of 5 - it mean, that there are 5 flowers with
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="datavis_files/figure-html/unnamed-chunk-31-1.png" class="img-fluid figure-img" width="1000"></p>
+<p><img src="datavis_files/figure-html/unnamed-chunk-31-1.png" class="img-fluid figure-img" width="1400"></p>
 </figure>
 </div>
 </div>
@@ -815,7 +818,7 @@ For example, first bar have height of 5 - it mean, that there are 5 flowers with
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="datavis_files/figure-html/unnamed-chunk-32-1.png" class="img-fluid figure-img" width="1000"></p>
+<p><img src="datavis_files/figure-html/unnamed-chunk-32-1.png" class="img-fluid figure-img" width="1400"></p>
 </figure>
 </div>
 </div>
@@ -837,7 +840,7 @@ For example, first bar have height of 5 - it mean, that there are 5 flowers with
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="datavis_files/figure-html/unnamed-chunk-33-1.png" class="img-fluid figure-img" width="1000"></p>
+<p><img src="datavis_files/figure-html/unnamed-chunk-33-1.png" class="img-fluid figure-img" width="1400"></p>
 </figure>
 </div>
 </div>
@@ -852,7 +855,7 @@ For example, first bar have height of 5 - it mean, that there are 5 flowers with
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="datavis_files/figure-html/unnamed-chunk-34-1.png" class="img-fluid figure-img" width="1000"></p>
+<p><img src="datavis_files/figure-html/unnamed-chunk-34-1.png" class="img-fluid figure-img" width="1400"></p>
 </figure>
 </div>
 </div>
@@ -867,7 +870,7 @@ For example, first bar have height of 5 - it mean, that there are 5 flowers with
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="datavis_files/figure-html/unnamed-chunk-35-1.png" class="img-fluid figure-img" width="1000"></p>
+<p><img src="datavis_files/figure-html/unnamed-chunk-35-1.png" class="img-fluid figure-img" width="1400"></p>
 </figure>
 </div>
 </div>
@@ -883,7 +886,7 @@ For example, first bar have height of 5 - it mean, that there are 5 flowers with
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="datavis_files/figure-html/unnamed-chunk-36-1.png" class="img-fluid figure-img" width="1000"></p>
+<p><img src="datavis_files/figure-html/unnamed-chunk-36-1.png" class="img-fluid figure-img" width="1400"></p>
 </figure>
 </div>
 </div>
@@ -891,7 +894,7 @@ For example, first bar have height of 5 - it mean, that there are 5 flowers with
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="datavis_files/figure-html/unnamed-chunk-36-2.png" class="img-fluid figure-img" width="1000"></p>
+<p><img src="datavis_files/figure-html/unnamed-chunk-36-2.png" class="img-fluid figure-img" width="1400"></p>
 </figure>
 </div>
 </div>
@@ -899,7 +902,7 @@ For example, first bar have height of 5 - it mean, that there are 5 flowers with
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="datavis_files/figure-html/unnamed-chunk-36-3.png" class="img-fluid figure-img" width="1000"></p>
+<p><img src="datavis_files/figure-html/unnamed-chunk-36-3.png" class="img-fluid figure-img" width="1400"></p>
 </figure>
 </div>
 </div>
@@ -915,7 +918,7 @@ For example, first bar have height of 5 - it mean, that there are 5 flowers with
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="datavis_files/figure-html/unnamed-chunk-37-1.png" class="img-fluid figure-img" width="1000"></p>
+<p><img src="datavis_files/figure-html/unnamed-chunk-37-1.png" class="img-fluid figure-img" width="1400"></p>
 </figure>
 </div>
 </div>
@@ -962,7 +965,7 @@ For example, first bar have height of 5 - it mean, that there are 5 flowers with
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="datavis_files/figure-html/unnamed-chunk-39-1.png" class="img-fluid figure-img" width="1000"></p>
+<p><img src="datavis_files/figure-html/unnamed-chunk-39-1.png" class="img-fluid figure-img" width="1400"></p>
 </figure>
 </div>
 </div>
@@ -1050,7 +1053,7 @@ For example, first bar have height of 5 - it mean, that there are 5 flowers with
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="datavis_files/figure-html/unnamed-chunk-45-1.png" class="img-fluid figure-img" width="1000"></p>
+<p><img src="datavis_files/figure-html/unnamed-chunk-45-1.png" class="img-fluid figure-img" width="1400"></p>
 </figure>
 </div>
 </div>
@@ -1065,7 +1068,7 @@ For example, first bar have height of 5 - it mean, that there are 5 flowers with
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="datavis_files/figure-html/unnamed-chunk-46-1.png" class="img-fluid figure-img" width="1000"></p>
+<p><img src="datavis_files/figure-html/unnamed-chunk-46-1.png" class="img-fluid figure-img" width="1400"></p>
 </figure>
 </div>
 </div>
@@ -1099,7 +1102,7 @@ For example, first bar have height of 5 - it mean, that there are 5 flowers with
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="datavis_files/figure-html/unnamed-chunk-48-1.png" class="img-fluid figure-img" width="1000"></p>
+<p><img src="datavis_files/figure-html/unnamed-chunk-48-1.png" class="img-fluid figure-img" width="1400"></p>
 </figure>
 </div>
 </div>
@@ -1113,7 +1116,7 @@ For example, first bar have height of 5 - it mean, that there are 5 flowers with
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="datavis_files/figure-html/unnamed-chunk-49-1.png" class="img-fluid figure-img" width="1000"></p>
+<p><img src="datavis_files/figure-html/unnamed-chunk-49-1.png" class="img-fluid figure-img" width="1400"></p>
 </figure>
 </div>
 </div>
@@ -1129,7 +1132,7 @@ For example, first bar have height of 5 - it mean, that there are 5 flowers with
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="datavis_files/figure-html/unnamed-chunk-50-1.png" class="img-fluid figure-img" width="1000"></p>
+<p><img src="datavis_files/figure-html/unnamed-chunk-50-1.png" class="img-fluid figure-img" width="1400"></p>
 </figure>
 </div>
 </div>
@@ -1152,7 +1155,7 @@ For example, first bar have height of 5 - it mean, that there are 5 flowers with
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="datavis_files/figure-html/unnamed-chunk-51-1.png" class="img-fluid figure-img" width="1000"></p>
+<p><img src="datavis_files/figure-html/unnamed-chunk-51-1.png" class="img-fluid figure-img" width="1400"></p>
 </figure>
 </div>
 </div>
@@ -1190,43 +1193,70 @@ For example, first bar have height of 5 - it mean, that there are 5 flowers with
 <span id="cb68-9"><a href="#cb68-9" aria-hidden="true" tabindex="-1"></a>bar_dodge <span class="ot">=</span> iris_df <span class="sc">%&gt;%</span> </span>
 <span id="cb68-10"><a href="#cb68-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">fill=</span>Species, <span class="at">x=</span>Sepal.Length.Category)) <span class="sc">+</span> </span>
 <span id="cb68-11"><a href="#cb68-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">'dodge'</span>)  <span class="sc">+</span> </span>
-<span id="cb68-12"><a href="#cb68-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span>
-<span id="cb68-13"><a href="#cb68-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-14"><a href="#cb68-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-15"><a href="#cb68-15" aria-hidden="true" tabindex="-1"></a>(bar_stack <span class="sc">|</span> bar_fill) <span class="sc">/</span> bar_dodge</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb68-12"><a href="#cb68-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>bar_stack <span class="sc">+</span> bar_fill</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="datavis_files/figure-html/unnamed-chunk-53-1.png" class="img-fluid figure-img" width="1000"></p>
+<p><img src="datavis_files/figure-html/unnamed-chunk-54-1.png" class="img-fluid figure-img" width="1400"></p>
 </figure>
 </div>
 </div>
 </div>
+<section id="collect-axes-and-legends" class="level3">
+<h3 class="anchored" data-anchor-id="collect-axes-and-legends">Collect axes and legends</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>bar_stack <span class="sc">+</span> bar_fill <span class="sc">+</span></span>
+<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_layout</span>(<span class="at">guides =</span> <span class="st">'collect'</span>,</span>
+<span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">axes =</span> <span class="st">'collect'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="datavis_files/figure-html/unnamed-chunk-55-1.png" class="img-fluid figure-img" width="1400"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>(bar_stack <span class="sc">|</span> bar_fill) <span class="sc">/</span> bar_dodge <span class="sc">+</span></span>
+<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_layout</span>(<span class="at">guides =</span> <span class="st">'collect'</span>) <span class="sc">+</span></span>
+<span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_annotation</span>(<span class="at">tag_levels =</span> <span class="st">'A'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="datavis_files/figure-html/unnamed-chunk-56-1.png" class="img-fluid figure-img" width="1400"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
 </section>
 <section id="saving-the-plot" class="level2">
 <h2 class="anchored" data-anchor-id="saving-the-plot">Saving the plot</h2>
 <section id="to-save-last-drawn-plot" class="level3">
 <h3 class="anchored" data-anchor-id="to-save-last-drawn-plot">To save <u>last</u> drawn plot:</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(</span>
-<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">filename =</span> <span class="st">'./bigplot.png'</span>, <span class="co"># specify the filename (path to file)</span></span>
-<span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">device =</span> , <span class="co"># png, pdf, jpeg, svg and others</span></span>
-<span id="cb69-4"><a href="#cb69-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">dpi =</span> <span class="dv">320</span>, <span class="co"># resolution</span></span>
-<span id="cb69-5"><a href="#cb69-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">width =</span> <span class="dv">1800</span>,</span>
-<span id="cb69-6"><a href="#cb69-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">height =</span> <span class="dv">1600</span>,</span>
-<span id="cb69-7"><a href="#cb69-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">units =</span> <span class="st">"px"</span> <span class="co">#in, cm, mm</span></span>
-<span id="cb69-8"><a href="#cb69-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(</span>
+<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">filename =</span> <span class="st">'./bigplot.png'</span>, <span class="co"># specify the filename (path to file)</span></span>
+<span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">device =</span> , <span class="co"># png, pdf, jpeg, svg and others</span></span>
+<span id="cb72-4"><a href="#cb72-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">dpi =</span> <span class="dv">320</span>, <span class="co"># resolution</span></span>
+<span id="cb72-5"><a href="#cb72-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">width =</span> <span class="dv">1800</span>,</span>
+<span id="cb72-6"><a href="#cb72-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">height =</span> <span class="dv">1600</span>,</span>
+<span id="cb72-7"><a href="#cb72-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">units =</span> <span class="st">"px"</span> <span class="co">#in, cm, mm</span></span>
+<span id="cb72-8"><a href="#cb72-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="save-everything-between" class="level3">
 <h3 class="anchored" data-anchor-id="save-everything-between">Save “everything between”</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pdf</span>(<span class="st">"./dodge_barplot.pdf"</span>, <span class="at">width =</span> <span class="dv">6</span>, <span class="at">height =</span> <span class="dv">6</span>)</span>
-<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a>iris_df <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">fill=</span>Species, <span class="at">x=</span>Sepal.Length.Category)) <span class="sc">+</span> </span>
-<span id="cb70-4"><a href="#cb70-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">'dodge'</span>)</span>
-<span id="cb70-5"><a href="#cb70-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-6"><a href="#cb70-6" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pdf</span>(<span class="st">"./dodge_barplot.pdf"</span>, <span class="at">width =</span> <span class="dv">6</span>, <span class="at">height =</span> <span class="dv">6</span>)</span>
+<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a>iris_df <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">fill=</span>Species, <span class="at">x=</span>Sepal.Length.Category)) <span class="sc">+</span> </span>
+<span id="cb73-4"><a href="#cb73-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">'dodge'</span>)</span>
+<span id="cb73-5"><a href="#cb73-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-6"><a href="#cb73-6" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>quartz_off_screen 
                 2 </code></pre>
@@ -1242,20 +1272,20 @@ For example, first bar have height of 5 - it mean, that there are 5 flowers with
 <section id="ggpubr-advanced" class="level1">
 <h1>ggpubr (Advanced)</h1>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages('ggpubr')</span></span>
-<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggpubr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages('ggpubr')</span></span>
+<span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggpubr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="barplot" class="level2">
 <h2 class="anchored" data-anchor-id="barplot">Barplot</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>iris_df <span class="sc">%&gt;%</span>  <span class="fu">ggbarplot</span>(<span class="at">x=</span><span class="st">"Species"</span>, <span class="at">y=</span><span class="st">"Sepal.Width"</span>,</span>
-<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>                       <span class="at">fill=</span><span class="st">'Species'</span>,</span>
-<span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a>                       <span class="at">add =</span> <span class="st">"mean_sd"</span> <span class="co"># calculate mean and sd</span></span>
-<span id="cb73-4"><a href="#cb73-4" aria-hidden="true" tabindex="-1"></a>                       )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>iris_df <span class="sc">%&gt;%</span>  <span class="fu">ggbarplot</span>(<span class="at">x=</span><span class="st">"Species"</span>, <span class="at">y=</span><span class="st">"Sepal.Width"</span>,</span>
+<span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a>                       <span class="at">fill=</span><span class="st">'Species'</span>,</span>
+<span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a>                       <span class="at">add =</span> <span class="st">"mean_sd"</span> <span class="co"># calculate mean and sd</span></span>
+<span id="cb76-4"><a href="#cb76-4" aria-hidden="true" tabindex="-1"></a>                       )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="datavis_files/figure-html/unnamed-chunk-57-1.png" class="img-fluid figure-img" width="1000"></p>
+<p><img src="datavis_files/figure-html/unnamed-chunk-60-1.png" class="img-fluid figure-img" width="1400"></p>
 </figure>
 </div>
 </div>
@@ -1266,19 +1296,19 @@ For example, first bar have height of 5 - it mean, that there are 5 flowers with
 <section id="statisctics-inside" class="level3">
 <h3 class="anchored" data-anchor-id="statisctics-inside">Statisctics inside!</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>p_pubr <span class="ot">=</span> iris_df <span class="sc">%&gt;%</span>  <span class="fu">ggboxplot</span>(<span class="at">x=</span><span class="st">'Species'</span>, <span class="at">y=</span><span class="st">'Sepal.Length'</span>, <span class="at">col=</span><span class="st">'Species'</span>)</span>
-<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb74-3"><a href="#cb74-3" aria-hidden="true" tabindex="-1"></a>comparisons <span class="ot">&lt;-</span> <span class="fu">list</span>( <span class="fu">c</span>(<span class="st">"setosa"</span>, <span class="st">"versicolor"</span>), </span>
-<span id="cb74-4"><a href="#cb74-4" aria-hidden="true" tabindex="-1"></a>                     <span class="fu">c</span>(<span class="st">"setosa"</span>, <span class="st">"virginica"</span>), </span>
-<span id="cb74-5"><a href="#cb74-5" aria-hidden="true" tabindex="-1"></a>                     <span class="fu">c</span>(<span class="st">"virginica"</span>, <span class="st">"versicolor"</span>) )</span>
-<span id="cb74-6"><a href="#cb74-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb74-7"><a href="#cb74-7" aria-hidden="true" tabindex="-1"></a>p_pubr <span class="sc">+</span> <span class="fu">stat_compare_means</span>(<span class="at">comparisons =</span> comparisons, </span>
-<span id="cb74-8"><a href="#cb74-8" aria-hidden="true" tabindex="-1"></a>                            <span class="at">label =</span> <span class="st">"p.signif"</span>)<span class="sc">+</span> </span>
-<span id="cb74-9"><a href="#cb74-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_compare_means</span>(<span class="at">label.y =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a>p_pubr <span class="ot">=</span> iris_df <span class="sc">%&gt;%</span>  <span class="fu">ggboxplot</span>(<span class="at">x=</span><span class="st">'Species'</span>, <span class="at">y=</span><span class="st">'Sepal.Length'</span>, <span class="at">col=</span><span class="st">'Species'</span>)</span>
+<span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-3"><a href="#cb77-3" aria-hidden="true" tabindex="-1"></a>comparisons <span class="ot">&lt;-</span> <span class="fu">list</span>( <span class="fu">c</span>(<span class="st">"setosa"</span>, <span class="st">"versicolor"</span>), </span>
+<span id="cb77-4"><a href="#cb77-4" aria-hidden="true" tabindex="-1"></a>                     <span class="fu">c</span>(<span class="st">"setosa"</span>, <span class="st">"virginica"</span>), </span>
+<span id="cb77-5"><a href="#cb77-5" aria-hidden="true" tabindex="-1"></a>                     <span class="fu">c</span>(<span class="st">"virginica"</span>, <span class="st">"versicolor"</span>) )</span>
+<span id="cb77-6"><a href="#cb77-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-7"><a href="#cb77-7" aria-hidden="true" tabindex="-1"></a>p_pubr <span class="sc">+</span> <span class="fu">stat_compare_means</span>(<span class="at">comparisons =</span> comparisons, </span>
+<span id="cb77-8"><a href="#cb77-8" aria-hidden="true" tabindex="-1"></a>                            <span class="at">label =</span> <span class="st">"p.signif"</span>)<span class="sc">+</span> </span>
+<span id="cb77-9"><a href="#cb77-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_compare_means</span>(<span class="at">label.y =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="datavis_files/figure-html/unnamed-chunk-58-1.png" class="img-fluid figure-img" width="1000"></p>
+<p><img src="datavis_files/figure-html/unnamed-chunk-61-1.png" class="img-fluid figure-img" width="1400"></p>
 </figure>
 </div>
 </div>
@@ -1292,23 +1322,23 @@ For example, first bar have height of 5 - it mean, that there are 5 flowers with
 <section id="customizing-fill---scale_fill_manual" class="level2">
 <h2 class="anchored" data-anchor-id="customizing-fill---scale_fill_manual">Customizing <code>fill</code> - <code>scale_fill_manual()</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Advanced -------</span></span>
-<span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a>iris_df <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>Species, <span class="at">y=</span>Sepal.Length)) <span class="sc">+</span></span>
-<span id="cb75-3"><a href="#cb75-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="fu">aes</span>(<span class="at">fill=</span>Species), <span class="at">geom =</span> <span class="st">'bar'</span>, <span class="at">fun =</span> mean) <span class="sc">+</span></span>
-<span id="cb75-4"><a href="#cb75-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="fu">aes</span>(<span class="at">fill=</span>Species), <span class="at">shape=</span><span class="dv">21</span>, <span class="at">width =</span> <span class="fl">0.1</span>, </span>
-<span id="cb75-5"><a href="#cb75-5" aria-hidden="true" tabindex="-1"></a>              <span class="at">stroke=</span><span class="fl">0.5</span>, <span class="at">col=</span><span class="st">'black'</span>) <span class="sc">+</span></span>
-<span id="cb75-6"><a href="#cb75-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
-<span id="cb75-7"><a href="#cb75-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">'Barplots with jitter'</span>) <span class="sc">+</span></span>
-<span id="cb75-8"><a href="#cb75-8" aria-hidden="true" tabindex="-1"></a><span class="co"># ----------</span></span>
-<span id="cb75-9"><a href="#cb75-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb75-10"><a href="#cb75-10" aria-hidden="true" tabindex="-1"></a><span class="fu">scale_fill_manual</span>(</span>
-<span id="cb75-11"><a href="#cb75-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">values=</span><span class="fu">c</span>(<span class="st">"#e63946"</span>, <span class="st">"#ffba49"</span>, <span class="st">"#457b9d"</span>),</span>
-<span id="cb75-12"><a href="#cb75-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">labels=</span><span class="fu">c</span>(<span class="st">'Setosa sp.'</span>, <span class="st">'Versicolor sp.'</span>, <span class="st">'Virginica sp.'</span>),</span>
-<span id="cb75-13"><a href="#cb75-13" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Advanced -------</span></span>
+<span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a>iris_df <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>Species, <span class="at">y=</span>Sepal.Length)) <span class="sc">+</span></span>
+<span id="cb78-3"><a href="#cb78-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="fu">aes</span>(<span class="at">fill=</span>Species), <span class="at">geom =</span> <span class="st">'bar'</span>, <span class="at">fun =</span> mean) <span class="sc">+</span></span>
+<span id="cb78-4"><a href="#cb78-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="fu">aes</span>(<span class="at">fill=</span>Species), <span class="at">shape=</span><span class="dv">21</span>, <span class="at">width =</span> <span class="fl">0.1</span>, </span>
+<span id="cb78-5"><a href="#cb78-5" aria-hidden="true" tabindex="-1"></a>              <span class="at">stroke=</span><span class="fl">0.5</span>, <span class="at">col=</span><span class="st">'black'</span>) <span class="sc">+</span></span>
+<span id="cb78-6"><a href="#cb78-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
+<span id="cb78-7"><a href="#cb78-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">'Barplots with jitter'</span>) <span class="sc">+</span></span>
+<span id="cb78-8"><a href="#cb78-8" aria-hidden="true" tabindex="-1"></a><span class="co"># ----------</span></span>
+<span id="cb78-9"><a href="#cb78-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-10"><a href="#cb78-10" aria-hidden="true" tabindex="-1"></a><span class="fu">scale_fill_manual</span>(</span>
+<span id="cb78-11"><a href="#cb78-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">values=</span><span class="fu">c</span>(<span class="st">"#e63946"</span>, <span class="st">"#ffba49"</span>, <span class="st">"#457b9d"</span>),</span>
+<span id="cb78-12"><a href="#cb78-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">labels=</span><span class="fu">c</span>(<span class="st">'Setosa sp.'</span>, <span class="st">'Versicolor sp.'</span>, <span class="st">'Virginica sp.'</span>),</span>
+<span id="cb78-13"><a href="#cb78-13" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="datavis_files/figure-html/unnamed-chunk-59-1.png" class="img-fluid figure-img" width="1000"></p>
+<p><img src="datavis_files/figure-html/unnamed-chunk-62-1.png" class="img-fluid figure-img" width="1400"></p>
 </figure>
 </div>
 </div>
@@ -1317,18 +1347,18 @@ For example, first bar have height of 5 - it mean, that there are 5 flowers with
 <section id="customizing-color---scale_color_manual" class="level2">
 <h2 class="anchored" data-anchor-id="customizing-color---scale_color_manual">Customizing <code>color</code> - <code>scale_color_manual()</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>iris_df <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>Sepal.Length, <span class="at">y=</span>Sepal.Width, <span class="at">col=</span>Species)) <span class="sc">+</span></span>
-<span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha=</span><span class="fl">0.6</span>, <span class="at">size=</span><span class="dv">4</span>) <span class="sc">+</span></span>
-<span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span> </span>
-<span id="cb76-4"><a href="#cb76-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb76-5"><a href="#cb76-5" aria-hidden="true" tabindex="-1"></a><span class="fu">scale_color_manual</span>(</span>
-<span id="cb76-6"><a href="#cb76-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">values=</span><span class="fu">c</span>(<span class="st">"#e63946"</span>, <span class="st">"#ffba49"</span>, <span class="st">"#457b9d"</span>),</span>
-<span id="cb76-7"><a href="#cb76-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">labels=</span><span class="fu">c</span>(<span class="st">'Setosa sp.'</span>, <span class="st">'Versicolor sp.'</span>, <span class="st">'Virginica sp.'</span>),</span>
-<span id="cb76-8"><a href="#cb76-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a>iris_df <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>Sepal.Length, <span class="at">y=</span>Sepal.Width, <span class="at">col=</span>Species)) <span class="sc">+</span></span>
+<span id="cb79-2"><a href="#cb79-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha=</span><span class="fl">0.6</span>, <span class="at">size=</span><span class="dv">4</span>) <span class="sc">+</span></span>
+<span id="cb79-3"><a href="#cb79-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span> </span>
+<span id="cb79-4"><a href="#cb79-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb79-5"><a href="#cb79-5" aria-hidden="true" tabindex="-1"></a><span class="fu">scale_color_manual</span>(</span>
+<span id="cb79-6"><a href="#cb79-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">values=</span><span class="fu">c</span>(<span class="st">"#e63946"</span>, <span class="st">"#ffba49"</span>, <span class="st">"#457b9d"</span>),</span>
+<span id="cb79-7"><a href="#cb79-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">labels=</span><span class="fu">c</span>(<span class="st">'Setosa sp.'</span>, <span class="st">'Versicolor sp.'</span>, <span class="st">'Virginica sp.'</span>),</span>
+<span id="cb79-8"><a href="#cb79-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="datavis_files/figure-html/unnamed-chunk-60-1.png" class="img-fluid figure-img" width="1000"></p>
+<p><img src="datavis_files/figure-html/unnamed-chunk-63-1.png" class="img-fluid figure-img" width="1400"></p>
 </figure>
 </div>
 </div>
@@ -1339,17 +1369,17 @@ For example, first bar have height of 5 - it mean, that there are 5 flowers with
 <section id="facet_wrap" class="level3">
 <h3 class="anchored" data-anchor-id="facet_wrap"><code>facet_wrap()</code></h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a>iris_df <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>Petal.Length, <span class="at">y=</span>Petal.Width)) <span class="sc">+</span></span>
-<span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha=</span><span class="fl">0.6</span>, <span class="at">size=</span><span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb77-3"><a href="#cb77-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb77-4"><a href="#cb77-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-5"><a href="#cb77-5" aria-hidden="true" tabindex="-1"></a><span class="co"># ----------------------</span></span>
-<span id="cb77-6"><a href="#cb77-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-7"><a href="#cb77-7" aria-hidden="true" tabindex="-1"></a><span class="fu">facet_wrap</span>(. <span class="sc">~</span> Species)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a>iris_df <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>Petal.Length, <span class="at">y=</span>Petal.Width)) <span class="sc">+</span></span>
+<span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha=</span><span class="fl">0.6</span>, <span class="at">size=</span><span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb80-3"><a href="#cb80-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb80-4"><a href="#cb80-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb80-5"><a href="#cb80-5" aria-hidden="true" tabindex="-1"></a><span class="co"># ----------------------</span></span>
+<span id="cb80-6"><a href="#cb80-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb80-7"><a href="#cb80-7" aria-hidden="true" tabindex="-1"></a><span class="fu">facet_wrap</span>(. <span class="sc">~</span> Species)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="datavis_files/figure-html/unnamed-chunk-61-1.png" class="img-fluid figure-img" width="1600"></p>
+<p><img src="datavis_files/figure-html/unnamed-chunk-64-1.png" class="img-fluid figure-img" width="1600"></p>
 </figure>
 </div>
 </div>
@@ -1358,20 +1388,20 @@ For example, first bar have height of 5 - it mean, that there are 5 flowers with
 <section id="facet_grid" class="level3">
 <h3 class="anchored" data-anchor-id="facet_grid"><code>facet_grid()</code></h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a>iris_df <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>Petal.Length, <span class="at">y=</span>Petal.Width)) <span class="sc">+</span></span>
-<span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha=</span><span class="fl">0.6</span>, <span class="at">size=</span><span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb78-3"><a href="#cb78-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb78-4"><a href="#cb78-4" aria-hidden="true" tabindex="-1"></a><span class="co"># ----------------------</span></span>
-<span id="cb78-5"><a href="#cb78-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(<span class="at">cols =</span> <span class="fu">vars</span>(Species),</span>
-<span id="cb78-6"><a href="#cb78-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">rows=</span><span class="fu">vars</span>(Sepal.Length.Category))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a>iris_df <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>Petal.Length, <span class="at">y=</span>Petal.Width)) <span class="sc">+</span></span>
+<span id="cb81-2"><a href="#cb81-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha=</span><span class="fl">0.6</span>, <span class="at">size=</span><span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb81-3"><a href="#cb81-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb81-4"><a href="#cb81-4" aria-hidden="true" tabindex="-1"></a><span class="co"># ----------------------</span></span>
+<span id="cb81-5"><a href="#cb81-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(<span class="at">cols =</span> <span class="fu">vars</span>(Species),</span>
+<span id="cb81-6"><a href="#cb81-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">rows=</span><span class="fu">vars</span>(Sepal.Length.Category))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="datavis_files/figure-html/unnamed-chunk-62-1.png" class="img-fluid figure-img" width="1600"></p>
+<p><img src="datavis_files/figure-html/unnamed-chunk-65-1.png" class="img-fluid figure-img" width="1600"></p>
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a>  <span class="co"># facet_wrap(Sepal.Length.Category ~ Species)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a>  <span class="co"># facet_wrap(Sepal.Length.Category ~ Species)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
