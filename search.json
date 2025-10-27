@@ -1,0 +1,744 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Biostatistics in R",
+    "section": "",
+    "text": "Lecture data\n\nBasic R\n\nDownload\n\nWorking with Dataframes\n\nDownload\n\nVisualization\n\nDownload\n\n\n\n\n\n\nPresentations\nTBA \n\n\n\nHomeworks\n\nHW #1\n\nDownload"
+  },
+  {
+    "objectID": "presentations/distributions.html#types-of-data",
+    "href": "presentations/distributions.html#types-of-data",
+    "title": "Distributions and statistics",
+    "section": "Types of Data",
+    "text": "Types of Data\n\nNumerical data: Continuous (e.g., height) or discrete (e.g., number of leaves).\nCategorical data: Nominal (e.g., species, gender) or ordinal (e.g., rankings)."
+  },
+  {
+    "objectID": "presentations/distributions.html#sampling",
+    "href": "presentations/distributions.html#sampling",
+    "title": "Distributions and statistics",
+    "section": "Sampling",
+    "text": "Sampling\nUsually we cannot take the whole population for a study.\n\nFor example, it is physically impossible to do a study using blood samples from all the people in the world. Sometimes the population is small, but it is extremely expensive to collect the material.\n\nTherefore, researchers use samples - random and representative groups taken from the general population that can be analysed to provide information about the whole population.\n\nThis is where statistics come to the rescue."
+  },
+  {
+    "objectID": "presentations/distributions.html#sampling-1",
+    "href": "presentations/distributions.html#sampling-1",
+    "title": "Distributions and statistics",
+    "section": "Sampling",
+    "text": "Sampling\n\nAre these samples are representative?\n\n20 ITMO Biology students to study average marks of students in ITMO\n100 ITMO first-year students to study students workload in their first ever exam\nEmail survey on student parents’ opinion of ITMO\nThe double-blind, randomized, placebo-controlled trial in 1990\n\n\n\n20 ITMO Biology students to study average marks of students in ITMO\n\nRepresentive only for Biology students\n\n100 ITMO first-year students to study students workload\n\nRepresetive only for ITMO. Students with high workloads are less likely to participate\n\nEmail survey on student parents’ opinion of ITMO\n\nOnly people whose email addresses we have\n\nThe double-blind, randomized, placebo-controlled trial in 1990\n\nMay be too old\n\n\n\n\n\nResults of the student survey, 2024 (449 people)"
+  },
+  {
+    "objectID": "presentations/distributions.html#sampling-2",
+    "href": "presentations/distributions.html#sampling-2",
+    "title": "Distributions and statistics",
+    "section": "Sampling",
+    "text": "Sampling"
+  },
+  {
+    "objectID": "presentations/distributions.html#sampling-3",
+    "href": "presentations/distributions.html#sampling-3",
+    "title": "Distributions and statistics",
+    "section": "Sampling",
+    "text": "Sampling\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThe larger the sample, the more similar it is to the general population"
+  },
+  {
+    "objectID": "presentations/distributions.html#distributions-1",
+    "href": "presentations/distributions.html#distributions-1",
+    "title": "Distributions and statistics",
+    "section": "Distributions",
+    "text": "Distributions\n\n\n\nDiscrete\nCountable number of values\n\nBernoulli\nPoisson\nBinomial\n\n\n\n\nContinious\n\\(\\infty\\) number of values\n\nNormal\nUniform\nChi-squared\n\n\n\n\n[Discrete \\(\\rightarrow\\) Continuous] if [number of values \\(\\rightarrow \\infty\\)]"
+  },
+  {
+    "objectID": "presentations/distributions.html#probability-of-discrete-variable",
+    "href": "presentations/distributions.html#probability-of-discrete-variable",
+    "title": "Distributions and statistics",
+    "section": "Probability of discrete variable",
+    "text": "Probability of discrete variable\n\n\n\n\n\n\n\n\n\n\n\n\nIncreasing the discreteness\n\n\n\n\n\n\n\n\n\n\n\nThe probability of each value \\(\\rightarrow 0\\)"
+  },
+  {
+    "objectID": "presentations/distributions.html#probability-of-continious-variable",
+    "href": "presentations/distributions.html#probability-of-continious-variable",
+    "title": "Distributions and statistics",
+    "section": "Probability of continious variable",
+    "text": "Probability of continious variable\n\\(\\infty\\) values and \\(\\infty\\) discreteness\n\nProbability of each value = 0 ???"
+  },
+  {
+    "objectID": "presentations/distributions.html#probability-of-continious-variable-1",
+    "href": "presentations/distributions.html#probability-of-continious-variable-1",
+    "title": "Distributions and statistics",
+    "section": "Probability of continious variable",
+    "text": "Probability of continious variable\n\\(\\infty\\) values and \\(\\infty\\) discreteness\n\nNO!\nbut Probability of each particular value \\(\\rightarrow 0\\)"
+  },
+  {
+    "objectID": "presentations/distributions.html#probability-density",
+    "href": "presentations/distributions.html#probability-density",
+    "title": "Distributions and statistics",
+    "section": "Probability density",
+    "text": "Probability density\n\nThe way how continious distributions are described\nArea under the plot should be = 1\n\n\n\n\n\n\n\n\n\nDensity value in some point can be way greater than 1!"
+  },
+  {
+    "objectID": "presentations/distributions.html#normal-distribution",
+    "href": "presentations/distributions.html#normal-distribution",
+    "title": "Distributions and statistics",
+    "section": "Normal distribution",
+    "text": "Normal distribution\n\n\nNormal distribution is bell shaped, have equal mean (\\(\\mu\\)), median, mode.\n“Width” depends on standard deviation (\\(\\sigma\\)). Continious (!)\n\n\\(P(x) = \\frac{1}{{\\sigma \\sqrt{2\\pi} }}e^{{\\frac{ -\\left( {x - \\mu } \\right)^2 }{2\\sigma ^2 }}}\\),\nparameters: mean (\\(\\mu\\)) and sigma (\\(\\sigma\\)) (it does not exist in nature)"
+  },
+  {
+    "objectID": "presentations/distributions.html#normal-distribution-1",
+    "href": "presentations/distributions.html#normal-distribution-1",
+    "title": "Distributions and statistics",
+    "section": "Normal distribution",
+    "text": "Normal distribution\n\nParameters of normal distribution"
+  },
+  {
+    "objectID": "presentations/distributions.html#normal-distribution-2",
+    "href": "presentations/distributions.html#normal-distribution-2",
+    "title": "Distributions and statistics",
+    "section": "Normal distribution",
+    "text": "Normal distribution\n\nThree sigma rule\n\n\n\n\n\n\n\n\n\n\n\n\nThree sigma rule"
+  },
+  {
+    "objectID": "presentations/distributions.html#uniform-distribution",
+    "href": "presentations/distributions.html#uniform-distribution",
+    "title": "Distributions and statistics",
+    "section": "Uniform distribution",
+    "text": "Uniform distribution\n\n\nSimple distribution of equally possible values. Continious (!).\n\n\\(P(x) = \\frac{1}{a-b}\\)\n\n\\(a\\) - starting point\n\\(b\\) - end point"
+  },
+  {
+    "objectID": "presentations/distributions.html#exponential-distribution",
+    "href": "presentations/distributions.html#exponential-distribution",
+    "title": "Distributions and statistics",
+    "section": "Exponential distribution",
+    "text": "Exponential distribution\n\n\n\n\n\n\n\n\n\n\n\n\n\\(P(X) = \\lambda e^{-\\lambda x}\\)\nHow fast something appears (mortality)\nContinious"
+  },
+  {
+    "objectID": "presentations/distributions.html#binomial-distribution",
+    "href": "presentations/distributions.html#binomial-distribution",
+    "title": "Distributions and statistics",
+    "section": "Binomial distribution",
+    "text": "Binomial distribution\n\n\n\n\n\n\n\n\n\n\n\n\n\\(P(x) = \\binom{n}{k}p^k(1-p)^{n-k}\\),\n\n\\(n\\) - number of trials (fixed)\n\\(p\\) - probability of success (fixed)\n\\(k\\) - observed successes\n\n\n\nDistribution is based on the number of successes in a sequence of experiments. Discrete (!)\nIf we flip a coin, the binomial distribution represents the number of successes after we flip the coin a certain number of times (e.g. 10).\nThe histogram above shows the distribution of 10000 experiments on trying to get an head coin \\(k\\) times by flipping it 10 times"
+  },
+  {
+    "objectID": "presentations/distributions.html#binomial-distribution-1",
+    "href": "presentations/distributions.html#binomial-distribution-1",
+    "title": "Distributions and statistics",
+    "section": "Binomial distribution",
+    "text": "Binomial distribution\n\nParameters of binomial distribution"
+  },
+  {
+    "objectID": "presentations/distributions.html#poisson-distribution",
+    "href": "presentations/distributions.html#poisson-distribution",
+    "title": "Distributions and statistics",
+    "section": "Poisson distribution",
+    "text": "Poisson distribution\nBinomial, but \\(n \\rightarrow \\infty\\),, therefore we don’t utilize number of trials (\\(n\\)).\nNow we use “time interval” and expected number of successes (\\(\\lambda\\)) during this interval.\nStill Discrete (!)\n\n\n\n\n\n\n\n\n\n\n\n\n\\(P(x) = \\dfrac{\\lambda^k}{k!}e^{-\\lambda}\\), where\n\n\\(\\lambda\\) - mean or expected number of successes during the interval (fixed)\n\\(k\\) - “observed” successes"
+  },
+  {
+    "objectID": "presentations/distributions.html#poisson-distribution-1",
+    "href": "presentations/distributions.html#poisson-distribution-1",
+    "title": "Distributions and statistics",
+    "section": "Poisson distribution",
+    "text": "Poisson distribution\n\nParameters of poisson distribution"
+  },
+  {
+    "objectID": "presentations/distributions.html#descriptive-statistics",
+    "href": "presentations/distributions.html#descriptive-statistics",
+    "title": "Distributions and statistics",
+    "section": "Descriptive statistics",
+    "text": "Descriptive statistics\n\nCentral tendency\n\nSample mean - \\(\\bar{X} \\ or\\ \\hat\\mu = \\frac{x_1 + x_2 + ... x_N}{N}\\)\nPopulation mean - \\(E(X) = x_1*p_1 + x_2*p_2 + ... x_N * p_N = \\sum^N_{i=1} x_i*p_i\\)\n\n\nmean(x)\nsum(x * p) # x and p are vectors\n\n\nMedian - the \\(N/2\\)-th element in list of sorted values \\(\\{x_1, x_2, ..., \\pmb{x_{N/2}},...,x_{N-1}, x_N\\}\\), where for any \\(i\\): \\(x_{i-1} &lt; x_i\\)\n\n\nmedian(x)\n\n\nMode - The most frequent value one of the methods: only for discrete data:\n\n\nx %&gt;% table() %&gt;% sort(decreasing = T) %&gt;% head(1) %&gt;% names() %&gt;% as.numeric()\n\n\n\n\nThey are equal for a normal distribution"
+  },
+  {
+    "objectID": "presentations/distributions.html#descriptive-statistics-1",
+    "href": "presentations/distributions.html#descriptive-statistics-1",
+    "title": "Distributions and statistics",
+    "section": "Descriptive statistics",
+    "text": "Descriptive statistics\n\nBimodal data"
+  },
+  {
+    "objectID": "presentations/distributions.html#descriptive-statistics-2",
+    "href": "presentations/distributions.html#descriptive-statistics-2",
+    "title": "Distributions and statistics",
+    "section": "Descriptive statistics",
+    "text": "Descriptive statistics\n\nExponential distribution"
+  },
+  {
+    "objectID": "presentations/distributions.html#descriptive-statistics-3",
+    "href": "presentations/distributions.html#descriptive-statistics-3",
+    "title": "Distributions and statistics",
+    "section": "Descriptive statistics",
+    "text": "Descriptive statistics\n\nOutliers\nMean is more sensitive to outliers"
+  },
+  {
+    "objectID": "presentations/distributions.html#by-the-way-what-to-do-about-outliers",
+    "href": "presentations/distributions.html#by-the-way-what-to-do-about-outliers",
+    "title": "Distributions and statistics",
+    "section": "By the way, what to do about outliers?",
+    "text": "By the way, what to do about outliers?\nNothing\n\nIf they still contain some information. \n\nDelete\n\nIf there are few of them.\nThis is an obvious error and you are sure they do not contain valuable information"
+  },
+  {
+    "objectID": "presentations/distributions.html#descriptive-statistics-4",
+    "href": "presentations/distributions.html#descriptive-statistics-4",
+    "title": "Distributions and statistics",
+    "section": "Descriptive statistics",
+    "text": "Descriptive statistics\n\nVariance and Standard deviation\n\\(Var(X) = S^2 = \\dfrac{((x_1 - \\bar{X})^2 + (x_2 - \\bar{X})^2 + ... + (x_N - \\bar{X})^2)}{N-1} = \\dfrac{\\sum{(x_i - \\bar{X})^2}}{N-1}\\)\n\nvar(x)\n\n\\(SD(X) = S = \\sqrt{\\dfrac{\\sum{(x_i - \\bar{X})^2}}{N-1}}\\)\n\nsd(x)\n\n\nFor the population variance in the denominator of the formula is \\(N\\), not \\(N-1\\)"
+  },
+  {
+    "objectID": "presentations/distributions.html#descriptive-statistics-5",
+    "href": "presentations/distributions.html#descriptive-statistics-5",
+    "title": "Distributions and statistics",
+    "section": "Descriptive statistics",
+    "text": "Descriptive statistics\n\nQuantiles\nQuantiles - values less than which \\(X\\)% of the data in the distribution is found\nFor example, 0.75 quntile is the value that is greater of 75% of values in sample, but lower than another 25% of sample values\n\nquantile(x, probs = 0.75)\n\n\nQuartiles are 0.25,0.5,0.75 quantiles\n\n\nquantile(x, probs = c(0.25, 0.5, 0.75))\n\n\nPercentiles are 1-100% qunatiles\n\n\nquantile(x, probs = seq(0.01, 1, 0.01))\n\n\nMedian is a 0.5 quantile (2nd quartile)"
+  },
+  {
+    "objectID": "presentations/distributions.html#functions-for-normal-distribution",
+    "href": "presentations/distributions.html#functions-for-normal-distribution",
+    "title": "Distributions and statistics",
+    "section": "Functions (for normal distribution)",
+    "text": "Functions (for normal distribution)\n\n\n\n\nRandom values from distribution\n\n\nrnorm(n=5, mean=100, sd=10)\n\n[1]  95.06686 102.28520  87.02476 110.21335 104.40316\n\n\n\nDensity (the height of histogram) at the point\n\n\ndnorm(x=100, mean=100, sd=10)\n\n[1] 0.03989423"
+  },
+  {
+    "objectID": "presentations/distributions.html#functions-for-normal-distribution-1",
+    "href": "presentations/distributions.html#functions-for-normal-distribution-1",
+    "title": "Distributions and statistics",
+    "section": "Functions (for normal distribution)",
+    "text": "Functions (for normal distribution)\n\nCumulative probability at the point: prob-ty to obtain value less than specified\n\n\npnorm(q = 80, mean=100, sd=10) # prob to obtain any value less than 80\n\n[1] 0.02275013\n\npnorm(q = c(70,80,90,110,120,130), mean=100, sd=10)\n\n[1] 0.001349898 0.022750132 0.158655254 0.841344746 0.977249868 0.998650102\n\n\n\nValue corresponding to specified cumulative probability\n\n\nqnorm(p = c(0.003, 0.05, 0.16, 0.84, 0.95, 0.997), mean=100, sd=10)\n\n[1]  72.52219  83.55146  90.05542 109.94458 116.44854 127.47781"
+  },
+  {
+    "objectID": "presentations/distributions.html#functions-for-other-distributions",
+    "href": "presentations/distributions.html#functions-for-other-distributions",
+    "title": "Distributions and statistics",
+    "section": "Functions (for other distributions)",
+    "text": "Functions (for other distributions)\nUniform\n\nrunif(n, min, max)\ndunif(n, min, max)\npunif(n, min, max)\nqunif(n, min, max)\n\nBinomial\n\nrbinom(n, size, prob)\ndbinom(n, size, prob)\npbinom(n, size, prob)\nqbinom(n, size, prob)\n\nPoisson\n\nrpois(n, lambda)\ndpois(n, lambda)\nppois(n, lambda)\nqpois(n, lambda)"
+  },
+  {
+    "objectID": "presentations/distributions.html#standard-error-se",
+    "href": "presentations/distributions.html#standard-error-se",
+    "title": "Distributions and statistics",
+    "section": "Standard error (SE)",
+    "text": "Standard error (SE)\n“SD of means of samples”\n\n\n\\(SE = \\dfrac{SD}{\\sqrt n}\\)\n\n\nSeveral samples\nCalculate mean in each sample\nBuild the means distribution\nCalculate resulting distribution’s SD"
+  },
+  {
+    "objectID": "presentations/distributions.html#standard-error-se-1",
+    "href": "presentations/distributions.html#standard-error-se-1",
+    "title": "Distributions and statistics",
+    "section": "Standard error (SE)",
+    "text": "Standard error (SE)\n“SD of means of samples”\n\n\n\\(SE = \\dfrac{SD}{\\sqrt n}\\)"
+  },
+  {
+    "objectID": "presentations/distributions.html#magic-of-central-limit-theorem",
+    "href": "presentations/distributions.html#magic-of-central-limit-theorem",
+    "title": "Distributions and statistics",
+    "section": "Magic of Central Limit Theorem",
+    "text": "Magic of Central Limit Theorem\nThis means’ distribution was built from uniform distribution samples! \\(a=0, b=10 \\Rightarrow \\hat\\mu=5\\)\n\n\n\n\n\n\n\n\n\nMean is also = 5!"
+  },
+  {
+    "objectID": "presentations/distributions.html#magic-of-central-limit-theorem-1",
+    "href": "presentations/distributions.html#magic-of-central-limit-theorem-1",
+    "title": "Distributions and statistics",
+    "section": "Magic of Central Limit Theorem",
+    "text": "Magic of Central Limit Theorem\nLet’s do it with exponential distribution samples (\\(\\lambda=2\\))\n\n\n\n\n\n\n\n\n\nLooks familiar…"
+  },
+  {
+    "objectID": "presentations/distributions.html#magic-of-central-limit-theorem-2",
+    "href": "presentations/distributions.html#magic-of-central-limit-theorem-2",
+    "title": "Distributions and statistics",
+    "section": "Magic of Central Limit Theorem",
+    "text": "Magic of Central Limit Theorem\n\nSeveral samples\nCalculate mean (\\(\\bar{X}\\)) in each sample\nBuild the means distribution\n\nIt is normally distributed! (almost)\n\nIf samples are small, distribution of means may not look like normal.\n\n\nCalculate resulting distribution’s SD\\(^*\\) and mean ( \\(\\hat\\mu\\) )\nObtained mean is “real mean” and SD is Standard error"
+  },
+  {
+    "objectID": "presentations/distributions.html#standartization-or-normalization..",
+    "href": "presentations/distributions.html#standartization-or-normalization..",
+    "title": "Distributions and statistics",
+    "section": "Standartization (or normalization..?)",
+    "text": "Standartization (or normalization..?)\nSetting mean=0 and sd=1\n\n\n\\(Z = \\dfrac{\\bar{X} - \\mu}{SE}\\)"
+  },
+  {
+    "objectID": "presentations/distributions.html#looks-familiar",
+    "href": "presentations/distributions.html#looks-familiar",
+    "title": "Distributions and statistics",
+    "section": "Looks familiar?",
+    "text": "Looks familiar?\n\nThree sigma rule!"
+  },
+  {
+    "objectID": "presentations/distributions.html#three-sigma-rule-2",
+    "href": "presentations/distributions.html#three-sigma-rule-2",
+    "title": "Distributions and statistics",
+    "section": "Three sigma rule!",
+    "text": "Three sigma rule!\n\n\nWe know that ~95% of the data lies between the two orange lines (\\(\\mu_z \\pm 2 \\sigma\\))\nMore precisely: \\(\\mu_z \\pm 1.96 \\ \\sigma\\)\nHere \\(\\sigma_z\\) is SE = 1\n\\(\\mu_z = 0\\) (standardisized mean of means)\n\nDistribution of means"
+  },
+  {
+    "objectID": "presentations/distributions.html#three-sigma-rule-confidence-interval",
+    "href": "presentations/distributions.html#three-sigma-rule-confidence-interval",
+    "title": "Distributions and statistics",
+    "section": "Three sigma rule –> confidence interval",
+    "text": "Three sigma rule –&gt; confidence interval\n\n\nThus, with probability of 0.95\n\\[ -1.96 \\sigma_z \\leq \\dfrac{\\bar{X} - \\mu}{SE} \\leq 1.96 \\sigma_z \\]\n\\[-1.96 \\leq \\dfrac{\\bar{X} - \\mu}{SE} \\leq 1.96\\]\n\\[-1.96 \\ SE \\leq \\bar{X} - \\mu \\leq 1.96 \\ SE \\]\n\\[\\bar{X} - 1.96 \\ SE \\leq \\mu \\leq  \\bar{X} + 1.96 \\ SE \\]\n\nDistribution of means"
+  },
+  {
+    "objectID": "presentations/distributions.html#confidence-interval",
+    "href": "presentations/distributions.html#confidence-interval",
+    "title": "Distributions and statistics",
+    "section": "Confidence interval",
+    "text": "Confidence interval\n\n\n\n\n\nThus, with probability of 0.95\n\\[ -1.96 \\sigma_z \\leq \\dfrac{\\bar{X} - \\mu}{SE} \\leq 1.96 \\sigma_z \\]\n\\[-1.96 \\leq \\dfrac{\\bar{X} - \\mu}{SE} \\leq 1.96\\]\n\\[-1.96 \\ SE \\leq \\bar{X} - \\mu \\leq 1.96 \\ SE \\]\n\\[\\bar{X} - 1.96 \\ SE \\leq \\mu \\leq  \\bar{X} + 1.96 \\ SE \\]\n\nWe may never know the true value of the population mean (\\(\\mu\\)), but we can estimate it from a sample and build an interval with a certain degree of confidence (e.g., 0.95)\n\\[ \\bar X - x_{\\alpha/2} * SE  \\leq \\mu_{true} \\leq \\bar X + x_{\\alpha/2} * SE\\]\n\n\\(\\alpha\\) - Significance level (e.g. 0.05)\n\\(1 - \\alpha\\) - Confidence level (e.g. 0.95)\n\\(x_{\\alpha/2}\\) - values of \\(\\alpha/2\\) quantile in standart. normal distribution (mean=0, sd=1)\n\n(e.g. 0.025 and 0.975 quantiles for \\(\\alpha=0.05\\))\n((they are equal))\n\n\n\nLet’s calculate it in R!"
+  },
+  {
+    "objectID": "presentations/distributions.html#what-does-confidence-level-mean",
+    "href": "presentations/distributions.html#what-does-confidence-level-mean",
+    "title": "Distributions and statistics",
+    "section": "What does confidence level mean?",
+    "text": "What does confidence level mean?\n\n\nGenerating 1000 samples and 1000 95% CIs\n\n\n\n\n\n\n\n\n\n\nHow many CIs do cover true mean?\n\n\n\nmissed     ok \n    48    952 \n\n\nSo, 95% of new generated CIs will cover true mean\nTry to change size of samples"
+  },
+  {
+    "objectID": "presentations/distributions.html#students-t--distribution",
+    "href": "presentations/distributions.html#students-t--distribution",
+    "title": "Distributions and statistics",
+    "section": "Student’s (t-) distribution",
+    "text": "Student’s (t-) distribution\nComparing to standard (!) normal distribution, t-distribution have heavier tails.\n\nIt means that t-distribution’s quantiles have bigger values comparing to normal"
+  },
+  {
+    "objectID": "presentations/distributions.html#students-t--distribution-1",
+    "href": "presentations/distributions.html#students-t--distribution-1",
+    "title": "Distributions and statistics",
+    "section": "Student’s (t-) distribution",
+    "text": "Student’s (t-) distribution\nComparing to standard (!) normal distribution, t-distribution have heavier tails.\nIt means that t-distribution’s quantiles have bigger values comparing to normal\nStandard Normal:\n\nqnorm(c(0.025, 0.975), mean=0, sd=1)\n\n[1] -1.959964  1.959964\n\n\nStudent df=13:\n\nqt(c(0.025, 0.975), df=13)\n\n[1] -2.160369  2.160369\n\n\nStudent df=50:\n\nqt(c(0.025, 0.975), df=50)\n\n[1] -2.008559  2.008559"
+  },
+  {
+    "objectID": "presentations/distributions.html#students-t--distribution-2",
+    "href": "presentations/distributions.html#students-t--distribution-2",
+    "title": "Distributions and statistics",
+    "section": "Student’s (t-) distribution",
+    "text": "Student’s (t-) distribution\nDegrees of freedom (df) - the only parameter of distribution!\nIt always have mean = 0 and “width” defined by df\n\nDegrees of freedom = N - 1\nN - size of sample"
+  },
+  {
+    "objectID": "presentations/distributions.html#confidence-interval-using-quantiles-from-t-distribution",
+    "href": "presentations/distributions.html#confidence-interval-using-quantiles-from-t-distribution",
+    "title": "Distributions and statistics",
+    "section": "Confidence interval using quantiles from t-distribution",
+    "text": "Confidence interval using quantiles from t-distribution\n\\[ \\bar X - t_{\\alpha/2} * SE  \\leq \\mu_{true} \\leq \\bar X + t_{\\alpha/2} * SE\\]\n\n\\(\\alpha\\) - Significance level (e.g. 0.05)\n\\(1 - \\alpha\\) - Confidence level (e.g. 0.95)\n\\(t_{\\alpha/2}\\) - values of \\(\\alpha/2\\) quantile in t-distribution"
+  },
+  {
+    "objectID": "presentations/distributions.html#confidence-interval-using-quantiles-from-t-distribution-1",
+    "href": "presentations/distributions.html#confidence-interval-using-quantiles-from-t-distribution-1",
+    "title": "Distributions and statistics",
+    "section": "Confidence interval using quantiles from t-distribution",
+    "text": "Confidence interval using quantiles from t-distribution\n\\[ \\bar X - t_{\\alpha/2} * SE  \\leq \\mu_{true} \\leq \\bar X + t_{\\alpha/2} * SE\\]\n\nBecause of heavier tails, such CI can be more accurate for small \\(n\\)\nAnd for large \\(n\\) it looks like standard normal\n\n\nLet’s calculate it in R!"
+  },
+  {
+    "objectID": "code/regression.html",
+    "href": "code/regression.html",
+    "title": "Association between variables",
+    "section": "",
+    "text": "Used to predict a continuous outcome based on one or more predictors.\n\n\n\\(y = \\beta_0 + \\beta_1x_1 + ... + \\beta_nx_n + \\epsilon\\)\n\n\\(y\\) - dependent variable (response)\n\\(x\\) - independent variable (predictor)\n\\(\\beta_0\\) - intercept - value of \\(y\\), when \\(x=0\\)\n\\(\\beta_i\\) - coefficients - values by which \\(y\\) is changed when the corresponding \\(x_i\\) is increased by 1.\n\\(\\epsilon\\) - so-called error - differences between real \\(y\\) values and esimated by model values\n\n\n\n\n\\(y_{pred} = \\beta_0 + \\beta_1x_1 + ... + \\beta_nx_n\\)\n\n\n\n\nHomoscedasticity: Residuals have constant variance (~) - \\(\\sigma^2(\\epsilon) = const\\)\nMean of residuals is close to zero\n\nStricter assumption: residuals are normally distributed around zero (~) - \\(\\epsilon \\sim Norm(0, \\sigma^2)\\)\nThis assumption is equivalent to normality of \\(y\\)\n\nObservations \\(y_i\\) are independent (not correlated) (~)\nLinearity: The relationship between variables is considered to be linear.\n\n\n(~) denotes assumptions needed for hypotheses testing and confidence estimation only"
+  },
+  {
+    "objectID": "code/regression.html#formula",
+    "href": "code/regression.html#formula",
+    "title": "Association between variables",
+    "section": "",
+    "text": "\\(y = \\beta_0 + \\beta_1x_1 + ... + \\beta_nx_n + \\epsilon\\)\n\n\\(y\\) - dependent variable (response)\n\\(x\\) - independent variable (predictor)\n\\(\\beta_0\\) - intercept - value of \\(y\\), when \\(x=0\\)\n\\(\\beta_i\\) - coefficients - values by which \\(y\\) is changed when the corresponding \\(x_i\\) is increased by 1.\n\\(\\epsilon\\) - so-called error - differences between real \\(y\\) values and esimated by model values"
+  },
+  {
+    "objectID": "code/regression.html#formula-of-model-linear",
+    "href": "code/regression.html#formula-of-model-linear",
+    "title": "Association between variables",
+    "section": "",
+    "text": "\\(y_{pred} = \\beta_0 + \\beta_1x_1 + ... + \\beta_nx_n\\)"
+  },
+  {
+    "objectID": "code/regression.html#assumptions",
+    "href": "code/regression.html#assumptions",
+    "title": "Association between variables",
+    "section": "",
+    "text": "Homoscedasticity: Residuals have constant variance (~) - \\(\\sigma^2(\\epsilon) = const\\)\nMean of residuals is close to zero\n\nStricter assumption: residuals are normally distributed around zero (~) - \\(\\epsilon \\sim Norm(0, \\sigma^2)\\)\nThis assumption is equivalent to normality of \\(y\\)\n\nObservations \\(y_i\\) are independent (not correlated) (~)\nLinearity: The relationship between variables is considered to be linear.\n\n\n(~) denotes assumptions needed for hypotheses testing and confidence estimation only"
+  },
+  {
+    "objectID": "code/regression.html#formula-of-model",
+    "href": "code/regression.html#formula-of-model",
+    "title": "Association between variables",
+    "section": "Formula of model",
+    "text": "Formula of model\n\\(y_{pred} = \\beta_0 + \\beta_1x_1\\)"
+  },
+  {
+    "objectID": "code/regression.html#can-plant-height-be-predicted-based-on-soil-nutrient-levels",
+    "href": "code/regression.html#can-plant-height-be-predicted-based-on-soil-nutrient-levels",
+    "title": "Association between variables",
+    "section": "Can plant height be predicted based on soil nutrient levels?",
+    "text": "Can plant height be predicted based on soil nutrient levels?\n\nData\n\nnutrients &lt;- rnorm(50, mean = 10, sd = 3)\nheight &lt;- 2 * nutrients + rnorm(50, mean = 0, sd = 5)\n\ndata_plant_nutrient &lt;- data.frame(nutrients, height)\n\n\nplot(nutrients, height, main = \"Nutrients vs Height\",\n     xlab = \"Nutrients\", ylab = \"Height\",\n     pch=19)\n\n\n\n\n\n\n\n\n\n\nModel creation\n\nmodel &lt;- lm(height ~ nutrients, data = data_plant_nutrient)\nmodel\n\n\nCall:\nlm(formula = height ~ nutrients, data = data_plant_nutrient)\n\nCoefficients:\n(Intercept)    nutrients  \n    -0.4156       2.1051  \n\n\n\nplot(nutrients, height, main = \"Nutrients vs Height\",\n     xlab = \"Nutrients\", ylab = \"Height\",\n     pch=19)\nabline(model, col = \"red\", lwd=3)\nlegend(\"topleft\",\n       legend = c(\"y_pred\"),\n       col = c('red'),\n       bty = 'n', lwd=3)"
+  },
+  {
+    "objectID": "code/regression.html#formula-of-model-1",
+    "href": "code/regression.html#formula-of-model-1",
+    "title": "Association between variables",
+    "section": "Formula of model",
+    "text": "Formula of model\n\\(y_{pred} = \\beta_0 + \\beta_1x_1 + ... + \\beta_nx_n\\)"
+  },
+  {
+    "objectID": "code/regression.html#adding-one-more-predictor-for-plant-height-model",
+    "href": "code/regression.html#adding-one-more-predictor-for-plant-height-model",
+    "title": "Association between variables",
+    "section": "Adding one more predictor for plant height model",
+    "text": "Adding one more predictor for plant height model\n\nsunlight_hrs = rep(5:9, each=10) + rnorm(50, 0, 1)\ndata_plant_nutrient = data_plant_nutrient %&gt;% arrange(height) %&gt;%  cbind(sunlight_hrs)\ndata_plant_nutrient %&gt;% str()\n\n'data.frame':   50 obs. of  3 variables:\n $ nutrients   : num  4.93 7.04 5.3 6.21 4.48 ...\n $ height      : num  -1.83 2.98 2.99 5.11 6.52 ...\n $ sunlight_hrs: num  5.86 3.57 5.82 5.99 6.67 ...\n\n\n\nplot(data_plant_nutrient$height, data_plant_nutrient$sunlight_hrs, \n     main = \"Sunlight vs Height\",\n     xlab = \"Sunlight\", ylab = \"Height\",\n     pch=19)\n\n\n\n\n\n\n\n\n\nAdditive\n\\[\ny = \\beta_0 + \\beta_1x_1 + \\beta_2x_2\n\\]\n\nmodel_mullti = lm(height ~ sunlight_hrs + nutrients, data = data_plant_nutrient)\nsummary(model_mullti)\n\n\nCall:\nlm(formula = height ~ sunlight_hrs + nutrients, data = data_plant_nutrient)\n\nResiduals:\n     Min       1Q   Median       3Q      Max \n-12.2178  -2.8956   0.3907   3.0747   8.3823 \n\nCoefficients:\n             Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)   -9.2858     3.0732  -3.022 0.004061 ** \nsunlight_hrs   2.0777     0.5229   3.973 0.000242 ***\nnutrients      1.5221     0.2531   6.014 2.57e-07 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 4.524 on 47 degrees of freedom\nMultiple R-squared:  0.7185,    Adjusted R-squared:  0.7065 \nF-statistic: 59.99 on 2 and 47 DF,  p-value: 1.154e-13\n\n\n\n\nWith interaction\n\\[y = \\beta_0 + \\beta_1x_1 + \\beta_2x_2 + \\beta_3x_1x_2\\]\nNow coefficient have different interpretation:\n\n\\(\\beta_1\\)​: Effect of \\(x_1\\)​ on \\(y\\) when \\(x_2=0\\).\n\\(\\beta_2\\)​: Effect of \\(x_2\\)​ on \\(y\\) when \\(x_1=0\\).\n\\(\\beta_3\\): Interaction coefficient, showing how the relationship between \\(x_1\\)​ and \\(y\\) changes as \\(x_2\\)​ changes.\n\n\nYou should include an interaction if you hypothesize that the relationship between one predictor and the dependent variable changes depending on the level of another predictor. For example, the effect of a drug might vary depending on the age of the patient.\n\n\n# model_mullti = lm(height ~ nutrients + sunlight_hrs + nutrients:sunlight_hrs, data = data_plant_nutrient)\nmodel_mullti_interact = lm(height ~ nutrients * sunlight_hrs, data = data_plant_nutrient)\nsummary(model_mullti_interact)\n\n\nCall:\nlm(formula = height ~ nutrients * sunlight_hrs, data = data_plant_nutrient)\n\nResiduals:\n     Min       1Q   Median       3Q      Max \n-11.7349  -2.1698   0.1334   3.0519   8.2363 \n\nCoefficients:\n                       Estimate Std. Error t value Pr(&gt;|t|)   \n(Intercept)            -25.1854     9.9014  -2.544  0.01440 * \nnutrients                3.1637     1.0049   3.148  0.00288 **\nsunlight_hrs             4.5260     1.5402   2.939  0.00514 **\nnutrients:sunlight_hrs  -0.2431     0.1442  -1.686  0.09860 . \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 4.437 on 46 degrees of freedom\nMultiple R-squared:  0.7349,    Adjusted R-squared:  0.7176 \nF-statistic:  42.5 on 3 and 46 DF,  p-value: 2.602e-13\n\n\n\nx1:x2 denotes interaction\nx1 * x2 is equivalent to x1 + x2 + x1:x2"
+  },
+  {
+    "objectID": "code/regression.html#testing-if-model-is-better-with-new-predictors",
+    "href": "code/regression.html#testing-if-model-is-better-with-new-predictors",
+    "title": "Association between variables",
+    "section": "Testing if model is better with new predictors",
+    "text": "Testing if model is better with new predictors\n\nanova(model, model_mullti_interact)\n\nAnalysis of Variance Table\n\nModel 1: height ~ nutrients\nModel 2: height ~ nutrients * sunlight_hrs\n  Res.Df     RSS Df Sum of Sq      F    Pr(&gt;F)    \n1     48 1284.77                                  \n2     46  905.78  2    378.99 9.6234 0.0003225 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n\n\n\\(p.value &lt; 0.05\\) and it means that new model better reduce the residual variance"
+  },
+  {
+    "objectID": "code/regression.html#plot-the-line-without-modelling",
+    "href": "code/regression.html#plot-the-line-without-modelling",
+    "title": "Association between variables",
+    "section": "Plot the line “without” modelling",
+    "text": "Plot the line “without” modelling\n\ndata_plant_nutrient %&gt;% \n  ggplot(aes(x=nutrients, y=height)) +\n  geom_point(col='blue', show.legend = T) +\n  geom_smooth(formula = y ~ x, method = 'lm', show.legend = T) + ## &lt;---- creates model and plots the line\n  theme_bw()"
+  },
+  {
+    "objectID": "code/datavis.html",
+    "href": "code/datavis.html",
+    "title": "Data visualization",
+    "section": "",
+    "text": "We already know how to extract useful information from data frames. Various statistics tell us a lot about the data. Nevertheless, values of mean, quantiles and standard deviations are inconvenient for understanding the whole picture.\nWe get the most information through our eyes, therefore the skill of presenting the data visually is on of the most powerful. By creating simple visualisations, you can make initial hypotheses and understand possible relationships between variables."
+  },
+  {
+    "objectID": "code/datavis.html#plot",
+    "href": "code/datavis.html#plot",
+    "title": "Data visualization",
+    "section": "plot()",
+    "text": "plot()\nThe simplest graph is a points, each having x and y coordinates\n\nx = 1:10\ny = seq(2,20,2) ^ 2\nx\n\n [1]  1  2  3  4  5  6  7  8  9 10\n\ny\n\n [1]   4  16  36  64 100 144 196 256 324 400\n\n\nWe consider that the x and y coordinates at the same positions in each of the vectors correspond to one particular point. So we have points (1,2), (2,4), (3,6) and etc.\n\nseq(from_value, to_value, by_value)- returns a vector with values from from_value to to_valuewith a step by_value\n\n\nScatter plot\n\nplot(x, y)\n\n\n\n\n\n\n\n\n\n\nSepal.Length vs Sepal.Width\n\n# plot()\n\nWe can make this graph prettier\n\nplot(#,\n     main = \"Sepal.Length vs. Sepal.Width\", # the title\n     xlab = \"Sepal.Length\", # Label of X-axis\n     ylab = \"Sepal.Width\", # Label of Y-axis \n     col = \"blue\", # color of plot\n     pch = 19, # type of dots - 19 corresponds to the painted (solid) points\n     cex = 1 # size of dots\n     ) \n\n\n\nAll plot() style parameters\n\n\nAll basic R graphical parameters\n\n\n\n\n\n\nAdding lines\nBy default plot() shows scatter plot, but we can change this behavior\n\nplot(x, y,type = 'l') \n\n\n\n\n\n\n\nplot(x, y, type = 'o')\n\n\n\n\n\n\n\nplot(x, y,type = 'b')\n\n\n\n\n\n\n\n\n\nShow scatter with line width (lwd) = 3, point character (pch) = 2 and line type (lty) =3\n\n\n# plot(x,y)\n\n\nTerrible plot\nLine graphs should sometimes be avoided, because lines connect points in the order of their position in the vectors\n\nx = c(10,5,9,6,8,7,2,1,4,3)\ny = c(1:4, 6:8,5,10,9)\nx\n\n [1] 10  5  9  6  8  7  2  1  4  3\n\ny\n\n [1]  1  2  3  4  6  7  8  5 10  9\n\n\n\nplot(x, y, type = \"b\",  pch=19)\n\n\n\n\n\n\n\n\nAfter sorting:\n\ndf = data.frame(x, y) %&gt;% arrange(x)\nplot(df$x, df$y,type = \"b\", pch=19)\n\n\n\n\n\n\n\n\n\nggplot2 doesn’t have such problem\n\n\n\nAdvanced\n\n# basic r advanced\n\nindexes_to_sort = order(x)\nx_sorted = x[indexes_to_sort]\ny_sorted = y[indexes_to_sort]\nplot(x_sorted, y_sorted, type = \"b\", pch=19)\n\n\n\n\n\n\n\n\nNB! We can’t just sort one of the vectors because we must save the correspondence of x and y coordinates between two vectors."
+  },
+  {
+    "objectID": "code/datavis.html#bar-plots",
+    "href": "code/datavis.html#bar-plots",
+    "title": "Data visualization",
+    "section": "Bar Plots",
+    "text": "Bar Plots\n\nheights = c(Roman = 190, \n            Ann = 172, \n            Charlie = 121,\n            Vlad = 183,\n            Sasha = 180) # named vector\nheights\n\n  Roman     Ann Charlie    Vlad   Sasha \n    190     172     121     183     180 \n\n\n\nbarplot(heights)\n\n\n\n\n\n\n\n\n\nSort (sort()) values and create barplot again\n\n\n# heights = \n# barplot(heights)\n\nWe can customize this graph\n\nbarplot(heights, \n        main = \"Heights of people\", # the title \n        xlab = \"Height\", # Label of X-axis \n        ylab = \"Name\", # Label of Y-axis \n        col = \"lightblue\", # color of inner part of bars\n        border = \"blue\", # color of borders\n        horiz = TRUE, # make barplot horizontal\n        xlim = c(0,200) # limits of values showd on x-axis\n        )\n\n\n\n\n\n\n\n\n\nNumber of iris_df species\n\nCreate table() of iris species and use it to make a barplot with color ‘violet’ Name the axis!\n\n\n# number_of_species = \n# barplot()\n\nNow we see that our data “is balanced”"
+  },
+  {
+    "objectID": "code/datavis.html#histograms",
+    "href": "code/datavis.html#histograms",
+    "title": "Data visualization",
+    "section": "Histograms",
+    "text": "Histograms\n\nNeed only one axis!\n\n\nDistribution of Sepal.Length\n\nhist(iris_df$Sepal.Length, \n     main = \"Sepal.Length distribution\", \n     xlab = \"Sepal.length\", \n     col = \"lightgreen\",\n     breaks = 8 # number of x-axis splits for frequency calculation in each of the resulting ranges\n     )\n\n\n\n\n\n\n\n\nEach bar represents frequency of this particular Sepal.Length in dataset.\nFor example, first bar have height of 5 - it mean, that there are 5 flowers with Sepal.Length between 4 and 4.5.\nWe can make bars two times thinner\n\nhist(iris_df$Sepal.Length,\n     main = \"Sepal.Length distribution\", \n     xlab = \"Sepal.length\", \n     col = \"lightgreen\", \n     breaks = 16) # &lt;---- changed\n\n\n\n\n\n\n\n\n\nCreate histogram of Sepal.Width colored ‘lightblue’. Name the axis!\n\n\n# hist()"
+  },
+  {
+    "objectID": "code/datavis.html#boxplots",
+    "href": "code/datavis.html#boxplots",
+    "title": "Data visualization",
+    "section": "Boxplots",
+    "text": "Boxplots\nBoxplots are very informative charts. They display similar but more information than a histogram.\n\n\n\nboxplot(iris_df$Sepal.Length, \n        # main = \"Sepal.Length\", \n        ylab = \"\",\n        xlab = \"Sepal.Length\", \n        col = \"darkviolet\",\n        horizontal = T)\n\n\n\n\n\n\n\n\n\nGrouped boxplots\n\nboxplot(iris_df$Sepal.Length ~ iris_df$Species, \n        main = \"Sepal.Length\",\n        xlab = \"Species\",\n        ylab = \"Sepal.Length\", \n        col = \"darkviolet\",\n        horizontal = F)\n\n\n\n\n\n\n\n\n\nCreate boxplot of Sepal.Length grouped by Sepal.Length.Category. Name axis and let it be horizontal.\n\n\n# boxplot()\n\nBoxplot is good for unimodal** similar to normaldistributions, as it doesn’t show two peaks**"
+  },
+  {
+    "objectID": "code/datavis.html#philosophy",
+    "href": "code/datavis.html#philosophy",
+    "title": "Data visualization",
+    "section": "Philosophy",
+    "text": "Philosophy\n\nThe ggplot is based on 3 things: data, aesthetics and geoms (geomertries)\nInside the geoms there are aesthetics.\nInside the aesthetics we put the variables from the data that we want to see in the plot. These will be our axes.\nAn axis is not just an x and y coordinate - any aesthetic, such as a fill,color,size etc. can also be an (pseudo)axis.\nEach component in the graphic is added layer by layer"
+  },
+  {
+    "objectID": "code/datavis.html#intro",
+    "href": "code/datavis.html#intro",
+    "title": "Data visualization",
+    "section": "Intro",
+    "text": "Intro\n\nggplot(data=iris_df, # data\n       mapping = aes(x=Sepal.Length, y=Sepal.Width)) + #aesthetics (axes)\n  geom_point()  # geom\n\n\n\n\n\n\n\n\nObligatory components to create chart:\n\nggplot(data=iris_df) - data: data.frame, tibble …\nggplot(..., mappings=aes(x=Sepal.Length, y=Sepal.Width)) - aesthetics, which turned into x and y axis.\n+ geom_point() - geom, at least one."
+  },
+  {
+    "objectID": "code/datavis.html#storing-plots-in-variables",
+    "href": "code/datavis.html#storing-plots-in-variables",
+    "title": "Data visualization",
+    "section": "Storing plots in variables",
+    "text": "Storing plots in variables\n\np = ggplot(data=iris_df, mapping = aes(x=Sepal.Length, y=Sepal.Width)) + geom_point()\n\np"
+  },
+  {
+    "objectID": "code/datavis.html#adding-new-aesthetics-axes",
+    "href": "code/datavis.html#adding-new-aesthetics-axes",
+    "title": "Data visualization",
+    "section": "Adding new aesthetics (“axes”)",
+    "text": "Adding new aesthetics (“axes”)\n\nAdding right to the ggplot()\n\nggplot(data=iris_df,\n       mapping = aes(x=Sepal.Length, \n                     y=Sepal.Width,\n                     color=Species, \n                     size = Petal.Width,\n                     shape=Sepal.Length.Category)) + \n  geom_point() \n\n\n\n\n\n\n\n\n\n\nAesthetics list\n\ncolor - color\nfill - filling color\nsize - size\nshape - shape of points\nstroke - stroke thickness\nalpha - transparency\nother specific for geoms aesthetics…\n\n\n\nAdding to variable\n\np + aes(color=Species, size = Petal.Width,\n        shape=Sepal.Length.Category)"
+  },
+  {
+    "objectID": "code/datavis.html#geoms",
+    "href": "code/datavis.html#geoms",
+    "title": "Data visualization",
+    "section": "Geoms",
+    "text": "Geoms\nGeometries define the types of graphs in the diagram.\n\nGeoms have specific variables\n\niris_df %&gt;% \n  ggplot(aes(x=Sepal.Width)) +   # &lt;--- here\n  geom_histogram(bins = 20, fill='lightblue', col='black')\n\n\n\n\n\n\n\n\n\n\nAesthetics can also be set up within the geoms\n\naesthetics inside ggplot() are set for all geoms\naesthetics inside geom_..() functions are set only for this geom\n\n\niris_df %&gt;% \n  ggplot() + \n  geom_histogram(aes(x=Sepal.Width),\n                 bins = 20, fill='lightblue', col='black')  # &lt;--- here\n\n\n\n\n\n\n\n\n\n\nAdding several geoms\n\niris_df %&gt;% \n  ggplot(aes(x=Species, y=Sepal.Length)) + \n  geom_boxplot(aes(fill=Species), outliers = F) +\n  geom_jitter(width=0.1, size=1)\n\n\n\n\n\n\n\n\n\n\nGeoms can take different data!\n\niris_df %&gt;% \n  ggplot(aes(x=Sepal.Length, y=Sepal.Width)) +\n  \n  geom_point(data=iris_df %&gt;% filter(Sepal.Width &gt; 3), # data (filtered iris)\n             aes(color=Species)) +\n  \n  geom_hex(data=iris_df %&gt;% filter(Sepal.Width &lt; 3)) # another data (filtered iris)"
+  },
+  {
+    "objectID": "code/datavis.html#variables-and-aesthetics",
+    "href": "code/datavis.html#variables-and-aesthetics",
+    "title": "Data visualization",
+    "section": "Variables and aesthetics",
+    "text": "Variables and aesthetics\n\nfill, color, size, shape, stroke and alpha can be seen outside of aes(). They can also be set to a specific fixed value.\nEach geom has a certain set of parameters. In aes() there are mandatory and optional parameters, and outside it there are only optional parameters\n\n\nInside the aes()\n\niris_df %&gt;% \n  ggplot(aes(x=Sepal.Length, y=Sepal.Width)) +\n  geom_point(aes(color=Species)) # &lt;--- here\n\n\n\n\n\n\n\n\n\n\nOutside the aes()\n\nggplot(data=iris_df,\n       mapping = aes(x=Sepal.Length, y=Sepal.Width)) +\n  geom_point(color='blue')  # &lt;--- here\n\n\n\n\n\n\n\n\n\n\n(not) Blue scatter-plot\n\nggplot(data=iris_df,\n       mapping = aes(x=Sepal.Length, y=Sepal.Width, color='blue')) +\n  geom_point()"
+  },
+  {
+    "objectID": "code/datavis.html#themes",
+    "href": "code/datavis.html#themes",
+    "title": "Data visualization",
+    "section": "Themes",
+    "text": "Themes\n\nBuilt-in themes\n\np + theme_bw()\n\n\n\n\n\n\n\np + theme_classic()\n\n\n\n\n\n\n\np + theme_void()\n\n\n\n\n\n\n\n\n\n\nCustom themes (Advanced)\n\np = p + theme(axis.text = element_text(size = 15),\n          axis.title = element_text(size = 20),\n          panel.background = element_rect(fill = 'white', color='black'))\np\n\n\n\n\n\n\n\n\n\n\nSetting theme for all plots\n\ntheme_custom &lt;- theme(\n    axis.text = element_text(size = 15),\n    axis.title = element_text(size = 20),\n    plot.title = element_text(size = 20, hjust = 0.5),\n    plot.subtitle = element_text(size = 15, hjust = 0.5),\n    legend.title = element_text(size = 15),\n    legend.text = element_text(size = 15),\n    panel.background = element_rect(fill = \"white\"), \n    panel.grid = element_blank()\n  )\n\ntheme_set(theme_custom)"
+  },
+  {
+    "objectID": "code/datavis.html#labels",
+    "href": "code/datavis.html#labels",
+    "title": "Data visualization",
+    "section": "Labels",
+    "text": "Labels\n\np +  labs(x='Sepal length', \n          y='Sepal width',\n          \n          color = 'Iris species',\n          # fill =\n          # size = \n          # shape = \n          # stroke =\n          \n          title = 'Scatter plot', \n          subtitle = 'Subtitle',\n          caption = 'It is the great plot',\n          tag = 'A')\n\nIgnoring unknown labels:\n• colour : \"Iris species\"\n\n\n\n\n\n\n\n\n\nSimple functions for labeling axes: + xlab() and + ylab()"
+  },
+  {
+    "objectID": "code/datavis.html#scatter-plot-1",
+    "href": "code/datavis.html#scatter-plot-1",
+    "title": "Data visualization",
+    "section": "Scatter plot",
+    "text": "Scatter plot\n\nDraw scatter-plot (geom_point) with x=Petal.Length, y=Petal.Width usingclassic theme\n\n\n# iris_df %&gt;% ggplot()"
+  },
+  {
+    "objectID": "code/datavis.html#histogram",
+    "href": "code/datavis.html#histogram",
+    "title": "Data visualization",
+    "section": "Histogram",
+    "text": "Histogram\n\nDraw histogram (geom_histogram) of Petal.Length using blue color and lightblue fill andclassic theme\n\n\n# iris_df %&gt;% ggplot()"
+  },
+  {
+    "objectID": "code/datavis.html#density-plot",
+    "href": "code/datavis.html#density-plot",
+    "title": "Data visualization",
+    "section": "Density plot",
+    "text": "Density plot\n\nDraw density plot (geom_density) of Petal.Length for every Species filled differently + alpha=0.8 and classic theme\n\n\n# iris_df %&gt;% ggplot()"
+  },
+  {
+    "objectID": "code/datavis.html#boxplot",
+    "href": "code/datavis.html#boxplot",
+    "title": "Data visualization",
+    "section": "Boxplot",
+    "text": "Boxplot\n\nDraw a horizontal box plot (geom_boxplot) of Petal.Width for each species on the y-axis with different fill. Remove legend (why?)\n\n\n# iris_df %&gt;% ggplot()\n\n\nWe can combine custom and built-in themes in one plot!\n\n\nDeleting the legend (as it duplicates color information)\n\n+ theme(legend.position = \"none\")"
+  },
+  {
+    "objectID": "code/datavis.html#barplots",
+    "href": "code/datavis.html#barplots",
+    "title": "Data visualization",
+    "section": "Barplots",
+    "text": "Barplots\n\nsepal_len_stats = iris_df %&gt;% group_by(Species) %&gt;% \n  summarise(mean_sepal_len = mean(Sepal.Length), \n            sd_sepal_length = sd(Sepal.Length))\n\nsepal_len_stats\n\n# A tibble: 3 × 3\n  Species    mean_sepal_len sd_sepal_length\n  &lt;fct&gt;               &lt;dbl&gt;           &lt;dbl&gt;\n1 setosa               5.01           0.352\n2 versicolor           5.94           0.516\n3 virginica            6.59           0.636\n\n\n\ngeom_col - if heights of bars are known (continuous data)\n\nDraw a barplot (geom_col) of mean_sepal_len for each species on the x-axis with different fill. Remove legend.\n\n\np_col = sepal_len_stats %&gt;% \n  ggplot(aes(x=Species, y=mean_sepal_len, fill=Species)) + \n  geom_col() + \n  theme_classic() + \n  theme(legend.position = \"none\")\n\np_col\n\n\n\n\n\n\n\n\n\n\nAdding geom_errorbar (SD)\n\np_col + geom_errorbar(aes(ymin=mean_sepal_len-sd_sepal_length,\n                          ymax=mean_sepal_len+sd_sepal_length),\n                      width=0.3)\n\n\n\n\n\n\n\n\n\nThree different types of values are commonly used for error bars, sometimes without even specifying which one is used.\n\nStandard deviation\nStandard error\nConfidence interval\n\nWe will discuss each later\n\n\n\ngeom_bar - if heights are unknown (counting categorical data)\n\nDraw a barplot (geom_col) of Sepal.Length.Category (x-axis and fill).\n\n\n# iris_df %&gt;% ggplot()\n\n\n\nposition=\"stack\" (by default)\n\niris_df %&gt;% \n  ggplot(aes(x=Sepal.Length.Category, fill=Species)) + \n  geom_bar() + \n  theme_bw() \n\n\n\n\n\n\n\n\n\n\nposition=\"fill\" - scaled from 0 to 1\n\niris_df %&gt;% ggplot(aes(fill=Species, x=Sepal.Length.Category)) + \n  geom_bar(position = 'fill') + theme_bw()\n\n\n\n\n\n\n\n\n\n\nposition=\"dodge\"\n\niris_df %&gt;% \n  ggplot(aes(fill=Species, x=Sepal.Length.Category)) + \n  geom_bar(position = 'dodge')  + \n  theme_bw()"
+  },
+  {
+    "objectID": "code/datavis.html#something-big-and-difficult",
+    "href": "code/datavis.html#something-big-and-difficult",
+    "title": "Data visualization",
+    "section": "Something big and difficult",
+    "text": "Something big and difficult\n\nggplot(iris, aes(x = Species, y = Sepal.Length)) +\n  geom_violin(aes(fill = Species), alpha = 0.4) +  # Violin plots\n  geom_boxplot(fill = \"lightgray\", alpha = 0.6, outliers = F, width=0.2) + \n  geom_jitter(aes(fill = Species), width = 0.2, alpha = 0.5, shape=21, col='black') +  \n  geom_hline(aes(yintercept = mean(Sepal.Length)), col='red', linewidth=1, lty=2) +\n  geom_text(aes(label='Global mean', x = 'setosa', y=mean(Sepal.Length)+0.1), col='red') +\n  labs(title = \"Boxplot of Sepal Length by Species with Jittered Points\",\n       x = \"Species\",\n       y = \"Sepal Length (cm)\") +\n  theme_minimal()\n\n\n\n\n\n\n\n\n\nNew geoms used\n\ngeom_violinplot() - Violin plot\ngeom_hline() - horizontal line\n\ngeom_vline() - vertical line\n\ngeom_text() - just text\n\ngeom_label()"
+  },
+  {
+    "objectID": "code/datavis.html#plot-arranging",
+    "href": "code/datavis.html#plot-arranging",
+    "title": "Data visualization",
+    "section": "Plot arranging",
+    "text": "Plot arranging\npatchwork\n\nlibrary(patchwork)\n\n\nbar_stack = iris_df %&gt;% \n  ggplot(aes(x=Sepal.Length.Category, fill=Species)) + \n  geom_bar() + \n  theme_bw() \n\nbar_fill = iris_df %&gt;% ggplot(aes(fill=Species, x=Sepal.Length.Category)) + \n  geom_bar(position = 'fill') + theme_bw()\n\nbar_dodge = iris_df %&gt;% \n  ggplot(aes(fill=Species, x=Sepal.Length.Category)) + \n  geom_bar(position = 'dodge')  + \n  theme_bw()\n\n\nbar_stack + bar_fill\n\n\n\n\n\n\n\n\n\nCollect axes and legends\n\nbar_stack + bar_fill +\n  plot_layout(guides = 'collect',\n              axes = 'collect')\n\n\n\n\n\n\n\n\n\n(bar_stack | bar_fill) / bar_dodge +\n  plot_layout(guides = 'collect') +\n  plot_annotation(tag_levels = 'A')"
+  },
+  {
+    "objectID": "code/datavis.html#saving-the-plot",
+    "href": "code/datavis.html#saving-the-plot",
+    "title": "Data visualization",
+    "section": "Saving the plot",
+    "text": "Saving the plot\n\nTo save last drawn plot:\n\nggsave(\n  filename = './bigplot.png', # specify the filename (path to file)\n  device = , # png, pdf, jpeg, svg and others\n  dpi = 320, # resolution\n  width = 1800,\n  height = 1600,\n  units = \"px\" #in, cm, mm\n)\n\n\n\nSave “everything between”\n\npdf(\"./dodge_barplot.pdf\", width = 6, height = 6)\n\niris_df %&gt;% ggplot(aes(fill=Species, x=Sepal.Length.Category)) + \n  geom_bar(position = 'dodge')\n\ndev.off()\n\nquartz_off_screen \n                2 \n\n\nThis structure allow save into pdf all graphical outputs that between pdf() and dev.off()"
+  },
+  {
+    "objectID": "code/datavis.html#barplot",
+    "href": "code/datavis.html#barplot",
+    "title": "Data visualization",
+    "section": "Barplot",
+    "text": "Barplot\n\niris_df %&gt;%  ggbarplot(x=\"Species\", y=\"Sepal.Width\",\n                       fill='Species',\n                       add = \"mean_sd\" # calculate mean and sd\n                       )"
+  },
+  {
+    "objectID": "code/datavis.html#boxplot-1",
+    "href": "code/datavis.html#boxplot-1",
+    "title": "Data visualization",
+    "section": "Boxplot",
+    "text": "Boxplot\n\nStatisctics inside!\n\np_pubr = iris_df %&gt;%  ggboxplot(x='Species', y='Sepal.Length', col='Species')\n\ncomparisons &lt;- list( c(\"setosa\", \"versicolor\"), \n                     c(\"setosa\", \"virginica\"), \n                     c(\"virginica\", \"versicolor\") )\n\np_pubr + stat_compare_means(comparisons = comparisons, \n                            label = \"p.signif\")+ \n  stat_compare_means(label.y = 10)\n\n\n\n\n\n\n\n\nSee more about ggpubr HERE"
+  },
+  {
+    "objectID": "code/datavis.html#customizing-fill---scale_fill_manual",
+    "href": "code/datavis.html#customizing-fill---scale_fill_manual",
+    "title": "Data visualization",
+    "section": "Customizing fill - scale_fill_manual()",
+    "text": "Customizing fill - scale_fill_manual()\n\n# Advanced -------\niris_df %&gt;% ggplot(aes(x=Species, y=Sepal.Length)) +\n  stat_summary(aes(fill=Species), geom = 'bar', fun = mean) +\n  geom_jitter(aes(fill=Species), shape=21, width = 0.1, \n              stroke=0.5, col='black') +\n  theme_bw() + \n  labs(title = 'Barplots with jitter') +\n# ----------\n\nscale_fill_manual(\n  values=c(\"#e63946\", \"#ffba49\", \"#457b9d\"),\n  labels=c('Setosa sp.', 'Versicolor sp.', 'Virginica sp.'),\n)"
+  },
+  {
+    "objectID": "code/datavis.html#customizing-color---scale_color_manual",
+    "href": "code/datavis.html#customizing-color---scale_color_manual",
+    "title": "Data visualization",
+    "section": "Customizing color - scale_color_manual()",
+    "text": "Customizing color - scale_color_manual()\n\niris_df %&gt;% ggplot(aes(x=Sepal.Length, y=Sepal.Width, col=Species)) +\n  geom_point(alpha=0.6, size=4) +\n  theme_classic() + \n\nscale_color_manual(\n  values=c(\"#e63946\", \"#ffba49\", \"#457b9d\"),\n  labels=c('Setosa sp.', 'Versicolor sp.', 'Virginica sp.'),\n)"
+  },
+  {
+    "objectID": "code/datavis.html#facets",
+    "href": "code/datavis.html#facets",
+    "title": "Data visualization",
+    "section": "Facets",
+    "text": "Facets\n\nfacet_wrap()\n\niris_df %&gt;% ggplot(aes(x=Petal.Length, y=Petal.Width)) +\n  geom_point(alpha=0.6, size=2) +\n  theme_bw() +\n\n# ----------------------\n\nfacet_wrap(. ~ Species)\n\n\n\n\n\n\n\n\n\n\nfacet_grid()\n\niris_df %&gt;% ggplot(aes(x=Petal.Length, y=Petal.Width)) +\n  geom_point(alpha=0.6, size=2) +\n  theme_bw() +\n# ----------------------\n  facet_grid(cols = vars(Species),\n             rows=vars(Sepal.Length.Category))\n\n\n\n\n\n\n\n  # facet_wrap(Sepal.Length.Category ~ Species)"
+  },
+  {
+    "objectID": "presentations/testing.html",
+    "href": "presentations/testing.html",
+    "title": "Intro to testing",
+    "section": "",
+    "text": "1) What we want to test? (Hypotheses about population)\n\n2) Choose significance level\n3) Choose the test\n4) Conduct the experiment\n5) Conduct the test\n6) Conclusion\n\n\n\n\nIn statistical testing, we will operate with hypotheses. There are two basic hypotheses:\n\nNull Hypothesis (\\(H_0\\)) - There is no effect in population\nAlternative Hypothesis (\\(H_A\\)) - There is an effect in population\n\n\nUsually we are interested in having an effect, as it means some discovery, and rejecting null hypothesis\n\n\n\n\n\n1) What we want to test? Hypotheses\n\n2) Choose significance level\n\n3) Choose the test\n4) Conduct the experiment\n5) Conduct the test\n6) Conclusion\n\n\n\n\n\n\nError of rejecting \\(H_0\\) when \\(H_0\\) is true\n\n\n\n\nError of accepting \\(H_0\\) when \\(H_0\\) is false\n\n\n\n\n\n\n\n\nReality: True\nReality: False\n\n\n\n\nMeasured: True\nCorrect 😊\nType 1 Error\n\n\nMeasured: False\nType 2 Error\nCorrect 😊\n\n\n\n\nProbability of Type I error (\\(\\alpha\\))\nProbability of Type II error (\\(\\beta\\))\n\n\n\n\n\n\n\n\nBefore testing we must define value \\(\\alpha\\) named significance level\nSignificance level (\\(\\alpha\\)) - predetermined threshold of rejecting \\(H_0\\).\n\nFor example we set \\(\\alpha = 0.05\\) and got p-value &lt; \\(\\alpha\\):\nWe reject the \\(H_0\\) at the \\(\\alpha = 0.05\\) significance level, indicating that there is sufficient evidence to conclude that the observed result is unlikely to have occurred under the null hypothesis.\n\nThus we fix the Type 1 Error , but Type 2 Error still can be large!\nThe value \\(1-\\beta\\) called the power of the test. The smaller is the probability of type II error, the more powerful is the test.\n\n\n\n\n\n\nMedical/Pharmaceutical: \\(\\alpha = 0.01\\) is common to avoid false positives.\nPsychology/Social: Typically \\(\\alpha = 0.05\\).\nEconomics/Business: Sometimes \\(\\alpha = 0.1\\) is acceptable\n\n\n\n\n\n\n1) What we want to test? (Hypotheses)\n2) Choose significance level\n\n3) Choose the test\n\nTest’s functionality (first)\nTest’s assumptions (second)\n\n\n4) Conduct the experiment\n5) Conduct the test\n6) Conclusion\n\n\n\n\nDoes it test my hypothesis?\nIs my hypothesis is the hypothesis this test checking?\n\nI’m checking the difference between the average hemoglobin levels in sick and healthy people. T-test should be suitable for this\n\n\n\n\nThe conditions, the fulfillment of which ensures control over the quality of the test results\nAnd the opposite is not true !!\n\nFor example, fulfillment of assumptions can guarantee fixed Type I error\nAnd if assumptions are violated, it doesn’t mean Type I error will be big\n(but it still can be)\n\n\nT-test is good for big samples with distributions where average makes sense\n\n\n\n\n\n\n\n\\(X\\) - Days in hospital\n\nDivide patients into 2 groups by many days or few (e.g. &lt;&gt;15 days)\nRed - with pneumonia\nBlue - without pneumonia\n\\(H_0\\) - there’s no association between pneumonia and days in the hospital\n\\(\\Rightarrow \\chi^2\\) test\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\\(X\\) - Students’ exam scores\n\nRed - First group\nBlue - Second group\n\\(H_0\\) - Score of students from First group and Second group are the same\n\\(\\Rightarrow\\) Mann-Whitney test"
+  },
+  {
+    "objectID": "presentations/testing.html#testing-plan",
+    "href": "presentations/testing.html#testing-plan",
+    "title": "Intro to testing",
+    "section": "",
+    "text": "1) What we want to test? (Hypotheses about population)\n\n2) Choose significance level\n3) Choose the test\n4) Conduct the experiment\n5) Conduct the test\n6) Conclusion"
+  },
+  {
+    "objectID": "presentations/testing.html#hypotheses",
+    "href": "presentations/testing.html#hypotheses",
+    "title": "Intro to testing",
+    "section": "",
+    "text": "In statistical testing, we will operate with hypotheses. There are two basic hypotheses:\n\nNull Hypothesis (\\(H_0\\)) - There is no effect in population\nAlternative Hypothesis (\\(H_A\\)) - There is an effect in population\n\n\nUsually we are interested in having an effect, as it means some discovery, and rejecting null hypothesis"
+  },
+  {
+    "objectID": "presentations/testing.html#testing-plan-1",
+    "href": "presentations/testing.html#testing-plan-1",
+    "title": "Intro to testing",
+    "section": "",
+    "text": "1) What we want to test? Hypotheses\n\n2) Choose significance level\n\n3) Choose the test\n4) Conduct the experiment\n5) Conduct the test\n6) Conclusion\n\n\n\n\n\n\nError of rejecting \\(H_0\\) when \\(H_0\\) is true\n\n\n\n\nError of accepting \\(H_0\\) when \\(H_0\\) is false\n\n\n\n\n\n\n\n\nReality: True\nReality: False\n\n\n\n\nMeasured: True\nCorrect 😊\nType 1 Error\n\n\nMeasured: False\nType 2 Error\nCorrect 😊\n\n\n\n\nProbability of Type I error (\\(\\alpha\\))\nProbability of Type II error (\\(\\beta\\))"
+  },
+  {
+    "objectID": "presentations/testing.html#significance-level",
+    "href": "presentations/testing.html#significance-level",
+    "title": "Intro to testing",
+    "section": "",
+    "text": "Before testing we must define value \\(\\alpha\\) named significance level\nSignificance level (\\(\\alpha\\)) - predetermined threshold of rejecting \\(H_0\\).\n\nFor example we set \\(\\alpha = 0.05\\) and got p-value &lt; \\(\\alpha\\):\nWe reject the \\(H_0\\) at the \\(\\alpha = 0.05\\) significance level, indicating that there is sufficient evidence to conclude that the observed result is unlikely to have occurred under the null hypothesis.\n\nThus we fix the Type 1 Error , but Type 2 Error still can be large!\nThe value \\(1-\\beta\\) called the power of the test. The smaller is the probability of type II error, the more powerful is the test."
+  },
+  {
+    "objectID": "presentations/testing.html#significance-level-1",
+    "href": "presentations/testing.html#significance-level-1",
+    "title": "Intro to testing",
+    "section": "",
+    "text": "Medical/Pharmaceutical: \\(\\alpha = 0.01\\) is common to avoid false positives.\nPsychology/Social: Typically \\(\\alpha = 0.05\\).\nEconomics/Business: Sometimes \\(\\alpha = 0.1\\) is acceptable"
+  },
+  {
+    "objectID": "presentations/testing.html#testing-plan-2",
+    "href": "presentations/testing.html#testing-plan-2",
+    "title": "Intro to testing",
+    "section": "",
+    "text": "1) What we want to test? (Hypotheses)\n2) Choose significance level\n\n3) Choose the test\n\nTest’s functionality (first)\nTest’s assumptions (second)\n\n\n4) Conduct the experiment\n5) Conduct the test\n6) Conclusion"
+  },
+  {
+    "objectID": "presentations/testing.html#tests-functionality",
+    "href": "presentations/testing.html#tests-functionality",
+    "title": "Intro to testing",
+    "section": "",
+    "text": "Does it test my hypothesis?\nIs my hypothesis is the hypothesis this test checking?\n\nI’m checking the difference between the average hemoglobin levels in sick and healthy people. T-test should be suitable for this"
+  },
+  {
+    "objectID": "presentations/testing.html#tests-assumptions",
+    "href": "presentations/testing.html#tests-assumptions",
+    "title": "Intro to testing",
+    "section": "",
+    "text": "The conditions, the fulfillment of which ensures control over the quality of the test results\nAnd the opposite is not true !!\n\nFor example, fulfillment of assumptions can guarantee fixed Type I error\nAnd if assumptions are violated, it doesn’t mean Type I error will be big\n(but it still can be)\n\n\nT-test is good for big samples with distributions where average makes sense"
+  },
+  {
+    "objectID": "presentations/testing.html#one-data-several-hypothesis",
+    "href": "presentations/testing.html#one-data-several-hypothesis",
+    "title": "Intro to testing",
+    "section": "",
+    "text": "\\(X\\) - Days in hospital\n\nDivide patients into 2 groups by many days or few (e.g. &lt;&gt;15 days)\nRed - with pneumonia\nBlue - without pneumonia\n\\(H_0\\) - there’s no association between pneumonia and days in the hospital\n\\(\\Rightarrow \\chi^2\\) test"
+  },
+  {
+    "objectID": "presentations/testing.html#one-data-several-hypothesis-1",
+    "href": "presentations/testing.html#one-data-several-hypothesis-1",
+    "title": "Intro to testing",
+    "section": "",
+    "text": "\\(X\\) - Students’ exam scores\n\nRed - First group\nBlue - Second group\n\\(H_0\\) - Score of students from First group and Second group are the same\n\\(\\Rightarrow\\) Mann-Whitney test"
+  },
+  {
+    "objectID": "presentations/testing.html#testing-plan-3",
+    "href": "presentations/testing.html#testing-plan-3",
+    "title": "Intro to testing",
+    "section": "Testing plan",
+    "text": "Testing plan\n\n1) What we want to test? (Hypotheses)\n2) Choose significance level\n3) Choose the test\n\n4) Conduct the experiment\n\n5) Conduct the test\n6) Conclusion"
+  },
+  {
+    "objectID": "presentations/testing.html#testing-plan-4",
+    "href": "presentations/testing.html#testing-plan-4",
+    "title": "Intro to testing",
+    "section": "Testing plan",
+    "text": "Testing plan\n\n1) What we want to test? (Hypotheses)\n2) Choose significance level\n3) Choose the test\n4) Conduct the experiment\n\n5) Conduct the test\n\n6) Conclusion"
+  },
+  {
+    "objectID": "presentations/testing.html#test-result",
+    "href": "presentations/testing.html#test-result",
+    "title": "Intro to testing",
+    "section": "Test result",
+    "text": "Test result\nThe tests result in test statistic and the p-value .\n\nEach test have its formula to calculate called test statistic. This value has its own distribution (e.g. t-distribution for the t-statistic from t-test).\np-value - the probability that, given a true null hypothesis, your observations will result in such or more extreme value of test statistic\n\n\nThe smaller the p-value, the less likely we are to get our result under the null hypothesis, which states that there is no effect."
+  },
+  {
+    "objectID": "presentations/testing.html#pipeline",
+    "href": "presentations/testing.html#pipeline",
+    "title": "Intro to testing",
+    "section": "“Pipeline”",
+    "text": "“Pipeline”"
+  },
+  {
+    "objectID": "presentations/testing.html#parameters-of-test-statistics-distributions",
+    "href": "presentations/testing.html#parameters-of-test-statistics-distributions",
+    "title": "Intro to testing",
+    "section": "Parameters of test statistics’ distributions",
+    "text": "Parameters of test statistics’ distributions\n\nDegrees of freedom!\n\nOften calculated based on number of observations, groups and coefficients.\nDetermines the shape of distribution!\n\n\n-&gt; Amount of data affects testing results!\n\n\nOther parameters…\n\nMean, SD\nRate, shape"
+  },
+  {
+    "objectID": "presentations/testing.html#t-distribution-for-different-dfs",
+    "href": "presentations/testing.html#t-distribution-for-different-dfs",
+    "title": "Intro to testing",
+    "section": "t-distribution for different DFs",
+    "text": "t-distribution for different DFs"
+  },
+  {
+    "objectID": "presentations/testing.html#p-value-calculation",
+    "href": "presentations/testing.html#p-value-calculation",
+    "title": "Intro to testing",
+    "section": "p-value calculation",
+    "text": "p-value calculation\n\n\n\n\n\n\n\np-value \\(\\geq \\alpha\\)\nSince the p-value greater than chosen significance level (\\(\\alpha\\)) we fail to reject \\(H_0\\)\n\n\np-value \\(&lt; \\alpha\\)\nSince the p-value is less than chosen significance level (\\(\\alpha\\)), we reject \\(H_0\\) and conclude that there is sufficient statistical evidence to support \\(H_A\\)"
+  },
+  {
+    "objectID": "presentations/testing.html#one-sided-hypothesis",
+    "href": "presentations/testing.html#one-sided-hypothesis",
+    "title": "Intro to testing",
+    "section": "One-sided hypothesis",
+    "text": "One-sided hypothesis\n\\(H_A: X_0 &lt; X_1\\)"
+  },
+  {
+    "objectID": "presentations/testing.html#two-sided-hypothesis",
+    "href": "presentations/testing.html#two-sided-hypothesis",
+    "title": "Intro to testing",
+    "section": "Two-sided hypothesis",
+    "text": "Two-sided hypothesis\n\\(H_A: X_0 \\neq X_1\\)"
+  },
+  {
+    "objectID": "presentations/testing.html#how-to-calculate-critical-value-of-test-statistic",
+    "href": "presentations/testing.html#how-to-calculate-critical-value-of-test-statistic",
+    "title": "Intro to testing",
+    "section": "How to calculate critical value of test statistic?",
+    "text": "How to calculate critical value of test statistic?\nExample for T-distribution\n\nOne-sided hypotheses\n\n\nqt(0.95, df=19)\n\n[1] 1.729133\n\nqt(0.05, df=19)\n\n[1] -1.729133\n\n\n\n\n\nTwo-sided hypothesis\n\n\nqt(0.975, df=19)\n\n[1] 2.093024\n\nqt(0.025, df=19)\n\n[1] -2.093024"
+  },
+  {
+    "objectID": "presentations/testing.html#another-pitfalls",
+    "href": "presentations/testing.html#another-pitfalls",
+    "title": "Intro to testing",
+    "section": "Another pitfalls",
+    "text": "Another pitfalls\n\nSmall sample size or Unbalanced groups\n\nPower of tests will be reduced = less sensible results\n\nChanging significance level\n\n\\(\\alpha\\) must be defined BEFORE testing\n\nMisinterpreting p-values\n\nIt doesn’t reject or accept \\(H_0\\).\nYOU reject or accept \\(H_0\\)\n\nMultiple comparisons problem"
+  },
+  {
+    "objectID": "presentations/testing.html#multiple-comparisons",
+    "href": "presentations/testing.html#multiple-comparisons",
+    "title": "Intro to testing",
+    "section": "Multiple comparisons",
+    "text": "Multiple comparisons\n\n\\(1 - 0.05\\) - probability of correctly rejected \\(H_0\\)\n\\((1-0.05)^n\\) - probability of correctly rejected \\(\\space H_0\\) in \\(n\\) tests\n\\(1-(1-0.05)^n\\) - probability of incorrectly rejected at least 1 \\(H_0\\) in \\(n\\) tests\n\n\\[\n1 - (1 - 0.05) ^ {2} = 0.0975\\\\\n1 - (1 - 0.05) ^ {5} = 0.2262191\\\\\n1 - (1 - 0.05) ^ {20} = 0.6415141\\\\\n1 - (1 - 0.05) ^ {100} = 0.9940795\\\\\n\\]"
+  },
+  {
+    "objectID": "presentations/testing.html#multiple-comparisons-1",
+    "href": "presentations/testing.html#multiple-comparisons-1",
+    "title": "Intro to testing",
+    "section": "Multiple comparisons",
+    "text": "Multiple comparisons\n\nCorrections!\nControlling the FWER - probability of making at least one Type I error.\n\nBonferroni\nHolm-Bonferroni\nŠidák\n\nControlling the FDR - expected proportion of false positives among all significant tests.\n\nBenjamini-Hochberg\nBenjamini-Yekutieli"
+  }
+]

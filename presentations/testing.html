@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Intro to testing – Biostatistics in R</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Biostatistics in R</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#basics" id="toc-basics" class="nav-link active" data-scroll-target="#basics">Basics</a>
+  <ul class="collapse">
+  <li><a href="#testing-plan" id="toc-testing-plan" class="nav-link" data-scroll-target="#testing-plan">Testing plan</a></li>
+  <li><a href="#hypotheses" id="toc-hypotheses" class="nav-link" data-scroll-target="#hypotheses">Hypotheses</a></li>
+  <li><a href="#testing-plan-1" id="toc-testing-plan-1" class="nav-link" data-scroll-target="#testing-plan-1">Testing plan</a></li>
+  <li><a href="#significance-level" id="toc-significance-level" class="nav-link" data-scroll-target="#significance-level">Significance level</a></li>
+  <li><a href="#significance-level-1" id="toc-significance-level-1" class="nav-link" data-scroll-target="#significance-level-1">Significance level</a>
+  <ul class="collapse">
+  <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
+  </ul></li>
+  <li><a href="#testing-plan-2" id="toc-testing-plan-2" class="nav-link" data-scroll-target="#testing-plan-2">Testing plan</a></li>
+  <li><a href="#tests-functionality" id="toc-tests-functionality" class="nav-link" data-scroll-target="#tests-functionality">Test’s functionality</a></li>
+  <li><a href="#tests-assumptions" id="toc-tests-assumptions" class="nav-link" data-scroll-target="#tests-assumptions">Test’s assumptions</a></li>
+  <li><a href="#one-data-several-hypothesis" id="toc-one-data-several-hypothesis" class="nav-link" data-scroll-target="#one-data-several-hypothesis">One data, several hypothesis</a></li>
+  <li><a href="#one-data-several-hypothesis-1" id="toc-one-data-several-hypothesis-1" class="nav-link" data-scroll-target="#one-data-several-hypothesis-1">One data, several hypothesis</a></li>
+  </ul></li>
+  <li><a href="#sometimes-there-is-no-sutable-test-for-your-hypothesis-and-question" id="toc-sometimes-there-is-no-sutable-test-for-your-hypothesis-and-question" class="nav-link" data-scroll-target="#sometimes-there-is-no-sutable-test-for-your-hypothesis-and-question">Sometimes there is no sutable test for your hypothesis and question</a>
+  <ul class="collapse">
+  <li><a href="#testing-plan-3" id="toc-testing-plan-3" class="nav-link" data-scroll-target="#testing-plan-3">Testing plan</a></li>
+  <li><a href="#testing-plan-4" id="toc-testing-plan-4" class="nav-link" data-scroll-target="#testing-plan-4">Testing plan</a></li>
+  <li><a href="#test-result" id="toc-test-result" class="nav-link" data-scroll-target="#test-result">Test result</a></li>
+  <li><a href="#pipeline" id="toc-pipeline" class="nav-link" data-scroll-target="#pipeline">“Pipeline”</a></li>
+  <li><a href="#parameters-of-test-statistics-distributions" id="toc-parameters-of-test-statistics-distributions" class="nav-link" data-scroll-target="#parameters-of-test-statistics-distributions">Parameters of test statistics’ distributions</a>
+  <ul class="collapse">
+  <li><a href="#degrees-of-freedom" id="toc-degrees-of-freedom" class="nav-link" data-scroll-target="#degrees-of-freedom"><u>Degrees of freedom!</u></a></li>
+  </ul></li>
+  <li><a href="#t-distribution-for-different-dfs" id="toc-t-distribution-for-different-dfs" class="nav-link" data-scroll-target="#t-distribution-for-different-dfs">t-distribution for different DFs</a></li>
+  <li><a href="#p-value-calculation" id="toc-p-value-calculation" class="nav-link" data-scroll-target="#p-value-calculation"><em>p-value</em> calculation</a>
+  <ul class="collapse">
+  <li><a href="#p-value-geq-alpha" id="toc-p-value-geq-alpha" class="nav-link" data-scroll-target="#p-value-geq-alpha"><em>p-value</em> <span class="math inline">\(\geq \alpha\)</span></a></li>
+  <li><a href="#p-value-alpha" id="toc-p-value-alpha" class="nav-link" data-scroll-target="#p-value-alpha"><em>p-value</em> <span class="math inline">\(&lt; \alpha\)</span></a></li>
+  </ul></li>
+  <li><a href="#one-sided-hypothesis" id="toc-one-sided-hypothesis" class="nav-link" data-scroll-target="#one-sided-hypothesis">One-sided hypothesis</a></li>
+  <li><a href="#two-sided-hypothesis" id="toc-two-sided-hypothesis" class="nav-link" data-scroll-target="#two-sided-hypothesis">Two-sided hypothesis</a></li>
+  <li><a href="#how-to-calculate-critical-value-of-test-statistic" id="toc-how-to-calculate-critical-value-of-test-statistic" class="nav-link" data-scroll-target="#how-to-calculate-critical-value-of-test-statistic">How to calculate critical value of test statistic?</a>
+  <ul class="collapse">
+  <li><a href="#one-sided-hypotheses" id="toc-one-sided-hypotheses" class="nav-link" data-scroll-target="#one-sided-hypotheses">One-sided hypotheses</a></li>
+  <li><a href="#two-sided-hypothesis-1" id="toc-two-sided-hypothesis-1" class="nav-link" data-scroll-target="#two-sided-hypothesis-1">Two-sided hypothesis</a></li>
+  </ul></li>
+  <li><a href="#another-pitfalls" id="toc-another-pitfalls" class="nav-link" data-scroll-target="#another-pitfalls">Another pitfalls</a></li>
+  <li><a href="#multiple-comparisons" id="toc-multiple-comparisons" class="nav-link" data-scroll-target="#multiple-comparisons">Multiple comparisons</a></li>
+  <li><a href="#multiple-comparisons-1" id="toc-multiple-comparisons-1" class="nav-link" data-scroll-target="#multiple-comparisons-1">Multiple comparisons</a>
+  <ul class="collapse">
+  <li><a href="#corrections" id="toc-corrections" class="nav-link" data-scroll-target="#corrections">Corrections!</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#lets-go" id="toc-lets-go" class="nav-link" data-scroll-target="#lets-go">Let’s go</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="testing.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Intro to testing</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="basics" class="level1">
+<h1>Basics</h1>
+<div class="cell">
+<style type="text/css">
+.faded-text {
+  opacity: 0.4;
+}
+</style>
+</div>
+<section id="testing-plan" class="level2">
+<h2 class="anchored" data-anchor-id="testing-plan">Testing plan</h2>
+<p>1) What we want to test? (<strong>Hypotheses</strong> about population)</p>
+<div class="fragment semi-fade-out">
+<p>2) Choose significance level</p>
+<p>3) Choose the test</p>
+<p>4) <strong>Conduct the experiment</strong></p>
+<p>5) Conduct the test</p>
+<p>6) Conclusion</p>
+</div>
+</section>
+<section id="hypotheses" class="level2">
+<h2 class="anchored" data-anchor-id="hypotheses">Hypotheses</h2>
+<p>In statistical testing, we will operate with <strong>hypotheses.</strong> <em>There are two basic hypotheses:</em></p>
+<ul>
+<li><strong>Null Hypothesis (</strong><span class="math inline">\(H_0\)</span><strong>)</strong> - There is <strong>no effect</strong> in population</li>
+<li><strong>Alternative Hypothesis (</strong><span class="math inline">\(H_A\)</span><strong>) -</strong> There is <strong>an effect</strong> in population</li>
+</ul>
+<blockquote class="blockquote">
+<p>Usually we are interested in having an effect, as it means some discovery, and <strong>rejecting null hypothesis</strong></p>
+</blockquote>
+</section>
+<section id="testing-plan-1" class="level2">
+<h2 class="anchored" data-anchor-id="testing-plan-1">Testing plan</h2>
+<div class="faded-text">
+<p>1) What we want to test? <strong>Hypotheses</strong></p>
+</div>
+<p>2) Choose significance level</p>
+<div class="faded-text">
+<p>3) Choose the test</p>
+<p>4) <strong>Conduct the experiment</strong></p>
+<p>5) Conduct the test</p>
+<p>6) Conclusion</p>
+</div>
+<hr>
+<div class="columns">
+<div class="column" style="width:50%;">
+<section id="type-i-error" class="level3">
+<h3 class="anchored" data-anchor-id="type-i-error">Type I error</h3>
+<p>Error of rejecting <span class="math inline">\(H_0\)</span> when <span class="math inline">\(H_0\)</span> is true</p>
+</section>
+</div><div class="column" style="width:50%;">
+<section id="type-ii-error" class="level3">
+<h3 class="anchored" data-anchor-id="type-ii-error">Type II error</h3>
+<p>Error of accepting <span class="math inline">\(H_0\)</span> when <span class="math inline">\(H_0\)</span> is false</p>
+</section>
+</div>
+</div>
+<p><br></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: left;">Reality: <strong>True</strong></th>
+<th style="text-align: left;">Reality: <strong>False</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Measured: <strong>True</strong></td>
+<td style="text-align: left;">Correct 😊</td>
+<td style="text-align: left;">Type 1 Error</td>
+</tr>
+<tr class="even">
+<td>Measured: <strong>False</strong></td>
+<td style="text-align: left;">Type 2 Error</td>
+<td style="text-align: left;">Correct 😊</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p>Probability of Type I error (<span class="math inline">\(\alpha\)</span>)</p>
+<p>Probability of Type II error (<span class="math inline">\(\beta\)</span>)</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/typeserror.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="600"></p>
+</figure>
+</div>
+</section>
+<section id="significance-level" class="level2" data-auto-animate="true">
+<h2 data-auto-animate="true" class="anchored" data-anchor-id="significance-level">Significance level</h2>
+<p>Before testing we must define value <span class="math inline">\(\alpha\)</span> named <strong>significance level</strong></p>
+<p><strong>Significance level (</strong><span class="math inline">\(\alpha\)</span>) - <strong>predetermined threshold of rejecting</strong> <span class="math inline">\(H_0\)</span>.</p>
+<blockquote class="blockquote">
+<p>For example we set <span class="math inline">\(\alpha = 0.05\)</span> and got <strong>p-value</strong> &lt; <span class="math inline">\(\alpha\)</span>:</p>
+<p>We reject the <span class="math inline">\(H_0\)</span> at the <span class="math inline">\(\alpha = 0.05\)</span> significance level, indicating that there is sufficient evidence to conclude that the observed result is unlikely to have occurred under the null hypothesis.</p>
+</blockquote>
+<p>Thus we <u><strong>fix the Type 1 Error</strong></u> , but <u><strong>Type 2 Error still can be large!</strong></u></p>
+<p>The value <span class="math inline">\(1-\beta\)</span> called the <u><strong>power of the test</strong></u>. <em>The smaller is the probability of type II error, the more powerful is the test.</em></p>
+</section>
+<section id="significance-level-1" class="level2" data-auto-animate="true">
+<h2 data-auto-animate="true" class="anchored" data-anchor-id="significance-level-1">Significance level</h2>
+<section id="examples" class="level3">
+<h3 class="anchored" data-anchor-id="examples">Examples</h3>
+<ul>
+<li><strong>Medical/Pharmaceutical</strong>: <span class="math inline">\(\alpha = 0.01\)</span> is common to avoid false positives.</li>
+<li><strong>Psychology/Social</strong>: Typically <span class="math inline">\(\alpha = 0.05\)</span>.</li>
+<li><strong>Economics/Business</strong>: Sometimes <span class="math inline">\(\alpha = 0.1\)</span> is acceptable</li>
+</ul>
+</section>
+</section>
+<section id="testing-plan-2" class="level2">
+<h2 class="anchored" data-anchor-id="testing-plan-2">Testing plan</h2>
+<div class="faded-text">
+<p>1) What we want to test? (<strong>Hypotheses</strong>)</p>
+<p>2) Choose significance level</p>
+</div>
+<p>3) Choose the test</p>
+<ul>
+<li><p>Test’s functionality (first)</p></li>
+<li><p>Test’s assumptions (second)</p></li>
+</ul>
+<div class="faded-text">
+<p>4) <strong>Conduct the experiment</strong></p>
+<p>5) Conduct the test</p>
+<p>6) Conclusion</p>
+</div>
+</section>
+<section id="tests-functionality" class="level2">
+<h2 class="anchored" data-anchor-id="tests-functionality">Test’s functionality</h2>
+<p><strong>Does it test my hypothesis?</strong></p>
+<p><strong>Is my hypothesis is the hypothesis this test checking?</strong></p>
+<blockquote class="blockquote">
+<p>I’m checking the difference between the average hemoglobin levels in sick and healthy people. T-test should be suitable for this</p>
+</blockquote>
+</section>
+<section id="tests-assumptions" class="level2">
+<h2 class="anchored" data-anchor-id="tests-assumptions">Test’s assumptions</h2>
+<p><strong>The conditions, the fulfillment of which ensures control over the quality of the test results</strong></p>
+<p><strong>And the opposite is not true !!</strong></p>
+<blockquote class="blockquote">
+<p>For example, fulfillment of assumptions can guarantee fixed Type I error</p>
+<p>And if assumptions are violated, it doesn’t mean Type I error will be big</p>
+<p>(but it still can be)</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>T-test is good for big samples with distributions where average makes sense</p>
+</blockquote>
+</section>
+<section id="one-data-several-hypothesis" class="level2" data-auto-animate="true">
+<h2 data-auto-animate="true" class="anchored" data-anchor-id="one-data-several-hypothesis">One data, several hypothesis</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ol type="1">
+<li><span class="math inline">\(X\)</span> - Days in hospital</li>
+</ol>
+<p>Divide patients into 2 groups by many days or few (e.g.&nbsp;&lt;&gt;15 days)</p>
+<p>Red - with pneumonia</p>
+<p>Blue - without pneumonia</p>
+<p><span class="math inline">\(H_0\)</span> - there’s no association between pneumonia and days in the hospital</p>
+<p><span class="math inline">\(\Rightarrow \chi^2\)</span> test</p>
+</div><div class="column" style="width:50%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="testing_files/figure-revealjs/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="2400"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="one-data-several-hypothesis-1" class="level2" data-auto-animate="true">
+<h2 data-auto-animate="true" class="anchored" data-anchor-id="one-data-several-hypothesis-1">One data, several hypothesis</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ol start="2" type="1">
+<li><span class="math inline">\(X\)</span> - Students’ exam scores</li>
+</ol>
+<p>Red - First group</p>
+<p>Blue - Second group</p>
+<p><span class="math inline">\(H_0\)</span> - Score of students from <strong>First group</strong> and <strong>Second group</strong> are the same</p>
+<p><span class="math inline">\(\Rightarrow\)</span> Mann-Whitney test</p>
+</div><div class="column" style="width:50%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="testing_files/figure-revealjs/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="2400"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="sometimes-there-is-no-sutable-test-for-your-hypothesis-and-question" class="level1">
+<h1>Sometimes there is no sutable test for your hypothesis and question</h1>
+<section id="testing-plan-3" class="level2">
+<h2 class="anchored" data-anchor-id="testing-plan-3">Testing plan</h2>
+<div class="faded-text">
+<p>1) What we want to test? (<strong>Hypotheses</strong>)</p>
+<p>2) Choose significance level</p>
+<p>3) Choose the test</p>
+</div>
+<p>4) <strong>Conduct the experiment</strong></p>
+<div class="faded-text">
+<p>5) Conduct the test</p>
+<p>6) Conclusion</p>
+</div>
+</section>
+<section id="testing-plan-4" class="level2">
+<h2 class="anchored" data-anchor-id="testing-plan-4">Testing plan</h2>
+<div class="faded-text">
+<p>1) What we want to test? (<strong>Hypotheses</strong>)</p>
+<p>2) Choose significance level</p>
+<p>3) Choose the test</p>
+<p>4) <strong>Conduct the experiment</strong></p>
+</div>
+<p>5) Conduct the test</p>
+<div class="faded-text">
+<p>6) Conclusion</p>
+</div>
+</section>
+<section id="test-result" class="level2">
+<h2 class="anchored" data-anchor-id="test-result">Test result</h2>
+<p>The tests result in <u><strong>test statistic</strong></u> and the <u><strong>p-value</strong></u> .</p>
+<ul>
+<li><p>Each test have its formula to calculate called <u><strong>test statistic</strong></u>. This value has its own distribution (<em>e.g.&nbsp;t-distribution for the t-statistic from t-test</em>).</p></li>
+<li><p><u><strong>p-value</strong></u> - the probability that, given a <strong>true null hypothesis</strong>, your observations will result <strong>in such or more extreme value of test statistic</strong></p></li>
+</ul>
+<blockquote class="blockquote">
+<p>The smaller the p-value, the less likely we are to get our result under the null hypothesis, which states that there is no effect.</p>
+</blockquote>
+</section>
+<section id="pipeline" class="level2">
+<h2 class="anchored" data-anchor-id="pipeline">“Pipeline”</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/pvalpipeline.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</section>
+<section id="parameters-of-test-statistics-distributions" class="level2">
+<h2 class="anchored" data-anchor-id="parameters-of-test-statistics-distributions">Parameters of test statistics’ distributions</h2>
+<section id="degrees-of-freedom" class="level3">
+<h3 class="anchored" data-anchor-id="degrees-of-freedom"><u>Degrees of freedom!</u></h3>
+<ul>
+<li><p>Often calculated based on <u>number of observations</u>, groups and coefficients.</p></li>
+<li><p><u>Determines the shape of distribution!</u></p></li>
+</ul>
+<blockquote class="blockquote">
+<p><strong>-&gt; Amount of data affects testing results!</strong></p>
+</blockquote>
+<section id="other-parameters" class="level4">
+<h4 class="anchored" data-anchor-id="other-parameters">Other parameters…</h4>
+<ul>
+<li><p>Mean, SD</p></li>
+<li><p>Rate, shape</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="t-distribution-for-different-dfs" class="level2">
+<h2 class="anchored" data-anchor-id="t-distribution-for-different-dfs">t-distribution for different DFs</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/dfsT.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="600"></p>
+</figure>
+</div>
+</section>
+<section id="p-value-calculation" class="level2">
+<h2 class="anchored" data-anchor-id="p-value-calculation"><em>p-value</em> calculation</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/memes/p-value.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<hr>
+<section id="p-value-geq-alpha" class="level3">
+<h3 class="anchored" data-anchor-id="p-value-geq-alpha"><em>p-value</em> <span class="math inline">\(\geq \alpha\)</span></h3>
+<p>Since the <strong><em>p-value</em></strong> greater than chosen significance level (<span class="math inline">\(\alpha\)</span>) we <strong>fail</strong> to reject <span class="math inline">\(H_0\)</span></p>
+</section>
+<section id="p-value-alpha" class="level3">
+<h3 class="anchored" data-anchor-id="p-value-alpha"><em>p-value</em> <span class="math inline">\(&lt; \alpha\)</span></h3>
+<p>Since the <strong><em>p-value</em></strong> is less than chosen significance level (<span class="math inline">\(\alpha\)</span>), we reject <span class="math inline">\(H_0\)</span> and conclude that there is sufficient statistical evidence to support <span class="math inline">\(H_A\)</span></p>
+<hr>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/memes/p_values_2x.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="498"></p>
+</figure>
+</div>
+</section>
+</section>
+<section id="one-sided-hypothesis" class="level2">
+<h2 class="anchored" data-anchor-id="one-sided-hypothesis">One-sided hypothesis</h2>
+<p><span class="math inline">\(H_A: X_0 &lt; X_1\)</span></p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="testing_files/figure-revealjs/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="2400"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="two-sided-hypothesis" class="level2">
+<h2 class="anchored" data-anchor-id="two-sided-hypothesis">Two-sided hypothesis</h2>
+<p><span class="math inline">\(H_A: X_0 \neq X_1\)</span></p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="testing_files/figure-revealjs/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="2400"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="how-to-calculate-critical-value-of-test-statistic" class="level2">
+<h2 class="anchored" data-anchor-id="how-to-calculate-critical-value-of-test-statistic">How to calculate critical value of test statistic?</h2>
+<p><em>Example for T-distribution</em></p>
+<section id="one-sided-hypotheses" class="level3">
+<h3 class="anchored" data-anchor-id="one-sided-hypotheses">One-sided hypotheses</h3>
+<div class="large-code">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qt</span>(<span class="fl">0.95</span>, <span class="at">df=</span><span class="dv">19</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.729133</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qt</span>(<span class="fl">0.05</span>, <span class="at">df=</span><span class="dv">19</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -1.729133</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="two-sided-hypothesis-1" class="level3">
+<h3 class="anchored" data-anchor-id="two-sided-hypothesis-1">Two-sided hypothesis</h3>
+<div class="large-code">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qt</span>(<span class="fl">0.975</span>, <span class="at">df=</span><span class="dv">19</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2.093024</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qt</span>(<span class="fl">0.025</span>, <span class="at">df=</span><span class="dv">19</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -2.093024</code></pre>
+</div>
+</div>
+</div>
+<hr>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/t-table.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="700"></p>
+</figure>
+</div>
+</section>
+</section>
+<section id="another-pitfalls" class="level2">
+<h2 class="anchored" data-anchor-id="another-pitfalls">Another pitfalls</h2>
+<ol type="1">
+<li><strong>Small sample size</strong> or <strong>Unbalanced groups</strong>
+<ul>
+<li>Power of tests will be reduced = less sensible results</li>
+</ul></li>
+<li><strong>Changing significance level</strong>
+<ul>
+<li><span class="math inline">\(\alpha\)</span> must be defined <strong>BEFORE</strong> testing</li>
+</ul></li>
+<li><strong>Misinterpreting <em>p-values</em></strong>
+<ul>
+<li><p>It doesn’t reject or accept <span class="math inline">\(H_0\)</span>.</p></li>
+<li><p><strong>YOU reject or accept</strong> <span class="math inline">\(H_0\)</span></p></li>
+</ul></li>
+<li><u><strong>Multiple comparisons problem</strong></u></li>
+</ol>
+</section>
+<section id="multiple-comparisons" class="level2" data-auto-animate="true">
+<h2 data-auto-animate="true" class="anchored" data-anchor-id="multiple-comparisons">Multiple comparisons</h2>
+<ul>
+<li><p><span class="math inline">\(1 - 0.05\)</span> - probability of correctly rejected <span class="math inline">\(H_0\)</span></p></li>
+<li><p><span class="math inline">\((1-0.05)^n\)</span> - probability of correctly rejected <span class="math inline">\(\space H_0\)</span> in <span class="math inline">\(n\)</span> tests</p></li>
+<li><p><span class="math inline">\(1-(1-0.05)^n\)</span> - probability of <u><strong>incorrectly rejected at least 1</strong></u> <span class="math inline">\(H_0\)</span> in <span class="math inline">\(n\)</span> tests</p></li>
+</ul>
+<p><span class="math display">\[
+1 - (1 - 0.05) ^ {2} = 0.0975\\
+1 - (1 - 0.05) ^ {5} = 0.2262191\\
+1 - (1 - 0.05) ^ {20} = 0.6415141\\
+1 - (1 - 0.05) ^ {100} = 0.9940795\\
+\]</span></p>
+</section>
+<section id="multiple-comparisons-1" class="level2" data-auto-animate="true">
+<h2 data-auto-animate="true" class="anchored" data-anchor-id="multiple-comparisons-1">Multiple comparisons</h2>
+<section id="corrections" class="level3">
+<h3 class="anchored" data-anchor-id="corrections">Corrections!</h3>
+<p>Controlling the <strong>FWER</strong> - probability of making at least one Type I error.</p>
+<ul>
+<li><p>Bonferroni</p></li>
+<li><p>Holm-Bonferroni</p></li>
+<li><p>Šidák</p></li>
+</ul>
+<p>Controlling the <strong>FDR</strong> - expected proportion of false positives among all significant tests.</p>
+<ul>
+<li><p>Benjamini-Hochberg</p></li>
+<li><p>Benjamini-Yekutieli</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="lets-go" class="level1">
+<h1>Let’s go</h1>
+
+
+</section>
+
+</main> <!-- /main -->
+
+<script>
+  // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+  // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+  // slide changes (different for each slide format).
+  (function () {
+    // dispatch for htmlwidgets
+    function fireSlideEnter() {
+      const event = window.document.createEvent("Event");
+      event.initEvent("slideenter", true, true);
+      window.document.dispatchEvent(event);
+    }
+
+    function fireSlideChanged(previousSlide, currentSlide) {
+      fireSlideEnter();
+
+      // dispatch for shiny
+      if (window.jQuery) {
+        if (previousSlide) {
+          window.jQuery(previousSlide).trigger("hidden");
+        }
+        if (currentSlide) {
+          window.jQuery(currentSlide).trigger("shown");
+        }
+      }
+    }
+
+    // hookup for slidy
+    if (window.w3c_slidy) {
+      window.w3c_slidy.add_observer(function (slide_num) {
+        // slide_num starts at position 1
+        fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+      });
+    }
+
+  })();
+</script>
+
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

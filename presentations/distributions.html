@@ -1,0 +1,1709 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Distributions and statistics – Biostatistics in R</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Biostatistics in R</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#types-of-data" id="toc-types-of-data" class="nav-link active" data-scroll-target="#types-of-data">Types of Data</a></li>
+  <li><a href="#sampling" id="toc-sampling" class="nav-link" data-scroll-target="#sampling">Sampling</a>
+  <ul class="collapse">
+  <li><a href="#this-is-where-statistics-come-to-the-rescue." id="toc-this-is-where-statistics-come-to-the-rescue." class="nav-link" data-scroll-target="#this-is-where-statistics-come-to-the-rescue.">This is where statistics come to the rescue.</a></li>
+  </ul></li>
+  <li><a href="#sampling-1" id="toc-sampling-1" class="nav-link" data-scroll-target="#sampling-1">Sampling</a>
+  <ul class="collapse">
+  <li><a href="#are-these-samples-are-representative" id="toc-are-these-samples-are-representative" class="nav-link" data-scroll-target="#are-these-samples-are-representative">Are these samples are representative?</a></li>
+  <li><a href="#results-of-the-student-survey-2024-449-people" id="toc-results-of-the-student-survey-2024-449-people" class="nav-link" data-scroll-target="#results-of-the-student-survey-2024-449-people">Results of the student survey, 2024 (449 people)</a></li>
+  </ul></li>
+  <li><a href="#sampling-2" id="toc-sampling-2" class="nav-link" data-scroll-target="#sampling-2">Sampling</a></li>
+  <li><a href="#sampling-3" id="toc-sampling-3" class="nav-link" data-scroll-target="#sampling-3">Sampling</a>
+  <ul class="collapse">
+  <li><a href="#the-larger-the-sample-the-more-similar-it-is-to-the-general-population" id="toc-the-larger-the-sample-the-more-similar-it-is-to-the-general-population" class="nav-link" data-scroll-target="#the-larger-the-sample-the-more-similar-it-is-to-the-general-population">The larger the sample, the more similar it is to the general population</a></li>
+  </ul></li>
+  <li><a href="#distributions" id="toc-distributions" class="nav-link" data-scroll-target="#distributions">Distributions</a>
+  <ul class="collapse">
+  <li><a href="#distributions-1" id="toc-distributions-1" class="nav-link" data-scroll-target="#distributions-1">Distributions</a></li>
+  <li><a href="#probability-of-discrete-variable" id="toc-probability-of-discrete-variable" class="nav-link" data-scroll-target="#probability-of-discrete-variable">Probability of discrete variable</a></li>
+  <li><a href="#probability-of-continious-variable" id="toc-probability-of-continious-variable" class="nav-link" data-scroll-target="#probability-of-continious-variable">Probability of continious variable</a>
+  <ul class="collapse">
+  <li><a href="#probability-of-each-value-0" id="toc-probability-of-each-value-0" class="nav-link" data-scroll-target="#probability-of-each-value-0">Probability of each value = 0 ???</a></li>
+  </ul></li>
+  <li><a href="#probability-of-continious-variable-1" id="toc-probability-of-continious-variable-1" class="nav-link" data-scroll-target="#probability-of-continious-variable-1">Probability of continious variable</a>
+  <ul class="collapse">
+  <li><a href="#no" id="toc-no" class="nav-link" data-scroll-target="#no">NO!</a></li>
+  </ul></li>
+  <li><a href="#probability-density" id="toc-probability-density" class="nav-link" data-scroll-target="#probability-density">Probability density</a>
+  <ul class="collapse">
+  <li><a href="#the-way-how-continious-distributions-are-described" id="toc-the-way-how-continious-distributions-are-described" class="nav-link" data-scroll-target="#the-way-how-continious-distributions-are-described">The way how continious distributions are described</a></li>
+  </ul></li>
+  <li><a href="#normal-distribution" id="toc-normal-distribution" class="nav-link" data-scroll-target="#normal-distribution">Normal distribution</a></li>
+  <li><a href="#normal-distribution-1" id="toc-normal-distribution-1" class="nav-link" data-scroll-target="#normal-distribution-1">Normal distribution</a>
+  <ul class="collapse">
+  <li><a href="#parameters-of-normal-distribution" id="toc-parameters-of-normal-distribution" class="nav-link" data-scroll-target="#parameters-of-normal-distribution">Parameters of normal distribution</a></li>
+  </ul></li>
+  <li><a href="#normal-distribution-2" id="toc-normal-distribution-2" class="nav-link" data-scroll-target="#normal-distribution-2">Normal distribution</a>
+  <ul class="collapse">
+  <li><a href="#three-sigma-rule" id="toc-three-sigma-rule" class="nav-link" data-scroll-target="#three-sigma-rule">Three sigma rule</a></li>
+  <li><a href="#three-sigma-rule-1" id="toc-three-sigma-rule-1" class="nav-link" data-scroll-target="#three-sigma-rule-1">Three sigma rule</a></li>
+  </ul></li>
+  <li><a href="#uniform-distribution" id="toc-uniform-distribution" class="nav-link" data-scroll-target="#uniform-distribution">Uniform distribution</a></li>
+  <li><a href="#exponential-distribution" id="toc-exponential-distribution" class="nav-link" data-scroll-target="#exponential-distribution">Exponential distribution</a></li>
+  <li><a href="#binomial-distribution" id="toc-binomial-distribution" class="nav-link" data-scroll-target="#binomial-distribution">Binomial distribution</a></li>
+  <li><a href="#binomial-distribution-1" id="toc-binomial-distribution-1" class="nav-link" data-scroll-target="#binomial-distribution-1">Binomial distribution</a>
+  <ul class="collapse">
+  <li><a href="#parameters-of-binomial-distribution" id="toc-parameters-of-binomial-distribution" class="nav-link" data-scroll-target="#parameters-of-binomial-distribution">Parameters of binomial distribution</a></li>
+  </ul></li>
+  <li><a href="#poisson-distribution" id="toc-poisson-distribution" class="nav-link" data-scroll-target="#poisson-distribution">Poisson distribution</a></li>
+  <li><a href="#poisson-distribution-1" id="toc-poisson-distribution-1" class="nav-link" data-scroll-target="#poisson-distribution-1">Poisson distribution</a>
+  <ul class="collapse">
+  <li><a href="#parameters-of-poisson-distribution" id="toc-parameters-of-poisson-distribution" class="nav-link" data-scroll-target="#parameters-of-poisson-distribution">Parameters of poisson distribution</a></li>
+  </ul></li>
+  <li><a href="#descriptive-statistics" id="toc-descriptive-statistics" class="nav-link" data-scroll-target="#descriptive-statistics">Descriptive statistics</a>
+  <ul class="collapse">
+  <li><a href="#central-tendency" id="toc-central-tendency" class="nav-link" data-scroll-target="#central-tendency"><em>Central tendency</em></a></li>
+  </ul></li>
+  <li><a href="#descriptive-statistics-1" id="toc-descriptive-statistics-1" class="nav-link" data-scroll-target="#descriptive-statistics-1">Descriptive statistics</a>
+  <ul class="collapse">
+  <li><a href="#bimodal-data" id="toc-bimodal-data" class="nav-link" data-scroll-target="#bimodal-data">Bimodal data</a></li>
+  </ul></li>
+  <li><a href="#descriptive-statistics-2" id="toc-descriptive-statistics-2" class="nav-link" data-scroll-target="#descriptive-statistics-2">Descriptive statistics</a>
+  <ul class="collapse">
+  <li><a href="#exponential-distribution-1" id="toc-exponential-distribution-1" class="nav-link" data-scroll-target="#exponential-distribution-1">Exponential distribution</a></li>
+  </ul></li>
+  <li><a href="#descriptive-statistics-3" id="toc-descriptive-statistics-3" class="nav-link" data-scroll-target="#descriptive-statistics-3">Descriptive statistics</a>
+  <ul class="collapse">
+  <li><a href="#outliers" id="toc-outliers" class="nav-link" data-scroll-target="#outliers">Outliers</a></li>
+  </ul></li>
+  <li><a href="#by-the-way-what-to-do-about-outliers" id="toc-by-the-way-what-to-do-about-outliers" class="nav-link" data-scroll-target="#by-the-way-what-to-do-about-outliers">By the way, what to do about outliers?</a></li>
+  <li><a href="#descriptive-statistics-4" id="toc-descriptive-statistics-4" class="nav-link" data-scroll-target="#descriptive-statistics-4">Descriptive statistics</a>
+  <ul class="collapse">
+  <li><a href="#variance-and-standard-deviation" id="toc-variance-and-standard-deviation" class="nav-link" data-scroll-target="#variance-and-standard-deviation">Variance and Standard deviation</a></li>
+  </ul></li>
+  <li><a href="#descriptive-statistics-5" id="toc-descriptive-statistics-5" class="nav-link" data-scroll-target="#descriptive-statistics-5">Descriptive statistics</a>
+  <ul class="collapse">
+  <li><a href="#quantiles" id="toc-quantiles" class="nav-link" data-scroll-target="#quantiles">Quantiles</a></li>
+  </ul></li>
+  <li><a href="#functions-for-normal-distribution" id="toc-functions-for-normal-distribution" class="nav-link" data-scroll-target="#functions-for-normal-distribution">Functions (for normal distribution)</a></li>
+  <li><a href="#functions-for-normal-distribution-1" id="toc-functions-for-normal-distribution-1" class="nav-link" data-scroll-target="#functions-for-normal-distribution-1">Functions (for normal distribution)</a></li>
+  <li><a href="#functions-for-other-distributions" id="toc-functions-for-other-distributions" class="nav-link" data-scroll-target="#functions-for-other-distributions">Functions (for other distributions)</a></li>
+  </ul></li>
+  <li><a href="#central-limit-theorem" id="toc-central-limit-theorem" class="nav-link" data-scroll-target="#central-limit-theorem">Central limit theorem</a>
+  <ul class="collapse">
+  <li><a href="#standard-error-se" id="toc-standard-error-se" class="nav-link" data-scroll-target="#standard-error-se">Standard error (SE)</a></li>
+  <li><a href="#standard-error-se-1" id="toc-standard-error-se-1" class="nav-link" data-scroll-target="#standard-error-se-1">Standard error (SE)</a></li>
+  <li><a href="#magic-of-central-limit-theorem" id="toc-magic-of-central-limit-theorem" class="nav-link" data-scroll-target="#magic-of-central-limit-theorem">Magic of Central Limit Theorem</a></li>
+  <li><a href="#magic-of-central-limit-theorem-1" id="toc-magic-of-central-limit-theorem-1" class="nav-link" data-scroll-target="#magic-of-central-limit-theorem-1">Magic of Central Limit Theorem</a></li>
+  <li><a href="#magic-of-central-limit-theorem-2" id="toc-magic-of-central-limit-theorem-2" class="nav-link" data-scroll-target="#magic-of-central-limit-theorem-2">Magic of Central Limit Theorem</a></li>
+  </ul></li>
+  <li><a href="#more-magic" id="toc-more-magic" class="nav-link" data-scroll-target="#more-magic">More magic!</a>
+  <ul class="collapse">
+  <li><a href="#standartization-or-normalization.." id="toc-standartization-or-normalization.." class="nav-link" data-scroll-target="#standartization-or-normalization..">Standartization (or normalization..?)</a></li>
+  <li><a href="#looks-familiar" id="toc-looks-familiar" class="nav-link" data-scroll-target="#looks-familiar">Looks familiar?</a></li>
+  <li><a href="#three-sigma-rule-2" id="toc-three-sigma-rule-2" class="nav-link" data-scroll-target="#three-sigma-rule-2">Three sigma rule!</a></li>
+  <li><a href="#three-sigma-rule-confidence-interval" id="toc-three-sigma-rule-confidence-interval" class="nav-link" data-scroll-target="#three-sigma-rule-confidence-interval">Three sigma rule –&gt; confidence interval</a></li>
+  <li><a href="#confidence-interval" id="toc-confidence-interval" class="nav-link" data-scroll-target="#confidence-interval">Confidence interval</a></li>
+  <li><a href="#what-does-confidence-level-mean" id="toc-what-does-confidence-level-mean" class="nav-link" data-scroll-target="#what-does-confidence-level-mean">What does confidence level mean?</a></li>
+  </ul></li>
+  <li><a href="#student-for-students" id="toc-student-for-students" class="nav-link" data-scroll-target="#student-for-students">Student for students</a>
+  <ul class="collapse">
+  <li><a href="#students-t--distribution" id="toc-students-t--distribution" class="nav-link" data-scroll-target="#students-t--distribution">Student’s (t-) distribution</a></li>
+  <li><a href="#students-t--distribution-1" id="toc-students-t--distribution-1" class="nav-link" data-scroll-target="#students-t--distribution-1">Student’s (t-) distribution</a></li>
+  <li><a href="#students-t--distribution-2" id="toc-students-t--distribution-2" class="nav-link" data-scroll-target="#students-t--distribution-2">Student’s (t-) distribution</a></li>
+  <li><a href="#confidence-interval-using-quantiles-from-t-distribution" id="toc-confidence-interval-using-quantiles-from-t-distribution" class="nav-link" data-scroll-target="#confidence-interval-using-quantiles-from-t-distribution">Confidence interval using quantiles from t-distribution</a></li>
+  <li><a href="#confidence-interval-using-quantiles-from-t-distribution-1" id="toc-confidence-interval-using-quantiles-from-t-distribution-1" class="nav-link" data-scroll-target="#confidence-interval-using-quantiles-from-t-distribution-1">Confidence interval using quantiles from t-distribution</a></li>
+  </ul></li>
+  <li><a href="#one-sided-ci" id="toc-one-sided-ci" class="nav-link" data-scroll-target="#one-sided-ci">One-sided CI</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="distributions.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Distributions and statistics</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/memes/belike.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1000"></p>
+</figure>
+</div>
+<hr>
+<section id="types-of-data" class="level2">
+<h2 class="anchored" data-anchor-id="types-of-data">Types of Data</h2>
+<ul>
+<li><strong>Numerical data</strong>: Continuous (e.g., height) or discrete (e.g., number of leaves).</li>
+<li><strong>Categorical data</strong>: Nominal (e.g., species, gender) or ordinal (e.g., rankings).</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/DataTypes.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1800"></p>
+</figure>
+</div>
+</section>
+<section id="sampling" class="level2" data-auto-animate="true">
+<h2 data-auto-animate="true" class="anchored" data-anchor-id="sampling">Sampling</h2>
+<p>Usually we <strong>cannot take the whole population</strong> for a study.</p>
+<blockquote class="blockquote">
+<p>For example, it is physically impossible to do a study using blood samples from all the people in the world. Sometimes the population is small, but it is extremely expensive to collect the material.</p>
+</blockquote>
+<p>Therefore, researchers use samples - <strong>random and representative</strong> groups taken from the general population that can be analysed to <strong>provide information about the whole population.</strong></p>
+<section id="this-is-where-statistics-come-to-the-rescue." class="level3">
+<h3 class="anchored" data-anchor-id="this-is-where-statistics-come-to-the-rescue.">This is where statistics come to the rescue.</h3>
+</section>
+</section>
+<section id="sampling-1" class="level2" data-auto-animate="true">
+<h2 data-auto-animate="true" class="anchored" data-anchor-id="sampling-1">Sampling</h2>
+<section id="are-these-samples-are-representative" class="level3">
+<h3 class="anchored" data-anchor-id="are-these-samples-are-representative">Are these samples are representative?</h3>
+<ol type="1">
+<li>20 ITMO Biology students to study average marks of students in ITMO</li>
+<li>100 ITMO first-year students to study students workload in their first ever exam</li>
+<li>Email survey on student parents’ opinion of ITMO</li>
+<li>The double-blind, randomized, placebo-controlled trial in 1990</li>
+</ol>
+<hr>
+<ol type="1">
+<li>20 ITMO Biology students to study average marks of students in ITMO
+<ul>
+<li><strong>Representive only for Biology students</strong></li>
+</ul></li>
+<li>100 ITMO first-year students to study students workload
+<ul>
+<li><strong>Represetive only for ITMO. Students with high workloads are less likely to participate</strong></li>
+</ul></li>
+<li>Email survey on student parents’ opinion of ITMO
+<ul>
+<li><strong>Only people whose email addresses we have</strong></li>
+</ul></li>
+<li>The double-blind, randomized, placebo-controlled trial in 1990
+<ul>
+<li><strong>May be too old</strong></li>
+</ul></li>
+</ol>
+<hr>
+</section>
+<section id="results-of-the-student-survey-2024-449-people" class="level3">
+<h3 class="anchored" data-anchor-id="results-of-the-student-survey-2024-449-people"><a href="https://fitp.itmo.ru/p/abit/804">Results of the student survey, 2024 (449 people)</a></h3>
+<div class="columns">
+<div class="column" style="width:45%;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/memes/itmosurvey.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1000"></p>
+</figure>
+</div>
+</div><div class="column" style="width:55%;">
+<p><img src="../images/memes/itmopie.png" class="img-fluid quarto-figure quarto-figure-center"> <img src="../images/memes/itmolegend.png" class="img-fluid quarto-figure quarto-figure-center"></p>
+</div>
+</div>
+<hr>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/memes/roulette.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" width="500"></p>
+</figure>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/memes/selection_bias.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="500"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="sampling-2" class="level2" data-auto-animate="true">
+<h2 data-auto-animate="true" class="anchored" data-anchor-id="sampling-2">Sampling</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/sampling_types.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" width="800"></p>
+</figure>
+</div>
+</section>
+<section id="sampling-3" class="level2" data-auto-animate="true">
+<h2 data-auto-animate="true" class="anchored" data-anchor-id="sampling-3">Sampling</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="distributions_files/figure-revealjs/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="1800"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column fragment fade-in" style="width:50%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="distributions_files/figure-revealjs/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="1800"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr>
+<section id="the-larger-the-sample-the-more-similar-it-is-to-the-general-population" class="level3">
+<h3 class="anchored" data-anchor-id="the-larger-the-sample-the-more-similar-it-is-to-the-general-population">The larger the sample, the more similar it is to the general population</h3>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="distributions_files/figure-revealjs/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="2400"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="distributions" class="level1">
+<h1>Distributions</h1>
+<section id="distributions-1" class="level2">
+<h2 class="anchored" data-anchor-id="distributions-1">Distributions</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<section id="discrete" class="level3">
+<h3 class="anchored" data-anchor-id="discrete">Discrete</h3>
+<p>Countable number of values</p>
+<ul>
+<li>Bernoulli</li>
+<li>Poisson</li>
+<li>Binomial</li>
+</ul>
+</section>
+</div><div class="column" style="width:50%;">
+<section id="continious" class="level3">
+<h3 class="anchored" data-anchor-id="continious">Continious</h3>
+<p><span class="math inline">\(\infty\)</span> number of values</p>
+<ul>
+<li>Normal</li>
+<li>Uniform</li>
+<li>Chi-squared</li>
+</ul>
+</section>
+</div>
+</div>
+<p>[<strong>Discrete</strong> <span class="math inline">\(\rightarrow\)</span> Continuous] if [number of values <span class="math inline">\(\rightarrow \infty\)</span>]</p>
+</section>
+<section id="probability-of-discrete-variable" class="level2">
+<h2 class="anchored" data-anchor-id="probability-of-discrete-variable">Probability of discrete variable</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="distributions_files/figure-revealjs/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="1800"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:60%;">
+<p>Increasing the discreteness</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="distributions_files/figure-revealjs/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="2400"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>The probability of each value <span class="math inline">\(\rightarrow 0\)</span></p>
+</section>
+<section id="probability-of-continious-variable" class="level2" data-auto-animate="true">
+<h2 data-auto-animate="true" class="anchored" data-anchor-id="probability-of-continious-variable">Probability of continious variable</h2>
+<p><span class="math inline">\(\infty\)</span> values and <span class="math inline">\(\infty\)</span> discreteness</p>
+<section id="probability-of-each-value-0" class="level3">
+<h3 class="anchored" data-anchor-id="probability-of-each-value-0">Probability of each value = 0 ???</h3>
+</section>
+</section>
+<section id="probability-of-continious-variable-1" class="level2" data-auto-animate="true">
+<h2 data-auto-animate="true" class="anchored" data-anchor-id="probability-of-continious-variable-1">Probability of continious variable</h2>
+<p><span class="math inline">\(\infty\)</span> values and <span class="math inline">\(\infty\)</span> discreteness</p>
+<section id="no" class="level3">
+<h3 class="anchored" data-anchor-id="no">NO!</h3>
+<p>but Probability of each particular value <span class="math inline">\(\rightarrow 0\)</span></p>
+</section>
+</section>
+<section id="probability-density" class="level2">
+<h2 class="anchored" data-anchor-id="probability-density">Probability density</h2>
+<section id="the-way-how-continious-distributions-are-described" class="level3">
+<h3 class="anchored" data-anchor-id="the-way-how-continious-distributions-are-described">The way how continious distributions are described</h3>
+<p><em>Area under the plot should be = 1</em></p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="distributions_files/figure-revealjs/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="2400"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><em>Density value in some point can be way greater than 1!</em></p>
+</section>
+</section>
+<section id="normal-distribution" class="level2" data-auto-animate="true">
+<h2 data-auto-animate="true" class="anchored" data-anchor-id="normal-distribution">Normal distribution</h2>
+<div class="columns">
+<div class="column" style="width:55%;">
+<p>Normal distribution is bell shaped, have equal mean (<span class="math inline">\(\mu\)</span>), median, mode.<br>
+“Width” depends on standard deviation (<span class="math inline">\(\sigma\)</span>). <strong>Continious (!)</strong></p>
+</div><div class="column" style="width:45%;">
+<p><span class="math inline">\(P(x) = \frac{1}{{\sigma \sqrt{2\pi} }}e^{{\frac{ -\left( {x - \mu } \right)^2 }{2\sigma ^2 }}}\)</span>,</p>
+<p>parameters: mean (<span class="math inline">\(\mu\)</span>) and sigma (<span class="math inline">\(\sigma\)</span>) <span style="color:red;">(it <strong>does not</strong> exist in nature)</span></p>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="distributions_files/figure-revealjs/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="2400"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="normal-distribution-1" class="level2" data-auto-animate="true">
+<h2 data-auto-animate="true" class="anchored" data-anchor-id="normal-distribution-1">Normal distribution</h2>
+<section id="parameters-of-normal-distribution" class="level3">
+<h3 class="anchored" data-anchor-id="parameters-of-normal-distribution">Parameters of normal distribution</h3>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="distributions_files/figure-revealjs/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="2400"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="normal-distribution-2" class="level2" data-auto-animate="true">
+<h2 data-auto-animate="true" class="anchored" data-anchor-id="normal-distribution-2">Normal distribution</h2>
+<section id="three-sigma-rule" class="level3">
+<h3 class="anchored" data-anchor-id="three-sigma-rule">Three sigma rule</h3>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="distributions_files/figure-revealjs/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="2400"></p>
+</figure>
+</div>
+</div>
+</div>
+<hr>
+</section>
+<section id="three-sigma-rule-1" class="level3">
+<h3 class="anchored" data-anchor-id="three-sigma-rule-1">Three sigma rule</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/memes/notesdistro.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</section>
+</section>
+<section id="uniform-distribution" class="level2">
+<h2 class="anchored" data-anchor-id="uniform-distribution">Uniform distribution</h2>
+<div class="columns">
+<div class="column" style="width:70%;">
+<p>Simple distribution of equally possible values. <strong>Continious (!).</strong></p>
+</div><div class="column" style="width:30%;">
+<p><span class="math inline">\(P(x) = \frac{1}{a-b}\)</span></p>
+<ul>
+<li><p><span class="math inline">\(a\)</span> - starting point</p></li>
+<li><p><span class="math inline">\(b\)</span> - end point</p></li>
+</ul>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="distributions_files/figure-revealjs/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="3000"></p>
+</figure>
+</div>
+</div>
+</div>
+<!-- ## Bernoulli distribution -->
+<!-- ::::: columns -->
+<!-- ::: {.column width="50%"} -->
+<!-- ```{r, fig.width=5, fig.height=6} -->
+<!-- coin_toss = rbinom(1000, size = 1, prob = 0.5) -->
+<!-- barplot(table(coin_toss), cex.axis = 2, cex.names = 2) -->
+<!-- ``` -->
+<!-- ::: -->
+<!-- ::: {.column width="50%"} -->
+<!-- $P(1) = p$,\ -->
+<!-- $P(0) = 1-p$, -->
+<!-- where $p$ - "success" probability. It is the only parameter of the distribution -->
+<!-- Imagine, that $p$ is a probability of an head on a coin toss (1 - head, 0 - tails). Then The distribution will be like in the barplot on the left. -->
+<!-- **Discrete (!)** -->
+<!-- ::: -->
+<!-- ::::: -->
+</section>
+<section id="exponential-distribution" class="level2">
+<h2 class="anchored" data-anchor-id="exponential-distribution">Exponential distribution</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="distributions_files/figure-revealjs/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="2100"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:40%;">
+<p><span class="math inline">\(P(X) = \lambda e^{-\lambda x}\)</span></p>
+<p>How fast something appears (<em>mortality</em>)</p>
+<p><strong>Continious</strong></p>
+</div>
+</div>
+</section>
+<section id="binomial-distribution" class="level2" data-auto-animate="true">
+<h2 data-auto-animate="true" class="anchored" data-anchor-id="binomial-distribution">Binomial distribution</h2>
+<div class="columns">
+<div class="column" style="width:70%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="distributions_files/figure-revealjs/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="2400"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:30%;">
+<p><span class="math inline">\(P(x) = \binom{n}{k}p^k(1-p)^{n-k}\)</span>,</p>
+<ul>
+<li><span class="math inline">\(n\)</span> - number of trials <em>(fixed)</em></li>
+<li><span class="math inline">\(p\)</span> - probability of success <em>(fixed)</em></li>
+<li><span class="math inline">\(k\)</span> - observed successes</li>
+</ul>
+</div>
+</div>
+<p>Distribution is based on the <strong>number of successes in a sequence of experiments</strong>. <strong>Discrete (!)</strong></p>
+<p>If we flip a coin, the binomial distribution represents the number of successes after we flip the coin a certain number of times (e.g.&nbsp;10).</p>
+<p>The histogram above shows the distribution of 10000 experiments on trying to get an head coin <span class="math inline">\(k\)</span> times by flipping it 10 times</p>
+</section>
+<section id="binomial-distribution-1" class="level2" data-auto-animate="true">
+<h2 data-auto-animate="true" class="anchored" data-anchor-id="binomial-distribution-1">Binomial distribution</h2>
+<section id="parameters-of-binomial-distribution" class="level3">
+<h3 class="anchored" data-anchor-id="parameters-of-binomial-distribution">Parameters of binomial distribution</h3>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="distributions_files/figure-revealjs/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="2400"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="poisson-distribution" class="level2" data-auto-animate="true">
+<h2 data-auto-animate="true" class="anchored" data-anchor-id="poisson-distribution">Poisson distribution</h2>
+<p><em>Binomial</em>, but <span class="math inline">\(n \rightarrow \infty\)</span>,, therefore we don’t utilize number of trials (<span class="math inline">\(n\)</span>).<br>
+Now we use “<strong>time interval</strong>” and <strong>expected number of successes</strong> (<span class="math inline">\(\lambda\)</span>) during this interval.<br>
+<strong>Still Discrete (!)</strong></p>
+<div class="columns">
+<div class="column" style="width:70%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="distributions_files/figure-revealjs/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="2400"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:30%;">
+<p><span class="math inline">\(P(x) = \dfrac{\lambda^k}{k!}e^{-\lambda}\)</span>, where</p>
+<ul>
+<li><span class="math inline">\(\lambda\)</span> - mean or expected number of successes during the interval (fixed)</li>
+<li><span class="math inline">\(k\)</span> - “observed” successes</li>
+</ul>
+</div>
+</div>
+<!-- ------------------------------------------------------------------------ -->
+</section>
+<section id="poisson-distribution-1" class="level2" data-auto-animate="true">
+<h2 data-auto-animate="true" class="anchored" data-anchor-id="poisson-distribution-1">Poisson distribution</h2>
+<section id="parameters-of-poisson-distribution" class="level3">
+<h3 class="anchored" data-anchor-id="parameters-of-poisson-distribution">Parameters of poisson distribution</h3>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="distributions_files/figure-revealjs/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="2400"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="descriptive-statistics" class="level2" data-auto-animate="true">
+<h2 data-auto-animate="true" class="anchored" data-anchor-id="descriptive-statistics">Descriptive statistics</h2>
+<section id="central-tendency" class="level3">
+<h3 class="anchored" data-anchor-id="central-tendency"><em>Central tendency</em></h3>
+<ul>
+<li><strong>Sample mean</strong> - <span class="math inline">\(\bar{X} \ or\ \hat\mu = \frac{x_1 + x_2 + ... x_N}{N}\)</span></li>
+<li><strong>Population mean -</strong> <span class="math inline">\(E(X) = x_1*p_1 + x_2*p_2 + ... x_N * p_N = \sum^N_{i=1} x_i*p_i\)</span></li>
+</ul>
+<div class="cell large-code">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(x <span class="sc">*</span> p) <span class="co"># x and p are vectors</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><strong>Median</strong> - the <span class="math inline">\(N/2\)</span>-th element in list of sorted values <span class="math inline">\(\{x_1, x_2, ..., \pmb{x_{N/2}},...,x_{N-1}, x_N\}\)</span>, where for any <span class="math inline">\(i\)</span>: <span class="math inline">\(x_{i-1} &lt; x_i\)</span></li>
+</ul>
+<div class="cell large-code">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><strong>Mode</strong> - The most frequent value <em>one of the methods: only for discrete data:</em></li>
+</ul>
+<div class="cell large-code">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">%&gt;%</span> <span class="fu">table</span>() <span class="sc">%&gt;%</span> <span class="fu">sort</span>(<span class="at">decreasing =</span> T) <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">1</span>) <span class="sc">%&gt;%</span> <span class="fu">names</span>() <span class="sc">%&gt;%</span> <span class="fu">as.numeric</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell large-code">
+
+</div>
+<p><strong><em>They are equal for a normal distribution</em></strong></p>
+</section>
+</section>
+<section id="descriptive-statistics-1" class="level2" data-auto-animate="true">
+<h2 data-auto-animate="true" class="anchored" data-anchor-id="descriptive-statistics-1">Descriptive statistics</h2>
+<section id="bimodal-data" class="level3">
+<h3 class="anchored" data-anchor-id="bimodal-data">Bimodal data</h3>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="distributions_files/figure-revealjs/unnamed-chunk-20-1.png" class="img-fluid figure-img" width="2400"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="descriptive-statistics-2" class="level2" data-auto-animate="true">
+<h2 data-auto-animate="true" class="anchored" data-anchor-id="descriptive-statistics-2">Descriptive statistics</h2>
+<section id="exponential-distribution-1" class="level3">
+<h3 class="anchored" data-anchor-id="exponential-distribution-1">Exponential distribution</h3>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="distributions_files/figure-revealjs/unnamed-chunk-21-1.png" class="img-fluid figure-img" width="2100"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="descriptive-statistics-3" class="level2" data-auto-animate="true">
+<h2 data-auto-animate="true" class="anchored" data-anchor-id="descriptive-statistics-3">Descriptive statistics</h2>
+<section id="outliers" class="level3">
+<h3 class="anchored" data-anchor-id="outliers">Outliers</h3>
+<p><strong>Mean is more sensitive to outliers</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="distributions_files/figure-revealjs/unnamed-chunk-22-1.png" class="img-fluid figure-img" width="2400"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="by-the-way-what-to-do-about-outliers" class="level2">
+<h2 class="anchored" data-anchor-id="by-the-way-what-to-do-about-outliers">By the way, what to do about outliers?</h2>
+<p><strong>Nothing</strong></p>
+<ul>
+<li>If they still contain some information.&nbsp;</li>
+</ul>
+<p><strong>Delete</strong></p>
+<ul>
+<li>If there are few of them.</li>
+<li>This is an obvious error and <u><strong>you are sure</strong></u> they do not contain valuable information</li>
+</ul>
+</section>
+<section id="descriptive-statistics-4" class="level2" data-auto-animate="true">
+<h2 data-auto-animate="true" class="anchored" data-anchor-id="descriptive-statistics-4">Descriptive statistics</h2>
+<section id="variance-and-standard-deviation" class="level3">
+<h3 class="anchored" data-anchor-id="variance-and-standard-deviation">Variance and Standard deviation</h3>
+<p><span class="math inline">\(Var(X) = S^2 = \dfrac{((x_1 - \bar{X})^2 + (x_2 - \bar{X})^2 + ... + (x_N - \bar{X})^2)}{N-1} = \dfrac{\sum{(x_i - \bar{X})^2}}{N-1}\)</span></p>
+<div class="cell large-code">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><span class="math inline">\(SD(X) = S = \sqrt{\dfrac{\sum{(x_i - \bar{X})^2}}{N-1}}\)</span></p>
+<div class="cell large-code">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<blockquote class="blockquote">
+<p>For the <strong>population</strong> variance in the denominator of the formula is <span class="math inline">\(N\)</span>, not <span class="math inline">\(N-1\)</span></p>
+</blockquote>
+</section>
+</section>
+<section id="descriptive-statistics-5" class="level2" data-auto-animate="true">
+<h2 data-auto-animate="true" class="anchored" data-anchor-id="descriptive-statistics-5">Descriptive statistics</h2>
+<section id="quantiles" class="level3">
+<h3 class="anchored" data-anchor-id="quantiles">Quantiles</h3>
+<p><strong>Quantiles</strong> - values less than which <span class="math inline">\(X\)</span>% of the data in the distribution is found<br>
+<em>For example</em>, 0.75 quntile is the value that is greater of 75% of values in sample, but lower than another 25% of sample values</p>
+<div class="cell large-code">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(x, <span class="at">probs =</span> <span class="fl">0.75</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Quartiles are 0.25,0.5,0.75 quantiles</li>
+</ul>
+<div class="cell large-code">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(x, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Percentiles are 1-100% qunatiles</li>
+</ul>
+<div class="cell large-code">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(x, <span class="at">probs =</span> <span class="fu">seq</span>(<span class="fl">0.01</span>, <span class="dv">1</span>, <span class="fl">0.01</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Median is a <strong>0.5 quantile</strong> (2nd quartile)</li>
+</ul>
+</section>
+</section>
+<section id="functions-for-normal-distribution" class="level2" data-auto-animate="true">
+<h2 data-auto-animate="true" class="anchored" data-anchor-id="functions-for-normal-distribution">Functions (for normal distribution)</h2>
+<div class="cell">
+<style type="text/css">
+.large-code {
+  font-size: 1.25em; /* Increase as needed, e.g., 1.5em or 20px */
+}
+</style>
+</div>
+<ol type="1">
+<li><strong>Random values from distribution</strong></li>
+</ol>
+<div class="cell large-code">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="at">n=</span><span class="dv">5</span>, <span class="at">mean=</span><span class="dv">100</span>, <span class="at">sd=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  95.06686 102.28520  87.02476 110.21335 104.40316</code></pre>
+</div>
+</div>
+<ol start="2" type="1">
+<li><strong>Density (the height of histogram) at the point</strong></li>
+</ol>
+<div class="cell large-code">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dnorm</span>(<span class="at">x=</span><span class="dv">100</span>, <span class="at">mean=</span><span class="dv">100</span>, <span class="at">sd=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.03989423</code></pre>
+</div>
+</div>
+</section>
+<section id="functions-for-normal-distribution-1" class="level2" data-auto-animate="true">
+<h2 data-auto-animate="true" class="anchored" data-anchor-id="functions-for-normal-distribution-1">Functions (for normal distribution)</h2>
+<ol start="3" type="1">
+<li><strong>Cumulative probability at the point: prob-ty to obtain value less than specified</strong></li>
+</ol>
+<div class="cell large-code">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="at">q =</span> <span class="dv">80</span>, <span class="at">mean=</span><span class="dv">100</span>, <span class="at">sd=</span><span class="dv">10</span>) <span class="co"># prob to obtain any value less than 80</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.02275013</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="at">q =</span> <span class="fu">c</span>(<span class="dv">70</span>,<span class="dv">80</span>,<span class="dv">90</span>,<span class="dv">110</span>,<span class="dv">120</span>,<span class="dv">130</span>), <span class="at">mean=</span><span class="dv">100</span>, <span class="at">sd=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.001349898 0.022750132 0.158655254 0.841344746 0.977249868 0.998650102</code></pre>
+</div>
+</div>
+<ol start="4" type="1">
+<li><strong>Value corresponding to specified cumulative probability</strong></li>
+</ol>
+<div class="cell large-code">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="at">p =</span> <span class="fu">c</span>(<span class="fl">0.003</span>, <span class="fl">0.05</span>, <span class="fl">0.16</span>, <span class="fl">0.84</span>, <span class="fl">0.95</span>, <span class="fl">0.997</span>), <span class="at">mean=</span><span class="dv">100</span>, <span class="at">sd=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  72.52219  83.55146  90.05542 109.94458 116.44854 127.47781</code></pre>
+</div>
+</div>
+</section>
+<section id="functions-for-other-distributions" class="level2">
+<h2 class="anchored" data-anchor-id="functions-for-other-distributions">Functions (for other distributions)</h2>
+<p><strong>Uniform</strong></p>
+<div class="cell large-code">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">runif</span>(n, min, max)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dunif</span>(n, min, max)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">punif</span>(n, min, max)</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="fu">qunif</span>(n, min, max)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Binomial</strong></p>
+<div class="cell large-code">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rbinom</span>(n, size, prob)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dbinom</span>(n, size, prob)</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">pbinom</span>(n, size, prob)</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="fu">qbinom</span>(n, size, prob)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Poisson</strong></p>
+<div class="cell large-code">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rpois</span>(n, lambda)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dpois</span>(n, lambda)</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ppois</span>(n, lambda)</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="fu">qpois</span>(n, lambda)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="central-limit-theorem" class="level1">
+<h1>Central limit theorem</h1>
+<section id="standard-error-se" class="level2" data-auto-animate="true">
+<h2 data-auto-animate="true" class="anchored" data-anchor-id="standard-error-se">Standard error (SE)</h2>
+<p><em>“SD of means of samples”</em></p>
+<div class="columns">
+<div class="column" style="width:30%;">
+<p><span class="math inline">\(SE = \dfrac{SD}{\sqrt n}\)</span></p>
+</div><div class="column" style="width:70%;">
+<ol type="1">
+<li>Several samples</li>
+<li>Calculate mean in each sample</li>
+<li>Build the means distribution</li>
+<li>Calculate resulting distribution’s SD</li>
+</ol>
+</div>
+</div>
+</section>
+<section id="standard-error-se-1" class="level2" data-auto-animate="true">
+<h2 data-auto-animate="true" class="anchored" data-anchor-id="standard-error-se-1">Standard error (SE)</h2>
+<p><em>“SD of means of samples”</em></p>
+<div class="columns">
+<div class="column" style="width:15%;">
+<p><span class="math inline">\(SE = \dfrac{SD}{\sqrt n}\)</span></p>
+</div><div class="column" style="width:85%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="distributions_files/figure-revealjs/unnamed-chunk-36-1.png" class="img-fluid figure-img" width="2400"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="magic-of-central-limit-theorem" class="level2" data-auto-animate="true">
+<h2 data-auto-animate="true" class="anchored" data-anchor-id="magic-of-central-limit-theorem">Magic of Central Limit Theorem</h2>
+<p>This means’ distribution was built from <strong>uniform distribution</strong> samples! <span class="math inline">\(a=0, b=10 \Rightarrow \hat\mu=5\)</span></p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="distributions_files/figure-revealjs/unnamed-chunk-37-1.png" class="img-fluid figure-img" width="2400"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Mean is also = 5!</strong></p>
+</section>
+<section id="magic-of-central-limit-theorem-1" class="level2" data-auto-animate="true">
+<h2 data-auto-animate="true" class="anchored" data-anchor-id="magic-of-central-limit-theorem-1">Magic of Central Limit Theorem</h2>
+<p><strong>Let’s do it with exponential distribution samples</strong> (<span class="math inline">\(\lambda=2\)</span>)</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="distributions_files/figure-revealjs/unnamed-chunk-38-1.png" class="img-fluid figure-img" width="2400"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><em>Looks familiar…</em></p>
+</section>
+<section id="magic-of-central-limit-theorem-2" class="level2" data-auto-animate="true">
+<h2 data-auto-animate="true" class="anchored" data-anchor-id="magic-of-central-limit-theorem-2">Magic of Central Limit Theorem</h2>
+<ol type="1">
+<li>Several samples</li>
+<li>Calculate mean (<span class="math inline">\(\bar{X}\)</span>) in each sample</li>
+<li>Build the means distribution</li>
+</ol>
+<p><strong>It is normally distributed!</strong> <em>(almost)</em></p>
+<blockquote class="blockquote">
+<p>If samples are small, distribution of means may not look like normal.</p>
+</blockquote>
+<ol start="4" type="1">
+<li>Calculate resulting distribution’s SD<span class="math inline">\(^*\)</span> and mean ( <span class="math inline">\(\hat\mu\)</span> )</li>
+<li>Obtained mean is “real mean” and SD is <em>Standard error</em></li>
+</ol>
+</section>
+</section>
+<section id="more-magic" class="level1">
+<h1>More magic!</h1>
+<section id="standartization-or-normalization.." class="level2">
+<h2 class="anchored" data-anchor-id="standartization-or-normalization..">Standartization (or normalization..?)</h2>
+<p>Setting <strong>mean=0 and sd=1</strong></p>
+<div class="columns">
+<div class="column" style="width:15%;">
+<p><span class="math inline">\(Z = \dfrac{\bar{X} - \mu}{SE}\)</span></p>
+</div><div class="column" style="width:85%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="distributions_files/figure-revealjs/unnamed-chunk-40-1.png" class="img-fluid figure-img" width="2400"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="looks-familiar" class="level2" data-auto-animate="true">
+<h2 data-auto-animate="true" class="anchored" data-anchor-id="looks-familiar">Looks familiar?</h2>
+<div class="fragment">
+<p><strong>Three sigma rule!</strong></p>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="distributions_files/figure-revealjs/unnamed-chunk-41-1.png" class="img-fluid figure-img" width="2400"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="three-sigma-rule-2" class="level2" data-auto-animate="true">
+<h2 data-auto-animate="true" class="anchored" data-anchor-id="three-sigma-rule-2">Three sigma rule!</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>We know that ~95% of the data lies between the two orange lines (<span class="math inline">\(\mu_z \pm 2 \sigma\)</span>)</p>
+<p>More precisely: <span class="math inline">\(\mu_z \pm 1.96 \ \sigma\)</span></p>
+<p><strong>Here</strong> <span class="math inline">\(\sigma_z\)</span> is SE = 1</p>
+<p><span class="math inline">\(\mu_z = 0\)</span> (standardisized mean of means)</p>
+</div><div class="column fade-in" style="width:50%;">
+<p>Distribution of means</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="distributions_files/figure-revealjs/unnamed-chunk-42-1.png" class="img-fluid figure-img" width="2400"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="three-sigma-rule-confidence-interval" class="level2" data-auto-animate="true">
+<h2 data-auto-animate="true" class="anchored" data-anchor-id="three-sigma-rule-confidence-interval">Three sigma rule –&gt; confidence interval</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>Thus, with probability of 0.95</p>
+<p><span class="math display">\[ -1.96 \sigma_z \leq \dfrac{\bar{X} - \mu}{SE} \leq 1.96 \sigma_z \]</span></p>
+<p><span class="math display">\[-1.96 \leq \dfrac{\bar{X} - \mu}{SE} \leq 1.96\]</span></p>
+<p><span class="math display">\[-1.96 \ SE \leq \bar{X} - \mu \leq 1.96 \ SE \]</span></p>
+<p><span class="math display">\[\bar{X} - 1.96 \ SE \leq \mu \leq  \bar{X} + 1.96 \ SE \]</span></p>
+</div><div class="column fade-in" style="width:50%;">
+<p>Distribution of means</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="distributions_files/figure-revealjs/unnamed-chunk-43-1.png" class="img-fluid figure-img" width="2400"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="confidence-interval" class="level2" data-auto-animate="true">
+<h2 data-auto-animate="true" class="anchored" data-anchor-id="confidence-interval">Confidence interval</h2>
+<div class="cell">
+<style type="text/css">
+.transparent-text {
+  color: rgba(0, 0, 0, 0.4);
+}
+</style>
+</div>
+<div class="columns">
+<div class="column transparent-text" style="width:45%;">
+<p>Thus, with probability of 0.95</p>
+<p><span class="math display">\[ -1.96 \sigma_z \leq \dfrac{\bar{X} - \mu}{SE} \leq 1.96 \sigma_z \]</span></p>
+<p><span class="math display">\[-1.96 \leq \dfrac{\bar{X} - \mu}{SE} \leq 1.96\]</span></p>
+<p><span class="math display">\[-1.96 \ SE \leq \bar{X} - \mu \leq 1.96 \ SE \]</span></p>
+<p><span class="math display">\[\bar{X} - 1.96 \ SE \leq \mu \leq  \bar{X} + 1.96 \ SE \]</span></p>
+</div><div class="column" style="width:55%;">
+<p>We may never know the <strong>true</strong> value of the population mean (<span class="math inline">\(\mu\)</span>), but we can estimate it from a sample and build an interval with a certain degree of <em>confidence</em> (e.g., 0.95)</p>
+<p><span class="math display">\[ \bar X - x_{\alpha/2} * SE  \leq \mu_{true} \leq \bar X + x_{\alpha/2} * SE\]</span></p>
+<ul>
+<li><p><span class="math inline">\(\alpha\)</span> - Significance level (e.g.&nbsp;0.05)</p></li>
+<li><p><span class="math inline">\(1 - \alpha\)</span> - Confidence level (e.g.&nbsp;0.95)</p></li>
+<li><p><span class="math inline">\(x_{\alpha/2}\)</span> - values of <span class="math inline">\(\alpha/2\)</span> quantile in standart. normal distribution (mean=0, sd=1)</p></li>
+</ul>
+<p>(e.g.&nbsp;0.025 and 0.975 quantiles for <span class="math inline">\(\alpha=0.05\)</span>)</p>
+<p>((they are equal))</p>
+</div>
+</div>
+<section id="lets-calculate-it-in-r" class="level4">
+<h4 class="anchored" data-anchor-id="lets-calculate-it-in-r">Let’s calculate it in R!</h4>
+</section>
+</section>
+<section id="what-does-confidence-level-mean" class="level2">
+<h2 class="anchored" data-anchor-id="what-does-confidence-level-mean">What does confidence level mean?</h2>
+<div class="columns">
+<div class="column" style="width:70%;">
+<p>Generating 1000 samples and 1000 95% CIs</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="distributions_files/figure-revealjs/unnamed-chunk-45-1.png" class="img-fluid figure-img" width="3000"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:30%;">
+<p>How many CIs do cover true mean?</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>
+missed     ok 
+    48    952 </code></pre>
+</div>
+</div>
+<p><strong>So, 95% of new generated CIs will cover true mean</strong></p>
+<p><em>Try to change size of samples</em></p>
+</div>
+</div>
+</section>
+</section>
+<section id="student-for-students" class="level1">
+<h1>Student for students</h1>
+<section id="students-t--distribution" class="level2" data-auto-animate="true">
+<h2 data-auto-animate="true" class="anchored" data-anchor-id="students-t--distribution">Student’s (t-) distribution</h2>
+<p>Comparing to <strong>standard (!) normal distribution,</strong> t-distribution have <em>heavier</em> tails.</p>
+<div class="fragment fade-in">
+<p>It means that t-distribution’s quantiles have bigger values comparing to normal</p>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/t_vs_z.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" width="1000"></p>
+</figure>
+</div>
+</section>
+<section id="students-t--distribution-1" class="level2" data-auto-animate="true">
+<h2 data-auto-animate="true" class="anchored" data-anchor-id="students-t--distribution-1">Student’s (t-) distribution</h2>
+<p>Comparing to <strong>standard (!) normal distribution,</strong> t-distribution have <em>heavier</em> tails.</p>
+<p>It means that t-distribution’s quantiles have bigger values comparing to normal</p>
+<p><em>Standard Normal</em>:</p>
+<div class="cell large-code">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="fu">c</span>(<span class="fl">0.025</span>, <span class="fl">0.975</span>), <span class="at">mean=</span><span class="dv">0</span>, <span class="at">sd=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -1.959964  1.959964</code></pre>
+</div>
+</div>
+<p><em>Student df=13</em>:</p>
+<div class="cell large-code">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qt</span>(<span class="fu">c</span>(<span class="fl">0.025</span>, <span class="fl">0.975</span>), <span class="at">df=</span><span class="dv">13</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -2.160369  2.160369</code></pre>
+</div>
+</div>
+<p><em>Student df=50</em>:</p>
+<div class="cell large-code">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qt</span>(<span class="fu">c</span>(<span class="fl">0.025</span>, <span class="fl">0.975</span>), <span class="at">df=</span><span class="dv">50</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -2.008559  2.008559</code></pre>
+</div>
+</div>
+</section>
+<section id="students-t--distribution-2" class="level2" data-auto-animate="true">
+<h2 data-auto-animate="true" class="anchored" data-anchor-id="students-t--distribution-2">Student’s (t-) distribution</h2>
+<p><strong>Degrees of freedom (df)</strong> - the only parameter of distribution!</p>
+<p>It always have <strong>mean = 0</strong> and “width” defined by <strong>df</strong></p>
+<blockquote class="blockquote">
+<p><strong>Degrees of freedom = N - 1</strong></p>
+<p>N - size of sample</p>
+</blockquote>
+</section>
+<section id="confidence-interval-using-quantiles-from-t-distribution" class="level2" data-auto-animate="true">
+<h2 data-auto-animate="true" class="anchored" data-anchor-id="confidence-interval-using-quantiles-from-t-distribution">Confidence interval using quantiles from t-distribution</h2>
+<p><span class="math display">\[ \bar X - t_{\alpha/2} * SE  \leq \mu_{true} \leq \bar X + t_{\alpha/2} * SE\]</span></p>
+<ul>
+<li><p><span class="math inline">\(\alpha\)</span> - Significance level (e.g.&nbsp;0.05)</p></li>
+<li><p><span class="math inline">\(1 - \alpha\)</span> - Confidence level (e.g.&nbsp;0.95)</p></li>
+<li><p><span class="math inline">\(t_{\alpha/2}\)</span> - values of <span class="math inline">\(\alpha/2\)</span> quantile in <strong>t-distribution</strong></p></li>
+</ul>
+</section>
+<section id="confidence-interval-using-quantiles-from-t-distribution-1" class="level2" data-auto-animate="true">
+<h2 data-auto-animate="true" class="anchored" data-anchor-id="confidence-interval-using-quantiles-from-t-distribution-1">Confidence interval using quantiles from t-distribution</h2>
+<p><span class="math display">\[ \bar X - t_{\alpha/2} * SE  \leq \mu_{true} \leq \bar X + t_{\alpha/2} * SE\]</span></p>
+<blockquote class="blockquote">
+<p>Because of heavier tails, such CI can be more accurate for small <span class="math inline">\(n\)</span></p>
+<p><strong>And for large</strong> <span class="math inline">\(n\)</span> <strong>it looks like standard normal</strong></p>
+</blockquote>
+<section id="lets-calculate-it-in-r-1" class="level4">
+<h4 class="anchored" data-anchor-id="lets-calculate-it-in-r-1">Let’s calculate it in R!</h4>
+</section>
+</section>
+</section>
+<section id="one-sided-ci" class="level1">
+<h1>One-sided CI</h1>
+<p>TBA</p>
+
+
+</section>
+
+</main> <!-- /main -->
+
+<script>
+  // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+  // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+  // slide changes (different for each slide format).
+  (function () {
+    // dispatch for htmlwidgets
+    function fireSlideEnter() {
+      const event = window.document.createEvent("Event");
+      event.initEvent("slideenter", true, true);
+      window.document.dispatchEvent(event);
+    }
+
+    function fireSlideChanged(previousSlide, currentSlide) {
+      fireSlideEnter();
+
+      // dispatch for shiny
+      if (window.jQuery) {
+        if (previousSlide) {
+          window.jQuery(previousSlide).trigger("hidden");
+        }
+        if (currentSlide) {
+          window.jQuery(currentSlide).trigger("shown");
+        }
+      }
+    }
+
+    // hookup for slidy
+    if (window.w3c_slidy) {
+      window.w3c_slidy.add_observer(function (slide_num) {
+        // slide_num starts at position 1
+        fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+      });
+    }
+
+  })();
+</script>
+
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
