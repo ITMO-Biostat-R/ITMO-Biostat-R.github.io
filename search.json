@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Biostatistics in R",
     "section": "",
-    "text": "Lecture data\n\nBasic R\n\nDownload\n\nWorking with Dataframes\n\nDownload\n\nVisualization\n\nDownload\n\n\n\n\n\n\nPresentations\nTBA \n\n\n\nHomeworks\n\nHW #1\n\nDownload"
+    "text": "Lecture data\n\nBasic R\n\nDownload\n\nWorking with Dataframes\n\nDownload\n\nVisualization\n\nDownload\n\n\n\n\n\n\nPresentations\n\nVisualization sins and inspirations\n\n\n\n\nHomeworks\n\nHW #1\n\nDownload\n\nHW #2\n\nDownload\nReference plots"
   },
   {
     "objectID": "presentations/distributions.html#types-of-data",
@@ -403,28 +403,28 @@
     "href": "code/datavis.html#plot",
     "title": "Data visualization",
     "section": "plot()",
-    "text": "plot()\nThe simplest graph is a points, each having x and y coordinates\n\nx = 1:10\ny = seq(2,20,2) ^ 2\nx\n\n [1]  1  2  3  4  5  6  7  8  9 10\n\ny\n\n [1]   4  16  36  64 100 144 196 256 324 400\n\n\nWe consider that the x and y coordinates at the same positions in each of the vectors correspond to one particular point. So we have points (1,2), (2,4), (3,6) and etc.\n\nseq(from_value, to_value, by_value)- returns a vector with values from from_value to to_valuewith a step by_value\n\n\nScatter plot\n\nplot(x, y)\n\n\n\n\n\n\n\n\n\n\nSepal.Length vs Sepal.Width\n\n# plot()\n\nWe can make this graph prettier\n\nplot(#,\n     main = \"Sepal.Length vs. Sepal.Width\", # the title\n     xlab = \"Sepal.Length\", # Label of X-axis\n     ylab = \"Sepal.Width\", # Label of Y-axis \n     col = \"blue\", # color of plot\n     pch = 19, # type of dots - 19 corresponds to the painted (solid) points\n     cex = 1 # size of dots\n     ) \n\n\n\nAll plot() style parameters\n\n\nAll basic R graphical parameters\n\n\n\n\n\n\nAdding lines\nBy default plot() shows scatter plot, but we can change this behavior\n\nplot(x, y,type = 'l') \n\n\n\n\n\n\n\nplot(x, y, type = 'o')\n\n\n\n\n\n\n\nplot(x, y,type = 'b')\n\n\n\n\n\n\n\n\n\nShow scatter with line width (lwd) = 3, point character (pch) = 2 and line type (lty) =3\n\n\n# plot(x,y)\n\n\nTerrible plot\nLine graphs should sometimes be avoided, because lines connect points in the order of their position in the vectors\n\nx = c(10,5,9,6,8,7,2,1,4,3)\ny = c(1:4, 6:8,5,10,9)\nx\n\n [1] 10  5  9  6  8  7  2  1  4  3\n\ny\n\n [1]  1  2  3  4  6  7  8  5 10  9\n\n\n\nplot(x, y, type = \"b\",  pch=19)\n\n\n\n\n\n\n\n\nAfter sorting:\n\ndf = data.frame(x, y) %&gt;% arrange(x)\nplot(df$x, df$y,type = \"b\", pch=19)\n\n\n\n\n\n\n\n\n\nggplot2 doesn’t have such problem\n\n\n\nAdvanced\n\n# basic r advanced\n\nindexes_to_sort = order(x)\nx_sorted = x[indexes_to_sort]\ny_sorted = y[indexes_to_sort]\nplot(x_sorted, y_sorted, type = \"b\", pch=19)\n\n\n\n\n\n\n\n\nNB! We can’t just sort one of the vectors because we must save the correspondence of x and y coordinates between two vectors."
+    "text": "plot()\nThe simplest graph is a points, each having x and y coordinates\n\nx = 1:10\ny = seq(2,20,2) ^ 2\nx\n\n [1]  1  2  3  4  5  6  7  8  9 10\n\ny\n\n [1]   4  16  36  64 100 144 196 256 324 400\n\n\nWe consider that the x and y coordinates at the same positions in each of the vectors correspond to one particular point. So we have points (1,2), (2,4), (3,6) and etc.\n\nseq(from_value, to_value, by_value)- returns a vector with values from from_value to to_valuewith a step by_value\n\n\nScatter plot\n\nplot(x, y)\n\n\n\n\n\n\n\n\n\n\nSepal.Length vs Sepal.Width\n\nplot(iris_df$Sepal.Length, iris_df$Sepal.Width)\n\n\n\n\n\n\n\n\nWe can make this graph prettier\n\nplot(iris_df$Sepal.Length, iris_df$Sepal.Width,\n     main = \"Sepal.Length vs. Sepal.Width\", # the title\n     xlab = \"Sepal.Length\", # Label of X-axis\n     ylab = \"Sepal.Width\", # Label of Y-axis \n     col = \"blue\", # color of plot\n     pch = 19, # type of dots - 19 corresponds to the painted (solid) points\n     cex = 1 # size of dots\n     ) \n\n\n\nAll plot() style parameters\n\n\nAll basic R graphical parameters\n\n\n\n\n\n\nAdding lines\nBy default plot() shows scatter plot, but we can change this behavior\n\nplot(x, y,type = 'l') \n\n\n\n\n\n\n\nplot(x, y, type = 'o')\n\n\n\n\n\n\n\nplot(x, y,type = 'b')\n\n\n\n\n\n\n\n\n\nShow scatter with line width (lwd) = 3, point character (pch) = 2 and line type (lty) =3\n\n\nplot(x,y, type='b', lwd=3, pch=2, lty=3)\n\n\n\n\n\n\n\n\n\nTerrible plot\nLine graphs should sometimes be avoided, because lines connect points in the order of their position in the vectors\n\nx = c(10,5,9,6,8,7,2,1,4,3)\ny = c(1:4, 6:8,5,10,9)\nx\n\n [1] 10  5  9  6  8  7  2  1  4  3\n\ny\n\n [1]  1  2  3  4  6  7  8  5 10  9\n\n\n\nplot(x, y, type = \"b\",  pch=19)\n\n\n\n\n\n\n\n\nAfter sorting:\n\ndf = data.frame(x, y) %&gt;% arrange(x)\nplot(df$x, df$y,type = \"b\", pch=19)\n\n\n\n\n\n\n\n\n\nggplot2 doesn’t have such problem\n\n\n\nAdvanced\n\n# basic r advanced\n\nindexes_to_sort = order(x)\nx_sorted = x[indexes_to_sort]\ny_sorted = y[indexes_to_sort]\nplot(x_sorted, y_sorted, type = \"b\", pch=19)\n\n\n\n\n\n\n\n\nNB! We can’t just sort one of the vectors because we must save the correspondence of x and y coordinates between two vectors."
   },
   {
     "objectID": "code/datavis.html#bar-plots",
     "href": "code/datavis.html#bar-plots",
     "title": "Data visualization",
     "section": "Bar Plots",
-    "text": "Bar Plots\n\nheights = c(Roman = 190, \n            Ann = 172, \n            Charlie = 121,\n            Vlad = 183,\n            Sasha = 180) # named vector\nheights\n\n  Roman     Ann Charlie    Vlad   Sasha \n    190     172     121     183     180 \n\n\n\nbarplot(heights)\n\n\n\n\n\n\n\n\n\nSort (sort()) values and create barplot again\n\n\n# heights = \n# barplot(heights)\n\nWe can customize this graph\n\nbarplot(heights, \n        main = \"Heights of people\", # the title \n        xlab = \"Height\", # Label of X-axis \n        ylab = \"Name\", # Label of Y-axis \n        col = \"lightblue\", # color of inner part of bars\n        border = \"blue\", # color of borders\n        horiz = TRUE, # make barplot horizontal\n        xlim = c(0,200) # limits of values showd on x-axis\n        )\n\n\n\n\n\n\n\n\n\nNumber of iris_df species\n\nCreate table() of iris species and use it to make a barplot with color ‘violet’ Name the axis!\n\n\n# number_of_species = \n# barplot()\n\nNow we see that our data “is balanced”"
+    "text": "Bar Plots\n\nheights = c(Roman = 190, \n            Ann = 172, \n            Charlie = 121,\n            Vlad = 183,\n            Sasha = 180) # named vector\nheights\n\n  Roman     Ann Charlie    Vlad   Sasha \n    190     172     121     183     180 \n\n\n\nbarplot(heights, ylim = c(0,200))\n\n\n\n\n\n\n\n\n\nSort (sort()) values and create barplot again\n\n\nheights = sort(heights, decreasing = TRUE)\nbarplot(heights)\n\n\n\n\n\n\n\n\nWe can customize this graph\n\nbarplot(heights, \n        main = \"Heights of people\", # the title \n        xlab = \"Height\", # Label of X-axis \n        ylab = \"Name\", # Label of Y-axis \n        col = \"lightblue\", # color of inner part of bars\n        border = \"blue\", # color of borders\n        horiz = TRUE, # make barplot horizontal\n        xlim = c(0,200) # limits of values showd on x-axis\n        )\n\n\n\n\n\n\n\n\n\nNumber of iris_df species\n\nCreate table() of iris species and use it to make a barplot with color ‘violet’ Name the axis!\n\n\nnumber_of_species = table(iris_df$Species)\nnumber_of_species\n\n\n    setosa versicolor  virginica \n        50         50         50 \n\nbarplot(number_of_species, col='violet')\n\n\n\n\n\n\n\n\nNow we see that our data “is balanced”"
   },
   {
     "objectID": "code/datavis.html#histograms",
     "href": "code/datavis.html#histograms",
     "title": "Data visualization",
     "section": "Histograms",
-    "text": "Histograms\n\nNeed only one axis!\n\n\nDistribution of Sepal.Length\n\nhist(iris_df$Sepal.Length, \n     main = \"Sepal.Length distribution\", \n     xlab = \"Sepal.length\", \n     col = \"lightgreen\",\n     breaks = 8 # number of x-axis splits for frequency calculation in each of the resulting ranges\n     )\n\n\n\n\n\n\n\n\nEach bar represents frequency of this particular Sepal.Length in dataset.\nFor example, first bar have height of 5 - it mean, that there are 5 flowers with Sepal.Length between 4 and 4.5.\nWe can make bars two times thinner\n\nhist(iris_df$Sepal.Length,\n     main = \"Sepal.Length distribution\", \n     xlab = \"Sepal.length\", \n     col = \"lightgreen\", \n     breaks = 16) # &lt;---- changed\n\n\n\n\n\n\n\n\n\nCreate histogram of Sepal.Width colored ‘lightblue’. Name the axis!\n\n\n# hist()"
+    "text": "Histograms\n\nNeed only one axis!\n\n\nDistribution of Sepal.Length\n\nhist(iris_df$Sepal.Length, \n     main = \"Sepal.Length distribution\", \n     xlab = \"Sepal.length\", \n     col = \"lightgreen\",\n     breaks = 56 # number of x-axis splits for frequency calculation in each of the resulting ranges\n     )\n\n\n\n\n\n\n\n\nEach bar represents frequency of this particular Sepal.Length in dataset.\nFor example, first bar have height of 5 - it mean, that there are 5 flowers with Sepal.Length between 4 and 4.5.\nWe can make bars two times thinner\n\nhist(iris_df$Sepal.Length,\n     main = \"Sepal.Length distribution\", \n     xlab = \"Sepal.length\", \n     col = \"lightgreen\", \n     breaks = c(4, 5, 5.2, 5.4, 7, 8)) # &lt;---- changed\n\n\n\n\n\n\n\n\n\nCreate histogram of Sepal.Width colored ‘lightblue’. Name the axis!\n\n\nhist(iris_df$Sepal.Width, xlab='Sepal.Width', col = '#FFF000', breaks = 26)\nabline(h=mean(iris_df$Sepal.Width))"
   },
   {
     "objectID": "code/datavis.html#boxplots",
     "href": "code/datavis.html#boxplots",
     "title": "Data visualization",
     "section": "Boxplots",
-    "text": "Boxplots\nBoxplots are very informative charts. They display similar but more information than a histogram.\n\n\n\nboxplot(iris_df$Sepal.Length, \n        # main = \"Sepal.Length\", \n        ylab = \"\",\n        xlab = \"Sepal.Length\", \n        col = \"darkviolet\",\n        horizontal = T)\n\n\n\n\n\n\n\n\n\nGrouped boxplots\n\nboxplot(iris_df$Sepal.Length ~ iris_df$Species, \n        main = \"Sepal.Length\",\n        xlab = \"Species\",\n        ylab = \"Sepal.Length\", \n        col = \"darkviolet\",\n        horizontal = F)\n\n\n\n\n\n\n\n\n\nCreate boxplot of Sepal.Length grouped by Sepal.Length.Category. Name axis and let it be horizontal.\n\n\n# boxplot()\n\nBoxplot is good for unimodal** similar to normaldistributions, as it doesn’t show two peaks**"
+    "text": "Boxplots\nBoxplots are very informative charts. They display similar but more information than a histogram.\n\n\n\nboxplot(iris_df$Sepal.Length, \n        # main = \"Sepal.Length\", \n        ylab = \"\",\n        xlab = \"Sepal.Length\", \n        col = \"darkviolet\",\n        horizontal = T)\n\n\n\n\n\n\n\n\n\nGrouped boxplots\n\nboxplot(iris_df$Sepal.Length ~ iris_df$Species, \n        main = \"Sepal.Length\",\n        xlab = \"Species\",\n        ylab = \"Sepal.Length\", \n        col = \"darkviolet\",\n        ylim = c(0,8),\n        horizontal = F)\n\n\n\n\n\n\n\n\n\nCreate boxplot of Sepal.Length grouped by Sepal.Length.Category. Name axis and let it be horizontal.\n\n\nboxplot(iris_df$Sepal.Length ~ iris_df$Sepal.Length.Category, horizontal = T)\n\n\n\n\n\n\n\n\nBoxplot is good for unimodal** similar to normaldistributions, as it doesn’t show two peaks**"
   },
   {
     "objectID": "code/datavis.html#philosophy",
@@ -438,7 +438,7 @@
     "href": "code/datavis.html#intro",
     "title": "Data visualization",
     "section": "Intro",
-    "text": "Intro\n\nggplot(data=iris_df, # data\n       mapping = aes(x=Sepal.Length, y=Sepal.Width)) + #aesthetics (axes)\n  geom_point()  # geom\n\n\n\n\n\n\n\n\nObligatory components to create chart:\n\nggplot(data=iris_df) - data: data.frame, tibble …\nggplot(..., mappings=aes(x=Sepal.Length, y=Sepal.Width)) - aesthetics, which turned into x and y axis.\n+ geom_point() - geom, at least one."
+    "text": "Intro\n\nlibrary(ggplot2)\n\n\nggplot(data=iris_df, # data\n       aes(x=Sepal.Length, y=Sepal.Width)) + #aesthetics (axes)\n  geom_point()  # geom\n\n\n\n\n\n\n\n\nObligatory components to create chart:\n\nggplot(data=iris_df) - data: data.frame, tibble …\nggplot(..., mappings=aes(x=Sepal.Length, y=Sepal.Width)) - aesthetics, which turned into x and y axis.\n+ geom_point() - geom, at least one."
   },
   {
     "objectID": "code/datavis.html#storing-plots-in-variables",
@@ -452,21 +452,21 @@
     "href": "code/datavis.html#adding-new-aesthetics-axes",
     "title": "Data visualization",
     "section": "Adding new aesthetics (“axes”)",
-    "text": "Adding new aesthetics (“axes”)\n\nAdding right to the ggplot()\n\nggplot(data=iris_df,\n       mapping = aes(x=Sepal.Length, \n                     y=Sepal.Width,\n                     color=Species, \n                     size = Petal.Width,\n                     shape=Sepal.Length.Category)) + \n  geom_point() \n\n\n\n\n\n\n\n\n\n\nAesthetics list\n\ncolor - color\nfill - filling color\nsize - size\nshape - shape of points\nstroke - stroke thickness\nalpha - transparency\nother specific for geoms aesthetics…\n\n\n\nAdding to variable\n\np + aes(color=Species, size = Petal.Width,\n        shape=Sepal.Length.Category)"
+    "text": "Adding new aesthetics (“axes”)\n\nAdding right to the ggplot()\n\nggplot(data=iris_df,\n       aes(x=Sepal.Length, \n                     y=Sepal.Width,\n                     color=Species, \n                     size = Petal.Width,\n                     # shape=Sepal.Length.Category\n           )) + \n  geom_point() \n\n\n\n\n\n\n\n\n\n\nAesthetics list\n\ncolor - color\nfill - filling color\nsize - size\nshape - shape of points\nstroke - stroke thickness\nalpha - transparency\nother specific for geoms aesthetics…\n\n\n\nAdding to variable\n\np\n\n\n\n\n\n\n\np + aes(color=Species, size = Petal.Width,\n        shape=Sepal.Length.Category)"
   },
   {
     "objectID": "code/datavis.html#geoms",
     "href": "code/datavis.html#geoms",
     "title": "Data visualization",
     "section": "Geoms",
-    "text": "Geoms\nGeometries define the types of graphs in the diagram.\n\nGeoms have specific variables\n\niris_df %&gt;% \n  ggplot(aes(x=Sepal.Width)) +   # &lt;--- here\n  geom_histogram(bins = 20, fill='lightblue', col='black')\n\n\n\n\n\n\n\n\n\n\nAesthetics can also be set up within the geoms\n\naesthetics inside ggplot() are set for all geoms\naesthetics inside geom_..() functions are set only for this geom\n\n\niris_df %&gt;% \n  ggplot() + \n  geom_histogram(aes(x=Sepal.Width),\n                 bins = 20, fill='lightblue', col='black')  # &lt;--- here\n\n\n\n\n\n\n\n\n\n\nAdding several geoms\n\niris_df %&gt;% \n  ggplot(aes(x=Species, y=Sepal.Length)) + \n  geom_boxplot(aes(fill=Species), outliers = F) +\n  geom_jitter(width=0.1, size=1)\n\n\n\n\n\n\n\n\n\n\nGeoms can take different data!\n\niris_df %&gt;% \n  ggplot(aes(x=Sepal.Length, y=Sepal.Width)) +\n  \n  geom_point(data=iris_df %&gt;% filter(Sepal.Width &gt; 3), # data (filtered iris)\n             aes(color=Species)) +\n  \n  geom_hex(data=iris_df %&gt;% filter(Sepal.Width &lt; 3)) # another data (filtered iris)"
+    "text": "Geoms\nGeometries define the types of graphs in the diagram.\n\nGeoms have specific variables\n\niris_df %&gt;% \n  ggplot(aes(x=Sepal.Width)) +   # &lt;--- here\n  geom_histogram(bins = 10, fill='lightblue', col='black')\n\n\n\n\n\n\n\n\n\n\nAesthetics can also be set up within the geoms\n\naesthetics inside ggplot() are set for all geoms\naesthetics inside geom_..() functions are set only for this geom\n\n\niris_df %&gt;% \n  ggplot() + \n  geom_histogram(aes(x=Sepal.Width),\n                 bins = 20, fill='lightblue', col='black')  # &lt;--- here\n\n\n\n\n\n\n\n\n\n\nAdding several geoms\n\niris_df %&gt;% \n  ggplot(aes(x=Species, y=Sepal.Length)) + \n  geom_boxplot( outliers = F) +\n  geom_jitter(aes(col=Species), width=0.1, size=1)\n\n\n\n\n\n\n\n\n\n\nGeoms can take different data!\n\niris_df %&gt;% \n  ggplot(aes(x=Sepal.Length, y=Sepal.Width)) +\n  \n  geom_point(data=iris_df %&gt;% filter(Sepal.Width &gt; 3), # data (filtered iris)\n             aes(color=Species)) +\n  \n  geom_hex(data=iris_df %&gt;% filter(Sepal.Width &lt; 3)) # another data (filtered iris)"
   },
   {
     "objectID": "code/datavis.html#variables-and-aesthetics",
     "href": "code/datavis.html#variables-and-aesthetics",
     "title": "Data visualization",
     "section": "Variables and aesthetics",
-    "text": "Variables and aesthetics\n\nfill, color, size, shape, stroke and alpha can be seen outside of aes(). They can also be set to a specific fixed value.\nEach geom has a certain set of parameters. In aes() there are mandatory and optional parameters, and outside it there are only optional parameters\n\n\nInside the aes()\n\niris_df %&gt;% \n  ggplot(aes(x=Sepal.Length, y=Sepal.Width)) +\n  geom_point(aes(color=Species)) # &lt;--- here\n\n\n\n\n\n\n\n\n\n\nOutside the aes()\n\nggplot(data=iris_df,\n       mapping = aes(x=Sepal.Length, y=Sepal.Width)) +\n  geom_point(color='blue')  # &lt;--- here\n\n\n\n\n\n\n\n\n\n\n(not) Blue scatter-plot\n\nggplot(data=iris_df,\n       mapping = aes(x=Sepal.Length, y=Sepal.Width, color='blue')) +\n  geom_point()"
+    "text": "Variables and aesthetics\n\nfill, color, size, shape, stroke and alpha can be seen outside of aes(). They can also be set to a specific fixed value.\nEach geom has a certain set of parameters. In aes() there are mandatory and optional parameters, and outside it there are only optional parameters\n\n\nInside the aes()\n\np = iris_df %&gt;% \n  ggplot(aes(x=Sepal.Length, y=Sepal.Width)) +\n  geom_point(aes(color=Species)) # &lt;--- here\np\n\n\n\n\n\n\n\n\n\n\nOutside the aes()\n\nggplot(data=iris_df,\n       mapping = aes(x=Sepal.Length, y=Sepal.Width)) +\n  geom_point(color='blue')  # &lt;--- here\n\n\n\n\n\n\n\n\n\n\n(not) Blue scatter-plot\n\nggplot(data=iris_df,\n       mapping = aes(x=Sepal.Length, y=Sepal.Width)) +\n  geom_point(aes(color='blue'))"
   },
   {
     "objectID": "code/datavis.html#themes",
@@ -480,42 +480,42 @@
     "href": "code/datavis.html#labels",
     "title": "Data visualization",
     "section": "Labels",
-    "text": "Labels\n\np +  labs(x='Sepal length', \n          y='Sepal width',\n          \n          color = 'Iris species',\n          # fill =\n          # size = \n          # shape = \n          # stroke =\n          \n          title = 'Scatter plot', \n          subtitle = 'Subtitle',\n          caption = 'It is the great plot',\n          tag = 'A')\n\nIgnoring unknown labels:\n• colour : \"Iris species\"\n\n\n\n\n\n\n\n\n\nSimple functions for labeling axes: + xlab() and + ylab()"
+    "text": "Labels\n\np +  labs(x='Sepal length', \n          y='Sepal width',\n          \n          # color = 'Iris species',\n          # fill =\n          # size = \n          # shape = \n          # stroke =\n          \n          title = 'Scatter plot', \n          subtitle = 'Subtitle',\n          caption = 'It is the great plot',\n          tag = 'I')\n\n\n\n\n\n\n\n\nSimple functions for labeling axes: + xlab() and + ylab()"
   },
   {
     "objectID": "code/datavis.html#scatter-plot-1",
     "href": "code/datavis.html#scatter-plot-1",
     "title": "Data visualization",
     "section": "Scatter plot",
-    "text": "Scatter plot\n\nDraw scatter-plot (geom_point) with x=Petal.Length, y=Petal.Width usingclassic theme\n\n\n# iris_df %&gt;% ggplot()"
+    "text": "Scatter plot\n\nDraw scatter-plot (geom_point) with x=Petal.Length, y=Petal.Width using classic theme\n\n\niris_df %&gt;% \n  ggplot() +\n  geom_point(aes(x=Petal.Length, y=Petal.Width)) +\n  theme_classic()"
   },
   {
     "objectID": "code/datavis.html#histogram",
     "href": "code/datavis.html#histogram",
     "title": "Data visualization",
     "section": "Histogram",
-    "text": "Histogram\n\nDraw histogram (geom_histogram) of Petal.Length using blue color and lightblue fill andclassic theme\n\n\n# iris_df %&gt;% ggplot()"
+    "text": "Histogram\n\nDraw histogram (geom_histogram) of Petal.Length using blue color and lightblue fill and classic theme\n\n\niris_df %&gt;% ggplot(aes(x=Petal.Length )) +\n  geom_histogram(colour = 'black', fill='lightblue', bins=50) +\n  theme_classic()"
   },
   {
     "objectID": "code/datavis.html#density-plot",
     "href": "code/datavis.html#density-plot",
     "title": "Data visualization",
     "section": "Density plot",
-    "text": "Density plot\n\nDraw density plot (geom_density) of Petal.Length for every Species filled differently + alpha=0.8 and classic theme\n\n\n# iris_df %&gt;% ggplot()"
+    "text": "Density plot\n\nDraw density plot (geom_density) of Petal.Length for every Species filled differently + alpha=0.8 and classic theme\n\n\niris_df %&gt;% ggplot(aes(x=Petal.Length, fill=Species)) +\n  geom_density(alpha=0.6)"
   },
   {
     "objectID": "code/datavis.html#boxplot",
     "href": "code/datavis.html#boxplot",
     "title": "Data visualization",
     "section": "Boxplot",
-    "text": "Boxplot\n\nDraw a horizontal box plot (geom_boxplot) of Petal.Width for each species on the y-axis with different fill. Remove legend (why?)\n\n\n# iris_df %&gt;% ggplot()\n\n\nWe can combine custom and built-in themes in one plot!\n\n\nDeleting the legend (as it duplicates color information)\n\n+ theme(legend.position = \"none\")"
+    "text": "Boxplot\n\nDraw a horizontal box plot (geom_boxplot) of Petal.Width for each species on the y-axis with different fill. Remove legend (why?)\n\n\niris_df %&gt;% ggplot(aes(y=Species, x=Petal.Width, fill=Species)) +\n  geom_boxplot() +\n  theme_classic() +\n  theme(legend.position = 'none')\n\n\n\n\n\n\n\n\n\nWe can combine custom and built-in themes in one plot!\n\n\nDeleting the legend (as it duplicates color information)\n\n+ theme(legend.position = \"none\")"
   },
   {
     "objectID": "code/datavis.html#barplots",
     "href": "code/datavis.html#barplots",
     "title": "Data visualization",
     "section": "Barplots",
-    "text": "Barplots\n\nsepal_len_stats = iris_df %&gt;% group_by(Species) %&gt;% \n  summarise(mean_sepal_len = mean(Sepal.Length), \n            sd_sepal_length = sd(Sepal.Length))\n\nsepal_len_stats\n\n# A tibble: 3 × 3\n  Species    mean_sepal_len sd_sepal_length\n  &lt;fct&gt;               &lt;dbl&gt;           &lt;dbl&gt;\n1 setosa               5.01           0.352\n2 versicolor           5.94           0.516\n3 virginica            6.59           0.636\n\n\n\ngeom_col - if heights of bars are known (continuous data)\n\nDraw a barplot (geom_col) of mean_sepal_len for each species on the x-axis with different fill. Remove legend.\n\n\np_col = sepal_len_stats %&gt;% \n  ggplot(aes(x=Species, y=mean_sepal_len, fill=Species)) + \n  geom_col() + \n  theme_classic() + \n  theme(legend.position = \"none\")\n\np_col\n\n\n\n\n\n\n\n\n\n\nAdding geom_errorbar (SD)\n\np_col + geom_errorbar(aes(ymin=mean_sepal_len-sd_sepal_length,\n                          ymax=mean_sepal_len+sd_sepal_length),\n                      width=0.3)\n\n\n\n\n\n\n\n\n\nThree different types of values are commonly used for error bars, sometimes without even specifying which one is used.\n\nStandard deviation\nStandard error\nConfidence interval\n\nWe will discuss each later\n\n\n\ngeom_bar - if heights are unknown (counting categorical data)\n\nDraw a barplot (geom_col) of Sepal.Length.Category (x-axis and fill).\n\n\n# iris_df %&gt;% ggplot()\n\n\n\nposition=\"stack\" (by default)\n\niris_df %&gt;% \n  ggplot(aes(x=Sepal.Length.Category, fill=Species)) + \n  geom_bar() + \n  theme_bw() \n\n\n\n\n\n\n\n\n\n\nposition=\"fill\" - scaled from 0 to 1\n\niris_df %&gt;% ggplot(aes(fill=Species, x=Sepal.Length.Category)) + \n  geom_bar(position = 'fill') + theme_bw()\n\n\n\n\n\n\n\n\n\n\nposition=\"dodge\"\n\niris_df %&gt;% \n  ggplot(aes(fill=Species, x=Sepal.Length.Category)) + \n  geom_bar(position = 'dodge')  + \n  theme_bw()"
+    "text": "Barplots\n\nsepal_len_stats = iris_df %&gt;% group_by(Species) %&gt;% \n  summarise(mean_sepal_len = mean(Sepal.Length), \n            sd_sepal_length = sd(Sepal.Length))\n\nsepal_len_stats\n\n# A tibble: 3 × 3\n  Species    mean_sepal_len sd_sepal_length\n  &lt;fct&gt;               &lt;dbl&gt;           &lt;dbl&gt;\n1 setosa               5.01           0.352\n2 versicolor           5.94           0.516\n3 virginica            6.59           0.636\n\n\n\ngeom_col - if heights of bars are known (continuous data)\n\nDraw a barplot (geom_col) of mean_sepal_len for each species on the x-axis with different fill. Remove legend.\n\n\np_col = sepal_len_stats %&gt;% \n  ggplot(aes(x=Species, y=mean_sepal_len, fill=Species)) + \n  geom_col() + \n  theme_classic() + \n  theme(legend.position = \"none\")\n\np_col\n\n\n\n\n\n\n\n\n\n\nAdding geom_errorbar (SD)\n\np_col + geom_errorbar(aes(ymin=mean_sepal_len-sd_sepal_length,\n                          ymax=mean_sepal_len+sd_sepal_length),\n                      width=0.3)\n\n\n\n\n\n\n\n\n\nThree different types of values are commonly used for error bars, sometimes without even specifying which one is used.\n\nStandard deviation\nStandard error\nConfidence interval\n\nWe will discuss each later\n\n\n\ngeom_bar - if heights are unknown (counting categorical data)\n\nDraw a barplot (geom_col) of Sepal.Length.Category (x-axis and fill).\n\n\niris_df %&gt;% ggplot(aes(x=Sepal.Length.Category)) + geom_bar()\n\n\n\n\n\n\n\n\n\n\nposition=\"stack\" (by default)\n\niris_df %&gt;% \n  ggplot(aes(x=Sepal.Length.Category, fill=Species)) + \n  geom_bar() + \n  theme_bw() \n\n\n\n\n\n\n\n\n\n\nposition=\"fill\" - scaled from 0 to 1\n\niris_df %&gt;% ggplot(aes(fill=Species, x=Sepal.Length.Category)) + \n  geom_bar(position = 'fill') + theme_bw()\n\n\n\n\n\n\n\n\n\n\nposition=\"dodge\"\n\niris_df %&gt;% \n  ggplot(aes(fill=Species, x=Sepal.Length.Category)) + \n  geom_bar(position = 'dodge')  + \n  theme_bw()"
   },
   {
     "objectID": "code/datavis.html#something-big-and-difficult",
@@ -529,14 +529,14 @@
     "href": "code/datavis.html#plot-arranging",
     "title": "Data visualization",
     "section": "Plot arranging",
-    "text": "Plot arranging\npatchwork\n\nlibrary(patchwork)\n\n\nbar_stack = iris_df %&gt;% \n  ggplot(aes(x=Sepal.Length.Category, fill=Species)) + \n  geom_bar() + \n  theme_bw() \n\nbar_fill = iris_df %&gt;% ggplot(aes(fill=Species, x=Sepal.Length.Category)) + \n  geom_bar(position = 'fill') + theme_bw()\n\nbar_dodge = iris_df %&gt;% \n  ggplot(aes(fill=Species, x=Sepal.Length.Category)) + \n  geom_bar(position = 'dodge')  + \n  theme_bw()\n\n\nbar_stack + bar_fill\n\n\n\n\n\n\n\n\n\nCollect axes and legends\n\nbar_stack + bar_fill +\n  plot_layout(guides = 'collect',\n              axes = 'collect')\n\n\n\n\n\n\n\n\n\n(bar_stack | bar_fill) / bar_dodge +\n  plot_layout(guides = 'collect') +\n  plot_annotation(tag_levels = 'A')"
+    "text": "Plot arranging\npatchwork\n\nlibrary(patchwork)\n\n\nbar_stack = iris_df %&gt;% \n  ggplot(aes(x=Sepal.Length.Category, fill=Species)) + \n  geom_bar() + \n  theme_bw() \n\nbar_fill = iris_df %&gt;% ggplot(aes(fill=Species, x=Sepal.Length.Category)) + \n  geom_bar(position = 'fill') + theme_bw()\n\nbar_dodge = iris_df %&gt;% \n  ggplot(aes(fill=Species, x=Sepal.Length.Category)) + \n  geom_bar(position = 'dodge')  + \n  theme_bw()\n\n\nbar_stack + bar_fill\n\n\n\n\n\n\n\n\n\nCollect axes and legends\n\nbar_stack + bar_fill +\n  plot_layout(guides = 'collect',\n              axes = 'collect')\n\n\n\n\n\n\n\n\n\n(bar_stack | bar_fill) / bar_dodge +\n  plot_layout(guides = 'collect') +\n  plot_annotation(tag_levels = 'I')\n\n\n\n\n\n\n\n\nLet’s try something…"
   },
   {
     "objectID": "code/datavis.html#saving-the-plot",
     "href": "code/datavis.html#saving-the-plot",
     "title": "Data visualization",
     "section": "Saving the plot",
-    "text": "Saving the plot\n\nTo save last drawn plot:\n\nggsave(\n  filename = './bigplot.png', # specify the filename (path to file)\n  device = , # png, pdf, jpeg, svg and others\n  dpi = 320, # resolution\n  width = 1800,\n  height = 1600,\n  units = \"px\" #in, cm, mm\n)\n\n\n\nSave “everything between”\n\npdf(\"./dodge_barplot.pdf\", width = 6, height = 6)\n\niris_df %&gt;% ggplot(aes(fill=Species, x=Sepal.Length.Category)) + \n  geom_bar(position = 'dodge')\n\ndev.off()\n\nquartz_off_screen \n                2 \n\n\nThis structure allow save into pdf all graphical outputs that between pdf() and dev.off()"
+    "text": "Saving the plot\n\nTo save last drawn plot:\n\nggsave(\n  filename = './bigplot.png', # specify the filename (path to file)\n  device = 'png', # png, pdf, jpeg, svg and others\n  dpi = 320, # resolution\n  width = 1800,\n  height = 1600,\n  units = \"px\" #in, cm, mm\n)\n\n\n\nSave “everything between”\n\npdf(\"./dodge_barplot.pdf\", width = 6, height = 6)\n\niris_df %&gt;% ggplot(aes(fill=Species, x=Sepal.Length.Category)) + \n  geom_bar(position = 'dodge')\n\ndev.off()\n\nquartz_off_screen \n                2 \n\n\nThis structure allow save into pdf all graphical outputs that between pdf() and dev.off()"
   },
   {
     "objectID": "code/datavis.html#barplot",
@@ -740,5 +740,33 @@
     "title": "Intro to testing",
     "section": "Multiple comparisons",
     "text": "Multiple comparisons\n\nCorrections!\nControlling the FWER - probability of making at least one Type I error.\n\nBonferroni\nHolm-Bonferroni\nŠidák\n\nControlling the FDR - expected proportion of false positives among all significant tests.\n\nBenjamini-Hochberg\nBenjamini-Yekutieli"
+  },
+  {
+    "objectID": "presentations/visual_sins_inspiration.html#visualization-sins-1",
+    "href": "presentations/visual_sins_inspiration.html#visualization-sins-1",
+    "title": "Visualization sins and inspirations",
+    "section": "Visualization sins",
+    "text": "Visualization sins\nPartly taken from\n\nFriends Don’t Let Friends Make Bad Graphs\nMisinformed By Visualization\n\nI highly recommend to visit this web-pages!"
+  },
+  {
+    "objectID": "presentations/visual_sins_inspiration.html#meme",
+    "href": "presentations/visual_sins_inspiration.html#meme",
+    "title": "Visualization sins and inspirations",
+    "section": "Meme",
+    "text": "Meme"
+  },
+  {
+    "objectID": "homeworks/HW2.html",
+    "href": "homeworks/HW2.html",
+    "title": "Homework on Statistical Distributions and Visualization",
+    "section": "",
+    "text": "library(ggplot2)\nlibrary(dplyr)\nlibrary(tidyr)"
+  },
+  {
+    "objectID": "homeworks/HW2.html#important-notes-for-every-plot-you-create",
+    "href": "homeworks/HW2.html#important-notes-for-every-plot-you-create",
+    "title": "Homework on Statistical Distributions and Visualization",
+    "section": "{!} Important notes for every plot you create:",
+    "text": "{!} Important notes for every plot you create:\n\nName the axis and legends\nUse some theme (e.g. theme_classic()) if ggplot is used. Not necessarily the same one for all plots."
   }
 ]
