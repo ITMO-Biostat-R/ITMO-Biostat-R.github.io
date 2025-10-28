@@ -27,8 +27,7 @@ title: "Biostatistics in R"
 
 -   [HW #2](./homeworks/HW2.Rmd)
     -   [Download](./zipfiles/HW2.zip)
-
-<!--     -   [Reference plots](./homeworks/HW2_reference.html) -->
+    -   [Reference plots](./homeworks/HW2_reference.html)
 
 <!-- -   [HW #3](./homeworks/HW3.Rmd) -->
 
