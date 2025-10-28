@@ -19,7 +19,7 @@ library(tidyr)
 
 -   Name the axis and legends
 
--   Use some theme (e.g. ``` theme_classic``() ```) if ggplot is used. *Not necessarily the same one for all plots.*
+-   Use some theme (e.g. `theme_classic()`) if ggplot is used. *Not necessarily the same one for all plots.*
 
 # Palmer Penguins
 
@@ -167,6 +167,6 @@ Some rows may contain missing values (e.g., in `sex` column).
 library(patchwork)
 ```
 
-```{r}
+```{r fig.height=6, fig.width=12}
 # 
 ```

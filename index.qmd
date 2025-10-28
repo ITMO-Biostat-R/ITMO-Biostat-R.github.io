@@ -16,8 +16,7 @@ title: "Biostatistics in R"
 <!--     -   [Download](./zipfiles/stats.zip) -->
 
 ### Presentations
-
-TBA <!-- -   [Visualization sins and inspirations](presentations/visual_sins_inspiration.qmd) --> 
+-   [Visualization sins and inspirations](presentations/visual_sins_inspiration.qmd)
 
 <!-- -   [Distributions and statistics](presentations/distributions.qmd) -->
 
@@ -26,9 +25,8 @@ TBA <!-- -   [Visualization sins and inspirations](presentations/visual_sins_ins
 -   [HW #1](./homeworks/HW1.Rmd)
     -   [Download](./zipfiles/HW1.zip)
 
-<!-- -   [HW #2](./homeworks/HW2.Rmd) -->
-
-<!--     -   [Download](./zipfiles/HW2.zip) -->
+-   [HW #2](./homeworks/HW2.Rmd)
+    -   [Download](./zipfiles/HW2.zip)
 
 <!--     -   [Reference plots](./homeworks/HW2_reference.html) -->
 

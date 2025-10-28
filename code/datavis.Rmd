@@ -16,7 +16,7 @@ editor_options:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, dpi = 200, fig.width = 5, fig.height = 4)
+knitr::opts_chunk$set(echo = TRUE, dpi = 100, fig.width = 5, fig.height = 4)
 ```
 
 # Introduction
@@ -82,13 +82,13 @@ plot(x, y)
 ### Sepal.Length vs Sepal.Width
 
 ```{r}
-# plot()
+plot(iris_df$Sepal.Length, iris_df$Sepal.Width)
 ```
 
 We can make this graph prettier
 
 ```{r, eval=F}
-plot(#,
+plot(iris_df$Sepal.Length, iris_df$Sepal.Width,
      main = "Sepal.Length vs. Sepal.Width", # the title
      xlab = "Sepal.Length", # Label of X-axis
      ylab = "Sepal.Width", # Label of Y-axis 
@@ -122,7 +122,7 @@ plot(x, y,type = 'b')
 > Show scatter with line width (lwd) = 3, point character (pch) = 2 and line type (lty) =3
 
 ```{r}
-# plot(x,y)
+plot(x,y, type='b', lwd=3, pch=2, lty=3)
 ```
 
 #### Terrible plot
@@ -174,14 +174,14 @@ heights
 ```
 
 ```{r}
-barplot(heights)
+barplot(heights, ylim = c(0,200))
 ```
 
 > Sort (`sort()`) values and create barplot again
 
 ```{r}
-# heights = 
-# barplot(heights)
+heights = sort(heights, decreasing = TRUE)
+barplot(heights)
 ```
 
 We can customize this graph
@@ -203,8 +203,9 @@ barplot(heights,
 > Create `table()` of iris species and use it to make a barplot with color 'violet' Name the axis!
 
 ```{r}
-# number_of_species = 
-# barplot()
+number_of_species = table(iris_df$Species)
+number_of_species
+barplot(number_of_species, col='violet')
 ```
 
 Now we see that our data **"is balanced"**
@@ -220,7 +221,7 @@ hist(iris_df$Sepal.Length,
      main = "Sepal.Length distribution", 
      xlab = "Sepal.length", 
      col = "lightgreen",
-     breaks = 8 # number of x-axis splits for frequency calculation in each of the resulting ranges
+     breaks = 56 # number of x-axis splits for frequency calculation in each of the resulting ranges
      )
 ```
 
@@ -234,13 +235,15 @@ hist(iris_df$Sepal.Length,
      main = "Sepal.Length distribution", 
      xlab = "Sepal.length", 
      col = "lightgreen", 
-     breaks = 16) # <---- changed
+     breaks = c(4, 5, 5.2, 5.4, 7, 8)) # <---- changed
 ```
 
 > Create histogram of Sepal.Width colored 'lightblue'. Name the axis!
 
 ```{r}
-# hist()
+hist(iris_df$Sepal.Width, xlab='Sepal.Width', col = '#FFF000', breaks = 26)
+abline(h=mean(iris_df$Sepal.Width))
+
 ```
 
 ## Boxplots
@@ -268,13 +271,14 @@ boxplot(iris_df$Sepal.Length ~ iris_df$Species,
         xlab = "Species",
         ylab = "Sepal.Length", 
         col = "darkviolet",
+        ylim = c(0,8),
         horizontal = F)
 ```
 
 > Create boxplot of Sepal.Length grouped by Sepal.Length.Category. Name axis and let it be horizontal.
 
 ```{r}
-# boxplot()
+boxplot(iris_df$Sepal.Length ~ iris_df$Sepal.Length.Category, horizontal = T)
 ```
 
 **Boxplot is good for** unimodal\*\* similar to normaldistributions, as it doesn't show *two peaks*\*\*
@@ -302,8 +306,12 @@ boxplot(iris_df$Sepal.Length ~ iris_df$Species,
 ## Intro
 
 ```{r}
+library(ggplot2)
+```
+
+```{r}
 ggplot(data=iris_df, # data
-       mapping = aes(x=Sepal.Length, y=Sepal.Width)) + #aesthetics (axes)
+       aes(x=Sepal.Length, y=Sepal.Width)) + #aesthetics (axes)
   geom_point()  # geom
 ```
 
@@ -325,13 +333,14 @@ p
 
 ### Adding right to the `ggplot()`
 
-```{r}
+```{r, dpi=100}
 ggplot(data=iris_df,
-       mapping = aes(x=Sepal.Length, 
+       aes(x=Sepal.Length, 
                      y=Sepal.Width,
                      color=Species, 
                      size = Petal.Width,
-                     shape=Sepal.Length.Category)) + 
+                     # shape=Sepal.Length.Category
+           )) + 
   geom_point() 
 ```
 
@@ -354,6 +363,8 @@ ggplot(data=iris_df,
 ### Adding to variable
 
 ```{r}
+p
+
 p + aes(color=Species, size = Petal.Width,
         shape=Sepal.Length.Category)
 ```
@@ -367,7 +378,7 @@ Geometries define the types of graphs in the diagram.
 ```{r}
 iris_df %>% 
   ggplot(aes(x=Sepal.Width)) +   # <--- here
-  geom_histogram(bins = 20, fill='lightblue', col='black')
+  geom_histogram(bins = 10, fill='lightblue', col='black')
 ```
 
 ### Aesthetics can also be set up within the geoms
@@ -388,8 +399,8 @@ iris_df %>%
 ```{r}
 iris_df %>% 
   ggplot(aes(x=Species, y=Sepal.Length)) + 
-  geom_boxplot(aes(fill=Species), outliers = F) +
-  geom_jitter(width=0.1, size=1)
+  geom_boxplot( outliers = F) +
+  geom_jitter(aes(col=Species), width=0.1, size=1)
 
 ```
 
@@ -403,6 +414,8 @@ iris_df %>%
              aes(color=Species)) +
   
   geom_hex(data=iris_df %>% filter(Sepal.Width < 3)) # another data (filtered iris)
+
+
 ```
 
 ## Variables and aesthetics
@@ -414,9 +427,10 @@ iris_df %>%
 ### Inside the `aes()`
 
 ```{r}
-iris_df %>% 
+p = iris_df %>% 
   ggplot(aes(x=Sepal.Length, y=Sepal.Width)) +
   geom_point(aes(color=Species)) # <--- here
+p
 ```
 
 ### Outside the `aes()`
@@ -431,8 +445,8 @@ ggplot(data=iris_df,
 
 ```{r}
 ggplot(data=iris_df,
-       mapping = aes(x=Sepal.Length, y=Sepal.Width, color='blue')) +
-  geom_point()
+       mapping = aes(x=Sepal.Length, y=Sepal.Width)) +
+  geom_point(aes(color='blue'))
 ```
 
 ## Themes
@@ -477,7 +491,7 @@ theme_set(theme_custom)
 p +  labs(x='Sepal length', 
           y='Sepal width',
           
-          color = 'Iris species',
+          # color = 'Iris species',
           # fill =
           # size = 
           # shape = 
@@ -486,7 +500,7 @@ p +  labs(x='Sepal length',
           title = 'Scatter plot', 
           subtitle = 'Subtitle',
           caption = 'It is the great plot',
-          tag = 'A')
+          tag = 'I')
 ```
 
 Simple functions for labeling axes: `+ xlab()` and `+ ylab()`
@@ -495,18 +509,23 @@ Simple functions for labeling axes: `+ xlab()` and `+ ylab()`
 
 ## Scatter plot
 
-> Draw **scatter-plot** (`geom_point`) with **x=Petal.Length, y=Petal.Width** usingclassic theme
+> Draw **scatter-plot** (`geom_point`) with **x=Petal.Length, y=Petal.Width** using classic theme
 
 ```{r}
-# iris_df %>% ggplot()
+iris_df %>% 
+  ggplot() +
+  geom_point(aes(x=Petal.Length, y=Petal.Width)) +
+  theme_classic()
 ```
 
 ## Histogram
 
-> Draw **histogram** (`geom_histogram`) of **Petal.Length** using *blue* `color` and *lightblue* `fill` andclassic theme
+> Draw **histogram** (`geom_histogram`) of **Petal.Length** using *blue* `color` and *lightblue* `fill` and classic theme
 
 ```{r}
-# iris_df %>% ggplot()
+iris_df %>% ggplot(aes(x=Petal.Length )) +
+  geom_histogram(colour = 'black', fill='lightblue', bins=50) +
+  theme_classic()
 ```
 
 ## Density plot
@@ -514,7 +533,8 @@ Simple functions for labeling axes: `+ xlab()` and `+ ylab()`
 > Draw **density plot** (`geom_density`) of **Petal.Length** for every Species filled differently + alpha=0.8 and classic theme
 
 ```{r}
-# iris_df %>% ggplot()
+iris_df %>% ggplot(aes(x=Petal.Length, fill=Species)) +
+  geom_density(alpha=0.6)
 ```
 
 ## Boxplot
@@ -522,7 +542,10 @@ Simple functions for labeling axes: `+ xlab()` and `+ ylab()`
 > Draw a [horizontal]{.underline} **box plot** (`geom_boxplot`) of **Petal.Width** for each species on the y-axis with different fill. Remove legend (why?)
 
 ```{r}
-# iris_df %>% ggplot()
+iris_df %>% ggplot(aes(y=Species, x=Petal.Width, fill=Species)) +
+  geom_boxplot() +
+  theme_classic() +
+  theme(legend.position = 'none')
 ```
 
 > **We can combine custom and built-in themes in one plot!**
@@ -578,7 +601,7 @@ p_col + geom_errorbar(aes(ymin=mean_sepal_len-sd_sepal_length,
 > Draw a **barplot** (`geom_col`) of **Sepal.Length.Category** (x-axis and fill).
 
 ```{r}
-# iris_df %>% ggplot()
+iris_df %>% ggplot(aes(x=Sepal.Length.Category)) + geom_bar()
 ```
 
 ### `position="stack"` (by default)
@@ -660,6 +683,7 @@ bar_dodge = iris_df %>%
 ```{r}
 bar_stack + bar_fill
 ```
+
 ### Collect axes and legends
 
 ```{r}
@@ -668,14 +692,17 @@ bar_stack + bar_fill +
               axes = 'collect')
 ```
 
-
 ```{r}
 (bar_stack | bar_fill) / bar_dodge +
   plot_layout(guides = 'collect') +
-  plot_annotation(tag_levels = 'A')
+  plot_annotation(tag_levels = 'I')
 ```
 
+**Let's try something...**
 
+```{r}
+
+```
 
 ## Saving the plot
 
@@ -684,7 +711,7 @@ bar_stack + bar_fill +
 ```{r}
 ggsave(
   filename = './bigplot.png', # specify the filename (path to file)
-  device = , # png, pdf, jpeg, svg and others
+  device = 'png', # png, pdf, jpeg, svg and others
   dpi = 320, # resolution
   width = 1800,
   height = 1600,
@@ -704,8 +731,6 @@ dev.off()
 ```
 
 This structure allow save into pdf all graphical outputs that between `pdf()` and `dev.off()`
-
-## 
 
 # ggpubr (Advanced)
 

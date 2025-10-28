@@ -57,24 +57,6 @@ Partly taken from
 
 ------------------------------------------------------------------------
 
-### Don't misinform!
-
-![](/images/memes/misleadbarplot.jpg){fig-align="center" width="600"}
-
-------------------------------------------------------------------------
-
-### Don't misinform!
-
-![](/images/memes/misleadcorrectbar.png){fig-align="center" width="600"}
-
-------------------------------------------------------------------------
-
-### However, don't do meaningless graphs
-
-![](/images/memes/lineaxisscale.png){fig-align="center"}
-
-------------------------------------------------------------------------
-
 ### Don't use [Box plots]{.underline} and [Violin plots]{.underline} for small data
 
 ![](/images/memes/smallsample.png){fig-align="center" width="2000"}
@@ -84,6 +66,48 @@ Partly taken from
 ### Don't use [Histograms]{.underline} for small data
 
 ![](/images/memes/smallsample_hist.png){fig-align="center" width="2000"}
+
+------------------------------------------------------------------------
+
+### Don't misinform!
+
+![](/images/memes/misleadbarplot.jpg){fig-align="center" width="600"}
+
+------------------------------------------------------------------------
+
+### Don't misinform! {auto-animate="true"}
+
+::: {.fragment .fade-in}
+Truncated axis
+:::
+
+![](/images/memes/misleadcorrectbar.png){fig-align="center" width="600"}
+
+------------------------------------------------------------------------
+
+### Don't misinform! {auto-animate="true"}
+
+::: {.fragment .fade-in}
+Double axis
+:::
+
+![](/images/financialtimes.jpeg){fig-align="center"}
+
+------------------------------------------------------------------------
+
+### Don't misinform! {auto-animate="true"}
+
+::: {.fragment .fade-in}
+**There are many ways to misinform!**
+:::
+
+![](/images/mat_kapital.jpg){fig-align="center"}
+
+------------------------------------------------------------------------
+
+### However, don't do meaningless graphs
+
+![](/images/memes/lineaxisscale.png){fig-align="center"}
 
 # For visual inspiration {style="text-align: center"}
 
@@ -122,3 +146,7 @@ Partly taken from
 ### [Information Is Beautiful Awards](https://www.informationisbeautifulawards.com/showcase?page=1&type=awards)
 
 ![](/images/iib.png){fig-align="center" width="2000"}
+
+## Meme
+
+![](/images/memes/deer_old.jpeg){fig-align="center"}
