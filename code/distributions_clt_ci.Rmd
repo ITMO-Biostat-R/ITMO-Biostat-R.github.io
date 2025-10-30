@@ -1,7 +1,6 @@
 ---
-title: "CLT"
+title: "Intro into statistics (code)"
 author: Vladislav Stanin  
-date: 01/24/2024
 output:
   html_document:
     toc: true
@@ -31,11 +30,11 @@ theme_custom <- theme(
 theme_set(theme_custom)
 ```
 
-# Distributions and descriptive statistics
-
 ```{r}
 sample_size = 100
 ```
+
+# Distributions
 
 ### Normal distribution
 
