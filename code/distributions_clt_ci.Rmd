@@ -307,8 +307,6 @@ c(
 ### Confidence level
 
 ```{r}
-#| fig-height: 7
-#| fig-width: 10
 
 sample_size = 100 
 n_samples = 1000
@@ -318,7 +316,6 @@ df_trial <- tibble(
   sample_ID = rep(1:n_samples, each=sample_size),
   value = rnorm(sample_size*n_samples, true_mean, 2)
   )
-
 
 quantiles = qnorm(0, 1, p = c(0.025, 0.975))
 
@@ -330,16 +327,25 @@ df_ci = df_trial |> group_by(sample_ID) |>
             conf.max = mu + quantiles[2] * se_sample) |> 
   mutate(out = ifelse((true_mean < conf.max) & (true_mean > conf.min), 'ok', 'missed'))
 
-# df_ci |>  
-  # ggplot(aes(y=)) +
-  # geom_errorbar(aes(xmin = , xmax = , col=)) +
-  # geom_vline(aes(xintercept = ), col='red', lty=2, size=2) +
-  # labs(y="Sample", color='CI covers true mean') 
-  
   
 ```
 
-**Try to change sample size and see what will happen!**
+```{r}
+table(df_ci$out)
+prop.table(table(df_ci$out))
+```
+
+```{r}
+#| fig-height: 7
+#| fig-width: 10
+df_ci |>  
+  ggplot(aes(y=sample_ID)) +
+  geom_errorbar(aes(xmin = conf.min, xmax = conf.max, col=out)) +
+  geom_vline(aes(xintercept = 5), col='red', lty=2, size=1) +
+  labs(y="Sample", color='CI covers true mean') 
+```
+
+> **Try to change sample size and see what will happen!**
 
 ## t-distribution
 
@@ -377,6 +383,41 @@ c(
 )
 ```
 
+### Confidence level
+
+```{r, eval=F}
+# sample_size = 
+# n_samples = 
+# true_mean=
+
+# df_trial_t = tibble(
+  # sample_ID = 
+  # value = 
+  # )
+
+# quantiles = 
+
+
+df_ci_t = df_trial_t |> group_by(sample_ID) |> 
+  summarize(mu = mean(value), 
+            se_sample = se(value), 
+            conf.min = mu + quantiles[1] * se_sample,
+            conf.max = mu + quantiles[2] * se_sample) |> 
+  mutate(out = ifelse((true_mean < conf.max) & (true_mean > conf.min), 'ok', 'missed'))
+```
+
+```{r, eval=FALSE}
+#| fig-height: 7
+#| fig-width: 10
+
+df_ci_t |>  
+  ggplot(aes(y=sample_ID)) +
+  geom_errorbar(aes(xmin = conf.min, xmax = conf.max, col=out)) +
+  geom_vline(aes(xintercept = 5), col='red', lty=2, size=1) +
+  labs(y="Sample", color='CI covers true mean') 
+
+```
+
 **Try different size of sample!**
 
 ### Another method for calculation CI with t-distribution
@@ -385,4 +426,12 @@ Looking only on "*95 percent confidence interval:*"
 
 ```{r}
 t.test(sample)
+```
+
+## rexp()
+
+```{r}
+sample_size = 10
+
+# sample = rexp()
 ```
