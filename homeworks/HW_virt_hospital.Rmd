@@ -30,12 +30,12 @@ What you have to do:
 >
 > Set possibilities of each glucose level - it is your choice, but remember that **sum of probabilities should be equal 1**.
 >
-> **P.S.** If you want, you can make them equally probable or make **5** and **6** the most likely (as in real life).
+> **P.S.** If you want, you can make them equally probable (use `rep()`) or make **5** and **6** the most likely (as in real life).
 
 ```{r echo=FALSE}
 
 # possible_values = 
-# probabilities = rep()
+# probabilities = 
 
 # sum(probabilities) == 1
 ```
@@ -159,7 +159,7 @@ What you have to do:
 >
 > Write code below. Yes, it will be almost the same, but your report will contain all your work and pictures that You'll be able to compare.
 >
-> Write the conclusion. What did you see and why is it so?
+> **Write the conclusion. What did you see and why is it so?**
 
 ```{r}
 
