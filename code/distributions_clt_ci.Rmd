@@ -52,10 +52,10 @@ sd(norm_sample)
 ### Exponential distribution
 
 ```{r}
-exp_sample = rexp(n=sample_size, rate=2)
+exp_sample = rexp(n=sample_size, rate=4)
 
-# mean()
-# sd()
+mean(exp_sample)
+sd(exp_sample)
 ```
 
 ### Uniform distribution
@@ -64,8 +64,8 @@ exp_sample = rexp(n=sample_size, rate=2)
 
 unif_sample = runif(n=sample_size, min=0, max=1)
 
-# mean()
-# sd()
+mean(unif_sample)
+sd(unif_sample)
 ```
 
 ### Discrete (!) distributions
@@ -86,7 +86,8 @@ rpois(n = sample_size, lambda = 1)
 > Show 2.5% and 97.5% **qua[nt]{.underline}iles** of `unif_sample`
 
 ```{r}
-# quantile()
+quantile(norm_sample)
+quantile(unif_sample, pr=c(0.025, 0.975))
 ```
 
 # Sampling
@@ -127,6 +128,7 @@ sum(probs_of_values) == 1
 sample_size = 10
 
 sample_2 = sample(values, sample_size, replace=TRUE, prob=probs_of_values)
+sample_2
 ```
 
 -   `replace=TRUE` for repeatable drawing same values from possible values
@@ -160,7 +162,7 @@ b=10
 ## -> mean = ??
 population = runif(100000, a, b)
 
-sample_size = 100 
+sample_size = 2
 n_samples = 10000
 
 df_trial <- tibble(
@@ -212,7 +214,7 @@ sd(df_standart$z_m)
 ### Sample from uniform distribution
 
 ```{r}
-sample_size = 1000 
+sample_size = 3
 
 sample = runif(n=sample_size, min=0, max=10)
 
@@ -244,11 +246,11 @@ df_means_from_samples |>
 > Write the code!
 
 ```{r}
-sample_size = 1000 
+sample_size = 3 
 
-# sample = rexp()
+sample = rexp(sample_size, rate=1)
 
-# hist()
+hist(sample, breaks = seq(-1,8,0.1))
 ```
 
 #### Generating samples
@@ -260,16 +262,16 @@ n_samples = 1000
 
 df_trial <- data.frame(
   sample_ID = rep(1:n_samples, each=sample_size),
-    # value = 
+    value = rexp(sample_size*n_samples, rate=2) 
   )
-
-df_means_from_samples = df_trial |>
-  # group_by() |> 
-  # summarize()
+  
+df_means_from_samples = 
+  df_trial |> group_by(sample_ID) |> 
+  summarize(m = mean(value)) 
 
 df_means_from_samples |> 
-  # ggplot() +
-  # geom_histogram()
+  ggplot() + 
+  geom_histogram(aes(x=m), bins=30, col='black', fill='skyblue')
 ```
 
 # Confidence intervals

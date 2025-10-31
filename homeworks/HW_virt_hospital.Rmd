@@ -34,11 +34,10 @@ What you have to do:
 
 ```{r echo=FALSE}
 
-possible_values = 2:9
-probabilities = rep(1 / length(possible_values), 
-                    length(possible_values))
+# possible_values = 
+# probabilities = rep()
 
-sum(probabilities) == 1
+# sum(probabilities) == 1
 ```
 
 > Create data-frame with columns **Value** and corresponding **Probability**
@@ -46,12 +45,13 @@ sum(probabilities) == 1
 > Create the **barplot** with **Value** on x-axis and **Probability** on y-axis. Name axis and make it colorful.
 
 ```{r}
-population_df <- data.frame(Value = possible_values, Probability = probabilities)
+# population_df = data.frame(Value = , 
+                           # Probability = )
 
-population_df |> 
-  ggplot(aes(x=Value, y=Probability)) +
-  geom_col(fill='lightblue') +
-  theme_bw()
+# population_df %>%
+  # ggplot() +
+  # 
+  # 
 ```
 
 ## Characteristics of population
@@ -118,12 +118,12 @@ population_df |>
 
 # n_samples = 
 
-df_samples <- data.frame(
+# df_samples <- data.frame(
   # sample_ID = ,
   # value = 
-  )
+  # )
 
-df_samples
+# df_samples
 ```
 
 ## Distribution of means
