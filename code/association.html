@@ -175,9 +175,16 @@ window.Quarto = {
   <ul>
   <li><a href="#two-dichotomous-variables-2-x-2-table" id="toc-two-dichotomous-variables-2-x-2-table" class="nav-link active" data-scroll-target="#two-dichotomous-variables-2-x-2-table">Two dichotomous variables (2 x 2 table)</a>
   <ul class="collapse">
-  <li><a href="#risk-ratio-rr" id="toc-risk-ratio-rr" class="nav-link" data-scroll-target="#risk-ratio-rr">Risk ratio (<span class="math inline">\(RR\)</span>)</a></li>
-  <li><a href="#risk-difference-rd" id="toc-risk-difference-rd" class="nav-link" data-scroll-target="#risk-difference-rd">Risk difference (<span class="math inline">\(RD\)</span>)</a></li>
+  <li><a href="#risk-ratio-rr" id="toc-risk-ratio-rr" class="nav-link" data-scroll-target="#risk-ratio-rr">Risk ratio (<span class="math inline">\(RR\)</span>)</a>
+  <ul class="collapse">
+  <li><a href="#if-there-were-more-cured" id="toc-if-there-were-more-cured" class="nav-link" data-scroll-target="#if-there-were-more-cured"><strong>If there were more cured:</strong></a></li>
+  </ul></li>
+  <li><a href="#risk-difference-rd" id="toc-risk-difference-rd" class="nav-link" data-scroll-target="#risk-difference-rd">Risk difference (<span class="math inline">\(RD\)</span>)</a>
+  <ul class="collapse">
+  <li><a href="#and-if-there-are-more-cured" id="toc-and-if-there-are-more-cured" class="nav-link" data-scroll-target="#and-if-there-are-more-cured"><strong>And if there are more Cured:</strong></a></li>
+  </ul></li>
   <li><a href="#odds-ratio-or" id="toc-odds-ratio-or" class="nav-link" data-scroll-target="#odds-ratio-or">Odds ratio (<span class="math inline">\(OR\)</span>)</a></li>
+  <li><a href="#nb" id="toc-nb" class="nav-link" data-scroll-target="#nb">NB!</a></li>
   </ul></li>
   <li><a href="#continuous-x-categorical" id="toc-continuous-x-categorical" class="nav-link" data-scroll-target="#continuous-x-categorical">Continuous x categorical</a>
   <ul class="collapse">
@@ -210,6 +217,11 @@ window.Quarto = {
   <li><a href="#spearmans-rho" id="toc-spearmans-rho" class="nav-link" data-scroll-target="#spearmans-rho">Spearman’s <span class="math inline">\(\rho\)</span></a></li>
   </ul></li>
   </ul></li>
+  <li><a href="#another-usage-of-rank-correlations" id="toc-another-usage-of-rank-correlations" class="nav-link" data-scroll-target="#another-usage-of-rank-correlations">Another usage of rank correlations</a>
+  <ul class="collapse">
+  <li><a href="#bad-examples" id="toc-bad-examples" class="nav-link" data-scroll-target="#bad-examples">“Bad” Examples</a></li>
+  </ul></li>
+  <li><a href="#always-build-a-scatter-plot" id="toc-always-build-a-scatter-plot" class="nav-link" data-scroll-target="#always-build-a-scatter-plot">Always build a scatter-plot!</a></li>
   <li><a href="#conclusions" id="toc-conclusions" class="nav-link" data-scroll-target="#conclusions">Conclusions</a></li>
   <li><a href="#practice" id="toc-practice" class="nav-link" data-scroll-target="#practice">Practice</a>
   <ul class="collapse">
@@ -331,9 +343,6 @@ window.Quarto = {
 </div>
 <section id="risk-ratio-rr" class="level2">
 <h2 class="anchored" data-anchor-id="risk-ratio-rr">Risk ratio (<span class="math inline">\(RR\)</span>)</h2>
-<ul>
-<li><span class="math inline">\(RR\)</span> = 1 if two variables unassociated</li>
-</ul>
 <p><span class="math inline">\(Risk_{tr}\)</span> (to be dead in case of treatment) = <span class="math inline">\(\dfrac{Dead  | Treatment}{Total\ Treatment}\)</span></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>risk_tr <span class="ot">=</span> contingency_table_big[<span class="st">'Treatment'</span>, <span class="st">'Dead'</span>]<span class="sc">/</span> contingency_table_big[<span class="st">'Treatment'</span>, <span class="st">'Sum'</span>]</span>
@@ -359,7 +368,9 @@ window.Quarto = {
 </div>
 </div>
 <p>There is some association between Treatment and Result - Placebo patients tend to be dead more often.</p>
-<p><strong>If there were more cured:</strong></p>
+<p><strong>NB! The group we are comparing with is usually in the denominator!</strong></p>
+<section id="if-there-were-more-cured" class="level3">
+<h3 class="anchored" data-anchor-id="if-there-were-more-cured"><strong>If there were more cured:</strong></h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>risk_tr_1 <span class="ot">=</span> contingency_table_big[<span class="st">'Treatment'</span>, <span class="st">'Dead'</span>] <span class="sc">/</span> <span class="dv">1020</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>risk_tr_1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -379,6 +390,7 @@ window.Quarto = {
 </div>
 <p>Almost the same <span class="math inline">\(RR\)</span>, despite big number of cured!</p>
 </section>
+</section>
 <section id="risk-difference-rd" class="level2">
 <h2 class="anchored" data-anchor-id="risk-difference-rd">Risk difference (<span class="math inline">\(RD\)</span>)</h2>
 <p><span class="math inline">\(RD = Risk_{tr} - Risk_{pl} =\)</span></p>
@@ -389,12 +401,14 @@ window.Quarto = {
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># RD = </span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="co"># RD</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><strong>And if there are more Cured:</strong></p>
+<section id="and-if-there-are-more-cured" class="level3">
+<h3 class="anchored" data-anchor-id="and-if-there-are-more-cured"><strong>And if there are more Cured:</strong></h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># RD = </span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="co"># RD</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>-&gt; Always show both RR and RD in your text!</strong></p>
+</section>
 </section>
 <section id="odds-ratio-or" class="level2">
 <h2 class="anchored" data-anchor-id="odds-ratio-or">Odds ratio (<span class="math inline">\(OR\)</span>)</h2>
@@ -414,7 +428,95 @@ window.Quarto = {
 <div class="cell">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><strong><em>better use OR than RR …</em></strong></p>
+</section>
+<section id="nb" class="level2">
+<h2 class="anchored" data-anchor-id="nb">NB!</h2>
+<ul>
+<li><strong>RR cannot be used in “case-control studies”, when you know the outcome of the exposure (treatment)</strong></li>
+</ul>
+<p>Since we already know the outcomes and the number of “patients” with each outcome we included in our study. Thus, calculating RISK is meaningless. In such a study, we can only calculate the ‘risk of TREATMENT in the case of CURED’ but not the other way around.</p>
+<ul>
+<li><strong>OR</strong> <strong>may overstate the effect</strong> (in both directions) and <strong>RR may be more “conservative”</strong></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>mat <span class="ot">=</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">45</span>,<span class="dv">55</span>,<span class="dv">10</span>,<span class="dv">90</span>), </span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">dimnames =</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>), <span class="fu">c</span>(<span class="st">"+"</span>, <span class="st">"-"</span>))) <span class="sc">|&gt;</span> <span class="fu">addmargins</span>()</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>mat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     +   - Sum
+A   45  55 100
+B   10  90 100
+Sum 55 145 200</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>RR_1 <span class="ot">=</span> (mat[<span class="dv">1</span>,<span class="dv">1</span>]<span class="sc">/</span>mat[<span class="dv">1</span>,<span class="dv">3</span>])<span class="sc">/</span>(mat[<span class="dv">2</span>,<span class="dv">1</span>]<span class="sc">/</span>mat[<span class="dv">2</span>,<span class="dv">3</span>])</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>OR_1 <span class="ot">=</span> (mat[<span class="dv">1</span>,<span class="dv">1</span>]<span class="sc">/</span>mat[<span class="dv">1</span>,<span class="dv">2</span>])<span class="sc">/</span>(mat[<span class="dv">2</span>,<span class="dv">1</span>]<span class="sc">/</span>mat[<span class="dv">2</span>,<span class="dv">2</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">paste0</span>(<span class="st">'RR = '</span>, <span class="fu">round</span>(RR_1, <span class="dv">6</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "RR = 4.5"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">paste0</span>(<span class="st">'OR = '</span>, <span class="fu">round</span>(OR_1, <span class="dv">6</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "OR = 7.363636"</code></pre>
+</div>
+</div>
+<ul>
+<li><strong>For rare events RR</strong> <span class="math inline">\(\approx\)</span> <strong>OR</strong></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>mat <span class="ot">=</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">999</span>,<span class="dv">17</span>,<span class="dv">983</span>), </span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">dimnames =</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>), <span class="fu">c</span>(<span class="st">"+"</span>, <span class="st">"-"</span>))) <span class="sc">|&gt;</span> <span class="fu">addmargins</span>()</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>mat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     +    -  Sum
+A    1  999 1000
+B   17  983 1000
+Sum 18 1982 2000</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>RR_2 <span class="ot">=</span> (mat[<span class="dv">1</span>,<span class="dv">1</span>]<span class="sc">/</span>mat[<span class="dv">1</span>,<span class="dv">3</span>])<span class="sc">/</span>(mat[<span class="dv">2</span>,<span class="dv">1</span>]<span class="sc">/</span>mat[<span class="dv">2</span>,<span class="dv">3</span>])</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>OR_2 <span class="ot">=</span> (mat[<span class="dv">1</span>,<span class="dv">1</span>]<span class="sc">/</span>mat[<span class="dv">1</span>,<span class="dv">2</span>])<span class="sc">/</span>(mat[<span class="dv">2</span>,<span class="dv">1</span>]<span class="sc">/</span>mat[<span class="dv">2</span>,<span class="dv">2</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">paste0</span>(<span class="st">'RR = '</span>, <span class="fu">round</span>(RR_2, <span class="dv">6</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "RR = 0.058824"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">paste0</span>(<span class="st">'OR = '</span>, <span class="fu">round</span>(OR_2, <span class="dv">6</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "OR = 0.057881"</code></pre>
+</div>
+</div>
+<ul>
+<li><span class="math inline">\(RR\)</span> = <span class="math inline">\(OR\)</span> = 1 if two variables are <u><strong>not</strong></u> associated</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>mat <span class="ot">=</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">50</span>,<span class="dv">50</span>,<span class="dv">100</span>,<span class="dv">100</span>), </span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">dimnames =</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>), <span class="fu">c</span>(<span class="st">"+"</span>, <span class="st">"-"</span>))) <span class="sc">|&gt;</span> <span class="fu">addmargins</span>()</span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>mat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      +   - Sum
+A    50  50 100
+B   100 100 200
+Sum 150 150 300</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>RR_3 <span class="ot">=</span> (mat[<span class="dv">1</span>,<span class="dv">1</span>]<span class="sc">/</span>mat[<span class="dv">1</span>,<span class="dv">3</span>])<span class="sc">/</span>(mat[<span class="dv">2</span>,<span class="dv">1</span>]<span class="sc">/</span>mat[<span class="dv">2</span>,<span class="dv">3</span>])</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>OR_3 <span class="ot">=</span> (mat[<span class="dv">1</span>,<span class="dv">1</span>]<span class="sc">/</span>mat[<span class="dv">1</span>,<span class="dv">2</span>])<span class="sc">/</span>(mat[<span class="dv">2</span>,<span class="dv">1</span>]<span class="sc">/</span>mat[<span class="dv">2</span>,<span class="dv">2</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">paste0</span>(<span class="st">'RR = '</span>, <span class="fu">round</span>(RR_3, <span class="dv">6</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "RR = 1"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">paste0</span>(<span class="st">'OR = '</span>, <span class="fu">round</span>(OR_3, <span class="dv">6</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "OR = 1"</code></pre>
+</div>
+</div>
+<p>-&gt; Probability of <strong>+</strong> and <strong>-</strong> is equal in each group (A and B)</p>
 </section>
 </section>
 <section id="continuous-x-categorical" class="level1">
@@ -422,28 +524,28 @@ window.Quarto = {
 <section id="mean-difference" class="level2">
 <h2 class="anchored" data-anchor-id="mean-difference">Mean difference…</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>data_md <span class="ot">=</span> <span class="fu">data.frame</span>(</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">Meme_category =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">'A'</span>,<span class="st">'B'</span>), <span class="at">each=</span><span class="dv">50</span>) <span class="sc">|&gt;</span> <span class="fu">as.factor</span>(),</span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">Laugh_level =</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="dv">50</span>, <span class="dv">8</span>, <span class="dv">1</span>), <span class="fu">rnorm</span>(<span class="dv">50</span>, <span class="dv">5</span>, <span class="dv">1</span>))</span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>data_md <span class="sc">|&gt;</span> <span class="fu">glimpse</span>(<span class="at">width =</span> <span class="dv">50</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>data_md <span class="ot">=</span> <span class="fu">data.frame</span>(</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">Meme_category =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">'A'</span>,<span class="st">'B'</span>), <span class="at">each=</span><span class="dv">50</span>) <span class="sc">|&gt;</span> <span class="fu">as.factor</span>(),</span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">Laugh_level =</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="dv">50</span>, <span class="dv">8</span>, <span class="dv">1</span>), <span class="fu">rnorm</span>(<span class="dv">50</span>, <span class="dv">5</span>, <span class="dv">1</span>))</span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>data_md <span class="sc">|&gt;</span> <span class="fu">glimpse</span>(<span class="at">width =</span> <span class="dv">50</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 100
 Columns: 2
 $ Meme_category &lt;fct&gt; A, A, A, A, A, A, A, A, A,…
-$ Laugh_level   &lt;dbl&gt; 9.929857, 6.193007, 6.7422…</code></pre>
+$ Laugh_level   &lt;dbl&gt; 8.296423, 9.308628, 6.7563…</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>mean_laughs <span class="ot">=</span> data_md <span class="sc">|&gt;</span> <span class="fu">group_by</span>(Meme_category) <span class="sc">|&gt;</span> <span class="fu">summarise</span>(<span class="at">mean_laugh =</span> <span class="fu">mean</span>(Laugh_level))</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>MD <span class="ot">=</span> mean_laughs<span class="sc">$</span>mean_laugh[mean_laughs<span class="sc">$</span>Meme_category <span class="sc">==</span> <span class="st">'A'</span>] <span class="sc">-</span> </span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  mean_laughs<span class="sc">$</span>mean_laugh[mean_laughs<span class="sc">$</span>Meme_category <span class="sc">==</span> <span class="st">'B'</span>]</span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>MD</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>mean_laughs <span class="ot">=</span> data_md <span class="sc">|&gt;</span> <span class="fu">group_by</span>(Meme_category) <span class="sc">|&gt;</span> <span class="fu">summarise</span>(<span class="at">mean_laugh =</span> <span class="fu">mean</span>(Laugh_level))</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>MD <span class="ot">=</span> mean_laughs<span class="sc">$</span>mean_laugh[mean_laughs<span class="sc">$</span>Meme_category <span class="sc">==</span> <span class="st">'A'</span>] <span class="sc">-</span> </span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>  mean_laughs<span class="sc">$</span>mean_laugh[mean_laughs<span class="sc">$</span>Meme_category <span class="sc">==</span> <span class="st">'B'</span>]</span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>MD</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 3.133561</code></pre>
+<pre><code>[1] 2.756596</code></pre>
 </div>
 </div>
 </section>
@@ -451,6 +553,7 @@ $ Laugh_level   &lt;dbl&gt; 9.929857, 6.193007, 6.7422…</code></pre>
 <section id="continuous-vs-continuous-pearsons-correlation" class="level1">
 <h1>Continuous vs Continuous (Pearson’s correlation)</h1>
 <p><strong>Pearson’s correlation coefficient</strong> measures the <strong>strength</strong> and <strong>direction</strong> of a linear relationship between two variables.</p>
+<p>Based on counting distances of each value (point) from the average value of variable (e.g.&nbsp;<span class="math inline">\(X\)</span> or <span class="math inline">\(Y\)</span>)</p>
 <section id="formula" class="level2">
 <h2 class="anchored" data-anchor-id="formula">Formula</h2>
 <ul>
@@ -471,36 +574,36 @@ $ Laugh_level   &lt;dbl&gt; 9.929857, 6.193007, 6.7422…</code></pre>
 <section id="data" class="level3">
 <h3 class="anchored" data-anchor-id="data">Data</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>plant_height_df <span class="ot">=</span> <span class="fu">tibble</span>(</span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">Plant_ID =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">28</span>,</span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Sunlight_hrs_per_day = rep(4:10, e=4),</span></span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">Sunlight_hrs_per_day =</span> <span class="fu">runif</span>(<span class="dv">28</span>, <span class="dv">4</span>, <span class="dv">10</span>),</span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">Plant_height =</span> Sunlight_hrs_per_day <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">28</span>,<span class="dv">2</span>,<span class="dv">3</span>)</span>
-<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(plant_height_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>plant_height_df <span class="ot">=</span> <span class="fu">tibble</span>(</span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">Plant_ID =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">28</span>,</span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Sunlight_hrs_per_day = rep(4:10, e=4),</span></span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">Sunlight_hrs_per_day =</span> <span class="fu">runif</span>(<span class="dv">28</span>, <span class="dv">4</span>, <span class="dv">10</span>),</span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">Plant_height =</span> Sunlight_hrs_per_day <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">28</span>,<span class="dv">2</span>,<span class="dv">3</span>)</span>
+<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(plant_height_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 3
   Plant_ID Sunlight_hrs_per_day Plant_height
      &lt;int&gt;                &lt;dbl&gt;        &lt;dbl&gt;
-1        1                 5.36         2.45
-2        2                 5.80         9.53
-3        3                 5.04         5.45
-4        4                 8.31         6.99
-5        5                 6.07         8.88
-6        6                 4.04         7.60</code></pre>
+1        1                 6.77         8.65
+2        2                 7.00         9.66
+3        3                 7.53        11.5 
+4        4                 8.14        11.3 
+5        5                 4.94         5.24
+6        6                 5.38         7.14</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> plant_height_df<span class="sc">$</span>Sunlight_hrs_per_day, </span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">y=</span>plant_height_df<span class="sc">$</span>Plant_height, </span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="cn">NULL</span>, </span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Sunlight (hrs/day)"</span>, </span>
-<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Plant height"</span>, <span class="at">pch=</span><span class="dv">19</span>, <span class="at">col=</span><span class="st">'blue'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> plant_height_df<span class="sc">$</span>Sunlight_hrs_per_day, </span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">y=</span>plant_height_df<span class="sc">$</span>Plant_height, </span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="cn">NULL</span>, </span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Sunlight (hrs/day)"</span>, </span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Plant height"</span>, <span class="at">pch=</span><span class="dv">19</span>, <span class="at">col=</span><span class="st">'blue'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="association_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="association_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -512,30 +615,30 @@ $ Laugh_level   &lt;dbl&gt; 9.929857, 6.193007, 6.7422…</code></pre>
 <li><code>cor()</code> - calculates correlation matrix between all features of dataframe</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(plant_height_df<span class="sc">$</span>Sunlight_hrs_per_day, plant_height_df<span class="sc">$</span>Plant_height)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(plant_height_df<span class="sc">$</span>Sunlight_hrs_per_day, plant_height_df<span class="sc">$</span>Plant_height)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.548645</code></pre>
+<pre><code>[1] 0.7294685</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># cor(iris %&gt;%select(where(is.numeric)))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># cor(iris %&gt;%select(where(is.numeric)))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li><code>corr.test()</code> - also tests how far the coefficient is from zero <em>(t-test)</em></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(plant_height_df<span class="sc">$</span>Sunlight_hrs_per_day, </span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>         plant_height_df<span class="sc">$</span>Plant_height)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(plant_height_df<span class="sc">$</span>Sunlight_hrs_per_day, </span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>         plant_height_df<span class="sc">$</span>Plant_height)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Pearson's product-moment correlation
 
 data:  plant_height_df$Sunlight_hrs_per_day and plant_height_df$Plant_height
-t = 3.3461, df = 26, p-value = 0.002502
+t = 5.4379, df = 26, p-value = 1.062e-05
 alternative hypothesis: true correlation is not equal to 0
 95 percent confidence interval:
- 0.2207534 0.7651133
+ 0.4896482 0.8666802
 sample estimates:
-     cor 
-0.548645 </code></pre>
+      cor 
+0.7294685 </code></pre>
 </div>
 </div>
 </section>
@@ -545,42 +648,42 @@ sample estimates:
 <section id="section" class="level3">
 <h3 class="anchored" data-anchor-id="section">1</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>x1<span class="ot">=</span><span class="fu">rnorm</span>(<span class="dv">500</span>)</span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>y1<span class="ot">=</span><span class="fu">rnorm</span>(<span class="dv">500</span>)</span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x1,y1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>x1<span class="ot">=</span><span class="fu">rnorm</span>(<span class="dv">500</span>)</span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>y1<span class="ot">=</span><span class="fu">rnorm</span>(<span class="dv">500</span>)</span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x1,y1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="association_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="association_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(x1, y1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(x1, y1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.01262948</code></pre>
+<pre><code>[1] -0.02250693</code></pre>
 </div>
 </div>
 </section>
 <section id="section-1" class="level3">
 <h3 class="anchored" data-anchor-id="section-1">2</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>x2<span class="ot">=</span><span class="fu">rnorm</span>(<span class="dv">500</span>)</span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>y2<span class="ot">=</span>x2<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">500</span>, <span class="dv">0</span>, <span class="dv">1</span>)</span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x2,y2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>x2<span class="ot">=</span><span class="fu">rnorm</span>(<span class="dv">500</span>)</span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>y2<span class="ot">=</span>x2<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">500</span>, <span class="dv">0</span>, <span class="dv">1</span>)</span>
+<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x2,y2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="association_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="association_files/figure-html/unnamed-chunk-28-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(x2, y2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(x2, y2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] -0.02776476</code></pre>
+<pre><code>[1] 0.05356488</code></pre>
 </div>
 </div>
 <blockquote class="blockquote">
@@ -598,9 +701,9 @@ sample estimates:
 <section id="math-and-physics-grades" class="level2">
 <h2 class="anchored" data-anchor-id="math-and-physics-grades">Math and Physics Grades</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>grades_math_phys <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">math =</span> <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">1</span>,<span class="dv">9</span>,<span class="dv">10</span>,<span class="dv">2</span>,<span class="dv">5</span>),</span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>                             <span class="at">phys =</span> <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">8</span>,<span class="dv">8</span>,<span class="dv">2</span>,<span class="dv">4</span>))</span>
-<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>grades_math_phys</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>grades_math_phys <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">math =</span> <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">1</span>,<span class="dv">9</span>,<span class="dv">10</span>,<span class="dv">2</span>,<span class="dv">5</span>),</span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>                             <span class="at">phys =</span> <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">8</span>,<span class="dv">8</span>,<span class="dv">2</span>,<span class="dv">4</span>))</span>
+<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a>grades_math_phys</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   math phys
 1     5    4
@@ -623,8 +726,11 @@ sample estimates:
 </blockquote>
 <section id="kendalls-tau" class="level3">
 <h3 class="anchored" data-anchor-id="kendalls-tau">Kendall’s <span class="math inline">\(\tau\)</span></h3>
+<ul>
+<li>better when ranks are repeated</li>
+</ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(grades_math_phys, <span class="at">method =</span> <span class="st">'kendall'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(grades_math_phys, <span class="at">method =</span> <span class="st">'kendall'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>         math     phys
 math 1.000000 0.576624
@@ -640,70 +746,169 @@ phys 0.576624 1.000000</code></pre>
 <li><p>Calculated based on ranks</p></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(grades_math_phys, <span class="at">method =</span> <span class="st">'spearman'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(grades_math_phys, <span class="at">method =</span> <span class="st">'spearman'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>          math      phys
 math 1.0000000 0.6775545
 phys 0.6775545 1.0000000</code></pre>
 </div>
 </div>
-<section id="examples" class="level4">
-<h4 class="anchored" data-anchor-id="examples">Examples</h4>
+</section>
+</section>
+</section>
+<section id="another-usage-of-rank-correlations" class="level1">
+<h1>Another usage of rank correlations</h1>
+<p><strong>For continuous data!</strong></p>
+<section id="bad-examples" class="level2">
+<h2 class="anchored" data-anchor-id="bad-examples">“Bad” Examples</h2>
 <ul>
 <li>Non-linear</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">runif</span>(<span class="dv">50</span>, <span class="sc">-</span><span class="dv">10</span>, <span class="dv">10</span>)</span>
-<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> (x <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">50</span>, <span class="dv">0</span>, <span class="dv">2</span>))<span class="sc">^</span><span class="dv">3</span></span>
-<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x,y, <span class="at">pch=</span><span class="dv">19</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">runif</span>(<span class="dv">50</span>, <span class="sc">-</span><span class="dv">10</span>, <span class="dv">10</span>)</span>
+<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> (x <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">50</span>, <span class="dv">0</span>, <span class="dv">2</span>))<span class="sc">^</span><span class="dv">3</span></span>
+<span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x,y, <span class="at">pch=</span><span class="dv">19</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="association_files/figure-html/unnamed-chunk-27-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="association_files/figure-html/unnamed-chunk-33-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(x,y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(x,y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.8072804</code></pre>
+<pre><code>[1] 0.8221853</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(x,y, <span class="at">method =</span> <span class="st">"spearman"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(x,y, <span class="at">method =</span> <span class="st">"spearman"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.9330612</code></pre>
+<pre><code>[1] 0.930084</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># cor(x,y, method = "kendall")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="co"># cor(x,y, method = "kendall")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li>With outliers</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="dv">20</span>,<span class="dv">0</span>,<span class="dv">3</span>), <span class="fu">c</span>(<span class="dv">15</span>, <span class="dv">19</span>))</span>
-<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> <span class="fu">c</span>(x[<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>] <span class="sc">+</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="dv">20</span>,<span class="dv">0</span>,<span class="dv">1</span>)), <span class="dv">0</span>, <span class="dv">0</span>)</span>
-<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x,y, <span class="at">pch=</span><span class="dv">19</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="dv">20</span>,<span class="dv">0</span>,<span class="dv">3</span>), <span class="fu">c</span>(<span class="dv">15</span>, <span class="dv">19</span>))</span>
+<span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> <span class="fu">c</span>(x[<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>] <span class="sc">+</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="dv">20</span>,<span class="dv">0</span>,<span class="dv">1</span>)), <span class="dv">0</span>, <span class="dv">0</span>)</span>
+<span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x,y, <span class="at">pch=</span><span class="dv">19</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="association_files/figure-html/unnamed-chunk-29-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="association_files/figure-html/unnamed-chunk-35-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(x,y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(x,y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.4974633</code></pre>
+<pre><code>[1] 0.396058</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(x,y, <span class="at">method =</span> <span class="st">"spearman"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(x,y, <span class="at">method =</span> <span class="st">"spearman"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.839311</code></pre>
+<pre><code>[1] 0.7173115</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co"># cor(x,y, method = "kendall")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="co"># cor(x,y, method = "kendall")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
-</section>
+<section id="always-build-a-scatter-plot" class="level1">
+<h1>Always build a scatter-plot!</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(anscombe<span class="sc">$</span>x1, anscombe<span class="sc">$</span>y1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Pearson's product-moment correlation
+
+data:  anscombe$x1 and anscombe$y1
+t = 4.2415, df = 9, p-value = 0.00217
+alternative hypothesis: true correlation is not equal to 0
+95 percent confidence interval:
+ 0.4243912 0.9506933
+sample estimates:
+      cor 
+0.8164205 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(anscombe<span class="sc">$</span>x2, anscombe<span class="sc">$</span>y2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Pearson's product-moment correlation
+
+data:  anscombe$x2 and anscombe$y2
+t = 4.2386, df = 9, p-value = 0.002179
+alternative hypothesis: true correlation is not equal to 0
+95 percent confidence interval:
+ 0.4239389 0.9506402
+sample estimates:
+      cor 
+0.8162365 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(anscombe<span class="sc">$</span>x3, anscombe<span class="sc">$</span>y3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Pearson's product-moment correlation
+
+data:  anscombe$x3 and anscombe$y3
+t = 4.2394, df = 9, p-value = 0.002176
+alternative hypothesis: true correlation is not equal to 0
+95 percent confidence interval:
+ 0.4240623 0.9506547
+sample estimates:
+      cor 
+0.8162867 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(anscombe<span class="sc">$</span>x4, anscombe<span class="sc">$</span>y4)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Pearson's product-moment correlation
+
+data:  anscombe$x4 and anscombe$y4
+t = 4.243, df = 9, p-value = 0.002165
+alternative hypothesis: true correlation is not equal to 0
+95 percent confidence interval:
+ 0.4246394 0.9507224
+sample estimates:
+      cor 
+0.8165214 </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(anscombe<span class="sc">$</span>x1, anscombe<span class="sc">$</span>y1, <span class="at">pch=</span><span class="dv">19</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="association_files/figure-html/unnamed-chunk-38-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(anscombe<span class="sc">$</span>x2, anscombe<span class="sc">$</span>y2, <span class="at">pch=</span><span class="dv">19</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="association_files/figure-html/unnamed-chunk-38-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(anscombe<span class="sc">$</span>x3, anscombe<span class="sc">$</span>y3, <span class="at">pch=</span><span class="dv">19</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="association_files/figure-html/unnamed-chunk-38-3.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb93"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(anscombe<span class="sc">$</span>x4, anscombe<span class="sc">$</span>y4, <span class="at">pch=</span><span class="dv">19</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="association_files/figure-html/unnamed-chunk-38-4.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
 </section>
 <section id="conclusions" class="level1">
 <h1>Conclusions</h1>
@@ -723,31 +928,13 @@ phys 0.6775545 1.0000000</code></pre>
 <h2 class="anchored" data-anchor-id="arthritis-dataset">Arthritis dataset</h2>
 <p>Reaction Velocity of an Enzymatic Reaction</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>arth_df <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">'../data/Arthritis.csv'</span>, </span>
-<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">stringsAsFactors =</span> T)</span>
-<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-4"><a href="#cb61-4" aria-hidden="true" tabindex="-1"></a>arth_df <span class="sc">|&gt;</span> <span class="fu">glimpse</span>(<span class="at">width =</span> <span class="dv">50</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Rows: 84
-Columns: 5
-$ ID        &lt;int&gt; 57, 46, 77, 17, 36, 23, 75, 39…
-$ Treatment &lt;fct&gt; Treated, Treated, Treated, Tre…
-$ Sex       &lt;fct&gt; Male, Male, Male, Male, Male, …
-$ Age       &lt;int&gt; 27, 29, 30, 32, 46, 58, 59, 59…
-$ Improved  &lt;fct&gt; Marked, None, None, Marked, Ma…</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="co"># arth_df = read.csv('Arthritis.csv', </span></span>
+<span id="cb94-2"><a href="#cb94-2" aria-hidden="true" tabindex="-1"></a><span class="co">#                    stringsAsFactors = T)</span></span>
+<span id="cb94-3"><a href="#cb94-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-4"><a href="#cb94-4" aria-hidden="true" tabindex="-1"></a><span class="co"># arth_df |&gt; glimpse(width = 50)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>arth_df <span class="sc">|&gt;</span> <span class="fu">summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>       ID          Treatment      Sex          Age          Improved 
- Min.   : 1.00   Placebo:42   Female:49   Min.   :23.00   Marked:42  
- 1st Qu.:21.75   Treated:42   Male  :35   1st Qu.:46.00   None  :42  
- Median :42.50                            Median :57.00              
- Mean   :42.50                            Mean   :53.36              
- 3rd Qu.:63.25                            3rd Qu.:63.00              
- Max.   :84.00                            Max.   :74.00              </code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="co"># arth_df |&gt; summary()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <blockquote class="blockquote">
 <p><strong>Is it more likely to have “Marked Imporved” if you are female?</strong></p>
@@ -756,10 +943,10 @@ $ Improved  &lt;fct&gt; Marked, None, None, Marked, Ma…</code></pre>
 </ul>
 </blockquote>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="co"># cont_table = </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb96"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="co"># cont_table = </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <blockquote class="blockquote">
 <p><strong>Is there a significant difference in the age of women and men?</strong></p>
@@ -771,51 +958,51 @@ $ Improved  &lt;fct&gt; Marked, None, None, Marked, Ma…</code></pre>
 <section id="diamonds-dataset" class="level2">
 <h2 class="anchored" data-anchor-id="diamonds-dataset">Diamonds dataset</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>diamonds_small <span class="ot">=</span> diamonds <span class="sc">|&gt;</span> <span class="fu">slice_sample</span>(<span class="at">n=</span><span class="dv">1000</span>)</span>
-<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a>diamonds_small <span class="sc">|&gt;</span> <span class="fu">glimpse</span>(<span class="at">width =</span> <span class="dv">50</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb98"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a>diamonds_small <span class="ot">=</span> diamonds <span class="sc">|&gt;</span> <span class="fu">slice_sample</span>(<span class="at">n=</span><span class="dv">1000</span>)</span>
+<span id="cb98-2"><a href="#cb98-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-3"><a href="#cb98-3" aria-hidden="true" tabindex="-1"></a>diamonds_small <span class="sc">|&gt;</span> <span class="fu">glimpse</span>(<span class="at">width =</span> <span class="dv">50</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 1,000
 Columns: 10
-$ carat   &lt;dbl&gt; 2.02, 1.01, 0.32, 1.13, 1.21, 0.…
-$ cut     &lt;ord&gt; Ideal, Good, Good, Premium, Idea…
-$ color   &lt;ord&gt; J, H, E, H, E, D, J, E, D, F, F,…
-$ clarity &lt;ord&gt; VS1, VS2, VS2, I1, SI1, VS1, VVS…
-$ depth   &lt;dbl&gt; 61.8, 64.4, 57.0, 62.7, 62.1, 60…
-$ table   &lt;dbl&gt; 57, 58, 60, 59, 56, 60, 54, 55, …
-$ price   &lt;int&gt; 16397, 5331, 780, 3480, 7955, 35…
-$ x       &lt;dbl&gt; 8.06, 6.18, 4.60, 6.58, 6.83, 5.…
-$ y       &lt;dbl&gt; 8.13, 6.24, 4.53, 6.63, 6.88, 5.…
-$ z       &lt;dbl&gt; 5.00, 4.00, 2.60, 4.14, 4.26, 3.…</code></pre>
+$ carat   &lt;dbl&gt; 0.27, 0.77, 0.31, 0.35, 0.51, 1.…
+$ cut     &lt;ord&gt; Ideal, Good, Ideal, Ideal, Ideal…
+$ color   &lt;ord&gt; F, F, I, F, D, I, H, J, D, F, D,…
+$ clarity &lt;ord&gt; VS2, VS2, IF, VS2, VS1, SI1, IF,…
+$ depth   &lt;dbl&gt; 60.9, 60.3, 61.3, 61.4, 62.1, 58…
+$ table   &lt;dbl&gt; 57, 61, 57, 54, 55, 59, 60, 60, …
+$ price   &lt;int&gt; 577, 2911, 652, 706, 1959, 8663,…
+$ x       &lt;dbl&gt; 4.17, 5.89, 4.34, 4.54, 5.14, 7.…
+$ y       &lt;dbl&gt; 4.20, 5.96, 4.40, 4.58, 5.20, 7.…
+$ z       &lt;dbl&gt; 2.55, 3.57, 2.68, 2.80, 3.21, 4.…</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>diamonds_small <span class="sc">|&gt;</span> <span class="fu">summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb100"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a>diamonds_small <span class="sc">|&gt;</span> <span class="fu">summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>     carat               cut      color      clarity        depth      
- Min.   :0.2300   Fair     : 28   D:131   SI1    :242   Min.   :55.20  
- 1st Qu.:0.4000   Good     : 95   E:193   VS2    :220   1st Qu.:61.00  
- Median :0.7000   Very Good:211   F:174   SI2    :179   Median :61.80  
- Mean   :0.7947   Premium  :239   G:205   VS1    :139   Mean   :61.74  
- 3rd Qu.:1.0500   Ideal    :427   H:146   VVS2   : 98   3rd Qu.:62.50  
- Max.   :3.0100                   I:103   VVS1   : 65   Max.   :79.00  
-                                  J: 48   (Other): 57                  
+<pre><code>     carat               cut      color      clarity        depth     
+ Min.   :0.2100   Fair     : 39   D:123   SI1    :247   Min.   :53.1  
+ 1st Qu.:0.3900   Good     : 82   E:193   VS2    :230   1st Qu.:61.1  
+ Median :0.7000   Very Good:245   F:169   SI2    :179   Median :61.9  
+ Mean   :0.7862   Premium  :250   G:196   VS1    :147   Mean   :61.8  
+ 3rd Qu.:1.0400   Ideal    :384   H:152   VVS2   : 77   3rd Qu.:62.6  
+ Max.   :2.4600                   I:107   VVS1   : 76   Max.   :69.9  
+                                  J: 60   (Other): 44                 
      table           price               x               y        
- Min.   :52.00   Min.   :  344.0   Min.   :0.000   Min.   :0.000  
- 1st Qu.:56.00   1st Qu.:  958.8   1st Qu.:4.730   1st Qu.:4.728  
- Median :57.00   Median : 2315.5   Median :5.680   Median :5.705  
- Mean   :57.37   Mean   : 3915.9   Mean   :5.721   Mean   :5.726  
- 3rd Qu.:59.00   3rd Qu.: 5422.8   3rd Qu.:6.550   3rd Qu.:6.543  
- Max.   :73.00   Max.   :18780.0   Max.   :9.410   Max.   :9.320  
+ Min.   :53.00   Min.   :  353.0   Min.   :3.890   Min.   :3.860  
+ 1st Qu.:56.00   1st Qu.:  958.5   1st Qu.:4.700   1st Qu.:4.710  
+ Median :57.00   Median : 2302.0   Median :5.660   Median :5.690  
+ Mean   :57.47   Mean   : 3777.6   Mean   :5.711   Mean   :5.712  
+ 3rd Qu.:59.00   3rd Qu.: 5245.8   3rd Qu.:6.522   3rd Qu.:6.520  
+ Max.   :68.00   Max.   :18663.0   Max.   :8.660   Max.   :8.600  
                                                                   
-       z        
- Min.   :0.000  
- 1st Qu.:2.920  
- Median :3.500  
- Mean   :3.528  
- 3rd Qu.:4.050  
- Max.   :5.760  
-                </code></pre>
+       z       
+ Min.   :2.29  
+ 1st Qu.:2.89  
+ Median :3.52  
+ Mean   :3.53  
+ 3rd Qu.:4.04  
+ Max.   :5.44  
+               </code></pre>
 </div>
 </div>
 <blockquote class="blockquote">
@@ -826,10 +1013,10 @@ $ z       &lt;dbl&gt; 5.00, 4.00, 2.60, 4.14, 4.26, 3.…</code></pre>
 </ul>
 </blockquote>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb102"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb103"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb103-1"><a href="#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 

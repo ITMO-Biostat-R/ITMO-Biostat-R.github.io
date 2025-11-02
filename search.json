@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Biostatistics in R",
     "section": "",
-    "text": "Lecture data\n\nBasic R\n\nDownload\n\nWorking with Dataframes\n\nDownload\n\nVisualization\n\nDownload\n\nIntro into statistics\n\nDownload\n\n\n\n\n\n\nPresentations\n\nVisualization sins and inspirations\nDistributions and statistics\n\n\n\nHomeworks\n\nHW #1\n\nDownload\n\nHW #2\n\nDownload\nReference plots\n\nHW #3\n\nDownload"
+    "text": "Lecture data\n\nBasic R\n\nDownload\n\nWorking with Dataframes\n\nDownload\n\nVisualization\n\nDownload\n\nIntro into statistics\n\nDownload\n\nAssociation\n\nDownload\n\n\n\n\nPresentations\n\nVisualization sins and inspirations\nDistributions and statistics\n\n\n\nHomeworks\n\nHW #1\n\nDownload\n\nHW #2\n\nDownload\nReference plots\n\nHW #3\n\nDownload"
   },
   {
     "objectID": "presentations/distributions.html#types-of-data",
@@ -584,71 +584,71 @@
     "objectID": "presentations/testing.html#testing-plan",
     "href": "presentations/testing.html#testing-plan",
     "title": "Intro to testing",
-    "section": "",
-    "text": "1) What we want to test? (Hypotheses about population)\n\n2) Choose significance level\n3) Choose the test\n4) Conduct the experiment\n5) Conduct the test\n6) Conclusion"
+    "section": "Testing plan",
+    "text": "Testing plan\n1) What we want to test? (Hypotheses about population)\n\n2) Choose significance level\n3) Choose the test\n4) Conduct the experiment\n5) Conduct the test\n6) Conclusion"
   },
   {
     "objectID": "presentations/testing.html#hypotheses",
     "href": "presentations/testing.html#hypotheses",
     "title": "Intro to testing",
-    "section": "",
-    "text": "In statistical testing, we will operate with hypotheses. There are two basic hypotheses:\n\nNull Hypothesis (\\(H_0\\)) - There is no effect in population\nAlternative Hypothesis (\\(H_A\\)) - There is an effect in population\n\n\nUsually we are interested in having an effect, as it means some discovery, and rejecting null hypothesis"
+    "section": "Hypotheses",
+    "text": "Hypotheses\nIn statistical testing, we will operate with hypotheses. There are two basic hypotheses:\n\nNull Hypothesis (\\(H_0\\)) - There is no effect in population\nAlternative Hypothesis (\\(H_A\\)) - There is an effect in population\n\n\nUsually we are interested in having an effect, as it means some discovery, and rejecting null hypothesis"
   },
   {
     "objectID": "presentations/testing.html#testing-plan-1",
     "href": "presentations/testing.html#testing-plan-1",
     "title": "Intro to testing",
-    "section": "",
-    "text": "1) What we want to test? Hypotheses\n\n2) Choose significance level\n\n3) Choose the test\n4) Conduct the experiment\n5) Conduct the test\n6) Conclusion\n\n\n\n\n\n\nError of rejecting \\(H_0\\) when \\(H_0\\) is true\n\n\n\n\nError of accepting \\(H_0\\) when \\(H_0\\) is false\n\n\n\n\n\n\n\n\nReality: True\nReality: False\n\n\n\n\nMeasured: True\nCorrect 😊\nType 1 Error\n\n\nMeasured: False\nType 2 Error\nCorrect 😊\n\n\n\n\nProbability of Type I error (\\(\\alpha\\))\nProbability of Type II error (\\(\\beta\\))"
+    "section": "Testing plan",
+    "text": "Testing plan\n\n1) What we want to test? Hypotheses\n\n2) Choose significance level\n\n3) Choose the test\n4) Conduct the experiment\n5) Conduct the test\n6) Conclusion"
   },
   {
     "objectID": "presentations/testing.html#significance-level",
     "href": "presentations/testing.html#significance-level",
     "title": "Intro to testing",
-    "section": "",
-    "text": "Before testing we must define value \\(\\alpha\\) named significance level\nSignificance level (\\(\\alpha\\)) - predetermined threshold of rejecting \\(H_0\\).\n\nFor example we set \\(\\alpha = 0.05\\) and got p-value &lt; \\(\\alpha\\):\nWe reject the \\(H_0\\) at the \\(\\alpha = 0.05\\) significance level, indicating that there is sufficient evidence to conclude that the observed result is unlikely to have occurred under the null hypothesis.\n\nThus we fix the Type 1 Error , but Type 2 Error still can be large!\nThe value \\(1-\\beta\\) called the power of the test. The smaller is the probability of type II error, the more powerful is the test."
+    "section": "Significance level",
+    "text": "Significance level\nBefore testing we must define value \\(\\alpha\\) named significance level\nSignificance level (\\(\\alpha\\)) - predetermined threshold of rejecting \\(H_0\\).\n\nFor example we set \\(\\alpha = 0.05\\) and got p-value &lt; \\(\\alpha\\):\nWe reject the \\(H_0\\) at the \\(\\alpha = 0.05\\) significance level, indicating that there is sufficient evidence to conclude that the observed result is unlikely to have occurred under the null hypothesis.\n\nThus we fix the Type 1 Error , but Type 2 Error still can be large!\nThe value \\(1-\\beta\\) called the power of the test. The smaller is the probability of type II error, the more powerful is the test."
   },
   {
     "objectID": "presentations/testing.html#significance-level-1",
     "href": "presentations/testing.html#significance-level-1",
     "title": "Intro to testing",
-    "section": "",
-    "text": "Medical/Pharmaceutical: \\(\\alpha = 0.01\\) is common to avoid false positives.\nPsychology/Social: Typically \\(\\alpha = 0.05\\).\nEconomics/Business: Sometimes \\(\\alpha = 0.1\\) is acceptable"
+    "section": "Significance level",
+    "text": "Significance level\nExamples\n\nMedical/Pharmaceutical: \\(\\alpha = 0.01\\) is common to avoid false positives.\nPsychology/Social: Typically \\(\\alpha = 0.05\\).\nEconomics/Business: Sometimes \\(\\alpha = 0.1\\) is acceptable"
   },
   {
     "objectID": "presentations/testing.html#testing-plan-2",
     "href": "presentations/testing.html#testing-plan-2",
     "title": "Intro to testing",
-    "section": "",
-    "text": "1) What we want to test? (Hypotheses)\n2) Choose significance level\n\n3) Choose the test\n\nTest’s functionality (first)\nTest’s assumptions (second)\n\n\n4) Conduct the experiment\n5) Conduct the test\n6) Conclusion"
+    "section": "Testing plan",
+    "text": "Testing plan\n\n1) What we want to test? (Hypotheses)\n2) Choose significance level\n\n3) Choose the test\n\nTest’s functionality\nTest’s assumptions\n\n\n4) Conduct the experiment\n5) Conduct the test\n6) Conclusion"
   },
   {
     "objectID": "presentations/testing.html#tests-functionality",
     "href": "presentations/testing.html#tests-functionality",
     "title": "Intro to testing",
-    "section": "",
-    "text": "Does it test my hypothesis?\nIs my hypothesis is the hypothesis this test checking?\n\nI’m checking the difference between the average hemoglobin levels in sick and healthy people. T-test should be suitable for this"
+    "section": "Test’s functionality",
+    "text": "Test’s functionality\nDoes it test my hypothesis?\nIs my hypothesis is the hypothesis this test checking?\n\nI’m checking the difference between the average hemoglobin levels in sick and healthy people. T-test should be suitable for this"
   },
   {
     "objectID": "presentations/testing.html#tests-assumptions",
     "href": "presentations/testing.html#tests-assumptions",
     "title": "Intro to testing",
-    "section": "",
-    "text": "The conditions, the fulfillment of which ensures control over the quality of the test results\nAnd the opposite is not true !!\n\nFor example, fulfillment of assumptions can guarantee fixed Type I error\nAnd if assumptions are violated, it doesn’t mean Type I error will be big\n(but it still can be)\n\n\nT-test is good for big samples with distributions where average makes sense"
+    "section": "Test’s assumptions",
+    "text": "Test’s assumptions\nThe conditions, the fulfillment of which ensures control over the quality of the test results\nAnd the opposite is not true !!\n\nFor example, fulfillment of assumptions can guarantee fixed Type I error\nAnd if assumptions are violated, it doesn’t mean Type I error will be big\n(but it still can be)\n\n\nT-test is good for big samples with distributions where average makes sense"
   },
   {
     "objectID": "presentations/testing.html#one-data-several-hypothesis",
     "href": "presentations/testing.html#one-data-several-hypothesis",
     "title": "Intro to testing",
-    "section": "",
-    "text": "\\(X\\) - Days in hospital\n\nDivide patients into 2 groups by many days or few (e.g. &lt;&gt;15 days)\nRed - with pneumonia\nBlue - without pneumonia\n\\(H_0\\) - there’s no association between pneumonia and days in the hospital\n\\(\\Rightarrow \\chi^2\\) test"
+    "section": "One data, several hypothesis",
+    "text": "One data, several hypothesis\n\n\n\n\\(X\\) - Days in hospital\n\nDivide patients into 2 groups by many days or few (e.g. &lt;&gt;15 days)\nRed - with pneumonia\nBlue - without pneumonia\n\\(H_0\\) - there’s no association between pneumonia and days in the hospital\n\\(\\Rightarrow \\chi^2\\) test"
   },
   {
     "objectID": "presentations/testing.html#one-data-several-hypothesis-1",
     "href": "presentations/testing.html#one-data-several-hypothesis-1",
     "title": "Intro to testing",
-    "section": "",
-    "text": "\\(X\\) - Students’ exam scores\n\nRed - First group\nBlue - Second group\n\\(H_0\\) - Score of students from First group and Second group are the same\n\\(\\Rightarrow\\) Mann-Whitney test"
+    "section": "One data, several hypothesis",
+    "text": "One data, several hypothesis\n\n\n\n\\(X\\) - Students’ exam scores\n\nRed - First group\nBlue - Second group\n\\(H_0\\) - Score of students from First group and Second group are the same\n\\(\\Rightarrow\\) Mann-Whitney test"
   },
   {
     "objectID": "presentations/testing.html#testing-plan-3",
@@ -669,7 +669,7 @@
     "href": "presentations/testing.html#test-result",
     "title": "Intro to testing",
     "section": "Test result",
-    "text": "Test result\nThe tests result in test statistic and the p-value .\n\nEach test have its formula to calculate called test statistic. This value has its own distribution (e.g. t-distribution for the t-statistic from t-test).\np-value - the probability that, given a true null hypothesis, your observations will result in such or more extreme value of test statistic\n\n\nThe smaller the p-value, the less likely we are to get our result under the null hypothesis, which states that there is no effect."
+    "text": "Test result\nThe tests result in test statistic and the p-value .\n\nEach test have its formula to calculate called test statistic. This value has its own distribution (e.g. t-distribution for the t-statistic from t-test).\np-value - the probability that, given a true null hypothesis, your observations will result in such or more extreme value of test statistic\n\n\nThe smaller the p-value, the less likely we are to get our result under the null hypothesis, which states that there is no effect.\n\nThe p-value does not indicate the magnitude of the effect!"
   },
   {
     "objectID": "presentations/testing.html#pipeline",
@@ -683,7 +683,7 @@
     "href": "presentations/testing.html#parameters-of-test-statistics-distributions",
     "title": "Intro to testing",
     "section": "Parameters of test statistics’ distributions",
-    "text": "Parameters of test statistics’ distributions\n\nDegrees of freedom!\n\nOften calculated based on number of observations, groups and coefficients.\nDetermines the shape of distribution!\n\n\n-&gt; Amount of data affects testing results!\n\n\nOther parameters…\n\nMean, SD\nRate, shape"
+    "text": "Parameters of test statistics’ distributions\nDegrees of freedom!\n\nOften calculated based on number of observations, groups and coefficients.\nDetermines the shape of distribution!\n\n\n-&gt; Amount of data affects testing results!\n\nOther parameters…\n\nMean, SD\nRate, shape"
   },
   {
     "objectID": "presentations/testing.html#t-distribution-for-different-dfs",
@@ -697,7 +697,7 @@
     "href": "presentations/testing.html#p-value-calculation",
     "title": "Intro to testing",
     "section": "p-value calculation",
-    "text": "p-value calculation\n\n\n\n\n\n\n\np-value \\(\\geq \\alpha\\)\nSince the p-value greater than chosen significance level (\\(\\alpha\\)) we fail to reject \\(H_0\\)\n\n\np-value \\(&lt; \\alpha\\)\nSince the p-value is less than chosen significance level (\\(\\alpha\\)), we reject \\(H_0\\) and conclude that there is sufficient statistical evidence to support \\(H_A\\)"
+    "text": "p-value calculation"
   },
   {
     "objectID": "presentations/testing.html#one-sided-hypothesis",
@@ -718,7 +718,7 @@
     "href": "presentations/testing.html#how-to-calculate-critical-value-of-test-statistic",
     "title": "Intro to testing",
     "section": "How to calculate critical value of test statistic?",
-    "text": "How to calculate critical value of test statistic?\nExample for T-distribution\n\nOne-sided hypotheses\n\n\nqt(0.95, df=19)\n\n[1] 1.729133\n\nqt(0.05, df=19)\n\n[1] -1.729133\n\n\n\n\n\nTwo-sided hypothesis\n\n\nqt(0.975, df=19)\n\n[1] 2.093024\n\nqt(0.025, df=19)\n\n[1] -2.093024"
+    "text": "How to calculate critical value of test statistic?\nExample for T-distribution\nOne-sided hypotheses\n\n\nqt(0.95, df=19)\n\n[1] 1.729133\n\nqt(0.05, df=19)\n\n[1] -1.729133\n\n\n\nTwo-sided hypothesis\n\n\nqt(0.975, df=19)\n\n[1] 2.093024\n\nqt(0.025, df=19)\n\n[1] -2.093024"
   },
   {
     "objectID": "presentations/testing.html#another-pitfalls",
@@ -739,7 +739,7 @@
     "href": "presentations/testing.html#multiple-comparisons-1",
     "title": "Intro to testing",
     "section": "Multiple comparisons",
-    "text": "Multiple comparisons\n\nCorrections!\nControlling the FWER - probability of making at least one Type I error.\n\nBonferroni\nHolm-Bonferroni\nŠidák\n\nControlling the FDR - expected proportion of false positives among all significant tests.\n\nBenjamini-Hochberg\nBenjamini-Yekutieli"
+    "text": "Multiple comparisons\nCorrections!\nControlling the FWER - probability of making at least one Type I error.\n\nBonferroni\nHolm-Bonferroni\nŠidák\n\nControlling the FDR - expected proportion of false positives among all significant tests.\n\nBenjamini-Hochberg\nBenjamini-Yekutieli"
   },
   {
     "objectID": "presentations/visual_sins_inspiration.html#visualization-sins-1",
@@ -1181,5 +1181,110 @@
     "title": "Virtual hospital HW",
     "section": "Standard error",
     "text": "Standard error\n\nCalculate SE using means in df_sample_mean\n\n\n# error =\n# print(error)"
+  },
+  {
+    "objectID": "presentations/testing.html#tests-assumptions-1",
+    "href": "presentations/testing.html#tests-assumptions-1",
+    "title": "Intro to testing",
+    "section": "Test’s assumptions",
+    "text": "Test’s assumptions\nExamples\n\nThe particular distribution of population (e.g. normal)\nThe equality of variances\nThe independence of groups\nThe type of data (categorical, numerical and etc.)"
+  },
+  {
+    "objectID": "code/association.html",
+    "href": "code/association.html",
+    "title": "Association between variables",
+    "section": "",
+    "text": "Cured\nDead\nRow Total\n\n\n\n\nTreatment\n12\n8\n20\n\n\nPlacebo\n6\n10\n16\n\n\nColumn Total\n18\n18\n36\n\n\n\n\ndata_cure = data.frame(\n  Patient_ID = 1:36,\n  Group = factor(c(rep(\"Treatment\", 12), rep(\"Placebo\", 6), rep(\"Treatment\", 8), rep(\"Placebo\", 10))),\n  Outcome = factor(rep(c('Cured', 'Dead'), e=18)))\n\ndata_cure %&gt;%  head()\n\n  Patient_ID     Group Outcome\n1          1 Treatment   Cured\n2          2 Treatment   Cured\n3          3 Treatment   Cured\n4          4 Treatment   Cured\n5          5 Treatment   Cured\n6          6 Treatment   Cured\n\n\n\ncontingency_table = table(data_cure$Group, data_cure$Outcome)\ncontingency_table\n\n           \n            Cured Dead\n  Placebo       6   10\n  Treatment    12    8\n\n\n\ncontingency_table_big = addmargins(contingency_table)\ncontingency_table_big\n\n           \n            Cured Dead Sum\n  Placebo       6   10  16\n  Treatment    12    8  20\n  Sum          18   18  36\n\n\n\n\n\\(Risk_{tr}\\) (to be dead in case of treatment) = \\(\\dfrac{Dead  | Treatment}{Total\\ Treatment}\\)\n\nrisk_tr = contingency_table_big['Treatment', 'Dead']/ contingency_table_big['Treatment', 'Sum']\nrisk_tr\n\n[1] 0.4\n\n\n\\(Risk_{pl}\\) (to be dead in case of Placebo) = \\(\\dfrac{Dead  | Placebo}{Total\\ Treatment}\\) =\n\nrisk_pl = contingency_table_big['Placebo', 'Dead']/ contingency_table_big['Placebo', 'Sum']\nrisk_pl\n\n[1] 0.625\n\n\nRisk ratio (\\(RR\\)) = \\(\\dfrac{Risk_{tr}}{Risk_{pl}} =\\)\n\nRR = risk_pl / risk_tr\nRR\n\n[1] 1.5625\n\n\nThere is some association between Treatment and Result - Placebo patients tend to be dead more often.\nNB! The group we are comparing with is usually in the denominator!\n\n\n\nrisk_tr_1 = contingency_table_big['Treatment', 'Dead'] / 1020\nrisk_tr_1\n\n[1] 0.007843137\n\nrisk_pl_1 = contingency_table_big['Placebo', 'Dead'] / 1016\nrisk_pl_1\n\n[1] 0.00984252\n\nRR = risk_pl_1 / risk_tr_1\nRR\n\n[1] 1.254921\n\n\nAlmost the same \\(RR\\), despite big number of cured!\n\n\n\n\n\\(RD = Risk_{tr} - Risk_{pl} =\\)\n\nUse variables created above\n\n\n# RD = \n# RD\n\n\n\n\n# RD = \n# RD\n\n-&gt; Always show both RR and RD in your text!\n\n\n\n\n\\(Odds_{tr} = \\dfrac{Dead  | Treatment}{Cured | Treatment} =\\)\n\n# odds_tr = \n\n\\(Odds_{pl} = \\dfrac{Dead  | Placebo}{Cured | Placebo} =\\)\n\n# odds_pl = \n\n\\(Odds \\ ratio \\ (OR) = \\dfrac{Odds_{tr}}{Odds_{pl}} =\\)\n\n# OR = \n\nAnd if there are more Cured:\n\n# \n\n\n\n\n\nRR cannot be used in “case-control studies”, when you know the outcome of the exposure (treatment)\n\nSince we already know the outcomes and the number of “patients” with each outcome we included in our study. Thus, calculating RISK is meaningless. In such a study, we can only calculate the ‘risk of TREATMENT in the case of CURED’ but not the other way around.\n\nOR may overstate the effect (in both directions) and RR may be more “conservative”\n\n\nmat = matrix(c(45,55,10,90), \n             nrow = 2, byrow = TRUE,\n             dimnames = list(c(\"A\", \"B\"), c(\"+\", \"-\"))) |&gt; addmargins()\nmat\n\n     +   - Sum\nA   45  55 100\nB   10  90 100\nSum 55 145 200\n\nRR_1 = (mat[1,1]/mat[1,3])/(mat[2,1]/mat[2,3])\nOR_1 = (mat[1,1]/mat[1,2])/(mat[2,1]/mat[2,2])\n\n\npaste0('RR = ', round(RR_1, 6))\n\n[1] \"RR = 4.5\"\n\npaste0('OR = ', round(OR_1, 6))\n\n[1] \"OR = 7.363636\"\n\n\n\nFor rare events RR \\(\\approx\\) OR\n\n\nmat = matrix(c(1,999,17,983), \n             nrow = 2, byrow = TRUE,\n             dimnames = list(c(\"A\", \"B\"), c(\"+\", \"-\"))) |&gt; addmargins()\nmat\n\n     +    -  Sum\nA    1  999 1000\nB   17  983 1000\nSum 18 1982 2000\n\nRR_2 = (mat[1,1]/mat[1,3])/(mat[2,1]/mat[2,3])\nOR_2 = (mat[1,1]/mat[1,2])/(mat[2,1]/mat[2,2])\n\n\npaste0('RR = ', round(RR_2, 6))\n\n[1] \"RR = 0.058824\"\n\npaste0('OR = ', round(OR_2, 6))\n\n[1] \"OR = 0.057881\"\n\n\n\n\\(RR\\) = \\(OR\\) = 1 if two variables are not associated\n\n\nmat = matrix(c(50,50,100,100), \n             nrow = 2, byrow = TRUE,\n             dimnames = list(c(\"A\", \"B\"), c(\"+\", \"-\"))) |&gt; addmargins()\nmat\n\n      +   - Sum\nA    50  50 100\nB   100 100 200\nSum 150 150 300\n\nRR_3 = (mat[1,1]/mat[1,3])/(mat[2,1]/mat[2,3])\nOR_3 = (mat[1,1]/mat[1,2])/(mat[2,1]/mat[2,2])\n\n\npaste0('RR = ', round(RR_3, 6))\n\n[1] \"RR = 1\"\n\npaste0('OR = ', round(OR_3, 6))\n\n[1] \"OR = 1\"\n\n\n-&gt; Probability of + and - is equal in each group (A and B)"
+  },
+  {
+    "objectID": "code/association.html#risk-ratio-rr",
+    "href": "code/association.html#risk-ratio-rr",
+    "title": "Association between variables",
+    "section": "",
+    "text": "\\(Risk_{tr}\\) (to be dead in case of treatment) = \\(\\dfrac{Dead  | Treatment}{Total\\ Treatment}\\)\n\nrisk_tr = contingency_table_big['Treatment', 'Dead']/ contingency_table_big['Treatment', 'Sum']\nrisk_tr\n\n[1] 0.4\n\n\n\\(Risk_{pl}\\) (to be dead in case of Placebo) = \\(\\dfrac{Dead  | Placebo}{Total\\ Treatment}\\) =\n\nrisk_pl = contingency_table_big['Placebo', 'Dead']/ contingency_table_big['Placebo', 'Sum']\nrisk_pl\n\n[1] 0.625\n\n\nRisk ratio (\\(RR\\)) = \\(\\dfrac{Risk_{tr}}{Risk_{pl}} =\\)\n\nRR = risk_pl / risk_tr\nRR\n\n[1] 1.5625\n\n\nThere is some association between Treatment and Result - Placebo patients tend to be dead more often.\nNB! The group we are comparing with is usually in the denominator!\n\n\n\nrisk_tr_1 = contingency_table_big['Treatment', 'Dead'] / 1020\nrisk_tr_1\n\n[1] 0.007843137\n\nrisk_pl_1 = contingency_table_big['Placebo', 'Dead'] / 1016\nrisk_pl_1\n\n[1] 0.00984252\n\nRR = risk_pl_1 / risk_tr_1\nRR\n\n[1] 1.254921\n\n\nAlmost the same \\(RR\\), despite big number of cured!"
+  },
+  {
+    "objectID": "code/association.html#risk-difference-rd",
+    "href": "code/association.html#risk-difference-rd",
+    "title": "Association between variables",
+    "section": "",
+    "text": "\\(RD = Risk_{tr} - Risk_{pl} =\\)\n\nUse variables created above\n\n\n# RD = \n# RD\n\n\n\n\n# RD = \n# RD\n\n-&gt; Always show both RR and RD in your text!"
+  },
+  {
+    "objectID": "code/association.html#odds-ratio-or",
+    "href": "code/association.html#odds-ratio-or",
+    "title": "Association between variables",
+    "section": "",
+    "text": "\\(Odds_{tr} = \\dfrac{Dead  | Treatment}{Cured | Treatment} =\\)\n\n# odds_tr = \n\n\\(Odds_{pl} = \\dfrac{Dead  | Placebo}{Cured | Placebo} =\\)\n\n# odds_pl = \n\n\\(Odds \\ ratio \\ (OR) = \\dfrac{Odds_{tr}}{Odds_{pl}} =\\)\n\n# OR = \n\nAnd if there are more Cured:\n\n#"
+  },
+  {
+    "objectID": "code/association.html#nb",
+    "href": "code/association.html#nb",
+    "title": "Association between variables",
+    "section": "",
+    "text": "RR cannot be used in “case-control studies”, when you know the outcome of the exposure (treatment)\n\nSince we already know the outcomes and the number of “patients” with each outcome we included in our study. Thus, calculating RISK is meaningless. In such a study, we can only calculate the ‘risk of TREATMENT in the case of CURED’ but not the other way around.\n\nOR may overstate the effect (in both directions) and RR may be more “conservative”\n\n\nmat = matrix(c(45,55,10,90), \n             nrow = 2, byrow = TRUE,\n             dimnames = list(c(\"A\", \"B\"), c(\"+\", \"-\"))) |&gt; addmargins()\nmat\n\n     +   - Sum\nA   45  55 100\nB   10  90 100\nSum 55 145 200\n\nRR_1 = (mat[1,1]/mat[1,3])/(mat[2,1]/mat[2,3])\nOR_1 = (mat[1,1]/mat[1,2])/(mat[2,1]/mat[2,2])\n\n\npaste0('RR = ', round(RR_1, 6))\n\n[1] \"RR = 4.5\"\n\npaste0('OR = ', round(OR_1, 6))\n\n[1] \"OR = 7.363636\"\n\n\n\nFor rare events RR \\(\\approx\\) OR\n\n\nmat = matrix(c(1,999,17,983), \n             nrow = 2, byrow = TRUE,\n             dimnames = list(c(\"A\", \"B\"), c(\"+\", \"-\"))) |&gt; addmargins()\nmat\n\n     +    -  Sum\nA    1  999 1000\nB   17  983 1000\nSum 18 1982 2000\n\nRR_2 = (mat[1,1]/mat[1,3])/(mat[2,1]/mat[2,3])\nOR_2 = (mat[1,1]/mat[1,2])/(mat[2,1]/mat[2,2])\n\n\npaste0('RR = ', round(RR_2, 6))\n\n[1] \"RR = 0.058824\"\n\npaste0('OR = ', round(OR_2, 6))\n\n[1] \"OR = 0.057881\"\n\n\n\n\\(RR\\) = \\(OR\\) = 1 if two variables are not associated\n\n\nmat = matrix(c(50,50,100,100), \n             nrow = 2, byrow = TRUE,\n             dimnames = list(c(\"A\", \"B\"), c(\"+\", \"-\"))) |&gt; addmargins()\nmat\n\n      +   - Sum\nA    50  50 100\nB   100 100 200\nSum 150 150 300\n\nRR_3 = (mat[1,1]/mat[1,3])/(mat[2,1]/mat[2,3])\nOR_3 = (mat[1,1]/mat[1,2])/(mat[2,1]/mat[2,2])\n\n\npaste0('RR = ', round(RR_3, 6))\n\n[1] \"RR = 1\"\n\npaste0('OR = ', round(OR_3, 6))\n\n[1] \"OR = 1\"\n\n\n-&gt; Probability of + and - is equal in each group (A and B)"
+  },
+  {
+    "objectID": "code/association.html#mean-difference",
+    "href": "code/association.html#mean-difference",
+    "title": "Association between variables",
+    "section": "Mean difference…",
+    "text": "Mean difference…\n\ndata_md = data.frame(\n  Meme_category = rep(c('A','B'), each=50) |&gt; as.factor(),\n  Laugh_level = c(rnorm(50, 8, 1), rnorm(50, 5, 1))\n)\n\ndata_md |&gt; glimpse(width = 50)\n\nRows: 100\nColumns: 2\n$ Meme_category &lt;fct&gt; A, A, A, A, A, A, A, A, A,…\n$ Laugh_level   &lt;dbl&gt; 8.296423, 9.308628, 6.7563…\n\n\n\nmean_laughs = data_md |&gt; group_by(Meme_category) |&gt; summarise(mean_laugh = mean(Laugh_level))\n\nMD = mean_laughs$mean_laugh[mean_laughs$Meme_category == 'A'] - \n  mean_laughs$mean_laugh[mean_laughs$Meme_category == 'B']\n\nMD\n\n[1] 2.756596"
+  },
+  {
+    "objectID": "code/association.html#formula",
+    "href": "code/association.html#formula",
+    "title": "Association between variables",
+    "section": "Formula",
+    "text": "Formula\n\nPearson’s correlation coefficient:\n\\(\\rho = \\dfrac{\\sum (X_i - \\bar{X})(Y_i - \\bar{Y})}{\\sqrt{\\sum (X_i - \\bar{X})^2 \\sum (Y_i - \\bar{Y})^2}} \\in [-1;1]\\)\n\n\nInterpretation\n\n\\(−1\\) indicates a perfect negative (inverse) linear relationship.\n\\(+1\\) indicates a perfect positive linear relationship.\n\\(0\\) indicates no linear relationship."
+  },
+  {
+    "objectID": "code/association.html#is-there-a-relationship-between-temperature-and-metabolic-rate",
+    "href": "code/association.html#is-there-a-relationship-between-temperature-and-metabolic-rate",
+    "title": "Association between variables",
+    "section": "Is there a relationship between temperature and metabolic rate?",
+    "text": "Is there a relationship between temperature and metabolic rate?\n\nData\n\nplant_height_df = tibble(\n  Plant_ID = 1:28,\n  # Sunlight_hrs_per_day = rep(4:10, e=4),\n  Sunlight_hrs_per_day = runif(28, 4, 10),\n  Plant_height = Sunlight_hrs_per_day + rnorm(28,2,3)\n)\n\nhead(plant_height_df)\n\n# A tibble: 6 × 3\n  Plant_ID Sunlight_hrs_per_day Plant_height\n     &lt;int&gt;                &lt;dbl&gt;        &lt;dbl&gt;\n1        1                 6.77         8.65\n2        2                 7.00         9.66\n3        3                 7.53        11.5 \n4        4                 8.14        11.3 \n5        5                 4.94         5.24\n6        6                 5.38         7.14\n\n\n\nplot(x = plant_height_df$Sunlight_hrs_per_day, \n     y=plant_height_df$Plant_height, \n     main = NULL, \n     xlab = \"Sunlight (hrs/day)\", \n     ylab = \"Plant height\", pch=19, col='blue')\n\n\n\n\n\n\n\n\n\n\nCalculation\n\ncor() - calculates correlation matrix between all features of dataframe\n\n\ncor(plant_height_df$Sunlight_hrs_per_day, plant_height_df$Plant_height)\n\n[1] 0.7294685\n\n# cor(iris %&gt;%select(where(is.numeric)))\n\n\ncorr.test() - also tests how far the coefficient is from zero (t-test)\n\n\ncor.test(plant_height_df$Sunlight_hrs_per_day, \n         plant_height_df$Plant_height)\n\n\n    Pearson's product-moment correlation\n\ndata:  plant_height_df$Sunlight_hrs_per_day and plant_height_df$Plant_height\nt = 5.4379, df = 26, p-value = 1.062e-05\nalternative hypothesis: true correlation is not equal to 0\n95 percent confidence interval:\n 0.4896482 0.8666802\nsample estimates:\n      cor \n0.7294685"
+  },
+  {
+    "objectID": "code/association.html#example-of-0-correlation",
+    "href": "code/association.html#example-of-0-correlation",
+    "title": "Association between variables",
+    "section": "Example of 0 correlation",
+    "text": "Example of 0 correlation\n\n1\n\nx1=rnorm(500)\ny1=rnorm(500)\nplot(x1,y1)\n\n\n\n\n\n\n\n\n\ncor(x1, y1)\n\n[1] -0.02250693\n\n\n\n\n2\n\nx2=rnorm(500)\ny2=x2^2 + rnorm(500, 0, 1)\nplot(x2,y2)\n\n\n\n\n\n\n\n\n\ncor(x2, y2)\n\n[1] 0.05356488\n\n\n\nThat’s why you always should draw the scatterplot!\n\n\n\nP.S\nGame Guess the Correlation"
+  },
+  {
+    "objectID": "code/association.html#math-and-physics-grades",
+    "href": "code/association.html#math-and-physics-grades",
+    "title": "Association between variables",
+    "section": "Math and Physics Grades",
+    "text": "Math and Physics Grades\n\ngrades_math_phys = data.frame(math = c(5,2,3,4,6,1,9,10,2,5),\n                             phys = c(4,2,3,1,2,2,8,8,2,4))\ngrades_math_phys\n\n   math phys\n1     5    4\n2     2    2\n3     3    3\n4     4    1\n5     6    2\n6     1    2\n7     9    8\n8    10    8\n9     2    2\n10    5    4"
+  },
+  {
+    "objectID": "code/association.html#rank-correlations",
+    "href": "code/association.html#rank-correlations",
+    "title": "Association between variables",
+    "section": "Rank correlations",
+    "text": "Rank correlations\n\nThe problems with Pearson correlation are that it is not suitable for “strange” non-linear relationships, non-normally distributed traits and data with outliers.\n\n\nKendall’s \\(\\tau\\)\n\nbetter when ranks are repeated\n\n\ncor(grades_math_phys, method = 'kendall')\n\n         math     phys\nmath 1.000000 0.576624\nphys 0.576624 1.000000\n\n\n\n\nSpearman’s \\(\\rho\\)\n\nSuitable for non-linear relationships\nLess sensitive to outliers\nCalculated based on ranks\n\n\ncor(grades_math_phys, method = 'spearman')\n\n          math      phys\nmath 1.0000000 0.6775545\nphys 0.6775545 1.0000000"
+  },
+  {
+    "objectID": "code/association.html#bad-examples",
+    "href": "code/association.html#bad-examples",
+    "title": "Association between variables",
+    "section": "“Bad” Examples",
+    "text": "“Bad” Examples\n\nNon-linear\n\n\nx = runif(50, -10, 10)\ny = (x + rnorm(50, 0, 2))^3\nplot(x,y, pch=19)\n\n\n\n\n\n\n\n\n\ncor(x,y)\n\n[1] 0.8221853\n\ncor(x,y, method = \"spearman\")\n\n[1] 0.930084\n\n# cor(x,y, method = \"kendall\")\n\n\nWith outliers\n\n\nx = c(rnorm(20,0,3), c(15, 19))\ny = c(x[1:20] + c(rnorm(20,0,1)), 0, 0)\nplot(x,y, pch=19)\n\n\n\n\n\n\n\n\n\ncor(x,y)\n\n[1] 0.396058\n\ncor(x,y, method = \"spearman\")\n\n[1] 0.7173115\n\n# cor(x,y, method = \"kendall\")"
+  },
+  {
+    "objectID": "code/association.html#arthritis-dataset",
+    "href": "code/association.html#arthritis-dataset",
+    "title": "Association between variables",
+    "section": "Arthritis dataset",
+    "text": "Arthritis dataset\nReaction Velocity of an Enzymatic Reaction\n\n# arth_df = read.csv('Arthritis.csv', \n#                    stringsAsFactors = T)\n\n# arth_df |&gt; glimpse(width = 50)\n\n\n# arth_df |&gt; summary()\n\n\nIs it more likely to have “Marked Imporved” if you are female?\n\ndichotomous vs dichotomous\n\n\n\n# cont_table = \n\n\n# \n\n\nIs there a significant difference in the age of women and men?\n\nContinuous vs dichotomous"
+  },
+  {
+    "objectID": "code/association.html#diamonds-dataset",
+    "href": "code/association.html#diamonds-dataset",
+    "title": "Association between variables",
+    "section": "Diamonds dataset",
+    "text": "Diamonds dataset\n\ndiamonds_small = diamonds |&gt; slice_sample(n=1000)\n\ndiamonds_small |&gt; glimpse(width = 50)\n\nRows: 1,000\nColumns: 10\n$ carat   &lt;dbl&gt; 0.27, 0.77, 0.31, 0.35, 0.51, 1.…\n$ cut     &lt;ord&gt; Ideal, Good, Ideal, Ideal, Ideal…\n$ color   &lt;ord&gt; F, F, I, F, D, I, H, J, D, F, D,…\n$ clarity &lt;ord&gt; VS2, VS2, IF, VS2, VS1, SI1, IF,…\n$ depth   &lt;dbl&gt; 60.9, 60.3, 61.3, 61.4, 62.1, 58…\n$ table   &lt;dbl&gt; 57, 61, 57, 54, 55, 59, 60, 60, …\n$ price   &lt;int&gt; 577, 2911, 652, 706, 1959, 8663,…\n$ x       &lt;dbl&gt; 4.17, 5.89, 4.34, 4.54, 5.14, 7.…\n$ y       &lt;dbl&gt; 4.20, 5.96, 4.40, 4.58, 5.20, 7.…\n$ z       &lt;dbl&gt; 2.55, 3.57, 2.68, 2.80, 3.21, 4.…\n\n\n\ndiamonds_small |&gt; summary()\n\n     carat               cut      color      clarity        depth     \n Min.   :0.2100   Fair     : 39   D:123   SI1    :247   Min.   :53.1  \n 1st Qu.:0.3900   Good     : 82   E:193   VS2    :230   1st Qu.:61.1  \n Median :0.7000   Very Good:245   F:169   SI2    :179   Median :61.9  \n Mean   :0.7862   Premium  :250   G:196   VS1    :147   Mean   :61.8  \n 3rd Qu.:1.0400   Ideal    :384   H:152   VVS2   : 77   3rd Qu.:62.6  \n Max.   :2.4600                   I:107   VVS1   : 76   Max.   :69.9  \n                                  J: 60   (Other): 44                 \n     table           price               x               y        \n Min.   :53.00   Min.   :  353.0   Min.   :3.890   Min.   :3.860  \n 1st Qu.:56.00   1st Qu.:  958.5   1st Qu.:4.700   1st Qu.:4.710  \n Median :57.00   Median : 2302.0   Median :5.660   Median :5.690  \n Mean   :57.47   Mean   : 3777.6   Mean   :5.711   Mean   :5.712  \n 3rd Qu.:59.00   3rd Qu.: 5245.8   3rd Qu.:6.522   3rd Qu.:6.520  \n Max.   :68.00   Max.   :18663.0   Max.   :8.660   Max.   :8.600  \n                                                                  \n       z       \n Min.   :2.29  \n 1st Qu.:2.89  \n Median :3.52  \n Mean   :3.53  \n 3rd Qu.:4.04  \n Max.   :5.44  \n               \n\n\n\nAre there some associated variables?\n\ncontinuous vs continuous\nordinal vs ordinal (not forget -&gt; as.numeric())\n\n\n\n# \n\n\n#"
   }
 ]
