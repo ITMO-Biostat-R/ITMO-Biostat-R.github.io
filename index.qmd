@@ -12,14 +12,12 @@ title: "Biostatistics in R"
     -   [Download](./zipfiles/datavis.zip)
 4.  [Intro into statistics](./distributions_clt_ci.Rmd)
     -   [Download](./zipfiles/distributions_clt_ci.zip)
-
-<!-- 4.  [Statistical testing](code/stats.Rmd) -->
-
-<!--     -   [Download](./zipfiles/stats.zip) -->
+5.  [Association](code/association.Rmd)
+    -   [Download](./zipfiles/association.zip)
 
 ### Presentations
 
--   [Visualization sins and inspirations](presentations/visual_sins_inspiration.qmd) 
+-   [Visualization sins and inspirations](presentations/visual_sins_inspiration.qmd)
 -   [Distributions and statistics](presentations/distributions_clt_ci.qmd)
 
 ### Homeworks

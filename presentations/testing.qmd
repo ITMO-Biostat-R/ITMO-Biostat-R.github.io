@@ -146,9 +146,9 @@ The value $1-\beta$ called the [**power of the test**]{.underline}. *The smaller
 
 3\) Choose the test
 
--   Test's functionality (first)
+-   Test's functionality
 
--   Test's assumptions (second)
+-   Test's assumptions
 
 ::: faded-text
 4\) **Conduct the experiment**
@@ -166,7 +166,7 @@ The value $1-\beta$ called the [**power of the test**]{.underline}. *The smaller
 
 > I'm checking the difference between the average hemoglobin levels in sick and healthy people. T-test should be suitable for this
 
-## Test's assumptions
+## Test's assumptions {auto-animate="true"}
 
 **The conditions, the fulfillment of which ensures control over the quality of the test results**
 
@@ -179,6 +179,18 @@ The value $1-\beta$ called the [**power of the test**]{.underline}. *The smaller
 > (but it still can be)
 
 > T-test is good for big samples with distributions where average makes sense
+
+## Test's assumptions {auto-animate="true"}
+
+### Examples
+
++ The particular distribution of population (e.g. normal)
+
++ The equality of variances
+
++ The independence of groups
+
++ The type of data (categorical, numerical and etc.)
 
 ## One data, several hypothesis {auto-animate="true"}
 
@@ -241,7 +253,9 @@ odttg
 :::
 :::::
 
-# Sometimes there is no sutable test for your hypothesis and question
+# Looking at the data and then choosing a test is the wrong approach!
+
+# Sometimes there is no suitable test for your hypothesis and question
 
 ## Testing plan
 
@@ -288,6 +302,8 @@ The tests result in [**test statistic**]{.underline} and the [**p-value**]{.unde
 -   [**p-value**]{.underline} - the probability that, given a **true null hypothesis**, your observations will result **in such or more extreme value of test statistic**
 
 > The smaller the p-value, the less likely we are to get our result under the null hypothesis, which states that there is no effect.
+
+**The p-value does not indicate the magnitude of the effect!**
 
 ## "Pipeline"
 
