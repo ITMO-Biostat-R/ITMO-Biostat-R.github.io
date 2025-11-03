@@ -37,7 +37,7 @@ What you have to do:
 # possible_values = 
 # probabilities = 
 
-# sum(probabilities) == 1
+# abs(sum(probabilities) - 1) < 1e-8
 ```
 
 > Create data-frame with columns **Value** and corresponding **Probability**

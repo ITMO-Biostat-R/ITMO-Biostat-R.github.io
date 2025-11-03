@@ -56,14 +56,14 @@ risk_tr = contingency_table_big['Treatment', 'Dead']/ contingency_table_big['Tre
 risk_tr
 ```
 
-$Risk_{pl}$ (to be dead in case of Placebo) = $\dfrac{Dead  | Placebo}{Total\ Treatment}$ =
+$Risk_{pl}$ (to be dead in case of Placebo) = $\dfrac{Dead  | Placebo}{Total\ Placebo}$ =
 
 ```{r}
 risk_pl = contingency_table_big['Placebo', 'Dead']/ contingency_table_big['Placebo', 'Sum']
 risk_pl
 ```
 
-Risk ratio ($RR$) = $\dfrac{Risk_{tr}}{Risk_{pl}} =$
+Risk ratio ($RR$) = $\dfrac{Risk_{pl}}{Risk_{tr}} =$
 
 ```{r}
 RR = risk_pl / risk_tr
@@ -97,15 +97,15 @@ $RD = Risk_{tr} - Risk_{pl} =$
 > *Use variables created above*
 
 ```{r}
-# RD = 
-# RD
+RD = risk_pl - risk_tr
+RD
 ```
 
 ### **And if there are more Cured:**
 
 ```{r}
-# RD = 
-# RD
+RD = risk_pl_1 - risk_tr_1
+RD
 ```
 
 **-\> Always show both RR and RD in your text!**
@@ -115,25 +115,35 @@ $RD = Risk_{tr} - Risk_{pl} =$
 $Odds_{tr} = \dfrac{Dead  | Treatment}{Cured | Treatment} =$
 
 ```{r}
-# odds_tr = 
+odds_tr = contingency_table_big['Treatment', 'Dead'] / contingency_table_big['Treatment', 'Cured']
+odds_tr
 ```
 
 $Odds_{pl} = \dfrac{Dead  | Placebo}{Cured | Placebo} =$
 
 ```{r}
-# odds_pl = 
+odds_pl = contingency_table_big['Placebo', 'Dead'] / contingency_table_big['Placebo', 'Cured']
+odds_pl
 ```
 
-$Odds \ ratio \ (OR) = \dfrac{Odds_{tr}}{Odds_{pl}} =$
+$Odds \ ratio \ (OR) = \dfrac{Odds_{pl}}{Odds_{tr}} =$
 
 ```{r}
-# OR = 
+OR = odds_pl / odds_tr
+OR
 ```
 
 **And if there are more Cured:**
 
 ```{r}
-# 
+odds_tr_1 = contingency_table_big['Treatment', 'Dead'] / 1000
+odds_tr_1
+
+odds_pl_1 = contingency_table_big['Placebo', 'Dead'] / 1010
+odds_pl_1
+
+OR_1 = odds_pl_1 / odds_tr_1
+OR_1
 ```
 
 ## NB!
@@ -210,7 +220,9 @@ data_md |> glimpse(width = 50)
 ```
 
 ```{r}
-mean_laughs = data_md |> group_by(Meme_category) |> summarise(mean_laugh = mean(Laugh_level))
+mean_laughs = data_md |> 
+  group_by(Meme_category) |> 
+  summarise(mean_laugh = mean(Laugh_level))
 
 MD = mean_laughs$mean_laugh[mean_laughs$Meme_category == 'A'] - 
   mean_laughs$mean_laugh[mean_laughs$Meme_category == 'B']
@@ -288,7 +300,7 @@ plot(x1,y1)
 ```
 
 ```{r}
-cor(x1, y1)
+cor.test(x1, y1)
 ```
 
 ### 2
@@ -360,7 +372,7 @@ plot(x,y, pch=19)
 ```{r}
 cor(x,y)
 cor(x,y, method = "spearman")
-# cor(x,y, method = "kendall")
+cor(x,y, method = "kendall")
 ```
 
 -   With outliers
@@ -373,17 +385,17 @@ plot(x,y, pch=19)
 
 ```{r}
 cor(x,y)
-cor(x,y, method = "spearman")
+cor.test(x,y, method = "spearman")
 # cor(x,y, method = "kendall")
 ```
 
 # Always build a scatter-plot!
 
 ```{r}
-cor.test(anscombe$x1, anscombe$y1)
-cor.test(anscombe$x2, anscombe$y2)
-cor.test(anscombe$x3, anscombe$y3)
-cor.test(anscombe$x4, anscombe$y4)
+cor.test(anscombe$x1, anscombe$y1, method = 'spearman')
+cor.test(anscombe$x2, anscombe$y2, method = 'spearman')
+cor.test(anscombe$x3, anscombe$y3, method = 'spearman')
+cor.test(anscombe$x4, anscombe$y4, method = 'spearman')
 ```
 
 ```{r}
@@ -408,14 +420,14 @@ plot(anscombe$x4, anscombe$y4, pch=19)
 Reaction Velocity of an Enzymatic Reaction
 
 ```{r}
-# arth_df = read.csv('Arthritis.csv', 
-#                    stringsAsFactors = T)
+arth_df = read.csv('./data/Arthritis.csv',
+                   stringsAsFactors = T)
 
-# arth_df |> glimpse(width = 50)
+arth_df |> glimpse(width = 80)
 ```
 
 ```{r}
-# arth_df |> summary()
+arth_df |> summary()
 ```
 
 > **Is it more likely to have "Marked Imporved" if you are female?**
@@ -423,11 +435,34 @@ Reaction Velocity of an Enzymatic Reaction
 > -   dichotomous vs dichotomous
 
 ```{r}
-# cont_table = 
+cont_table = table(arth_df$Sex, arth_df$Improved)
+cont_table_full = addmargins(cont_table)
+cont_table_full
 ```
 
 ```{r}
-# 
+risk_fem = cont_table_full['Female', 'Marked'] / cont_table_full['Female', 'Sum']
+risk_fem
+
+risk_male = cont_table_full['Male', 'Marked'] / cont_table_full['Male', 'Sum']
+risk_male
+
+RR = risk_fem / risk_male
+RR
+
+RD = risk_fem - risk_male
+RD
+```
+
+```{r}
+odds_fem = cont_table_full['Female', 'Marked'] / cont_table_full['Female', 'None']
+odds_fem
+
+odds_male = cont_table_full['Male', 'Marked'] / cont_table_full['Male', 'None']
+odds_male
+
+OR = odds_fem / odds_male
+OR
 ```
 
 > **Is there a significant difference in the age of women and men?**
@@ -435,14 +470,19 @@ Reaction Velocity of an Enzymatic Reaction
 > -   Continuous vs dichotomous
 
 ```{r}
+MD = mean(arth_df |> filter(Sex == 'Male') |>  pull(Age) |>  mean()) -
+          mean(arth_df |> filter(Sex == 'Female') |>  pull(Age) |>  mean())
+MD 
 
+sexmean = arth_df |> group_by(Sex) |>  summarise(mean_age = mean(Age))
+sexmean$mean_age[1] - sexmean$mean_age[2]
 ```
 
 ## Diamonds dataset
 
 ```{r}
 diamonds_small = diamonds |> slice_sample(n=1000)
-
+diamonds_small |> str()
 diamonds_small |> glimpse(width = 50)
 ```
 
@@ -456,10 +496,12 @@ diamonds_small |> summary()
 >
 > -   ordinal vs ordinal (not forget -\> `as.numeric()`)
 
-```{r}
-# 
+```{r, eval=FALSE}
+cor.test(diamonds_small$clarity, diamonds_small$price)
 ```
 
 ```{r}
-# 
+cor(diamonds_small$price, 
+    diamonds_small$cut |>  as.numeric(), 
+    method='spearman')
 ```

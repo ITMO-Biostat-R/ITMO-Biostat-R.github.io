@@ -184,7 +184,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#confidence-level-1" id="toc-confidence-level-1" class="nav-link" data-scroll-target="#confidence-level-1">Confidence level</a></li>
   <li><a href="#another-method-for-calculation-ci-with-t-distribution" id="toc-another-method-for-calculation-ci-with-t-distribution" class="nav-link" data-scroll-target="#another-method-for-calculation-ci-with-t-distribution">Another method for calculation CI with t-distribution</a></li>
   </ul></li>
-  <li><a href="#rexp" id="toc-rexp" class="nav-link" data-scroll-target="#rexp">rexp()</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -232,11 +231,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">#parameters of **sample**</span></span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(norm_sample)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.02957183</code></pre>
+<pre><code>[1] -0.04586334</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(norm_sample)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.9984913</code></pre>
+<pre><code>[1] 1.025586</code></pre>
 </div>
 </div>
 </section>
@@ -247,11 +246,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(exp_sample)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.2753376</code></pre>
+<pre><code>[1] 0.2479192</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(exp_sample)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.2413235</code></pre>
+<pre><code>[1] 0.2027216</code></pre>
 </div>
 </div>
 </section>
@@ -262,11 +261,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(unif_sample)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.5011509</code></pre>
+<pre><code>[1] 0.5344622</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(unif_sample)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.282969</code></pre>
+<pre><code>[1] 0.2887125</code></pre>
 </div>
 </div>
 </section>
@@ -275,17 +274,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rbinom</span>(<span class="at">n=</span>sample_size, <span class="at">size=</span><span class="dv">10</span>, <span class="at">prob=</span><span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  [1] 4 7 5 5 4 6 5 5 5 5 8 6 4 5 4 4 4 4 4 5 5 6 4 3 4 2 4 5 4 6 6 4 6 5 6 5 4
- [38] 4 4 5 6 3 3 5 5 4 3 2 6 5 8 5 5 5 3 2 3 3 3 4 3 7 4 6 6 4 7 4 5 3 7 5 5 7
- [75] 5 6 3 7 6 4 5 5 3 5 6 6 5 5 4 5 7 5 5 4 6 5 7 5 5 5</code></pre>
+<pre><code>  [1] 1 3 3 4 5 5 6 7 7 3 4 7 6 4 6 5 4 4 7 4 4 2 6 5 5 5 2 5 6 4 3 6 4 6 5 3 3
+ [38] 5 5 6 3 5 4 4 3 3 5 6 4 7 3 6 5 7 5 2 3 5 3 3 5 7 7 3 6 3 5 5 6 6 5 6 7 7
+ [75] 6 4 4 6 6 4 7 3 3 3 4 6 3 5 6 7 7 7 3 4 6 3 4 5 6 5</code></pre>
 </div>
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rpois</span>(<span class="at">n =</span> sample_size, <span class="at">lambda =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  [1] 2 1 1 0 0 1 2 2 0 1 0 0 1 2 2 0 1 2 1 2 3 2 2 1 0 1 0 1 0 2 2 1 0 2 2 0 0
- [38] 0 3 2 3 0 0 2 2 0 0 0 0 1 3 0 0 1 1 0 0 1 3 2 0 0 1 1 1 2 0 0 0 2 2 1 1 1
- [75] 3 1 2 2 1 2 0 1 3 0 1 0 1 1 0 1 1 2 1 2 0 0 0 1 1 1</code></pre>
+<pre><code>  [1] 2 1 1 2 0 0 1 0 2 2 1 2 1 1 1 0 1 3 0 1 1 1 0 1 0 1 0 0 0 0 0 0 0 0 2 1 1
+ [38] 1 1 1 1 0 0 1 0 3 0 0 2 1 0 3 1 1 1 0 0 2 1 1 0 2 0 0 1 1 0 0 2 0 2 2 1 3
+ [75] 1 3 1 1 1 0 2 0 1 1 1 1 2 2 2 3 1 2 2 1 2 1 4 1 1 1</code></pre>
 </div>
 </div>
 </section>
@@ -299,12 +298,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(norm_sample)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>         0%         25%         50%         75%        100% 
--2.43178428 -0.68714855 -0.02704747  0.68655581  2.31399266 </code></pre>
+-2.55116691 -0.74966926 -0.08694914  0.60270927  2.86084776 </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(unif_sample, <span class="at">pr=</span><span class="fu">c</span>(<span class="fl">0.025</span>, <span class="fl">0.975</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>     2.5%     97.5% 
-0.0203286 0.9508187 </code></pre>
+<pre><code>      2.5%      97.5% 
+0.03452334 0.96742446 </code></pre>
 </div>
 </div>
 </section>
@@ -335,7 +334,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>sample_0 <span class="ot">=</span> <span class="fu">sample</span>(<span class="at">x=</span>big_population, <span class="at">size=</span>sample_size)</span>
 <span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>sample_0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 12 11  9  7 12  8 10 11  7  8</code></pre>
+<pre><code> [1]  9  7  9 12  9 11  9 12  8  7</code></pre>
 </div>
 </div>
 </section>
@@ -359,7 +358,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>sample_2 <span class="ot">=</span> <span class="fu">sample</span>(values, sample_size, <span class="at">replace=</span><span class="cn">TRUE</span>, <span class="at">prob=</span>probs_of_values)</span>
 <span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>sample_2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1]     1   100 10000   100   100   100 10000   100   100 10000</code></pre>
+<pre><code> [1] 10000   100   100   100 10000   100   100     1   100   100</code></pre>
 </div>
 </div>
 <ul>
@@ -375,8 +374,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>sample_1 <span class="ot">=</span> <span class="fu">rnorm</span>(sample_size, <span class="at">mean=</span><span class="dv">0</span>, <span class="at">sd=</span><span class="dv">1</span>)</span>
 <span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>sample_1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] -0.74704558 -0.71571744  0.53385548  0.15455654  0.04252142 -0.76820526
- [7] -0.94740567  1.08285922 -0.91820743  0.98998624</code></pre>
+<pre><code> [1]  0.33512797 -1.02760185 -0.18008881 -1.32351001  1.45411977  0.06896007
+ [7]  0.11427113 -0.43839389 -0.69263407 -1.52795160</code></pre>
 </div>
 </div>
 </section>
@@ -417,16 +416,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code># A tibble: 20,000 × 2
    sample_ID value
        &lt;int&gt; &lt;dbl&gt;
- 1         1  3.92
- 2         1  3.15
- 3         2  6.74
- 4         2  8.50
- 5         3  8.02
- 6         3  3.33
- 7         4  5.19
- 8         4  6.82
- 9         5  8.52
-10         5  9.80
+ 1         1  9.06
+ 2         1  9.11
+ 3         2  1.96
+ 4         2  4.56
+ 5         3  8.84
+ 6         3  1.27
+ 7         4  8.71
+ 8         4  4.94
+ 9         5  6.56
+10         5  5.21
 # ℹ 19,990 more rows</code></pre>
 </div>
 </div>
@@ -443,18 +442,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>df_standart</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 10,000 × 3
-   sample_ID     m    z_m
-       &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt;
- 1         1  3.53 -0.729
- 2         2  7.62  1.29 
- 3         3  5.67  0.328
- 4         4  6.01  0.493
- 5         5  9.16  2.05 
- 6         6  3.53 -0.732
- 7         7  3.87 -0.563
- 8         8  4.28 -0.361
- 9         9  5.30  0.142
-10        10  4.18 -0.410
+   sample_ID     m      z_m
+       &lt;int&gt; &lt;dbl&gt;    &lt;dbl&gt;
+ 1         1  9.08  1.99   
+ 2         2  3.26 -0.875  
+ 3         3  5.05  0.00655
+ 4         4  6.82  0.880  
+ 5         5  5.88  0.417  
+ 6         6  5.33  0.142  
+ 7         7  4.54 -0.244  
+ 8         8  3.94 -0.541  
+ 9         9  3.09 -0.959  
+10        10  9.49  2.19   
 # ℹ 9,990 more rows</code></pre>
 </div>
 </div>
@@ -462,16 +461,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co">#for non-standard</span></span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(df_standart<span class="sc">$</span>m)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 5.009361</code></pre>
+<pre><code>[1] 5.038417</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(df_standart<span class="sc">$</span>m)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 2.023441</code></pre>
+<pre><code>[1] 2.030719</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co">#for standard</span></span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(df_standart<span class="sc">$</span>z_m)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] -1.010969e-15</code></pre>
+<pre><code>[1] 1.205958e-15</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(df_standart<span class="sc">$</span>z_m)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -546,7 +545,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Write the code!</p>
 </blockquote>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>sample_size <span class="ot">=</span> <span class="dv">3</span> </span>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>sample_size <span class="ot">=</span> <span class="dv">30</span> </span>
 <span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>sample <span class="ot">=</span> <span class="fu">rexp</span>(sample_size, <span class="at">rate=</span><span class="dv">1</span>)</span>
 <span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -621,20 +620,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>  sample_mean <span class="sc">+</span> quantiles[<span class="dv">2</span>] <span class="sc">*</span> sample_se</span>
 <span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 4.973964 5.466437</code></pre>
+<pre><code>[1] 4.568453 5.128617</code></pre>
 </div>
 </div>
 </section>
 <section id="confidence-level" class="level3">
 <h3 class="anchored" data-anchor-id="confidence-level">Confidence level</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>sample_size <span class="ot">=</span> <span class="dv">100</span> </span>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>sample_size <span class="ot">=</span> <span class="dv">30</span> </span>
 <span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>n_samples <span class="ot">=</span> <span class="dv">1000</span></span>
-<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>true_mean<span class="ot">=</span><span class="dv">5</span></span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>true_mean<span class="ot">=</span><span class="dv">1</span></span>
 <span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a>df_trial <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
 <span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">sample_ID =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span>n_samples, <span class="at">each=</span>sample_size),</span>
-<span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">value =</span> <span class="fu">rnorm</span>(sample_size<span class="sc">*</span>n_samples, true_mean, <span class="dv">2</span>)</span>
+<span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">value =</span> <span class="fu">rexp</span>(sample_size<span class="sc">*</span>n_samples, <span class="dv">1</span>)</span>
 <span id="cb52-8"><a href="#cb52-8" aria-hidden="true" tabindex="-1"></a>  )</span>
 <span id="cb52-9"><a href="#cb52-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb52-10"><a href="#cb52-10" aria-hidden="true" tabindex="-1"></a>quantiles <span class="ot">=</span> <span class="fu">qnorm</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="at">p =</span> <span class="fu">c</span>(<span class="fl">0.025</span>, <span class="fl">0.975</span>))</span>
@@ -652,20 +651,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-stdout">
 <pre><code>
 missed     ok 
-    65    935 </code></pre>
+    87    913 </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(<span class="fu">table</span>(df_ci<span class="sc">$</span>out))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 missed     ok 
- 0.065  0.935 </code></pre>
+ 0.087  0.913 </code></pre>
 </div>
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>df_ci <span class="sc">|&gt;</span>  </span>
 <span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y=</span>sample_ID)) <span class="sc">+</span></span>
 <span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">xmin =</span> conf.min, <span class="at">xmax =</span> conf.max, <span class="at">col=</span>out)) <span class="sc">+</span></span>
-<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="fu">aes</span>(<span class="at">xintercept =</span> <span class="dv">5</span>), <span class="at">col=</span><span class="st">'red'</span>, <span class="at">lty=</span><span class="dv">2</span>, <span class="at">size=</span><span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="fu">aes</span>(<span class="at">xintercept =</span> <span class="dv">1</span>), <span class="at">col=</span><span class="st">'red'</span>, <span class="at">lty=</span><span class="dv">2</span>, <span class="at">size=</span><span class="dv">1</span>) <span class="sc">+</span></span>
 <span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y=</span><span class="st">"Sample"</span>, <span class="at">color=</span><span class="st">'CI covers true mean'</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
@@ -674,7 +673,7 @@ missed     ok
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="distributions_clt_ci_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid figure-img" width="960"></p>
+<p><img src="distributions_clt_ci_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid figure-img" width="1000"></p>
 </figure>
 </div>
 </div>
@@ -726,26 +725,26 @@ missed     ok
 <span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a>  sample_mean <span class="sc">+</span> quantiles[<span class="dv">2</span>] <span class="sc">*</span> sample_se</span>
 <span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 4.552100 5.503525</code></pre>
+<pre><code>[1] 4.232229 5.499415</code></pre>
 </div>
 </div>
 </section>
 <section id="confidence-level-1" class="level3">
 <h3 class="anchored" data-anchor-id="confidence-level-1">Confidence level</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="co"># sample_size = </span></span>
-<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a><span class="co"># n_samples = </span></span>
-<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a><span class="co"># true_mean=</span></span>
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>sample_size <span class="ot">=</span> <span class="dv">10</span></span>
+<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>n_samples <span class="ot">=</span> <span class="dv">1000</span></span>
+<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a>true_mean<span class="ot">=</span><span class="dv">5</span></span>
 <span id="cb65-4"><a href="#cb65-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb65-5"><a href="#cb65-5" aria-hidden="true" tabindex="-1"></a><span class="co"># df_trial_t = tibble(</span></span>
-<span id="cb65-6"><a href="#cb65-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># sample_ID = </span></span>
-<span id="cb65-7"><a href="#cb65-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># value = </span></span>
-<span id="cb65-8"><a href="#cb65-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># )</span></span>
+<span id="cb65-5"><a href="#cb65-5" aria-hidden="true" tabindex="-1"></a>df_trial <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb65-6"><a href="#cb65-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">sample_ID =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span>n_samples, <span class="at">each=</span>sample_size),</span>
+<span id="cb65-7"><a href="#cb65-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">value =</span> <span class="fu">rnorm</span>(<span class="at">mean=</span>true_mean, <span class="at">sd=</span><span class="dv">1</span>, sample_size<span class="sc">*</span>n_samples)</span>
+<span id="cb65-8"><a href="#cb65-8" aria-hidden="true" tabindex="-1"></a>  )</span>
 <span id="cb65-9"><a href="#cb65-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb65-10"><a href="#cb65-10" aria-hidden="true" tabindex="-1"></a><span class="co"># quantiles = </span></span>
+<span id="cb65-10"><a href="#cb65-10" aria-hidden="true" tabindex="-1"></a>quantiles <span class="ot">=</span> <span class="fu">qt</span>(sample_size<span class="dv">-1</span>, <span class="at">p =</span> <span class="fu">c</span>(<span class="fl">0.025</span>, <span class="fl">0.975</span>))</span>
 <span id="cb65-11"><a href="#cb65-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb65-12"><a href="#cb65-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb65-13"><a href="#cb65-13" aria-hidden="true" tabindex="-1"></a>df_ci_t <span class="ot">=</span> df_trial_t <span class="sc">|&gt;</span> <span class="fu">group_by</span>(sample_ID) <span class="sc">|&gt;</span> </span>
+<span id="cb65-13"><a href="#cb65-13" aria-hidden="true" tabindex="-1"></a>df_ci_t <span class="ot">=</span> df_trial <span class="sc">|&gt;</span> <span class="fu">group_by</span>(sample_ID) <span class="sc">|&gt;</span> </span>
 <span id="cb65-14"><a href="#cb65-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mu =</span> <span class="fu">mean</span>(value), </span>
 <span id="cb65-15"><a href="#cb65-15" aria-hidden="true" tabindex="-1"></a>            <span class="at">se_sample =</span> <span class="fu">se</span>(value), </span>
 <span id="cb65-16"><a href="#cb65-16" aria-hidden="true" tabindex="-1"></a>            <span class="at">conf.min =</span> mu <span class="sc">+</span> quantiles[<span class="dv">1</span>] <span class="sc">*</span> se_sample,</span>
@@ -753,11 +752,25 @@ missed     ok
 <span id="cb65-18"><a href="#cb65-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">out =</span> <span class="fu">ifelse</span>((true_mean <span class="sc">&lt;</span> conf.max) <span class="sc">&amp;</span> (true_mean <span class="sc">&gt;</span> conf.min), <span class="st">'ok'</span>, <span class="st">'missed'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>df_ci_t <span class="sc">|&gt;</span>  </span>
-<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y=</span>sample_ID)) <span class="sc">+</span></span>
-<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">xmin =</span> conf.min, <span class="at">xmax =</span> conf.max, <span class="at">col=</span>out)) <span class="sc">+</span></span>
-<span id="cb66-4"><a href="#cb66-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="fu">aes</span>(<span class="at">xintercept =</span> <span class="dv">5</span>), <span class="at">col=</span><span class="st">'red'</span>, <span class="at">lty=</span><span class="dv">2</span>, <span class="at">size=</span><span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb66-5"><a href="#cb66-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y=</span><span class="st">"Sample"</span>, <span class="at">color=</span><span class="st">'CI covers true mean'</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(df_ci_t<span class="sc">$</span>out)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+missed     ok 
+    50    950 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(<span class="fu">table</span>(df_ci_t<span class="sc">$</span>out))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+missed     ok 
+  0.05   0.95 </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>df_ci_t <span class="sc">|&gt;</span>  </span>
+<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y=</span>sample_ID)) <span class="sc">+</span></span>
+<span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">xmin =</span> conf.min, <span class="at">xmax =</span> conf.max, <span class="at">col=</span>out)) <span class="sc">+</span></span>
+<span id="cb70-4"><a href="#cb70-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="fu">aes</span>(<span class="at">xintercept =</span> <span class="dv">5</span>), <span class="at">col=</span><span class="st">'red'</span>, <span class="at">lty=</span><span class="dv">2</span>, <span class="at">size=</span><span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb70-5"><a href="#cb70-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y=</span><span class="st">"Sample"</span>, <span class="at">color=</span><span class="st">'CI covers true mean'</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>Try different size of sample!</strong></p>
 </section>
@@ -765,32 +778,24 @@ missed     ok
 <h3 class="anchored" data-anchor-id="another-method-for-calculation-ci-with-t-distribution">Another method for calculation CI with t-distribution</h3>
 <p>Looking only on “<em>95 percent confidence interval:</em>”</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(sample)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(sample)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     One Sample t-test
 
 data:  sample
-t = 21.239, df = 49, p-value &lt; 2.2e-16
+t = 15.433, df = 49, p-value &lt; 2.2e-16
 alternative hypothesis: true mean is not equal to 0
 95 percent confidence interval:
- 4.552100 5.503525
+ 4.232229 5.499415
 sample estimates:
 mean of x 
- 5.027812 </code></pre>
+ 4.865822 </code></pre>
 </div>
-</div>
-</section>
-</section>
-<section id="rexp" class="level2">
-<h2 class="anchored" data-anchor-id="rexp">rexp()</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>sample_size <span class="ot">=</span> <span class="dv">10</span></span>
-<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a><span class="co"># sample = rexp()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
+</section>
 </section>
 </section>
 
