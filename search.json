@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Biostatistics in R",
     "section": "",
-    "text": "Lecture data\n\nBasic R\n\nDownload\n\nWorking with Dataframes\n\nDownload\n\nVisualization\n\nDownload\n\nIntro into statistics\n\nDownload\n\nAssociation\n\nDownload\n\n\n\n\nPresentations\n\nVisualization sins and inspirations\nDistributions and statistics\n\n\n\nHomeworks\n\nHW #1\n\nDownload\n\nHW #2\n\nDownload\nReference plots\n\nHW #3\n\nDownload"
+    "text": "Lecture data\n\nBasic R\n\nDownload\n\nWorking with Dataframes\n\nDownload\n\nVisualization\n\nDownload\n\nIntro into statistics\n\nDownload\n\nAssociation\n\nDownload\n\n\n\n\nPresentations\n\nVisualization sins and inspirations\nIntro into statistics\n\n\n\nHomeworks\n\nHW #1\n\nDownload\n\nHW #2\n\nDownload\nReference plots\n\nHW #3\n\nDownload\n\nHW final\n\nDownload"
   },
   {
     "objectID": "presentations/distributions.html#types-of-data",
@@ -781,42 +781,42 @@
     "href": "code/distributions_clt_ci.html#quantiles",
     "title": "Intro into statistics (code)",
     "section": "Quantiles",
-    "text": "Quantiles\n\nShow quartiles of norm_sample\nShow 2.5% and 97.5% quantiles of unif_sample\n\n\nquantile(norm_sample)\n\n         0%         25%         50%         75%        100% \n-2.43178428 -0.68714855 -0.02704747  0.68655581  2.31399266 \n\nquantile(unif_sample, pr=c(0.025, 0.975))\n\n     2.5%     97.5% \n0.0203286 0.9508187"
+    "text": "Quantiles\n\nShow quartiles of norm_sample\nShow 2.5% and 97.5% quantiles of unif_sample\n\n\nquantile(norm_sample)\n\n         0%         25%         50%         75%        100% \n-2.55116691 -0.74966926 -0.08694914  0.60270927  2.86084776 \n\nquantile(unif_sample, pr=c(0.025, 0.975))\n\n      2.5%      97.5% \n0.03452334 0.96742446"
   },
   {
     "objectID": "code/distributions_clt_ci.html#from-population-defined-by-us",
     "href": "code/distributions_clt_ci.html#from-population-defined-by-us",
     "title": "Intro into statistics (code)",
     "section": "From population defined by us",
-    "text": "From population defined by us\n\ntrue_mean = 10\ntrue_sd = 2\n\n# big_population = read_csv('data.csv')\nbig_population = rnorm(50000, mean = true_mean, sd = true_sd) |&gt; round()\n\nbig_population |&gt;  hist()\n\n\n\n\n\n\n\n\n\nsample_size = 10\n\nsample_0 = sample(x=big_population, size=sample_size)\nsample_0\n\n [1] 12 11  9  7 12  8 10 11  7  8"
+    "text": "From population defined by us\n\ntrue_mean = 10\ntrue_sd = 2\n\n# big_population = read_csv('data.csv')\nbig_population = rnorm(50000, mean = true_mean, sd = true_sd) |&gt; round()\n\nbig_population |&gt;  hist()\n\n\n\n\n\n\n\n\n\nsample_size = 10\n\nsample_0 = sample(x=big_population, size=sample_size)\nsample_0\n\n [1]  9  7  9 12  9 11  9 12  8  7"
   },
   {
     "objectID": "code/distributions_clt_ci.html#setting-the-population-by-possible-values-and-probabilities",
     "href": "code/distributions_clt_ci.html#setting-the-population-by-possible-values-and-probabilities",
     "title": "Intro into statistics (code)",
     "section": "Setting the population by possible values and probabilities",
-    "text": "Setting the population by possible values and probabilities\n!NB sum of probabilities should be equal to 1\n\nvalues = c(1,100,10000)\nprobs_of_values = c(0.2, 0.5, 0.3)\n\nsum(probs_of_values) == 1\n\n[1] TRUE\n\n\n\nSampling\n\nsample_size = 10\n\nsample_2 = sample(values, sample_size, replace=TRUE, prob=probs_of_values)\nsample_2\n\n [1]     1   100 10000   100   100   100 10000   100   100 10000\n\n\n\nreplace=TRUE for repeatable drawing same values from possible values"
+    "text": "Setting the population by possible values and probabilities\n!NB sum of probabilities should be equal to 1\n\nvalues = c(1,100,10000)\nprobs_of_values = c(0.2, 0.5, 0.3)\n\nsum(probs_of_values) == 1\n\n[1] TRUE\n\n\n\nSampling\n\nsample_size = 10\n\nsample_2 = sample(values, sample_size, replace=TRUE, prob=probs_of_values)\nsample_2\n\n [1] 10000   100   100   100 10000   100   100     1   100   100\n\n\n\nreplace=TRUE for repeatable drawing same values from possible values"
   },
   {
     "objectID": "code/distributions_clt_ci.html#from-mathematically-defined-distribution",
     "href": "code/distributions_clt_ci.html#from-mathematically-defined-distribution",
     "title": "Intro into statistics (code)",
     "section": "From mathematically defined distribution",
-    "text": "From mathematically defined distribution\n\nsample_size = 10\n\nsample_1 = rnorm(sample_size, mean=0, sd=1)\nsample_1\n\n [1] -0.74704558 -0.71571744  0.53385548  0.15455654  0.04252142 -0.76820526\n [7] -0.94740567  1.08285922 -0.91820743  0.98998624"
+    "text": "From mathematically defined distribution\n\nsample_size = 10\n\nsample_1 = rnorm(sample_size, mean=0, sd=1)\nsample_1\n\n [1]  0.33512797 -1.02760185 -0.18008881 -1.32351001  1.45411977  0.06896007\n [7]  0.11427113 -0.43839389 -0.69263407 -1.52795160"
   },
   {
     "objectID": "code/distributions_clt_ci.html#using-standard-normal",
     "href": "code/distributions_clt_ci.html#using-standard-normal",
     "title": "Intro into statistics (code)",
     "section": "Using standard normal",
-    "text": "Using standard normal\n\nSample\n\ntrue_mean = 5\ntrue_sd = 1\n\nsample_size = 50\n\nsample = rnorm(sample_size, true_mean, true_sd)\n\nsample_mean = mean(sample)\n# sample_sd = sd(sample_norm)\nsample_se = se(sample)\n\nhist(sample)\n\n\n\n\n\n\n\n\n\n\nCI (95%)\n\nquantiles = qnorm(0, 1, p = c(0.025, 0.975)) #+- 1.96\n\nc(\n  sample_mean + quantiles[1] * sample_se,\n  sample_mean + quantiles[2] * sample_se\n)\n\n[1] 4.973964 5.466437\n\n\n\n\nConfidence level\n\nsample_size = 100 \nn_samples = 1000\ntrue_mean=5\n\ndf_trial &lt;- tibble(\n  sample_ID = rep(1:n_samples, each=sample_size),\n  value = rnorm(sample_size*n_samples, true_mean, 2)\n  )\n\nquantiles = qnorm(0, 1, p = c(0.025, 0.975))\n\n\ndf_ci = df_trial |&gt; group_by(sample_ID) |&gt; \n  summarize(mu = mean(value), \n            se_sample = se(value), \n            conf.min = mu + quantiles[1] * se_sample,\n            conf.max = mu + quantiles[2] * se_sample) |&gt; \n  mutate(out = ifelse((true_mean &lt; conf.max) & (true_mean &gt; conf.min), 'ok', 'missed'))\n\n\ntable(df_ci$out)\n\n\nmissed     ok \n    65    935 \n\nprop.table(table(df_ci$out))\n\n\nmissed     ok \n 0.065  0.935 \n\n\n\ndf_ci |&gt;  \n  ggplot(aes(y=sample_ID)) +\n  geom_errorbar(aes(xmin = conf.min, xmax = conf.max, col=out)) +\n  geom_vline(aes(xintercept = 5), col='red', lty=2, size=1) +\n  labs(y=\"Sample\", color='CI covers true mean') \n\nWarning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.\nℹ Please use `linewidth` instead.\n\n\n\n\n\n\n\n\n\n\nTry to change sample size and see what will happen!"
+    "text": "Using standard normal\n\nSample\n\ntrue_mean = 5\ntrue_sd = 1\n\nsample_size = 50\n\nsample = rnorm(sample_size, true_mean, true_sd)\n\nsample_mean = mean(sample)\n# sample_sd = sd(sample_norm)\nsample_se = se(sample)\n\nhist(sample)\n\n\n\n\n\n\n\n\n\n\nCI (95%)\n\nquantiles = qnorm(0, 1, p = c(0.025, 0.975)) #+- 1.96\n\nc(\n  sample_mean + quantiles[1] * sample_se,\n  sample_mean + quantiles[2] * sample_se\n)\n\n[1] 4.568453 5.128617\n\n\n\n\nConfidence level\n\nsample_size = 30 \nn_samples = 1000\ntrue_mean=1\n\ndf_trial &lt;- tibble(\n  sample_ID = rep(1:n_samples, each=sample_size),\n  value = rexp(sample_size*n_samples, 1)\n  )\n\nquantiles = qnorm(0, 1, p = c(0.025, 0.975))\n\n\ndf_ci = df_trial |&gt; group_by(sample_ID) |&gt; \n  summarize(mu = mean(value), \n            se_sample = se(value), \n            conf.min = mu + quantiles[1] * se_sample,\n            conf.max = mu + quantiles[2] * se_sample) |&gt; \n  mutate(out = ifelse((true_mean &lt; conf.max) & (true_mean &gt; conf.min), 'ok', 'missed'))\n\n\ntable(df_ci$out)\n\n\nmissed     ok \n    87    913 \n\nprop.table(table(df_ci$out))\n\n\nmissed     ok \n 0.087  0.913 \n\n\n\ndf_ci |&gt;  \n  ggplot(aes(y=sample_ID)) +\n  geom_errorbar(aes(xmin = conf.min, xmax = conf.max, col=out)) +\n  geom_vline(aes(xintercept = 1), col='red', lty=2, size=1) +\n  labs(y=\"Sample\", color='CI covers true mean') \n\nWarning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.\nℹ Please use `linewidth` instead.\n\n\n\n\n\n\n\n\n\n\nTry to change sample size and see what will happen!"
   },
   {
     "objectID": "code/distributions_clt_ci.html#t-distribution",
     "href": "code/distributions_clt_ci.html#t-distribution",
     "title": "Intro into statistics (code)",
     "section": "t-distribution",
-    "text": "t-distribution\n\ntrue_mean = 5\ntrue_sd = 2\n\n\nSample\n\nsample_size = 50\n\nsample = rnorm(sample_size, true_mean, true_sd)\n\nsample_mean = mean(sample)\n# sample_sd = sd(sample_norm)\nsample_se = se(sample)\n\nhist(sample)\n\n\n\n\n\n\n\n\n\n\nCI (95%)\n\nquantiles = qt(df = length(sample)-1, p = c(0.025, 0.975)) \nquantiles\n\n[1] -2.009575  2.009575\n\n\n\nc(\n  sample_mean + quantiles[1] * sample_se,\n  sample_mean + quantiles[2] * sample_se\n)\n\n[1] 4.552100 5.503525\n\n\n\n\nConfidence level\n\n# sample_size = \n# n_samples = \n# true_mean=\n\n# df_trial_t = tibble(\n  # sample_ID = \n  # value = \n  # )\n\n# quantiles = \n\n\ndf_ci_t = df_trial_t |&gt; group_by(sample_ID) |&gt; \n  summarize(mu = mean(value), \n            se_sample = se(value), \n            conf.min = mu + quantiles[1] * se_sample,\n            conf.max = mu + quantiles[2] * se_sample) |&gt; \n  mutate(out = ifelse((true_mean &lt; conf.max) & (true_mean &gt; conf.min), 'ok', 'missed'))\n\n\ndf_ci_t |&gt;  \n  ggplot(aes(y=sample_ID)) +\n  geom_errorbar(aes(xmin = conf.min, xmax = conf.max, col=out)) +\n  geom_vline(aes(xintercept = 5), col='red', lty=2, size=1) +\n  labs(y=\"Sample\", color='CI covers true mean') \n\nTry different size of sample!\n\n\nAnother method for calculation CI with t-distribution\nLooking only on “95 percent confidence interval:”\n\nt.test(sample)\n\n\n    One Sample t-test\n\ndata:  sample\nt = 21.239, df = 49, p-value &lt; 2.2e-16\nalternative hypothesis: true mean is not equal to 0\n95 percent confidence interval:\n 4.552100 5.503525\nsample estimates:\nmean of x \n 5.027812"
+    "text": "t-distribution\n\ntrue_mean = 5\ntrue_sd = 2\n\n\nSample\n\nsample_size = 50\n\nsample = rnorm(sample_size, true_mean, true_sd)\n\nsample_mean = mean(sample)\n# sample_sd = sd(sample_norm)\nsample_se = se(sample)\n\nhist(sample)\n\n\n\n\n\n\n\n\n\n\nCI (95%)\n\nquantiles = qt(df = length(sample)-1, p = c(0.025, 0.975)) \nquantiles\n\n[1] -2.009575  2.009575\n\n\n\nc(\n  sample_mean + quantiles[1] * sample_se,\n  sample_mean + quantiles[2] * sample_se\n)\n\n[1] 4.232229 5.499415\n\n\n\n\nConfidence level\n\nsample_size = 10\nn_samples = 1000\ntrue_mean=5\n\ndf_trial &lt;- tibble(\n  sample_ID = rep(1:n_samples, each=sample_size),\n  value = rnorm(mean=true_mean, sd=1, sample_size*n_samples)\n  )\n\nquantiles = qt(sample_size-1, p = c(0.025, 0.975))\n\n\ndf_ci_t = df_trial |&gt; group_by(sample_ID) |&gt; \n  summarize(mu = mean(value), \n            se_sample = se(value), \n            conf.min = mu + quantiles[1] * se_sample,\n            conf.max = mu + quantiles[2] * se_sample) |&gt; \n  mutate(out = ifelse((true_mean &lt; conf.max) & (true_mean &gt; conf.min), 'ok', 'missed'))\n\n\ntable(df_ci_t$out)\n\n\nmissed     ok \n    50    950 \n\nprop.table(table(df_ci_t$out))\n\n\nmissed     ok \n  0.05   0.95 \n\n\n\ndf_ci_t |&gt;  \n  ggplot(aes(y=sample_ID)) +\n  geom_errorbar(aes(xmin = conf.min, xmax = conf.max, col=out)) +\n  geom_vline(aes(xintercept = 5), col='red', lty=2, size=1) +\n  labs(y=\"Sample\", color='CI covers true mean') \n\nTry different size of sample!\n\n\nAnother method for calculation CI with t-distribution\nLooking only on “95 percent confidence interval:”\n\nt.test(sample)\n\n\n    One Sample t-test\n\ndata:  sample\nt = 15.433, df = 49, p-value &lt; 2.2e-16\nalternative hypothesis: true mean is not equal to 0\n95 percent confidence interval:\n 4.232229 5.499415\nsample estimates:\nmean of x \n 4.865822"
   },
   {
     "objectID": "presentations/distributions_clt_ci.html#types-of-data",
@@ -1005,7 +1005,7 @@
     "href": "presentations/distributions_clt_ci.html#functions-for-normal-distribution",
     "title": "Distributions and statistics",
     "section": "Functions (for normal distribution)",
-    "text": "Functions (for normal distribution)\n\n\n\n\nRandom values from distribution\n\n\nrnorm(n=5, mean=100, sd=10)\n\n[1]  88.10070  99.36620 102.60516  94.55949 110.58575\n\n\n\nDensity (the height of histogram) at the point\n\n\ndnorm(x=100, mean=100, sd=10)\n\n[1] 0.03989423"
+    "text": "Functions (for normal distribution)\n\n\n\n\nRandom values from distribution\n\n\nrnorm(n=5, mean=100, sd=10)\n\n[1]  95.09836  98.48653 111.89743  97.91580  97.52353\n\n\n\nDensity (the height of histogram) at the point\n\n\ndnorm(x=100, mean=100, sd=10)\n\n[1] 0.03989423"
   },
   {
     "objectID": "presentations/distributions_clt_ci.html#functions-for-normal-distribution-1",
@@ -1096,7 +1096,7 @@
     "href": "presentations/distributions_clt_ci.html#what-does-confidence-level-mean",
     "title": "Distributions and statistics",
     "section": "What does confidence level mean?",
-    "text": "What does confidence level mean?\n\n\nGenerating 1000 samples and 1000 95% CIs\n\n\n\n\n\n\n\n\n\n\nHow many CIs do cover true mean?\n\n\n\nmissed     ok \n    51    949 \n\n\nSo, 95% of new generated CIs will cover true mean\nTry to change size of samples"
+    "text": "What does confidence level mean?\n\n\nGenerating 1000 samples and 1000 95% CIs\n\n\n\n\n\n\n\n\n\n\nHow many CIs do cover true mean?\n\n\n\nmissed     ok \n    64    936 \n\n\nSo, 95% of new generated CIs will cover true mean\nTry to change size of samples"
   },
   {
     "objectID": "presentations/distributions_clt_ci.html#students-t--distribution",

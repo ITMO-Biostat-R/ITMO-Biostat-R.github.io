@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Virtual hospital HW – Biostatistics in R</title>
+<title>Homework #3 – Biostatistics in R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -142,22 +142,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#task" id="toc-task" class="nav-link active" data-scroll-target="#task">Task</a></li>
-  <li><a href="#population-settings" id="toc-population-settings" class="nav-link" data-scroll-target="#population-settings">Population settings</a>
+  <li><a href="#patients-dataset" id="toc-patients-dataset" class="nav-link active" data-scroll-target="#patients-dataset">Patients dataset</a>
   <ul class="collapse">
-  <li><a href="#characteristics-of-population" id="toc-characteristics-of-population" class="nav-link" data-scroll-target="#characteristics-of-population">Characteristics of population</a></li>
-  </ul></li>
-  <li><a href="#one-sample-from-population" id="toc-one-sample-from-population" class="nav-link" data-scroll-target="#one-sample-from-population">One sample from population</a>
+  <li><a href="#dataset" id="toc-dataset" class="nav-link" data-scroll-target="#dataset">1. Dataset</a>
   <ul class="collapse">
-  <li><a href="#confidence-interval-ci" id="toc-confidence-interval-ci" class="nav-link" data-scroll-target="#confidence-interval-ci">Confidence interval (CI)</a></li>
+  <li><a href="#read-the-data-from-file-patients.csv" id="toc-read-the-data-from-file-patients.csv" class="nav-link" data-scroll-target="#read-the-data-from-file-patients.csv">1.1 Read the data from file <code>patients.csv</code></a></li>
+  <li><a href="#show-summary" id="toc-show-summary" class="nav-link" data-scroll-target="#show-summary">1.2 Show summary</a></li>
   </ul></li>
-  <li><a href="#generating-samples" id="toc-generating-samples" class="nav-link" data-scroll-target="#generating-samples">Generating samples</a>
+  <li><a href="#cleaning" id="toc-cleaning" class="nav-link" data-scroll-target="#cleaning">2. Cleaning</a>
   <ul class="collapse">
-  <li><a href="#generating" id="toc-generating" class="nav-link" data-scroll-target="#generating">Generating</a></li>
-  <li><a href="#distribution-of-means" id="toc-distribution-of-means" class="nav-link" data-scroll-target="#distribution-of-means">Distribution of means</a></li>
-  <li><a href="#standard-error" id="toc-standard-error" class="nav-link" data-scroll-target="#standard-error">Standard error</a></li>
+  <li><a href="#deal-with-nas" id="toc-deal-with-nas" class="nav-link" data-scroll-target="#deal-with-nas">2.1. Deal with NAs</a></li>
+  <li><a href="#deal-with-outliers" id="toc-deal-with-outliers" class="nav-link" data-scroll-target="#deal-with-outliers">2.2 Deal with outliers</a></li>
   </ul></li>
-  <li><a href="#changing-parameters" id="toc-changing-parameters" class="nav-link" data-scroll-target="#changing-parameters">Changing parameters</a></li>
+  <li><a href="#eda" id="toc-eda" class="nav-link" data-scroll-target="#eda">3. EDA</a>
+  <ul class="collapse">
+  <li><a href="#distributions-of-continuous-data" id="toc-distributions-of-continuous-data" class="nav-link" data-scroll-target="#distributions-of-continuous-data">3.1 Distributions of continuous data</a></li>
+  <li><a href="#distribution-of-factor-variables" id="toc-distribution-of-factor-variables" class="nav-link" data-scroll-target="#distribution-of-factor-variables">3.2 Distribution of factor variables</a></li>
+  </ul></li>
+  <li><a href="#association" id="toc-association" class="nav-link" data-scroll-target="#association">4. Association</a>
+  <ul class="collapse">
+  <li><a href="#do-males-have-high-cholesterol-more-often-than-females-calculate-risks-odds-their-ratios-and-risk-difference." id="toc-do-males-have-high-cholesterol-more-often-than-females-calculate-risks-odds-their-ratios-and-risk-difference." class="nav-link" data-scroll-target="#do-males-have-high-cholesterol-more-often-than-females-calculate-risks-odds-their-ratios-and-risk-difference.">4.1 Do males have high <code>Cholesterol</code> more often than females? Calculate Risks, Odds, their ratios and Risk difference.</a></li>
+  <li><a href="#are-age-and-glucose-correlated" id="toc-are-age-and-glucose-correlated" class="nav-link" data-scroll-target="#are-age-and-glucose-correlated">4.2 Are <code>Age</code> and <code>Glucose</code> correlated?</a></li>
+  </ul></li>
+  <li><a href="#testing-averages-between-2-groups" id="toc-testing-averages-between-2-groups" class="nav-link" data-scroll-target="#testing-averages-between-2-groups">5. Testing averages between 2 groups</a>
+  <ul class="collapse">
+  <li><a href="#do-average-ages-significantly-differ-between-2-sex-groups" id="toc-do-average-ages-significantly-differ-between-2-sex-groups" class="nav-link" data-scroll-target="#do-average-ages-significantly-differ-between-2-sex-groups">5.1 Do average <code>Age</code>s significantly differ between 2 <code>Sex</code> groups?</a></li>
+  <li><a href="#do-average-glucose-significantly-differ-between-two-cholesterol-groups" id="toc-do-average-glucose-significantly-differ-between-two-cholesterol-groups" class="nav-link" data-scroll-target="#do-average-glucose-significantly-differ-between-two-cholesterol-groups">5.2 Do average <code>Glucose</code> significantly differ between two <code>Cholesterol</code> groups?</a></li>
+  </ul></li>
+  <li><a href="#testing-the-independence-between-two-categories" id="toc-testing-the-independence-between-two-categories" class="nav-link" data-scroll-target="#testing-the-independence-between-two-categories">6. Testing the independence between two categories</a>
+  <ul class="collapse">
+  <li><a href="#do-blood-pressure-bp-levels-depend-on-cholesterol-levels" id="toc-do-blood-pressure-bp-levels-depend-on-cholesterol-levels" class="nav-link" data-scroll-target="#do-blood-pressure-bp-levels-depend-on-cholesterol-levels">6.1 Do Blood pressure (<code>BP</code>) levels depend on <code>Cholesterol</code> levels?</a></li>
+  </ul></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -166,7 +182,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Virtual hospital HW</h1>
+<h1 class="title">Homework #3</h1>
 </div>
 
 
@@ -183,142 +199,212 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="task" class="level1">
-<h1>Task</h1>
-<p>You need to create code for a <em>‘virtual hospital’</em> — a file in which you can model your samples and analyse how different parameters can affect your results.</p>
-<p>What you have to do:</p>
-<ol type="1">
-<li>Create the (general) population from which you will take samples. Describe it.</li>
-<li>Select <strong>one</strong> sample and analyze it</li>
-<li>Generate a lot of samples and analyze them</li>
-<li>Calculate error and Confidence intervals</li>
-<li>Change the parameters (size of samples, population settings) and make a conclusion what can affect your estimation (error)</li>
-</ol>
-<p><strong>You will analyze <u>Glucose level (mmol/L)</u> of hospital patients.</strong></p>
-</section>
-<section id="population-settings" class="level1">
-<h1>Population settings</h1>
-<blockquote class="blockquote">
-<p>Set possible values of glucose - let it be <strong>2,3,4,5,6,7,8,9</strong></p>
-<p>Set possibilities of each glucose level - it is your choice, but remember that <strong>sum of probabilities should be equal 1</strong>.</p>
-<p><strong>P.S.</strong> If you want, you can make them equally probable (use <code>rep()</code>) or make <strong>5</strong> and <strong>6</strong> the most likely (as in real life).</p>
-</blockquote>
-<blockquote class="blockquote">
-<p>Create data-frame with columns <strong>Value</strong> and corresponding <strong>Probability</strong></p>
-<p>Create the <strong>barplot</strong> with <strong>Value</strong> on x-axis and <strong>Probability</strong> on y-axis. Name axis and make it colorful.</p>
-</blockquote>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># population_df = data.frame(Value = , </span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>                           <span class="co"># Probability = )</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># population_df %&gt;%</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># ggplot() +</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># </span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="characteristics-of-population" class="level2">
-<h2 class="anchored" data-anchor-id="characteristics-of-population">Characteristics of population</h2>
-<blockquote class="blockquote">
-<p><u><strong>Show</strong></u> the <strong>population (!) mean.</strong> Variance and standard deviation of population.</p>
-</blockquote>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># population_mean =</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># population_variance =</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># population_sd =</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-</section>
-<section id="one-sample-from-population" class="level1">
-<h1>One sample from population</h1>
-<blockquote class="blockquote">
-<p>Set the sample size = 50</p>
-<p>Take a sample from population (<code>sample()</code>)</p>
-<p>Show the <strong>sample mean</strong></p>
-</blockquote>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># sample_size =</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># sample = (population_df$Value, population_df$Probability)</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># sample_mean =</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<section id="confidence-interval-ci" class="level2">
-<h2 class="anchored" data-anchor-id="confidence-interval-ci">Confidence interval (CI)</h2>
-<blockquote class="blockquote">
-<p>Calculate the 90% confidence interval for the mean using Student’s t-distribution<br>
-<br>
-P.S. If you want to use the <code>t.test</code> function, learn how to change the confidence level and how to display only CI information (without testing information).<br>
-Otherwise, use more straightforward way to calculate CI.</p>
-</blockquote>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># sample</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># confidence_interval = </span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># print(confidence_interval)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-</section>
-<section id="generating-samples" class="level1">
-<h1>Generating samples</h1>
-<section id="generating" class="level2">
-<h2 class="anchored" data-anchor-id="generating">Generating</h2>
-<blockquote class="blockquote">
-<p>Set sample size = 100 and number of samples = 1000</p>
-<p>Create data-frame containing columns</p>
+<section id="patients-dataset" class="level1">
+<h1>Patients dataset</h1>
+<p><strong>Columns</strong></p>
 <ul>
-<li><p><code>Sample_ID</code> - numbers from 1 to number of samples. Remember <code>rep()</code> function.</p></li>
-<li><p><code>Value</code> - values taken from population (<code>sample()</code>)</p></li>
+<li><p>Age</p></li>
+<li><p>Sex</p></li>
+<li><p>Blood Pressure Levels (BP)</p></li>
+<li><p>Cholesterol Levels</p></li>
+<li><p>Na to Potassium Ratio</p></li>
+<li><p>Glucose level</p></li>
 </ul>
-<p>There are 1000 samples and 100 values in each -&gt; 1000*100 = 100000 rows in data-frame</p>
-</blockquote>
+<section id="dataset" class="level2">
+<h2 class="anchored" data-anchor-id="dataset">1. Dataset</h2>
+<section id="read-the-data-from-file-patients.csv" class="level3">
+<h3 class="anchored" data-anchor-id="read-the-data-from-file-patients.csv">1.1 Read the data from file <code>patients.csv</code></h3>
+<ul>
+<li><u>Don’t forget about parameters for reading</u></li>
+</ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># sample_size = </span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># n_samples = </span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># df_samples &lt;- data.frame(</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># sample_ID = ,</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># value = </span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># )</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co"># df_samples</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="distribution-of-means" class="level2">
-<h2 class="anchored" data-anchor-id="distribution-of-means">Distribution of means</h2>
-<blockquote class="blockquote">
-<p>Create data-frame where for each <code>Sample_ID</code> mean <code>Value</code> will be calculated.<br>
-Remember how to group data and <code>summarise()</code>.</p>
-<p>Draw distribution (histogram) of obtained means. Make plot pretty, please :)</p>
-</blockquote>
+<section id="show-summary" class="level3">
+<h3 class="anchored" data-anchor-id="show-summary">1.2 Show summary</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># df_sample_mean = df_samples %&gt;%</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># df_sample_mean %&gt;%</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># ggplot()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>1.2.1 Don’t you see something strange?</strong></p>
+<p><code>&lt;...WRITE HERE...&gt;</code></p>
+</section>
+</section>
+<section id="cleaning" class="level2">
+<h2 class="anchored" data-anchor-id="cleaning">2. Cleaning</h2>
+<section id="deal-with-nas" class="level3">
+<h3 class="anchored" data-anchor-id="deal-with-nas">2.1. Deal with NAs</h3>
+<p><strong>2.1.1 Count number of NAs in each column</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>2.1.2 Show</strong> <strong>rows with at least one NA in any column</strong></p>
+<ul>
+<li>use <code>complete.cases()</code></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>2.1.3 Do something</strong> <strong>with rows with NAs</strong></p>
+<ul>
+<li><em>Delete or remain ..?</em></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="standard-error" class="level2">
-<h2 class="anchored" data-anchor-id="standard-error">Standard error</h2>
-<blockquote class="blockquote">
-<p>Calculate SE using means in <code>df_sample_mean</code></p>
-</blockquote>
+<section id="deal-with-outliers" class="level3">
+<h3 class="anchored" data-anchor-id="deal-with-outliers">2.2 Deal with outliers</h3>
+<p><strong>2.2.1 Which columns have outliers?</strong></p>
+<ul>
+<li><em>Create box-plots of continuous variables (columns)</em></li>
+</ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># error =</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># print(error)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><code>&lt;...WRITE HERE what column have outliers ...&gt;</code></p>
+<p><strong>2.2.2 <u>Filter</u> out rows with obvious outliers in this column</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
-<section id="changing-parameters" class="level1">
-<h1>Changing parameters</h1>
-<blockquote class="blockquote">
-<p>Repeat previous steps with smaller sample size (e.g.&nbsp;10, 5, 3) and other parameters if you want. You don’t need to change the population (but you can try).</p>
-<p>Write code below. Yes, it will be almost the same, but your report will contain all your work and pictures that You’ll be able to compare.</p>
-<p><strong>Write the conclusion. What did you see and why is it so?</strong></p>
-</blockquote>
+<section id="eda" class="level2">
+<h2 class="anchored" data-anchor-id="eda">3. EDA</h2>
+<section id="distributions-of-continuous-data" class="level3">
+<h3 class="anchored" data-anchor-id="distributions-of-continuous-data">3.1 Distributions of continuous data</h3>
+<ul>
+<li>Show histograms of <code>Age</code>, <code>Na_to_K</code>, <code>Glucose</code></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="distribution-of-factor-variables" class="level3">
+<h3 class="anchored" data-anchor-id="distribution-of-factor-variables">3.2 Distribution of factor variables</h3>
+<p><strong>3.2.1 Draw a <u>barplot</u> where the height represents the number of obseravtions in each blood pressure (<code>BP</code>) group and the <code>fill</code> represents <code>Sex</code></strong></p>
+<ul>
+<li>X-axis = <code>BP</code>, fill = <code>Sex</code></li>
+<li>“dodge” or “stack” barplot</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>3.2.2 Draw barplot where the height represents number of observations in each</strong> <code>Cholesterol</code> <strong>group and the <code>fill</code> represents blood pressure</strong> (<code>BP</code>)</p>
+<ul>
+<li>X-axis = <code>Cholesterol</code>, fill = <code>BP</code></li>
+<li>“dodge” or “stack” barplot</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><em>P.S. We will test the independence of <code>BP</code> and <code>Cholesterol</code> in 5.1</em></p>
+</section>
+</section>
+<section id="association" class="level2">
+<h2 class="anchored" data-anchor-id="association">4. Association</h2>
+<section id="do-males-have-high-cholesterol-more-often-than-females-calculate-risks-odds-their-ratios-and-risk-difference." class="level3">
+<h3 class="anchored" data-anchor-id="do-males-have-high-cholesterol-more-often-than-females-calculate-risks-odds-their-ratios-and-risk-difference.">4.1 Do males have high <code>Cholesterol</code> more often than females? Calculate Risks, Odds, their ratios and Risk difference.</h3>
+<p><strong>4.1.1 Create contingency table</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># cont_table = </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>4.1.2 Calculate Risks and Odds</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>4.1.3 Calculate RR, RD and OR</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># RR = </span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># RR</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># RD = </span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co"># RD</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="co"># OR = </span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="co"># OR</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>4.1.4 Are there significant association between <code>Sex</code> and having high <code>Cholesterol</code> ?</strong></p>
+<p><code>&lt;...WRITE HERE...&gt;</code></p>
+</section>
+<section id="are-age-and-glucose-correlated" class="level3">
+<h3 class="anchored" data-anchor-id="are-age-and-glucose-correlated">4.2 Are <code>Age</code> and <code>Glucose</code> correlated?</h3>
+<p><strong>4.2.0 (*) Draw scatter-plot <code>Age</code> vs <code>Glucose</code></strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>4.2.1 Show Pearson’s correlation value</strong></p>
+<ul>
+<li>Additionally <strong>test</strong> <strong>how far the coefficient is from zero</strong></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>4.2.2 Is correlation is significant?</strong></p>
+<p><code>&lt;...WRITE HERE...&gt;</code></p>
+</section>
+</section>
+<section id="testing-averages-between-2-groups" class="level2">
+<h2 class="anchored" data-anchor-id="testing-averages-between-2-groups">5. Testing averages between 2 groups</h2>
+<section id="do-average-ages-significantly-differ-between-2-sex-groups" class="level3">
+<h3 class="anchored" data-anchor-id="do-average-ages-significantly-differ-between-2-sex-groups">5.1 Do average <code>Age</code>s significantly differ between 2 <code>Sex</code> groups?</h3>
+<p><strong>5.1.0 (*) Draw the plot with two histograms of <code>Age</code>s for each <code>Sex</code> group</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>5.1.1 Conduct the test</strong></p>
+<ul>
+<li>Choose appropriate <strong>test</strong></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>5.1.2 Write the conclusion</strong></p>
+<p><code>&lt;...WRITE HERE...&gt;</code></p>
+</section>
+<section id="do-average-glucose-significantly-differ-between-two-cholesterol-groups" class="level3">
+<h3 class="anchored" data-anchor-id="do-average-glucose-significantly-differ-between-two-cholesterol-groups">5.2 Do average <code>Glucose</code> significantly differ between two <code>Cholesterol</code> groups?</h3>
+<p><strong>5.2.0 (*) Draw the plot with two histograms of <code>Glucose</code> for each <code>Cholesterol</code> group</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>5.2.1 Conduct the test</strong></p>
+<ul>
+<li>Choose appropriate <strong>test</strong></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>5.2.2 Write the conclusion</strong></p>
+<p><code>&lt;...WRITE HERE...&gt;</code></p>
+</section>
+</section>
+<section id="testing-the-independence-between-two-categories" class="level2">
+<h2 class="anchored" data-anchor-id="testing-the-independence-between-two-categories">6. Testing the independence between two categories</h2>
+<section id="do-blood-pressure-bp-levels-depend-on-cholesterol-levels" class="level3">
+<h3 class="anchored" data-anchor-id="do-blood-pressure-bp-levels-depend-on-cholesterol-levels">6.1 Do Blood pressure (<code>BP</code>) levels depend on <code>Cholesterol</code> levels?</h3>
+<p><strong>6.1.1 Create contingency table</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>6.1.2 Conduct the test</strong></p>
+<ul>
+<li><em>Chi-square or Fisher exact?</em></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>6.1.3 Write the conclusion</strong></p>
+<p><code>&lt;...WRITE HERE...&gt;</code></p>
 
 
+</section>
+</section>
 </section>
 
 </main> <!-- /main -->
