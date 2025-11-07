@@ -418,6 +418,14 @@
 <p>6) Conclusion</p>
 </div>
 </section>
+<section id="what-is-my-question" class="slide level2 center">
+<h2>What is my question?</h2>
+<ul>
+<li><p>What do I measure?</p></li>
+<li><p>Type of data collected</p></li>
+<li><p>What are factors?</p></li>
+</ul>
+</section>
 <section id="hypotheses" class="slide level2 center">
 <h2>Hypotheses</h2>
 <p>In statistical testing, we will operate with <strong>hypotheses.</strong> <em>There are two basic hypotheses:</em></p>
@@ -474,6 +482,9 @@
 </tr>
 </tbody>
 </table>
+<div class="fragment">
+<p>We <strong>cannot</strong> simultaneously make them low <em>Thus, we fix one them…</em></p>
+</div>
 </section>
 <section class="slide level2 center">
 
@@ -489,8 +500,16 @@
 <p>For example we set <span class="math inline">\(\alpha = 0.05\)</span> and got <strong>p-value</strong> &lt; <span class="math inline">\(\alpha\)</span>:</p>
 <p>We reject the <span class="math inline">\(H_0\)</span> at the <span class="math inline">\(\alpha = 0.05\)</span> significance level, indicating that there is sufficient evidence to conclude that the observed result is unlikely to have occurred under the null hypothesis.</p>
 </blockquote>
-<p>Thus we <u><strong>fix the Type 1 Error</strong></u> , but <u><strong>Type 2 Error still can be large!</strong></u></p>
+<p>Thus we <u><strong>fix the Type 1 Error</strong></u> <u><strong>(</strong><span class="math inline">\(\alpha\)</span><strong>)</strong></u>, but <u><strong>Type 2 Error (</strong><span class="math inline">\(\beta\)</span><strong>)</strong></u> <u><strong>still can be large!</strong></u></p>
+</section>
+<section id="power" class="slide level2 center">
+<h2>Power</h2>
 <p>The value <span class="math inline">\(1-\beta\)</span> called the <u><strong>power of the test</strong></u>. <em>The smaller is the probability of type II error, the more powerful is the test.</em></p>
+<p><strong>Depends on</strong>:</p>
+<ul>
+<li><p>Sample size</p></li>
+<li><p>Size of effect (biological significance)</p></li>
+</ul>
 </section>
 <section id="significance-level-1" class="slide level2 center" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Significance level</h2>
@@ -548,6 +567,9 @@
 <li><p>The independence of groups</p></li>
 <li><p>The type of data (categorical, numerical and etc.)</p></li>
 </ul>
+<div class="fragment">
+<p><strong>If assumptions are not met,</strong> Type I error may be bigger than <span class="math inline">\(\alpha\)</span></p>
+</div>
 </section>
 <section id="one-data-several-hypothesis" class="slide level2 center" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">One data, several hypothesis</h2>
@@ -644,8 +666,8 @@
 </blockquote>
 <p><strong>The p-value does not indicate the magnitude of the effect!</strong></p>
 </section>
-<section id="pipeline" class="slide level2 center">
-<h2>“Pipeline”</h2>
+<section id="steps" class="slide level2 center">
+<h2>Steps</h2>
 
 <img data-src="../images/pvalpipeline.png" class="quarto-figure quarto-figure-center r-stretch"></section>
 <section id="parameters-of-test-statistics-distributions" class="slide level2 center">
@@ -668,12 +690,22 @@
 <h2>t-distribution for different DFs</h2>
 
 <img data-src="../images/dfsT.png" class="quarto-figure quarto-figure-center r-stretch" width="600"></section>
-<section id="p-value-calculation" class="slide level2 center">
-<h2><em>p-value</em> calculation</h2>
+<section id="p-value" class="slide level2 center" data-auto-animate="true">
+<h2 data-id="quarto-animate-title"><em>p-value</em></h2>
+<blockquote>
+<p>The probability that, given a <strong>true null hypothesis</strong>, your observations will result <strong>in such or more extreme value of test statistic</strong></p>
+</blockquote>
+<ul>
+<li>Uniformly distributed</li>
+<li>Comparing with <span class="math inline">\(\alpha\)</span></li>
+</ul>
+</section>
+<section id="p-value-1" class="slide level2 center" data-auto-animate="true">
+<h2 data-id="quarto-animate-title"><em>p-value</em></h2>
 
 <img data-src="../images/memes/p-value.jpg" class="quarto-figure quarto-figure-center r-stretch"></section>
-<section class="slide level2 center">
-
+<section id="p-value-2" class="slide level2 center" data-auto-animate="true">
+<h2 data-id="quarto-animate-title"><em>p-value</em></h2>
 <h3 id="p-value-geq-alpha"><em>p-value</em> <span class="math inline">\(\geq \alpha\)</span></h3>
 <p>Since the <strong><em>p-value</em></strong> greater than chosen significance level (<span class="math inline">\(\alpha\)</span>) we <strong>fail</strong> to reject <span class="math inline">\(H_0\)</span></p>
 <h3 id="p-value-alpha"><em>p-value</em> <span class="math inline">\(&lt; \alpha\)</span></h3>

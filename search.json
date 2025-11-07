@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Biostatistics in R",
     "section": "",
-    "text": "Lecture data\n\nBasic R\n\nDownload\n\nWorking with Dataframes\n\nDownload\n\nVisualization\n\nDownload\n\nIntro into statistics\n\nDownload\n\nAssociation\n\nDownload\n\n\n\n\nPresentations\n\nVisualization sins and inspirations\nIntro into statistics\n\n\n\nHomeworks\n\nHW #1\n\nDownload\n\nHW #2\n\nDownload\nReference plots\n\nHW #3\n\nDownload\n\nHW final\n\nDownload"
+    "text": "Lecture data\n\nBasic R\n\nDownload\n\nWorking with Dataframes\n\nDownload\n\nVisualization\n\nDownload\n\nIntro into statistics\n\nDownload\n\nAssociation\n\nDownload\n\nAssociation\n\nDownload\n\n\n\n\nPresentations\n\nVisualization sins and inspirations\nIntro into statistics\n\n\n\nHomeworks\n\nHW #1\n\nDownload\n\nHW #2\n\nDownload\nReference plots\n\nHW #3\n\nDownload\n\nHW final\n\nDownload"
   },
   {
     "objectID": "presentations/distributions.html#types-of-data",
@@ -606,7 +606,7 @@
     "href": "presentations/testing.html#significance-level",
     "title": "Intro to testing",
     "section": "Significance level",
-    "text": "Significance level\nBefore testing we must define value \\(\\alpha\\) named significance level\nSignificance level (\\(\\alpha\\)) - predetermined threshold of rejecting \\(H_0\\).\n\nFor example we set \\(\\alpha = 0.05\\) and got p-value &lt; \\(\\alpha\\):\nWe reject the \\(H_0\\) at the \\(\\alpha = 0.05\\) significance level, indicating that there is sufficient evidence to conclude that the observed result is unlikely to have occurred under the null hypothesis.\n\nThus we fix the Type 1 Error , but Type 2 Error still can be large!\nThe value \\(1-\\beta\\) called the power of the test. The smaller is the probability of type II error, the more powerful is the test."
+    "text": "Significance level\nBefore testing we must define value \\(\\alpha\\) named significance level\nSignificance level (\\(\\alpha\\)) - predetermined threshold of rejecting \\(H_0\\).\n\nFor example we set \\(\\alpha = 0.05\\) and got p-value &lt; \\(\\alpha\\):\nWe reject the \\(H_0\\) at the \\(\\alpha = 0.05\\) significance level, indicating that there is sufficient evidence to conclude that the observed result is unlikely to have occurred under the null hypothesis.\n\nThus we fix the Type 1 Error (\\(\\alpha\\)), but Type 2 Error (\\(\\beta\\)) still can be large!"
   },
   {
     "objectID": "presentations/testing.html#significance-level-1",
@@ -1187,7 +1187,7 @@
     "href": "presentations/testing.html#tests-assumptions-1",
     "title": "Intro to testing",
     "section": "Test’s assumptions",
-    "text": "Test’s assumptions\nExamples\n\nThe particular distribution of population (e.g. normal)\nThe equality of variances\nThe independence of groups\nThe type of data (categorical, numerical and etc.)"
+    "text": "Test’s assumptions\nExamples\n\nThe particular distribution of population (e.g. normal)\nThe equality of variances\nThe independence of groups\nThe type of data (categorical, numerical and etc.)\n\n\nIf assumptions are not met, Type I error may be bigger than \\(\\alpha\\)"
   },
   {
     "objectID": "code/association.html",
@@ -1286,5 +1286,201 @@
     "title": "Association between variables",
     "section": "Diamonds dataset",
     "text": "Diamonds dataset\n\ndiamonds_small = diamonds |&gt; slice_sample(n=1000)\n\ndiamonds_small |&gt; glimpse(width = 50)\n\nRows: 1,000\nColumns: 10\n$ carat   &lt;dbl&gt; 0.27, 0.77, 0.31, 0.35, 0.51, 1.…\n$ cut     &lt;ord&gt; Ideal, Good, Ideal, Ideal, Ideal…\n$ color   &lt;ord&gt; F, F, I, F, D, I, H, J, D, F, D,…\n$ clarity &lt;ord&gt; VS2, VS2, IF, VS2, VS1, SI1, IF,…\n$ depth   &lt;dbl&gt; 60.9, 60.3, 61.3, 61.4, 62.1, 58…\n$ table   &lt;dbl&gt; 57, 61, 57, 54, 55, 59, 60, 60, …\n$ price   &lt;int&gt; 577, 2911, 652, 706, 1959, 8663,…\n$ x       &lt;dbl&gt; 4.17, 5.89, 4.34, 4.54, 5.14, 7.…\n$ y       &lt;dbl&gt; 4.20, 5.96, 4.40, 4.58, 5.20, 7.…\n$ z       &lt;dbl&gt; 2.55, 3.57, 2.68, 2.80, 3.21, 4.…\n\n\n\ndiamonds_small |&gt; summary()\n\n     carat               cut      color      clarity        depth     \n Min.   :0.2100   Fair     : 39   D:123   SI1    :247   Min.   :53.1  \n 1st Qu.:0.3900   Good     : 82   E:193   VS2    :230   1st Qu.:61.1  \n Median :0.7000   Very Good:245   F:169   SI2    :179   Median :61.9  \n Mean   :0.7862   Premium  :250   G:196   VS1    :147   Mean   :61.8  \n 3rd Qu.:1.0400   Ideal    :384   H:152   VVS2   : 77   3rd Qu.:62.6  \n Max.   :2.4600                   I:107   VVS1   : 76   Max.   :69.9  \n                                  J: 60   (Other): 44                 \n     table           price               x               y        \n Min.   :53.00   Min.   :  353.0   Min.   :3.890   Min.   :3.860  \n 1st Qu.:56.00   1st Qu.:  958.5   1st Qu.:4.700   1st Qu.:4.710  \n Median :57.00   Median : 2302.0   Median :5.660   Median :5.690  \n Mean   :57.47   Mean   : 3777.6   Mean   :5.711   Mean   :5.712  \n 3rd Qu.:59.00   3rd Qu.: 5245.8   3rd Qu.:6.522   3rd Qu.:6.520  \n Max.   :68.00   Max.   :18663.0   Max.   :8.660   Max.   :8.600  \n                                                                  \n       z       \n Min.   :2.29  \n 1st Qu.:2.89  \n Median :3.52  \n Mean   :3.53  \n 3rd Qu.:4.04  \n Max.   :5.44  \n               \n\n\n\nAre there some associated variables?\n\ncontinuous vs continuous\nordinal vs ordinal (not forget -&gt; as.numeric())\n\n\n\n# \n\n\n#"
+  },
+  {
+    "objectID": "presentations/testing.html#what-is-my-question",
+    "href": "presentations/testing.html#what-is-my-question",
+    "title": "Intro to testing",
+    "section": "What is my question?",
+    "text": "What is my question?\n\nWhat do I measure?\nType of data collected\nWhat are factors?"
+  },
+  {
+    "objectID": "presentations/testing.html#steps",
+    "href": "presentations/testing.html#steps",
+    "title": "Intro to testing",
+    "section": "Steps",
+    "text": "Steps"
+  },
+  {
+    "objectID": "presentations/testing.html#p-value",
+    "href": "presentations/testing.html#p-value",
+    "title": "Intro to testing",
+    "section": "p-value",
+    "text": "p-value\n\nThe probability that, given a true null hypothesis, your observations will result in such or more extreme value of test statistic\n\n\nUniformly distributed\nComparing with \\(\\alpha\\)"
+  },
+  {
+    "objectID": "presentations/testing.html#p-value-1",
+    "href": "presentations/testing.html#p-value-1",
+    "title": "Intro to testing",
+    "section": "p-value",
+    "text": "p-value"
+  },
+  {
+    "objectID": "presentations/testing.html#p-value-2",
+    "href": "presentations/testing.html#p-value-2",
+    "title": "Intro to testing",
+    "section": "p-value",
+    "text": "p-value\np-value \\(\\geq \\alpha\\)\nSince the p-value greater than chosen significance level (\\(\\alpha\\)) we fail to reject \\(H_0\\)\np-value \\(&lt; \\alpha\\)\nSince the p-value is less than chosen significance level (\\(\\alpha\\)), we reject \\(H_0\\) and conclude that there is sufficient statistical evidence to support \\(H_A\\)"
+  },
+  {
+    "objectID": "presentations/testing.html#power",
+    "href": "presentations/testing.html#power",
+    "title": "Intro to testing",
+    "section": "Power",
+    "text": "Power\nThe value \\(1-\\beta\\) called the power of the test. The smaller is the probability of type II error, the more powerful is the test.\nDepends on:\n\nSample size\nSize of effect (biological significance)"
+  },
+  {
+    "objectID": "code/stats_ttest_chi.html#assumptions",
+    "href": "code/stats_ttest_chi.html#assumptions",
+    "title": "Statistics",
+    "section": "Assumptions",
+    "text": "Assumptions\n\nVariances of the two groups are equal\n\nVariances can not be equal when using Welch t-test (default in R)\n\nIndependence of collected observations\nSamples should be large enough…. or originated from normally distributed population"
+  },
+  {
+    "objectID": "code/stats_ttest_chi.html#hypotheses",
+    "href": "code/stats_ttest_chi.html#hypotheses",
+    "title": "Statistics",
+    "section": "Hypotheses",
+    "text": "Hypotheses\n\nNull Hypothesis (\\(H_0\\)): The means of the two groups are equal.\nAlternative Hypothesis (\\(H_A\\)): The means of the two groups are different.\n\nTwo-sided: “our” mean is either significantly greater than or less than the mean under the null hypothesis\nOne-sided: “our” mean is significantly greater than the mean under the null hypothesis (instead of “greater” could be “less”)"
+  },
+  {
+    "objectID": "code/stats_ttest_chi.html#unpaired-t-test-for-independent-samples",
+    "href": "code/stats_ttest_chi.html#unpaired-t-test-for-independent-samples",
+    "title": "Statistics",
+    "section": "Unpaired t-test for independent samples",
+    "text": "Unpaired t-test for independent samples\n\nFormula\nCompare means of two groups: \\(t = \\dfrac{\\bar{X}_1 - \\bar{X}_2}{\\sqrt{\\frac{s_1^2}{n_1} + \\frac{s_2^2}{n_2}}}\\)\nCompare one group mean with a hypothesized average : \\(t = \\dfrac{\\bar{X}_1 - \\mu}{\\sqrt{\\frac{s_1^2}{n_1}}}\\)\n\n\\(\\bar{X_1}, \\bar{X_2}\\) - means of 1st and 2nd samples\n\\(s_1, s_2\\) - standard deviations of 1st and 2nd samples\n\\(n_1, n_2\\) -number of observations in samples\n\\(\\mu\\) - hypothesized average (often = 0)\n\n\n\nParameter of t-distribution\nDegrees of freedom (df) - number of independent piece of information\n\nEqual to number of observations - number of groups\n\nIf two groups are compared: \\(df = N_1 + N_2 - 2\\)\nIf group mean compared with zero: \\(df = N_1 - 1\\)\n\nCalculated by another big formula for Welch t-test\n\n\n\nDoes sunlight exposure affect plant height?\n\nData\n\ndata_sunlight_plant = \n  data.frame(group = factor(rep(c(\"Sunlight\", \"Shade\"), each = 30)),\n             height = c(rnorm(30, mean = 15, sd = 2), \n                        rnorm(30, mean = 12, sd = 2)))\n\ndata_sunlight_plant %&gt;% str() #!\n\n'data.frame':   60 obs. of  2 variables:\n $ group : Factor w/ 2 levels \"Shade\",\"Sunlight\": 2 2 2 2 2 2 2 2 2 2 ...\n $ height: num  13.1 15.3 12.5 13.5 19.8 ...\n\n\n\nggplant = data_sunlight_plant %&gt;%  \n  ggplot(aes(x=height,fill=group)) +\n  theme_classic()\n\nggplant + geom_boxplot(aes(y=group)) + theme(legend.position = \"none\")\n\n\n\n\n\n\n\n# ggplant + geom_density(alpha=0.5)\n# ggplant + geom_histogram(alpha=0.7, binwidth=1, col='black')\n\n\n\nTesting\nExample for one sample:\n\nx = rnorm(30, mean=2, sd=2)\nhist(x)\nabline(v = 0, lty=2, col='red', lwd=4)\n\n\n\n\n\n\n\n\n\nt.test(x, mu = 0)\n\n\n    One Sample t-test\n\ndata:  x\nt = 6.885, df = 29, p-value = 1.452e-07\nalternative hypothesis: true mean is not equal to 0\n95 percent confidence interval:\n 1.505942 2.778732\nsample estimates:\nmean of x \n 2.142337 \n\n\nExample on two samples:\n\nx1 = rnorm(30, mean=2, sd = 4)\nx2 = rnorm(30, mean=-1, sd=2)\nboxplot(x1, x2, horizontal = T)\n\n\n\n\n\n\n\n\n\nt.test(x1,x2)\n\n\n    Welch Two Sample t-test\n\ndata:  x1 and x2\nt = 4.3867, df = 39.111, p-value = 8.441e-05\nalternative hypothesis: true difference in means is not equal to 0\n95 percent confidence interval:\n 1.853179 5.023943\nsample estimates:\n mean of x  mean of y \n 2.5862623 -0.8522989 \n\n\nOur plant and sunlight data:\n\n# t.test(height ~ group, data = data_sunlight_plant, var.equal = TRUE) # Classic t-test\nt.test(height ~ group, \n       data = data_sunlight_plant) # Welch t-test\n\n\n    Welch Two Sample t-test\n\ndata:  height by group\nt = -7.1869, df = 58, p-value = 1.422e-09\nalternative hypothesis: true difference in means between group Shade and group Sunlight is not equal to 0\n95 percent confidence interval:\n -4.442487 -2.506918\nsample estimates:\n   mean in group Shade mean in group Sunlight \n              11.88563               15.36033 \n\n\n\nt-value &lt; 0\np-value &lt;&lt; \\(\\alpha\\) = 0.05\n\nWe can reject the \\(H_0\\) and accept \\(H_A\\) about difference of averages\n\n\n\n\n\nComparison of basic and Welch t-test\n\n\n\n\nBasic t-test\nWelch t-test\n\n\n\n\n= N ; = SD ; = MEAN\nGOOD\nGOOD\n\n\n= N ; \\(\\neq\\) SD ; = MEAN\nGOOD\nBETTER\n\n\n&gt; N ; &gt; SD ; = MEAN\nUNSTABLE\nGOOD\n\n\n&lt; N ; &gt; SD ; = MEAN\nUNSTABLE\nGOOD\n\n\n= N ; = SD ; \\(\\neq\\) MEAN\nGOOD\nGOOD\n\n\n= N ; \\(\\neq\\) SD ; \\(\\neq\\) MEAN\nGOOD\nGOOD\n\n\n&gt; N ; &gt; SD ; \\(\\neq\\) MEAN\nOK\nOK\n\n\n&lt; N ; &gt; SD ; \\(\\neq\\) MEAN\nOK\nOK"
+  },
+  {
+    "objectID": "code/stats_ttest_chi.html#paired-t-test-for-dependent-samples",
+    "href": "code/stats_ttest_chi.html#paired-t-test-for-dependent-samples",
+    "title": "Statistics",
+    "section": "Paired t-test for dependent samples",
+    "text": "Paired t-test for dependent samples\nUsed to compare two related groups (e.g., before and after treatment).\n\nFormula\n\\(t = \\dfrac{\\bar{d}}{s_d / \\sqrt{n}}\\)\n\nwhere \\(\\bar{d}\\) is the average difference\n\\(\\bar{d} = \\dfrac{\\sum^N_{i=1} X_{1i} - X_{2i}}{N} = \\dfrac{\\sum^N_{i=1} d_i}{N}\\),\n\n\\(X_{1i}\\) - \\(i\\)-th member of the 1st sample (before treatment)\n\\(X_{2i}\\) - \\(i\\)-th member of the 2nd sample (after treatment)\n\nand \\(s_d\\) is the standard deviation of the differences.\n\\(s_d = \\sqrt{\\dfrac{\\sum_{i=1}^N (d - \\bar{d})^2}{N-1}}\\)\n\n\n\nAdditional assumption\n\nNormal distribution of differences (\\(d_i\\))\n\n\n\nParameter of t-distribution\nAs two samples contain the same members, \\(df\\) = number of members - 1\n\n\nIs there a significant change in blood pressure before and after treatment?\n\nData\n\nbefore &lt;- rnorm(20, mean = 120, sd = 10)\nafter &lt;- before + rnorm(20, mean = -5, sd = 5)\n\ndata_pressure = data.frame(\n pressure = c(before, after),\n group = factor(rep(c('before', 'after'), each=20))\n)\n\ndata_pressure %&gt;% head() \n\n  pressure  group\n1 123.9806 before\n2 138.7236 before\n3 102.6851 before\n4 135.2251 before\n5 117.6651 before\n6 122.3897 before\n\n\n\nggpress = data_pressure %&gt;%  \n  ggplot(aes(x=pressure, fill=group)) +\n  theme_classic()\n\nggpress + geom_boxplot(aes(y=group)) + \n# ggplant + geom_density(alpha=0.5) + \n# ggplant + geom_histogram(alpha=0.8, binwidth=1) +\n  theme(legend.position = \"none\")\n\n\n\n\n\n\n\n\n\n\nTesting\n\nt.test(pressure ~ group,\n       data = data_pressure, \n       pair = T) # &lt;---- !!!\n\n\n    Paired t-test\n\ndata:  pressure by group\nt = -4.9031, df = 19, p-value = 9.874e-05\nalternative hypothesis: true mean difference is not equal to 0\n95 percent confidence interval:\n -8.043379 -3.230721\nsample estimates:\nmean difference \n       -5.63705"
+  },
+  {
+    "objectID": "code/stats_ttest_chi.html#non-parametric-alternative-for-independent-samples",
+    "href": "code/stats_ttest_chi.html#non-parametric-alternative-for-independent-samples",
+    "title": "Statistics",
+    "section": "Non-Parametric Alternative for independent samples",
+    "text": "Non-Parametric Alternative for independent samples\nIf you have\n\n“Strange” distribution\n“Outliers” strongly affecting the mean value\nRank/ordinal data\nStrange scale (hard to interpret)\nIt does not matter how much greater one value is than another, but it is important that it is consistently greater\nSmall sample (t-test even better for small samples)\n\nthen you can use non-parametric approaches\n\nMann-Whitney test (also known as Wilcoxon rank-sum test)\n\n\nHypotheses\nThe test does not compare means or medians!!!\n\nNull Hypothesis (\\(H_0\\)​): Two populations (from which the samples are drawn) have the same distribution in terms of relative position.\nAlternative Hypothesis (\\(H_A\\)​): Two populations have different distributions in terms of relative position (i.e., one distribution tends to yield larger values than the other).\n\nIf \\(X\\) comes from population 1 and \\(Y\\) comes from population 2, the null hypothesis often implies:\n\\(H_0: P(X&gt;Y)=0.5\\)\n\n\nExample\n\nsample1 = c(rnorm(20, 5, 2), 18)\nsample2 = c(rnorm(20, 7, 2), 22)\n\ndata_sample = data.frame(group = rep(c(\"sample1\", \"sample2\"), each=21),\n                         value = c(sample1, sample2))\n\n\ndata_sample %&gt;%  \n  ggplot(aes(x = value, fill=group)) + \n  geom_density(alpha=0.5) +\n  theme_classic()\n\n\n\n\n\n\n\n\n\nt.test(value ~ group,\n       data=data_sample)\n\n\n    Welch Two Sample t-test\n\ndata:  value by group\nt = -1.4815, df = 39.946, p-value = 0.1463\nalternative hypothesis: true difference in means between group sample1 and group sample2 is not equal to 0\n95 percent confidence interval:\n -4.0146387  0.6186075\nsample estimates:\nmean in group sample1 mean in group sample2 \n             6.056343              7.754358 \n\nwilcox.test(value ~ group,\n            data=data_sample)\n\n\n    Wilcoxon rank sum exact test\n\ndata:  value by group\nW = 139, p-value = 0.0407\nalternative hypothesis: true location shift is not equal to 0\n\n\nBase R only has wilcox.test(), however the documentation says Wilcoxon tests “is also known as the Mann-Whitney test”."
+  },
+  {
+    "objectID": "code/stats_ttest_chi.html#non-parametric-alternative-for-dependent-samples",
+    "href": "code/stats_ttest_chi.html#non-parametric-alternative-for-dependent-samples",
+    "title": "Statistics",
+    "section": "Non-Parametric Alternative for dependent samples",
+    "text": "Non-Parametric Alternative for dependent samples\nWilcoxon signed-rank test\n\nHypotheses\nTesting medians, not means\n\nNull Hypothesis (\\(H_0\\)​): Two dependent populations (from which the samples are drawn) have the same distribution in terms of relative position.\nAlternative Hypothesis (\\(H_A\\)​): Two dependent populations have different distributions in terms of relative position (i.e., one distribution tends to yield larger values than the other).\n\n\n\nTesting before/after data\n\nsample_before = c(rnorm(20, 5, 2), 18)\nsample_after = sample_before + rnorm(21, 1, 2)\n\ndata_before_after = data.frame(group = rep(c(\"before\", \"after\"), each=21),\n                         value = c(sample_before, sample_after))\n\n\ndata_before_after %&gt;%  ggplot(aes(x = value, fill=group)) + geom_density(alpha=0.5)\n\n\n\n\n\n\n\n\n\nwilcox.test(value ~ group,\n            data=data_before_after,\n            pair = TRUE) ## &lt;---\n\n\n    Wilcoxon signed rank exact test\n\ndata:  value by group\nV = 142, p-value = 0.3737\nalternative hypothesis: true location shift is not equal to 0"
+  },
+  {
+    "objectID": "code/stats_ttest_chi.html#assumptions-1",
+    "href": "code/stats_ttest_chi.html#assumptions-1",
+    "title": "Statistics",
+    "section": "Assumptions",
+    "text": "Assumptions\n\nAt least one category should be random\nBetter on big samples"
+  },
+  {
+    "objectID": "code/stats_ttest_chi.html#hypotheses-3",
+    "href": "code/stats_ttest_chi.html#hypotheses-3",
+    "title": "Statistics",
+    "section": "Hypotheses",
+    "text": "Hypotheses\n\nNull Hypothesis (\\(H_0\\)): There is no association between two categorical variables\nAlternative Hypothesis (\\(H_A\\)): There is some association between two categorical variables"
+  },
+  {
+    "objectID": "code/stats_ttest_chi.html#formula-2",
+    "href": "code/stats_ttest_chi.html#formula-2",
+    "title": "Statistics",
+    "section": "Formula",
+    "text": "Formula\n\\(\\chi^2 = \\sum \\frac{(O_i - E_i)^2}{E_i}\\) where (\\(O_i\\)) are the observed frequencies, and (\\(E_i\\)) are the expected frequencies."
+  },
+  {
+    "objectID": "code/stats_ttest_chi.html#parameter-of-chi2-distribution",
+    "href": "code/stats_ttest_chi.html#parameter-of-chi2-distribution",
+    "title": "Statistics",
+    "section": "Parameter of \\(\\chi^2\\)-distribution",
+    "text": "Parameter of \\(\\chi^2\\)-distribution\nDegrees of freedom \\(df\\)\n\n(number of rows in contingency table - 1) * (number of columns in contingency table - 1)"
+  },
+  {
+    "objectID": "code/stats_ttest_chi.html#contingency-tables",
+    "href": "code/stats_ttest_chi.html#contingency-tables",
+    "title": "Statistics",
+    "section": "Contingency tables",
+    "text": "Contingency tables\n\nDoes disease outcome depend on treatment group ?\n\n\n\n\n\n\n\n\n\n\nCured\nNot cured\nRow Total\n\n\n\n\nTreatment\n12\n8\n20\n\n\nPlacebo\n6\n10\n16\n\n\nColumn Total\n18\n18\n36\n\n\n\n\n\nExpected values calculation\nIn a 2x2 contingency table, the expected frequency for each cell is calculated as:\n\\[E_{ij} = \\frac{(total \\ Row_i \\times total \\ Column_j)}{N}\\]\nWhere:\n\n\\(total \\ Row_i\\) = Sum of row \\(i\\)\n\\(total \\ Column_j\\) = Sum of column \\(j\\)\n\\(N\\) = Grand total\n\nIt is calculated like this to remain total sums of rows and columns the same, bu tmake ratios between inner cells’ values (Odds) equal\n\n\n\n\n\n\n\n\n\n\nCured\nNot cured\nRow Total\n\n\n\n\nTreatment\n\\((18 \\times 20)/36 = 10\\)\n\\((18 \\times 20)/36 = 10\\)\n20\n\n\nPlacebo\n\\((18 \\times 16)/36 = 8\\)\n\\((18 \\times 16)/36 = 8\\)\n16\n\n\nColumn Total\n18\n18\n36\n\n\n\n\n\nStatistic calculation\n\\(\\chi^2 = \\sum \\frac{(O_i - E_i)^2}{E_i}\\) where (\\(O_i\\)) are the observed frequencies, and (\\(E_i\\)) are the expected\n\n\n2 x 2\n\nObserved\n\n\n\n\nCured\nNon-cured\n\n\n\n\nTreatment\n20\n7\n\n\nPlacebo\n9\n18\n\n\n\n\n\nExpected\n\n\n\n\nCured\nNon-cured\n\n\n\n\nTreatment\n14.5\n12.5\n\n\nPlacebo\n14.5\n12.5\n\n\n\n\\(\\chi^2 = \\sum^2_i \\sum^2_j \\frac{(O_{ij} - E_{ij})^2}{E_{ij}}\\) (\\(i\\) - row, \\(j\\) - column) \\(\\rightarrow \\chi^2 = \\frac{(20-14.5)^2}{14.5} + \\frac{(9-14.5)^2}{14.5} + \\frac{(18-14.5)^2}{12.5}+\\frac{(7-14.5)^2}{12.5}\\)\n\\(df = (2-1)*(2-1) = 1\\)\n\n\n\nN X M\n\nObserved\n\n\n\n\n\n\n\n\n\nBlood Pressure\nUnderweight\n(BMI &lt; 18.5)\nNormal Weight\n(BMI 18.5–24.9)\nOverweight\n(BMI ≥ 25)\n\n\nNormal\n40\n120\n90\n\n\nPrehypertension\n20\n80\n130\n\n\nHypertension\n10\n50\n160\n\n\n\n\n\nExpected\n\n\n\n\n\n\n\n\n\nBlood Pressure\nUnderweight\n(BMI &lt; 18.5)\nNormal Weight\n(BMI 18.5–24.9)\nOverweight\n(BMI ≥ 25)\n\n\nNormal\n25\n89.29\n135.71\n\n\nPrehypertension\n23\n82.14\n124.86\n\n\nHypertension\n22\n78.57\n119.43\n\n\n\n\\(\\chi^2 = \\sum^2_i \\sum^2_j \\frac{(O_{ij} - E_{ij})^2}{E_{ij}}\\) (\\(i\\) - row, \\(j\\) - column)\n\\(df = (N-1)(M-1)\\)\n\n\n\nCode\n\ndata_cure = data.frame(\n  Outcome = factor(rep(c('Cured', 'Not cured'), e=18)),\n  Group = factor(c(rep(\"Treatment\", 12), rep(\"Placebo\", 6), rep(\"Treatment\", 8), rep(\"Placebo\", 10))))\n\ndata_cure %&gt;%  head()\n\n  Outcome     Group\n1   Cured Treatment\n2   Cured Treatment\n3   Cured Treatment\n4   Cured Treatment\n5   Cured Treatment\n6   Cured Treatment\n\n\n\n\nContingency table\n\ncontingency_table = table(data_cure$Outcome, data_cure$Group)\ncontingency_table\n\n           \n            Placebo Treatment\n  Cured           6        12\n  Not cured      10         8\n\n\n\n\nPlot\n\nmosaicplot(contingency_table)\n\n\n\n\n\n\n\n\n\n\nTest\nWe don’t need to calculate the expected values. The chisq.test() do it for us.\n\nchisq.test(contingency_table, \n           # correct = F\n           )\n\n\n    Pearson's Chi-squared test with Yates' continuity correction\n\ndata:  contingency_table\nX-squared = 1.0125, df = 1, p-value = 0.3143\n\n\n\n\\(p.value &gt; 0.05\\)\nWe failed to reject the \\(H_0\\) about independence of Outcome and Group"
+  },
+  {
+    "objectID": "code/stats_ttest_chi.html#mcnemars-test",
+    "href": "code/stats_ttest_chi.html#mcnemars-test",
+    "title": "Statistics",
+    "section": "McNemar’s test",
+    "text": "McNemar’s test\nFor example, comparing two COVID tests. Both tests either detect the virus or not in the same patients."
+  },
+  {
+    "objectID": "code/stats_ttest_chi.html#assumptions-2",
+    "href": "code/stats_ttest_chi.html#assumptions-2",
+    "title": "Statistics",
+    "section": "Assumptions",
+    "text": "Assumptions\n\nBetter on big samples"
+  },
+  {
+    "objectID": "code/stats_ttest_chi.html#hypotheses-4",
+    "href": "code/stats_ttest_chi.html#hypotheses-4",
+    "title": "Statistics",
+    "section": "Hypotheses",
+    "text": "Hypotheses\n\nNull Hypothesis (\\(H_0\\)): Sums of rows and columns are equal (both tests detect COVID similarly)\n\na+b = a+c\nc+d = b+d\n=&gt; b=c\n\nAlternative Hypothesis (\\(H_A\\)): Sums of rows and columns are NOT equal\n\n\n\n\n\nTest2: +\nTest2: -\nRow Total\n\n\n\n\nTest1: +\na\nc\na+c\n\n\nTest1: -\nb\nd\nb+d\n\n\nColumn Total\na+b\nc+d\na+b+c+d\n\n\n\n\\(\\chi = \\dfrac{(b-c)^2}{b+c}\\)"
+  },
+  {
+    "objectID": "code/stats_ttest_chi.html#covid-tests",
+    "href": "code/stats_ttest_chi.html#covid-tests",
+    "title": "Statistics",
+    "section": "COVID Tests",
+    "text": "COVID Tests\n\nData\nSame patients!\n\n\n\n\nTest2: +\nTest2: -\nRow Total\n\n\n\n\nTest1: +\n12\n8\n20\n\n\nTest1: -\n6\n10\n16\n\n\nColumn Total\n18\n18\n36\n\n\n\n\n\nCode\n\ndata_covid = data.frame(\n  test1 = factor(rep(c('test2+', 'test2-'), e=18)),\n  test2 = factor(c(rep(\"test1+\", 12), rep(\"test1-\", 6), rep(\"test1+\", 8), rep(\"test1-\", 10))))\n\ndata_covid %&gt;%  head()\n\n   test1  test2\n1 test2+ test1+\n2 test2+ test1+\n3 test2+ test1+\n4 test2+ test1+\n5 test2+ test1+\n6 test2+ test1+\n\n\n\n\nContingency table\n\ncontingency_table = table(data_covid$test2, data_covid$test1)\ncontingency_table\n\n        \n         test2- test2+\n  test1-     10      6\n  test1+      8     12\n\n\n\n\nTesting\n\nmcnemar.test(contingency_table)\n\n\n    McNemar's Chi-squared test with continuity correction\n\ndata:  contingency_table\nMcNemar's chi-squared = 0.071429, df = 1, p-value = 0.7893\n\n\n\n\\(p.value &gt; 0.05\\)\nWe failed to reject the \\(H_0\\) that independence of Outcome and Group"
+  },
+  {
+    "objectID": "code/stats_ttest_chi.html#assumptions-3",
+    "href": "code/stats_ttest_chi.html#assumptions-3",
+    "title": "Statistics",
+    "section": "Assumptions",
+    "text": "Assumptions\n\nfor both not random categories! (otherwise it will be too conservative)\n\nFor example, we have four cups, and milk was added to some of them after the tea, and to others, milk was added first, and then tea. We invite an expert who has to guess which cup is which.\n\n\n\n\nexpert: Tea -&gt; Milk\nexpert: Tea -&gt; Milk\n\n\n\n\nTea -&gt; Milk\n3\n1\n\n\nMilk -&gt; Tea\n1\n3\n\n\n\n\n\nUsually used for 2x2 contingency table\nThe test is exact because it computes the exact probability of the observed data (and more extreme data) under the null hypothesis"
+  },
+  {
+    "objectID": "code/stats_ttest_chi.html#hypotheses-5",
+    "href": "code/stats_ttest_chi.html#hypotheses-5",
+    "title": "Statistics",
+    "section": "Hypotheses",
+    "text": "Hypotheses\n\nNull Hypothesis (\\(H_0\\)): There is no association between two categorical variables\n\nOdds ratio (OR) = 1\n\nAlternative Hypothesis (\\(H_A\\)): There is some association between two categorical variables\n\nOdds ratio (OR) \\(\\neq\\) 1"
+  },
+  {
+    "objectID": "code/stats_ttest_chi.html#does-the-presence-of-the-disease-depend-on-the-gene-knockout",
+    "href": "code/stats_ttest_chi.html#does-the-presence-of-the-disease-depend-on-the-gene-knockout",
+    "title": "Statistics",
+    "section": "Does the presence of the disease depend on the gene knockout?",
+    "text": "Does the presence of the disease depend on the gene knockout?\n\nData\n\n\n\n\n\n\n\n\n\n\nExpert guessed “treatment”\nExpert guessed “control”\nRow Total\n\n\n\n\nTreatment\n1\n3\n4\n\n\nControl\n3\n1\n4\n\n\nColumn Total\n4\n4\n8\n\n\n\n\ndata_knockout = data.frame(\n  Expert = factor(rep(c('guessed treatment', 'guessed placebo'), e=4)),\n  Group = factor(c(\"Treatment\", \"Control\", rep(\"Treatment\", 3), rep(\"Control\", 3))))\n\ndata_knockout %&gt;%  head()\n\n             Expert     Group\n1 guessed treatment Treatment\n2 guessed treatment   Control\n3 guessed treatment Treatment\n4 guessed treatment Treatment\n5   guessed placebo Treatment\n6   guessed placebo   Control\n\n\n\n\nContingency table\n\ncontingency_table_1 = table(data_knockout$Group, data_knockout$Expert)\ncontingency_table_1\n\n           \n            guessed placebo guessed treatment\n  Control                 3                 1\n  Treatment               1                 3\n\n\n\n\nTesting\n\nfisher.test(contingency_table_1)\n\n\n    Fisher's Exact Test for Count Data\n\ndata:  contingency_table_1\np-value = 0.4857\nalternative hypothesis: true odds ratio is not equal to 1\n95 percent confidence interval:\n   0.2117329 621.9337505\nsample estimates:\nodds ratio \n  6.408309 \n\n\n\n\\(p.value &gt; 0.05\\)\nWe failed reject \\(H_0\\) about absence of association between categorical variables."
+  },
+  {
+    "objectID": "code/stats_ttest_chi.html#is-your-data-normal",
+    "href": "code/stats_ttest_chi.html#is-your-data-normal",
+    "title": "Statistics",
+    "section": "Is your data normal?",
+    "text": "Is your data normal?\n\nQQ-plot\nDraws the correlation between a given sample and the normal distribution\n\n\nOn sunlight plant data\nAnalyzing each group independantly\n\nqqnorm(data_sunlight_plant %&gt;%  filter(group=='Sunlight') %&gt;%  pull(height))\nqqline(data_sunlight_plant %&gt;%  filter(group=='Sunlight') %&gt;%  pull(height))\n\n\n\n\n\n\n\nqqnorm(data_sunlight_plant %&gt;%  filter(group=='Shade') %&gt;%  pull(height))\nqqline(data_sunlight_plant %&gt;%  filter(group=='Shade') %&gt;%  pull(height))\n\n\n\n\n\n\n\n\n\n\nOn blood pressure data\n\nqqnorm(data_pressure %&gt;%  filter(group=='before') %&gt;%  pull(pressure))\nqqline(data_pressure %&gt;%  filter(group=='before') %&gt;%  pull(pressure))\n\n\n\n\n\n\n\nqqnorm(data_pressure %&gt;%  filter(group=='after') %&gt;%  pull(pressure))\nqqline(data_pressure %&gt;%  filter(group=='after') %&gt;%  pull(pressure))"
+  },
+  {
+    "objectID": "code/stats_ttest_chi.html#chi-square-goodness-of-fit-test",
+    "href": "code/stats_ttest_chi.html#chi-square-goodness-of-fit-test",
+    "title": "Statistics",
+    "section": "Chi-Square Goodness-of-Fit Test",
+    "text": "Chi-Square Goodness-of-Fit Test"
+  },
+  {
+    "objectID": "code/stats_ttest_chi.html#n-x-1-contingency-table",
+    "href": "code/stats_ttest_chi.html#n-x-1-contingency-table",
+    "title": "Statistics",
+    "section": "N x 1 contingency table",
+    "text": "N x 1 contingency table\nBelow are two different tables, but they are placed next to each other\n\n\n\nObserved\nExpected\n\n\n\n\n92\n90\n\n\n27\n30\n\n\n28\n30\n\n\n17\n10\n\n\n\n\\(\\chi^2 = \\sum^4_i \\frac{(O_i - E_i)^2}{E_i}\\), \\(df = N-1\\)"
+  },
+  {
+    "objectID": "code/stats_ttest_chi.html#are-observed-ratios-of-pea-plant-traits-consistent-with-mendels-expected-9331-ratio",
+    "href": "code/stats_ttest_chi.html#are-observed-ratios-of-pea-plant-traits-consistent-with-mendels-expected-9331-ratio",
+    "title": "Statistics",
+    "section": "Are observed ratios of pea plant traits consistent with Mendel’s expected 9:3:3:1 ratio?",
+    "text": "Are observed ratios of pea plant traits consistent with Mendel’s expected 9:3:3:1 ratio?\n\nData\n\nobserved &lt;- c(435, 150, 160, 55)\nexpected &lt;- c(9, 3, 3, 1) / sum(c(9, 3, 3, 1)) * sum(observed)\n\n\nbarplot(rbind(observed, expected), \n        beside = TRUE, \n        col = c(\"blue\", \"red\"), \n        legend = c(\"Observed\", \"Expected\"))\n\n\n\n\n\n\n\n\n\n\nCode\n\nchisq.test(x=observed, p=expected/sum(expected))\n\n\n    Chi-squared test for given probabilities\n\ndata:  observed\nX-squared = 1.6667, df = 3, p-value = 0.6444\n\n\n\np - expected proportions (instead of values)\n\\(p.value &gt; 0.05 \\ (\\alpha)\\) and it means that the two sets of frequencies are likely to belong to the same distribution or in other words: the observed values are not significantly different from the expected values"
   }
 ]

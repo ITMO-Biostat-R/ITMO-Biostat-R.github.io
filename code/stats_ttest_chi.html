@@ -185,17 +185,21 @@ window.Quarto = {
   <li><a href="#does-sunlight-exposure-affect-plant-height" id="toc-does-sunlight-exposure-affect-plant-height" class="nav-link" data-scroll-target="#does-sunlight-exposure-affect-plant-height">Does sunlight exposure affect plant height?</a></li>
   <li><a href="#comparison-of-basic-and-welch-t-test" id="toc-comparison-of-basic-and-welch-t-test" class="nav-link" data-scroll-target="#comparison-of-basic-and-welch-t-test">Comparison of basic and Welch t-test</a></li>
   </ul></li>
-  <li><a href="#non-parametric-alternative-for-independent-samples" id="toc-non-parametric-alternative-for-independent-samples" class="nav-link" data-scroll-target="#non-parametric-alternative-for-independent-samples">Non-Parametric Alternative <u>for independent samples</u></a>
-  <ul class="collapse">
-  <li><a href="#hypotheses-1" id="toc-hypotheses-1" class="nav-link" data-scroll-target="#hypotheses-1">Hypotheses</a></li>
-  <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example">Example</a></li>
-  </ul></li>
   <li><a href="#paired-t-test-for-dependent-samples" id="toc-paired-t-test-for-dependent-samples" class="nav-link" data-scroll-target="#paired-t-test-for-dependent-samples">Paired t-test <u>for dependent samples</u></a>
   <ul class="collapse">
   <li><a href="#formula-1" id="toc-formula-1" class="nav-link" data-scroll-target="#formula-1">Formula</a></li>
   <li><a href="#additional-assumption" id="toc-additional-assumption" class="nav-link" data-scroll-target="#additional-assumption">Additional assumption</a></li>
   <li><a href="#parameter-of-t-distribution-1" id="toc-parameter-of-t-distribution-1" class="nav-link" data-scroll-target="#parameter-of-t-distribution-1">Parameter of t-distribution</a></li>
   <li><a href="#is-there-a-significant-change-in-blood-pressure-before-and-after-treatment" id="toc-is-there-a-significant-change-in-blood-pressure-before-and-after-treatment" class="nav-link" data-scroll-target="#is-there-a-significant-change-in-blood-pressure-before-and-after-treatment">Is there a significant change in blood pressure before and after treatment?</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#non-parametric-alternatives" id="toc-non-parametric-alternatives" class="nav-link" data-scroll-target="#non-parametric-alternatives">Non-Parametric Alternatives</a>
+  <ul class="collapse">
+  <li><a href="#non-parametric-alternative-for-independent-samples" id="toc-non-parametric-alternative-for-independent-samples" class="nav-link" data-scroll-target="#non-parametric-alternative-for-independent-samples">Non-Parametric Alternative <u>for independent samples</u></a>
+  <ul class="collapse">
+  <li><a href="#mann-whitney-test-also-known-as-wilcoxon-rank-sum-test" id="toc-mann-whitney-test-also-known-as-wilcoxon-rank-sum-test" class="nav-link" data-scroll-target="#mann-whitney-test-also-known-as-wilcoxon-rank-sum-test"><strong>Mann-Whitney test</strong> <strong>(also known as</strong> <strong>Wilcoxon</strong> <strong>rank-sum test</strong>)</a></li>
+  <li><a href="#hypotheses-1" id="toc-hypotheses-1" class="nav-link" data-scroll-target="#hypotheses-1">Hypotheses</a></li>
+  <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example">Example</a></li>
   </ul></li>
   <li><a href="#non-parametric-alternative-for-dependent-samples" id="toc-non-parametric-alternative-for-dependent-samples" class="nav-link" data-scroll-target="#non-parametric-alternative-for-dependent-samples">Non-Parametric Alternative <u>for dependent samples</u></a>
   <ul class="collapse">
@@ -212,27 +216,39 @@ window.Quarto = {
   <li><a href="#parameter-of-chi2-distribution" id="toc-parameter-of-chi2-distribution" class="nav-link" data-scroll-target="#parameter-of-chi2-distribution">Parameter of <span class="math inline">\(\chi^2\)</span>-distribution</a></li>
   <li><a href="#contingency-tables" id="toc-contingency-tables" class="nav-link" data-scroll-target="#contingency-tables">Contingency tables</a>
   <ul class="collapse">
-  <li><a href="#x-2" id="toc-x-2" class="nav-link" data-scroll-target="#x-2">2 x 2</a></li>
-  <li><a href="#n-x-m" id="toc-n-x-m" class="nav-link" data-scroll-target="#n-x-m">N X M</a></li>
-  </ul></li>
-  <li><a href="#does-disease-outcome-depend-on-treatment-group" id="toc-does-disease-outcome-depend-on-treatment-group" class="nav-link" data-scroll-target="#does-disease-outcome-depend-on-treatment-group">Does disease outcome depend on treatment group ?</a>
-  <ul class="collapse">
+  <li><a href="#does-disease-outcome-depend-on-treatment-group" id="toc-does-disease-outcome-depend-on-treatment-group" class="nav-link" data-scroll-target="#does-disease-outcome-depend-on-treatment-group">Does disease outcome depend on treatment group ?</a></li>
   <li><a href="#expected-values-calculation" id="toc-expected-values-calculation" class="nav-link" data-scroll-target="#expected-values-calculation">Expected values calculation</a></li>
   <li><a href="#statistic-calculation" id="toc-statistic-calculation" class="nav-link" data-scroll-target="#statistic-calculation">Statistic calculation</a></li>
+  <li><a href="#x-2" id="toc-x-2" class="nav-link" data-scroll-target="#x-2">2 x 2</a></li>
+  <li><a href="#n-x-m" id="toc-n-x-m" class="nav-link" data-scroll-target="#n-x-m">N X M</a></li>
   <li><a href="#code" id="toc-code" class="nav-link" data-scroll-target="#code">Code</a></li>
   <li><a href="#contingency-table" id="toc-contingency-table" class="nav-link" data-scroll-target="#contingency-table">Contingency table</a></li>
+  <li><a href="#plot" id="toc-plot" class="nav-link" data-scroll-target="#plot">Plot</a></li>
   <li><a href="#test" id="toc-test" class="nav-link" data-scroll-target="#test">Test</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#paired-categorical-data-testing-for-dependent-samples" id="toc-paired-categorical-data-testing-for-dependent-samples" class="nav-link" data-scroll-target="#paired-categorical-data-testing-for-dependent-samples">Paired categorical data testing (for dependent samples)</a>
+  <ul class="collapse">
+  <li><a href="#mcnemars-test" id="toc-mcnemars-test" class="nav-link" data-scroll-target="#mcnemars-test">McNemar’s test</a></li>
+  <li><a href="#assumptions-2" id="toc-assumptions-2" class="nav-link" data-scroll-target="#assumptions-2">Assumptions</a></li>
+  <li><a href="#hypotheses-4" id="toc-hypotheses-4" class="nav-link" data-scroll-target="#hypotheses-4">Hypotheses</a></li>
+  <li><a href="#covid-tests" id="toc-covid-tests" class="nav-link" data-scroll-target="#covid-tests">COVID Tests</a>
+  <ul class="collapse">
+  <li><a href="#data-2" id="toc-data-2" class="nav-link" data-scroll-target="#data-2">Data</a></li>
+  <li><a href="#code-1" id="toc-code-1" class="nav-link" data-scroll-target="#code-1">Code</a></li>
+  <li><a href="#contingency-table-1" id="toc-contingency-table-1" class="nav-link" data-scroll-target="#contingency-table-1">Contingency table</a></li>
+  <li><a href="#testing-2" id="toc-testing-2" class="nav-link" data-scroll-target="#testing-2">Testing</a></li>
   </ul></li>
   </ul></li>
   <li><a href="#fishers-exact-test" id="toc-fishers-exact-test" class="nav-link" data-scroll-target="#fishers-exact-test">Fisher’s Exact Test</a>
   <ul class="collapse">
-  <li><a href="#assumptions-2" id="toc-assumptions-2" class="nav-link" data-scroll-target="#assumptions-2">Assumptions</a></li>
-  <li><a href="#hypotheses-4" id="toc-hypotheses-4" class="nav-link" data-scroll-target="#hypotheses-4">Hypotheses</a></li>
+  <li><a href="#assumptions-3" id="toc-assumptions-3" class="nav-link" data-scroll-target="#assumptions-3">Assumptions</a></li>
+  <li><a href="#hypotheses-5" id="toc-hypotheses-5" class="nav-link" data-scroll-target="#hypotheses-5">Hypotheses</a></li>
   <li><a href="#does-the-presence-of-the-disease-depend-on-the-gene-knockout" id="toc-does-the-presence-of-the-disease-depend-on-the-gene-knockout" class="nav-link" data-scroll-target="#does-the-presence-of-the-disease-depend-on-the-gene-knockout">Does the presence of the disease depend on the gene knockout?</a>
   <ul class="collapse">
-  <li><a href="#data-2" id="toc-data-2" class="nav-link" data-scroll-target="#data-2">Data</a></li>
-  <li><a href="#contingency-table-1" id="toc-contingency-table-1" class="nav-link" data-scroll-target="#contingency-table-1">Contingency table</a></li>
-  <li><a href="#testing-2" id="toc-testing-2" class="nav-link" data-scroll-target="#testing-2">Testing</a></li>
+  <li><a href="#data-3" id="toc-data-3" class="nav-link" data-scroll-target="#data-3">Data</a></li>
+  <li><a href="#contingency-table-2" id="toc-contingency-table-2" class="nav-link" data-scroll-target="#contingency-table-2">Contingency table</a></li>
+  <li><a href="#testing-3" id="toc-testing-3" class="nav-link" data-scroll-target="#testing-3">Testing</a></li>
   </ul></li>
   </ul></li>
   <li><a href="#p.s." id="toc-p.s." class="nav-link" data-scroll-target="#p.s.">P.S.</a>
@@ -245,10 +261,7 @@ window.Quarto = {
   </ul></li>
   <li><a href="#chi-square-goodness-of-fit-test" id="toc-chi-square-goodness-of-fit-test" class="nav-link" data-scroll-target="#chi-square-goodness-of-fit-test">Chi-Square Goodness-of-Fit Test</a></li>
   <li><a href="#n-x-1-contingency-table" id="toc-n-x-1-contingency-table" class="nav-link" data-scroll-target="#n-x-1-contingency-table">N x 1 contingency table</a></li>
-  <li><a href="#are-observed-ratios-of-pea-plant-traits-consistent-with-mendels-expected-9331-ratio" id="toc-are-observed-ratios-of-pea-plant-traits-consistent-with-mendels-expected-9331-ratio" class="nav-link" data-scroll-target="#are-observed-ratios-of-pea-plant-traits-consistent-with-mendels-expected-9331-ratio">Are observed ratios of pea plant traits consistent with Mendel’s expected 9:3:3:1 ratio?</a>
-  <ul class="collapse">
-  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a></li>
-  </ul></li>
+  <li><a href="#are-observed-ratios-of-pea-plant-traits-consistent-with-mendels-expected-9331-ratio" id="toc-are-observed-ratios-of-pea-plant-traits-consistent-with-mendels-expected-9331-ratio" class="nav-link" data-scroll-target="#are-observed-ratios-of-pea-plant-traits-consistent-with-mendels-expected-9331-ratio">Are observed ratios of pea plant traits consistent with Mendel’s expected 9:3:3:1 ratio?</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -297,10 +310,10 @@ window.Quarto = {
 <ul>
 <li><u>Variances of the two groups are equal</u>
 <ul>
-<li>Variances can not be equal when using <strong>Welch t-test</strong> (<em>default in R</em>)</li>
+<li>Variances can not be equal when using <strong>Welch t-test</strong> <em>(default in R)</em></li>
 </ul></li>
 <li>Independence of collected observations</li>
-<li><u><em>Samples should be large enough….</em></u></li>
+<li><u><em>Samples should be large enough….</em></u> <em>or originated from normally distributed population</em></li>
 </ul>
 </section>
 <section id="hypotheses" class="level2">
@@ -353,7 +366,7 @@ window.Quarto = {
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   60 obs. of  2 variables:
  $ group : Factor w/ 2 levels "Shade","Sunlight": 2 2 2 2 2 2 2 2 2 2 ...
- $ height: num  14.9 15 15.4 14.3 15.2 ...</code></pre>
+ $ height: num  13.1 15.3 12.5 13.5 19.8 ...</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -361,8 +374,7 @@ window.Quarto = {
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>height,<span class="at">fill=</span>group)) <span class="sc">+</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># ggplant + geom_boxplot(aes(y=group)) + theme(legend.position = "none")</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>ggplant <span class="sc">+</span> <span class="fu">geom_density</span>(<span class="at">alpha=</span><span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>ggplant <span class="sc">+</span> <span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(<span class="at">y=</span>group)) <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -370,74 +382,94 @@ window.Quarto = {
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ggplant + geom_histogram(alpha=0.8, binwidth=1, alpha=0.6, col='black')</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ggplant + geom_density(alpha=0.5)</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ggplant + geom_histogram(alpha=0.7, binwidth=1, col='black')</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="testing" class="level4">
 <h4 class="anchored" data-anchor-id="testing">Testing</h4>
 <p><strong>Example for one sample:</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="at">mean=</span><span class="dv">2</span>, <span class="at">sd=</span><span class="dv">2</span>)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(x, <span class="at">mu =</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="dv">30</span>, <span class="at">mean=</span><span class="dv">2</span>, <span class="at">sd=</span><span class="dv">2</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(x)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="dv">0</span>, <span class="at">lty=</span><span class="dv">2</span>, <span class="at">col=</span><span class="st">'red'</span>, <span class="at">lwd=</span><span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="stats_ttest_chi_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(x, <span class="at">mu =</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     One Sample t-test
 
 data:  x
-t = 2.0682, df = 9, p-value = 0.06856
+t = 6.885, df = 29, p-value = 1.452e-07
 alternative hypothesis: true mean is not equal to 0
 95 percent confidence interval:
- -0.1567744  3.5011022
+ 1.505942 2.778732
 sample estimates:
 mean of x 
- 1.672164 </code></pre>
+ 2.142337 </code></pre>
 </div>
 </div>
 <p><strong>Example on two samples:</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>x1 <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="at">mean=</span><span class="dv">2</span>, <span class="at">sd =</span> <span class="dv">4</span>)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="at">mean=</span><span class="sc">-</span><span class="dv">1</span>, <span class="at">sd=</span><span class="dv">2</span>)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># boxplot(x1, x2, horizontal = T)</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(x1,x2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>x1 <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="dv">30</span>, <span class="at">mean=</span><span class="dv">2</span>, <span class="at">sd =</span> <span class="dv">4</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="dv">30</span>, <span class="at">mean=</span><span class="sc">-</span><span class="dv">1</span>, <span class="at">sd=</span><span class="dv">2</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(x1, x2, <span class="at">horizontal =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="stats_ttest_chi_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(x1,x2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Welch Two Sample t-test
 
 data:  x1 and x2
-t = 4.4625, df = 16.226, p-value = 0.0003805
+t = 4.3867, df = 39.111, p-value = 8.441e-05
 alternative hypothesis: true difference in means is not equal to 0
 95 percent confidence interval:
- 2.765330 7.759565
+ 1.853179 5.023943
 sample estimates:
-mean of x mean of y 
- 3.727928 -1.534519 </code></pre>
+ mean of x  mean of y 
+ 2.5862623 -0.8522989 </code></pre>
 </div>
 </div>
 <p><u><strong>Our <em>plant and sunlight</em> data:</strong></u></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># t.test(height ~ group, data = data_sunlight_plant, var.equal = TRUE) # Classic t-test</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(height <span class="sc">~</span> group, </span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">data =</span> data_sunlight_plant) <span class="co"># Welch t-test</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># t.test(height ~ group, data = data_sunlight_plant, var.equal = TRUE) # Classic t-test</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(height <span class="sc">~</span> group, </span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">data =</span> data_sunlight_plant) <span class="co"># Welch t-test</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Welch Two Sample t-test
 
 data:  height by group
-t = -5.3771, df = 55.105, p-value = 1.586e-06
+t = -7.1869, df = 58, p-value = 1.422e-09
 alternative hypothesis: true difference in means between group Shade and group Sunlight is not equal to 0
 95 percent confidence interval:
- -4.269266 -1.951062
+ -4.442487 -2.506918
 sample estimates:
    mean in group Shade mean in group Sunlight 
-              12.18561               15.29577 </code></pre>
+              11.88563               15.36033 </code></pre>
 </div>
 </div>
 <ul>
-<li><strong>t-value</strong> = -4.6261</li>
-<li><strong>p-value</strong> = 2.137e-05 = <span class="math inline">\(2.137 * 10^{-5}\)</span> = <span class="math inline">\(0.00002137\)</span>
+<li><strong>t-value</strong> &lt; 0</li>
+<li><strong>p-value</strong> &lt;&lt; <span class="math inline">\(\alpha\)</span> = 0.05
 <ul>
-<li><span class="math inline">\(2.137 * 10^{-5} &lt; 0.05 \leftrightarrow p.value &lt; \alpha\)</span></li>
-<li>We can with great confidence reject the <span class="math inline">\(H_0\)</span> and accept <span class="math inline">\(H_A\)</span> about difference of averages</li>
+<li>We can reject the <span class="math inline">\(H_0\)</span> and accept <span class="math inline">\(H_A\)</span> about difference of averages</li>
 </ul></li>
 </ul>
 </section>
@@ -497,69 +529,6 @@ sample estimates:
 </table>
 </section>
 </section>
-<section id="non-parametric-alternative-for-independent-samples" class="level2">
-<h2 class="anchored" data-anchor-id="non-parametric-alternative-for-independent-samples">Non-Parametric Alternative <u>for independent samples</u></h2>
-<p>Since the t-test requires calculation of the mean, it is sensitive to outliers. Therefore, it is better to use a non-parametric approach</p>
-<p><strong>Mann-Whitney test</strong> <strong>(also known as</strong> <strong>Wilcoxon</strong> <strong>rank-sum test</strong>)</p>
-<section id="hypotheses-1" class="level3">
-<h3 class="anchored" data-anchor-id="hypotheses-1">Hypotheses</h3>
-<p><u><strong>The test does not directly compare means or medians!</strong></u></p>
-<ul>
-<li><p><strong>Null Hypothesis</strong> (<span class="math inline">\(H_0\)</span>​): Two populations (from which the samples are drawn) have the <strong>same distribution</strong> in terms of relative position.</p></li>
-<li><p><strong>Alternative Hypothesis</strong> (<span class="math inline">\(H_A\)</span>​): Two populations have <strong>different distributions</strong> in terms of relative position (i.e., one distribution tends to yield larger values than the other).</p></li>
-</ul>
-<p>If <span class="math inline">\(X\)</span> comes from population 1 and <span class="math inline">\(Y\)</span> comes from population 2, the null hypothesis often implies:</p>
-<p><span class="math inline">\(H_0: P(X&gt;Y)=0.5\)</span></p>
-</section>
-<section id="example" class="level3">
-<h3 class="anchored" data-anchor-id="example">Example</h3>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>sample1 <span class="ot">=</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="dv">5</span>, <span class="dv">2</span>), <span class="dv">18</span>)</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>sample2 <span class="ot">=</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="dv">7</span>, <span class="dv">2</span>), <span class="dv">22</span>)</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>data_sample <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">group =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"sample1"</span>, <span class="st">"sample2"</span>), <span class="at">each=</span><span class="dv">21</span>),</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>                         <span class="at">value =</span> <span class="fu">c</span>(sample1, sample2))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>data_sample <span class="sc">%&gt;%</span>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> value, <span class="at">fill=</span>group)) <span class="sc">+</span> <span class="fu">geom_density</span>(<span class="at">alpha=</span><span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="stats_ttest_chi_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(value <span class="sc">~</span> group,</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">data=</span>data_sample)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-    Welch Two Sample t-test
-
-data:  value by group
-t = -1.9535, df = 39.637, p-value = 0.05785
-alternative hypothesis: true difference in means between group sample1 and group sample2 is not equal to 0
-95 percent confidence interval:
- -4.42054964  0.07583356
-sample estimates:
-mean in group sample1 mean in group sample2 
-             5.606197              7.778556 </code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox.test</span>(value <span class="sc">~</span> group,</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>            <span class="at">data=</span>data_sample)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-    Wilcoxon rank sum exact test
-
-data:  value by group
-W = 112, p-value = 0.005697
-alternative hypothesis: true location shift is not equal to 0</code></pre>
-</div>
-</div>
-<p>Base R only has <code>wilcox.test()</code>, however the documentation says Wilcoxon tests “<em>is also known as the Mann-Whitney test”.</em></p>
-</section>
-</section>
 <section id="paired-t-test-for-dependent-samples" class="level2">
 <h2 class="anchored" data-anchor-id="paired-t-test-for-dependent-samples">Paired t-test <u>for dependent samples</u></h2>
 <p>Used to compare two related groups <strong>(e.g., before and after treatment).</strong></p>
@@ -592,31 +561,34 @@ alternative hypothesis: true location shift is not equal to 0</code></pre>
 <section id="data-1" class="level4">
 <h4 class="anchored" data-anchor-id="data-1">Data</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>before <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="at">mean =</span> <span class="dv">120</span>, <span class="at">sd =</span> <span class="dv">10</span>)</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>after <span class="ot">&lt;-</span> before <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="at">mean =</span> <span class="sc">-</span><span class="dv">5</span>, <span class="at">sd =</span> <span class="dv">5</span>)</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>data_pressure <span class="ot">=</span> <span class="fu">data.frame</span>(</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a> <span class="at">pressure =</span> <span class="fu">c</span>(before, after),</span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a> <span class="at">group =</span> <span class="fu">factor</span>(<span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">'before'</span>, <span class="st">'after'</span>), <span class="at">each=</span><span class="dv">20</span>))</span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>data_pressure <span class="sc">%&gt;%</span> <span class="fu">head</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>before <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="at">mean =</span> <span class="dv">120</span>, <span class="at">sd =</span> <span class="dv">10</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>after <span class="ot">&lt;-</span> before <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="at">mean =</span> <span class="sc">-</span><span class="dv">5</span>, <span class="at">sd =</span> <span class="dv">5</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>data_pressure <span class="ot">=</span> <span class="fu">data.frame</span>(</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a> <span class="at">pressure =</span> <span class="fu">c</span>(before, after),</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a> <span class="at">group =</span> <span class="fu">factor</span>(<span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">'before'</span>, <span class="st">'after'</span>), <span class="at">each=</span><span class="dv">20</span>))</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>data_pressure <span class="sc">%&gt;%</span> <span class="fu">head</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  pressure  group
-1 111.8983 before
-2 130.1610 before
-3 118.3487 before
-4 112.3965 before
-5 101.1006 before
-6 111.8666 before</code></pre>
+1 123.9806 before
+2 138.7236 before
+3 102.6851 before
+4 135.2251 before
+5 117.6651 before
+6 122.3897 before</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>ggpress <span class="ot">=</span> data_pressure <span class="sc">%&gt;%</span>  </span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>pressure, <span class="at">fill=</span>group)) <span class="sc">+</span></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>ggpress <span class="sc">+</span> <span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(<span class="at">y=</span>group)) <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>ggpress <span class="ot">=</span> data_pressure <span class="sc">%&gt;%</span>  </span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>pressure, <span class="at">fill=</span>group)) <span class="sc">+</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>ggpress <span class="sc">+</span> <span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(<span class="at">y=</span>group)) <span class="sc">+</span> </span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="co"># ggplant + geom_density(alpha=0.5) + </span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="co"># ggplant + geom_histogram(alpha=0.8, binwidth=1) +</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -624,31 +596,109 @@ alternative hypothesis: true location shift is not equal to 0</code></pre>
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ggplant + geom_density(alpha=0.5)</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ggplant + geom_histogram(alpha=0.8, binwidth=1)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="testing-1" class="level4">
 <h4 class="anchored" data-anchor-id="testing-1">Testing</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(pressure <span class="sc">~</span> group,</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">data =</span> data_pressure, </span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">pair =</span> T) <span class="co"># &lt;---- !!!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(pressure <span class="sc">~</span> group,</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">data =</span> data_pressure, </span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">pair =</span> T) <span class="co"># &lt;---- !!!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Paired t-test
 
 data:  pressure by group
-t = -4.3571, df = 19, p-value = 0.0003393
+t = -4.9031, df = 19, p-value = 9.874e-05
 alternative hypothesis: true mean difference is not equal to 0
 95 percent confidence interval:
- -6.343719 -2.226720
+ -8.043379 -3.230721
 sample estimates:
 mean difference 
-       -4.28522 </code></pre>
+       -5.63705 </code></pre>
 </div>
 </div>
 </section>
+</section>
+</section>
+</section>
+<section id="non-parametric-alternatives" class="level1">
+<h1>Non-Parametric Alternatives</h1>
+<section id="non-parametric-alternative-for-independent-samples" class="level2">
+<h2 class="anchored" data-anchor-id="non-parametric-alternative-for-independent-samples">Non-Parametric Alternative <u>for independent samples</u></h2>
+<p><strong>If you have</strong></p>
+<ul>
+<li><p>“Strange” distribution</p></li>
+<li><p>“Outliers” strongly affecting the mean value</p></li>
+<li><p>Rank/ordinal data</p></li>
+<li><p>Strange scale (hard to interpret)</p></li>
+<li><p>It does not matter how much greater one value is than another, but it is important that it is <strong>consistently</strong> greater</p></li>
+<li><p><del>Small sample</del> (t-test even better for small samples)</p></li>
+</ul>
+<p><strong>then you can use non-parametric approaches</strong></p>
+<section id="mann-whitney-test-also-known-as-wilcoxon-rank-sum-test" class="level3">
+<h3 class="anchored" data-anchor-id="mann-whitney-test-also-known-as-wilcoxon-rank-sum-test"><strong>Mann-Whitney test</strong> <strong>(also known as</strong> <strong>Wilcoxon</strong> <strong>rank-sum test</strong>)</h3>
+</section>
+<section id="hypotheses-1" class="level3">
+<h3 class="anchored" data-anchor-id="hypotheses-1">Hypotheses</h3>
+<p><u><strong>The test does not compare means or medians!!!</strong></u></p>
+<ul>
+<li><p><strong>Null Hypothesis</strong> (<span class="math inline">\(H_0\)</span>​): Two populations (from which the samples are drawn) have the <strong>same distribution</strong> in terms of relative position.</p></li>
+<li><p><strong>Alternative Hypothesis</strong> (<span class="math inline">\(H_A\)</span>​): Two populations have <strong>different distributions</strong> in terms of relative position (i.e., one distribution tends to yield larger values than the other).</p></li>
+</ul>
+<p>If <span class="math inline">\(X\)</span> comes from population 1 and <span class="math inline">\(Y\)</span> comes from population 2, the null hypothesis often implies:</p>
+<p><span class="math inline">\(H_0: P(X&gt;Y)=0.5\)</span></p>
+</section>
+<section id="example" class="level3">
+<h3 class="anchored" data-anchor-id="example">Example</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>sample1 <span class="ot">=</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="dv">5</span>, <span class="dv">2</span>), <span class="dv">18</span>)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>sample2 <span class="ot">=</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="dv">7</span>, <span class="dv">2</span>), <span class="dv">22</span>)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>data_sample <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">group =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"sample1"</span>, <span class="st">"sample2"</span>), <span class="at">each=</span><span class="dv">21</span>),</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>                         <span class="at">value =</span> <span class="fu">c</span>(sample1, sample2))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>data_sample <span class="sc">%&gt;%</span>  </span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> value, <span class="at">fill=</span>group)) <span class="sc">+</span> </span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">alpha=</span><span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="stats_ttest_chi_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(value <span class="sc">~</span> group,</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">data=</span>data_sample)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Welch Two Sample t-test
+
+data:  value by group
+t = -1.4815, df = 39.946, p-value = 0.1463
+alternative hypothesis: true difference in means between group sample1 and group sample2 is not equal to 0
+95 percent confidence interval:
+ -4.0146387  0.6186075
+sample estimates:
+mean in group sample1 mean in group sample2 
+             6.056343              7.754358 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox.test</span>(value <span class="sc">~</span> group,</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>            <span class="at">data=</span>data_sample)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Wilcoxon rank sum exact test
+
+data:  value by group
+W = 139, p-value = 0.0407
+alternative hypothesis: true location shift is not equal to 0</code></pre>
+</div>
+</div>
+<p>Base R only has <code>wilcox.test()</code>, however the documentation says Wilcoxon tests “<em>is also known as the Mann-Whitney test”.</em></p>
 </section>
 </section>
 <section id="non-parametric-alternative-for-dependent-samples" class="level2">
@@ -665,32 +715,32 @@ mean difference
 <section id="testing-beforeafter-data" class="level3">
 <h3 class="anchored" data-anchor-id="testing-beforeafter-data">Testing before/after data</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>sample_before <span class="ot">=</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="dv">5</span>, <span class="dv">2</span>), <span class="dv">18</span>)</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>sample_after <span class="ot">=</span> sample_before <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">21</span>, <span class="dv">1</span>, <span class="dv">2</span>)</span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>data_before_after <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">group =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"before"</span>, <span class="st">"after"</span>), <span class="at">each=</span><span class="dv">21</span>),</span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>                         <span class="at">value =</span> <span class="fu">c</span>(sample_before, sample_after))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>sample_before <span class="ot">=</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="dv">5</span>, <span class="dv">2</span>), <span class="dv">18</span>)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>sample_after <span class="ot">=</span> sample_before <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">21</span>, <span class="dv">1</span>, <span class="dv">2</span>)</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>data_before_after <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">group =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"before"</span>, <span class="st">"after"</span>), <span class="at">each=</span><span class="dv">21</span>),</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>                         <span class="at">value =</span> <span class="fu">c</span>(sample_before, sample_after))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>data_before_after <span class="sc">%&gt;%</span>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> value, <span class="at">fill=</span>group)) <span class="sc">+</span> <span class="fu">geom_density</span>(<span class="at">alpha=</span><span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>data_before_after <span class="sc">%&gt;%</span>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> value, <span class="at">fill=</span>group)) <span class="sc">+</span> <span class="fu">geom_density</span>(<span class="at">alpha=</span><span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="stats_ttest_chi_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="stats_ttest_chi_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox.test</span>(value <span class="sc">~</span> group,</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>            <span class="at">data=</span>data_before_after,</span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">pair =</span> <span class="cn">TRUE</span>) <span class="do">## &lt;---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox.test</span>(value <span class="sc">~</span> group,</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>            <span class="at">data=</span>data_before_after,</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">pair =</span> <span class="cn">TRUE</span>) <span class="do">## &lt;---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Wilcoxon signed rank exact test
 
 data:  value by group
-V = 188, p-value = 0.01013
+V = 142, p-value = 0.3737
 alternative hypothesis: true location shift is not equal to 0</code></pre>
 </div>
 </div>
@@ -730,6 +780,97 @@ alternative hypothesis: true location shift is not equal to 0</code></pre>
 </section>
 <section id="contingency-tables" class="level2">
 <h2 class="anchored" data-anchor-id="contingency-tables">Contingency tables</h2>
+<section id="does-disease-outcome-depend-on-treatment-group" class="level3">
+<h3 class="anchored" data-anchor-id="does-disease-outcome-depend-on-treatment-group">Does disease outcome depend on treatment group ?</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 43%">
+<col style="width: 8%">
+<col style="width: 13%">
+<col style="width: 34%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>Cured</th>
+<th>Not cured</th>
+<th><u><em>Row Total</em></u></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Treatment</strong></td>
+<td>12</td>
+<td>8</td>
+<td>20</td>
+</tr>
+<tr class="even">
+<td><strong>Placebo</strong></td>
+<td>6</td>
+<td>10</td>
+<td>16</td>
+</tr>
+<tr class="odd">
+<td><u><strong><em>Column Total</em></strong></u></td>
+<td>18</td>
+<td>18</td>
+<td><u><strong>36</strong></u></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="expected-values-calculation" class="level3">
+<h3 class="anchored" data-anchor-id="expected-values-calculation">Expected values calculation</h3>
+<p>In a 2x2 contingency table, the expected frequency for each cell is calculated as:</p>
+<p><span class="math display">\[E_{ij} = \frac{(total \ Row_i \times total \ Column_j)}{N}\]</span></p>
+<p>Where:</p>
+<ul>
+<li><p><span class="math inline">\(total \ Row_i\)</span> = Sum of row <span class="math inline">\(i\)</span></p></li>
+<li><p><span class="math inline">\(total \ Column_j\)</span> = Sum of column <span class="math inline">\(j\)</span></p></li>
+<li><p><span class="math inline">\(N\)</span> = Grand total</p></li>
+</ul>
+<p>It is calculated like this to remain total sums of rows and columns the same, bu tmake ratios between inner cells’ values (Odds) equal</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>Cured</th>
+<th>Not cured</th>
+<th><u><em>Row Total</em></u></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Treatment</strong></td>
+<td><span class="math inline">\((18 \times 20)/36 = 10\)</span></td>
+<td><span class="math inline">\((18 \times 20)/36 = 10\)</span></td>
+<td>20</td>
+</tr>
+<tr class="even">
+<td><strong>Placebo</strong></td>
+<td><span class="math inline">\((18 \times 16)/36 = 8\)</span></td>
+<td><span class="math inline">\((18 \times 16)/36 = 8\)</span></td>
+<td>16</td>
+</tr>
+<tr class="odd">
+<td><u><strong><em>Column Total</em></strong></u></td>
+<td>18</td>
+<td>18</td>
+<td><u><strong>36</strong></u></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="statistic-calculation" class="level3">
+<h3 class="anchored" data-anchor-id="statistic-calculation">Statistic calculation</h3>
+<p><span class="math inline">\(\chi^2 = \sum \frac{(O_i - E_i)^2}{E_i}\)</span> where (<span class="math inline">\(O_i\)</span>) are the observed frequencies, and (<span class="math inline">\(E_i\)</span>) are the expected</p>
+</section>
 <section id="x-2" class="level3">
 <h3 class="anchored" data-anchor-id="x-2">2 x 2</h3>
 <section id="observed" class="level4">
@@ -868,84 +1009,14 @@ alternative hypothesis: true location shift is not equal to 0</code></pre>
 <p><span class="math inline">\(df = (N-1)(M-1)\)</span></p>
 </section>
 </section>
-</section>
-<section id="does-disease-outcome-depend-on-treatment-group" class="level2">
-<h2 class="anchored" data-anchor-id="does-disease-outcome-depend-on-treatment-group">Does disease outcome depend on treatment group ?</h2>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 38%">
-<col style="width: 14%">
-<col style="width: 14%">
-<col style="width: 30%">
-</colgroup>
-<thead>
-<tr class="header">
-<th></th>
-<th>Cured</th>
-<th>Not cured</th>
-<th><u><em>Row Total</em></u></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>Treatment</strong></td>
-<td>12</td>
-<td>8</td>
-<td>20</td>
-</tr>
-<tr class="even">
-<td><strong>Placebo</strong></td>
-<td>6</td>
-<td>10</td>
-<td>16</td>
-</tr>
-<tr class="odd">
-<td><u><strong><em>Column Total</em></strong></u></td>
-<td>18</td>
-<td>18</td>
-<td><u><strong>36</strong></u></td>
-</tr>
-</tbody>
-</table>
-<section id="expected-values-calculation" class="level3">
-<h3 class="anchored" data-anchor-id="expected-values-calculation">Expected values calculation</h3>
-<p>In a 2x2 contingency table, the expected frequency for each cell is calculated as:</p>
-<p><span class="math display">\[E_{ij} = \frac{(R_i \times C_j)}{N}\]</span></p>
-<p>Where: - <span class="math inline">\(R_i\)</span> = Total of row <span class="math inline">\(i\)</span>. - <span class="math inline">\(C_j\)</span> = Total of column <span class="math inline">\(j\)</span>. - <span class="math inline">\(N\)</span> = Grand total.</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th></th>
-<th>Cured</th>
-<th>Not cured</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>Treatment</strong></td>
-<td><span class="math inline">\((18 \times 20)/36 = 10\)</span></td>
-<td><span class="math inline">\((18 \times 20)/36 = 10\)</span></td>
-</tr>
-<tr class="even">
-<td><strong>Placebo</strong></td>
-<td><span class="math inline">\((18 \times 16)/36 = 8\)</span></td>
-<td><span class="math inline">\((18 \times 16)/36 = 8\)</span></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="statistic-calculation" class="level3">
-<h3 class="anchored" data-anchor-id="statistic-calculation">Statistic calculation</h3>
-<p><span class="math inline">\(\chi^2 = \sum \frac{(O_i - E_i)^2}{E_i}\)</span> where (<span class="math inline">\(O_i\)</span>) are the observed frequencies, and (<span class="math inline">\(E_i\)</span>) are the expected</p>
-</section>
 <section id="code" class="level3">
 <h3 class="anchored" data-anchor-id="code">Code</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>data_cure <span class="ot">=</span> <span class="fu">data.frame</span>(</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">Outcome =</span> <span class="fu">factor</span>(<span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">'Cured'</span>, <span class="st">'Not cured'</span>), <span class="at">e=</span><span class="dv">18</span>)),</span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">Group =</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">"Treatment"</span>, <span class="dv">12</span>), <span class="fu">rep</span>(<span class="st">"Placebo"</span>, <span class="dv">6</span>), <span class="fu">rep</span>(<span class="st">"Treatment"</span>, <span class="dv">8</span>), <span class="fu">rep</span>(<span class="st">"Placebo"</span>, <span class="dv">10</span>))))</span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>data_cure <span class="sc">%&gt;%</span>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>data_cure <span class="ot">=</span> <span class="fu">data.frame</span>(</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">Outcome =</span> <span class="fu">factor</span>(<span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">'Cured'</span>, <span class="st">'Not cured'</span>), <span class="at">e=</span><span class="dv">18</span>)),</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">Group =</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">"Treatment"</span>, <span class="dv">12</span>), <span class="fu">rep</span>(<span class="st">"Placebo"</span>, <span class="dv">6</span>), <span class="fu">rep</span>(<span class="st">"Treatment"</span>, <span class="dv">8</span>), <span class="fu">rep</span>(<span class="st">"Placebo"</span>, <span class="dv">10</span>))))</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>data_cure <span class="sc">%&gt;%</span>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Outcome     Group
 1   Cured Treatment
@@ -960,8 +1031,8 @@ alternative hypothesis: true location shift is not equal to 0</code></pre>
 <section id="contingency-table" class="level3">
 <h3 class="anchored" data-anchor-id="contingency-table">Contingency table</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>contingency_table <span class="ot">=</span> <span class="fu">table</span>(data_cure<span class="sc">$</span>Outcome, data_cure<span class="sc">$</span>Group)</span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>contingency_table</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>contingency_table <span class="ot">=</span> <span class="fu">table</span>(data_cure<span class="sc">$</span>Outcome, data_cure<span class="sc">$</span>Group)</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>contingency_table</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>           
             Placebo Treatment
@@ -970,13 +1041,26 @@ alternative hypothesis: true location shift is not equal to 0</code></pre>
 </div>
 </div>
 </section>
+<section id="plot" class="level3">
+<h3 class="anchored" data-anchor-id="plot">Plot</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mosaicplot</span>(contingency_table)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="stats_ttest_chi_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
 <section id="test" class="level3">
 <h3 class="anchored" data-anchor-id="test">Test</h3>
 <p>We don’t need to calculate the expected values. The <code>chisq.test()</code> do it for us.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(contingency_table, </span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>           <span class="co"># correct = F</span></span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>           )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(contingency_table, </span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>           <span class="co"># correct = F</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>           )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Pearson's Chi-squared test with Yates' continuity correction
@@ -992,33 +1076,205 @@ X-squared = 1.0125, df = 1, p-value = 0.3143</code></pre>
 </section>
 </section>
 </section>
-<section id="fishers-exact-test" class="level1">
-<h1>Fisher’s Exact Test</h1>
+<section id="paired-categorical-data-testing-for-dependent-samples" class="level1">
+<h1>Paired categorical data testing (for dependent samples)</h1>
+<section id="mcnemars-test" class="level2">
+<h2 class="anchored" data-anchor-id="mcnemars-test">McNemar’s test</h2>
+<p>For example, comparing two COVID tests. Both tests either detect the virus or not in the <u><strong>same patients</strong></u>.</p>
+</section>
 <section id="assumptions-2" class="level2">
 <h2 class="anchored" data-anchor-id="assumptions-2">Assumptions</h2>
 <ul>
-<li><strong>for <u>both not random</u> categories! (</strong>otherwise it will be too conservative)</li>
+<li>Better on big samples</li>
 </ul>
-<p>Usually used <strong>only for 2x2 contingency table</strong></p>
-<p>The test is <strong>exact</strong> because it computes the exact probability of the observed data (and more extreme data) under the null hypothesis</p>
 </section>
 <section id="hypotheses-4" class="level2">
 <h2 class="anchored" data-anchor-id="hypotheses-4">Hypotheses</h2>
 <ul>
-<li><strong>Null Hypothesis (</strong><span class="math inline">\(H_0\)</span><strong>):</strong> There is <u><strong>no association</strong></u> between two categorical variables</li>
-<li><strong>Alternative Hypothesis (</strong><span class="math inline">\(H_A\)</span><strong>):</strong> There is <u><strong>some association</strong></u> between two categorical variables</li>
+<li><strong>Null Hypothesis (</strong><span class="math inline">\(H_0\)</span><strong>):</strong> Sums of rows and columns are equal (both tests detect COVID similarly)
+<ul>
+<li>a+b = a+c</li>
+<li>c+d = b+d</li>
+<li><strong>=&gt; b=c</strong></li>
+</ul></li>
+<li><strong>Alternative Hypothesis (</strong><span class="math inline">\(H_A\)</span><strong>):</strong> Sums of rows and columns are <u><strong>NOT</strong></u> equal</li>
+</ul>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Test2: +</strong></th>
+<th><strong>Test2: -</strong></th>
+<th><u><em>Row Total</em></u></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Test1: +</strong></td>
+<td>a</td>
+<td>c</td>
+<td>a+c</td>
+</tr>
+<tr class="even">
+<td><strong>Test1: -</strong></td>
+<td>b</td>
+<td>d</td>
+<td>b+d</td>
+</tr>
+<tr class="odd">
+<td><u><strong><em>Column Total</em></strong></u></td>
+<td>a+b</td>
+<td>c+d</td>
+<td><strong>a+b+c+d</strong></td>
+</tr>
+</tbody>
+</table>
+<p><span class="math inline">\(\chi = \dfrac{(b-c)^2}{b+c}\)</span></p>
+</section>
+<section id="covid-tests" class="level2">
+<h2 class="anchored" data-anchor-id="covid-tests">COVID Tests</h2>
+<section id="data-2" class="level3">
+<h3 class="anchored" data-anchor-id="data-2">Data</h3>
+<p>Same patients!</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Test2: +</strong></th>
+<th><strong>Test2: -</strong></th>
+<th><u><em>Row Total</em></u></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Test1: +</strong></td>
+<td>12</td>
+<td>8</td>
+<td>20</td>
+</tr>
+<tr class="even">
+<td><strong>Test1: -</strong></td>
+<td>6</td>
+<td>10</td>
+<td>16</td>
+</tr>
+<tr class="odd">
+<td><u><strong><em>Column Total</em></strong></u></td>
+<td>18</td>
+<td>18</td>
+<td><strong>36</strong></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="code-1" class="level3">
+<h3 class="anchored" data-anchor-id="code-1">Code</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>data_covid <span class="ot">=</span> <span class="fu">data.frame</span>(</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">test1 =</span> <span class="fu">factor</span>(<span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">'test2+'</span>, <span class="st">'test2-'</span>), <span class="at">e=</span><span class="dv">18</span>)),</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">test2 =</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">"test1+"</span>, <span class="dv">12</span>), <span class="fu">rep</span>(<span class="st">"test1-"</span>, <span class="dv">6</span>), <span class="fu">rep</span>(<span class="st">"test1+"</span>, <span class="dv">8</span>), <span class="fu">rep</span>(<span class="st">"test1-"</span>, <span class="dv">10</span>))))</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>data_covid <span class="sc">%&gt;%</span>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   test1  test2
+1 test2+ test1+
+2 test2+ test1+
+3 test2+ test1+
+4 test2+ test1+
+5 test2+ test1+
+6 test2+ test1+</code></pre>
+</div>
+</div>
+</section>
+<section id="contingency-table-1" class="level3">
+<h3 class="anchored" data-anchor-id="contingency-table-1">Contingency table</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>contingency_table <span class="ot">=</span> <span class="fu">table</span>(data_covid<span class="sc">$</span>test2, data_covid<span class="sc">$</span>test1)</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>contingency_table</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        
+         test2- test2+
+  test1-     10      6
+  test1+      8     12</code></pre>
+</div>
+</div>
+</section>
+<section id="testing-2" class="level3">
+<h3 class="anchored" data-anchor-id="testing-2">Testing</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mcnemar.test</span>(contingency_table)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    McNemar's Chi-squared test with continuity correction
+
+data:  contingency_table
+McNemar's chi-squared = 0.071429, df = 1, p-value = 0.7893</code></pre>
+</div>
+</div>
+<ul>
+<li><p><span class="math inline">\(p.value &gt; 0.05\)</span></p></li>
+<li><p>We <strong>failed to reject</strong> the <span class="math inline">\(H_0\)</span> that independence of <code>Outcome</code> and <code>Group</code></p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="fishers-exact-test" class="level1">
+<h1>Fisher’s Exact Test</h1>
+<section id="assumptions-3" class="level2">
+<h2 class="anchored" data-anchor-id="assumptions-3">Assumptions</h2>
+<ul>
+<li><strong>for <u>both not random</u> categories! (</strong>otherwise it will be too conservative)
+<ul>
+<li><p>For example, we have four cups, and milk was added to some of them after the tea, and to others, milk was added first, and then tea. We invite an expert who has to guess which cup is which.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th>expert: Tea -&gt; Milk</th>
+<th>expert: Tea -&gt; Milk</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Tea -&gt; Milk</td>
+<td>3</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>Milk -&gt; Tea</td>
+<td>1</td>
+<td>3</td>
+</tr>
+</tbody>
+</table></li>
+</ul></li>
+</ul>
+<p>Usually used <strong>for 2x2 contingency table</strong></p>
+<p>The test is <strong>exact</strong> because it computes the exact probability of the observed data (and more extreme data) under the null hypothesis</p>
+</section>
+<section id="hypotheses-5" class="level2">
+<h2 class="anchored" data-anchor-id="hypotheses-5">Hypotheses</h2>
+<ul>
+<li><strong>Null Hypothesis (</strong><span class="math inline">\(H_0\)</span><strong>):</strong> There is <u><strong>no association</strong></u> between two categorical variables
+<ul>
+<li>Odds ratio (OR) = 1</li>
+</ul></li>
+<li><strong>Alternative Hypothesis (</strong><span class="math inline">\(H_A\)</span><strong>):</strong> There is <u><strong>some association</strong></u> between two categorical variables
+<ul>
+<li>Odds ratio (OR) <span class="math inline">\(\neq\)</span> 1</li>
+</ul></li>
 </ul>
 </section>
 <section id="does-the-presence-of-the-disease-depend-on-the-gene-knockout" class="level2">
 <h2 class="anchored" data-anchor-id="does-the-presence-of-the-disease-depend-on-the-gene-knockout">Does the presence of the disease depend on the gene knockout?</h2>
-<section id="data-2" class="level3">
-<h3 class="anchored" data-anchor-id="data-2">Data</h3>
+<section id="data-3" class="level3">
+<h3 class="anchored" data-anchor-id="data-3">Data</h3>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 28%">
-<col style="width: 23%">
-<col style="width: 22%">
-<col style="width: 23%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -1050,39 +1306,39 @@ X-squared = 1.0125, df = 1, p-value = 0.3143</code></pre>
 </tbody>
 </table>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>data_knockout <span class="ot">=</span> <span class="fu">data.frame</span>(</span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">Outcome =</span> <span class="fu">factor</span>(<span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">'Disease'</span>, <span class="st">'No disease'</span>), <span class="at">e=</span><span class="dv">4</span>)),</span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">Group =</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">"Knockout"</span>, <span class="st">"Control"</span>, <span class="fu">rep</span>(<span class="st">"Knockout"</span>, <span class="dv">3</span>), <span class="fu">rep</span>(<span class="st">"Control"</span>, <span class="dv">3</span>))))</span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>data_knockout <span class="sc">%&gt;%</span>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>data_knockout <span class="ot">=</span> <span class="fu">data.frame</span>(</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">Expert =</span> <span class="fu">factor</span>(<span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">'guessed treatment'</span>, <span class="st">'guessed placebo'</span>), <span class="at">e=</span><span class="dv">4</span>)),</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">Group =</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">"Treatment"</span>, <span class="st">"Control"</span>, <span class="fu">rep</span>(<span class="st">"Treatment"</span>, <span class="dv">3</span>), <span class="fu">rep</span>(<span class="st">"Control"</span>, <span class="dv">3</span>))))</span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>data_knockout <span class="sc">%&gt;%</span>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>     Outcome    Group
-1    Disease Knockout
-2    Disease  Control
-3    Disease Knockout
-4    Disease Knockout
-5 No disease Knockout
-6 No disease  Control</code></pre>
+<pre><code>             Expert     Group
+1 guessed treatment Treatment
+2 guessed treatment   Control
+3 guessed treatment Treatment
+4 guessed treatment Treatment
+5   guessed placebo Treatment
+6   guessed placebo   Control</code></pre>
 </div>
 </div>
 </section>
-<section id="contingency-table-1" class="level3">
-<h3 class="anchored" data-anchor-id="contingency-table-1">Contingency table</h3>
+<section id="contingency-table-2" class="level3">
+<h3 class="anchored" data-anchor-id="contingency-table-2">Contingency table</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>contingency_table_1 <span class="ot">=</span> <span class="fu">table</span>(data_knockout<span class="sc">$</span>Group, data_knockout<span class="sc">$</span>Outcome)</span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>contingency_table_1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>contingency_table_1 <span class="ot">=</span> <span class="fu">table</span>(data_knockout<span class="sc">$</span>Group, data_knockout<span class="sc">$</span>Expert)</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>contingency_table_1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>          
-           Disease No disease
-  Control        1          3
-  Knockout       3          1</code></pre>
+<pre><code>           
+            guessed placebo guessed treatment
+  Control                 3                 1
+  Treatment               1                 3</code></pre>
 </div>
 </div>
 </section>
-<section id="testing-2" class="level3">
-<h3 class="anchored" data-anchor-id="testing-2">Testing</h3>
+<section id="testing-3" class="level3">
+<h3 class="anchored" data-anchor-id="testing-3">Testing</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fisher.test</span>(contingency_table_1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fisher.test</span>(contingency_table_1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Fisher's Exact Test for Count Data
@@ -1091,10 +1347,10 @@ data:  contingency_table_1
 p-value = 0.4857
 alternative hypothesis: true odds ratio is not equal to 1
 95 percent confidence interval:
- 0.001607888 4.722931239
+   0.2117329 621.9337505
 sample estimates:
 odds ratio 
-  0.156047 </code></pre>
+  6.408309 </code></pre>
 </div>
 </div>
 <ul>
@@ -1116,21 +1372,21 @@ odds ratio
 <h3 class="anchored" data-anchor-id="on-sunlight-plant-data">On sunlight plant data</h3>
 <p>Analyzing each group independantly</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(data_sunlight_plant <span class="sc">%&gt;%</span>  <span class="fu">filter</span>(group<span class="sc">==</span><span class="st">'Sunlight'</span>) <span class="sc">%&gt;%</span>  <span class="fu">pull</span>(height))</span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(data_sunlight_plant <span class="sc">%&gt;%</span>  <span class="fu">filter</span>(group<span class="sc">==</span><span class="st">'Sunlight'</span>) <span class="sc">%&gt;%</span>  <span class="fu">pull</span>(height))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(data_sunlight_plant <span class="sc">%&gt;%</span>  <span class="fu">filter</span>(group<span class="sc">==</span><span class="st">'Sunlight'</span>) <span class="sc">%&gt;%</span>  <span class="fu">pull</span>(height))</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(data_sunlight_plant <span class="sc">%&gt;%</span>  <span class="fu">filter</span>(group<span class="sc">==</span><span class="st">'Sunlight'</span>) <span class="sc">%&gt;%</span>  <span class="fu">pull</span>(height))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="stats_ttest_chi_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="stats_ttest_chi_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(data_sunlight_plant <span class="sc">%&gt;%</span>  <span class="fu">filter</span>(group<span class="sc">==</span><span class="st">'Shade'</span>) <span class="sc">%&gt;%</span>  <span class="fu">pull</span>(height))</span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(data_sunlight_plant <span class="sc">%&gt;%</span>  <span class="fu">filter</span>(group<span class="sc">==</span><span class="st">'Shade'</span>) <span class="sc">%&gt;%</span>  <span class="fu">pull</span>(height))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(data_sunlight_plant <span class="sc">%&gt;%</span>  <span class="fu">filter</span>(group<span class="sc">==</span><span class="st">'Shade'</span>) <span class="sc">%&gt;%</span>  <span class="fu">pull</span>(height))</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(data_sunlight_plant <span class="sc">%&gt;%</span>  <span class="fu">filter</span>(group<span class="sc">==</span><span class="st">'Shade'</span>) <span class="sc">%&gt;%</span>  <span class="fu">pull</span>(height))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="stats_ttest_chi_files/figure-html/unnamed-chunk-16-2.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="stats_ttest_chi_files/figure-html/unnamed-chunk-22-2.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1139,21 +1395,21 @@ odds ratio
 <section id="on-blood-pressure-data" class="level3">
 <h3 class="anchored" data-anchor-id="on-blood-pressure-data">On blood pressure data</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(data_pressure <span class="sc">%&gt;%</span>  <span class="fu">filter</span>(group<span class="sc">==</span><span class="st">'before'</span>) <span class="sc">%&gt;%</span>  <span class="fu">pull</span>(pressure))</span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(data_pressure <span class="sc">%&gt;%</span>  <span class="fu">filter</span>(group<span class="sc">==</span><span class="st">'before'</span>) <span class="sc">%&gt;%</span>  <span class="fu">pull</span>(pressure))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(data_pressure <span class="sc">%&gt;%</span>  <span class="fu">filter</span>(group<span class="sc">==</span><span class="st">'before'</span>) <span class="sc">%&gt;%</span>  <span class="fu">pull</span>(pressure))</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(data_pressure <span class="sc">%&gt;%</span>  <span class="fu">filter</span>(group<span class="sc">==</span><span class="st">'before'</span>) <span class="sc">%&gt;%</span>  <span class="fu">pull</span>(pressure))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="stats_ttest_chi_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="stats_ttest_chi_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(data_pressure <span class="sc">%&gt;%</span>  <span class="fu">filter</span>(group<span class="sc">==</span><span class="st">'after'</span>) <span class="sc">%&gt;%</span>  <span class="fu">pull</span>(pressure))</span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(data_pressure <span class="sc">%&gt;%</span>  <span class="fu">filter</span>(group<span class="sc">==</span><span class="st">'after'</span>) <span class="sc">%&gt;%</span>  <span class="fu">pull</span>(pressure))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(data_pressure <span class="sc">%&gt;%</span>  <span class="fu">filter</span>(group<span class="sc">==</span><span class="st">'after'</span>) <span class="sc">%&gt;%</span>  <span class="fu">pull</span>(pressure))</span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(data_pressure <span class="sc">%&gt;%</span>  <span class="fu">filter</span>(group<span class="sc">==</span><span class="st">'after'</span>) <span class="sc">%&gt;%</span>  <span class="fu">pull</span>(pressure))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="stats_ttest_chi_files/figure-html/unnamed-chunk-17-2.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="stats_ttest_chi_files/figure-html/unnamed-chunk-23-2.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1196,30 +1452,30 @@ odds ratio
 </section>
 <section id="are-observed-ratios-of-pea-plant-traits-consistent-with-mendels-expected-9331-ratio" class="level2">
 <h2 class="anchored" data-anchor-id="are-observed-ratios-of-pea-plant-traits-consistent-with-mendels-expected-9331-ratio">Are observed ratios of pea plant traits consistent with Mendel’s expected 9:3:3:1 ratio?</h2>
-<section id="data-3" class="level4">
-<h4 class="anchored" data-anchor-id="data-3">Data</h4>
+<section id="data-4" class="level4">
+<h4 class="anchored" data-anchor-id="data-4">Data</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>observed <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">435</span>, <span class="dv">150</span>, <span class="dv">160</span>, <span class="dv">55</span>)</span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>expected <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">9</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">1</span>) <span class="sc">/</span> <span class="fu">sum</span>(<span class="fu">c</span>(<span class="dv">9</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">1</span>)) <span class="sc">*</span> <span class="fu">sum</span>(observed)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>observed <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">435</span>, <span class="dv">150</span>, <span class="dv">160</span>, <span class="dv">55</span>)</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>expected <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">9</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">1</span>) <span class="sc">/</span> <span class="fu">sum</span>(<span class="fu">c</span>(<span class="dv">9</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">1</span>)) <span class="sc">*</span> <span class="fu">sum</span>(observed)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">rbind</span>(observed, expected), </span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">beside =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"blue"</span>, <span class="st">"red"</span>), </span>
-<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">"Observed"</span>, <span class="st">"Expected"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">rbind</span>(observed, expected), </span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">beside =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"blue"</span>, <span class="st">"red"</span>), </span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">"Observed"</span>, <span class="st">"Expected"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="stats_ttest_chi_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="stats_ttest_chi_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="code-1" class="level4">
-<h4 class="anchored" data-anchor-id="code-1">Code</h4>
+<section id="code-2" class="level4">
+<h4 class="anchored" data-anchor-id="code-2">Code</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(<span class="at">x=</span>observed, <span class="at">p=</span>expected<span class="sc">/</span><span class="fu">sum</span>(expected))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(<span class="at">x=</span>observed, <span class="at">p=</span>expected<span class="sc">/</span><span class="fu">sum</span>(expected))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Chi-squared test for given probabilities
@@ -1230,11 +1486,8 @@ X-squared = 1.6667, df = 3, p-value = 0.6444</code></pre>
 </div>
 <ul>
 <li><p><code>p</code> - expected proportions (instead of values)</p></li>
-<li><p><span class="math inline">\(p.value &gt; 0.05\)</span> and it means that the two sets of frequencies are likely to belong to the same distribution or in other words: the observed values are not significantly different from the expected values</p></li>
+<li><p><span class="math inline">\(p.value &gt; 0.05 \ (\alpha)\)</span> and it means that the two sets of frequencies are likely to belong to the same distribution or in other words: the observed values are not significantly different from the expected values</p></li>
 </ul>
-</section>
-<section id="section" class="level3">
-<h3 class="anchored" data-anchor-id="section"></h3>
 
 
 </section>
