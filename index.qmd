@@ -10,7 +10,7 @@ title: "Biostatistics in R"
     -   [Download](./zipfiles/advanced_df.zip)
 3.  [Visualization](code/datavis.Rmd)
     -   [Download](./zipfiles/datavis.zip)
-4.  [Intro into statistics](./distributions_clt_ci.Rmd)
+4.  [Intro into statistics](./code/distributions_clt_ci.Rmd)
     -   [Download](./zipfiles/distributions_clt_ci.zip)
 5.  [Association](code/association.Rmd)
     -   [Download](./zipfiles/association.zip)
