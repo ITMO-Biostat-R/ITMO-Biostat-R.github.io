@@ -83,8 +83,8 @@ ggplant = data_sunlight_plant %>%
   theme_classic()
 
 ggplant + geom_boxplot(aes(y=group)) + theme(legend.position = "none")
-# ggplant + geom_density(alpha=0.5)
-# ggplant + geom_histogram(alpha=0.7, binwidth=1, col='black')
+#ggplant + geom_density(alpha=0.5)
+#ggplant + geom_histogram(alpha=0.7, binwidth=1, col='black')
 
 ```
 
@@ -92,14 +92,16 @@ ggplant + geom_boxplot(aes(y=group)) + theme(legend.position = "none")
 
 **Example for one sample:**
 
+$H_0: \ \overline{X}=5$:
+
 ```{r}
 x = rnorm(30, mean=2, sd=2)
 hist(x)
-abline(v = 0, lty=2, col='red', lwd=4)
+abline(v = 5, lty=2, col='red', lwd=4)
 ```
 
 ```{r}
-t.test(x, mu = 0)
+t.test(x, mu = 5)
 ```
 
 **Example on two samples:**
@@ -111,7 +113,7 @@ boxplot(x1, x2, horizontal = T)
 ```
 
 ```{r}
-t.test(x1,x2)
+t.test(x1, x2)
 ```
 
 [**Our *plant and sunlight* data:**]{.underline}
@@ -120,6 +122,9 @@ t.test(x1,x2)
 # t.test(height ~ group, data = data_sunlight_plant, var.equal = TRUE) # Classic t-test
 t.test(height ~ group, 
        data = data_sunlight_plant) # Welch t-test
+
+t.test(data_sunlight_plant$height[data_sunlight_plant$group=='Sunlight'], 
+       data_sunlight_plant$height[data_sunlight_plant$group=='Shade'])
 ```
 
 -   **t-value** \< 0
@@ -199,7 +204,7 @@ ggpress + geom_boxplot(aes(y=group)) +
 ```{r paired-t-test}
 t.test(pressure ~ group,
        data = data_pressure, 
-       pair = T) # <---- !!!
+       pair = TRUE) # <---- !!!
 ```
 
 # Non-Parametric Alternatives
@@ -346,7 +351,7 @@ Where:
 
 -   $N$ = Grand total
 
-It is calculated like this to remain total sums of rows and columns the same, bu tmake ratios between inner cells' values (Odds) equal
+It is calculated like this to remain total sums of rows and columns the same, but make ratios between inner cells' values (Odds) equal
 
 |   | Cured | Not cured | [*Row Total*]{.underline} |
 |----|----|----|----|
@@ -439,7 +444,7 @@ We don't need to calculate the expected values. The `chisq.test()` do it for us.
 
 ```{r}
 chisq.test(contingency_table, 
-           # correct = F
+           # correct = FALSE
            )
 ```
 
@@ -471,7 +476,7 @@ For example, comparing two COVID tests. Both tests either detect the virus or no
 | **Test1: -** | b | d | b+d |
 | [***Column Total***]{.underline} | a+b | c+d | **a+b+c+d** |
 
-$\chi = \dfrac{(b-c)^2}{b+c}$
+$\chi^2 = \dfrac{(b-c)^2}{b+c}$
 
 ## COVID Tests
 
