@@ -366,7 +366,7 @@ window.Quarto = {
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   60 obs. of  2 variables:
  $ group : Factor w/ 2 levels "Shade","Sunlight": 2 2 2 2 2 2 2 2 2 2 ...
- $ height: num  13.1 15.3 12.5 13.5 19.8 ...</code></pre>
+ $ height: num  13.7 14.9 12.1 14 14.8 ...</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -382,17 +382,18 @@ window.Quarto = {
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ggplant + geom_density(alpha=0.5)</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ggplant + geom_histogram(alpha=0.7, binwidth=1, col='black')</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#ggplant + geom_density(alpha=0.5)</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">#ggplant + geom_histogram(alpha=0.7, binwidth=1, col='black')</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="testing" class="level4">
 <h4 class="anchored" data-anchor-id="testing">Testing</h4>
 <p><strong>Example for one sample:</strong></p>
+<p><span class="math inline">\(H_0: \ \overline{X}=5\)</span>:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="dv">30</span>, <span class="at">mean=</span><span class="dv">2</span>, <span class="at">sd=</span><span class="dv">2</span>)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(x)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="dv">0</span>, <span class="at">lty=</span><span class="dv">2</span>, <span class="at">col=</span><span class="st">'red'</span>, <span class="at">lwd=</span><span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="dv">5</span>, <span class="at">lty=</span><span class="dv">2</span>, <span class="at">col=</span><span class="st">'red'</span>, <span class="at">lwd=</span><span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -402,19 +403,19 @@ window.Quarto = {
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(x, <span class="at">mu =</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(x, <span class="at">mu =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     One Sample t-test
 
 data:  x
-t = 6.885, df = 29, p-value = 1.452e-07
-alternative hypothesis: true mean is not equal to 0
+t = -7.4426, df = 29, p-value = 3.348e-08
+alternative hypothesis: true mean is not equal to 5
 95 percent confidence interval:
- 1.505942 2.778732
+ 1.254793 2.869456
 sample estimates:
 mean of x 
- 2.142337 </code></pre>
+ 2.062124 </code></pre>
 </div>
 </div>
 <p><strong>Example on two samples:</strong></p>
@@ -431,19 +432,19 @@ mean of x
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(x1,x2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(x1, x2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Welch Two Sample t-test
 
 data:  x1 and x2
-t = 4.3867, df = 39.111, p-value = 8.441e-05
+t = 4.7877, df = 41.374, p-value = 2.176e-05
 alternative hypothesis: true difference in means is not equal to 0
 95 percent confidence interval:
- 1.853179 5.023943
+ 2.203665 5.417607
 sample estimates:
- mean of x  mean of y 
- 2.5862623 -0.8522989 </code></pre>
+mean of x mean of y 
+ 2.162341 -1.648295 </code></pre>
 </div>
 </div>
 <p><u><strong>Our <em>plant and sunlight</em> data:</strong></u></p>
@@ -456,13 +457,28 @@ sample estimates:
     Welch Two Sample t-test
 
 data:  height by group
-t = -7.1869, df = 58, p-value = 1.422e-09
+t = -4.9277, df = 57.887, p-value = 7.32e-06
 alternative hypothesis: true difference in means between group Shade and group Sunlight is not equal to 0
 95 percent confidence interval:
- -4.442487 -2.506918
+ -3.331452 -1.406666
 sample estimates:
    mean in group Shade mean in group Sunlight 
-              11.88563               15.36033 </code></pre>
+              12.12613               14.49519 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(data_sunlight_plant<span class="sc">$</span>height[data_sunlight_plant<span class="sc">$</span>group<span class="sc">==</span><span class="st">'Sunlight'</span>], </span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>       data_sunlight_plant<span class="sc">$</span>height[data_sunlight_plant<span class="sc">$</span>group<span class="sc">==</span><span class="st">'Shade'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Welch Two Sample t-test
+
+data:  data_sunlight_plant$height[data_sunlight_plant$group == "Sunlight"] and data_sunlight_plant$height[data_sunlight_plant$group == "Shade"]
+t = 4.9277, df = 57.887, p-value = 7.32e-06
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 1.406666 3.331452
+sample estimates:
+mean of x mean of y 
+ 14.49519  12.12613 </code></pre>
 </div>
 </div>
 <ul>
@@ -561,34 +577,34 @@ sample estimates:
 <section id="data-1" class="level4">
 <h4 class="anchored" data-anchor-id="data-1">Data</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>before <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="at">mean =</span> <span class="dv">120</span>, <span class="at">sd =</span> <span class="dv">10</span>)</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>after <span class="ot">&lt;-</span> before <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="at">mean =</span> <span class="sc">-</span><span class="dv">5</span>, <span class="at">sd =</span> <span class="dv">5</span>)</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>data_pressure <span class="ot">=</span> <span class="fu">data.frame</span>(</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a> <span class="at">pressure =</span> <span class="fu">c</span>(before, after),</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a> <span class="at">group =</span> <span class="fu">factor</span>(<span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">'before'</span>, <span class="st">'after'</span>), <span class="at">each=</span><span class="dv">20</span>))</span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>data_pressure <span class="sc">%&gt;%</span> <span class="fu">head</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>before <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="at">mean =</span> <span class="dv">120</span>, <span class="at">sd =</span> <span class="dv">10</span>)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>after <span class="ot">&lt;-</span> before <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="at">mean =</span> <span class="sc">-</span><span class="dv">5</span>, <span class="at">sd =</span> <span class="dv">5</span>)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>data_pressure <span class="ot">=</span> <span class="fu">data.frame</span>(</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a> <span class="at">pressure =</span> <span class="fu">c</span>(before, after),</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a> <span class="at">group =</span> <span class="fu">factor</span>(<span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">'before'</span>, <span class="st">'after'</span>), <span class="at">each=</span><span class="dv">20</span>))</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>data_pressure <span class="sc">%&gt;%</span> <span class="fu">head</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  pressure  group
-1 123.9806 before
-2 138.7236 before
-3 102.6851 before
-4 135.2251 before
-5 117.6651 before
-6 122.3897 before</code></pre>
+<pre><code>   pressure  group
+1 122.64568 before
+2 101.26390 before
+3  99.45406 before
+4 128.07341 before
+5 113.93183 before
+6 127.29083 before</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>ggpress <span class="ot">=</span> data_pressure <span class="sc">%&gt;%</span>  </span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>pressure, <span class="at">fill=</span>group)) <span class="sc">+</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>ggpress <span class="sc">+</span> <span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(<span class="at">y=</span>group)) <span class="sc">+</span> </span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="co"># ggplant + geom_density(alpha=0.5) + </span></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="co"># ggplant + geom_histogram(alpha=0.8, binwidth=1) +</span></span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>ggpress <span class="ot">=</span> data_pressure <span class="sc">%&gt;%</span>  </span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>pressure, <span class="at">fill=</span>group)) <span class="sc">+</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>ggpress <span class="sc">+</span> <span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(<span class="at">y=</span>group)) <span class="sc">+</span> </span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="co"># ggplant + geom_density(alpha=0.5) + </span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="co"># ggplant + geom_histogram(alpha=0.8, binwidth=1) +</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -601,21 +617,21 @@ sample estimates:
 <section id="testing-1" class="level4">
 <h4 class="anchored" data-anchor-id="testing-1">Testing</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(pressure <span class="sc">~</span> group,</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">data =</span> data_pressure, </span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">pair =</span> T) <span class="co"># &lt;---- !!!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(pressure <span class="sc">~</span> group,</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">data =</span> data_pressure, </span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">pair =</span> <span class="cn">TRUE</span>) <span class="co"># &lt;---- !!!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Paired t-test
 
 data:  pressure by group
-t = -4.9031, df = 19, p-value = 9.874e-05
+t = -4.0946, df = 19, p-value = 0.0006174
 alternative hypothesis: true mean difference is not equal to 0
 95 percent confidence interval:
- -8.043379 -3.230721
+ -7.109818 -2.299857
 sample estimates:
 mean difference 
-       -5.63705 </code></pre>
+      -4.704837 </code></pre>
 </div>
 </div>
 </section>
@@ -652,17 +668,17 @@ mean difference
 <section id="example" class="level3">
 <h3 class="anchored" data-anchor-id="example">Example</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>sample1 <span class="ot">=</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="dv">5</span>, <span class="dv">2</span>), <span class="dv">18</span>)</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>sample2 <span class="ot">=</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="dv">7</span>, <span class="dv">2</span>), <span class="dv">22</span>)</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>data_sample <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">group =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"sample1"</span>, <span class="st">"sample2"</span>), <span class="at">each=</span><span class="dv">21</span>),</span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>                         <span class="at">value =</span> <span class="fu">c</span>(sample1, sample2))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>sample1 <span class="ot">=</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="dv">5</span>, <span class="dv">2</span>), <span class="dv">18</span>)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>sample2 <span class="ot">=</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="dv">7</span>, <span class="dv">2</span>), <span class="dv">22</span>)</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>data_sample <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">group =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"sample1"</span>, <span class="st">"sample2"</span>), <span class="at">each=</span><span class="dv">21</span>),</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>                         <span class="at">value =</span> <span class="fu">c</span>(sample1, sample2))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>data_sample <span class="sc">%&gt;%</span>  </span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> value, <span class="at">fill=</span>group)) <span class="sc">+</span> </span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">alpha=</span><span class="fl">0.5</span>) <span class="sc">+</span></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>data_sample <span class="sc">%&gt;%</span>  </span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> value, <span class="at">fill=</span>group)) <span class="sc">+</span> </span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">alpha=</span><span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -672,29 +688,29 @@ mean difference
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(value <span class="sc">~</span> group,</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">data=</span>data_sample)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(value <span class="sc">~</span> group,</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">data=</span>data_sample)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Welch Two Sample t-test
 
 data:  value by group
-t = -1.4815, df = 39.946, p-value = 0.1463
+t = -1.6974, df = 38.929, p-value = 0.0976
 alternative hypothesis: true difference in means between group sample1 and group sample2 is not equal to 0
 95 percent confidence interval:
- -4.0146387  0.6186075
+ -4.1012602  0.3587454
 sample estimates:
 mean in group sample1 mean in group sample2 
-             6.056343              7.754358 </code></pre>
+             5.627065              7.498322 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox.test</span>(value <span class="sc">~</span> group,</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>            <span class="at">data=</span>data_sample)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox.test</span>(value <span class="sc">~</span> group,</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>            <span class="at">data=</span>data_sample)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Wilcoxon rank sum exact test
 
 data:  value by group
-W = 139, p-value = 0.0407
+W = 110, p-value = 0.004814
 alternative hypothesis: true location shift is not equal to 0</code></pre>
 </div>
 </div>
@@ -715,14 +731,14 @@ alternative hypothesis: true location shift is not equal to 0</code></pre>
 <section id="testing-beforeafter-data" class="level3">
 <h3 class="anchored" data-anchor-id="testing-beforeafter-data">Testing before/after data</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>sample_before <span class="ot">=</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="dv">5</span>, <span class="dv">2</span>), <span class="dv">18</span>)</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>sample_after <span class="ot">=</span> sample_before <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">21</span>, <span class="dv">1</span>, <span class="dv">2</span>)</span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>data_before_after <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">group =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"before"</span>, <span class="st">"after"</span>), <span class="at">each=</span><span class="dv">21</span>),</span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>                         <span class="at">value =</span> <span class="fu">c</span>(sample_before, sample_after))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>sample_before <span class="ot">=</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="dv">5</span>, <span class="dv">2</span>), <span class="dv">18</span>)</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>sample_after <span class="ot">=</span> sample_before <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">21</span>, <span class="dv">1</span>, <span class="dv">2</span>)</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>data_before_after <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">group =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"before"</span>, <span class="st">"after"</span>), <span class="at">each=</span><span class="dv">21</span>),</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>                         <span class="at">value =</span> <span class="fu">c</span>(sample_before, sample_after))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>data_before_after <span class="sc">%&gt;%</span>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> value, <span class="at">fill=</span>group)) <span class="sc">+</span> <span class="fu">geom_density</span>(<span class="at">alpha=</span><span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>data_before_after <span class="sc">%&gt;%</span>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> value, <span class="at">fill=</span>group)) <span class="sc">+</span> <span class="fu">geom_density</span>(<span class="at">alpha=</span><span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -732,15 +748,15 @@ alternative hypothesis: true location shift is not equal to 0</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox.test</span>(value <span class="sc">~</span> group,</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>            <span class="at">data=</span>data_before_after,</span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">pair =</span> <span class="cn">TRUE</span>) <span class="do">## &lt;---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox.test</span>(value <span class="sc">~</span> group,</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>            <span class="at">data=</span>data_before_after,</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">pair =</span> <span class="cn">TRUE</span>) <span class="do">## &lt;---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Wilcoxon signed rank exact test
 
 data:  value by group
-V = 142, p-value = 0.3737
+V = 155, p-value = 0.179
 alternative hypothesis: true location shift is not equal to 0</code></pre>
 </div>
 </div>
@@ -829,7 +845,7 @@ alternative hypothesis: true location shift is not equal to 0</code></pre>
 <li><p><span class="math inline">\(total \ Column_j\)</span> = Sum of column <span class="math inline">\(j\)</span></p></li>
 <li><p><span class="math inline">\(N\)</span> = Grand total</p></li>
 </ul>
-<p>It is calculated like this to remain total sums of rows and columns the same, bu tmake ratios between inner cells’ values (Odds) equal</p>
+<p>It is calculated like this to remain total sums of rows and columns the same, but make ratios between inner cells’ values (Odds) equal</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 25%">
@@ -1012,11 +1028,11 @@ alternative hypothesis: true location shift is not equal to 0</code></pre>
 <section id="code" class="level3">
 <h3 class="anchored" data-anchor-id="code">Code</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>data_cure <span class="ot">=</span> <span class="fu">data.frame</span>(</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">Outcome =</span> <span class="fu">factor</span>(<span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">'Cured'</span>, <span class="st">'Not cured'</span>), <span class="at">e=</span><span class="dv">18</span>)),</span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">Group =</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">"Treatment"</span>, <span class="dv">12</span>), <span class="fu">rep</span>(<span class="st">"Placebo"</span>, <span class="dv">6</span>), <span class="fu">rep</span>(<span class="st">"Treatment"</span>, <span class="dv">8</span>), <span class="fu">rep</span>(<span class="st">"Placebo"</span>, <span class="dv">10</span>))))</span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>data_cure <span class="sc">%&gt;%</span>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>data_cure <span class="ot">=</span> <span class="fu">data.frame</span>(</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">Outcome =</span> <span class="fu">factor</span>(<span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">'Cured'</span>, <span class="st">'Not cured'</span>), <span class="at">e=</span><span class="dv">18</span>)),</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">Group =</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">"Treatment"</span>, <span class="dv">12</span>), <span class="fu">rep</span>(<span class="st">"Placebo"</span>, <span class="dv">6</span>), <span class="fu">rep</span>(<span class="st">"Treatment"</span>, <span class="dv">8</span>), <span class="fu">rep</span>(<span class="st">"Placebo"</span>, <span class="dv">10</span>))))</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>data_cure <span class="sc">%&gt;%</span>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Outcome     Group
 1   Cured Treatment
@@ -1031,8 +1047,8 @@ alternative hypothesis: true location shift is not equal to 0</code></pre>
 <section id="contingency-table" class="level3">
 <h3 class="anchored" data-anchor-id="contingency-table">Contingency table</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>contingency_table <span class="ot">=</span> <span class="fu">table</span>(data_cure<span class="sc">$</span>Outcome, data_cure<span class="sc">$</span>Group)</span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>contingency_table</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>contingency_table <span class="ot">=</span> <span class="fu">table</span>(data_cure<span class="sc">$</span>Outcome, data_cure<span class="sc">$</span>Group)</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>contingency_table</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>           
             Placebo Treatment
@@ -1044,7 +1060,7 @@ alternative hypothesis: true location shift is not equal to 0</code></pre>
 <section id="plot" class="level3">
 <h3 class="anchored" data-anchor-id="plot">Plot</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mosaicplot</span>(contingency_table)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mosaicplot</span>(contingency_table)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -1058,9 +1074,9 @@ alternative hypothesis: true location shift is not equal to 0</code></pre>
 <h3 class="anchored" data-anchor-id="test">Test</h3>
 <p>We don’t need to calculate the expected values. The <code>chisq.test()</code> do it for us.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(contingency_table, </span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>           <span class="co"># correct = F</span></span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>           )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(contingency_table, </span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>           <span class="co"># correct = FALSE</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>           )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Pearson's Chi-squared test with Yates' continuity correction
@@ -1129,7 +1145,7 @@ X-squared = 1.0125, df = 1, p-value = 0.3143</code></pre>
 </tr>
 </tbody>
 </table>
-<p><span class="math inline">\(\chi = \dfrac{(b-c)^2}{b+c}\)</span></p>
+<p><span class="math inline">\(\chi^2 = \dfrac{(b-c)^2}{b+c}\)</span></p>
 </section>
 <section id="covid-tests" class="level2">
 <h2 class="anchored" data-anchor-id="covid-tests">COVID Tests</h2>
@@ -1170,11 +1186,11 @@ X-squared = 1.0125, df = 1, p-value = 0.3143</code></pre>
 <section id="code-1" class="level3">
 <h3 class="anchored" data-anchor-id="code-1">Code</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>data_covid <span class="ot">=</span> <span class="fu">data.frame</span>(</span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">test1 =</span> <span class="fu">factor</span>(<span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">'test2+'</span>, <span class="st">'test2-'</span>), <span class="at">e=</span><span class="dv">18</span>)),</span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">test2 =</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">"test1+"</span>, <span class="dv">12</span>), <span class="fu">rep</span>(<span class="st">"test1-"</span>, <span class="dv">6</span>), <span class="fu">rep</span>(<span class="st">"test1+"</span>, <span class="dv">8</span>), <span class="fu">rep</span>(<span class="st">"test1-"</span>, <span class="dv">10</span>))))</span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>data_covid <span class="sc">%&gt;%</span>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>data_covid <span class="ot">=</span> <span class="fu">data.frame</span>(</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">test1 =</span> <span class="fu">factor</span>(<span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">'test2+'</span>, <span class="st">'test2-'</span>), <span class="at">e=</span><span class="dv">18</span>)),</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">test2 =</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">"test1+"</span>, <span class="dv">12</span>), <span class="fu">rep</span>(<span class="st">"test1-"</span>, <span class="dv">6</span>), <span class="fu">rep</span>(<span class="st">"test1+"</span>, <span class="dv">8</span>), <span class="fu">rep</span>(<span class="st">"test1-"</span>, <span class="dv">10</span>))))</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>data_covid <span class="sc">%&gt;%</span>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   test1  test2
 1 test2+ test1+
@@ -1189,8 +1205,8 @@ X-squared = 1.0125, df = 1, p-value = 0.3143</code></pre>
 <section id="contingency-table-1" class="level3">
 <h3 class="anchored" data-anchor-id="contingency-table-1">Contingency table</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>contingency_table <span class="ot">=</span> <span class="fu">table</span>(data_covid<span class="sc">$</span>test2, data_covid<span class="sc">$</span>test1)</span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>contingency_table</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>contingency_table <span class="ot">=</span> <span class="fu">table</span>(data_covid<span class="sc">$</span>test2, data_covid<span class="sc">$</span>test1)</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>contingency_table</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>        
          test2- test2+
@@ -1202,7 +1218,7 @@ X-squared = 1.0125, df = 1, p-value = 0.3143</code></pre>
 <section id="testing-2" class="level3">
 <h3 class="anchored" data-anchor-id="testing-2">Testing</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mcnemar.test</span>(contingency_table)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mcnemar.test</span>(contingency_table)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     McNemar's Chi-squared test with continuity correction
@@ -1306,11 +1322,11 @@ McNemar's chi-squared = 0.071429, df = 1, p-value = 0.7893</code></pre>
 </tbody>
 </table>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>data_knockout <span class="ot">=</span> <span class="fu">data.frame</span>(</span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">Expert =</span> <span class="fu">factor</span>(<span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">'guessed treatment'</span>, <span class="st">'guessed placebo'</span>), <span class="at">e=</span><span class="dv">4</span>)),</span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">Group =</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">"Treatment"</span>, <span class="st">"Control"</span>, <span class="fu">rep</span>(<span class="st">"Treatment"</span>, <span class="dv">3</span>), <span class="fu">rep</span>(<span class="st">"Control"</span>, <span class="dv">3</span>))))</span>
-<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>data_knockout <span class="sc">%&gt;%</span>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>data_knockout <span class="ot">=</span> <span class="fu">data.frame</span>(</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">Expert =</span> <span class="fu">factor</span>(<span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">'guessed treatment'</span>, <span class="st">'guessed placebo'</span>), <span class="at">e=</span><span class="dv">4</span>)),</span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">Group =</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">"Treatment"</span>, <span class="st">"Control"</span>, <span class="fu">rep</span>(<span class="st">"Treatment"</span>, <span class="dv">3</span>), <span class="fu">rep</span>(<span class="st">"Control"</span>, <span class="dv">3</span>))))</span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>data_knockout <span class="sc">%&gt;%</span>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>             Expert     Group
 1 guessed treatment Treatment
@@ -1325,8 +1341,8 @@ McNemar's chi-squared = 0.071429, df = 1, p-value = 0.7893</code></pre>
 <section id="contingency-table-2" class="level3">
 <h3 class="anchored" data-anchor-id="contingency-table-2">Contingency table</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>contingency_table_1 <span class="ot">=</span> <span class="fu">table</span>(data_knockout<span class="sc">$</span>Group, data_knockout<span class="sc">$</span>Expert)</span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>contingency_table_1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>contingency_table_1 <span class="ot">=</span> <span class="fu">table</span>(data_knockout<span class="sc">$</span>Group, data_knockout<span class="sc">$</span>Expert)</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>contingency_table_1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>           
             guessed placebo guessed treatment
@@ -1338,7 +1354,7 @@ McNemar's chi-squared = 0.071429, df = 1, p-value = 0.7893</code></pre>
 <section id="testing-3" class="level3">
 <h3 class="anchored" data-anchor-id="testing-3">Testing</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fisher.test</span>(contingency_table_1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fisher.test</span>(contingency_table_1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Fisher's Exact Test for Count Data
@@ -1372,8 +1388,8 @@ odds ratio
 <h3 class="anchored" data-anchor-id="on-sunlight-plant-data">On sunlight plant data</h3>
 <p>Analyzing each group independantly</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(data_sunlight_plant <span class="sc">%&gt;%</span>  <span class="fu">filter</span>(group<span class="sc">==</span><span class="st">'Sunlight'</span>) <span class="sc">%&gt;%</span>  <span class="fu">pull</span>(height))</span>
-<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(data_sunlight_plant <span class="sc">%&gt;%</span>  <span class="fu">filter</span>(group<span class="sc">==</span><span class="st">'Sunlight'</span>) <span class="sc">%&gt;%</span>  <span class="fu">pull</span>(height))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(data_sunlight_plant <span class="sc">%&gt;%</span>  <span class="fu">filter</span>(group<span class="sc">==</span><span class="st">'Sunlight'</span>) <span class="sc">%&gt;%</span>  <span class="fu">pull</span>(height))</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(data_sunlight_plant <span class="sc">%&gt;%</span>  <span class="fu">filter</span>(group<span class="sc">==</span><span class="st">'Sunlight'</span>) <span class="sc">%&gt;%</span>  <span class="fu">pull</span>(height))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -1381,8 +1397,8 @@ odds ratio
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(data_sunlight_plant <span class="sc">%&gt;%</span>  <span class="fu">filter</span>(group<span class="sc">==</span><span class="st">'Shade'</span>) <span class="sc">%&gt;%</span>  <span class="fu">pull</span>(height))</span>
-<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(data_sunlight_plant <span class="sc">%&gt;%</span>  <span class="fu">filter</span>(group<span class="sc">==</span><span class="st">'Shade'</span>) <span class="sc">%&gt;%</span>  <span class="fu">pull</span>(height))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(data_sunlight_plant <span class="sc">%&gt;%</span>  <span class="fu">filter</span>(group<span class="sc">==</span><span class="st">'Shade'</span>) <span class="sc">%&gt;%</span>  <span class="fu">pull</span>(height))</span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(data_sunlight_plant <span class="sc">%&gt;%</span>  <span class="fu">filter</span>(group<span class="sc">==</span><span class="st">'Shade'</span>) <span class="sc">%&gt;%</span>  <span class="fu">pull</span>(height))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -1395,8 +1411,8 @@ odds ratio
 <section id="on-blood-pressure-data" class="level3">
 <h3 class="anchored" data-anchor-id="on-blood-pressure-data">On blood pressure data</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(data_pressure <span class="sc">%&gt;%</span>  <span class="fu">filter</span>(group<span class="sc">==</span><span class="st">'before'</span>) <span class="sc">%&gt;%</span>  <span class="fu">pull</span>(pressure))</span>
-<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(data_pressure <span class="sc">%&gt;%</span>  <span class="fu">filter</span>(group<span class="sc">==</span><span class="st">'before'</span>) <span class="sc">%&gt;%</span>  <span class="fu">pull</span>(pressure))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(data_pressure <span class="sc">%&gt;%</span>  <span class="fu">filter</span>(group<span class="sc">==</span><span class="st">'before'</span>) <span class="sc">%&gt;%</span>  <span class="fu">pull</span>(pressure))</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(data_pressure <span class="sc">%&gt;%</span>  <span class="fu">filter</span>(group<span class="sc">==</span><span class="st">'before'</span>) <span class="sc">%&gt;%</span>  <span class="fu">pull</span>(pressure))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -1404,8 +1420,8 @@ odds ratio
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(data_pressure <span class="sc">%&gt;%</span>  <span class="fu">filter</span>(group<span class="sc">==</span><span class="st">'after'</span>) <span class="sc">%&gt;%</span>  <span class="fu">pull</span>(pressure))</span>
-<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(data_pressure <span class="sc">%&gt;%</span>  <span class="fu">filter</span>(group<span class="sc">==</span><span class="st">'after'</span>) <span class="sc">%&gt;%</span>  <span class="fu">pull</span>(pressure))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(data_pressure <span class="sc">%&gt;%</span>  <span class="fu">filter</span>(group<span class="sc">==</span><span class="st">'after'</span>) <span class="sc">%&gt;%</span>  <span class="fu">pull</span>(pressure))</span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(data_pressure <span class="sc">%&gt;%</span>  <span class="fu">filter</span>(group<span class="sc">==</span><span class="st">'after'</span>) <span class="sc">%&gt;%</span>  <span class="fu">pull</span>(pressure))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -1455,14 +1471,14 @@ odds ratio
 <section id="data-4" class="level4">
 <h4 class="anchored" data-anchor-id="data-4">Data</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>observed <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">435</span>, <span class="dv">150</span>, <span class="dv">160</span>, <span class="dv">55</span>)</span>
-<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>expected <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">9</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">1</span>) <span class="sc">/</span> <span class="fu">sum</span>(<span class="fu">c</span>(<span class="dv">9</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">1</span>)) <span class="sc">*</span> <span class="fu">sum</span>(observed)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>observed <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">435</span>, <span class="dv">150</span>, <span class="dv">160</span>, <span class="dv">55</span>)</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>expected <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">9</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">1</span>) <span class="sc">/</span> <span class="fu">sum</span>(<span class="fu">c</span>(<span class="dv">9</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">1</span>)) <span class="sc">*</span> <span class="fu">sum</span>(observed)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">rbind</span>(observed, expected), </span>
-<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">beside =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"blue"</span>, <span class="st">"red"</span>), </span>
-<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">"Observed"</span>, <span class="st">"Expected"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">rbind</span>(observed, expected), </span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">beside =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"blue"</span>, <span class="st">"red"</span>), </span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">"Observed"</span>, <span class="st">"Expected"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -1475,7 +1491,7 @@ odds ratio
 <section id="code-2" class="level4">
 <h4 class="anchored" data-anchor-id="code-2">Code</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(<span class="at">x=</span>observed, <span class="at">p=</span>expected<span class="sc">/</span><span class="fu">sum</span>(expected))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(<span class="at">x=</span>observed, <span class="at">p=</span>expected<span class="sc">/</span><span class="fu">sum</span>(expected))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Chi-squared test for given probabilities
