@@ -25,9 +25,9 @@ library(ggplot2)
 ## Assumptions
 
 -   [Variances of the two groups are equal]{.underline}
-    -   Variances can not be equal when using **Welch t-test** (*default in R*)
+    -   Variances can not be equal when using **Welch t-test** *(default in R)*
 -   Independence of collected observations
--   [*Samples should be large enough....*]{.underline}
+-   [*Samples should be large enough....*]{.underline} *or originated from normally distributed population*
 
 ## Hypotheses
 
@@ -82,9 +82,9 @@ ggplant = data_sunlight_plant %>%
   ggplot(aes(x=height,fill=group)) +
   theme_classic()
 
-# ggplant + geom_boxplot(aes(y=group)) + theme(legend.position = "none")
-ggplant + geom_density(alpha=0.5)
-# ggplant + geom_histogram(alpha=0.8, binwidth=1, alpha=0.6, col='black')
+ggplant + geom_boxplot(aes(y=group)) + theme(legend.position = "none")
+# ggplant + geom_density(alpha=0.5)
+# ggplant + geom_histogram(alpha=0.7, binwidth=1, col='black')
 
 ```
 
@@ -93,16 +93,24 @@ ggplant + geom_density(alpha=0.5)
 **Example for one sample:**
 
 ```{r}
-x = rnorm(10, mean=2, sd=2)
+x = rnorm(30, mean=2, sd=2)
+hist(x)
+abline(v = 0, lty=2, col='red', lwd=4)
+```
+
+```{r}
 t.test(x, mu = 0)
 ```
 
 **Example on two samples:**
 
 ```{r}
-x1 = rnorm(10, mean=2, sd = 4)
-x2 = rnorm(10, mean=-1, sd=2)
-# boxplot(x1, x2, horizontal = T)
+x1 = rnorm(30, mean=2, sd = 4)
+x2 = rnorm(30, mean=-1, sd=2)
+boxplot(x1, x2, horizontal = T)
+```
+
+```{r}
 t.test(x1,x2)
 ```
 
@@ -114,10 +122,9 @@ t.test(height ~ group,
        data = data_sunlight_plant) # Welch t-test
 ```
 
--   **t-value** = -4.6261
--   **p-value** = 2.137e-05 = $2.137 * 10^{-5}$ = $0.00002137$
-    -   $2.137 * 10^{-5} < 0.05 \leftrightarrow p.value < \alpha$
-    -   We can with great confidence reject the $H_0$ and accept $H_A$ about difference of averages
+-   **t-value** \< 0
+-   **p-value** \<\< $\alpha$ = 0.05
+    -   We can reject the $H_0$ and accept $H_A$ about difference of averages
 
 ### Comparison of basic and Welch t-test
 
@@ -131,48 +138,6 @@ t.test(height ~ group,
 | = N ; $\neq$ SD ; $\neq$ MEAN | **GOOD** | **GOOD** |
 | \> N ; \> SD ; $\neq$ MEAN | **OK** | **OK** |
 | \< N ; \> SD ; $\neq$ MEAN | **OK** | **OK** |
-
-## Non-Parametric Alternative [for independent samples]{.underline}
-
-Since the t-test requires calculation of the mean, it is sensitive to outliers. Therefore, it is better to use a non-parametric approach
-
-**Mann-Whitney test** **(also known as** **Wilcoxon** **rank-sum test**)
-
-### Hypotheses
-
-[**The test does not directly compare means or medians!**]{.underline}
-
--   **Null Hypothesis** ($H_0$​): Two populations (from which the samples are drawn) have the **same distribution** in terms of relative position.
-
--   **Alternative Hypothesis** ($H_A$​): Two populations have **different distributions** in terms of relative position (i.e., one distribution tends to yield larger values than the other).
-
-If $X$ comes from population 1 and $Y$ comes from population 2, the null hypothesis often implies:
-
-$H_0: P(X>Y)=0.5$
-
-### Example
-
-```{r}
-sample1 = c(rnorm(20, 5, 2), 18)
-sample2 = c(rnorm(20, 7, 2), 22)
-
-data_sample = data.frame(group = rep(c("sample1", "sample2"), each=21),
-                         value = c(sample1, sample2))
-```
-
-```{r}
-data_sample %>%  ggplot(aes(x = value, fill=group)) + geom_density(alpha=0.5)
-```
-
-```{r wilcoxon}
-t.test(value ~ group,
-       data=data_sample)
-
-wilcox.test(value ~ group,
-            data=data_sample)
-```
-
-Base R only has `wilcox.test()`, however the documentation says Wilcoxon tests "*is also known as the Mann-Whitney test".*
 
 ## Paired t-test [for dependent samples]{.underline}
 
@@ -223,9 +188,10 @@ ggpress = data_pressure %>%
   ggplot(aes(x=pressure, fill=group)) +
   theme_classic()
 
-ggpress + geom_boxplot(aes(y=group)) + theme(legend.position = "none")
-# ggplant + geom_density(alpha=0.5)
-# ggplant + geom_histogram(alpha=0.8, binwidth=1)
+ggpress + geom_boxplot(aes(y=group)) + 
+# ggplant + geom_density(alpha=0.5) + 
+# ggplant + geom_histogram(alpha=0.8, binwidth=1) +
+  theme(legend.position = "none")
 ```
 
 #### Testing
@@ -235,6 +201,67 @@ t.test(pressure ~ group,
        data = data_pressure, 
        pair = T) # <---- !!!
 ```
+
+# Non-Parametric Alternatives
+
+## Non-Parametric Alternative [for independent samples]{.underline}
+
+**If you have**
+
+-   "Strange" distribution
+
+-   "Outliers" strongly affecting the mean value
+
+-   Rank/ordinal data
+
+-   Strange scale (hard to interpret)
+
+-   It does not matter how much greater one value is than another, but it is important that it is **consistently** greater
+
+-   ~~Small sample~~ (t-test even better for small samples)
+
+**then you can use non-parametric approaches**
+
+### **Mann-Whitney test** **(also known as** **Wilcoxon** **rank-sum test**)
+
+### Hypotheses
+
+[**The test does not compare means or medians!!!**]{.underline}
+
+-   **Null Hypothesis** ($H_0$​): Two populations (from which the samples are drawn) have the **same distribution** in terms of relative position.
+
+-   **Alternative Hypothesis** ($H_A$​): Two populations have **different distributions** in terms of relative position (i.e., one distribution tends to yield larger values than the other).
+
+If $X$ comes from population 1 and $Y$ comes from population 2, the null hypothesis often implies:
+
+$H_0: P(X>Y)=0.5$
+
+### Example
+
+```{r}
+sample1 = c(rnorm(20, 5, 2), 18)
+sample2 = c(rnorm(20, 7, 2), 22)
+
+data_sample = data.frame(group = rep(c("sample1", "sample2"), each=21),
+                         value = c(sample1, sample2))
+```
+
+```{r}
+data_sample %>%  
+  ggplot(aes(x = value, fill=group)) + 
+  geom_density(alpha=0.5) +
+  theme_classic()
+```
+
+```{r wilcoxon}
+t.test(value ~ group,
+       data=data_sample)
+
+wilcox.test(value ~ group,
+            data=data_sample)
+```
+
+Base R only has `wilcox.test()`, however the documentation says Wilcoxon tests "*is also known as the Mann-Whitney test".*
 
 ## Non-Parametric Alternative [for dependent samples]{.underline}
 
@@ -297,6 +324,40 @@ Degrees of freedom $df$
 
 ## Contingency tables
 
+### Does disease outcome depend on treatment group ?
+
+|                                  | Cured | Not cured | [*Row Total*]{.underline} |
+|----------------------------------|-------|-----------|---------------------------|
+| **Treatment**                    | 12    | 8         | 20                        |
+| **Placebo**                      | 6     | 10        | 16                        |
+| [***Column Total***]{.underline} | 18    | 18        | [**36**]{.underline}      |
+
+### Expected values calculation
+
+In a 2x2 contingency table, the expected frequency for each cell is calculated as:
+
+$$E_{ij} = \frac{(total \ Row_i \times total \ Column_j)}{N}$$
+
+Where:
+
+-   $total \ Row_i$ = Sum of row $i$
+
+-   $total \ Column_j$ = Sum of column $j$
+
+-   $N$ = Grand total
+
+It is calculated like this to remain total sums of rows and columns the same, bu tmake ratios between inner cells' values (Odds) equal
+
+|   | Cured | Not cured | [*Row Total*]{.underline} |
+|----|----|----|----|
+| **Treatment** | $(18 \times 20)/36 = 10$ | $(18 \times 20)/36 = 10$ | 20 |
+| **Placebo** | $(18 \times 16)/36 = 8$ | $(18 \times 16)/36 = 8$ | 16 |
+| [***Column Total***]{.underline} | 18 | 18 | [**36**]{.underline} |
+
+### Statistic calculation
+
+$\chi^2 = \sum \frac{(O_i - E_i)^2}{E_i}$ where ($O_i$) are the observed frequencies, and ($E_i$) are the expected
+
 ### 2 x 2
 
 #### Observed
@@ -349,35 +410,6 @@ $\chi^2 = \sum^2_i \sum^2_j \frac{(O_{ij} - E_{ij})^2}{E_{ij}}$ ($i$ - row, $j$ 
 
 $df = (N-1)(M-1)$
 
-## Does disease outcome depend on treatment group ?
-
-+----------------------------------+------------+------------+---------------------------+
-|                                  | Cured      | Not cured  | [*Row Total*]{.underline} |
-+==================================+============+============+===========================+
-| **Treatment**                    | 12         | 8          | 20                        |
-+----------------------------------+------------+------------+---------------------------+
-| **Placebo**                      | 6          | 10         | 16                        |
-+----------------------------------+------------+------------+---------------------------+
-| [***Column Total***]{.underline} | 18         | 18         | [**36**]{.underline}      |
-+----------------------------------+------------+------------+---------------------------+
-
-### Expected values calculation
-
-In a 2x2 contingency table, the expected frequency for each cell is calculated as:
-
-$$E_{ij} = \frac{(R_i \times C_j)}{N}$$
-
-Where: - $R_i$ = Total of row $i$. - $C_j$ = Total of column $j$. - $N$ = Grand total.
-
-|               | Cured                    | Not cured                |
-|---------------|--------------------------|--------------------------|
-| **Treatment** | $(18 \times 20)/36 = 10$ | $(18 \times 20)/36 = 10$ |
-| **Placebo**   | $(18 \times 16)/36 = 8$  | $(18 \times 16)/36 = 8$  |
-
-### Statistic calculation
-
-$\chi^2 = \sum \frac{(O_i - E_i)^2}{E_i}$ where ($O_i$) are the observed frequencies, and ($E_i$) are the expected
-
 ### Code
 
 ```{r}
@@ -395,6 +427,12 @@ contingency_table = table(data_cure$Outcome, data_cure$Group)
 contingency_table
 ```
 
+### Plot
+
+```{r}
+mosaicplot(contingency_table)
+```
+
 ### Test
 
 We don't need to calculate the expected values. The `chisq.test()` do it for us.
@@ -409,39 +447,108 @@ chisq.test(contingency_table,
 
 -   We **failed to reject** the $H_0$ about independence of `Outcome` and `Group`
 
+# Paired categorical data testing (for dependent samples)
+
+## McNemar's test
+
+For example, comparing two COVID tests. Both tests either detect the virus or not in the [**same patients**]{.underline}.
+
+## Assumptions
+
+-   Better on big samples
+
+## Hypotheses
+
+-   **Null Hypothesis (**$H_0$**):** Sums of rows and columns are equal (both tests detect COVID similarly)
+    -   a+b = a+c
+    -   c+d = b+d
+    -   **=\> b=c**
+-   **Alternative Hypothesis (**$H_A$**):** Sums of rows and columns are [**NOT**]{.underline} equal
+
+|   | **Test2: +** | **Test2: -** | [*Row Total*]{.underline} |
+|----|----|----|----|
+| **Test1: +** | a | c | a+c |
+| **Test1: -** | b | d | b+d |
+| [***Column Total***]{.underline} | a+b | c+d | **a+b+c+d** |
+
+$\chi = \dfrac{(b-c)^2}{b+c}$
+
+## COVID Tests
+
+### Data
+
+Same patients!
+
+|   | **Test2: +** | **Test2: -** | [*Row Total*]{.underline} |
+|----|----|----|----|
+| **Test1: +** | 12 | 8 | 20 |
+| **Test1: -** | 6 | 10 | 16 |
+| [***Column Total***]{.underline} | 18 | 18 | **36** |
+
+### Code
+
+```{r}
+data_covid = data.frame(
+  test1 = factor(rep(c('test2+', 'test2-'), e=18)),
+  test2 = factor(c(rep("test1+", 12), rep("test1-", 6), rep("test1+", 8), rep("test1-", 10))))
+
+data_covid %>%  head()
+```
+
+### Contingency table
+
+```{r}
+contingency_table = table(data_covid$test2, data_covid$test1)
+contingency_table
+```
+
+### Testing
+
+```{r}
+mcnemar.test(contingency_table)
+```
+
+-   $p.value > 0.05$
+
+-   We **failed to reject** the $H_0$ that independence of `Outcome` and `Group`
+
 # Fisher's Exact Test
 
 ## Assumptions
 
 -   **for [both not random]{.underline} categories! (**otherwise it will be too conservative)
+    -   For example, we have four cups, and milk was added to some of them after the tea, and to others, milk was added first, and then tea. We invite an expert who has to guess which cup is which.
 
-Usually used **only for 2x2 contingency table**
+        |              | expert: Tea -\> Milk | expert: Tea -\> Milk |
+        |--------------|----------------------|----------------------|
+        | Tea -\> Milk | 3                    | 1                    |
+        | Milk -\> Tea | 1                    | 3                    |
+
+Usually used **for 2x2 contingency table**
 
 The test is **exact** because it computes the exact probability of the observed data (and more extreme data) under the null hypothesis
 
 ## Hypotheses
 
 -   **Null Hypothesis (**$H_0$**):** There is [**no association**]{.underline} between two categorical variables
+    -   Odds ratio (OR) = 1
 -   **Alternative Hypothesis (**$H_A$**):** There is [**some association**]{.underline} between two categorical variables
+    -   Odds ratio (OR) $\neq$ 1
 
 ## Does the presence of the disease depend on the gene knockout?
 
 ### Data
 
-+----------------------------------+----------------------------+--------------------------+---------------------------+
-|                                  | Expert guessed "treatment" | Expert guessed "control" | [*Row Total*]{.underline} |
-+==================================+============================+==========================+===========================+
-| **Treatment**                    | [**1**]{.underline}        | [**3**]{.underline}      | 4                         |
-+----------------------------------+----------------------------+--------------------------+---------------------------+
-| **Control**                      | [**3**]{.underline}        | [**1**]{.underline}      | 4                         |
-+----------------------------------+----------------------------+--------------------------+---------------------------+
-| [***Column Total***]{.underline} | 4                          | 4                        | 8                         |
-+----------------------------------+----------------------------+--------------------------+---------------------------+
+|   | Expert guessed "treatment" | Expert guessed "control" | [*Row Total*]{.underline} |
+|----|----|----|----|
+| **Treatment** | [**1**]{.underline} | [**3**]{.underline} | 4 |
+| **Control** | [**3**]{.underline} | [**1**]{.underline} | 4 |
+| [***Column Total***]{.underline} | 4 | 4 | 8 |
 
 ```{r}
 data_knockout = data.frame(
-  Outcome = factor(rep(c('Disease', 'No disease'), e=4)),
-  Group = factor(c("Knockout", "Control", rep("Knockout", 3), rep("Control", 3))))
+  Expert = factor(rep(c('guessed treatment', 'guessed placebo'), e=4)),
+  Group = factor(c("Treatment", "Control", rep("Treatment", 3), rep("Control", 3))))
 
 data_knockout %>%  head()
 ```
@@ -449,7 +556,7 @@ data_knockout %>%  head()
 ### Contingency table
 
 ```{r}
-contingency_table_1 = table(data_knockout$Group, data_knockout$Outcome)
+contingency_table_1 = table(data_knockout$Group, data_knockout$Expert)
 contingency_table_1
 ```
 
@@ -533,6 +640,4 @@ chisq.test(x=observed, p=expected/sum(expected))
 
 -   `p` - expected proportions (instead of values)
 
--   $p.value > 0.05$ and it means that the two sets of frequencies are likely to belong to the same distribution or in other words: the observed values are not significantly different from the expected values
-
-### 
+-   $p.value > 0.05 \ (\alpha)$ and it means that the two sets of frequencies are likely to belong to the same distribution or in other words: the observed values are not significantly different from the expected values

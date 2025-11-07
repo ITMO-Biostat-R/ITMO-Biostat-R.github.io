@@ -56,6 +56,14 @@ theme_set(theme_custom)
 6\) Conclusion
 :::
 
+## What is my question?
+
+-   What do I measure?
+
+-   Type of data collected
+
+-   What are factors?
+
 ## Hypotheses
 
 In statistical testing, we will operate with **hypotheses.** *There are two basic hypotheses:*
@@ -106,6 +114,10 @@ Error of accepting $H_0$ when $H_0$ is false
 | Measured: **True**  | Correct 😊        | Type 1 Error       |
 | Measured: **False** | Type 2 Error      | Correct 😊         |
 
+::: fragment
+We **cannot** simultaneously make them low *Thus, we fix one them...*
+:::
+
 ------------------------------------------------------------------------
 
 Probability of Type I error ($\alpha$)
@@ -124,9 +136,17 @@ Before testing we must define value $\alpha$ named **significance level**
 >
 > We reject the $H_0$ at the $\alpha = 0.05$ significance level, indicating that there is sufficient evidence to conclude that the observed result is unlikely to have occurred under the null hypothesis.
 
-Thus we [**fix the Type 1 Error**]{.underline} , but [**Type 2 Error still can be large!**]{.underline}
+Thus we [**fix the Type 1 Error**]{.underline} [**(**$\alpha$**)**]{.underline}, but [**Type 2 Error (**$\beta$**)**]{.underline} [**still can be large!**]{.underline}
+
+## Power
 
 The value $1-\beta$ called the [**power of the test**]{.underline}. *The smaller is the probability of type II error, the more powerful is the test.*
+
+**Depends on**:
+
+-   Sample size
+
+-   Size of effect (biological significance)
 
 ## Significance level {auto-animate="true"}
 
@@ -184,13 +204,17 @@ The value $1-\beta$ called the [**power of the test**]{.underline}. *The smaller
 
 ### Examples
 
-+ The particular distribution of population (e.g. normal)
+-   The particular distribution of population (e.g. normal)
 
-+ The equality of variances
+-   The equality of variances
 
-+ The independence of groups
+-   The independence of groups
 
-+ The type of data (categorical, numerical and etc.)
+-   The type of data (categorical, numerical and etc.)
+
+::: fragment
+**If assumptions are not met,** Type I error may be bigger than $\alpha$
+:::
 
 ## One data, several hypothesis {auto-animate="true"}
 
@@ -305,7 +329,7 @@ The tests result in [**test statistic**]{.underline} and the [**p-value**]{.unde
 
 **The p-value does not indicate the magnitude of the effect!**
 
-## "Pipeline"
+## Steps
 
 ![](/images/pvalpipeline.png){fig-align="center"}
 
@@ -351,11 +375,18 @@ The tests result in [**test statistic**]{.underline} and the [**p-value**]{.unde
 
 ```
 
-## *p-value* calculation
+## *p-value* {auto-animate="true"}
+
+> The probability that, given a **true null hypothesis**, your observations will result **in such or more extreme value of test statistic**
+
+-   Uniformly distributed
+-   Comparing with $\alpha$
+
+## *p-value* {auto-animate="true"}
 
 ![](../images/memes/p-value.jpg){fig-align="center"}
 
-------------------------------------------------------------------------
+## *p-value* {auto-animate="true"}
 
 ### *p-value* $\geq \alpha$
 
