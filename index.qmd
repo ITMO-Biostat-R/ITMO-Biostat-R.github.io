@@ -21,7 +21,7 @@ title: "Biostatistics in R"
 
 -   [Visualization sins and inspirations](presentations/visual_sins_inspiration.qmd)
 -   [Intro into statistics](presentations/distributions_clt_ci.qmd)
--   [Intro into tests](presentatitesting.qmd)
+-   [Intro into tests](presentations/testing.qmd)
 
 ### Homeworks
 
