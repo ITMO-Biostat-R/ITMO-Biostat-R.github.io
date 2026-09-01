@@ -1,1 +1,219 @@
-/* css styles */
+/* Course site design tokens */
+:root {
+  --course-ink: #182230;
+  --course-muted: #637083;
+  --course-blue: #2457a6;
+  --course-blue-dark: #183e78;
+  --course-blue-soft: #eaf1fb;
+  --course-border: #dce4ee;
+  --course-surface: #ffffff;
+  --course-background: #f6f8fb;
+}
+
+body {
+  background: var(--course-background);
+  color: var(--course-ink);
+}
+
+.navbar {
+  background: var(--course-blue-dark);
+  box-shadow: 0 1px 0 rgba(17, 35, 59, 0.16);
+}
+
+.navbar .navbar-brand,
+.navbar .nav-link {
+  letter-spacing: 0.01em;
+}
+
+.navbar .nav-link {
+  border-radius: 0.35rem;
+  padding-inline: 0.7rem !important;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link:focus-visible {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.course-intro {
+  max-width: 46rem;
+  margin: -0.25rem 0 2.75rem;
+  color: var(--course-muted);
+  font-size: 1.12rem;
+  line-height: 1.65;
+}
+
+main.content h2 {
+  margin-top: 2.8rem;
+  margin-bottom: 0.35rem;
+  color: var(--course-ink);
+  font-size: clamp(1.45rem, 2vw, 1.8rem);
+  letter-spacing: -0.015em;
+}
+
+.section-lead {
+  margin-bottom: 1.1rem;
+  color: var(--course-muted);
+}
+
+.resource-list {
+  overflow: hidden;
+  margin-bottom: 2.75rem;
+  border: 1px solid var(--course-border);
+  border-radius: 0.8rem;
+  background: var(--course-surface);
+  box-shadow: 0 0.35rem 1.25rem rgba(24, 62, 120, 0.05);
+}
+
+.resource-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  min-height: 5.25rem;
+  padding: 1rem 1.15rem;
+  border-bottom: 1px solid var(--course-border);
+  transition: background-color 150ms ease;
+}
+
+.resource-row:last-child {
+  border-bottom: 0;
+}
+
+.resource-row:hover {
+  background: #fafcff;
+}
+
+.resource-row > p,
+.resource-info > p,
+.resource-copy > p {
+  margin: 0;
+}
+
+.resource-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  min-width: 0;
+}
+
+.resource-number {
+  display: inline-grid;
+  flex: 0 0 auto;
+  place-items: center;
+  width: 2.35rem;
+  height: 2.35rem;
+  border-radius: 0.6rem;
+  background: var(--course-blue-soft);
+  color: var(--course-blue-dark);
+  font-size: 0.82rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.resource-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 0;
+}
+
+.resource-title {
+  color: var(--course-ink);
+  font-size: 1.03rem;
+  font-weight: 650;
+  text-decoration: none;
+}
+
+.resource-title:hover,
+.resource-title:focus-visible {
+  color: var(--course-blue);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.resource-meta,
+.resource-secondary {
+  color: var(--course-muted);
+  font-size: 0.88rem;
+}
+
+.resource-secondary {
+  width: fit-content;
+  text-underline-offset: 0.18em;
+}
+
+.resource-download {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #aec3df;
+  border-radius: 0.5rem;
+  background: var(--course-surface);
+  color: var(--course-blue-dark);
+  font-size: 0.86rem;
+  font-weight: 650;
+  line-height: 1.2;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.resource-download::before {
+  content: "\2193";
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.resource-download:hover,
+.resource-download:focus-visible {
+  border-color: var(--course-blue);
+  background: var(--course-blue-soft);
+  color: var(--course-blue-dark);
+}
+
+.resource-title:focus-visible,
+.resource-download:focus-visible,
+.resource-secondary:focus-visible {
+  outline: 3px solid rgba(36, 87, 166, 0.28);
+  outline-offset: 3px;
+}
+
+@media (max-width: 575.98px) {
+  .navbar-title {
+    font-size: 1rem;
+  }
+
+  .course-intro {
+    margin-bottom: 2rem;
+    font-size: 1rem;
+  }
+
+  .resource-row {
+    align-items: flex-start;
+    gap: 0.85rem;
+    min-height: auto;
+    padding: 1rem;
+  }
+
+  .resource-info {
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .resource-download {
+    padding: 0.45rem 0.6rem;
+    font-size: 0.78rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .resource-row:not(.resource-row-simple) {
+    flex-direction: column;
+  }
+
+  .resource-row:not(.resource-row-simple) .resource-download {
+    margin-left: 3.1rem;
+  }
+}

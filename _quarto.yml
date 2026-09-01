@@ -18,6 +18,12 @@ website:
     left:
       - href: index.qmd
         text: Home
+      - href: index.qmd#lessons
+        text: Lessons
+      - href: index.qmd#presentations
+        text: Presentations
+      - href: index.qmd#homeworks
+        text: Homeworks
 
 format:
   html:
@@ -31,4 +37,3 @@ format:
     # simplex, spacelab, united, and yeti
 
 editor: visual
-

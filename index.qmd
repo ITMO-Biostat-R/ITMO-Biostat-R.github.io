@@ -1,40 +1,208 @@
 ---
 title: "Biostatistics in R"
+toc: false
 ---
 
-### Lecture data
+::: {.course-intro}
+Course materials, practical exercises, presentations, and assignments in one place.
+:::
 
-1.  [Basic R](./code/basic_r.Rmd)
-    -   [Download](./zipfiles/basic_r.zip)
-2.  [Working with Dataframes](./code/advanced_df.Rmd)
-    -   [Download](./zipfiles/advanced_df.zip)
-3.  [Visualization](code/datavis.Rmd)
-    -   [Download](./zipfiles/datavis.zip)
-4.  [Intro into statistics](./code/distributions_clt_ci.Rmd)
-    -   [Download](./zipfiles/distributions_clt_ci.zip)
-5.  [Association](code/association.Rmd)
-    -   [Download](./zipfiles/association.zip)
-6.  [Stat Tests](code/stats_ttest_chi.Rmd)
-    -   [Download](./zipfiles/stats_ttest_chi.zip)
+## Lessons
 
-### Presentations
+::: {.section-lead}
+Notes and reproducible files for the practical classes.
+:::
 
--   [Visualization sins and inspirations](presentations/visual_sins_inspiration.qmd)
--   [Intro into statistics](presentations/distributions_clt_ci.qmd)
--   [Intro into tests](presentations/testing.qmd)
+::: {.resource-list}
+::: {.resource-row}
+::: {.resource-info}
+<span class="resource-number">01</span>
 
-### Homeworks
+::: {.resource-copy}
+[Basic R](./code/basic_r.Rmd){.resource-title}
 
--   [HW #1](./homeworks/HW1.Rmd)
-    -   [Download](./zipfiles/HW1.zip)
--   [HW #2](./homeworks/HW2.Rmd)
-    -   [Download](./zipfiles/HW2.zip)
-    -   [Reference plots](./homeworks/HW2_reference.html)
--   [HW #3](./homeworks/HW_virt_hospital.Rmd)
-    -   [Download](./zipfiles/HW_virt_hospital.zip)
--   [HW final](./homeworks/HW_final.Rmd)
-    -   [Download](./zipfiles/HW_final.zip)
+<span class="resource-meta">Practice material</span>
+:::
+:::
 
-<!-- ### How to download files: -->
+[Download .zip](./zipfiles/basic_r.zip){.resource-download aria-label="Download Basic R practice files as ZIP"}
+:::
 
-<!-- ![](/images/howto_download.png){fig-align="center" width="1000"} -->
+::: {.resource-row}
+::: {.resource-info}
+<span class="resource-number">02</span>
+
+::: {.resource-copy}
+[Working with Dataframes](./code/advanced_df.Rmd){.resource-title}
+
+<span class="resource-meta">Practice material</span>
+:::
+:::
+
+[Download .zip](./zipfiles/advanced_df.zip){.resource-download aria-label="Download Working with Dataframes practice files as ZIP"}
+:::
+
+::: {.resource-row}
+::: {.resource-info}
+<span class="resource-number">03</span>
+
+::: {.resource-copy}
+[Visualization](code/datavis.Rmd){.resource-title}
+
+<span class="resource-meta">Practice material</span>
+:::
+:::
+
+[Download .zip](./zipfiles/datavis.zip){.resource-download aria-label="Download Visualization practice files as ZIP"}
+:::
+
+::: {.resource-row}
+::: {.resource-info}
+<span class="resource-number">04</span>
+
+::: {.resource-copy}
+[Introduction to statistics](./code/distributions_clt_ci.Rmd){.resource-title}
+
+<span class="resource-meta">Practice material</span>
+:::
+:::
+
+[Download .zip](./zipfiles/distributions_clt_ci.zip){.resource-download aria-label="Download Introduction to statistics practice files as ZIP"}
+:::
+
+::: {.resource-row}
+::: {.resource-info}
+<span class="resource-number">05</span>
+
+::: {.resource-copy}
+[Association](code/association.Rmd){.resource-title}
+
+<span class="resource-meta">Practice material</span>
+:::
+:::
+
+[Download .zip](./zipfiles/association.zip){.resource-download aria-label="Download Association practice files as ZIP"}
+:::
+
+::: {.resource-row}
+::: {.resource-info}
+<span class="resource-number">06</span>
+
+::: {.resource-copy}
+[Statistical tests](code/stats_ttest_chi.Rmd){.resource-title}
+
+<span class="resource-meta">Practice material</span>
+:::
+:::
+
+[Download .zip](./zipfiles/stats_ttest_chi.zip){.resource-download aria-label="Download Statistical tests practice files as ZIP"}
+:::
+:::
+
+## Presentations
+
+::: {.section-lead}
+Slides used during the course.
+:::
+
+::: {.resource-list}
+::: {.resource-row .resource-row-simple}
+::: {.resource-info}
+<span class="resource-number">01</span>
+
+::: {.resource-copy}
+[Visualization sins and inspirations](presentations/visual_sins_inspiration.qmd){.resource-title}
+
+<span class="resource-meta">Presentation</span>
+:::
+:::
+:::
+
+::: {.resource-row .resource-row-simple}
+::: {.resource-info}
+<span class="resource-number">02</span>
+
+::: {.resource-copy}
+[Introduction to statistics](presentations/distributions_clt_ci.qmd){.resource-title}
+
+<span class="resource-meta">Presentation</span>
+:::
+:::
+:::
+
+::: {.resource-row .resource-row-simple}
+::: {.resource-info}
+<span class="resource-number">03</span>
+
+::: {.resource-copy}
+[Introduction to statistical tests](presentations/testing.qmd){.resource-title}
+
+<span class="resource-meta">Presentation</span>
+:::
+:::
+:::
+:::
+
+## Homeworks
+
+::: {.section-lead}
+Assignment descriptions and downloadable starter files.
+:::
+
+::: {.resource-list}
+::: {.resource-row}
+::: {.resource-info}
+<span class="resource-number">01</span>
+
+::: {.resource-copy}
+[Homework 1](./homeworks/HW1.Rmd){.resource-title}
+
+<span class="resource-meta">Exploring elephant data</span>
+:::
+:::
+
+[Download .zip](./zipfiles/HW1.zip){.resource-download aria-label="Download Homework 1 files as ZIP"}
+:::
+
+::: {.resource-row}
+::: {.resource-info}
+<span class="resource-number">02</span>
+
+::: {.resource-copy}
+[Homework 2](./homeworks/HW2.Rmd){.resource-title}
+
+[Reference plots](./homeworks/HW2_reference.html){.resource-secondary}
+:::
+:::
+
+[Download .zip](./zipfiles/HW2.zip){.resource-download aria-label="Download Homework 2 files as ZIP"}
+:::
+
+::: {.resource-row}
+::: {.resource-info}
+<span class="resource-number">03</span>
+
+::: {.resource-copy}
+[Homework 3](./homeworks/HW_virt_hospital.Rmd){.resource-title}
+
+<span class="resource-meta">Virtual hospital</span>
+:::
+:::
+
+[Download .zip](./zipfiles/HW_virt_hospital.zip){.resource-download aria-label="Download Homework 3 files as ZIP"}
+:::
+
+::: {.resource-row}
+::: {.resource-info}
+<span class="resource-number">04</span>
+
+::: {.resource-copy}
+[Final homework](./homeworks/HW_final.Rmd){.resource-title}
+
+<span class="resource-meta">Final assignment</span>
+:::
+:::
+
+[Download .zip](./zipfiles/HW_final.zip){.resource-download aria-label="Download final homework files as ZIP"}
+:::
+:::
