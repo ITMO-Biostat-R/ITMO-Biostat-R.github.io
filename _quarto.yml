@@ -2,6 +2,8 @@ project:
   type: website
   pre-render:
     - python3 scripts/build-direct-downloads.py
+  post-render:
+    - python3 scripts/version-stylesheet.py
   render:
     - index.qmd
     - installation.qmd
