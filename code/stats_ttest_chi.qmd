@@ -1,16 +1,9 @@
 ---
 title: "Statistics"
-author: Vladislav Stanin  
-date: 01/24/2024
-output:
-  html_document:
-    toc: true
-    toc_depth: 3
-    toc_float:
-      collapsed: yes
-      smooth_scroll: yes
+author: Vladislav Stanin
+date: "2024-01-24"
+editor: visual
 ---
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(dplyr)
@@ -69,7 +62,7 @@ Compare one group mean with a hypothesized average : $t = \dfrac{\bar{X}_1 - \mu
 #### Data
 
 ```{r}
-data_sunlight_plant = 
+data_sunlight_plant <- 
   data.frame(group = factor(rep(c("Sunlight", "Shade"), each = 30)),
              height = c(rnorm(30, mean = 15, sd = 2), 
                         rnorm(30, mean = 12, sd = 2)))
@@ -78,7 +71,7 @@ data_sunlight_plant %>% str() #!
 ```
 
 ```{r}
-ggplant = data_sunlight_plant %>%  
+ggplant <- data_sunlight_plant %>%  
   ggplot(aes(x=height,fill=group)) +
   theme_classic()
 
@@ -95,7 +88,7 @@ ggplant + geom_boxplot(aes(y=group)) + theme(legend.position = "none")
 $H_0: \ \overline{X}=5$:
 
 ```{r}
-x = rnorm(30, mean=2, sd=2)
+x <- rnorm(30, mean=2, sd=2)
 hist(x)
 abline(v = 5, lty=2, col='red', lwd=4)
 ```
@@ -107,8 +100,8 @@ t.test(x, mu = 5)
 **Example on two samples:**
 
 ```{r}
-x1 = rnorm(30, mean=2, sd = 4)
-x2 = rnorm(30, mean=-1, sd=2)
+x1 <- rnorm(30, mean=2, sd = 4)
+x2 <- rnorm(30, mean=-1, sd=2)
 boxplot(x1, x2, horizontal = T)
 ```
 
@@ -180,7 +173,7 @@ $t = \dfrac{\bar{d}}{s_d / \sqrt{n}}$
 before <- rnorm(20, mean = 120, sd = 10)
 after <- before + rnorm(20, mean = -5, sd = 5)
 
-data_pressure = data.frame(
+data_pressure <- data.frame(
  pressure = c(before, after),
  group = factor(rep(c('before', 'after'), each=20))
 )
@@ -189,7 +182,7 @@ data_pressure %>% head()
 ```
 
 ```{r paired-t-test-visualization}
-ggpress = data_pressure %>%  
+ggpress <- data_pressure %>%  
   ggplot(aes(x=pressure, fill=group)) +
   theme_classic()
 
@@ -244,10 +237,10 @@ $H_0: P(X>Y)=0.5$
 ### Example
 
 ```{r}
-sample1 = c(rnorm(20, 5, 2), 18)
-sample2 = c(rnorm(20, 7, 2), 22)
+sample1 <- c(rnorm(20, 5, 2), 18)
+sample2 <- c(rnorm(20, 7, 2), 22)
 
-data_sample = data.frame(group = rep(c("sample1", "sample2"), each=21),
+data_sample <- data.frame(group = rep(c("sample1", "sample2"), each=21),
                          value = c(sample1, sample2))
 ```
 
@@ -283,10 +276,10 @@ Base R only has `wilcox.test()`, however the documentation says Wilcoxon tests "
 ### Testing before/after data
 
 ```{r}
-sample_before = c(rnorm(20, 5, 2), 18)
-sample_after = sample_before + rnorm(21, 1, 2)
+sample_before <- c(rnorm(20, 5, 2), 18)
+sample_after <- sample_before + rnorm(21, 1, 2)
 
-data_before_after = data.frame(group = rep(c("before", "after"), each=21),
+data_before_after <- data.frame(group = rep(c("before", "after"), each=21),
                          value = c(sample_before, sample_after))
 ```
 
@@ -418,7 +411,7 @@ $df = (N-1)(M-1)$
 ### Code
 
 ```{r}
-data_cure = data.frame(
+data_cure <- data.frame(
   Outcome = factor(rep(c('Cured', 'Not cured'), e=18)),
   Group = factor(c(rep("Treatment", 12), rep("Placebo", 6), rep("Treatment", 8), rep("Placebo", 10))))
 
@@ -428,7 +421,7 @@ data_cure %>%  head()
 ### Contingency table
 
 ```{r}
-contingency_table = table(data_cure$Outcome, data_cure$Group)
+contingency_table <- table(data_cure$Outcome, data_cure$Group)
 contingency_table
 ```
 
@@ -493,7 +486,7 @@ Same patients!
 ### Code
 
 ```{r}
-data_covid = data.frame(
+data_covid <- data.frame(
   test1 = factor(rep(c('test2+', 'test2-'), e=18)),
   test2 = factor(c(rep("test1+", 12), rep("test1-", 6), rep("test1+", 8), rep("test1-", 10))))
 
@@ -503,7 +496,7 @@ data_covid %>%  head()
 ### Contingency table
 
 ```{r}
-contingency_table = table(data_covid$test2, data_covid$test1)
+contingency_table <- table(data_covid$test2, data_covid$test1)
 contingency_table
 ```
 
@@ -551,7 +544,7 @@ The test is **exact** because it computes the exact probability of the observed 
 | [***Column Total***]{.underline} | 4 | 4 | 8 |
 
 ```{r}
-data_knockout = data.frame(
+data_knockout <- data.frame(
   Expert = factor(rep(c('guessed treatment', 'guessed placebo'), e=4)),
   Group = factor(c("Treatment", "Control", rep("Treatment", 3), rep("Control", 3))))
 
@@ -561,7 +554,7 @@ data_knockout %>%  head()
 ### Contingency table
 
 ```{r}
-contingency_table_1 = table(data_knockout$Group, data_knockout$Expert)
+contingency_table_1 <- table(data_knockout$Group, data_knockout$Expert)
 contingency_table_1
 ```
 

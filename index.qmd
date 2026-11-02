@@ -1,208 +1,256 @@
 ---
 title: "Biostatistics in R"
 toc: false
+body-classes: course-home
 ---
 
-::: {.course-intro}
+::: course-intro
 Course materials, practical exercises, presentations, and assignments in one place.
 :::
 
 ## Lessons
 
-::: {.section-lead}
+::: section-lead
 Notes and reproducible files for the practical classes.
 :::
 
-::: {.resource-list}
-::: {.resource-row}
-::: {.resource-info}
-<span class="resource-number">01</span>
+::::::::::::::::::::: resource-list
+::::: {.resource-row .resource-row-simple}
+:::: resource-info
+[00]{.resource-number}
 
-::: {.resource-copy}
-[Basic R](./code/basic_r.Rmd){.resource-title}
+::: resource-copy
+[Getting Started with RStudio](./code/rstudio-lecture.qmd){.resource-title}
 
-<span class="resource-meta">Practice material</span>
+[Interface, projects, and workflow]{.resource-meta}
 :::
-:::
+::::
 
-[Download .zip](./zipfiles/basic_r.zip){.resource-download aria-label="Download Basic R practice files as ZIP"}
-:::
+:::::
 
-::: {.resource-row}
-::: {.resource-info}
-<span class="resource-number">02</span>
+::::: resource-row
+:::: resource-info
+[01]{.resource-number}
 
-::: {.resource-copy}
-[Working with Dataframes](./code/advanced_df.Rmd){.resource-title}
+::: resource-copy
+[Basic R](./code/basic_r.qmd){.resource-title}
 
-<span class="resource-meta">Practice material</span>
+[Practice material]{.resource-meta}
 :::
+::::
+
+<a href="downloads/basic_r.qmd" class="resource-download" download="basic_r.qmd" aria-label="Download Basic R as a Quarto file">Download .qmd</a>
+:::::
+
+<!-- ::::: resource-row
+:::: resource-info
+[02]{.resource-number}
+
+::: resource-copy
+[Working with Dataframes](./code/advanced_df.qmd){.resource-title}
+
+[Practice material]{.resource-meta}
 :::
+::::
 
 [Download .zip](./zipfiles/advanced_df.zip){.resource-download aria-label="Download Working with Dataframes practice files as ZIP"}
-:::
+:::::
 
-::: {.resource-row}
-::: {.resource-info}
-<span class="resource-number">03</span>
+::::: resource-row
+:::: resource-info
+[03]{.resource-number}
 
-::: {.resource-copy}
-[Visualization](code/datavis.Rmd){.resource-title}
+::: resource-copy
+[Visualization](code/datavis.qmd){.resource-title}
 
-<span class="resource-meta">Practice material</span>
+[Practice material]{.resource-meta}
 :::
-:::
+::::
 
 [Download .zip](./zipfiles/datavis.zip){.resource-download aria-label="Download Visualization practice files as ZIP"}
+:::::
+
+::::: resource-row
+:::: resource-info
+[04]{.resource-number}
+
+::: resource-copy
+[Introduction to statistics](./code/distributions_clt_ci.qmd){.resource-title}
+
+[Practice material]{.resource-meta}
 :::
+::::
 
-::: {.resource-row}
-::: {.resource-info}
-<span class="resource-number">04</span>
+<a href="downloads/distributions_clt_ci.qmd" class="resource-download" download="distributions_clt_ci.qmd" aria-label="Download Introduction to statistics as a Quarto file">Download .qmd</a>
+:::::
 
-::: {.resource-copy}
-[Introduction to statistics](./code/distributions_clt_ci.Rmd){.resource-title}
+::::: resource-row
+:::: resource-info
+[05]{.resource-number}
 
-<span class="resource-meta">Practice material</span>
+::: resource-copy
+[Association](code/association.qmd){.resource-title}
+
+[Practice material]{.resource-meta}
 :::
-:::
-
-[Download .zip](./zipfiles/distributions_clt_ci.zip){.resource-download aria-label="Download Introduction to statistics practice files as ZIP"}
-:::
-
-::: {.resource-row}
-::: {.resource-info}
-<span class="resource-number">05</span>
-
-::: {.resource-copy}
-[Association](code/association.Rmd){.resource-title}
-
-<span class="resource-meta">Practice material</span>
-:::
-:::
+::::
 
 [Download .zip](./zipfiles/association.zip){.resource-download aria-label="Download Association practice files as ZIP"}
-:::
+:::::
 
-::: {.resource-row}
-::: {.resource-info}
-<span class="resource-number">06</span>
+::::: resource-row
+:::: resource-info
+[06]{.resource-number}
 
-::: {.resource-copy}
-[Statistical tests](code/stats_ttest_chi.Rmd){.resource-title}
+::: resource-copy
+[Statistical tests](code/stats_ttest_chi.qmd){.resource-title}
 
-<span class="resource-meta">Practice material</span>
+[Practice material]{.resource-meta}
 :::
-:::
+::::
 
-[Download .zip](./zipfiles/stats_ttest_chi.zip){.resource-download aria-label="Download Statistical tests practice files as ZIP"}
-:::
-:::
+<a href="downloads/stats_ttest_chi.qmd" class="resource-download" download="stats_ttest_chi.qmd" aria-label="Download Statistical tests as a Quarto file">Download .qmd</a>
+::::: -->
+:::::::::::::::::::::
 
 ## Presentations
 
-::: {.section-lead}
+::: section-lead
 Slides used during the course.
 :::
 
-::: {.resource-list}
-::: {.resource-row .resource-row-simple}
-::: {.resource-info}
-<span class="resource-number">01</span>
+:::::::::::: resource-list
+<!-- ::::: {.resource-row .resource-row-simple}
+:::: resource-info
+[01]{.resource-number}
 
-::: {.resource-copy}
+::: resource-copy
 [Visualization sins and inspirations](presentations/visual_sins_inspiration.qmd){.resource-title}
 
-<span class="resource-meta">Presentation</span>
+[Presentation]{.resource-meta}
 :::
-:::
-:::
+::::
+:::::
 
-::: {.resource-row .resource-row-simple}
-::: {.resource-info}
-<span class="resource-number">02</span>
+::::: {.resource-row .resource-row-simple}
+:::: resource-info
+[02]{.resource-number}
 
-::: {.resource-copy}
+::: resource-copy
 [Introduction to statistics](presentations/distributions_clt_ci.qmd){.resource-title}
 
-<span class="resource-meta">Presentation</span>
+[Presentation]{.resource-meta}
 :::
-:::
-:::
+::::
+:::::
 
-::: {.resource-row .resource-row-simple}
-::: {.resource-info}
-<span class="resource-number">03</span>
+::::: {.resource-row .resource-row-simple}
+:::: resource-info
+[03]{.resource-number}
 
-::: {.resource-copy}
+::: resource-copy
 [Introduction to statistical tests](presentations/testing.qmd){.resource-title}
 
-<span class="resource-meta">Presentation</span>
+[Presentation]{.resource-meta}
 :::
+::::
+::::: -->
+
+::: {.resource-placeholder}
+[Coming soon]{.placeholder-label}
+
+Materials will be added as the course progresses.
 :::
-:::
-:::
+
+::::::::::::
 
 ## Homeworks
 
-::: {.section-lead}
+::: section-lead
 Assignment descriptions and downloadable starter files.
 :::
 
-::: {.resource-list}
-::: {.resource-row}
-::: {.resource-info}
-<span class="resource-number">01</span>
+::::::::::::::: resource-list
+<!-- ::::: resource-row
+:::: resource-info
+[01]{.resource-number}
 
-::: {.resource-copy}
-[Homework 1](./homeworks/HW1.Rmd){.resource-title}
+::: resource-copy
+[Homework 1](./homeworks/HW1.qmd){.resource-title}
 
-<span class="resource-meta">Exploring elephant data</span>
+[Exploring elephant data]{.resource-meta}
 :::
-:::
+::::
 
 [Download .zip](./zipfiles/HW1.zip){.resource-download aria-label="Download Homework 1 files as ZIP"}
-:::
+:::::
 
-::: {.resource-row}
-::: {.resource-info}
-<span class="resource-number">02</span>
+::::: resource-row
+:::: resource-info
+[02]{.resource-number}
 
-::: {.resource-copy}
-[Homework 2](./homeworks/HW2.Rmd){.resource-title}
+::: resource-copy
+[Homework 2](./homeworks/HW2.qmd){.resource-title}
 
 [Reference plots](./homeworks/HW2_reference.html){.resource-secondary}
 :::
-:::
+::::
 
 [Download .zip](./zipfiles/HW2.zip){.resource-download aria-label="Download Homework 2 files as ZIP"}
+:::::
+
+::::: resource-row
+:::: resource-info
+[03]{.resource-number}
+
+::: resource-copy
+[Homework 3](./homeworks/HW_virt_hospital.qmd){.resource-title}
+
+[Virtual hospital]{.resource-meta}
 :::
+::::
 
-::: {.resource-row}
-::: {.resource-info}
-<span class="resource-number">03</span>
+<a href="downloads/HW_virt_hospital.qmd" class="resource-download" download="HW_virt_hospital.qmd" aria-label="Download Homework 3 as a Quarto file">Download .qmd</a>
+:::::
 
-::: {.resource-copy}
-[Homework 3](./homeworks/HW_virt_hospital.Rmd){.resource-title}
+::::: resource-row
+:::: resource-info
+[04]{.resource-number}
 
-<span class="resource-meta">Virtual hospital</span>
+::: resource-copy
+[Final homework](./homeworks/HW_final.qmd){.resource-title}
+
+[Final assignment]{.resource-meta}
 :::
-:::
-
-[Download .zip](./zipfiles/HW_virt_hospital.zip){.resource-download aria-label="Download Homework 3 files as ZIP"}
-:::
-
-::: {.resource-row}
-::: {.resource-info}
-<span class="resource-number">04</span>
-
-::: {.resource-copy}
-[Final homework](./homeworks/HW_final.Rmd){.resource-title}
-
-<span class="resource-meta">Final assignment</span>
-:::
-:::
+::::
 
 [Download .zip](./zipfiles/HW_final.zip){.resource-download aria-label="Download final homework files as ZIP"}
+::::: -->
+
+::: {.resource-placeholder}
+[Coming soon]{.placeholder-label}
+
+Materials will be added as the course progresses.
+:::
+
+:::::::::::::::
+
+## Reference materials
+
+::: section-lead
+Setup guides and useful resources for working with R.
+:::
+
+::::: resource-list
+:::: {.resource-row .resource-row-simple}
+::: resource-info
+[01]{.resource-number}
+
+::: resource-copy
+[Installing R and RStudio](installation.qmd){.resource-title}
+
+[Installation and setup guide]{.resource-meta}
 :::
 :::
+::::
+:::::

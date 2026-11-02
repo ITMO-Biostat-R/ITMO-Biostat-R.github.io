@@ -235,10 +235,10 @@ $\Rightarrow \chi^2$ test
 
 ::: {.column width="50%"}
 ```{r}
-sample_1 = c(rexp(200, 2), rnorm(100, 25, 2)) %>%  data.frame(x=.)
-sample_2 = c(rexp(200, 1), rnorm(100, 15, 2)) %>%  data.frame(x=.)
+sample_1 <- c(rexp(200, 2), rnorm(100, 25, 2)) %>%  data.frame(x=.)
+sample_2 <- c(rexp(200, 1), rnorm(100, 15, 2)) %>%  data.frame(x=.)
 
-odttg = ggplot() + 
+odttg <- ggplot() + 
   geom_histogram(data=sample_1, mapping = aes(x=x),
                  bins=50, alpha=0.4, fill='red', col='black') +
   geom_histogram(data=sample_2, mapping = aes(x=x), 

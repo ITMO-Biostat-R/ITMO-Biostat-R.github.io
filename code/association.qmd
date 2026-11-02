@@ -1,16 +1,9 @@
 ---
 title: "Association between variables"
-author: Vladislav Stanin  
-date: 01/24/2024
-output:
-  html_document:
-    toc: true
-    toc_depth: 3
-    toc_float:
-      collapsed: yes
-      smooth_scroll: yes
+author: Vladislav Stanin
+date: "2024-01-24"
+editor: visual
 ---
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(dplyr)
@@ -29,7 +22,7 @@ set.seed(11125)
 | [***Column Total***]{.underline} | 18    | 18   | [**36**]{.underline}      |
 
 ```{r}
-data_cure = data.frame(
+data_cure <- data.frame(
   Patient_ID = 1:36,
   Group = factor(c(rep("Treatment", 12), rep("Placebo", 6), rep("Treatment", 8), rep("Placebo", 10))),
   Outcome = factor(rep(c('Cured', 'Dead'), e=18)))
@@ -38,12 +31,12 @@ data_cure %>%  head()
 ```
 
 ```{r}
-contingency_table = table(data_cure$Group, data_cure$Outcome)
+contingency_table <- table(data_cure$Group, data_cure$Outcome)
 contingency_table
 ```
 
 ```{r}
-contingency_table_big = addmargins(contingency_table)
+contingency_table_big <- addmargins(contingency_table)
 contingency_table_big
 ```
 
@@ -52,21 +45,21 @@ contingency_table_big
 $Risk_{tr}$ (to be dead in case of treatment) = $\dfrac{Dead  | Treatment}{Total\ Treatment}$
 
 ```{r}
-risk_tr = contingency_table_big['Treatment', 'Dead']/ contingency_table_big['Treatment', 'Sum']
+risk_tr <- contingency_table_big['Treatment', 'Dead']/ contingency_table_big['Treatment', 'Sum']
 risk_tr
 ```
 
 $Risk_{pl}$ (to be dead in case of Placebo) = $\dfrac{Dead  | Placebo}{Total\ Placebo}$ =
 
 ```{r}
-risk_pl = contingency_table_big['Placebo', 'Dead']/ contingency_table_big['Placebo', 'Sum']
+risk_pl <- contingency_table_big['Placebo', 'Dead']/ contingency_table_big['Placebo', 'Sum']
 risk_pl
 ```
 
 Risk ratio ($RR$) = $\dfrac{Risk_{pl}}{Risk_{tr}} =$
 
 ```{r}
-RR = risk_pl / risk_tr
+RR <- risk_pl / risk_tr
 RR
 ```
 
@@ -77,13 +70,13 @@ There is some association between Treatment and Result - Placebo patients tend t
 ### **If there were more cured:**
 
 ```{r}
-risk_tr_1 = contingency_table_big['Treatment', 'Dead'] / 1020
+risk_tr_1 <- contingency_table_big['Treatment', 'Dead'] / 1020
 risk_tr_1
 
-risk_pl_1 = contingency_table_big['Placebo', 'Dead'] / 1016
+risk_pl_1 <- contingency_table_big['Placebo', 'Dead'] / 1016
 risk_pl_1
 
-RR = risk_pl_1 / risk_tr_1
+RR <- risk_pl_1 / risk_tr_1
 RR
 
 ```
@@ -97,14 +90,14 @@ $RD = Risk_{tr} - Risk_{pl} =$
 > *Use variables created above*
 
 ```{r}
-RD = risk_pl - risk_tr
+RD <- risk_pl - risk_tr
 RD
 ```
 
 ### **And if there are more Cured:**
 
 ```{r}
-RD = risk_pl_1 - risk_tr_1
+RD <- risk_pl_1 - risk_tr_1
 RD
 ```
 
@@ -115,34 +108,34 @@ RD
 $Odds_{tr} = \dfrac{Dead  | Treatment}{Cured | Treatment} =$
 
 ```{r}
-odds_tr = contingency_table_big['Treatment', 'Dead'] / contingency_table_big['Treatment', 'Cured']
+odds_tr <- contingency_table_big['Treatment', 'Dead'] / contingency_table_big['Treatment', 'Cured']
 odds_tr
 ```
 
 $Odds_{pl} = \dfrac{Dead  | Placebo}{Cured | Placebo} =$
 
 ```{r}
-odds_pl = contingency_table_big['Placebo', 'Dead'] / contingency_table_big['Placebo', 'Cured']
+odds_pl <- contingency_table_big['Placebo', 'Dead'] / contingency_table_big['Placebo', 'Cured']
 odds_pl
 ```
 
 $Odds \ ratio \ (OR) = \dfrac{Odds_{pl}}{Odds_{tr}} =$
 
 ```{r}
-OR = odds_pl / odds_tr
+OR <- odds_pl / odds_tr
 OR
 ```
 
 **And if there are more Cured:**
 
 ```{r}
-odds_tr_1 = contingency_table_big['Treatment', 'Dead'] / 1000
+odds_tr_1 <- contingency_table_big['Treatment', 'Dead'] / 1000
 odds_tr_1
 
-odds_pl_1 = contingency_table_big['Placebo', 'Dead'] / 1010
+odds_pl_1 <- contingency_table_big['Placebo', 'Dead'] / 1010
 odds_pl_1
 
-OR_1 = odds_pl_1 / odds_tr_1
+OR_1 <- odds_pl_1 / odds_tr_1
 OR_1
 ```
 
@@ -155,13 +148,13 @@ Since we already know the outcomes and the number of "patients" with each outcom
 -   **OR** **may overstate the effect** (in both directions) and **RR may be more "conservative"**
 
 ```{r}
-mat = matrix(c(45,55,10,90), 
+mat <- matrix(c(45,55,10,90), 
              nrow = 2, byrow = TRUE,
              dimnames = list(c("A", "B"), c("+", "-"))) |> addmargins()
 mat
 
-RR_1 = (mat[1,1]/mat[1,3])/(mat[2,1]/mat[2,3])
-OR_1 = (mat[1,1]/mat[1,2])/(mat[2,1]/mat[2,2])
+RR_1 <- (mat[1,1]/mat[1,3])/(mat[2,1]/mat[2,3])
+OR_1 <- (mat[1,1]/mat[1,2])/(mat[2,1]/mat[2,2])
 ```
 
 ```{r}
@@ -172,13 +165,13 @@ paste0('OR = ', round(OR_1, 6))
 -   **For rare events RR** $\approx$ **OR**
 
 ```{r}
-mat = matrix(c(1,999,17,983), 
+mat <- matrix(c(1,999,17,983), 
              nrow = 2, byrow = TRUE,
              dimnames = list(c("A", "B"), c("+", "-"))) |> addmargins()
 mat
 
-RR_2 = (mat[1,1]/mat[1,3])/(mat[2,1]/mat[2,3])
-OR_2 = (mat[1,1]/mat[1,2])/(mat[2,1]/mat[2,2])
+RR_2 <- (mat[1,1]/mat[1,3])/(mat[2,1]/mat[2,3])
+OR_2 <- (mat[1,1]/mat[1,2])/(mat[2,1]/mat[2,2])
 
 ```
 
@@ -190,13 +183,13 @@ paste0('OR = ', round(OR_2, 6))
 -   $RR$ = $OR$ = 1 if two variables are [**not**]{.underline} associated
 
 ```{r}
-mat = matrix(c(50,50,100,100), 
+mat <- matrix(c(50,50,100,100), 
              nrow = 2, byrow = TRUE,
              dimnames = list(c("A", "B"), c("+", "-"))) |> addmargins()
 mat
 
-RR_3 = (mat[1,1]/mat[1,3])/(mat[2,1]/mat[2,3])
-OR_3 = (mat[1,1]/mat[1,2])/(mat[2,1]/mat[2,2])
+RR_3 <- (mat[1,1]/mat[1,3])/(mat[2,1]/mat[2,3])
+OR_3 <- (mat[1,1]/mat[1,2])/(mat[2,1]/mat[2,2])
 ```
 
 ```{r}
@@ -211,7 +204,7 @@ paste0('OR = ', round(OR_3, 6))
 ## Mean difference...
 
 ```{r}
-data_md = data.frame(
+data_md <- data.frame(
   Meme_category = rep(c('A','B'), each=50) |> as.factor(),
   Laugh_level = c(rnorm(50, 8, 1), rnorm(50, 5, 1))
 )
@@ -220,11 +213,11 @@ data_md |> glimpse(width = 50)
 ```
 
 ```{r}
-mean_laughs = data_md |> 
+mean_laughs <- data_md |> 
   group_by(Meme_category) |> 
   summarise(mean_laugh = mean(Laugh_level))
 
-MD = mean_laughs$mean_laugh[mean_laughs$Meme_category == 'A'] - 
+MD <- mean_laughs$mean_laugh[mean_laughs$Meme_category == 'A'] - 
   mean_laughs$mean_laugh[mean_laughs$Meme_category == 'B']
 
 MD
@@ -255,7 +248,7 @@ Based on counting distances of each value (point) from the average value of vari
 ### Data
 
 ```{r}
-plant_height_df = tibble(
+plant_height_df <- tibble(
   Plant_ID = 1:28,
   # Sunlight_hrs_per_day = rep(4:10, e=4),
   Sunlight_hrs_per_day = runif(28, 4, 10),
@@ -294,8 +287,8 @@ cor.test(plant_height_df$Sunlight_hrs_per_day,
 ### 1
 
 ```{r}
-x1=rnorm(500)
-y1=rnorm(500)
+x1<-rnorm(500)
+y1<-rnorm(500)
 plot(x1,y1)
 ```
 
@@ -306,8 +299,8 @@ cor.test(x1, y1)
 ### 2
 
 ```{r}
-x2=rnorm(500)
-y2=x2^2 + rnorm(500, 0, 1)
+x2<-rnorm(500)
+y2<-x2^2 + rnorm(500, 0, 1)
 plot(x2,y2)
 ```
 
@@ -326,7 +319,7 @@ Game [**Guess the Correlation**](https://www.guessthecorrelation.com/)
 ## Math and Physics Grades
 
 ```{r}
-grades_math_phys = data.frame(math = c(5,2,3,4,6,1,9,10,2,5),
+grades_math_phys <- data.frame(math = c(5,2,3,4,6,1,9,10,2,5),
                              phys = c(4,2,3,1,2,2,8,8,2,4))
 grades_math_phys
 ```
@@ -364,8 +357,8 @@ cor(grades_math_phys, method = 'spearman')
 -   Non-linear
 
 ```{r}
-x = runif(50, -10, 10)
-y = (x + rnorm(50, 0, 2))^3
+x <- runif(50, -10, 10)
+y <- (x + rnorm(50, 0, 2))^3
 plot(x,y, pch=19)
 ```
 
@@ -378,8 +371,8 @@ cor(x,y, method = "kendall")
 -   With outliers
 
 ```{r}
-x = c(rnorm(20,0,3), c(15, 19))
-y = c(x[1:20] + c(rnorm(20,0,1)), 0, 0)
+x <- c(rnorm(20,0,3), c(15, 19))
+y <- c(x[1:20] + c(rnorm(20,0,1)), 0, 0)
 plot(x,y, pch=19)
 ```
 
@@ -420,7 +413,7 @@ plot(anscombe$x4, anscombe$y4, pch=19)
 Reaction Velocity of an Enzymatic Reaction
 
 ```{r}
-arth_df = read.csv('./data/Arthritis.csv',
+arth_df <- read.csv('./data/Arthritis.csv',
                    stringsAsFactors = T)
 
 arth_df |> glimpse(width = 80)
@@ -435,33 +428,33 @@ arth_df |> summary()
 > -   dichotomous vs dichotomous
 
 ```{r}
-cont_table = table(arth_df$Sex, arth_df$Improved)
-cont_table_full = addmargins(cont_table)
+cont_table <- table(arth_df$Sex, arth_df$Improved)
+cont_table_full <- addmargins(cont_table)
 cont_table_full
 ```
 
 ```{r}
-risk_fem = cont_table_full['Female', 'Marked'] / cont_table_full['Female', 'Sum']
+risk_fem <- cont_table_full['Female', 'Marked'] / cont_table_full['Female', 'Sum']
 risk_fem
 
-risk_male = cont_table_full['Male', 'Marked'] / cont_table_full['Male', 'Sum']
+risk_male <- cont_table_full['Male', 'Marked'] / cont_table_full['Male', 'Sum']
 risk_male
 
-RR = risk_fem / risk_male
+RR <- risk_fem / risk_male
 RR
 
-RD = risk_fem - risk_male
+RD <- risk_fem - risk_male
 RD
 ```
 
 ```{r}
-odds_fem = cont_table_full['Female', 'Marked'] / cont_table_full['Female', 'None']
+odds_fem <- cont_table_full['Female', 'Marked'] / cont_table_full['Female', 'None']
 odds_fem
 
-odds_male = cont_table_full['Male', 'Marked'] / cont_table_full['Male', 'None']
+odds_male <- cont_table_full['Male', 'Marked'] / cont_table_full['Male', 'None']
 odds_male
 
-OR = odds_fem / odds_male
+OR <- odds_fem / odds_male
 OR
 ```
 
@@ -470,18 +463,18 @@ OR
 > -   Continuous vs dichotomous
 
 ```{r}
-MD = mean(arth_df |> filter(Sex == 'Male') |>  pull(Age) |>  mean()) -
+MD <- mean(arth_df |> filter(Sex == 'Male') |>  pull(Age) |>  mean()) -
           mean(arth_df |> filter(Sex == 'Female') |>  pull(Age) |>  mean())
 MD 
 
-sexmean = arth_df |> group_by(Sex) |>  summarise(mean_age = mean(Age))
+sexmean <- arth_df |> group_by(Sex) |>  summarise(mean_age = mean(Age))
 sexmean$mean_age[1] - sexmean$mean_age[2]
 ```
 
 ## Diamonds dataset
 
 ```{r}
-diamonds_small = diamonds |> slice_sample(n=1000)
+diamonds_small <- diamonds |> slice_sample(n=1000)
 diamonds_small |> str()
 diamonds_small |> glimpse(width = 50)
 ```

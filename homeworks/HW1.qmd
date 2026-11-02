@@ -1,14 +1,7 @@
 ---
 title: "Homework #1: Exploring elephant data"
-output:
-  html_document:
-    toc: true
-    toc_float: true
-    # number_sections: true
-editor_options: 
-  chunk_output_type: inline
+editor: visual
 ---
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
 ```
@@ -262,4 +255,4 @@ library(tidyr)
 
 # Submission
 
-Submit your `.Rmd` file and the final outputs (`csv` file)
+Submit your `.qmd` file and the final outputs (`csv` file)

@@ -108,7 +108,7 @@ Therefore, researchers use samples - **random and representative** groups taken 
 ::::: columns
 ::: {.column width="50%"}
 ```{r, fig.height=5, fig.width=6}
-normgenpop = rnorm(100000) %>%  as.data.frame(nm = 'x')
+normgenpop <- rnorm(100000) %>%  as.data.frame(nm = 'x')
 normgenpop %>% ggplot(aes(x=x)) +
 geom_density(col='black', fill="lightblue") +
 labs(title='General population (100000 objects)')
@@ -264,7 +264,7 @@ parameters: mean ($\mu$) and sigma ($\sigma$) [(it **does not** exist in nature)
 :::::
 
 ```{r}
-Heights = rnorm(10000, mean = 175, sd = 10)
+Heights <- rnorm(10000, mean = 175, sd = 10)
 hist(Heights, breaks = 30, freq = T,
      # main = 'Sample distribution of 10000 people\'s heights' 
      )
@@ -275,8 +275,8 @@ hist(Heights, breaks = 30, freq = T,
 ### Parameters of normal distribution
 
 ```{r}
-Heights_sd30 = rnorm(10000, mean = 100, sd = 30)
-Heights_sd10 = rnorm(10000, mean = 120, sd = 10)
+Heights_sd30 <- rnorm(10000, mean = 100, sd = 30)
+Heights_sd10 <- rnorm(10000, mean = 120, sd = 10)
 
 hist(Heights_sd30, breaks = 30, freq = T, 
      col = rgb(1, 0, 0, alpha = 0.5), ylim= c(0, 2000), 
@@ -345,7 +345,7 @@ $P(x) = \frac{1}{a-b}$
 :::::
 
 ```{r, fig.width=10}
-raindrops = runif(10000, min=0, max=10)
+raindrops <- runif(10000, min=0, max=10)
 
 hist(raindrops, 
      breaks = 30, 
@@ -422,7 +422,7 @@ How fast something appears (*mortality*)
 ::::: columns
 ::: {.column width="70%"}
 ```{r}
-coin_toss = rbinom(10000, size = 100, p=0.5)
+coin_toss <- rbinom(10000, size = 100, p=0.5)
 hist(coin_toss, breaks = 30, freq = T,
      xlab = 'Number of heads received (k)', 
      ylab = "Number of experiments",
@@ -451,11 +451,11 @@ The histogram above shows the distribution of 10000 experiments on trying to get
 
 ```{r }
 
-coin_toss_100 = rbinom(10000, size = 100, p=0.5)
-coin_toss_10 = rbinom(10000, size = 10, p=0.5)
+coin_toss_100 <- rbinom(10000, size = 100, p=0.5)
+coin_toss_10 <- rbinom(10000, size = 10, p=0.5)
 
-coin_toss_left = rbinom(10000, size = 10, p=0.25)
-coin_toss_right = rbinom(10000, size = 10, p=0.75)
+coin_toss_left <- rbinom(10000, size = 10, p=0.25)
+coin_toss_right <- rbinom(10000, size = 10, p=0.75)
 
 par(mfrow=c(1,2))
 hist(coin_toss_left, breaks = 10, freq = T, 
@@ -505,7 +505,7 @@ Now we use "**time interval**" and **expected number of successes** ($\lambda$) 
 ::::: columns
 ::: {.column width="70%"}
 ```{r}
-pois_rand = rpois(10000, 10)
+pois_rand <- rpois(10000, 10)
 
 hist(pois_rand, breaks = 30, freq = T, 
      xlab = 'Number of successes',
@@ -529,9 +529,9 @@ $P(x) = \dfrac{\lambda^k}{k!}e^{-\lambda}$, where
 ### Parameters of poisson distribution
 
 ```{r}
-pois_rand = rpois(10000, 10)
-pois_rand_2 = rpois(10000, 60)
-pois_rand_3 = rpois(10000, 3)
+pois_rand <- rpois(10000, 10)
+pois_rand_2 <- rpois(10000, 60)
+pois_rand_3 <- rpois(10000, 3)
 
 hist(pois_rand, breaks = 30, freq = T, 
      xlab = 'Number of successes',
@@ -584,7 +584,7 @@ x %>% table() %>% sort(decreasing = T) %>% head(1) %>% names() %>% as.numeric()
 ```
 
 ```{r, eval=T, echo=F, class="large-code"}
-mode_fun = function(x) x %>% table() %>% sort(decreasing = T) %>% head(1) %>% names() %>% as.numeric()
+mode_fun <- function(x) x %>% table() %>% sort(decreasing = T) %>% head(1) %>% names() %>% as.numeric()
 ```
 
 ***They are equal for a normal distribution***
@@ -594,7 +594,7 @@ mode_fun = function(x) x %>% table() %>% sort(decreasing = T) %>% head(1) %>% na
 ### Bimodal data
 
 ```{r, eval=T, echo=F,  fig.width = 8, fig.height = 5}
-twomodes = c(rbinom(10000, 31, 0.4), rbinom(10000, 31, 0.7))
+twomodes <- c(rbinom(10000, 31, 0.4), rbinom(10000, 31, 0.7))
 
 hist(twomodes, breaks=30, 
      main=NULL,
@@ -616,7 +616,7 @@ legend("topright",
 ### Exponential distribution
 
 ```{r, eval=T, echo=F,  fig.width = 7, fig.height = 4}
-expsmall = rexp(10000, 10)
+expsmall <- rexp(10000, 10)
 
 hist(expsmall, breaks=30, 
      main=NULL,
@@ -639,7 +639,7 @@ legend("topright",
 **Mean is more sensitive to outliers**
 
 ```{r, eval=T, echo=F,  fig.width = 8, fig.height = 4}
-normoutlier = c(rnorm(100), 50, 50, 50)
+normoutlier <- c(rnorm(100), 50, 50, 50)
 
 hist(normoutlier, breaks=60, 
      main=NULL,
@@ -809,8 +809,8 @@ $SE = \dfrac{SD}{\sqrt n}$
 
 ::: {.column width="85%"}
 ```{r}
-sample_size = 100 
-n_samples = 1000
+sample_size <- 100 
+n_samples <- 1000
 
 df_trial <- data.frame(
   sample_ID = rep(1:n_samples, each=sample_size),
@@ -831,8 +831,8 @@ df_trial |> group_by(sample_ID) |>
 This means' distribution was built from **uniform distribution** samples! $a=0, b=10 \Rightarrow \hat\mu=5$
 
 ```{r}
-sample_size = 1000
-n_samples = 1000
+sample_size <- 1000
+n_samples <- 1000
 
 df_trial <- data.frame(
   sample_ID = rep(1:n_samples, each=sample_size),
@@ -853,8 +853,8 @@ df_trial |> group_by(sample_ID) |>
 **Let's do it with exponential distribution samples** ($\lambda=2$)
 
 ```{r}
-sample_size = 1000
-n_samples = 1000
+sample_size <- 1000
+n_samples <- 1000
 
 df_trial <- data.frame(
   sample_ID = rep(1:n_samples, each=sample_size),
@@ -896,21 +896,21 @@ $Z = \dfrac{\bar{X} - \mu}{SE}$
 
 ::: {.column width="85%"}
 ```{r}
-se = function(x){
+se <- function(x){
   sd(x)/(sqrt(length(x)))
 }
 ```
 
 ```{r}
-sample_size = 100 
-n_samples = 10000
+sample_size <- 100 
+n_samples <- 10000
 
 df_trial <- tibble(
   sample_ID = rep(1:n_samples, each=sample_size),
   value = runif(sample_size*n_samples, 0, 10)
   )
 
-df_standart = df_trial |> group_by(sample_ID) |> 
+df_standart <- df_trial |> group_by(sample_ID) |> 
   summarize(m = mean(value)) |> 
   mutate(z_m = (m - mean(m))/sd(m)) 
 
@@ -1073,9 +1073,9 @@ Generating 1000 samples and 1000 95% CIs
 #| fig-height: 7
 #| fig-width: 10
 
-sample_size = 100
-n_samples = 1000
-true_mean=5
+sample_size <- 100
+n_samples <- 1000
+true_mean<-5
 
 
 df_trial <- tibble(
@@ -1083,9 +1083,9 @@ df_trial <- tibble(
   value = rnorm(sample_size*n_samples, true_mean, 2)
   )
 
-quantiles = qnorm(0, 1, p = c(0.025, 0.975))
+quantiles <- qnorm(0, 1, p = c(0.025, 0.975))
 
-df_ci = df_trial |> group_by(sample_ID) |> 
+df_ci <- df_trial |> group_by(sample_ID) |> 
   summarize(mu = mean(value), 
             se_sample = se(value), 
             conf.min = mu + quantiles[1] * se_sample,

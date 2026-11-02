@@ -1,12 +1,18 @@
 project:
   type: website
+  pre-render:
+    - python3 scripts/build-direct-downloads.py
   render:
     - index.qmd
+    - installation.qmd
     - presentations/
     - code/
     - homeworks/
+  resources:
     - data/
     - images/
+    - zipfiles/*.zip
+    - downloads/*.qmd
   output-dir: docs
 
 publish:
@@ -24,16 +30,15 @@ website:
         text: Presentations
       - href: index.qmd#homeworks
         text: Homeworks
+      - href: index.qmd#reference-materials
+        text: Reference materials
 
 format:
   html:
-    # theme: cosmo
     css: styles.css
     toc: true
-    # highlight-style: zenburn #default, tango, pygments, kate, monochrome, 
-    # espresso, zenburn, haddock, breezedark, textmate
-    theme: readable #default, bootstrap, cerulean, cosmo, darkly, flatly, 
-    # journal, lumen, paper, readable, sandstone, 
-    # simplex, spacelab, united, and yeti
+    toc-depth: 3
+    code-copy: true
+    theme: readable
 
 editor: visual

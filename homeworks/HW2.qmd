@@ -1,8 +1,7 @@
 ---
 title: "Homework on Statistical Distributions and Visualization"
-output: html_document
+editor: visual
 ---
-
 ```{r setup, echo=F}
 knitr::opts_chunk$set(echo = T, warning = F, message = F,
                       fig.width = 7, fig.height = 5)

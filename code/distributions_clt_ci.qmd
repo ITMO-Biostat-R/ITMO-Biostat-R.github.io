@@ -1,15 +1,8 @@
 ---
 title: "Intro into statistics (code)"
-author: Vladislav Stanin  
-output:
-  html_document:
-    toc: true
-    toc_depth: 3
-    toc_float:
-      collapsed: yes
-      smooth_scroll: yes
+author: Vladislav Stanin
+editor: visual
 ---
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(dplyr)
@@ -31,7 +24,7 @@ theme_set(theme_custom)
 ```
 
 ```{r}
-sample_size = 100
+sample_size <- 100
 ```
 
 # Distributions
@@ -41,7 +34,7 @@ sample_size = 100
 ```{r}
 # here mean and sd - parameters in "general" population 
 # n - number of elements we choose from population
-norm_sample = rnorm(n=sample_size, mean=0, sd=1)
+norm_sample <- rnorm(n=sample_size, mean=0, sd=1)
 
 #parameters of **sample**
 mean(norm_sample)
@@ -52,7 +45,7 @@ sd(norm_sample)
 ### Exponential distribution
 
 ```{r}
-exp_sample = rexp(n=sample_size, rate=4)
+exp_sample <- rexp(n=sample_size, rate=4)
 
 mean(exp_sample)
 sd(exp_sample)
@@ -62,7 +55,7 @@ sd(exp_sample)
 
 ```{r}
 
-unif_sample = runif(n=sample_size, min=0, max=1)
+unif_sample <- runif(n=sample_size, min=0, max=1)
 
 mean(unif_sample)
 sd(unif_sample)
@@ -95,19 +88,19 @@ quantile(unif_sample, pr=c(0.025, 0.975))
 ## From population defined by us
 
 ```{r}
-true_mean = 10
-true_sd = 2
+true_mean <- 10
+true_sd <- 2
 
-# big_population = read_csv('data.csv')
-big_population = rnorm(50000, mean = true_mean, sd = true_sd) |> round()
+# big_population <- read_csv('data.csv')
+big_population <- rnorm(50000, mean = true_mean, sd = true_sd) |> round()
 
 big_population |>  hist()
 ```
 
 ```{r}
-sample_size = 10
+sample_size <- 10
 
-sample_0 = sample(x=big_population, size=sample_size)
+sample_0 <- sample(x=big_population, size=sample_size)
 sample_0
 ```
 
@@ -116,8 +109,8 @@ sample_0
 **!NB sum of probabilities should be equal to 1**
 
 ```{r}
-values = c(1,100,10000)
-probs_of_values = c(0.2, 0.5, 0.3)
+values <- c(1,100,10000)
+probs_of_values <- c(0.2, 0.5, 0.3)
 
 sum(probs_of_values) == 1
 ```
@@ -125,9 +118,9 @@ sum(probs_of_values) == 1
 ### Sampling
 
 ```{r}
-sample_size = 10
+sample_size <- 10
 
-sample_2 = sample(values, sample_size, replace=TRUE, prob=probs_of_values)
+sample_2 <- sample(values, sample_size, replace=TRUE, prob=probs_of_values)
 sample_2
 ```
 
@@ -136,9 +129,9 @@ sample_2
 ## From mathematically defined distribution
 
 ```{r}
-sample_size = 10
+sample_size <- 10
 
-sample_1 = rnorm(sample_size, mean=0, sd=1)
+sample_1 <- rnorm(sample_size, mean=0, sd=1)
 sample_1
 ```
 
@@ -147,7 +140,7 @@ sample_1
 ### Standard error
 
 ```{r}
-se = function(x){
+se <- function(x){
   sd(x)/sqrt(length(x))
 }
 ```
@@ -157,13 +150,13 @@ se = function(x){
 ```{r}
 
 #uniform 
-a=0
-b=10
+a<-0
+b<-10
 ## -> mean = ??
-population = runif(100000, a, b)
+population <- runif(100000, a, b)
 
-sample_size = 2
-n_samples = 10000
+sample_size <- 2
+n_samples <- 10000
 
 df_trial <- tibble(
   sample_ID = rep(1:n_samples, each=sample_size),
@@ -180,7 +173,7 @@ df_trial
 ### Standardizing each sample
 
 ```{r}
-df_standart = 
+df_standart <- 
   df_trial |> 
   group_by(sample_ID) |> 
   summarize(m = mean(value)) |> 
@@ -214,9 +207,9 @@ sd(df_standart$z_m)
 ### Sample from uniform distribution
 
 ```{r}
-sample_size = 3
+sample_size <- 3
 
-sample = runif(n=sample_size, min=0, max=10)
+sample <- runif(n=sample_size, min=0, max=10)
 
 hist(sample)
 ```
@@ -224,7 +217,7 @@ hist(sample)
 ### Generating samples
 
 ```{r}
-n_samples = 1000
+n_samples <- 1000
 
 df_trial <- data.frame(
   sample_ID = rep(1:n_samples, each=sample_size),
@@ -232,7 +225,7 @@ df_trial <- data.frame(
   # generating sample_size*n_samples values from the same distibution
   )
 
-df_means_from_samples = 
+df_means_from_samples <- 
   df_trial |> group_by(sample_ID) |> 
   summarize(m = mean(value)) 
 
@@ -246,9 +239,9 @@ df_means_from_samples |>
 > Write the code!
 
 ```{r}
-sample_size = 30 
+sample_size <- 30 
 
-sample = rexp(sample_size, rate=1)
+sample <- rexp(sample_size, rate=1)
 
 hist(sample, breaks = seq(-1,8,0.1))
 ```
@@ -258,14 +251,14 @@ hist(sample, breaks = seq(-1,8,0.1))
 > Write the code!
 
 ```{r, eval=F}
-n_samples = 1000
+n_samples <- 1000
 
 df_trial <- data.frame(
   sample_ID = rep(1:n_samples, each=sample_size),
     value = rexp(sample_size*n_samples, rate=2) 
   )
   
-df_means_from_samples = 
+df_means_from_samples <- 
   df_trial |> group_by(sample_ID) |> 
   summarize(m = mean(value)) 
 
@@ -281,16 +274,16 @@ df_means_from_samples |>
 ### Sample
 
 ```{r}
-true_mean = 5
-true_sd = 1
+true_mean <- 5
+true_sd <- 1
 
-sample_size = 50
+sample_size <- 50
 
-sample = rnorm(sample_size, true_mean, true_sd)
+sample <- rnorm(sample_size, true_mean, true_sd)
 
-sample_mean = mean(sample)
-# sample_sd = sd(sample_norm)
-sample_se = se(sample)
+sample_mean <- mean(sample)
+# sample_sd <- sd(sample_norm)
+sample_se <- se(sample)
 
 hist(sample)
 ```
@@ -298,7 +291,7 @@ hist(sample)
 ### CI (95%)
 
 ```{r}
-quantiles = qnorm(0, 1, p = c(0.025, 0.975)) #+- 1.96
+quantiles <- qnorm(0, 1, p = c(0.025, 0.975)) #+- 1.96
 
 c(
   sample_mean + quantiles[1] * sample_se,
@@ -310,19 +303,19 @@ c(
 
 ```{r}
 
-sample_size = 30 
-n_samples = 1000
-true_mean=1
+sample_size <- 30 
+n_samples <- 1000
+true_mean<-1
 
 df_trial <- tibble(
   sample_ID = rep(1:n_samples, each=sample_size),
   value = rexp(sample_size*n_samples, 1)
   )
 
-quantiles = qnorm(0, 1, p = c(0.025, 0.975))
+quantiles <- qnorm(0, 1, p = c(0.025, 0.975))
 
 
-df_ci = df_trial |> group_by(sample_ID) |> 
+df_ci <- df_trial |> group_by(sample_ID) |> 
   summarize(mu = mean(value), 
             se_sample = se(value), 
             conf.min = mu + quantiles[1] * se_sample,
@@ -352,21 +345,21 @@ df_ci |>
 ## t-distribution
 
 ```{r}
-true_mean = 5
-true_sd = 2
+true_mean <- 5
+true_sd <- 2
 
 ```
 
 ### Sample
 
 ```{r}
-sample_size = 50
+sample_size <- 50
 
-sample = rnorm(sample_size, true_mean, true_sd)
+sample <- rnorm(sample_size, true_mean, true_sd)
 
-sample_mean = mean(sample)
-# sample_sd = sd(sample_norm)
-sample_se = se(sample)
+sample_mean <- mean(sample)
+# sample_sd <- sd(sample_norm)
+sample_se <- se(sample)
 
 hist(sample)
 ```
@@ -374,7 +367,7 @@ hist(sample)
 ### CI (95%)
 
 ```{r}
-quantiles = qt(df = length(sample)-1, p = c(0.025, 0.975)) 
+quantiles <- qt(df = length(sample)-1, p = c(0.025, 0.975)) 
 quantiles
 ```
 
@@ -388,19 +381,19 @@ c(
 ### Confidence level
 
 ```{r}
-sample_size = 10
-n_samples = 1000
-true_mean=5
+sample_size <- 10
+n_samples <- 1000
+true_mean<-5
 
 df_trial <- tibble(
   sample_ID = rep(1:n_samples, each=sample_size),
   value = rnorm(mean=true_mean, sd=1, sample_size*n_samples)
   )
 
-quantiles = qt(sample_size-1, p = c(0.025, 0.975))
+quantiles <- qt(sample_size-1, p = c(0.025, 0.975))
 
 
-df_ci_t = df_trial |> group_by(sample_ID) |> 
+df_ci_t <- df_trial |> group_by(sample_ID) |> 
   summarize(mu = mean(value), 
             se_sample = se(value), 
             conf.min = mu + quantiles[1] * se_sample,

@@ -1,9 +1,8 @@
 ---
 title: "ANOVA"
-output: html_document
 date: "2025-01-05"
+editor: visual
 ---
-
 # ANOVA (Analysis of Variance)
 
 Used to compare means across more than two groups. ANOVA evaluates the variability within and between groups using the sum of squares.

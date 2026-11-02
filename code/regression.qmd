@@ -1,16 +1,9 @@
 ---
 title: "Association between variables"
-author: Vladislav Stanin  
-date: 01/24/2024
-output:
-  html_document:
-    toc: true
-    toc_depth: 3
-    toc_float:
-      collapsed: yes
-      smooth_scroll: yes
+author: Vladislav Stanin
+date: "2024-01-24"
+editor: visual
 ---
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(dplyr)
@@ -97,7 +90,7 @@ legend("topleft",
 # Model summary
 
 ```{r}
-summary_model = summary(model)
+summary_model <- summary(model)
 summary_model
 ```
 
@@ -205,8 +198,8 @@ $y_{pred} = \beta_0 + \beta_1x_1 + ... + \beta_nx_n$
 ## Adding one more predictor for plant height model
 
 ```{r}
-sunlight_hrs = rep(5:9, each=10) + rnorm(50, 0, 1)
-data_plant_nutrient = data_plant_nutrient %>% arrange(height) %>%  cbind(sunlight_hrs)
+sunlight_hrs <- rep(5:9, each=10) + rnorm(50, 0, 1)
+data_plant_nutrient <- data_plant_nutrient %>% arrange(height) %>%  cbind(sunlight_hrs)
 data_plant_nutrient %>% str()
 ```
 
@@ -224,7 +217,7 @@ y = \beta_0 + \beta_1x_1 + \beta_2x_2
 $$
 
 ```{r}
-model_mullti = lm(height ~ sunlight_hrs + nutrients, data = data_plant_nutrient)
+model_mullti <- lm(height ~ sunlight_hrs + nutrients, data = data_plant_nutrient)
 summary(model_mullti)
 ```
 
@@ -241,8 +234,8 @@ $$y = \beta_0 + \beta_1x_1 + \beta_2x_2 + \beta_3x_1x_2$$
 > You should include an interaction if you hypothesize that the relationship between one predictor and the dependent variable changes depending on the level of another predictor. For example, the effect of a drug might vary depending on the age of the patient.
 
 ```{r}
-# model_mullti = lm(height ~ nutrients + sunlight_hrs + nutrients:sunlight_hrs, data = data_plant_nutrient)
-model_mullti_interact = lm(height ~ nutrients * sunlight_hrs, data = data_plant_nutrient)
+# model_mullti <- lm(height ~ nutrients + sunlight_hrs + nutrients:sunlight_hrs, data = data_plant_nutrient)
+model_mullti_interact <- lm(height ~ nutrients * sunlight_hrs, data = data_plant_nutrient)
 summary(model_mullti_interact)
 ```
 

@@ -1,8 +1,11 @@
 ---
 title: "Virtual hospital HW"
-output: html_document
+format:
+  html:
+    toc: true
+    code-copy: true
+editor: visual
 ---
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 
