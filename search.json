@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Biostatistics in R",
     "section": "",
-    "text": "Lecture data\n\nBasic R\n\nDownload\n\nWorking with Dataframes\n\nDownload\n\nVisualization\n\nDownload\n\nIntro into statistics\n\nDownload\n\nAssociation\n\nDownload\n\nStat Tests\n\nDownload\n\n\n\n\nPresentations\n\nVisualization sins and inspirations\nIntro into statistics\nIntro into tests\n\n\n\nHomeworks\n\nHW #1\n\nDownload\n\nHW #2\n\nDownload\nReference plots\n\nHW #3\n\nDownload\n\nHW final\n\nDownload"
+    "text": "Course materials, practical exercises, presentations, and assignments in one place."
   },
   {
     "objectID": "presentations/distributions.html#types-of-data",
@@ -1482,5 +1482,236 @@
     "title": "Statistics",
     "section": "Are observed ratios of pea plant traits consistent with Mendel’s expected 9:3:3:1 ratio?",
     "text": "Are observed ratios of pea plant traits consistent with Mendel’s expected 9:3:3:1 ratio?\n\nData\n\nobserved &lt;- c(435, 150, 160, 55)\nexpected &lt;- c(9, 3, 3, 1) / sum(c(9, 3, 3, 1)) * sum(observed)\n\n\nbarplot(rbind(observed, expected), \n        beside = TRUE, \n        col = c(\"blue\", \"red\"), \n        legend = c(\"Observed\", \"Expected\"))\n\n\n\n\n\n\n\n\n\n\nCode\n\nchisq.test(x=observed, p=expected/sum(expected))\n\n\n    Chi-squared test for given probabilities\n\ndata:  observed\nX-squared = 1.6667, df = 3, p-value = 0.6444\n\n\n\np - expected proportions (instead of values)\n\\(p.value &gt; 0.05 \\ (\\alpha)\\) and it means that the two sets of frequencies are likely to belong to the same distribution or in other words: the observed values are not significantly different from the expected values"
+  },
+  {
+    "objectID": "index.html#lessons",
+    "href": "index.html#lessons",
+    "title": "Biostatistics in R",
+    "section": "Lessons",
+    "text": "Lessons\n\nNotes and reproducible files for the practical classes.\n\n\n\n\n00\n\nGetting Started with RStudio\nInterface, projects, and workflow\n\n\n\n\n\n01\n\nBasic R\nPractice material\n\n\nDownload .qmd"
+  },
+  {
+    "objectID": "index.html#presentations",
+    "href": "index.html#presentations",
+    "title": "Biostatistics in R",
+    "section": "Presentations",
+    "text": "Presentations\n\nSlides used during the course.\n\n\n\n\nComing soon\nMaterials will be added as the course progresses."
+  },
+  {
+    "objectID": "index.html#homeworks",
+    "href": "index.html#homeworks",
+    "title": "Biostatistics in R",
+    "section": "Homeworks",
+    "text": "Homeworks\n\nAssignment descriptions and downloadable starter files.\n\n\n\n\nComing soon\nMaterials will be added as the course progresses."
+  },
+  {
+    "objectID": "index.html#reference-materials",
+    "href": "index.html#reference-materials",
+    "title": "Biostatistics in R",
+    "section": "Reference materials",
+    "text": "Reference materials\n\nSetup guides and useful resources for working with R.\n\n\n\n\n01\n\nInstalling R and RStudio\nInstallation and setup guide"
+  },
+  {
+    "objectID": "installation.html",
+    "href": "installation.html",
+    "title": "Installing R and RStudio",
+    "section": "",
+    "text": "Install R first, then RStudio Desktop."
+  },
+  {
+    "objectID": "installation.html#install-r",
+    "href": "installation.html#install-r",
+    "title": "Installing R and RStudio",
+    "section": "1. Install R",
+    "text": "1. Install R\n\nOpen the official CRAN website.\nSelect your operating system: Windows, macOS, or Linux.\nDownload the recommended version of R and install it using the default settings."
+  },
+  {
+    "objectID": "installation.html#install-rstudio-desktop",
+    "href": "installation.html#install-rstudio-desktop",
+    "title": "Installing R and RStudio",
+    "section": "2. Install RStudio Desktop",
+    "text": "2. Install RStudio Desktop\n\nOpen the RStudio Desktop download page.\nDownload the free version for your operating system.\nInstall the application and launch RStudio."
+  },
+  {
+    "objectID": "installation.html#check-your-installation",
+    "href": "installation.html#check-your-installation",
+    "title": "Installing R and RStudio",
+    "section": "3. Check your installation",
+    "text": "3. Check your installation\nWhen you launch RStudio, you will see several panes. Find the Console pane. The console is where R accepts commands and displays results.\n\nClick after the &gt; prompt in the console.\nType the following command:\n\n1 + 1\n\nPress Enter.\n\nYou should see:\n&gt; 1 + 1\n[1] 2\nThe result 2 confirms that R is working in RStudio. The [1] before the result is normal.\n← Back to reference materials"
+  },
+  {
+    "objectID": "code/basic_r.html",
+    "href": "code/basic_r.html",
+    "title": "Prac #1. Basic R",
+    "section": "",
+    "text": "Here you can see\n\nThis file with code on top of the screen\nConsole, where you can write code line by line. In fact, when you execute the code from the file, the entire script is run via the console\nFiles, Help etc. on the bottom right below\nEnvironment containing all created variables on the top right\n\nWe can create new files, projects and even presentations or websites. RStudio provides us with useful tools for programming, especially in R, but we can also do it in python, bash and other languages.\n\n\nPrint\n\n# ?getwd()\n\nTo open help for a function (here, getwd).\nOr just go to Help on the bottom right below"
+  },
+  {
+    "objectID": "code/basic_r.html#help",
+    "href": "code/basic_r.html#help",
+    "title": "Prac #1. Basic R",
+    "section": "",
+    "text": "Print\n\n# ?getwd()\n\nTo open help for a function (here, getwd).\nOr just go to Help on the bottom right below"
+  },
+  {
+    "objectID": "code/basic_r.html#tips-for-you",
+    "href": "code/basic_r.html#tips-for-you",
+    "title": "Prac #1. Basic R",
+    "section": "Tips for you",
+    "text": "Tips for you\nPress Tab while writing something and RStudio will help you. Often it helps even without pressing the button :)\n\n#"
+  },
+  {
+    "objectID": "code/basic_r.html#markdown",
+    "href": "code/basic_r.html#markdown",
+    "title": "Prac #1. Basic R",
+    "section": "Markdown",
+    "text": "Markdown\n\nMarkdown - is markup language for creating formatted text\n\nMost useful formattings:\n\n**bold text** - bold text\n*italic text* - italic text\n# Heading - a main section heading, such as “Quarto” above.\nMultiple # (##/####/####, etc.) - Headings of subsections (as ‘Markdown’ written above)\n&gt; - quote\n\nQuarto also supports LaTeX for writing mathematical equations:\n\n$E = mc^2$ is turned into \\(E = mc^2\\)"
+  },
+  {
+    "objectID": "code/basic_r.html#knit",
+    "href": "code/basic_r.html#knit",
+    "title": "Prac #1. Basic R",
+    "section": "knit",
+    "text": "knit\nR Markdown allows us to “knit” this project and create beautiful report in html, pdf and even Word. To do that find the blue ball on top of the screen and click on it. While knitting all chunks will be executed again taking into account you options set for chunks."
+  },
+  {
+    "objectID": "code/basic_r.html#hotkeys",
+    "href": "code/basic_r.html#hotkeys",
+    "title": "Prac #1. Basic R",
+    "section": "Hotkeys",
+    "text": "Hotkeys\n\n\n\nAction\nWindows/Linux\nMac\n\n\n\n\nRender the document\nCtrl + Shift + K\nCmd + Shift + K\n\n\nCreate a chunk\nCtrl + Alt + I\nCmd + Option + I\n\n\nRun current line\nCtrl + Enter\nCmd + Enter\n\n\nRun current chunk\nCtrl + Alt + C\nCmd + Option + C\n\n\nShow all shortcuts\nAlt + Shift + K\nOption + Shift + K\n\n\nDelete current line\nCtrl + D\nCmd + D\n\n\nComment current line\nCtrl + Shift + C\nCmd + Shift + C"
+  },
+  {
+    "objectID": "code/basic_r.html#variables",
+    "href": "code/basic_r.html#variables",
+    "title": "Prac #1. Basic R",
+    "section": "Variables",
+    "text": "Variables\nAll you need to know about variables is that they can store values which we assign.\n\nvariable &lt;- 37\nvar_character &lt;- 'biology'\nvar_bool &lt;- TRUE\n\nUse the assignment operator &lt;- to give a value to a variable: read height &lt;- 170 as “store 170 in height.” R also allows = for assignment in many contexts. In this course we will see the difference between them later…\n\nIn RStudio, press Alt + - on Windows/Linux or Option + - on macOS to insert &lt;-.\n\nWe can just run code with name of variable to see its value\n\nvariable\n\n[1] 37\n\nvar_character\n\n[1] \"biology\"\n\nvar_bool\n\n[1] TRUE\n\n\n\nCreate variable height and show its value\n\n\n# \n\nChange the value:\n\nvariable &lt;- variable + 100\nvariable\n\n[1] 137\n\n\n\nThe kid grew up by 10. Change the value of variable height\n\n\n# height &lt;- \n\n\nMathematical operations\n\nx &lt;- 19\ny &lt;- 9\n\n\n- x\n\n[1] -19\n\nx + y\n\n[1] 28\n\nx - y\n\n[1] 10\n\nx * y\n\n[1] 171\n\nx / y \n\n[1] 2.111111\n\nx ^ y # x to the power of y\n\n[1] 322687697779\n\nsqrt(x) # square root\n\n[1] 4.358899\n\n# sum(1,2,NA,34, na.rm = TRUE)\n\nx %% y # ‘remainder’ of division \n\n[1] 1\n\nx %/% y # integer division\n\n[1] 2\n\n\n\ny + 2 * 3\n\n[1] 15\n\n(y + 2) * 3\n\n[1] 33\n\n\n\nWe have height and weight. Let’s calculate Body mass index (bmi) = W / H(meters)^2\n\n\nheight &lt;- 170\nweight &lt;- 68\n# bmi &lt;- \n\n\n\nLogical operations\n\nx &gt; y\n\n[1] TRUE\n\nx &lt; y\n\n[1] FALSE\n\nx == y # is equal\n\n[1] FALSE\n\nx != y # is not equal\n\n[1] TRUE\n\n\n\n10 &lt; 10\n\n[1] FALSE\n\n10 &lt;= 10\n\n[1] TRUE\n\n\n\nx &lt; 10 & y &lt; 10 \n\n[1] FALSE\n\nx &lt; 10 | y &lt; 10\n\n[1] TRUE\n\n\n\nbool1 &lt;- TRUE\nbool2 &lt;- FALSE\n\n! &lt;-&gt; “not”\n\n!bool1\n\n[1] FALSE\n\n!bool2\n\n[1] TRUE\n\n\n\nCheck if obtained BMI low, normal or high\n\n\nbmi_high &lt;- 30\nbmi_low &lt;- 18\n\n# bmi"
+  },
+  {
+    "objectID": "code/basic_r.html#vectors",
+    "href": "code/basic_r.html#vectors",
+    "title": "Prac #1. Basic R",
+    "section": "Vectors",
+    "text": "Vectors\nVector is a simple one-dimensional array. In R it can contain only one type of data. The function used to create vector is c().\nHere we create some vectors and store them in corresponding variables:\n\nv_numeric &lt;- c(1,2,3,4)\nv_logical &lt;- c(T,F,F,T)\nv_character &lt;- c(\"1\",\"2\",\"3\",\"4\")\n# c(1,2,'3')\n# c(T,1,0,F)\n\n(R allows us not to write whole FALSE and TRUE, bur write only first letter)\nSimple way to create integer vector\n\n1:5\n\n[1] 1 2 3 4 5\n\n5:1\n\n[1] 5 4 3 2 1\n\n-1:1\n\n[1] -1  0  1\n\n\n\nc(1:5, c(11,13,14))\n\n[1]  1  2  3  4  5 11 13 14\n\nc(7:10, 1:5)\n\n[1]  7  8  9 10  1  2  3  4  5\n\nc(1:5,7:10)\n\n[1]  1  2  3  4  5  7  8  9 10\n\n\nValues in vector are not sorted and unique by default!\n\nCreate vector scores containing numbers from 10 to 20 and number 30 - students’ scores from exam\n\n\n# scores \n\n\nIndexes\nWe can access to the values of vector by indexes.\n\nvec &lt;- c(\"A\", \"B\", \"C\", \"D\", \"E\", \"F\")\nvec[3]\n\n[1] \"C\"\n\nvec[7]\n\n[1] NA\n\nvecnew &lt;- vec[-1]\nvecnew\n\n[1] \"B\" \"C\" \"D\" \"E\" \"F\"\n\n\nNA indicates a missing value. It appears here because the 7th element does not exist in the vector\nWhat if we use vectors as indexes…?\n\n# vec[1,2,3] # ERROR\nvec[1:3]\n\n[1] \"A\" \"B\" \"C\"\n\nvec[3:1]\n\n[1] \"C\" \"B\" \"A\"\n\nvec[c(3,1,5)]\n\n[1] \"C\" \"A\" \"E\"\n\n\nInside of [ ] vector is interpreted as a indexes of values in vec\n\nShow what scores 2nd 3rd, 4th and 7th students have (use scores vector) and delete 5th and 6th students’ scores (save new vector as scores)\n\n\n# scores \n# scores &lt;-\n\n\n\nGreat feature of R language - vectorization\n\nMathematical operations\nWhat will be the result of this operation?\n\nvec1234 &lt;- c(1, 2, 3, 4)\nvec1234 * 5\n\n[1]  5 10 15 20\n\n# c(vec1234, 5)\n\nWow! Isn’t it cool? We can do anything with vectors not by using some operation for each value step by step, but using operation for each value only once\n\nc(1, 2, 3, 4) + 5 - 2\n\n[1] 4 5 6 7\n\nc(1, 2, 3, 4) ^ 2\n\n[1]  1  4  9 16\n\nsqrt(vec1234)\n\n[1] 1.000000 1.414214 1.732051 2.000000\n\n# !v_logical\n\nMoreover, we can perform mathematical operations on two vectors\n\nvec123 &lt;- c(1, 2, 3, 0) \nvec321 &lt;- c(3, 2, 1, 4)\n\nvec_new &lt;- vec123 * vec321\nvec_new\n\n[1] 3 4 3 0\n\n\nThe result is also vector!\n\nWe heights and weights of patients. Calculate their BMIs (W / H(meters)^2) using vectorization.\n\n\nheights &lt;- c(180, 170, 175, 196)\nweights &lt;- c(120, 80, 90, 59)\n# BMIs &lt;-\n\n\n\nLogical operations\nAlso vectorized\n\nvec1234 &gt; 2\n\n[1] FALSE FALSE  TRUE  TRUE\n\n\n\nvec123 &gt;= vec321\n\n[1] FALSE  TRUE  TRUE FALSE\n\n\n\nCheck if patients’ BMIs high, normal or low using vectorization\n\n\nbmi_high &lt;- 30\nbmi_low &lt;- 18\n\n# BMIs"
+  },
+  {
+    "objectID": "code/basic_r.html#the-fun-is-just-started",
+    "href": "code/basic_r.html#the-fun-is-just-started",
+    "title": "Prac #1. Basic R",
+    "section": "The fun is just started!",
+    "text": "The fun is just started!\n\nCreate vectors from vectors\n\nweights_of_seed &lt;- c(1:4, 10:15, 4:7)\nweights_of_seed\n\n [1]  1  2  3  4 10 11 12 13 14 15  4  5  6  7\n\n\n\n\nUse conditions (logic) inside square brackets\n\nweights_of_seed[weights_of_seed &lt; 5]\n\n[1] 1 2 3 4 4\n\n\nLets break out this. Firstly, logical vector is created inside the brackets to filter the data. For example, we filter data with values more than 5\n\nlogical_vector &lt;- weights_of_seed &lt; 5\nlogical_vector\n\n [1]  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE\n[13] FALSE FALSE\n\n\nThan logical vector “make” to filter out values which have “FALSE” in corresponding index\n\nweights_of_seed[logical_vector]\n\n[1] 1 2 3 4 4\n\n\nIt is VERY useful for filtering simple data.\n\nweights_of_seed[weights_of_seed &lt; 10 & weights_of_seed &gt; 2]\n\n[1] 3 4 4 5 6 7\n\n\n\nLet’s extract from BMIs values that are normal\n\n\nbmi_high &lt;- 30\nbmi_low &lt;- 18\n\n# BMI[]"
+  },
+  {
+    "objectID": "code/basic_r.html#basic-statistics",
+    "href": "code/basic_r.html#basic-statistics",
+    "title": "Prac #1. Basic R",
+    "section": "Basic statistics",
+    "text": "Basic statistics\n\nLength\n\nlength(weights_of_seed)\n\n[1] 14\n\n\nWe can already compute some statistics on numerical vectors!\n\nsum(weights_of_seed) / length(weights_of_seed)\n\n[1] 7.642857\n\nmean(weights_of_seed)\n\n[1] 7.642857\n\nmedian(weights_of_seed)\n\n[1] 6.5\n\n\n\nvar(weights_of_seed)\n\n[1] 22.55495\n\nsd(weights_of_seed)\n\n[1] 4.749205\n\nvar(weights_of_seed) == sd(weights_of_seed)^2\n\n[1] FALSE\n\n\n\n\nMin and max\n\nmax(weights_of_seed)\n\n[1] 15\n\nmin(weights_of_seed)\n\n[1] 1\n\nrange(weights_of_seed) # min and max (vector!)\n\n[1]  1 15\n\n\n\n\nQuantiles\n\nquantile(weights_of_seed)\n\n   0%   25%   50%   75%  100% \n 1.00  4.00  6.50 11.75 15.00 \n\nquantile(weights_of_seed, probs = c(0.1, 0.5, 0.9))\n\n 10%  50%  90% \n 2.3  6.5 13.7 \n\nquantile(weights_of_seed, probs = c(0.5)) == median(weights_of_seed)\n\n 50% \nTRUE \n\n\n\n\nValues above the mean\n\nmean_value &lt;- mean(weights_of_seed)\nweights_of_seed[weights_of_seed &gt; mean_value]\n\n[1] 10 11 12 13 14 15\n\n\n\nHow many students’ scores are in scores vector?\nCalculate mean, median of scores\nWhat’s the minimal score ?\n\n\n# scores"
+  },
+  {
+    "objectID": "code/basic_r.html#two-connected-vectors",
+    "href": "code/basic_r.html#two-connected-vectors",
+    "title": "Prac #1. Basic R",
+    "section": "Two “connected” vectors",
+    "text": "Two “connected” vectors\n\nNamed vectors\n\nstudents_names &lt;- c('Daniel', 'Sasha', 'Robert', 'Alice', \n                   'Diana', 'Anastasia', 'Alexey', 'Julia')\nage &lt;- c(15, 32, 18, 8, 23, 17,22, 23)\n\nStudents older than 18\n\nstudents_names[age &gt;= 18] # ANY logical vector!\n\n[1] \"Sasha\"  \"Robert\" \"Diana\"  \"Alexey\" \"Julia\" \n\n\nUsing one vector as condition for extracting data from another\nWhat if we want to extract names AND their age? We can set names for each value in vector using names() function\nnames() function returns names from vector. Vector student_age had no names:\n\nstudents_age_vec &lt;- age\nnames(students_age_vec)\n\nNULL\n\n\nAnd we can set such names as we do it with variables:\n\nnames(students_age_vec) &lt;- students_names\nstudents_age_vec\n\n   Daniel     Sasha    Robert     Alice     Diana Anastasia    Alexey     Julia \n       15        32        18         8        23        17        22        23 \n\n\nNow we can access values using names!\n\nstudents_age_vec['Alice']\n\nAlice \n    8 \n\n\nAnother way to create “named” vector:\n\nnamed_vec &lt;- c(\"vlaue1\" = 1, \"value2\" = 2, \"value3\" = 3)\nnamed_vec\n\nvlaue1 value2 value3 \n     1      2      3 \n\n\n\nCreate named vector from first 6 values scores\n\n\nstudents &lt;- c('Sasha', 'Masha', 'Marina', 'Adelya', 'Negin', 'Alice')\n# scores_named &lt;- scores\n\n\n\nList\n\nstudents_age_list &lt;- list(students_names, age)\nstudents_age_list\n\n[[1]]\n[1] \"Daniel\"    \"Sasha\"     \"Robert\"    \"Alice\"     \"Diana\"     \"Anastasia\"\n[7] \"Alexey\"    \"Julia\"    \n\n[[2]]\n[1] 15 32 18  8 23 17 22 23\n\n\n\n# students_age_list['Alice'] # NOTHING\n\nNow we can add several vectors inside same “structure”. Let’s add weight and height and set names to each vector:\n\nheight &lt;- c(175, 181, 188, 120, 170, 168, 178, 172)\nweight &lt;- c(70, 75, 80, 45, 55, 50, 78, 62)\n\nstudents_list &lt;- list(names = students_names,\n                     age=age,\n                     height=height,\n                     weight=weight)\n\nstudents_list\n\n$names\n[1] \"Daniel\"    \"Sasha\"     \"Robert\"    \"Alice\"     \"Diana\"     \"Anastasia\"\n[7] \"Alexey\"    \"Julia\"    \n\n$age\n[1] 15 32 18  8 23 17 22 23\n\n$height\n[1] 175 181 188 120 170 168 178 172\n\n$weight\n[1] 70 75 80 45 55 50 78 62\n\n\nEach vector represents a piece of information about each student. Vectors here are like columns in a table (data frame)\n\nList data access\nWe can access vectors (~columns) in several ways\n\nstudents_list[2] # NOT A VECTOR\n\n$age\n[1] 15 32 18  8 23 17 22 23\n\nstudents_list[[2]] # VECTOR\n\n[1] 15 32 18  8 23 17 22 23\n\nstudents_list$weight  # vector\n\n[1] 70 75 80 45 55 50 78 62\n\n\nCertain values:\n\n# students_list[[2]][5]\n\nstudents_list$age[5]\n\n[1] 23\n\n\n\n\nImportant note\nThe list may contain many vectors, and not of the same length!\n\nlist(\n  c(1,2,3,4,5),\n  c('A', 'B', 'C')\n)\n\n[[1]]\n[1] 1 2 3 4 5\n\n[[2]]\n[1] \"A\" \"B\" \"C\"\n\n\nIt is not necessary to include NA (empty) values to save the “table” structure. This makes the list a little bit more flexible, but inconvenient for storing tabular data.\n\nmarks_of_students &lt;- list(\n  Alice = c(5,4,5,3,4,4),\n  Sasha = c(3,3,3),\n  Robert = c(5,5,5,5)\n)\n\nmarks_of_students\n\n$Alice\n[1] 5 4 5 3 4 4\n\n$Sasha\n[1] 3 3 3\n\n$Robert\n[1] 5 5 5 5\n\n\nIf each value in every vector represent piece of information about the same students, then we should know the student’s name index and then access all vectors by this index. In other words, how to extract the row?\n\nindex_alice &lt;- which(students_list$names == 'Alice')\n\nstudents_list$age[index_alice]\n\n[1] 8\n\nstudents_list$weight[index_alice]\n\n[1] 45\n\n\n\nwhich(logical_vector) - return positions where logical_vector contain TRUE\n\n\nCreate list containing vectors scores and students vectors and name them “Marks” and “Names”\nshow the 2nd name\n\n\n# somelist &lt;- \n\nIs there more convenient way to store tabular data?"
+  },
+  {
+    "objectID": "code/basic_r.html#data-frames",
+    "href": "code/basic_r.html#data-frames",
+    "title": "Prac #1. Basic R",
+    "section": "Data frames",
+    "text": "Data frames\nWe created 4 vectors for each trait.\n\nstudents_names &lt;- c('Daniel', 'Sasha', 'Robert', 'Alice', \n                   'Diana', 'Anastasia', 'Alexey', 'Julia')\nvec_age &lt;- c(15, 32, 18, 8, 23, 17,22, 23)\nheight &lt;- c(175, 181, 188, 120, 170, 168, 178, 172)\nweight &lt;- c(70, 75, 80, 45, 55, 50, 78, 62)\n\nNow create data-frame!\n\nstudents_df &lt;- data.frame(age=vec_age,\n                         height=height,\n                         weight=weight,\n                         \n                         row.names = students_names)\n\nstudents_df\n\n          age height weight\nDaniel     15    175     70\nSasha      32    181     75\nRobert     18    188     80\nAlice       8    120     45\nDiana      23    170     55\nAnastasia  17    168     50\nAlexey     22    178     78\nJulia      23    172     62\n\n\nNow we have a beautiful representation of tabular data. In addition, data-frames make it easier to manipulate data.\n\nData access\nIn some principles, data.frame is similar to list\n\nstudents_df[1] # differs from list :)\n\n          age\nDaniel     15\nSasha      32\nRobert     18\nAlice       8\nDiana      23\nAnastasia  17\nAlexey     22\nJulia      23\n\nstudents_df[[1]]\n\n[1] 15 32 18  8 23 17 22 23\n\n# with one value inside [] it is iterpreted as a column name (name of vector in list)\nstudents_df[\"age\"]\n\n          age\nDaniel     15\nSasha      32\nRobert     18\nAlice       8\nDiana      23\nAnastasia  17\nAlexey     22\nJulia      23\n\nstudents_df$age\n\n[1] 15 32 18  8 23 17 22 23\n\n\nAccessing the data in specific row and column:\n\n# With two values: [row_name, column_name]\nstudents_df[\"Daniel\", 'weight'] \n\n[1] 70\n\nstudents_df[1, ]\n\n       age height weight\nDaniel  15    175     70\n\n\n\nstudents_df[2:4, 2:3]\n\n       height weight\nSasha     181     75\nRobert    188     80\nAlice     120     45\n\nstudents_df[c(3,1,5), ]\n\n       age height weight\nRobert  18    188     80\nDaniel  15    175     70\nDiana   23    170     55\n\nstudents_df[c('Sasha', 'Robert', 'Alice'), c(\"height\", \"weight\")]\n\n       height weight\nSasha     181     75\nRobert    188     80\nAlice     120     45\n\n# \"empty\" column value mean \"all columns\"\nstudents_df[c('Sasha', 'Robert', 'Alice'), ]\n\n       age height weight\nSasha   32    181     75\nRobert  18    188     80\nAlice    8    120     45\n\n\n\nCreate data-frame students_itmo using vectors students and scores (first 6 values). Make students’ names row.names and scores column name “Marks”\nWhat mark does Masha have?\n\n\n# students_itmo &lt;- \n\n\n\nNew column\n\n# factor variables (why to use them over character)\n\nstudents_df$column &lt;- c(1,2,3,4,4,5,5,6)\n\nstudents_df$city &lt;- c(rep('Moscow', 3), rep('SPb', 3), rep('Kazan', 2))\n\nstudents_df$is_tall &lt;- ifelse(students_df$height &gt;= 180, 'Tall', 'Short')\n\nstudents_df$age_range &lt;- cut(\n  students_df$age,\n  breaks = c(0, 10, 20, 30, Inf),\n  labels = c(\"Child\", \"Sub-adult\", \"Adult\", 'Old')\n)\n\nstudents_df\n\n          age height weight column   city is_tall age_range\nDaniel     15    175     70      1 Moscow   Short Sub-adult\nSasha      32    181     75      2 Moscow    Tall       Old\nRobert     18    188     80      3 Moscow    Tall Sub-adult\nAlice       8    120     45      4    SPb   Short     Child\nDiana      23    170     55      4    SPb   Short     Adult\nAnastasia  17    168     50      5    SPb   Short Sub-adult\nAlexey     22    178     78      5  Kazan   Short     Adult\nJulia      23    172     62      6  Kazan   Short     Adult\n\n\n\nrep(value, number) - creates vector containing value number times\nifelse(condition, value_if_true, value_if_false) - returns value_if_true, if condition is TRUE and value_if_false otherwise\ncut(vector, breaks = c(...)) - breaks values in vector into ranges according to breaks and returns ranges in format (x, y] or return labels if sepcified\n\n\nTransforming types\n\nstudents_df$is_tall &lt;- as.factor(students_df$is_tall)\nstudents_df$city &lt;-  as.factor(students_df$city)\n\n\nas.factor() - transform column with numeric or character type into factor\nas.numeric(), as.character, as.list() ….\n\n\n\n\nDeleting a column\n\nstudents_df$column &lt;- NULL\nstudents_df\n\n          age height weight   city is_tall age_range\nDaniel     15    175     70 Moscow   Short Sub-adult\nSasha      32    181     75 Moscow    Tall       Old\nRobert     18    188     80 Moscow    Tall Sub-adult\nAlice       8    120     45    SPb   Short     Child\nDiana      23    170     55    SPb   Short     Adult\nAnastasia  17    168     50    SPb   Short Sub-adult\nAlexey     22    178     78  Kazan   Short     Adult\nJulia      23    172     62  Kazan   Short     Adult\n\n\n\n\nOrdering\n\nstudents_df[order(students_df$age), ]\n\n          age height weight   city is_tall age_range\nAlice       8    120     45    SPb   Short     Child\nDaniel     15    175     70 Moscow   Short Sub-adult\nAnastasia  17    168     50    SPb   Short Sub-adult\nRobert     18    188     80 Moscow    Tall Sub-adult\nAlexey     22    178     78  Kazan   Short     Adult\nDiana      23    170     55    SPb   Short     Adult\nJulia      23    172     62  Kazan   Short     Adult\nSasha      32    181     75 Moscow    Tall       Old\n\n# vec[c(3,1,5)]\n\nstudents_df[order(students_df$age, decreasing = T),]\n\n          age height weight   city is_tall age_range\nSasha      32    181     75 Moscow    Tall       Old\nDiana      23    170     55    SPb   Short     Adult\nJulia      23    172     62  Kazan   Short     Adult\nAlexey     22    178     78  Kazan   Short     Adult\nRobert     18    188     80 Moscow    Tall Sub-adult\nAnastasia  17    168     50    SPb   Short Sub-adult\nDaniel     15    175     70 Moscow   Short Sub-adult\nAlice       8    120     45    SPb   Short     Child\n\n\n\nAdd to students_itmo new columns “subject” and “avg_score”.\nTransform “subject” into factor.\nArrange data-frame by avg_score\nDelete Marks column\n\n\nsubject &lt;- c('math', 'phys', 'math', 'statisctics', 'molevo', 'biology')\navg_score &lt;- c(4,5,4,3,5,4)\n\n#students_itmo\n\n\n\nFiltering\n\nstudents_df[students_df$height &gt; 170, ]\n\n       age height weight   city is_tall age_range\nDaniel  15    175     70 Moscow   Short Sub-adult\nSasha   32    181     75 Moscow    Tall       Old\nRobert  18    188     80 Moscow    Tall Sub-adult\nAlexey  22    178     78  Kazan   Short     Adult\nJulia   23    172     62  Kazan   Short     Adult\n\nstudents_df[students_df$height &gt; 170 & age &gt; 20, ]\n\n       age height weight   city is_tall age_range\nSasha   32    181     75 Moscow    Tall       Old\nAlexey  22    178     78  Kazan   Short     Adult\nJulia   23    172     62  Kazan   Short     Adult\n\nstudents_df[students_df$city %in% c('Moscow', 'SPb'), ]\n\n          age height weight   city is_tall age_range\nDaniel     15    175     70 Moscow   Short Sub-adult\nSasha      32    181     75 Moscow    Tall       Old\nRobert     18    188     80 Moscow    Tall Sub-adult\nAlice       8    120     45    SPb   Short     Child\nDiana      23    170     55    SPb   Short     Adult\nAnastasia  17    168     50    SPb   Short Sub-adult\n\nsubset(students_df, height &gt; 170)\n\n       age height weight   city is_tall age_range\nDaniel  15    175     70 Moscow   Short Sub-adult\nSasha   32    181     75 Moscow    Tall       Old\nRobert  18    188     80 Moscow    Tall Sub-adult\nAlexey  22    178     78  Kazan   Short     Adult\nJulia   23    172     62  Kazan   Short     Adult\n\n\n\nExtract rows from students_itmo which have avg_score 4 &lt;=\n\n\n# students_itmo \n\n\n\nDescribe data-frame\n\nstr(students_df) # useful for a first look at the data\n\n'data.frame':   8 obs. of  6 variables:\n $ age      : num  15 32 18 8 23 17 22 23\n $ height   : num  175 181 188 120 170 168 178 172\n $ weight   : num  70 75 80 45 55 50 78 62\n $ city     : Factor w/ 3 levels \"Kazan\",\"Moscow\",..: 2 2 2 3 3 3 1 1\n $ is_tall  : Factor w/ 2 levels \"Short\",\"Tall\": 1 2 2 1 1 1 1 1\n $ age_range: Factor w/ 4 levels \"Child\",\"Sub-adult\",..: 2 4 2 1 3 2 3 3\n\n\n\ncolnames(students_df)\n\n[1] \"age\"       \"height\"    \"weight\"    \"city\"      \"is_tall\"   \"age_range\"\n\nrownames(students_df)\n\n[1] \"Daniel\"    \"Sasha\"     \"Robert\"    \"Alice\"     \"Diana\"     \"Anastasia\"\n[7] \"Alexey\"    \"Julia\"    \n\ndim(students_df) #rows and columns number\n\n[1] 8 6\n\n\n\n\nSummary statistics\n\nstudents_df$is_tall &lt;-as.factor(students_df$is_tall)\nsummary(students_df)\n\n      age            height          weight          city    is_tall \n Min.   : 8.00   Min.   :120.0   Min.   :45.00   Kazan :2   Short:6  \n 1st Qu.:16.50   1st Qu.:169.5   1st Qu.:53.75   Moscow:3   Tall :2  \n Median :20.00   Median :173.5   Median :66.00   SPb   :3            \n Mean   :19.75   Mean   :169.0   Mean   :64.38                       \n 3rd Qu.:23.00   3rd Qu.:178.8   3rd Qu.:75.75                       \n Max.   :32.00   Max.   :188.0   Max.   :80.00                       \n     age_range\n Child    :1  \n Sub-adult:3  \n Adult    :3  \n Old      :1  \n              \n              \n\n\nCreate contingency table of the counts at each combination of factor levels\n\ntable(students_df$city)\n\n\n Kazan Moscow    SPb \n     2      3      3 \n\ntable(students_df$city, students_df$age_range)\n\n        \n         Child Sub-adult Adult Old\n  Kazan      0         0     2   0\n  Moscow     0         2     0   1\n  SPb        1         1     1   0\n\n\naddmargins()\n\ncontingency_table &lt;- table(students_df$city, students_df$age_range)\n\naddmargins(contingency_table)\n\n        \n         Child Sub-adult Adult Old Sum\n  Kazan      0         0     2   0   2\n  Moscow     0         2     0   1   3\n  SPb        1         1     1   0   3\n  Sum        1         3     3   1   8\n\n\n\nCreate table() of subject from students_itmo and then add margins\n\n\n#"
+  },
+  {
+    "objectID": "code/basic_r.html#p.s.",
+    "href": "code/basic_r.html#p.s.",
+    "title": "Prac #1. Basic R",
+    "section": "P.S.",
+    "text": "P.S.\n\nView()\n\nView(students_df)\n\n\n\nAggregation\n\naggregate(age ~ city, students_df, mean)\n\n    city      age\n1  Kazan 22.50000\n2 Moscow 21.66667\n3    SPb 16.00000\n\n\nWe grouped ages by city and than run function (here we calculated mean) for values in these groups\nMedian of heights inside each group of age_range:\n\naggregate(height ~ age_range, students_df, median)\n\n  age_range height\n1     Child    120\n2 Sub-adult    175\n3     Adult    172\n4       Old    181\n\n\n\n\nMatrices\n\nv &lt;- c(1,2,3,4,5,6)\n\nmatrix(v)\n\n     [,1]\n[1,]    1\n[2,]    2\n[3,]    3\n[4,]    4\n[5,]    5\n[6,]    6\n\nmatrix(v, nrow = 2)\n\n     [,1] [,2] [,3]\n[1,]    1    3    5\n[2,]    2    4    6\n\n# matrix(v, nrow = 3)\nmatrix(v, nrow = 2, byrow = T)\n\n     [,1] [,2] [,3]\n[1,]    1    2    3\n[2,]    4    5    6"
+  },
+  {
+    "objectID": "code/basic_r.html#render-a-document",
+    "href": "code/basic_r.html#render-a-document",
+    "title": "Prac #1. Basic R",
+    "section": "Render a document",
+    "text": "Render a document\nClick Render in the RStudio editor toolbar to turn a .qmd file into a report. Quarto can produce HTML, PDF, and Word documents; this course website uses HTML. PDF output requires additional software.\nDuring rendering, R chunks run in a fresh session, following their execution options. Include the code that loads packages and creates objects in the document rather than relying on objects already in your console.\nYou can also render a file from the terminal:\nquarto render basic_r.qmd"
+  },
+  {
+    "objectID": "code/rstudio-lecture.html",
+    "href": "code/rstudio-lecture.html",
+    "title": "Getting Started with RStudio",
+    "section": "",
+    "text": "This introductory lesson focuses on the working environment: where code runs, where commands are saved, and how RStudio organizes work within a project."
+  },
+  {
+    "objectID": "code/rstudio-lecture.html#rstudio-as-a-working-environment",
+    "href": "code/rstudio-lecture.html#rstudio-as-a-working-environment",
+    "title": "Getting Started with RStudio",
+    "section": "RStudio as a working environment",
+    "text": "RStudio as a working environment\nRStudio is an integrated development environment: an application for writing and running code, working with projects, inspecting objects and plots, reading documentation, and managing files.\nR and RStudio are different tools. R is both a programming language and the program that executes code written in that language. RStudio provides an interface for working with R.\nThink of R as an engine and RStudio as its control panel. The panel helps you operate the engine, but does not replace it.\nRStudio also includes tools for Python, the terminal, Git, document publishing, and other tasks."
+  },
+  {
+    "objectID": "code/rstudio-lecture.html#the-rstudio-window",
+    "href": "code/rstudio-lecture.html#the-rstudio-window",
+    "title": "Getting Started with RStudio",
+    "section": "The RStudio window",
+    "text": "The RStudio window\nThe RStudio window is usually divided into four panes. Each pane can contain several tabs.\n\n\n\nThe main panes of the RStudio window\n\n\nA typical four-pane layout: Source at the top left, Console at the bottom left, Environment at the top right, and Files, Plots, and Help at the bottom right.\n\n\n\n\n\n\n\nPane or tab\nWhat it contains\n\n\n\n\nSource\nOpen scripts and documents, where you write and save code\n\n\nConsole\nCommands being executed, messages, errors, and text results\n\n\nEnvironment\nObjects created during the current R session\n\n\nHistory\nPreviously executed commands\n\n\nFiles\nFiles and folders in your current location\n\n\nPlots\nPlots you have created\n\n\nHelp\nDocumentation for functions and packages\n\n\nViewer\nHTML documents and other web content\n\n\n\nThe Source pane may be hidden when no script is open. It appears when you create or open a code file. We will explore these panes in the examples below.\n\n\n\n\n\n\nPane and tab layout\n\n\n\nYou can rearrange the panes and choose which tabs they contain through Tools → Global Options → Pane Layout or View → Panes → Pane Layout."
+  },
+  {
+    "objectID": "code/rstudio-lecture.html#rstudio-settings",
+    "href": "code/rstudio-lecture.html#rstudio-settings",
+    "title": "Getting Started with RStudio",
+    "section": "RStudio settings",
+    "text": "RStudio settings\nGlobal options apply to RStudio and the projects you work on.\n\nOpening global options\n\nUse Tools → Global Options.\nOn macOS, you can also press Cmd + ,.\n\nStart with settings that affect the appearance of the application:\n\n\n\n\n\n\n\nSetting\nLocation in Global Options\n\n\n\n\nRStudio theme, editor theme, and font size\nAppearance\n\n\nArrangement of panes and tabs\nPane Layout\n\n\n\nAdjust these to suit your preferred working style. We will introduce other settings alongside the relevant features."
+  },
+  {
+    "objectID": "code/rstudio-lecture.html#the-console-and-your-first-command",
+    "href": "code/rstudio-lecture.html#the-console-and-your-first-command",
+    "title": "Getting Started with RStudio",
+    "section": "The console and your first command",
+    "text": "The console and your first command\nYou can start working in the console as soon as RStudio opens. The &gt; prompt means that R is ready to receive a command.\nTry a simple expression:\n2 + 2\nPress Enter. R prints:\n[1] 4\n[1] indicates the position of the first element printed on that line. The result of the calculation is 4.\nThis illustrates the basic cycle of interactive work:\n\nR receives a piece of code.\nIt parses the expression.\nIt executes the command.\nIt returns a result, message, or error.\n\n\n\n\n\n\n\nWhat is an R session?\n\n\n\nAn R session is the period during which an instance of R is running, from its start or restart until it closes. During a session, R keeps objects and other working state in memory. RStudio also tracks the commands you execute.\n\n\nThe console connects you to the current R session. You can type commands directly, send them from a script, or run them from a document’s code chunks. R performs the calculations; the console shows this interaction.\nIf you enter an incomplete expression, such as one with an unclosed parenthesis, the prompt may change from &gt; to +. R is waiting for the rest of the expression.\nUse Ctrl + L to clear the console display. This does not undo calculations or delete objects. Press Esc to cancel an incomplete command or interrupt a running calculation."
+  },
+  {
+    "objectID": "code/rstudio-lecture.html#rstudio-projects",
+    "href": "code/rstudio-lecture.html#rstudio-projects",
+    "title": "Getting Started with RStudio",
+    "section": "RStudio projects",
+    "text": "RStudio projects\nWhen an analysis involves related files and repeated work, organize it as a project.\nA project is a folder containing the code, data, results, and other materials for one piece of work. A .Rproj file tells RStudio which folder is the project root and stores project settings.\nA project and a session are different concepts. A project organizes files on disk; a session describes the current state of the running R process.\nCreate a project through File → New Project. You can create a new folder or turn an existing folder into a project.\nTo reopen it, double-click its .Rproj file, or use File → Open Project… or File → Recent Projects.\n\n\n\n\n\n\nProject settings\n\n\n\nOpen Project → Project Options to change settings for the current project. These can override some global options. On macOS, the shortcut is Shift + Cmd + ,.\n\n\nProjects help you:\n\nKeep unrelated work separate.\nSwitch between tasks.\nMove a complete analysis between locations.\nRestore a useful working context.\n\n\n\n\n\n\n\nReproducibility within a project\n\n\n\nA .Rproj file does not record your input data or lock package versions. Keep the required code and supporting files with the project so that the analysis can be run again.\n\n\n\nFiles within a project\nRStudio works with more than R scripts. A project may contain:\n\nProject file: .Rproj, the settings and entry point for an RStudio project.\nCode: .R scripts, as well as .cpp, .py, and other source files.\nDocuments combining text and code: .qmd for Quarto, or .Rmd for R Markdown. This course uses .qmd. See R Markdown and Quarto.\nRendered documents: .html, .docx, or .pdf.\nData and images: .csv, .tsv, .xlsx, .png, .jpg, and other formats.\nSession files: .RData for saved objects and .Rhistory for command history. See session files.\n\n\n\n\n\n\n\nFile extensions identify file types\n\n\n\nAn extension is the part of a filename after its final dot. It helps RStudio and other applications identify the file’s purpose and how to process it.\n\n\n\n\n\n\n\n\nText encoding\n\n\n\nEncoding settings are available under Tools → Global Options → Code → Saving. You usually do not need to change them, but they can help if non-English characters display incorrectly. UTF-8 is a useful default for sharing text files."
+  },
+  {
+    "objectID": "code/rstudio-lecture.html#scripts-and-the-source-pane",
+    "href": "code/rstudio-lecture.html#scripts-and-the-source-pane",
+    "title": "Getting Started with RStudio",
+    "section": "Scripts and the Source pane",
+    "text": "Scripts and the Source pane\nYou can enter commands in the console, but a script—a plain-text file with the .R extension—is a better place to save a sequence of steps.\nA new script initially exists only as an open editor tab. After you save it, it has a filename and appears in its folder in the Files tab. An asterisk * next to the tab name indicates unsaved changes.\nPress Ctrl + Enter on Windows/Linux or Cmd + Enter on macOS to execute selected code. If nothing is selected, RStudio sends the current line to the console. You can select one line, several lines, or part of an expression.\n\n\n\n\n\n\nEditor settings\n\n\n\nUse Tools → Global Options → Code to configure the editor. Editing, Display, and Completion control editing behavior, code display, and autocomplete.\n\n\n\n\n\n\n\n\nScripts and the console have different roles\n\n\n\nThe console is useful for quick experiments and shows the current interaction with R. A script saves a sequence of commands that you can read, edit, and run again.\n\n\n\nComments\nIn R code, # starts a comment outside a quoted string. The rest of that line is not executed:\n# This is a comment\n2 + 2\nComments explain code and can temporarily disable lines. Use Ctrl + Shift + C on Windows/Linux or Cmd + Shift + C on macOS to comment or uncomment selected lines."
+  },
+  {
+    "objectID": "code/rstudio-lecture.html#r-sessions-objects-and-command-history",
+    "href": "code/rstudio-lecture.html#r-sessions-objects-and-command-history",
+    "title": "Getting Started with RStudio",
+    "section": "R sessions: objects and command history",
+    "text": "R sessions: objects and command history\nResults can appear in different parts of RStudio:\n\n2 + 2 prints a number in Console.\nx &lt;- 2 creates an object that appears in Environment.\nView(iris) opens a data viewer tab.\nplot(iris) displays a plot in Plots.\n?plot opens documentation in Help.\n\n\n\n\n\n\n\nCode and results can appear in different panes\n\n\n\nCode stays in Source, runs in the R session, and produces results in Console, Environment, Plots, Help, or a data viewer, depending on the command.\n\n\n\n\n\n\n\n\nDemonstration: data, plots, and help\n\n\n\n\n\nR includes built-in datasets such as iris, so you can experiment without loading a file.\nType the object’s name to print the table in the console:\niris\nFor larger tables, open the data viewer instead:\nView(iris)\nPass the same dataset to a plotting function:\nplot(iris)\nThe plot appears in Plots. Here, R chooses a display suitable for a table with several variables. The plot belongs to the current session; saving plot(iris) in a script lets you recreate it.\nUse a question mark to open a function’s documentation:\n?plot\nTwo question marks perform a broader search through the installed help:\n??scatterplot\n\n\n\n\nEnvironment\nThe following code creates objects x and y:\nx &lt;- 2\ny &lt;- 3\nTheir names and values appear in Environment after you run the code.\n\n\n\n\n\n\nAssignment operators\n\n\n\nUse &lt;- to assign a value to a variable. R also permits = for assignment in many contexts. In this course, we use &lt;- for assignment and = for named function arguments, such as mean(iris$Sepal.Length, na.rm = TRUE). Use == to compare values.\n\n\nRefer to a saved object by its name:\nx\n[1] 2\nWhile x exists in the session, R recognizes it even when you run code from another file. This is convenient, but can hide mistakes. A script that uses x without creating it may work only because an old object is still in Environment. After restarting R or moving to another computer, it may fail with object 'x' not found.\nYou can remove individual objects or clear the environment with the broom button. Clearing Environment does not change your saved script.\n\n\nHistory\nHistory contains commands sent to R.\nSaving a command in a script does not add it to History; executing it does. Commands typed directly in the console also appear there, even if you never save them in a script.\nHistory helps you recover recent experiments, but does not replace organized code. It mixes successful commands, errors, and temporary checks. Press the Up arrow in the console to browse previous commands.\n\n\n.RData and .Rhistory\nWhen closing a session, RStudio may offer to save the workspace. These files are stored on disk:\n\n.RData stores objects from Environment.\n.Rhistory stores command history.\n\nIf restoration is enabled, reopening a project can reload objects from .RData and commands from .Rhistory.\nAutomatic restoration can be convenient, but a large .RData file may slow startup and restore objects whose origin is unclear from the script. Starting with an empty Environment helps you check that your saved code creates everything it needs.\n\n\n\n\n\n\nSaving and restoring sessions\n\n\n\nSettings for restoring .RData, saving the workspace, and saving command history are under Tools → Global Options → General → Basic. Some can also be changed for an individual project through Project → Project Options.\n\n\n\n\n\n\n\n\nChecking reproducibility\n\n\n\n\n\nTry Restart R → Run All with workspace restoration disabled. Restarting begins a fresh session; running the saved script recreates its objects. If the script works from a clean session, it does not depend on objects left over from earlier work."
+  },
+  {
+    "objectID": "code/rstudio-lecture.html#r-markdown-quarto",
+    "href": "code/rstudio-lecture.html#r-markdown-quarto",
+    "title": "Getting Started with RStudio",
+    "section": "R Markdown and Quarto",
+    "text": "R Markdown and Quarto\nR Markdown (.Rmd) and Quarto (.qmd) create reproducible documents that combine explanations, code, and results. Like Jupyter notebooks, they let you accompany calculations with text, tables, and plots.\nThis course uses Quarto. Create a document through File → New File → Quarto Document…. You may encounter older R Markdown files, created through File → New File → R Markdown….\nRender in Quarto and Knit in R Markdown execute code, insert results, and produce an output file such as HTML, Word, or PDF. You can rebuild the document when its code or data changes. PDF output requires additional software."
+  },
+  {
+    "objectID": "code/rstudio-lecture.html#keyboard-shortcut-reference",
+    "href": "code/rstudio-lecture.html#keyboard-shortcut-reference",
+    "title": "Getting Started with RStudio",
+    "section": "Keyboard shortcut reference",
+    "text": "Keyboard shortcut reference\n\n\n\n\n\n\nViewing and changing shortcuts\n\n\n\nOpen Help → Keyboard Shortcut Help, or press Alt + Shift + K on Windows/Linux or Option + Shift + K on macOS. Customize shortcuts through Tools → Modify Keyboard Shortcuts. You do not need to memorize them all immediately.\n\n\n\nEssential shortcuts\n\n\n\n\n\n\n\n\nAction\nWindows/Linux\nmacOS\n\n\n\n\nSave the active document\nCtrl + S\nCmd + S\n\n\nRun the current line or selection\nCtrl + Enter\nCmd + Enter\n\n\nMove focus to Source\nCtrl + 1\nCtrl + 1\n\n\nMove focus to Console\nCtrl + 2\nCtrl + 2\n\n\nInterrupt a calculation or cancel an incomplete command\nEsc\nEsc\n\n\n\n\n\n\n\n\n\nFinding a command\n\n\n\nOpen the command palette with Ctrl + Shift + P on Windows/Linux or Cmd + Shift + P on macOS. Start typing an action or setting, such as pane layout, new script, or keyboard shortcuts, and select the matching command."
+  },
+  {
+    "objectID": "code/rstudio-lecture.html#common-situations-what-to-do",
+    "href": "code/rstudio-lecture.html#common-situations-what-to-do",
+    "title": "Getting Started with RStudio",
+    "section": "Common situations: what to do",
+    "text": "Common situations: what to do\n\nThe console shows + instead of &gt;\nR considers the expression incomplete, usually because a parenthesis or quotation mark is missing. Complete the expression or press Esc to cancel it.\n\n\nAn object exists in Environment but not in the script\nIt was created manually in the console or restored from .RData. Add the code that creates it to your script so that your work is reproducible.\n\n\nYou see an object not found error\nR does not recognize that name in the current session. Check for typos, capitalization differences, and missing earlier commands that create the object.\n\n\nCode is in the script, but nothing happens\nText in the editor does not run automatically. Send the current line or selected code to R to execute it.\n\n\nA command is in the script but missing from History\nWriting code in a file does not add it to History. History records commands that have been executed.\n\n\nA file is missing from the Files tab\nThe document may not have been saved yet, or it may have been saved outside the project folder. Check the location currently shown in Files.\nContinue to Basic R →"
   }
 ]

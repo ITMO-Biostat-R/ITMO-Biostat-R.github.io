@@ -71,7 +71,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-fixed fullcontent">
+<body class="nav-fixed course-home fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -103,6 +103,10 @@ ul.task-list li input[type="checkbox"] {
   <li class="nav-item">
     <a class="nav-link" href="./index.html#homeworks"> 
 <span class="menu-text">Homeworks</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html#reference-materials"> 
+<span class="menu-text">Reference materials</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -147,6 +151,15 @@ ul.task-list li input[type="checkbox"] {
 <p>Notes and reproducible files for the practical classes.</p>
 </div>
 <div class="resource-list">
+<div class="resource-row resource-row-simple">
+<div class="resource-info">
+<p><span class="resource-number">00</span></p>
+<div class="resource-copy">
+<p><a href="./code/rstudio-lecture.html" class="resource-title">Getting Started with RStudio</a></p>
+<p><span class="resource-meta">Interface, projects, and workflow</span></p>
+</div>
+</div>
+</div>
 <div class="resource-row">
 <div class="resource-info">
 <p><span class="resource-number">01</span></p>
@@ -155,58 +168,77 @@ ul.task-list li input[type="checkbox"] {
 <p><span class="resource-meta">Practice material</span></p>
 </div>
 </div>
-<p><a href="./zipfiles/basic_r.zip" class="resource-download" aria-label="Download Basic R practice files as ZIP">Download .zip</a></p>
+<p><a href="downloads/basic_r.qmd" class="resource-download" download="basic_r.qmd" aria-label="Download Basic R as a Quarto file">Download .qmd</a></p>
 </div>
-<div class="resource-row">
-<div class="resource-info">
-<p><span class="resource-number">02</span></p>
-<div class="resource-copy">
-<p><a href="./code/advanced_df.html" class="resource-title">Working with Dataframes</a></p>
-<p><span class="resource-meta">Practice material</span></p>
-</div>
-</div>
-<p><a href="./zipfiles/advanced_df.zip" class="resource-download" aria-label="Download Working with Dataframes practice files as ZIP">Download .zip</a></p>
-</div>
-<div class="resource-row">
-<div class="resource-info">
-<p><span class="resource-number">03</span></p>
-<div class="resource-copy">
-<p><a href="./code/datavis.html" class="resource-title">Visualization</a></p>
-<p><span class="resource-meta">Practice material</span></p>
-</div>
-</div>
-<p><a href="./zipfiles/datavis.zip" class="resource-download" aria-label="Download Visualization practice files as ZIP">Download .zip</a></p>
-</div>
-<div class="resource-row">
-<div class="resource-info">
-<p><span class="resource-number">04</span></p>
-<div class="resource-copy">
-<p><a href="./code/distributions_clt_ci.html" class="resource-title">Introduction to statistics</a></p>
-<p><span class="resource-meta">Practice material</span></p>
-</div>
-</div>
-<p><a href="./zipfiles/distributions_clt_ci.zip" class="resource-download" aria-label="Download Introduction to statistics practice files as ZIP">Download .zip</a></p>
-</div>
-<div class="resource-row">
-<div class="resource-info">
-<p><span class="resource-number">05</span></p>
-<div class="resource-copy">
-<p><a href="./code/association.html" class="resource-title">Association</a></p>
-<p><span class="resource-meta">Practice material</span></p>
-</div>
-</div>
-<p><a href="./zipfiles/association.zip" class="resource-download" aria-label="Download Association practice files as ZIP">Download .zip</a></p>
-</div>
-<div class="resource-row">
-<div class="resource-info">
-<p><span class="resource-number">06</span></p>
-<div class="resource-copy">
-<p><a href="./code/stats_ttest_chi.html" class="resource-title">Statistical tests</a></p>
-<p><span class="resource-meta">Practice material</span></p>
-</div>
-</div>
-<p><a href="./zipfiles/stats_ttest_chi.zip" class="resource-download" aria-label="Download Statistical tests practice files as ZIP">Download .zip</a></p>
-</div>
+<!-- ::::: resource-row
+:::: resource-info
+[02]{.resource-number}
+
+::: resource-copy
+[Working with Dataframes](./code/advanced_df.qmd){.resource-title}
+
+[Practice material]{.resource-meta}
+:::
+::::
+
+[Download .zip](./zipfiles/advanced_df.zip){.resource-download aria-label="Download Working with Dataframes practice files as ZIP"}
+:::::
+
+::::: resource-row
+:::: resource-info
+[03]{.resource-number}
+
+::: resource-copy
+[Visualization](code/datavis.qmd){.resource-title}
+
+[Practice material]{.resource-meta}
+:::
+::::
+
+[Download .zip](./zipfiles/datavis.zip){.resource-download aria-label="Download Visualization practice files as ZIP"}
+:::::
+
+::::: resource-row
+:::: resource-info
+[04]{.resource-number}
+
+::: resource-copy
+[Introduction to statistics](./code/distributions_clt_ci.qmd){.resource-title}
+
+[Practice material]{.resource-meta}
+:::
+::::
+
+<a href="downloads/distributions_clt_ci.qmd" class="resource-download" download="distributions_clt_ci.qmd" aria-label="Download Introduction to statistics as a Quarto file">Download .qmd</a>
+:::::
+
+::::: resource-row
+:::: resource-info
+[05]{.resource-number}
+
+::: resource-copy
+[Association](code/association.qmd){.resource-title}
+
+[Practice material]{.resource-meta}
+:::
+::::
+
+[Download .zip](./zipfiles/association.zip){.resource-download aria-label="Download Association practice files as ZIP"}
+:::::
+
+::::: resource-row
+:::: resource-info
+[06]{.resource-number}
+
+::: resource-copy
+[Statistical tests](code/stats_ttest_chi.qmd){.resource-title}
+
+[Practice material]{.resource-meta}
+:::
+::::
+
+<a href="downloads/stats_ttest_chi.qmd" class="resource-download" download="stats_ttest_chi.qmd" aria-label="Download Statistical tests as a Quarto file">Download .qmd</a>
+::::: -->
 </div>
 </section>
 <section id="presentations" class="level2">
@@ -215,32 +247,44 @@ ul.task-list li input[type="checkbox"] {
 <p>Slides used during the course.</p>
 </div>
 <div class="resource-list">
-<div class="resource-row resource-row-simple">
-<div class="resource-info">
-<p><span class="resource-number">01</span></p>
-<div class="resource-copy">
-<p><a href="./presentations/visual_sins_inspiration.html" class="resource-title">Visualization sins and inspirations</a></p>
-<p><span class="resource-meta">Presentation</span></p>
-</div>
-</div>
-</div>
-<div class="resource-row resource-row-simple">
-<div class="resource-info">
-<p><span class="resource-number">02</span></p>
-<div class="resource-copy">
-<p><a href="./presentations/distributions_clt_ci.html" class="resource-title">Introduction to statistics</a></p>
-<p><span class="resource-meta">Presentation</span></p>
-</div>
-</div>
-</div>
-<div class="resource-row resource-row-simple">
-<div class="resource-info">
-<p><span class="resource-number">03</span></p>
-<div class="resource-copy">
-<p><a href="./presentations/testing.html" class="resource-title">Introduction to statistical tests</a></p>
-<p><span class="resource-meta">Presentation</span></p>
-</div>
-</div>
+<!-- ::::: {.resource-row .resource-row-simple}
+:::: resource-info
+[01]{.resource-number}
+
+::: resource-copy
+[Visualization sins and inspirations](presentations/visual_sins_inspiration.qmd){.resource-title}
+
+[Presentation]{.resource-meta}
+:::
+::::
+:::::
+
+::::: {.resource-row .resource-row-simple}
+:::: resource-info
+[02]{.resource-number}
+
+::: resource-copy
+[Introduction to statistics](presentations/distributions_clt_ci.qmd){.resource-title}
+
+[Presentation]{.resource-meta}
+:::
+::::
+:::::
+
+::::: {.resource-row .resource-row-simple}
+:::: resource-info
+[03]{.resource-number}
+
+::: resource-copy
+[Introduction to statistical tests](presentations/testing.qmd){.resource-title}
+
+[Presentation]{.resource-meta}
+:::
+::::
+::::: -->
+<div class="resource-placeholder">
+<p><span class="placeholder-label">Coming soon</span></p>
+<p>Materials will be added as the course progresses.</p>
 </div>
 </div>
 </section>
@@ -250,45 +294,81 @@ ul.task-list li input[type="checkbox"] {
 <p>Assignment descriptions and downloadable starter files.</p>
 </div>
 <div class="resource-list">
-<div class="resource-row">
+<!-- ::::: resource-row
+:::: resource-info
+[01]{.resource-number}
+
+::: resource-copy
+[Homework 1](./homeworks/HW1.qmd){.resource-title}
+
+[Exploring elephant data]{.resource-meta}
+:::
+::::
+
+[Download .zip](./zipfiles/HW1.zip){.resource-download aria-label="Download Homework 1 files as ZIP"}
+:::::
+
+::::: resource-row
+:::: resource-info
+[02]{.resource-number}
+
+::: resource-copy
+[Homework 2](./homeworks/HW2.qmd){.resource-title}
+
+[Reference plots](./homeworks/HW2_reference.html){.resource-secondary}
+:::
+::::
+
+[Download .zip](./zipfiles/HW2.zip){.resource-download aria-label="Download Homework 2 files as ZIP"}
+:::::
+
+::::: resource-row
+:::: resource-info
+[03]{.resource-number}
+
+::: resource-copy
+[Homework 3](./homeworks/HW_virt_hospital.qmd){.resource-title}
+
+[Virtual hospital]{.resource-meta}
+:::
+::::
+
+<a href="downloads/HW_virt_hospital.qmd" class="resource-download" download="HW_virt_hospital.qmd" aria-label="Download Homework 3 as a Quarto file">Download .qmd</a>
+:::::
+
+::::: resource-row
+:::: resource-info
+[04]{.resource-number}
+
+::: resource-copy
+[Final homework](./homeworks/HW_final.qmd){.resource-title}
+
+[Final assignment]{.resource-meta}
+:::
+::::
+
+[Download .zip](./zipfiles/HW_final.zip){.resource-download aria-label="Download final homework files as ZIP"}
+::::: -->
+<div class="resource-placeholder">
+<p><span class="placeholder-label">Coming soon</span></p>
+<p>Materials will be added as the course progresses.</p>
+</div>
+</div>
+</section>
+<section id="reference-materials" class="level2">
+<h2 class="anchored" data-anchor-id="reference-materials">Reference materials</h2>
+<div class="section-lead">
+<p>Setup guides and useful resources for working with R.</p>
+</div>
+<div class="resource-list">
+<div class="resource-row resource-row-simple">
 <div class="resource-info">
 <p><span class="resource-number">01</span></p>
 <div class="resource-copy">
-<p><a href="./homeworks/HW1.html" class="resource-title">Homework 1</a></p>
-<p><span class="resource-meta">Exploring elephant data</span></p>
+<p><a href="./installation.html" class="resource-title">Installing R and RStudio</a></p>
+<p><span class="resource-meta">Installation and setup guide</span></p>
 </div>
 </div>
-<p><a href="./zipfiles/HW1.zip" class="resource-download" aria-label="Download Homework 1 files as ZIP">Download .zip</a></p>
-</div>
-<div class="resource-row">
-<div class="resource-info">
-<p><span class="resource-number">02</span></p>
-<div class="resource-copy">
-<p><a href="./homeworks/HW2.html" class="resource-title">Homework 2</a></p>
-<p><a href="./homeworks/HW2_reference.html" class="resource-secondary">Reference plots</a></p>
-</div>
-</div>
-<p><a href="./zipfiles/HW2.zip" class="resource-download" aria-label="Download Homework 2 files as ZIP">Download .zip</a></p>
-</div>
-<div class="resource-row">
-<div class="resource-info">
-<p><span class="resource-number">03</span></p>
-<div class="resource-copy">
-<p><a href="./homeworks/HW_virt_hospital.html" class="resource-title">Homework 3</a></p>
-<p><span class="resource-meta">Virtual hospital</span></p>
-</div>
-</div>
-<p><a href="./zipfiles/HW_virt_hospital.zip" class="resource-download" aria-label="Download Homework 3 files as ZIP">Download .zip</a></p>
-</div>
-<div class="resource-row">
-<div class="resource-info">
-<p><span class="resource-number">04</span></p>
-<div class="resource-copy">
-<p><a href="./homeworks/HW_final.html" class="resource-title">Final homework</a></p>
-<p><span class="resource-meta">Final assignment</span></p>
-</div>
-</div>
-<p><a href="./zipfiles/HW_final.zip" class="resource-download" aria-label="Download final homework files as ZIP">Download .zip</a></p>
 </div>
 </div>
 
