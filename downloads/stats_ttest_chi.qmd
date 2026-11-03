@@ -1,7 +1,6 @@
 ---
 title: "Statistics"
 author: Vladislav Stanin
-date: "2024-01-24"
 format:
   html:
     toc: true

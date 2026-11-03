@@ -7,7 +7,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Vladislav Stanin">
-<meta name="dcterms.date" content="2024-01-24">
 
 <title>Association between variables – Biostatistics in R</title>
 <style>
@@ -133,7 +132,7 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="../styles.css?v=5cdac66f93bd">
 </head>
 
 <body class="nav-fixed">
@@ -156,6 +155,22 @@ window.Quarto = {
   <li class="nav-item">
     <a class="nav-link" href="../index.html"> 
 <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html#lessons"> 
+<span class="menu-text">Lessons</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html#presentations"> 
+<span class="menu-text">Presentations</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html#homeworks"> 
+<span class="menu-text">Homeworks</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html#reference-materials"> 
+<span class="menu-text">Reference materials</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -231,12 +246,6 @@ window.Quarto = {
           </div>
   </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">January 24, 2024</p>
-    </div>
-  </div>
   
     
   </div>
@@ -323,7 +332,7 @@ lm(formula = height ~ nutrients, data = data_plant_nutrient)
 
 Coefficients:
 (Intercept)    nutrients  
-    -0.4156       2.1051  </code></pre>
+   -0.06602      2.04614  </code></pre>
 </div>
 </div>
 <div class="cell">
@@ -349,7 +358,7 @@ Coefficients:
 <section id="model-summary" class="level1">
 <h1>Model summary</h1>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>summary_model <span class="ot">=</span> <span class="fu">summary</span>(model)</span>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>summary_model <span class="ot">&lt;-</span> <span class="fu">summary</span>(model)</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>summary_model</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -357,19 +366,19 @@ Call:
 lm(formula = height ~ nutrients, data = data_plant_nutrient)
 
 Residuals:
-     Min       1Q   Median       3Q      Max 
--11.7879  -2.4489  -0.2064   3.1982  12.2885 
+    Min      1Q  Median      3Q     Max 
+-8.5350 -4.2971 -0.0458  3.5351 10.0779 
 
 Coefficients:
             Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)  -0.4156     2.4154  -0.172    0.864    
-nutrients     2.1051     0.2359   8.925 9.16e-12 ***
+(Intercept) -0.06602    2.47338  -0.027    0.979    
+nutrients    2.04614    0.24740   8.270 8.62e-11 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Residual standard error: 5.174 on 48 degrees of freedom
-Multiple R-squared:  0.624, Adjusted R-squared:  0.6161 
-F-statistic: 79.65 on 1 and 48 DF,  p-value: 9.158e-12</code></pre>
+Residual standard error: 4.939 on 48 degrees of freedom
+Multiple R-squared:  0.5876,    Adjusted R-squared:  0.579 
+F-statistic:  68.4 on 1 and 48 DF,  p-value: 8.62e-11</code></pre>
 </div>
 </div>
 <section id="residuals" class="level3">
@@ -396,7 +405,7 @@ F-statistic: 79.65 on 1 and 48 DF,  p-value: 9.158e-12</code></pre>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">coefficients</span>(model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>(Intercept)   nutrients 
-  -0.415574    2.105060 </code></pre>
+-0.06602158  2.04614405 </code></pre>
 </div>
 </div>
 </section>
@@ -410,9 +419,9 @@ F-statistic: 79.65 on 1 and 48 DF,  p-value: 9.158e-12</code></pre>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># summary_model$coefficients[,3:4]</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>summary_model<span class="sc">$</span>coefficients</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>             Estimate Std. Error    t value     Pr(&gt;|t|)
-(Intercept) -0.415574  2.4154069 -0.1720513 8.641205e-01
-nutrients    2.105060  0.2358715  8.9246038 9.157841e-12</code></pre>
+<pre><code>               Estimate Std. Error     t value     Pr(&gt;|t|)
+(Intercept) -0.06602158  2.4733786 -0.02669287 9.788154e-01
+nutrients    2.04614405  0.2474046  8.27043764 8.620022e-11</code></pre>
 </div>
 </div>
 </section>
@@ -423,7 +432,7 @@ nutrients    2.105060  0.2358715  8.9246038 9.157841e-12</code></pre>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>summary_model<span class="sc">$</span>sigma</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 5.173587</code></pre>
+<pre><code>[1] 4.938548</code></pre>
 </div>
 </div>
 </section>
@@ -439,7 +448,7 @@ nutrients    2.105060  0.2358715  8.9246038 9.157841e-12</code></pre>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>summary_model<span class="sc">$</span>r.squared</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.6239675</code></pre>
+<pre><code>[1] 0.5876294</code></pre>
 </div>
 </div>
 </section>
@@ -453,7 +462,7 @@ nutrients    2.105060  0.2358715  8.9246038 9.157841e-12</code></pre>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>summary_model<span class="sc">$</span>adj.r.squared</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.6161335</code></pre>
+<pre><code>[1] 0.5790383</code></pre>
 </div>
 </div>
 </section>
@@ -475,7 +484,7 @@ nutrients    2.105060  0.2358715  8.9246038 9.157841e-12</code></pre>
 <span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>summary_model<span class="sc">$</span>fstatistic</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   value    numdf    dendf 
-79.64855  1.00000 48.00000 </code></pre>
+68.40014  1.00000 48.00000 </code></pre>
 </div>
 </div>
 <blockquote class="blockquote">
@@ -489,9 +498,9 @@ nutrients    2.105060  0.2358715  8.9246038 9.157841e-12</code></pre>
 <pre><code>Analysis of Variance Table
 
 Response: height
-          Df Sum Sq Mean Sq F value    Pr(&gt;F)    
-nutrients  1 2131.9 2131.87  79.649 9.158e-12 ***
-Residuals 48 1284.8   26.77                      
+          Df Sum Sq Mean Sq F value   Pr(&gt;F)    
+nutrients  1 1668.2 1668.23    68.4 8.62e-11 ***
+Residuals 48 1170.7   24.39                     
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
@@ -509,14 +518,14 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <section id="adding-one-more-predictor-for-plant-height-model" class="level2">
 <h2 class="anchored" data-anchor-id="adding-one-more-predictor-for-plant-height-model">Adding one more predictor for plant height model</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>sunlight_hrs <span class="ot">=</span> <span class="fu">rep</span>(<span class="dv">5</span><span class="sc">:</span><span class="dv">9</span>, <span class="at">each=</span><span class="dv">10</span>) <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">50</span>, <span class="dv">0</span>, <span class="dv">1</span>)</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>data_plant_nutrient <span class="ot">=</span> data_plant_nutrient <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(height) <span class="sc">%&gt;%</span>  <span class="fu">cbind</span>(sunlight_hrs)</span>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>sunlight_hrs <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">5</span><span class="sc">:</span><span class="dv">9</span>, <span class="at">each=</span><span class="dv">10</span>) <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">50</span>, <span class="dv">0</span>, <span class="dv">1</span>)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>data_plant_nutrient <span class="ot">&lt;-</span> data_plant_nutrient <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(height) <span class="sc">%&gt;%</span>  <span class="fu">cbind</span>(sunlight_hrs)</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>data_plant_nutrient <span class="sc">%&gt;%</span> <span class="fu">str</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   50 obs. of  3 variables:
- $ nutrients   : num  4.93 7.04 5.3 6.21 4.48 ...
- $ height      : num  -1.83 2.98 2.99 5.11 6.52 ...
- $ sunlight_hrs: num  5.86 3.57 5.82 5.99 6.67 ...</code></pre>
+ $ nutrients   : num  6.7 7.31 6.49 7.7 7.48 ...
+ $ height      : num  5.87 6.37 8.69 9.71 10.7 ...
+ $ sunlight_hrs: num  5.35 4.22 3.03 5.69 5.64 ...</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -538,7 +547,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 y = \beta_0 + \beta_1x_1 + \beta_2x_2
 \]</span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>model_mullti <span class="ot">=</span> <span class="fu">lm</span>(height <span class="sc">~</span> sunlight_hrs <span class="sc">+</span> nutrients, <span class="at">data =</span> data_plant_nutrient)</span>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>model_mullti <span class="ot">&lt;-</span> <span class="fu">lm</span>(height <span class="sc">~</span> sunlight_hrs <span class="sc">+</span> nutrients, <span class="at">data =</span> data_plant_nutrient)</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model_mullti)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -546,20 +555,20 @@ Call:
 lm(formula = height ~ sunlight_hrs + nutrients, data = data_plant_nutrient)
 
 Residuals:
-     Min       1Q   Median       3Q      Max 
--12.2178  -2.8956   0.3907   3.0747   8.3823 
+    Min      1Q  Median      3Q     Max 
+-8.7020 -1.8743 -0.2702  1.9178 10.9186 
 
 Coefficients:
              Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)   -9.2858     3.0732  -3.022 0.004061 ** 
-sunlight_hrs   2.0777     0.5229   3.973 0.000242 ***
-nutrients      1.5221     0.2531   6.014 2.57e-07 ***
+(Intercept)   -7.7214     2.1655  -3.566 0.000847 ***
+sunlight_hrs   2.4042     0.3706   6.487 4.92e-08 ***
+nutrients      1.1026     0.2327   4.739 2.02e-05 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Residual standard error: 4.524 on 47 degrees of freedom
-Multiple R-squared:  0.7185,    Adjusted R-squared:  0.7065 
-F-statistic: 59.99 on 2 and 47 DF,  p-value: 1.154e-13</code></pre>
+Residual standard error: 3.625 on 47 degrees of freedom
+Multiple R-squared:  0.7824,    Adjusted R-squared:  0.7732 
+F-statistic: 84.51 on 2 and 47 DF,  p-value: 2.717e-16</code></pre>
 </div>
 </div>
 </section>
@@ -576,8 +585,8 @@ F-statistic: 59.99 on 2 and 47 DF,  p-value: 1.154e-13</code></pre>
 <p>You should include an interaction if you hypothesize that the relationship between one predictor and the dependent variable changes depending on the level of another predictor. For example, the effect of a drug might vary depending on the age of the patient.</p>
 </blockquote>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># model_mullti = lm(height ~ nutrients + sunlight_hrs + nutrients:sunlight_hrs, data = data_plant_nutrient)</span></span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>model_mullti_interact <span class="ot">=</span> <span class="fu">lm</span>(height <span class="sc">~</span> nutrients <span class="sc">*</span> sunlight_hrs, <span class="at">data =</span> data_plant_nutrient)</span>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># model_mullti &lt;- lm(height ~ nutrients + sunlight_hrs + nutrients:sunlight_hrs, data = data_plant_nutrient)</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>model_mullti_interact <span class="ot">&lt;-</span> <span class="fu">lm</span>(height <span class="sc">~</span> nutrients <span class="sc">*</span> sunlight_hrs, <span class="at">data =</span> data_plant_nutrient)</span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model_mullti_interact)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -585,21 +594,21 @@ Call:
 lm(formula = height ~ nutrients * sunlight_hrs, data = data_plant_nutrient)
 
 Residuals:
-     Min       1Q   Median       3Q      Max 
--11.7349  -2.1698   0.1334   3.0519   8.2363 
+   Min     1Q Median     3Q    Max 
+-8.213 -1.950 -0.048  2.076  9.633 
 
 Coefficients:
-                       Estimate Std. Error t value Pr(&gt;|t|)   
-(Intercept)            -25.1854     9.9014  -2.544  0.01440 * 
-nutrients                3.1637     1.0049   3.148  0.00288 **
-sunlight_hrs             4.5260     1.5402   2.939  0.00514 **
-nutrients:sunlight_hrs  -0.2431     0.1442  -1.686  0.09860 . 
+                       Estimate Std. Error t value Pr(&gt;|t|)  
+(Intercept)             3.78890    6.65931   0.569   0.5721  
+nutrients              -0.15717    0.72753  -0.216   0.8299  
+sunlight_hrs            0.70242    1.00133   0.701   0.4865  
+nutrients:sunlight_hrs  0.17769    0.09749   1.823   0.0749 .
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Residual standard error: 4.437 on 46 degrees of freedom
-Multiple R-squared:  0.7349,    Adjusted R-squared:  0.7176 
-F-statistic:  42.5 on 3 and 46 DF,  p-value: 2.602e-13</code></pre>
+Residual standard error: 3.539 on 46 degrees of freedom
+Multiple R-squared:  0.7971,    Adjusted R-squared:  0.7838 
+F-statistic: 60.23 on 3 and 46 DF,  p-value: 5.781e-16</code></pre>
 </div>
 </div>
 <ul>
@@ -618,8 +627,8 @@ F-statistic:  42.5 on 3 and 46 DF,  p-value: 2.602e-13</code></pre>
 Model 1: height ~ nutrients
 Model 2: height ~ nutrients * sunlight_hrs
   Res.Df     RSS Df Sum of Sq      F    Pr(&gt;F)    
-1     48 1284.77                                  
-2     46  905.78  2    378.99 9.6234 0.0003225 ***
+1     48 1170.68                                  
+2     46  576.08  2     594.6 23.739 8.261e-08 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>

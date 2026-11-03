@@ -6,7 +6,6 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2025-01-05">
 
 <title>ANOVA – Biostatistics in R</title>
 <style>
@@ -132,7 +131,7 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="../styles.css?v=5cdac66f93bd">
 </head>
 
 <body class="nav-fixed">
@@ -155,6 +154,22 @@ window.Quarto = {
   <li class="nav-item">
     <a class="nav-link" href="../index.html"> 
 <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html#lessons"> 
+<span class="menu-text">Lessons</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html#presentations"> 
+<span class="menu-text">Presentations</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html#homeworks"> 
+<span class="menu-text">Homeworks</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html#reference-materials"> 
+<span class="menu-text">Reference materials</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -189,12 +204,6 @@ window.Quarto = {
 <div class="quarto-title-meta">
 
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">January 5, 2025</p>
-    </div>
-  </div>
   
     
   </div>
@@ -255,9 +264,9 @@ window.Quarto = {
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>anova_result <span class="ot">&lt;-</span> <span class="fu">aov</span>(yield <span class="sc">~</span> fertilizer, <span class="at">data =</span> data)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(anova_result)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>            Df Sum Sq Mean Sq F value  Pr(&gt;F)   
-fertilizer   2  177.3   88.64    8.68 0.00123 **
-Residuals   27  275.7   10.21                   
+<pre><code>            Df Sum Sq Mean Sq F value Pr(&gt;F)  
+fertilizer   2  47.24  23.620   2.701 0.0852 .
+Residuals   27 236.09   8.744                 
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
@@ -272,9 +281,9 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <pre><code>Anova Table (Type II tests)
 
 Response: yield
-           Sum Sq Df F value   Pr(&gt;F)   
-fertilizer 177.27  2  8.6798 0.001228 **
-Residuals  275.72 27                    
+           Sum Sq Df F value  Pr(&gt;F)  
+fertilizer  47.24  2  2.7012 0.08523 .
+Residuals  236.09 27                  
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
@@ -297,7 +306,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
     Kruskal-Wallis rank sum test
 
 data:  yield by fertilizer
-Kruskal-Wallis chi-squared = 11.43, df = 2, p-value = 0.003297</code></pre>
+Kruskal-Wallis chi-squared = 2.48, df = 2, p-value = 0.2894</code></pre>
 </div>
 </div>
 
