@@ -6,13 +6,13 @@ title: "Prac #1. Basic R"
 
 **Here you can see**
 
-- This file with code on top of the screen
+- The current file and its code in the editor at the top of the screen
 
-- Console, where you can write code line by line. In fact, when you execute the code from the file, the entire script is run via the console
+- The Console, where you can enter R commands and see their results
 
-- Files, Help etc. on the bottom right below
+- The Files and Help tabs in the lower right
 
-- Environment containing all created variables on the top right
+- The Environment pane in the upper right, which shows the variables you have created
 
 We can create new files, projects and even presentations or websites. RStudio provides us with useful tools for programming, especially in R, but we can also do it in python, bash and other languages.
 
@@ -21,12 +21,14 @@ We can create new files, projects and even presentations or websites. RStudio pr
 Print
 
 ```{r}
-# ?getwd()
+#| eval: false
+  
+?getwd()
 ```
 
-To open help for a function (here, `getwd`).
+To open help for any object (here, `getwd`).
 
-Or just go to **Help** on the bottom right below
+You can also search in the **Help** tab in the lower right.
 
 # Quarto
 
@@ -45,7 +47,7 @@ x + f
 
 Our first command, `getwd()`, returns the current working directory. We can create multiple chunks to run code separately.
 
-**`Ctrl+Alt+I / Cmd+Options+I`** - to create new chunk.\
+**`Ctrl+Alt+I / Cmd+Option+I`** - to create new chunk.\
 Or on top of the screen: `Insert > Executable cell > R`
 
 `{r}` means that the code should be interpreted as R.
@@ -83,7 +85,7 @@ knitr::opts_chunk$set(echo = TRUE, out.width = "100%")
 
 ## Tips for you
 
-Press `Tab` while writing something and RStudio will help you. Often it helps even without pressing the button :)
+Press `Tab` while typing code to see completion suggestions. RStudio often shows suggestions automatically.
 
 ```{r}
 #
@@ -91,9 +93,9 @@ Press `Tab` while writing something and RStudio will help you. Often it helps ev
 
 ## Markdown
 
-> **Markdown** - is *markup language for creating formatted text*
+> **Markdown** is a markup language for creating formatted text.
 
-Most useful formattings:
+Common formatting options:
 
 - \*\*bold text\*\* - **bold text**
 
@@ -163,7 +165,7 @@ Use the assignment operator `<-` to give a value to a variable: read `height <- 
 
 > In RStudio, press **Alt + -** on Windows/Linux or **Option + -** on macOS to insert `<-`.
 
-We can just run code with name of variable to see its value
+Run a variable’s name to see its value.
 
 ```{r}
 variable
@@ -171,7 +173,7 @@ var_character
 var_bool
 ```
 
-> Create variable `height` and show its value
+> Create a variable named `height` and display its value.
 
 ```{r}
 height <- 100
@@ -185,7 +187,7 @@ variable <- variable + 100
 variable
 ```
 
-> The kid grew up by 10. Change the value of variable `height`
+> The child grew 10 cm. Update `height`.
 
 ```{r}
 height <- height + 10
@@ -222,13 +224,12 @@ y + 2 * 3
 (y + 2) * 3
 ```
 
-> We have `height` and `weight`. Let's calculate Body mass index (`bmi`) = W / H(meters)\^2
+> We have `height` and `weight`. Let's calculate body mass index (`bmi`) = W / H(meters)\^2
 
 ```{r}
 height <- 170
 weight <- 68
-bmi <- weight / ((height/100)^2)
-bmi
+# bmi <- 
 ```
 
 ### Logical operations
@@ -237,7 +238,6 @@ bmi
 x > y
 x < y
 ```
-
 
 ```{r}
 x == y # is equal
@@ -256,7 +256,6 @@ age = 18
 18 <= age || lolkek
 ```
 
-
 ```{r}
 
 x < 10 & y < 10
@@ -268,7 +267,7 @@ true <- TRUE
 false <- FALSE
 ```
 
-`!` <-> "not"
+`!` \<-\> "not"
 
 ```{r}
 !true
@@ -281,11 +280,10 @@ false <- FALSE
 bmi_high <- 30
 bmi_low <- 18
 
-bmi_low < bmi & bmi < bmi_high 
+# bmi
 ```
 
 ::: {.callout-note title="Implicit type conversion in arithmetic"}
-
 R can convert types automatically during arithmetic, whether you use values directly or store them in variables. Logical values become numbers: `TRUE` becomes `1`, and `FALSE` becomes `0`.
 
 ```{r}
@@ -321,12 +319,11 @@ Convert numeric text **explicitly** before calculating:
 as.numeric(text_number) + 2 # 5
 as.numeric("3") * 2        # 6
 ```
-
 :::
 
 ## Vectors
 
-**Vector** is a simple one-dimensional array. **In R it can contain only [one type of data]{.underline}**. The function used to create vector is `c()`.
+**Vector** is a simple one-dimensional array. **In R it can contain only [one type of data]{.underline}**. The function used to create a vector is `c()`.
 
 Here we create some vectors and store them in corresponding variables:
 
@@ -338,9 +335,9 @@ v_character <- c("1","2","3","4")
 # c(T,1,0,F)
 ```
 
-*(R allows us not to write whole FALSE and TRUE, bur write only first letter)*
+*(R also provides `T` and `F` as abbreviations for `TRUE` and `FALSE`.)*
 
-Simple way to create integer vector
+- A simple way to create an integer vector (`start:end`)
 
 ```{r}
 1:5
@@ -348,13 +345,30 @@ Simple way to create integer vector
 -1:1
 ```
 
+- Special functions:
+
+If you want to use **step** (`by`)
+
+```{r}
+seq(from = 1, to = 20, by = 3)
+```
+
+If you want to repeat values several times
+
+```{r}
+rep(c(1, 2, 3), times = 3)
+rep(c(1, 2, 3), each = 3)
+```
+
+- Vectors can be combined
+
 ```{r}
 c(1:5, c(11,13,14))
 c(7:10, 1:5)
 c(1:5,7:10)
 ```
 
-***Values in vector are not sorted and unique by default!***
+***A vector can contain repeated values in any order.***
 
 > Create vector `scores` containing numbers from 10 to 20 and number 30 - students' scores from exam
 
@@ -364,55 +378,75 @@ c(1:5,7:10)
 
 ### Indexes
 
-We can access to the values of vector by indexes.
+Use indices to access values by their position in a vector.
 
 ```{r}
 vec <- c("A", "B", "C", "D", "E", "F")
 vec[3]
 vec[7]
+```
+
+`NA` indicates a missing value. It appears here because the vector has no seventh element.
+
+What if the index is negative...
+
+```{r}
+vec[-1]
 vecnew <- vec[-1]
 vecnew
 ```
 
-NA indicates a missing value. It appears here because the 7th element does not exist in the vector
-
-**What if we use vectors as indexes...?**
+**What if we use vectors as indexes...**
 
 ```{r}
-# vec[1,2,3] # ERROR
+# vec[1,2,3]
 vec[1:3]
 vec[3:1]
-vec[c(3,1,5)]
+vec[c(3,1,5)] 
 ```
 
-Inside of **`[ ]`** vector is interpreted as a indexes of values in `vec`
+A numeric vector inside **`[]`** gives the positions to select from `vec`.
 
-> Show what scores 2nd 3rd, 4th and 7th students have (use `scores` vector) and delete 5th and 6th students' scores (save new vector as `scores`)
+> Use `scores` to find the scores of the second, third, fourth, and seventh students. Then remove the fifth and sixth scores and save the result as `scores`.
 
 ```{r}
 # scores 
 # scores <-
 ```
 
-### Great feature of R language - vectorization
+### Vectorization
 
 #### Mathematical operations
 
 What will be the result of this operation?
 
 ```{r}
-vec1234 <- c(1, 2, 3, 4)
-vec1234 * 5
+vec1234 <- c(10, 20, 30, 40)
+vec1234 * 2
 # c(vec1234, 5)
 ```
 
-**Wow! Isn't it cool?** We can do anything with vectors not by using some operation for each value step by step, but using operation for each value **only once**
++------------------------+----+----+----+----+
+| Index                  | 1  | 2  | 3  | 4  |
++========================+====+====+====+====+
+| Original value         | 10 | 20 | 30 | 40 |
++------------------------+----+----+----+----+
+| Multiplier             | 2  | 2  | 2  | 2  |
++------------------------+----+----+----+----+
+| Result                 | 20 | 40 | 60 | 80 |
++------------------------+----+----+----+----+
+
+A single expression applies the operation to every element of the vector.
 
 ```{r}
 c(1, 2, 3, 4) + 5 - 2
 c(1, 2, 3, 4) ^ 2
 sqrt(vec1234)
-# !v_logical
+```
+
+```{r}
+v_logical <- c(TRUE, FALSE)
+!v_logical
 ```
 
 Moreover, we can perform **mathematical operations on two vectors**
@@ -425,9 +459,9 @@ vec_new <- vec123 * vec321
 vec_new
 ```
 
-***The result is also vector!***
+***The result is also a vector.***
 
-> We `heights` and `weights` of patients. Calculate their `BMIs` (W / H(meters)\^2) using vectorization.
+> We have the patients’ `heights` and `weights`. Calculate their BMIs (W / H(meters)\^2) using vectorization.
 
 ```{r}
 heights <- c(180, 170, 175, 196)
@@ -440,11 +474,15 @@ weights <- c(120, 80, 90, 59)
 Also vectorized
 
 ```{r}
-vec1234 > 2
+vec123 > 2
 ```
 
 ```{r}
 vec123 >= vec321
+```
+
+```{r}
+vec123 > 2 & vec123 < 4
 ```
 
 > Check if patients' `BMIs` high, normal or low using vectorization
@@ -456,14 +494,13 @@ bmi_low <- 18
 # BMIs 
 ```
 
-## The fun is just started!
+## The fun has just started!
 
-### Create vectors from vectors
+Create vectors from vectors
 
 ```{r}
-weights_of_seed <- c(1:4, 10:15, 4:7)
+weights_of_seed <- c(1:4, 10:15)
 weights_of_seed
-
 ```
 
 ### Use conditions (logic) inside square brackets
@@ -472,18 +509,32 @@ weights_of_seed
 weights_of_seed[weights_of_seed < 5]
 ```
 
-**Lets break out this**. Firstly, logical vector is created inside the brackets to filter the data. For example, we filter data with values more than 5
+**How logical indexing works**
+
+1.  The condition inside the brackets creates a logical vector. Here it checks whether each weight is less than 5.
 
 ```{r}
 logical_vector <- weights_of_seed < 5
 logical_vector
 ```
 
-Than logical vector "make" to filter out values which have "FALSE" in corresponding index
+2.  R keeps the values whose corresponding entries in the logical vector are `TRUE`.
 
 ```{r}
 weights_of_seed[logical_vector]
 ```
+
+**Example**
+
+| Index          | 1       | 2       | 3      | 4      |
+|----------------|---------|---------|--------|--------|
+| `x`            | 10      | 20      | 30     | 40     |
+| `x > 20`       | `FALSE` | `FALSE` | `TRUE` | `TRUE` |
+| x[x > 20]      | —       | —       | 30     | 40     |
+
+*-->* `x[x > 20]` returns `c(30, 40)`
+
+--------
 
 **It is VERY useful for filtering simple data.**
 
@@ -497,10 +548,13 @@ weights_of_seed[weights_of_seed < 10 & weights_of_seed > 2]
 bmi_high <- 30
 bmi_low <- 18
 
-# BMI[]
+# bmi[]
 ```
 
 ## Basic statistics
+
+Vectors are sets of some information that can be analyzed with some special statistics.
+We can already compute some statistics on numerical vectors!
 
 ### Length
 
@@ -508,13 +562,14 @@ bmi_low <- 18
 length(weights_of_seed)
 ```
 
-We can already compute some statistics on numerical vectors!
-
+### Mean and Median
 ```{r}
 sum(weights_of_seed) / length(weights_of_seed)
 mean(weights_of_seed)
 median(weights_of_seed)
 ```
+
+### Variance and standard deviation
 
 ```{r}
 var(weights_of_seed)
@@ -547,11 +602,13 @@ mean_value <- mean(weights_of_seed)
 weights_of_seed[weights_of_seed > mean_value]
 ```
 
-> How many students' scores are in `scores` vector?
+> How many students’ scores are in the `scores` vector?
 >
-> Calculate mean, median of `scores`
+> Calculate the mean and median of `scores`.
 >
-> What's the minimal score ?
+> What is the minimum score?
+> 
+> How many scores are below the median?
 
 ```{r}
 # scores
@@ -567,7 +624,7 @@ students_names <- c('Daniel', 'Sasha', 'Robert', 'Alice',
 age <- c(15, 32, 18, 8, 23, 17,22, 23)
 ```
 
-Students **older than 18**
+Students **aged 18 or older**
 
 ```{r}
 students_names[age >= 18] # ANY logical vector!
@@ -575,63 +632,30 @@ students_names[age >= 18] # ANY logical vector!
 
 *Using one vector as condition for extracting data from another*
 
-**What if we want to extract names AND their age**? We can set names for each value in vector using `names()` function
-
-`names()` function returns names from vector. Vector `student_age` had no names:
-
-```{r}
-students_age_vec <- age
-names(students_age_vec)
-```
-
-And we can set such names as we do it with variables:
-
-```{r}
-names(students_age_vec) <- students_names
-students_age_vec
-```
-
-**Now we can access values using names!**
-
-```{r}
-students_age_vec['Alice']
-```
-
-Another way to create "named" vector:
-
-```{r}
-named_vec <- c("vlaue1" = 1, "value2" = 2, "value3" = 3)
-named_vec
-```
-
-> Create named vector from first 6 values `scores`
-
-```{r}
-students <- c('Sasha', 'Masha', 'Marina', 'Adelya', 'Negin', 'Alice')
-# scores_named <- scores
-```
+**What if we want to extract names AND their age**? 
 
 ### List
 
+An atomic vector stores values of one type. A list can hold vectors and other objects of different types.
+
+
+We can create the list from our previous vectors
+
 ```{r}
-students_age_list <- list(students_names, age)
+students_age_list <- list(students_names, 
+                          age)
+
 students_age_list
 ```
 
-```{r}
-# students_age_list['Alice'] # NOTHING
-```
 
-Now we can add several vectors inside same "structure". Let's add weight and height and set names to each vector:
+Each **component** can be named. Now we can add several vectors inside same list. Let's add weight and height and set names to each vector:
 
 ```{r}
-height <- c(175, 181, 188, 120, 170, 168, 178, 172)
-weight <- c(70, 75, 80, 45, 55, 50, 78, 62)
-
 students_list <- list(names = students_names,
                      age=age,
-                     height=height,
-                     weight=weight)
+                     height=c(175, 181, 188, 120, 170, 168, 178, 172),
+                     weight=c(70, 75, 80, 45, 55, 50, 78, 62))
 
 students_list
 ```
@@ -640,48 +664,57 @@ Each vector represents a piece of information about each student. Vectors here a
 
 #### List data access
 
-We can access **vectors (\~columns)** in several ways
+We can access list components in several ways:
 
 ```{r}
 students_list[2] # NOT A VECTOR
 
 students_list[[2]] # VECTOR
 
-students_list$weight  # vector
+students_list$weight  # VECTOR
 ```
 
-Certain values:
+**This does not work**
+
+```{r}
+# students_age_list['Alice'] # NOTHING
+```
+Access certain values:
 
 ```{r}
 # students_list[[2]][5]
 
-students_list$age[5]
+students_list$age[5] 
 ```
 
 #### Important note
 
-The list may contain many vectors, and **not of the same length!**
+A list can contain components of different lengths.
 
-```{r}
+
+
+``` {r} 
 list(
-  c(1,2,3,4,5),
-  c('A', 'B', 'C')
+  numbers = c(1, 2, 3, 4, 5),
+  letters = c('A', 'B', 'C'),
+  logical = TRUE
 )
 ```
 
-It is not necessary to include NA (empty) values to save the "table" structure. This makes the list a little bit more flexible, but inconvenient for storing **tabular data**.
+**So it is not a table!**
+This makes the list a little bit more flexible, but inconvenient for storing **tabular data**.
 
 ```{r}
 marks_of_students <- list(
-  Alice = c(5,4,5,3,4,4),
-  Sasha = c(3,3,3),
-  Robert = c(5,5,5,5)
+  Alice = c(5, 4, 5, 3, 4, 4),
+  Sasha = c(3, 3, 3),
+  Robert = c(5, 5, 5, 5)
 )
 
 marks_of_students
 ```
 
-If each value in every vector represent piece of information about the same students, then we should know the student's name index and then access all vectors by this index. In other words, **how to extract the row**?
+If the vectors describe the same students in the same order, find the position of the student’s name and use it to access the corresponding values in the other vectors.
 
 ```{r}
 index_alice <- which(students_list$names == 'Alice')
@@ -691,7 +724,7 @@ students_list$weight[index_alice]
 
 ```
 
-- `which(logical_vector)` - return positions where `logical_vector` contain `TRUE`
+- `which(logical_vector)` returns the indices of all `TRUE` entries.
 
 > Create list containing vectors `scores` and `students` vectors and name them "Marks" and "Names"
 >
@@ -701,11 +734,13 @@ students_list$weight[index_alice]
 # somelist <- 
 ```
 
-Is there more convenient way to store tabular data?
+*Is there more convenient way to store tabular data?*
+
+-------------
 
 ## Data frames
 
-We created 4 vectors for each trait.
+Let's create 4 vectors for each trait.
 
 ```{r}
 students_names <- c('Daniel', 'Sasha', 'Robert', 'Alice', 
@@ -715,14 +750,17 @@ height <- c(175, 181, 188, 120, 170, 168, 178, 172)
 weight <- c(70, 75, 80, 45, 55, 50, 78, 62)
 ```
 
-**Now create data-frame!**
+**Now create a data-frame!**
+
+*The syntax looks like the syntax for creating a list.*
 
 ```{r}
-students_df <- data.frame(age=vec_age,
-                         height=height,
-                         weight=weight,
-                         
-                         row.names = students_names)
+students_df <- data.frame(
+  age = vec_age,
+  height = height,
+  weight = weight,
+  row.names = students_names
+)
 
 students_df
 ```
@@ -731,32 +769,41 @@ Now we have a beautiful representation of tabular data. In addition, data-frames
 
 ### Data access
 
-In some principles, `data.frame` is similar to `list`
+In some ways `data.frame` is similar to `list`
+
+**1. Indexing**
+
+With a single index inside `[]`, R selects columns by position or name.
 
 ```{r}
-students_df[1] # differs from list :)
-students_df[[1]]
-
-# with one value inside [] it is iterpreted as a column name (name of vector in list)
-students_df["age"]
-students_df$age
+students_df[1] # returns a 1st column (data.frame)
+students_df["age"] # returns a column named 'age' (data.frame)
 ```
 
-Accessing the data in specific row **and** column:
+```{r}
+students_df[[1]] # returns a vector (1st column)
+students_df$age # returns a vector (column 'age')
+```
+
+Accessing the data in specific row **and** column with `[row_name, column_name]`
 
 ```{r}
-# With two values: [row_name, column_name]
-students_df["Daniel", 'weight'] 
+students_df["Daniel", 'weight']
+```
+
+Leave the row or column index blank to select all rows or columns, respectively.
+
+```{r}
 students_df[1, ]
 ```
+
+As for vectors, we can use vectors inside of `[]` to select several rows/columns
 
 ```{r}
 students_df[2:4, 2:3]
 students_df[c(3,1,5), ]
 
 students_df[c('Sasha', 'Robert', 'Alice'), c("height", "weight")]
-
-# "empty" column value mean "all columns"
 students_df[c('Sasha', 'Robert', 'Alice'), ]
 ```
 
@@ -768,15 +815,17 @@ students_df[c('Sasha', 'Robert', 'Alice'), ]
 # students_itmo <- 
 ```
 
-### New column
+### Creating new column
 
 ```{r}
 
 # factor variables (why to use them over character)
 
-students_df$column <- c(1,2,3,4,4,5,5,6)
+students_df$column <- c(1, 2, 3, 4, 4, 5, 5, 6)
 
-students_df$city <- c(rep('Moscow', 3), rep('SPb', 3), rep('Kazan', 2))
+students_df$city <- c(rep('Moscow', 3), 
+                      rep('SPb', 3), 
+                      rep('Kazan', 2))
 
 students_df$is_tall <- ifelse(students_df$height >= 180, 'Tall', 'Short')
 
@@ -789,22 +838,9 @@ students_df$age_range <- cut(
 students_df
 ```
 
-- `rep(value, number)` - creates vector containing `value` `number` times
-
 - `ifelse(condition, value_if_true, value_if_false)` - returns `value_if_true`, if `condition` is `TRUE` and `value_if_false` otherwise
 
 - `cut(vector, breaks = c(...))` - breaks values in `vector` into ranges according to `breaks` and returns ranges in format `(x, y]` or return `labels` if sepcified
-
-#### Transforming types
-
-```{r}
-students_df$is_tall <- as.factor(students_df$is_tall)
-students_df$city <-  as.factor(students_df$city)
-```
-
-- `as.factor()` - transform column with numeric or character type into **factor**
-
-- `as.numeric(), as.character, as.list() ….`
 
 ### Deleting a column
 
@@ -823,6 +859,8 @@ students_df[order(students_df$age), ]
 students_df[order(students_df$age, decreasing = T),]
 ```
 
+- `order(signal)` returns the indices needed to arrange the values of `signal` in sorted order.
+
 > Add to `students_itmo` new columns "subject" and "avg_score".
 >
 > Transform "subject" into factor.
@@ -832,7 +870,7 @@ students_df[order(students_df$age, decreasing = T),]
 > Delete `Marks` column
 
 ```{r}
-subject <- c('math', 'phys', 'math', 'statisctics', 'molevo', 'biology')
+subject <- c('math', 'phys', 'math', 'statistics', 'molevo', 'biology')
 avg_score <- c(4,5,4,3,5,4)
 
 #students_itmo
@@ -840,26 +878,34 @@ avg_score <- c(4,5,4,3,5,4)
 
 ### Filtering
 
+Use a logical vector to filter a data frame. Put the condition before the comma to filter rows or after the comma to filter columns.
+
 ```{r}
 students_df[students_df$height > 170, ]
 
-students_df[students_df$height > 170 & age > 20, ]
+students_df[students_df$height > 170 & students_df$age > 20, ]
 
 students_df[students_df$city %in% c('Moscow', 'SPb'), ]
 
 subset(students_df, height > 170)
 ```
 
-> Extract rows from `students_itmo` which have avg_score **4 \<=**
+- `vector %in% set_vector` - for each value from `vector` returns `TRUE` if value from `vector` is presented among values of `set_vector` 
+- `subset(data.frame, condition)` -- function subsetting `data.frame` by `condition`
+
+> Extract rows from `students_itmo` where `avg_score >= 4`.
 
 ```{r}
 # students_itmo 
+
 ```
 
-### Describe data-frame
+### Inspect a data frame
+
+Useful for a first look at the data:
 
 ```{r}
-str(students_df) # useful for a first look at the data
+str(students_df) # 
 ```
 
 ```{r}
@@ -867,16 +913,20 @@ colnames(students_df)
 rownames(students_df)
 
 dim(students_df) #rows and columns number
+nrow(students_df)
+ncol(students_df)
 ```
 
 ### Summary statistics
 
 ```{r}
-students_df$is_tall <-as.factor(students_df$is_tall)
+# students_df$is_tall <- as.factor(students_df$is_tall)
 summary(students_df)
 ```
 
-Create contingency table of the counts at each combination of factor levels
+**Notice that `summary()` gives different information for character columns than for numeric columns. We will return to this shortly.**
+
+Create contingency table of the counts at each combination of factor levels:
 
 ```{r}
 table(students_df$city)
@@ -897,6 +947,69 @@ addmargins(contingency_table)
 # 
 ```
 
+
+-----------
+
+#### Transforming types
+
+Use functions such as `is.double()`, `is.integer()`, and `is.logical()` to check the type of data in a column. Each function returns `TRUE` or `FALSE`.
+
+```{r}
+is.logical(students_df$age)
+is.numeric(students_df$age)
+```
+
+Functions such as `as.character()` and `as.numeric()` try to convert their input to another type.
+
+```{r}
+as.character(students_df$age)
+as.numeric(students_df$age_range)
+as.logical(students_df$age)
+```
+
+Use `as.numeric()` when numbers were imported as text. **Conversion returns a new value. To keep the result, assign it to a variable.**
+
+| Type        | Type check        | Conversion        |
+|-------------|-------------------|-------------------|
+| `double`    | `is.double(x)`    | `as.double(x)`, `as.numeric(x)` |
+| `logical`   | `is.logical(x)`   | `as.logical(x)`   |
+| `character` | `is.character(x)` | `as.character(x)` |
+
+Use `typeof()` to find the underlying data type.
+
+```{r}
+typeof(students_df$age)
+typeof(students_df$city)
+```
+
+##### Factors
+
+A character vector can store category labels. A **factor** also records the set of categories and their order as **levels**. Levels are useful for counting observations by group, sorting, and plotting.
+
+```{r}
+students_df$is_tall <- as.factor(students_df$is_tall)
+students_df$is_tall
+summary(students_df)
+```
+
+`factor()` creates a factor from a vector. Use the `levels` argument to list the categories in the desired order.
+
+```{r}
+students_df$some_factor_column <- factor(c('a', 'b', 'b', 'a', 'a', 'b', 'b', 'a'),
+                                         levels = c('a', 'b'))
+
+students_df$some_factor_column[1] > students_df$some_factor_column[2]
+```
+
+To compare categories with `<` and `>`, create an ordered factor with `ordered = TRUE`.
+
+```{r}
+students_df$some_factor_column <- factor(c('a', 'b', 'b', 'a', 'a', 'b', 'b', 'a'),
+                                         levels = c('a', 'b'), ordered = TRUE)
+
+students_df$some_factor_column[1] > students_df$some_factor_column[2]
+```
+
 ## P.S.
 
 ### `View()`
@@ -911,7 +1024,7 @@ View(students_df)
 aggregate(age ~ city, students_df, mean)
 ```
 
-**We grouped ages by city and than run function (here we calculated mean) for values in these groups**
+**We grouped the observations by city and calculated the mean age for each city.**
 
 Median of heights inside each group of `age_range`:
 
