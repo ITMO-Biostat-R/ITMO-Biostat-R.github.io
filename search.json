@@ -439,5 +439,152 @@
     "title": "Prac #1. Basic R",
     "section": "P.S.",
     "text": "P.S.\n\nView()\n\nView(students_df)\n\n\n\nAggregation\n\naggregate(age ~ city, students_df, mean)\n\n    city      age\n1  Kazan 22.50000\n2 Moscow 21.66667\n3    SPb 16.00000\n\n\nWe grouped the observations by city and calculated the mean age for each city.\nMedian of heights inside each group of age_range:\n\naggregate(height ~ age_range, students_df, median)\n\n  age_range height\n1     Child    120\n2 Sub-adult    175\n3     Adult    172\n4       Old    181\n\n\n\n\nMatrices\n\nv &lt;- c(1,2,3,4,5,6)\n\nmatrix(v)\n\n     [,1]\n[1,]    1\n[2,]    2\n[3,]    3\n[4,]    4\n[5,]    5\n[6,]    6\n\nmatrix(v, nrow = 2)\n\n     [,1] [,2] [,3]\n[1,]    1    3    5\n[2,]    2    4    6\n\n# matrix(v, nrow = 3)\nmatrix(v, nrow = 2, byrow = T)\n\n     [,1] [,2] [,3]\n[1,]    1    2    3\n[2,]    4    5    6"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Biostatistics in R",
+    "section": "",
+    "text": "Course materials, practical exercises, presentations, and assignments in one place."
+  },
+  {
+    "objectID": "index.html#lessons",
+    "href": "index.html#lessons",
+    "title": "Biostatistics in R",
+    "section": "Lessons",
+    "text": "Lessons\n\nNotes and reproducible files for the practical classes.\n\n\n\n\n00\n\nGetting Started with RStudio\nInterface, projects, and workflow\n\n\n\n\n\n01\n\nBasic R\nPractice material\n\n\nDownload .qmd"
+  },
+  {
+    "objectID": "index.html#presentations",
+    "href": "index.html#presentations",
+    "title": "Biostatistics in R",
+    "section": "Presentations",
+    "text": "Presentations\n\nSlides used during the course.\n\n\n\n\nComing soon\nMaterials will be added as the course progresses."
+  },
+  {
+    "objectID": "index.html#trainers",
+    "href": "index.html#trainers",
+    "title": "Biostatistics in R",
+    "section": "Trainers",
+    "text": "Trainers\n\nIndependent practice in R.\n\n\n\n\n01\n\nBasic R practice\nVectors, lists, and data frames\n\n\n\n\nCourse on Stepik\nDownload .qmd"
+  },
+  {
+    "objectID": "index.html#homeworks",
+    "href": "index.html#homeworks",
+    "title": "Biostatistics in R",
+    "section": "Homeworks",
+    "text": "Homeworks\n\nAssignment descriptions and downloadable starter files.\n\n\n\n\nComing soon\nHomework assignments will be posted here."
+  },
+  {
+    "objectID": "index.html#reference-materials",
+    "href": "index.html#reference-materials",
+    "title": "Biostatistics in R",
+    "section": "Reference materials",
+    "text": "Reference materials\n\nSetup guides and useful resources for working with R.\n\n\n\n\n01\n\nInstalling R and RStudio\nInstallation and setup guide"
+  },
+  {
+    "objectID": "trainers/basic_r_practice.html",
+    "href": "trainers/basic_r_practice.html",
+    "title": "Basic R practice",
+    "section": "",
+    "text": "This practice contains 11 core tasks followed by two optional tasks. Each task is independent. Write R code that saves the requested answer as result.\nOn Stepik, the input variables are prepared automatically and your saved result is checked automatically. Here you need to check your answers by yourself."
+  },
+  {
+    "objectID": "trainers/basic_r_practice.html#how-to-work",
+    "href": "trainers/basic_r_practice.html#how-to-work",
+    "title": "Basic R practice",
+    "section": "",
+    "text": "This practice contains 11 core tasks followed by two optional tasks. Each task is independent. Write R code that saves the requested answer as result.\nOn Stepik, the input variables are prepared automatically and your saved result is checked automatically. Here you need to check your answers by yourself."
+  },
+  {
+    "objectID": "trainers/basic_r_practice.html#solution-concentration",
+    "href": "trainers/basic_r_practice.html#solution-concentration",
+    "title": "Basic R practice",
+    "section": "1. Solution concentration",
+    "text": "1. Solution concentration\nA solution contains a known amount of a dissolved substance. Calculate its concentration in mg/L and save it as result.\nVariables already available in R\n\nmass_mg – mass of the dissolved substance in milligrams\nvolume_ml – volume of the solution in millilitres\n\n\nmass_mg &lt;- 30\nvolume_ml &lt;- 250\n\n# Write your solution here.\n# result &lt;- ...\n\nExample result\n120"
+  },
+  {
+    "objectID": "trainers/basic_r_practice.html#a-sequence-with-a-fixed-step",
+    "href": "trainers/basic_r_practice.html#a-sequence-with-a-fixed-step",
+    "title": "Basic R practice",
+    "section": "2. A sequence with a fixed step",
+    "text": "2. A sequence with a fixed step\nCreate a numeric vector that starts at start and increases by step without exceeding end. Include end if the sequence reaches it. Save the vector as result.\nVariables already available in R\n\nstart – first value\nend – upper limit, at least start\nstep – positive increment between values\n\n\nstart &lt;- 2\nend &lt;- 12\nstep &lt;- 3\n\n# Write your solution here.\n# result &lt;- ...\n\nExample result\n2 5 8 11"
+  },
+  {
+    "objectID": "trainers/basic_r_practice.html#treatment-and-control-groups",
+    "href": "trainers/basic_r_practice.html#treatment-and-control-groups",
+    "title": "Basic R practice",
+    "section": "3. Treatment and control groups",
+    "text": "3. Treatment and control groups\nAn experiment has a treatment group and a control group. Make a character vector with one label per participant. Put all the \"treatment\" labels first, followed by the \"control\" labels. Save the vector as result.\nVariables already available in R\n\nn_treatment – number of participants in the treatment group\nn_control – number of participants in the control group\n\n\nn_treatment &lt;- 3\nn_control &lt;- 2\n\n# Write your solution here.\n# result &lt;- ...\n\nExample result\ntreatment treatment treatment control control"
+  },
+  {
+    "objectID": "trainers/basic_r_practice.html#a-faulty-reading",
+    "href": "trainers/basic_r_practice.html#a-faulty-reading",
+    "title": "Basic R practice",
+    "section": "4. A faulty reading",
+    "text": "4. A faulty reading\nOne reading was recorded incorrectly, and you know its position. Remove that entry, keep the other readings in their original order, and save the vector as result.\nVariables already available in R\n\nreadings – numeric vector of recorded measurements\nfaulty_position – position of the faulty reading, counting from 1\n\n\nreadings &lt;- c(110, 95, 103, 95, 112)\nfaulty_position &lt;- 2\n\n# Write your solution here.\n# result &lt;- ...\n\nExample result\n110 103 95 112"
+  },
+  {
+    "objectID": "trainers/basic_r_practice.html#mass-without-the-container",
+    "href": "trainers/basic_r_practice.html#mass-without-the-container",
+    "title": "Basic R practice",
+    "section": "5. Mass without the container",
+    "text": "5. Mass without the container\nEach sample was weighed in a container. Subtract the mass of its empty container to find the mass of each sample. Save the resulting vector as result.\nVariables already available in R\n\ngross_g – total masses of the samples with their containers, in grams\ncontainer_g – masses of the empty containers in the same order, in grams\n\n\ngross_g &lt;- c(28, 31, 25)\ncontainer_g &lt;- c(8, 10, 9)\n\n# Write your solution here.\n# result &lt;- ...\n\nExample result\n20 21 16"
+  },
+  {
+    "objectID": "trainers/basic_r_practice.html#samples-that-pass-quality-control",
+    "href": "trainers/basic_r_practice.html#samples-that-pass-quality-control",
+    "title": "Basic R practice",
+    "section": "6. Samples that pass quality control",
+    "text": "6. Samples that pass quality control\nA lab accepts samples whose signals fall within a specified range. Find the IDs of samples with signals from lower to upper, including both limits. Keep their original order and save the vector as result.\nVariables already available in R\n\nsample_id – character vector of sample IDs\nsignal – numeric vector of signals in the same order\nlower – minimum acceptable signal\nupper – maximum acceptable signal\n\n\nsample_id &lt;- c(\"S1\", \"S2\", \"S3\", \"S4\", \"S5\")\nsignal &lt;- c(105, 95, 92, 115, 110)\nlower &lt;- 95\nupper &lt;- 110\n\n# Write your solution here.\n# result &lt;- ...\n\nExample result\nS1 S2 S5"
+  },
+  {
+    "objectID": "trainers/basic_r_practice.html#readings-above-the-mean",
+    "href": "trainers/basic_r_practice.html#readings-above-the-mean",
+    "title": "Basic R practice",
+    "section": "7. Readings above the mean",
+    "text": "7. Readings above the mean\nA lab recorded several readings. Calculate their mean and count how many readings are strictly above it. Save the count as result.\nVariables already available in R\n\nsignal – numeric vector of recorded readings\n\n\nsignal &lt;- c(4, 6, 8, 22)\n\n# Write your solution here.\n# result &lt;- ...\n\nExample result\n1"
+  },
+  {
+    "objectID": "trainers/basic_r_practice.html#create-and-filter-a-data-frame",
+    "href": "trainers/basic_r_practice.html#create-and-filter-a-data-frame",
+    "title": "Basic R practice",
+    "section": "8. Create and filter a data frame",
+    "text": "8. Create and filter a data frame\nUse the sample data from the quality-control task to create a data frame with columns id and signal. Keep only rows whose signal is from lower to upper, including both limits. Keep the original row order and save the filtered data frame as result.\nVariables already available in R\n\nsample_id – character vector of sample IDs\nsignal – numeric vector of signals in the same order\nlower – minimum acceptable signal\nupper – maximum acceptable signal\n\n\nsample_id &lt;- c(\"S1\", \"S2\", \"S3\", \"S4\", \"S5\")\nsignal &lt;- c(105, 95, 92, 115, 110)\nlower &lt;- 95\nupper &lt;- 110\n\n# Write your solution here.\n# result &lt;- ...\n\nExample result\nid signal\n1 S1    105\n2 S2     95\n3 S5    110"
+  },
+  {
+    "objectID": "trainers/basic_r_practice.html#add-a-plant-mass-gain-column",
+    "href": "trainers/basic_r_practice.html#add-a-plant-mass-gain-column",
+    "title": "Basic R practice",
+    "section": "9. Add a plant mass gain column",
+    "text": "9. Add a plant mass gain column\nThe same plants were weighed at the start and end of an experiment. Calculate the final mass minus the initial mass for each plant. Add the values as a new column named gain_g and save the full data frame as result.\nVariables already available in R\n\nplants – data frame with one row per plant and columns id, start_g, and end_g. Both masses are in grams\n\n\nplants &lt;- data.frame(\n  id = c(\"P1\", \"P2\", \"P3\", \"P4\"),\n  start_g = c(12, 10, 14, 11),\n  end_g = c(16, 9, 16, 11)\n)\n\n# Write your solution here.\n# result &lt;- ...\n\nExample result\nid start_g end_g gain_g\n1 P1      12    16      4\n2 P2      10     9     -1\n3 P3      14    16      2\n4 P4      11    11      0"
+  },
+  {
+    "objectID": "trainers/basic_r_practice.html#count-samples-from-selected-channels",
+    "href": "trainers/basic_r_practice.html#count-samples-from-selected-channels",
+    "title": "Basic R practice",
+    "section": "10. Count samples from selected channels",
+    "text": "10. Count samples from selected channels\nA lab measured samples on several channels. Count the samples from the selected channels whose signal is at least min_signal. Save the count as result.\nVariables already available in R\n\nsamples – data frame with one row per sample and columns id, channel, and signal\nselected_channels – character vector of channels to include\nmin_signal – minimum signal to include\n\n\nsamples &lt;- data.frame(\n  id = c(\"S1\", \"S2\", \"S3\", \"S4\", \"S5\", \"S6\"),\n  channel = c(\"A\", \"B\", \"C\", \"A\", \"B\", \"C\"),\n  signal = c(103, 112, 110, 95, 88, 99)\n)\nselected_channels &lt;- c(\"A\", \"C\")\nmin_signal &lt;- 99\n\n# Write your solution here.\n# result &lt;- ...\n\nExample result\n3"
+  },
+  {
+    "objectID": "trainers/basic_r_practice.html#mean-signal-on-one-channel",
+    "href": "trainers/basic_r_practice.html#mean-signal-on-one-channel",
+    "title": "Basic R practice",
+    "section": "11. Mean signal on one channel",
+    "text": "11. Mean signal on one channel\nA lab wants to summarise readings from a single channel. Keep samples on the target channel with signals from lower to upper, including both limits. Calculate their mean signal to two decimal places and save it as result. At least one sample meets the conditions.\nVariables already available in R\n\nsamples – data frame with one row per sample and columns channel and signal\ntarget_channel – channel to analyse\nlower – minimum signal to include\nupper – maximum signal to include\n\nHint\nLook up ?round in R.\n\nsamples &lt;- data.frame(\n  channel = c(\"A\", \"B\", \"A\", \"A\", \"B\", \"A\"),\n  signal = c(95, 100, 110, 105, 98, 115)\n)\ntarget_channel &lt;- \"A\"\nlower &lt;- 95\nupper &lt;- 110\n\n# Write your solution here.\n# result &lt;- ...\n\nExample result\n103.33"
+  },
+  {
+    "objectID": "trainers/basic_r_practice.html#optional-practice-with-ifelse",
+    "href": "trainers/basic_r_practice.html#optional-practice-with-ifelse",
+    "title": "Basic R practice",
+    "section": "12. Optional practice with ifelse()",
+    "text": "12. Optional practice with ifelse()\nA reading passes quality control if it reaches the threshold. Use ifelse() to label each reading \"pass\" or \"fail\". Keep the original order and save the character vector as result.\nVariables already available in R\n\nsignal – numeric vector of readings\nthreshold – smallest reading that passes\n\nHint\nifelse(condition, value_if_true, value_if_false) chooses a value for each element of a logical vector. For example, ifelse(c(TRUE, FALSE, TRUE), \"yes\", \"no\") returns c(\"yes\", \"no\", \"yes\").\n\nsignal &lt;- c(105, 95, 92, 115)\nthreshold &lt;- 95\n\n# Write your solution here.\n# result &lt;- ...\n\nExample result\npass pass fail pass"
+  },
+  {
+    "objectID": "trainers/basic_r_practice.html#optional-practice-with-which",
+    "href": "trainers/basic_r_practice.html#optional-practice-with-which",
+    "title": "Basic R practice",
+    "section": "13. Optional practice with which()",
+    "text": "13. Optional practice with which()\nA lab keeps sample IDs and signals in separate components of a list. Use which() to find the position of the target ID, then use that position to get its signal. Save the signal as result.\nVariables already available in R\n\nrun – list with id and signal vectors in the same order\ntarget_id – sample ID to look up, appearing exactly once in run$id\n\nHint\nwhich(c(FALSE, TRUE, FALSE)) returns 2. Compare run$id with target_id to create a logical vector. Use the position returned by which() to select an element of run$signal.\n\nrun &lt;- list(\n  id = c(\"S1\", \"S2\", \"S3\", \"S4\"),\n  signal = c(105, 95, 92, 115)\n)\ntarget_id &lt;- \"S3\"\n\n# Write your solution here.\n# result &lt;- ...\n\nExample result\n92"
   }
 ]

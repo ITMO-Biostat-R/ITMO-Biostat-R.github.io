@@ -179,6 +179,16 @@ main.content h2 {
   line-height: 1;
 }
 
+.resource-external::before {
+  content: "\2197";
+}
+
+.resource-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
 .resource-download:hover,
 .resource-download:focus-visible {
   border-color: var(--course-blue);
@@ -249,5 +259,13 @@ main.content h2 {
 
   .resource-row:not(.resource-row-simple) .resource-download {
     margin-left: 3.1rem;
+  }
+
+  .resource-actions {
+    margin-left: 3.1rem;
+  }
+
+  .resource-row:not(.resource-row-simple) .resource-actions .resource-download {
+    margin-left: 0;
   }
 }

@@ -1,0 +1,358 @@
+---
+title: "Basic R practice"
+format:
+  html:
+    toc: true
+    code-copy: true
+editor: visual
+---
+
+## How to work
+
+This practice contains 11 core tasks followed by two optional tasks. Each task is independent. Write R code that saves the requested answer as `result`.
+
+On Stepik, the input variables are prepared automatically and your saved result is checked automatically. **Here you need to check your answers by yourself.**
+
+## 1. Solution concentration
+
+A solution contains a known amount of a dissolved substance. Calculate its concentration in mg/L and save it as `result`.
+
+**Variables already available in R**
+
+- `mass_mg` -- mass of the dissolved substance in milligrams
+- `volume_ml` -- volume of the solution in millilitres
+
+```{r}
+mass_mg <- 30
+volume_ml <- 250
+
+# Write your solution here.
+# result <- ...
+```
+
+**Example result**
+
+``` text
+120
+```
+
+## 2. A sequence with a fixed step
+
+Create a numeric vector that starts at `start` and increases by `step` without exceeding `end`. Include `end` if the sequence reaches it. Save the vector as `result`.
+
+**Variables already available in R**
+
+- `start` -- first value
+- `end` -- upper limit, at least `start`
+- `step` -- positive increment between values
+
+```{r}
+start <- 2
+end <- 12
+step <- 3
+
+# Write your solution here.
+# result <- ...
+```
+
+**Example result**
+
+``` text
+2 5 8 11
+```
+
+## 3. Treatment and control groups
+
+An experiment has a treatment group and a control group. Make a character vector with one label per participant. Put all the `"treatment"` labels first, followed by the `"control"` labels. Save the vector as `result`.
+
+**Variables already available in R**
+
+- `n_treatment` -- number of participants in the treatment group
+- `n_control` -- number of participants in the control group
+
+```{r}
+n_treatment <- 3
+n_control <- 2
+
+# Write your solution here.
+# result <- ...
+```
+
+**Example result**
+
+``` text
+treatment treatment treatment control control
+```
+
+## 4. A faulty reading
+
+One reading was recorded incorrectly, and you know its position. Remove that entry, keep the other readings in their original order, and save the vector as `result`.
+
+**Variables already available in R**
+
+- `readings` -- numeric vector of recorded measurements
+- `faulty_position` -- position of the faulty reading, counting from 1
+
+```{r}
+readings <- c(110, 95, 103, 95, 112)
+faulty_position <- 2
+
+# Write your solution here.
+# result <- ...
+```
+
+**Example result**
+
+``` text
+110 103 95 112
+```
+
+## 5. Mass without the container
+
+Each sample was weighed in a container. Subtract the mass of its empty container to find the mass of each sample. Save the resulting vector as `result`.
+
+**Variables already available in R**
+
+- `gross_g` -- total masses of the samples with their containers, in grams
+- `container_g` -- masses of the empty containers in the same order, in grams
+
+```{r}
+gross_g <- c(28, 31, 25)
+container_g <- c(8, 10, 9)
+
+# Write your solution here.
+# result <- ...
+```
+
+**Example result**
+
+``` text
+20 21 16
+```
+
+## 6. Samples that pass quality control
+
+A lab accepts samples whose signals fall within a specified range. Find the IDs of samples with signals from `lower` to `upper`, including both limits. Keep their original order and save the vector as `result`.
+
+**Variables already available in R**
+
+- `sample_id` -- character vector of sample IDs
+- `signal` -- numeric vector of signals in the same order
+- `lower` -- minimum acceptable signal
+- `upper` -- maximum acceptable signal
+
+```{r}
+sample_id <- c("S1", "S2", "S3", "S4", "S5")
+signal <- c(105, 95, 92, 115, 110)
+lower <- 95
+upper <- 110
+
+# Write your solution here.
+# result <- ...
+```
+
+**Example result**
+
+``` text
+S1 S2 S5
+```
+
+## 7. Readings above the mean
+
+A lab recorded several readings. Calculate their mean and count how many readings are strictly above it. Save the count as `result`.
+
+**Variables already available in R**
+
+- `signal` -- numeric vector of recorded readings
+
+```{r}
+signal <- c(4, 6, 8, 22)
+
+# Write your solution here.
+# result <- ...
+```
+
+**Example result**
+
+``` text
+1
+```
+
+## 8. Create and filter a data frame
+
+Use the sample data from the quality-control task to create a data frame with columns `id` and `signal`. Keep only rows whose signal is from `lower` to `upper`, including both limits. Keep the original row order and save the filtered data frame as `result`.
+
+**Variables already available in R**
+
+- `sample_id` -- character vector of sample IDs
+- `signal` -- numeric vector of signals in the same order
+- `lower` -- minimum acceptable signal
+- `upper` -- maximum acceptable signal
+
+```{r}
+sample_id <- c("S1", "S2", "S3", "S4", "S5")
+signal <- c(105, 95, 92, 115, 110)
+lower <- 95
+upper <- 110
+
+# Write your solution here.
+# result <- ...
+```
+
+**Example result**
+
+``` text
+id signal
+1 S1    105
+2 S2     95
+3 S5    110
+```
+
+## 9. Add a plant mass gain column
+
+The same plants were weighed at the start and end of an experiment. Calculate the final mass minus the initial mass for each plant. Add the values as a new column named `gain_g` and save the full data frame as `result`.
+
+**Variables already available in R**
+
+- `plants` -- data frame with one row per plant and columns `id`, `start_g`, and `end_g`. Both masses are in grams
+
+```{r}
+plants <- data.frame(
+  id = c("P1", "P2", "P3", "P4"),
+  start_g = c(12, 10, 14, 11),
+  end_g = c(16, 9, 16, 11)
+)
+
+# Write your solution here.
+# result <- ...
+```
+
+**Example result**
+
+``` text
+id start_g end_g gain_g
+1 P1      12    16      4
+2 P2      10     9     -1
+3 P3      14    16      2
+4 P4      11    11      0
+```
+
+## 10. Count samples from selected channels
+
+A lab measured samples on several channels. Count the samples from the selected channels whose signal is at least `min_signal`. Save the count as `result`.
+
+**Variables already available in R**
+
+- `samples` -- data frame with one row per sample and columns `id`, `channel`, and `signal`
+- `selected_channels` -- character vector of channels to include
+- `min_signal` -- minimum signal to include
+
+```{r}
+samples <- data.frame(
+  id = c("S1", "S2", "S3", "S4", "S5", "S6"),
+  channel = c("A", "B", "C", "A", "B", "C"),
+  signal = c(103, 112, 110, 95, 88, 99)
+)
+selected_channels <- c("A", "C")
+min_signal <- 99
+
+# Write your solution here.
+# result <- ...
+```
+
+**Example result**
+
+``` text
+3
+```
+
+## 11. Mean signal on one channel
+
+A lab wants to summarise readings from a single channel. Keep samples on the target channel with signals from `lower` to `upper`, including both limits. Calculate their mean signal to two decimal places and save it as `result`. At least one sample meets the conditions.
+
+**Variables already available in R**
+
+- `samples` -- data frame with one row per sample and columns `channel` and `signal`
+- `target_channel` -- channel to analyse
+- `lower` -- minimum signal to include
+- `upper` -- maximum signal to include
+
+Hint
+
+Look up `?round` in R.
+
+```{r}
+samples <- data.frame(
+  channel = c("A", "B", "A", "A", "B", "A"),
+  signal = c(95, 100, 110, 105, 98, 115)
+)
+target_channel <- "A"
+lower <- 95
+upper <- 110
+
+# Write your solution here.
+# result <- ...
+```
+
+**Example result**
+
+``` text
+103.33
+```
+
+## 12. Optional practice with ifelse()
+
+A reading passes quality control if it reaches the threshold. Use `ifelse()` to label each reading `"pass"` or `"fail"`. Keep the original order and save the character vector as `result`.
+
+**Variables already available in R**
+
+- `signal` -- numeric vector of readings
+- `threshold` -- smallest reading that passes
+
+Hint
+
+`ifelse(condition, value_if_true, value_if_false)` chooses a value for each element of a logical vector. For example, `ifelse(c(TRUE, FALSE, TRUE), "yes", "no")` returns `c("yes", "no", "yes")`.
+
+```{r}
+signal <- c(105, 95, 92, 115)
+threshold <- 95
+
+# Write your solution here.
+# result <- ...
+```
+
+**Example result**
+
+``` text
+pass pass fail pass
+```
+
+## 13. Optional practice with which()
+
+A lab keeps sample IDs and signals in separate components of a list. Use `which()` to find the position of the target ID, then use that position to get its signal. Save the signal as `result`.
+
+**Variables already available in R**
+
+- `run` -- list with `id` and `signal` vectors in the same order
+- `target_id` -- sample ID to look up, appearing exactly once in `run$id`
+
+Hint
+
+`which(c(FALSE, TRUE, FALSE))` returns `2`. Compare `run$id` with `target_id` to create a logical vector. Use the position returned by `which()` to select an element of `run$signal`.
+
+```{r}
+run <- list(
+  id = c("S1", "S2", "S3", "S4"),
+  signal = c(105, 95, 92, 115)
+)
+target_id <- "S3"
+
+# Write your solution here.
+# result <- ...
+```
+
+**Example result**
+
+``` text
+92
+```
