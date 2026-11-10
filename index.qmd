@@ -170,22 +170,23 @@ Materials will be added as the course progresses.
 Assignment descriptions and downloadable starter files.
 :::
 
-::::::::::::::: resource-list
-<!-- ::::: resource-row
+:::::: resource-list
+::::: resource-row
 :::: resource-info
 [01]{.resource-number}
 
 ::: resource-copy
 [Homework 1](./homeworks/HW1.qmd){.resource-title}
 
-[Exploring elephant data]{.resource-meta}
+[Exploring elephant data. Versions with and without hints.]{.resource-meta}
 :::
 ::::
 
-[Download .zip](./zipfiles/HW1.zip){.resource-download aria-label="Download Homework 1 files as ZIP"}
+<a href="zipfiles/HW1.zip" class="resource-download" download="HW1.zip" aria-label="Download both versions of Homework 1 as ZIP">Download ZIP</a>
 :::::
 
-::::: resource-row
+```{=html}
+<!-- ::::: resource-row
 :::: resource-info
 [02]{.resource-number}
 
@@ -226,14 +227,8 @@ Assignment descriptions and downloadable starter files.
 
 [Download .zip](./zipfiles/HW_final.zip){.resource-download aria-label="Download final homework files as ZIP"}
 ::::: -->
-
-::: {.resource-placeholder}
-[Coming soon]{.placeholder-label}
-
-Materials will be added as the course progresses.
-:::
-
-:::::::::::::::
+```
+::::::
 
 ## Reference materials
 

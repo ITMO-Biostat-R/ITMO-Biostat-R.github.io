@@ -2,13 +2,14 @@
 title: "Homework #1: Exploring elephant data"
 editor: visual
 ---
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
 ```
 
 # Introduction
 
-Download the provided dataset `ElephantsMF.csv` and place it in your working directory.
+Extract the homework ZIP and keep the `data/` folder next to your `.qmd` file. Use [`data/ElephantsMF.csv`](../data/ElephantsMF.csv) for the tasks below.
 
 The dataset contains the following columns:
 
@@ -19,22 +20,22 @@ The dataset contains the following columns:
 
 #### Instructions
 
+Open this Quarto document (`.qmd`) in RStudio. Add your R code to the code chunks and click **Render** to run the code and create an HTML report with your results.
+
 > **Every result must be shown! If you create or changing some variable/column/dataframe, show it!**
 
 > Don't forget to save your changes where needed
 
-For example, `dataset %>% function()` does not change the `dataset`, but `dataset = dataset %>% function()` does
+For example, `dataset |> function()` does not change the `dataset`, but `dataset <- dataset |> function()` does
 
 ------------------------------------------------------------------------
 
-## Downloading libraries
+## Loading dplyr
 
-**NB! This code is needed only for 5-22 tasks**
+Load `dplyr` for the data frame tasks.
 
 ```{r, warning=FALSE, message=FALSE}
-library(readr)
 library(dplyr)
-library(tidyr)
 ```
 
 # Tasks
@@ -44,13 +45,13 @@ library(tidyr)
 #### 1. Create vector containing numbers from -20 to 50 and numbers 100, 110
 
 ```{r}
-# vec =
+# vec <-
 ```
 
 #### 2. Subtract by 10 and [then]{.underline} divide by 2 each value in this vector and save result to `new_vec`
 
 ```{r}
-# new_vec = 
+# new_vec <-
 ```
 
 #### 3. Show values of `new_vec` which less than 10 and more than 0
@@ -61,8 +62,6 @@ library(tidyr)
 
 #### 4. Show mean value of `new_vec`
 
--   Use special function :)
-
 ```{r}
 # new_vec
 ```
@@ -72,15 +71,15 @@ library(tidyr)
 #### 5. Load the dataset using `read.csv()`, save it to variable `dataset` and show the first 10 rows.
 
 ```{r}
-# dataset <- read...
+# dataset <-
 #
 ```
 
--   Don't forget to set parameters to
-    -   specify NAs values
-    -   make character columns factors
-    -   first column a rowname
--   `head(...)` - by default it returns first 5 rows, but we need 10 :)
+- Don't forget to set parameters to
+  - specify NAs values
+  - make character columns factors
+  - first column a rowname
+- `head(...)` - by default it returns first 6 rows
 
 **5.1 Make `dataset` a tibble**
 
@@ -93,8 +92,6 @@ library(tidyr)
 ```{r}
 #
 ```
-
--   *Just use special functions*
 
 ## Data Cleaning
 
@@ -110,48 +107,49 @@ library(tidyr)
 #
 ```
 
--   *Tip*: just use `table()` or `unique()`
+- *Tip*: just use `distinct()` or `unique()`
 
 ## Data Transformation
 
 #### 9. Create a new column `Age_category` categorizing elephants based on `Age`:
 
--   "Young" for Age \< 5
+- "Young" for Age \< 5
 
--   "Sub-adult" for 5 \<= Age \< 15
+- "Sub-adult" for 5 \<= Age \< 15
 
--   "Adult" for Age \>= 15
+- "Adult" for Age \>= 15
 
 ```{r}
 ##
 ```
 
--   Use `cut()` - don't forget about parameter `labels = c(...)`
--   Ensure that you created column in your `dataset` !
+- *Tip*: use `mutate()` and `case_when()`
+- Ensure that you created column in your `dataset`
 
-#### 10. Create a column `Height_category` that splits `Height` into two categories: "Below Median" and "Above Median" based on the median height.
+#### 10. Create a column `Height_category` with two categories.
+
+- "Below Median" for heights below the median
+- "At or Above Median" for heights equal to or greater than the median
 
 ```{r}
 #
 ```
 
--   `median()` and `ifelse()`
--   Don't forget to make new column a **factor**
--   Ensure that you created column in your `dataset` !
+- `median()` and `ifelse()`
+- Don't forget to make new column a **factor**
+- Ensure that you created column in your `dataset`
 
-#### 11. Create a new column that contain the **Height in meters** (divide by 100), delete column with **Height in cm**.
+#### 11. Create a new column that contain the **Height in meters (!)**, and delete a column with **Height in cm**.
 
 ```{r}
 ##
 ```
 
--   You can set a new name of column or leave the old one.
+- You can set a new name of column or leave the old one.
 
--   Remember how to delete column
+- *Tip*: `mutate()`
 
--   *Tip*: `mutate()`. Parameter `.keep=...` may be useful to alternatively delete column
-
--   Ensure the column is created inside `dataset`
+- Ensure the column is created inside `dataset`
 
 #### 12. Round column `Height` in meters to two decimal places (*e.g.* 1.4567 -\> 1.46), i.e. replace values in column with rounded ones
 
@@ -159,9 +157,9 @@ library(tidyr)
 #
 ```
 
--   *Tip:* `round()` and look for a specific parameter
+- *Tip:* `round()` and look for a specific parameter
 
--   Ensure the column is modified inside `dataset`
+- Ensure the column is modified inside `dataset`
 
 ## Exploratory Data Analysis
 
@@ -171,33 +169,34 @@ library(tidyr)
 ##
 ```
 
--   Don't forget that `mean()` works only on vectors
+- Don't forget that `mean()` works only on vectors
 
--   *if you are advanced user, you can use `group_by()` and `summarize()`*
+- *if you are advanced user, you can use `group_by()` and `summarize()`*
 
-#### 14. Identify the row with the maximum `Height` and print this row (not number of row!).
+#### 14. Find the maximum `Height` in metres and show the full row for the tallest elephant.
 
 ```{r}
 #
 ```
 
--   *Tip:* `which.max()`
+- *Tip*: `max()`, `filter()` and `==`
 
-#### 15. Show a counts and frequency tables for the `Age_category` column. Show both counts and frequencies
+#### 15. For each `Age_category`, show the number of elephants and the proportion of the full dataset in that category.
 
 ```{r}
 ##
 ```
 
--   `table()` and `prop.table()`
+- *Tip*: `group_by()`, `summarise()`, `length()`
+- For the proportion, divide each count by `nrow(dataset)`.
 
-#### 16. Show a contingency table of `Sex` and `Height_category` *(number of elephants for every combination of these two categories)*
+#### 16. Show one row for each combination of `Sex` and `Height_category`, with the number of elephants in that group.
 
 ```{r}
 #
 ```
 
--   `table()`
+- *Tip*: `group_by()` and count as in task 15.
 
 #### 17. Group dataset by `Height_category` and calculate `mean` and `sd` of `Age` for each group.
 
@@ -211,7 +210,7 @@ library(tidyr)
 #
 ```
 
--   use special `dplyr` functions
+- use special `tidyverse` functions
 
 #### 19. Identify the top 3 tallest elephants and extract their `Age`, `Height`, and `Sex`.
 
@@ -219,7 +218,7 @@ library(tidyr)
 #
 ```
 
--   You may be using data arranging and `head()`
+- You may be using data arranging and `head()`
 
 #### 20. Show rows of the 3 tallest and 3 the shortest elephants (not separately, but within one dataset)
 
@@ -228,30 +227,30 @@ library(tidyr)
 
 ```
 
--   You may be using data arranging
--   basic functions (`head()` and `tail()`) can also be useful, but remember ***how*** ordered is your data
--   **+1 point if you make it by one line of code (show as one data.frame)**
-    -   *Tip:* you can use either `n()` or `nrow()` and `slice()`
+- You may be using data arranging
+- basic functions (`head()` and `tail()`) can also be useful, but remember ***how*** ordered is your data
+- **+1 point if you make it by one line of code (show as one data.frame)**
+  - *Tip:* Use `nrow()` to find the indices of the last 3 rows.
 
-#### 21. Identify 3 oldest elephants for each `Sex` and extract their `Age` and `Height`.
+#### 21. For each sex, show the `Age` and `Height` of the three oldest elephants. Show the results for females and males separately.
 
 ```{r}
 #
 ```
 
--   `group_by()` and `slice_head()`
+- *Tip*: `filter()`, `arrange()`, `head()`, `select()`
 
 ## Exporting Data
 
 #### 22. Save our modified `dataset` with new columns as a new CSV file.
 
-```{r, eval=FALSE}
+```{r}
 #
 ```
 
--   Name the file whatever you want
+- Name the file whatever you want
 
--   Set `row.names = FALSE` if you are using the base function. The function from `readr` works fine by itself
+- *Tip*: use `write.csv()` with `row.names = FALSE`.
 
 # Submission
 
