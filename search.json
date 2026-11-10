@@ -635,5 +635,61 @@
     "title": "Basic R practice",
     "section": "13. Optional practice with which()",
     "text": "13. Optional practice with which()\nA lab keeps sample IDs and signals in separate components of a list. Use which() to find the position of the target ID, then use that position to get its signal. Save the signal as result.\nVariables already available in R\n\nrun – list with id and signal vectors in the same order\ntarget_id – sample ID to look up, appearing exactly once in run$id\n\nHint\nwhich(c(FALSE, TRUE, FALSE)) returns 2. Compare run$id with target_id to create a logical vector. Use the position returned by which() to select an element of run$signal.\n\nrun &lt;- list(\n  id = c(\"S1\", \"S2\", \"S3\", \"S4\"),\n  signal = c(105, 95, 92, 115)\n)\ntarget_id &lt;- \"S3\"\n\n# Write your solution here.\n# result &lt;- ...\n\nExample result\n92"
+  },
+  {
+    "objectID": "homeworks/HW1.html",
+    "href": "homeworks/HW1.html",
+    "title": "Homework #1: Exploring elephant data",
+    "section": "",
+    "text": "Extract the homework ZIP and keep the data/ folder next to your .qmd file. Use data/ElephantsMF.csv for the tasks below.\nThe dataset contains the following columns:\n- rownames: Unique identifiers for each record (elephant).\n- Age: Age of the elephants (years).\n- Height: Height of the elephants (cm).\n- Sex: Sex of the elephants (M for Male, F for Female).\n\n\nOpen this Quarto document (.qmd) in RStudio. Add your R code to the code chunks and click Render to run the code and create an HTML report with your results.\n\nEvery result must be shown! If you create or changing some variable/column/dataframe, show it!\n\n\nDon’t forget to save your changes where needed\n\nFor example, dataset |&gt; function() does not change the dataset, but dataset &lt;- dataset |&gt; function() does\n\n\n\n\nLoad dplyr for the data frame tasks.\n\nlibrary(dplyr)"
+  },
+  {
+    "objectID": "homeworks/HW1.html#loading-dplyr",
+    "href": "homeworks/HW1.html#loading-dplyr",
+    "title": "Homework #1: Exploring elephant data",
+    "section": "",
+    "text": "Load dplyr for the data frame tasks.\n\nlibrary(dplyr)"
+  },
+  {
+    "objectID": "homeworks/HW1.html#vectors",
+    "href": "homeworks/HW1.html#vectors",
+    "title": "Homework #1: Exploring elephant data",
+    "section": "Vectors",
+    "text": "Vectors\n\n1. Create vector containing numbers from -20 to 50 and numbers 100, 110\n\n# vec &lt;-\n\n\n\n2. Subtract by 10 and then divide by 2 each value in this vector and save result to new_vec\n\n# new_vec &lt;-\n\n\n\n3. Show values of new_vec which less than 10 and more than 0\n\n# new_vec\n\n\n\n4. Show mean value of new_vec\n\n# new_vec"
+  },
+  {
+    "objectID": "homeworks/HW1.html#data-loading",
+    "href": "homeworks/HW1.html#data-loading",
+    "title": "Homework #1: Exploring elephant data",
+    "section": "Data Loading",
+    "text": "Data Loading\n\n5. Load the dataset using read.csv(), save it to variable dataset and show the first 10 rows.\n\n# dataset &lt;-\n#\n\n\nDon’t forget to set parameters to\n\nspecify NAs values\nmake character columns factors\nfirst column a rowname\n\nhead(...) - by default it returns first 6 rows\n\n5.1 Make dataset a tibble\n\n#\n\n\n\n6. Check the structure and summary of the data.\n\n#"
+  },
+  {
+    "objectID": "homeworks/HW1.html#data-cleaning",
+    "href": "homeworks/HW1.html#data-cleaning",
+    "title": "Homework #1: Exploring elephant data",
+    "section": "Data Cleaning",
+    "text": "Data Cleaning\n\n7. Check for missing values (NA) in the dataset (how many in each column?).\n\n#\n\n\n\n8. Verify that the Sex column contains only valid categories (M and F).\n\n#\n\n\nTip: just use distinct() or unique()"
+  },
+  {
+    "objectID": "homeworks/HW1.html#data-transformation",
+    "href": "homeworks/HW1.html#data-transformation",
+    "title": "Homework #1: Exploring elephant data",
+    "section": "Data Transformation",
+    "text": "Data Transformation\n\n9. Create a new column Age_category categorizing elephants based on Age:\n\n“Young” for Age &lt; 5\n“Sub-adult” for 5 &lt;= Age &lt; 15\n“Adult” for Age &gt;= 15\n\n\n##\n\n\nTip: use mutate() and case_when()\nEnsure that you created column in your dataset\n\n\n\n10. Create a column Height_category with two categories.\n\n“Below Median” for heights below the median\n“At or Above Median” for heights equal to or greater than the median\n\n\n#\n\n\nmedian() and ifelse()\nDon’t forget to make new column a factor\nEnsure that you created column in your dataset\n\n\n\n11. Create a new column that contain the Height in meters (!), and delete a column with Height in cm.\n\n##\n\n\nYou can set a new name of column or leave the old one.\nTip: mutate()\nEnsure the column is created inside dataset\n\n\n\n12. Round column Height in meters to two decimal places (e.g. 1.4567 -&gt; 1.46), i.e. replace values in column with rounded ones\n\n#\n\n\nTip: round() and look for a specific parameter\nEnsure the column is modified inside dataset"
+  },
+  {
+    "objectID": "homeworks/HW1.html#exploratory-data-analysis",
+    "href": "homeworks/HW1.html#exploratory-data-analysis",
+    "title": "Homework #1: Exploring elephant data",
+    "section": "Exploratory Data Analysis",
+    "text": "Exploratory Data Analysis\n\n13. Compute mean values of Height for each Sex (in meters)\n\n##\n\n\nDon’t forget that mean() works only on vectors\nif you are advanced user, you can use group_by() and summarize()\n\n\n\n14. Find the maximum Height in metres and show the full row for the tallest elephant.\n\n#\n\n\nTip: max(), filter() and ==\n\n\n\n15. For each Age_category, show the number of elephants and the proportion of the full dataset in that category.\n\n##\n\n\nTip: group_by(), summarise(), length()\nFor the proportion, divide each count by nrow(dataset).\n\n\n\n16. Show one row for each combination of Sex and Height_category, with the number of elephants in that group.\n\n#\n\n\nTip: group_by() and count as in task 15.\n\n\n\n17. Group dataset by Height_category and calculate mean and sd of Age for each group.\n\n#\n\n\n\n18. Show the rows for elephants taller than 2 metres but shorter than 2.5 metres, and younger than 15 years old. Then select the Age and Height columns.\n\n#\n\n\nuse special tidyverse functions\n\n\n\n19. Identify the top 3 tallest elephants and extract their Age, Height, and Sex.\n\n#\n\n\nYou may be using data arranging and head()\n\n\n\n20. Show rows of the 3 tallest and 3 the shortest elephants (not separately, but within one dataset)\n\n##\n\n\nYou may be using data arranging\nbasic functions (head() and tail()) can also be useful, but remember how ordered is your data\n+1 point if you make it by one line of code (show as one data.frame)\n\nTip: Use nrow() to find the indices of the last 3 rows.\n\n\n\n\n21. For each sex, show the Age and Height of the three oldest elephants. Show the results for females and males separately.\n\n#\n\n\nTip: filter(), arrange(), head(), select()"
+  },
+  {
+    "objectID": "homeworks/HW1.html#exporting-data",
+    "href": "homeworks/HW1.html#exporting-data",
+    "title": "Homework #1: Exploring elephant data",
+    "section": "Exporting Data",
+    "text": "Exporting Data\n\n22. Save our modified dataset with new columns as a new CSV file.\n\n#\n\n\nName the file whatever you want\nTip: use write.csv() with row.names = FALSE."
   }
 ]

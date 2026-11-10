@@ -102,7 +102,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
 
-<link rel="stylesheet" href="../styles.css?v=5cdac66f93bd">
+<link rel="stylesheet" href="../styles.css?v=f84c59ae3817">
 </head>
 
 <body class="nav-fixed">
@@ -135,10 +135,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Presentations</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../index.html#trainers">
+    <a class="nav-link" href="../index.html#trainers"> 
 <span class="menu-text">Trainers</span></a>
-  </li>
-    <li class="nav-item">
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="../index.html#homeworks"> 
 <span class="menu-text">Homeworks</span></a>
   </li>  
@@ -164,7 +164,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
   <ul class="collapse">
-  <li><a href="#downloading-libraries" id="toc-downloading-libraries" class="nav-link" data-scroll-target="#downloading-libraries">Downloading libraries</a></li>
+  <li><a href="#loading-dplyr" id="toc-loading-dplyr" class="nav-link" data-scroll-target="#loading-dplyr">Loading dplyr</a></li>
   </ul></li>
   <li><a href="#tasks" id="toc-tasks" class="nav-link" data-scroll-target="#tasks">Tasks</a>
   <ul class="collapse">
@@ -203,7 +203,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
-<p>Download the provided dataset <code>ElephantsMF.csv</code> and place it in your working directory.</p>
+<p>Extract the homework ZIP and keep the <code>data/</code> folder next to your <code>.qmd</code> file. Use <a href="../data/ElephantsMF.csv"><code>data/ElephantsMF.csv</code></a> for the tasks below.</p>
 <p>The dataset contains the following columns:</p>
 <p>- <code>rownames</code>: Unique identifiers for each record (elephant).<br>
 - <code>Age</code>: Age of the elephants (years).<br>
@@ -211,22 +211,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 - <code>Sex</code>: Sex of the elephants (<code>M</code> for Male, <code>F</code> for Female).</p>
 <section id="instructions" class="level4">
 <h4 class="anchored" data-anchor-id="instructions">Instructions</h4>
+<p>Open this Quarto document (<code>.qmd</code>) in RStudio. Add your R code to the code chunks and click <strong>Render</strong> to run the code and create an HTML report with your results.</p>
 <blockquote class="blockquote">
 <p><strong>Every result must be shown! If you create or changing some variable/column/dataframe, show it!</strong></p>
 </blockquote>
 <blockquote class="blockquote">
 <p>Don’t forget to save your changes where needed</p>
 </blockquote>
-<p>For example, <code>dataset %&gt;% function()</code> does not change the <code>dataset</code>, but <code>dataset = dataset %&gt;% function()</code> does</p>
+<p>For example, <code>dataset |&gt; function()</code> does not change the <code>dataset</code>, but <code>dataset &lt;- dataset |&gt; function()</code> does</p>
 <hr>
 </section>
-<section id="downloading-libraries" class="level2">
-<h2 class="anchored" data-anchor-id="downloading-libraries">Downloading libraries</h2>
-<p><strong>NB! This code is needed only for 5-22 tasks</strong></p>
+<section id="loading-dplyr" class="level2">
+<h2 class="anchored" data-anchor-id="loading-dplyr">Loading dplyr</h2>
+<p>Load <code>dplyr</code> for the data frame tasks.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
@@ -237,13 +236,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="create-vector-containing-numbers-from--20-to-50-and-numbers-100-110" class="level4">
 <h4 class="anchored" data-anchor-id="create-vector-containing-numbers-from--20-to-50-and-numbers-100-110">1. Create vector containing numbers from -20 to 50 and numbers 100, 110</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># vec =</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># vec &lt;-</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="subtract-by-10-and-then-divide-by-2-each-value-in-this-vector-and-save-result-to-new_vec" class="level4">
 <h4 class="anchored" data-anchor-id="subtract-by-10-and-then-divide-by-2-each-value-in-this-vector-and-save-result-to-new_vec">2. Subtract by 10 and <u>then</u> divide by 2 each value in this vector and save result to <code>new_vec</code></h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># new_vec = </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># new_vec &lt;-</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="show-values-of-new_vec-which-less-than-10-and-more-than-0" class="level4">
@@ -254,9 +253,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="show-mean-value-of-new_vec" class="level4">
 <h4 class="anchored" data-anchor-id="show-mean-value-of-new_vec">4. Show mean value of <code>new_vec</code></h4>
-<ul>
-<li>Use special function :)</li>
-</ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># new_vec</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -267,7 +263,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="load-the-dataset-using-read.csv-save-it-to-variable-dataset-and-show-the-first-10-rows." class="level4">
 <h4 class="anchored" data-anchor-id="load-the-dataset-using-read.csv-save-it-to-variable-dataset-and-show-the-first-10-rows.">5. Load the dataset using <code>read.csv()</code>, save it to variable <code>dataset</code> and show the first 10 rows.</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># dataset &lt;- read...</span></span>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># dataset &lt;-</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
@@ -277,7 +273,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>make character columns factors</li>
 <li>first column a rowname</li>
 </ul></li>
-<li><code>head(...)</code> - by default it returns first 5 rows, but we need 10 :)</li>
+<li><code>head(...)</code> - by default it returns first 6 rows</li>
 </ul>
 <p><strong>5.1 Make <code>dataset</code> a tibble</strong></p>
 <div class="cell">
@@ -289,9 +285,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<ul>
-<li><em>Just use special functions</em></li>
-</ul>
 </section>
 </section>
 <section id="data-cleaning" class="level2">
@@ -308,7 +301,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
-<li><em>Tip</em>: just use <code>table()</code> or <code>unique()</code></li>
+<li><em>Tip</em>: just use <code>distinct()</code> or <code>unique()</code></li>
 </ul>
 </section>
 </section>
@@ -325,30 +318,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="do">##</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
-<li>Use <code>cut()</code> - don’t forget about parameter <code>labels = c(...)</code></li>
-<li>Ensure that you created column in your <code>dataset</code> !</li>
+<li><em>Tip</em>: use <code>mutate()</code> and <code>case_when()</code></li>
+<li>Ensure that you created column in your <code>dataset</code></li>
 </ul>
 </section>
-<section id="create-a-column-height_category-that-splits-height-into-two-categories-below-median-and-above-median-based-on-the-median-height." class="level4">
-<h4 class="anchored" data-anchor-id="create-a-column-height_category-that-splits-height-into-two-categories-below-median-and-above-median-based-on-the-median-height.">10. Create a column <code>Height_category</code> that splits <code>Height</code> into two categories: “Below Median” and “Above Median” based on the median height.</h4>
+<section id="create-a-column-height_category-with-two-categories." class="level4">
+<h4 class="anchored" data-anchor-id="create-a-column-height_category-with-two-categories.">10. Create a column <code>Height_category</code> with two categories.</h4>
+<ul>
+<li>“Below Median” for heights below the median</li>
+<li>“At or Above Median” for heights equal to or greater than the median</li>
+</ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li><code>median()</code> and <code>ifelse()</code></li>
 <li>Don’t forget to make new column a <strong>factor</strong></li>
-<li>Ensure that you created column in your <code>dataset</code> !</li>
+<li>Ensure that you created column in your <code>dataset</code></li>
 </ul>
 </section>
-<section id="create-a-new-column-that-contain-the-height-in-meters-divide-by-100-delete-column-with-height-in-cm." class="level4">
-<h4 class="anchored" data-anchor-id="create-a-new-column-that-contain-the-height-in-meters-divide-by-100-delete-column-with-height-in-cm.">11. Create a new column that contain the <strong>Height in meters</strong> (divide by 100), delete column with <strong>Height in cm</strong>.</h4>
+<section id="create-a-new-column-that-contain-the-height-in-meters-and-delete-a-column-with-height-in-cm." class="level4">
+<h4 class="anchored" data-anchor-id="create-a-new-column-that-contain-the-height-in-meters-and-delete-a-column-with-height-in-cm.">11. Create a new column that contain the <strong>Height in meters (!)</strong>, and delete a column with <strong>Height in cm</strong>.</h4>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="do">##</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li><p>You can set a new name of column or leave the old one.</p></li>
-<li><p>Remember how to delete column</p></li>
-<li><p><em>Tip</em>: <code>mutate()</code>. Parameter <code>.keep=...</code> may be useful to alternatively delete column</p></li>
+<li><p><em>Tip</em>: <code>mutate()</code></p></li>
 <li><p>Ensure the column is created inside <code>dataset</code></p></li>
 </ul>
 </section>
@@ -375,31 +371,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p><em>if you are advanced user, you can use <code>group_by()</code> and <code>summarize()</code></em></p></li>
 </ul>
 </section>
-<section id="identify-the-row-with-the-maximum-height-and-print-this-row-not-number-of-row." class="level4">
-<h4 class="anchored" data-anchor-id="identify-the-row-with-the-maximum-height-and-print-this-row-not-number-of-row.">14. Identify the row with the maximum <code>Height</code> and print this row (not number of row!).</h4>
+<section id="find-the-maximum-height-in-metres-and-show-the-full-row-for-the-tallest-elephant." class="level4">
+<h4 class="anchored" data-anchor-id="find-the-maximum-height-in-metres-and-show-the-full-row-for-the-tallest-elephant.">14. Find the maximum <code>Height</code> in metres and show the full row for the tallest elephant.</h4>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
-<li><em>Tip:</em> <code>which.max()</code></li>
+<li><em>Tip</em>: <code>max()</code>, <code>filter()</code> and <code>==</code></li>
 </ul>
 </section>
-<section id="show-a-counts-and-frequency-tables-for-the-age_category-column.-show-both-counts-and-frequencies" class="level4">
-<h4 class="anchored" data-anchor-id="show-a-counts-and-frequency-tables-for-the-age_category-column.-show-both-counts-and-frequencies">15. Show a counts and frequency tables for the <code>Age_category</code> column. Show both counts and frequencies</h4>
+<section id="for-each-age_category-show-the-number-of-elephants-and-the-proportion-of-the-full-dataset-in-that-category." class="level4">
+<h4 class="anchored" data-anchor-id="for-each-age_category-show-the-number-of-elephants-and-the-proportion-of-the-full-dataset-in-that-category.">15. For each <code>Age_category</code>, show the number of elephants and the proportion of the full dataset in that category.</h4>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="do">##</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
-<li><code>table()</code> and <code>prop.table()</code></li>
+<li><em>Tip</em>: <code>group_by()</code>, <code>summarise()</code>, <code>length()</code></li>
+<li>For the proportion, divide each count by <code>nrow(dataset)</code>.</li>
 </ul>
 </section>
-<section id="show-a-contingency-table-of-sex-and-height_category-number-of-elephants-for-every-combination-of-these-two-categories" class="level4">
-<h4 class="anchored" data-anchor-id="show-a-contingency-table-of-sex-and-height_category-number-of-elephants-for-every-combination-of-these-two-categories">16. Show a contingency table of <code>Sex</code> and <code>Height_category</code> <em>(number of elephants for every combination of these two categories)</em></h4>
+<section id="show-one-row-for-each-combination-of-sex-and-height_category-with-the-number-of-elephants-in-that-group." class="level4">
+<h4 class="anchored" data-anchor-id="show-one-row-for-each-combination-of-sex-and-height_category-with-the-number-of-elephants-in-that-group.">16. Show one row for each combination of <code>Sex</code> and <code>Height_category</code>, with the number of elephants in that group.</h4>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
-<li><code>table()</code></li>
+<li><em>Tip</em>: <code>group_by()</code> and count as in task 15.</li>
 </ul>
 </section>
 <section id="group-dataset-by-height_category-and-calculate-mean-and-sd-of-age-for-each-group." class="level4">
@@ -414,7 +411,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
-<li>use special <code>dplyr</code> functions</li>
+<li>use special <code>tidyverse</code> functions</li>
 </ul>
 </section>
 <section id="identify-the-top-3-tallest-elephants-and-extract-their-age-height-and-sex." class="level4">
@@ -436,17 +433,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>basic functions (<code>head()</code> and <code>tail()</code>) can also be useful, but remember <strong><em>how</em></strong> ordered is your data</li>
 <li><strong>+1 point if you make it by one line of code (show as one data.frame)</strong>
 <ul>
-<li><em>Tip:</em> you can use either <code>n()</code> or <code>nrow()</code> and <code>slice()</code></li>
+<li><em>Tip:</em> Use <code>nrow()</code> to find the indices of the last 3 rows.</li>
 </ul></li>
 </ul>
 </section>
-<section id="identify-3-oldest-elephants-for-each-sex-and-extract-their-age-and-height." class="level4">
-<h4 class="anchored" data-anchor-id="identify-3-oldest-elephants-for-each-sex-and-extract-their-age-and-height.">21. Identify 3 oldest elephants for each <code>Sex</code> and extract their <code>Age</code> and <code>Height</code>.</h4>
+<section id="for-each-sex-show-the-age-and-height-of-the-three-oldest-elephants.-show-the-results-for-females-and-males-separately." class="level4">
+<h4 class="anchored" data-anchor-id="for-each-sex-show-the-age-and-height-of-the-three-oldest-elephants.-show-the-results-for-females-and-males-separately.">21. For each sex, show the <code>Age</code> and <code>Height</code> of the three oldest elephants. Show the results for females and males separately.</h4>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
-<li><code>group_by()</code> and <code>slice_head()</code></li>
+<li><em>Tip</em>: <code>filter()</code>, <code>arrange()</code>, <code>head()</code>, <code>select()</code></li>
 </ul>
 </section>
 </section>
@@ -459,7 +456,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <ul>
 <li><p>Name the file whatever you want</p></li>
-<li><p>Set <code>row.names = FALSE</code> if you are using the base function. The function from <code>readr</code> works fine by itself</p></li>
+<li><p><em>Tip</em>: use <code>write.csv()</code> with <code>row.names = FALSE</code>.</p></li>
 </ul>
 </section>
 </section>
