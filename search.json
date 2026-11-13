@@ -887,5 +887,40 @@
     "title": "Data visualization",
     "section": "Customizing color - scale_color_manual()",
     "text": "Customizing color - scale_color_manual()\nUse a manual color scale for point or line colors. Use the fill scale separately for filled areas.\n\niris_df |&gt; ggplot(aes(x=Sepal.Length, y=Sepal.Width, col=Species)) +\n  geom_point(alpha=0.6, size=4) +\n  theme_classic() +\n\nscale_color_manual(\n  values=c(\"#e63946\", \"#ffba49\", \"#457b9d\"),\n  labels=c('Setosa sp.', 'Versicolor sp.', 'Virginica sp.'),\n)"
+  },
+  {
+    "objectID": "homeworks/HW2_reference.html",
+    "href": "homeworks/HW2_reference.html",
+    "title": "Homework 2: Reference Plots",
+    "section": "",
+    "text": "These are example results for Homework 2. Different themes and colors are acceptable when they follow the task requirements. Plotting code is hidden."
+  },
+  {
+    "objectID": "homeworks/HW2_reference.html#important-notes-for-every-plot-you-create",
+    "href": "homeworks/HW2_reference.html#important-notes-for-every-plot-you-create",
+    "title": "Homework 2: Reference Plots",
+    "section": "{!} Important notes for every plot you create:",
+    "text": "{!} Important notes for every plot you create:\n\nName the axis and legends\nUse some theme (e.g. theme_classic()) if ggplot is used. Not necessarily the same one for all plots."
+  },
+  {
+    "objectID": "homeworks/HW2.html",
+    "href": "homeworks/HW2.html",
+    "title": "Homework 2: Data Visualization",
+    "section": "",
+    "text": "library(ggplot2)\nlibrary(dplyr)"
+  },
+  {
+    "objectID": "homeworks/HW2.html#working-with-this-homework",
+    "href": "homeworks/HW2.html#working-with-this-homework",
+    "title": "Homework 2: Data Visualization",
+    "section": "Working with this homework",
+    "text": "Working with this homework\nExtract all ZIP contents into one folder and open HW2.qmd in RStudio. Complete the code chunks, then click Render: Quarto runs your code and creates an HTML document. Submit your completed .qmd file. Keep the data folder beside HW2.qmd: it contains penguins.csv and the bundled image. Preserve this folder structure when extracting the ZIP.\nThis homework uses the Data visualization lesson and the data import, selection, and missing-value filtering covered in Working with Dataframes. Tasks marked with an asterisk are additional practice; complete task 1 before creating the plots."
+  },
+  {
+    "objectID": "homeworks/HW2.html#important-notes-for-every-plot-you-create",
+    "href": "homeworks/HW2.html#important-notes-for-every-plot-you-create",
+    "title": "Homework 2: Data Visualization",
+    "section": "{!} Important notes for every plot you create:",
+    "text": "{!} Important notes for every plot you create:\n\nName the axis and legends\nUse some theme (e.g. theme_classic()) if ggplot is used. Not necessarily the same one for all plots."
   }
 ]
