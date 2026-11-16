@@ -922,5 +922,411 @@
     "title": "Homework 2: Data Visualization",
     "section": "{!} Important notes for every plot you create:",
     "text": "{!} Important notes for every plot you create:\n\nName the axis and legends\nUse some theme (e.g. theme_classic()) if ggplot is used. Not necessarily the same one for all plots."
+  },
+  {
+    "objectID": "presentations/distributions_clt_ci_revised.html#types-of-data",
+    "href": "presentations/distributions_clt_ci_revised.html#types-of-data",
+    "title": "Distributions and statistics",
+    "section": "Types of Data",
+    "text": "Types of Data\n\nNumerical data: Continuous (e.g., height) or discrete (e.g., number of leaves).\nCategorical data: Nominal (e.g., species, gender) or ordinal (e.g., rankings)."
+  },
+  {
+    "objectID": "presentations/distributions_clt_ci_revised.html#sampling",
+    "href": "presentations/distributions_clt_ci_revised.html#sampling",
+    "title": "Distributions and statistics",
+    "section": "Sampling",
+    "text": "Sampling\nUsually we cannot take the whole population for a study.\n\nFor example, it is physically impossible to do a study using blood samples from all the people in the world. Sometimes the population is small, but it is extremely expensive to collect the material.\n\nTherefore, researchers use samples - random and representative groups taken from the general population that can be analysed to provide information about the whole population.\nThis is where statistics come to the rescue."
+  },
+  {
+    "objectID": "presentations/distributions_clt_ci_revised.html#sampling-1",
+    "href": "presentations/distributions_clt_ci_revised.html#sampling-1",
+    "title": "Distributions and statistics",
+    "section": "Sampling",
+    "text": "Sampling\nAre these samples are representative?\n\n20 ITMO Biology students to study average marks of students in ITMO\n100 ITMO first-year students to study students workload in their first ever exam\nEmail survey on student parents’ opinion of ITMO\nThe double-blind, randomized, placebo-controlled trial in 1990"
+  },
+  {
+    "objectID": "presentations/distributions_clt_ci_revised.html#sampling-2",
+    "href": "presentations/distributions_clt_ci_revised.html#sampling-2",
+    "title": "Distributions and statistics",
+    "section": "Sampling",
+    "text": "Sampling\n\n\nFour probability sampling designs. In stratified sampling, sample within every stratum. In one-stage cluster sampling, randomly select some clusters and include everyone within them. Systematic sampling needs a random start; periodic patterns in the ordering can be a problem. Convenience sampling and voluntary-response sampling are non-probability alternatives, as illustrated by the earlier examples. Reference: https://online.stat.psu.edu/stat800/Lesson03"
+  },
+  {
+    "objectID": "presentations/distributions_clt_ci_revised.html#sampling-n-10",
+    "href": "presentations/distributions_clt_ci_revised.html#sampling-n-10",
+    "title": "Distributions and statistics",
+    "section": "Sampling: n = 10",
+    "text": "Sampling: n = 10\n\nSmall random samples vary. Black curve: population density.\n\nEach panel shows an independent simple random sample from the same simulated population. The population density, histogram bins and axis limits are held fixed on both slides. Small-sample histograms are deliberately shown rather than smoothed density estimates."
+  },
+  {
+    "objectID": "presentations/distributions_clt_ci_revised.html#sampling-n-1000",
+    "href": "presentations/distributions_clt_ci_revised.html#sampling-n-1000",
+    "title": "Distributions and statistics",
+    "section": "Sampling: n = 1000",
+    "text": "Sampling: n = 1000\n\nLarger random samples vary less. Size does not fix selection bias."
+  },
+  {
+    "objectID": "presentations/distributions_clt_ci_revised.html#distributions-1",
+    "href": "presentations/distributions_clt_ci_revised.html#distributions-1",
+    "title": "Distributions and statistics",
+    "section": "Distributions",
+    "text": "Distributions\n\n\nDiscrete\nFinite or countably infinite possible values.\nBernoulli · Binomial · Poisson\n\nContinuous\nValues on a continuum; described by a density.\nNormal · Uniform · Chi-squared\n\n\nInfinitely many possible values alone do not make a distribution continuous."
+  },
+  {
+    "objectID": "presentations/distributions_clt_ci_revised.html#probability-of-a-discrete-variable",
+    "href": "presentations/distributions_clt_ci_revised.html#probability-of-a-discrete-variable",
+    "title": "Distributions and statistics",
+    "section": "Probability of a discrete variable",
+    "text": "Probability of a discrete variable\nEach possible value has a probability. The probabilities sum to 1.\n\n\\[\\Pr(X=-1) + \\Pr(X=0) + \\Pr(X=1) = 0.3 + 0.4 + 0.3 = 1\\]"
+  },
+  {
+    "objectID": "presentations/distributions_clt_ci_revised.html#from-probability-to-density",
+    "href": "presentations/distributions_clt_ci_revised.html#from-probability-to-density",
+    "title": "Distributions and statistics",
+    "section": "From probability to density",
+    "text": "From probability to density\nSplit the same interval into equal-width bins of a uniform distribution.\n\nNarrower bins contain less probability. Their total probability remains 1.\n\nThis is a specific construction using a Uniform(0, 1) random variable. The bars represent interval probabilities, not a claim that every discrete distribution becomes continuous when it has more values. For an equal-probability discrete grid with m points, each mass is 1/m, which also decreases as the grid is refined."
+  },
+  {
+    "objectID": "presentations/distributions_clt_ci_revised.html#from-probability-to-density-1",
+    "href": "presentations/distributions_clt_ci_revised.html#from-probability-to-density-1",
+    "title": "Distributions and statistics",
+    "section": "From probability to density",
+    "text": "From probability to density\n\\[\\text{Density height} = \\frac{\\text{Bin probability}}{\\text{Bin width}}\\]\n\nBar area = probability. In a density histogram, all bar areas sum to 1."
+  },
+  {
+    "objectID": "presentations/distributions_clt_ci_revised.html#probability-density",
+    "href": "presentations/distributions_clt_ci_revised.html#probability-density",
+    "title": "Distributions and statistics",
+    "section": "Probability density",
+    "text": "Probability density\nProbability is area under the curve. Total area = 1.\n\nFor a continuous variable, \\(P(X=x)=0\\): a single point has zero width.\n\nFor a variable with density f, P(a &lt; X &lt; b) is the integral of f over that interval, and the integral over the full support is 1. The right-hand plot shows N(0, 0.2²): almost all its area is visible within ±0.8. Density is probability per unit of the x-axis, so its numerical value can exceed 1. Reference: https://openstax.org/books/introductory-statistics-2e/pages/5-1-continuous-probability-functions"
+  },
+  {
+    "objectID": "presentations/distributions_clt_ci_revised.html#normal-distribution",
+    "href": "presentations/distributions_clt_ci_revised.html#normal-distribution",
+    "title": "Distributions and statistics",
+    "section": "Normal distribution",
+    "text": "Normal distribution\n\n\n\nSymmetric and bell-shaped.Continuous\nMean = median = mode = \\(\\mu\\)\n\\(\\sigma\\) controls the spread.\n\n\\[f(x) = \\frac{1}{\\sigma\\sqrt{2\\pi}}\\exp\\left(-\\frac{(x-\\mu)^2}{2\\sigma^2}\\right)\\]\nA model for real measurements."
+  },
+  {
+    "objectID": "presentations/distributions_clt_ci_revised.html#normal-distribution-1",
+    "href": "presentations/distributions_clt_ci_revised.html#normal-distribution-1",
+    "title": "Distributions and statistics",
+    "section": "Normal distribution",
+    "text": "Normal distribution\nThree sigma rule"
+  },
+  {
+    "objectID": "presentations/distributions_clt_ci_revised.html#uniform-distribution",
+    "href": "presentations/distributions_clt_ci_revised.html#uniform-distribution",
+    "title": "Distributions and statistics",
+    "section": "Uniform distribution",
+    "text": "Uniform distribution\n\n\nEqual-width intervalshave equal probability.\nContinuous, on \\([a,b]\\).\n\n\\[f(x) = \\frac{1}{b-a},\\quad a \\leq x \\leq b\\]\n\\(a\\): lower bound\\(b\\): upper bound"
+  },
+  {
+    "objectID": "presentations/distributions_clt_ci_revised.html#exponential-distribution",
+    "href": "presentations/distributions_clt_ci_revised.html#exponential-distribution",
+    "title": "Distributions and statistics",
+    "section": "Exponential distribution",
+    "text": "Exponential distribution\n\n\nWaiting time until an event.Assume a constant rate.\nContinuous\n\n\\[f(x) = \\lambda e^{-\\lambda x},\\quad x \\geq 0\\]\n\\(\\lambda\\): event rate.Here: \\(\\lambda = 1\\)."
+  },
+  {
+    "objectID": "presentations/distributions_clt_ci_revised.html#binomial-distribution",
+    "href": "presentations/distributions_clt_ci_revised.html#binomial-distribution",
+    "title": "Distributions and statistics",
+    "section": "Binomial distribution",
+    "text": "Binomial distribution\n\n\nCount successes in \\(n\\) trials.Independent trials, fixed \\(p\\).\nDiscreteExample: 10 tosses, \\(p = 0.5\\).\n\n\\[\\Pr(X=k) = \\binom{n}{k}p^k(1-p)^{n-k}\\]\n\\(n\\): trials\\(p\\): success probability\\(k\\): successes"
+  },
+  {
+    "objectID": "presentations/distributions_clt_ci_revised.html#poisson-distribution",
+    "href": "presentations/distributions_clt_ci_revised.html#poisson-distribution",
+    "title": "Distributions and statistics",
+    "section": "Poisson distribution",
+    "text": "Poisson distribution\n\n\nEvent count in a fixed interval.Independent events.Constant event rate.\nDiscreteExample: \\(\\lambda = 10\\) per hour.\n\n\\[\\Pr(X=k) = \\frac{\\lambda^k}{k!}e^{-\\lambda}\\]\n\\(\\lambda\\): expected count\\(k\\): observed count"
+  },
+  {
+    "objectID": "presentations/distributions_clt_ci_revised.html#descriptive-statistics",
+    "href": "presentations/distributions_clt_ci_revised.html#descriptive-statistics",
+    "title": "Distributions and statistics",
+    "section": "Descriptive statistics",
+    "text": "Descriptive statistics\nCentral tendency\n\nMean: arithmetic average. In R: mean(x).\nMedian: middle of the sorted data. In R: median(x).\nMode: most frequent value, or a peak of a continuous density.\n\n\\[\\bar{x} = \\frac{\\sum_{i=1}^{n}x_i}{n}\\]\nPopulation mean \\(\\mu\\): a fixed, usually unknown quantity. Sample mean \\(\\bar{x}\\): an estimate of Population mean that different for every sample.\nMean, median and mode coincide for a normal distribution."
+  },
+  {
+    "objectID": "presentations/distributions_clt_ci_revised.html#descriptive-statistics-1",
+    "href": "presentations/distributions_clt_ci_revised.html#descriptive-statistics-1",
+    "title": "Distributions and statistics",
+    "section": "Descriptive statistics",
+    "text": "Descriptive statistics\nBimodal data\n\nTwo peaks. The mean and median describe different features of the data.\n\nUnequal mixture weights separate the mean and median so that both are visible. The two mode lines mark local maxima of the model density; the mean and median are computed from the sample. A bimodal density has two local peaks, which need not have equal heights."
+  },
+  {
+    "objectID": "presentations/distributions_clt_ci_revised.html#descriptive-statistics-2",
+    "href": "presentations/distributions_clt_ci_revised.html#descriptive-statistics-2",
+    "title": "Distributions and statistics",
+    "section": "Descriptive statistics",
+    "text": "Descriptive statistics\nExponential distribution\n\nThe long right tail pulls the mean above the median.\n\nThe mode of an exponential density is zero. Mean and median lines use the sample; for the model, the mean is 1/rate and the median is log(2)/rate. Counting exact repeats is not a suitable way to estimate a mode from continuous measurements."
+  },
+  {
+    "objectID": "presentations/distributions_clt_ci_revised.html#descriptive-statistics-3",
+    "href": "presentations/distributions_clt_ci_revised.html#descriptive-statistics-3",
+    "title": "Distributions and statistics",
+    "section": "Descriptive statistics",
+    "text": "Descriptive statistics\nOutliers\n\nThe mean is more sensitive to extreme values than the median."
+  },
+  {
+    "objectID": "presentations/distributions_clt_ci_revised.html#how-not-to-identify-outliers",
+    "href": "presentations/distributions_clt_ci_revised.html#how-not-to-identify-outliers",
+    "title": "Distributions and statistics",
+    "section": "How NOT to identify outliers",
+    "text": "How NOT to identify outliers\nA point beyond a boxplot whisker is a flag, not proof of an error.\n\n\nDo not delete points just because they exceed 1.5 × IQR or 3 SD.\nConsider the distribution, measurement process and study context.\n\n\nBoxplot fences and z-score cutoffs can identify potential outliers for investigation. They are not automatic rules for excluding observations. Skewed distributions can legitimately produce many points beyond a boxplot’s upper whisker. A 3-SD rule also depends on distributional assumptions; it is not a universal error detector. Do not select exclusions to obtain a preferred p-value. Reference: https://itl.nist.gov/div898/handbook/eda/section3/eda35h.htm"
+  },
+  {
+    "objectID": "presentations/distributions_clt_ci_revised.html#by-the-way-what-to-do-about-outliers",
+    "href": "presentations/distributions_clt_ci_revised.html#by-the-way-what-to-do-about-outliers",
+    "title": "Distributions and statistics",
+    "section": "By the way, what to do about outliers?",
+    "text": "By the way, what to do about outliers?\nInvestigate\nCheck the raw records, units, measurement process and study context.\nKeep\nValid observations, including unusual ones.\nCorrect or exclude\nConfirmed errors, with a documented reason. If uncertain, compare results with and without the observations."
+  },
+  {
+    "objectID": "presentations/distributions_clt_ci_revised.html#descriptive-statistics-4",
+    "href": "presentations/distributions_clt_ci_revised.html#descriptive-statistics-4",
+    "title": "Distributions and statistics",
+    "section": "Descriptive statistics",
+    "text": "Descriptive statistics\nStandard deviation and variance\n\\[s = \\sqrt{\\frac{\\sum_{i=1}^{n}(x_i-\\bar{x})^2}{n-1}}\\]\n\\[SD = \\sqrt{\\frac{\\text{sum of squared deviations from the mean}}{\\text{number of observations} - 1}}\\]\nVariance is SD squared: \\(s^2 = (SD)^2\\).\nHeight in cm: mean and SD in cm; variance in cm².\nFor a whole population: use \\(\\mu\\) and divide by \\(N\\), rather than \\(n-1\\)."
+  },
+  {
+    "objectID": "presentations/distributions_clt_ci_revised.html#descriptive-statistics-5",
+    "href": "presentations/distributions_clt_ci_revised.html#descriptive-statistics-5",
+    "title": "Distributions and statistics",
+    "section": "Descriptive statistics",
+    "text": "Descriptive statistics\nQuantiles\nA \\(p\\)-quantile marks cumulative probability \\(p\\). Quartiles divide a continuous distribution into four equal-probability parts.\n\nMedian = 0.5 quantile. In R: quantile().\n\nThe illustration uses a continuous normal model. Each shaded quarter has 25% probability; the tails beyond the displayed range are negligible. Sample quantiles are estimated from ordered observations. Ties and interpolation mean that sample quartiles need not split finite data into groups with exactly equal counts. Reference: https://stat.ethz.ch/R-manual/R-devel/library/stats/html/quantile.html"
+  },
+  {
+    "objectID": "presentations/distributions_clt_ci_revised.html#random-samples-in-r",
+    "href": "presentations/distributions_clt_ci_revised.html#random-samples-in-r",
+    "title": "Distributions and statistics",
+    "section": "Random samples in R",
+    "text": "Random samples in R\nThe r family generates random values from a distribution.\nr&lt;distribution&gt;(n = ..., ...)\n\nn: number of values to generate.\nRemaining arguments: parameters of the distribution.\n\nExample sample from normal distribution\n\nrnorm(n = 100, mean = 0, sd = 1) # --&gt; vector \n\nAlso for other distributions: runif(), rexp(), rbinom(), rpois(), rchisq(), rt().\nOther function families: d...() density; p...() cumulative probability; q...() quantiles.\n\nBernoulli random values use rbinom(n, size = 1, prob = p). The r/d/p/q prefixes identify random generation, density or probability mass, cumulative probability and quantile functions. The full name combines a prefix with a distribution suffix, for example rnorm, dnorm, pnorm and qnorm. Reference: https://stat.ethz.ch/R-manual/R-patched/library/stats/help/distributions.html"
+  },
+  {
+    "objectID": "presentations/distributions_clt_ci_revised.html#standard-error-se",
+    "href": "presentations/distributions_clt_ci_revised.html#standard-error-se",
+    "title": "Distributions and statistics",
+    "section": "Standard error (SE)",
+    "text": "Standard error (SE)\n“SD of means of samples”\nFor independent observations from the same population.\n\n\n\\[SE = \\dfrac{SD}{\\sqrt n}\\]\nEstimation by sample"
+  },
+  {
+    "objectID": "presentations/distributions_clt_ci_revised.html#standard-error-se-1",
+    "href": "presentations/distributions_clt_ci_revised.html#standard-error-se-1",
+    "title": "Distributions and statistics",
+    "section": "Standard error (SE)",
+    "text": "Standard error (SE)\n“SD of means of samples”\n\n\n\\[SE = \\dfrac{SD}{\\sqrt{n}}\\]"
+  },
+  {
+    "objectID": "presentations/distributions_clt_ci_revised.html#magic-of-central-limit-theorem",
+    "href": "presentations/distributions_clt_ci_revised.html#magic-of-central-limit-theorem",
+    "title": "Distributions and statistics",
+    "section": "Magic of Central Limit Theorem",
+    "text": "Magic of Central Limit Theorem\nThis means’ distribution was built from uniform distribution samples! \\(a=0, b=10 \\Rightarrow \\hat\\mu=5\\)\n\nMean is also = 5!"
+  },
+  {
+    "objectID": "presentations/distributions_clt_ci_revised.html#magic-of-central-limit-theorem-1",
+    "href": "presentations/distributions_clt_ci_revised.html#magic-of-central-limit-theorem-1",
+    "title": "Distributions and statistics",
+    "section": "Magic of Central Limit Theorem",
+    "text": "Magic of Central Limit Theorem\nLet’s do it with exponential distribution samples (\\(\\lambda=2\\))\n\nLooks familiar…"
+  },
+  {
+    "objectID": "presentations/distributions_clt_ci_revised.html#magic-of-central-limit-theorem-2",
+    "href": "presentations/distributions_clt_ci_revised.html#magic-of-central-limit-theorem-2",
+    "title": "Distributions and statistics",
+    "section": "Magic of Central Limit Theorem",
+    "text": "Magic of Central Limit Theorem\n\nSeveral samples\nCalculate mean (\\(\\bar{X}\\)) in each sample\nBuild the means distribution\n\nIt is normally distributed! (almost)\n\nIf samples are small, distribution of means may not look like normal.\n\n\nCalculate resulting distribution’s SD\\(^*\\) and mean ( \\(\\hat\\mu\\) )\nObtained mean is “real mean” and SD is Standard error"
+  },
+  {
+    "objectID": "presentations/distributions_clt_ci_revised.html#standartization-or-normalization..",
+    "href": "presentations/distributions_clt_ci_revised.html#standartization-or-normalization..",
+    "title": "Distributions and statistics",
+    "section": "Standartization (or normalization..?)",
+    "text": "Standartization (or normalization..?)\nSetting mean=0 and sd=1\n\n\n\\(Z = \\dfrac{\\bar{X} - \\mu}{SE}\\)"
+  },
+  {
+    "objectID": "presentations/distributions_clt_ci_revised.html#looks-familiar",
+    "href": "presentations/distributions_clt_ci_revised.html#looks-familiar",
+    "title": "Distributions and statistics",
+    "section": "Looks familiar?",
+    "text": "Looks familiar?\n\nThree sigma rule!"
+  },
+  {
+    "objectID": "presentations/distributions_clt_ci_revised.html#three-sigma-rule-2",
+    "href": "presentations/distributions_clt_ci_revised.html#three-sigma-rule-2",
+    "title": "Distributions and statistics",
+    "section": "Three sigma rule",
+    "text": "Three sigma rule\nThe same standardized sample means, now on the Z scale.\n\nOn the Z scale, the mean is 0 and the SD is 1: two SD means ±2. For a normal distribution, this covers about 95%.\n\nReuse the transformed data from the previous slide. The orange bars show the simulated standardized sample means; the black curve is a standard normal reference. Thick coloured dashed lines mark ±1, ±2 and ±3. Sigma labels are on the left and approximate central probabilities on the right, matching the earlier normal-distribution illustration. Percentages are normal-reference probabilities, not measured counts from these particular simulations. Standardized Uniform(0, 10) sample means are approximately, not exactly, normal."
+  },
+  {
+    "objectID": "presentations/distributions_clt_ci_revised.html#three-sigma-rule-confidence-interval",
+    "href": "presentations/distributions_clt_ci_revised.html#three-sigma-rule-confidence-interval",
+    "title": "Distributions and statistics",
+    "section": "Three sigma rule –> confidence interval",
+    "text": "Three sigma rule –&gt; confidence interval\n\n\nThus, with probability of 0.95\n\\[ -1.96 \\sigma_z \\leq \\dfrac{\\bar{X} - \\mu}{SE} \\leq 1.96 \\sigma_z \\]\n\\[-1.96 \\leq \\dfrac{\\bar{X} - \\mu}{SE} \\leq 1.96\\]\n\\[-1.96 \\ SE \\leq \\bar{X} - \\mu \\leq 1.96 \\ SE \\]\n\\[\\bar{X} - 1.96 \\ SE \\leq \\mu \\leq  \\bar{X} + 1.96 \\ SE \\]\n\nDistribution of means"
+  },
+  {
+    "objectID": "presentations/distributions_clt_ci_revised.html#confidence-interval",
+    "href": "presentations/distributions_clt_ci_revised.html#confidence-interval",
+    "title": "Distributions and statistics",
+    "section": "Confidence interval",
+    "text": "Confidence interval\n\n\n\n\n\nThus, with probability of 0.95\n\\[ -1.96 \\sigma_z \\leq \\dfrac{\\bar{X} - \\mu}{SE} \\leq 1.96 \\sigma_z \\]\n\\[-1.96 \\leq \\dfrac{\\bar{X} - \\mu}{SE} \\leq 1.96\\]\n\\[-1.96 \\ SE \\leq \\bar{X} - \\mu \\leq 1.96 \\ SE \\]\n\\[\\bar{X} - 1.96 \\ SE \\leq \\mu \\leq  \\bar{X} + 1.96 \\ SE \\]\n\nWe may never know the true value of the population mean (\\(\\mu\\)), but we can estimate it from a sample and build an interval with a certain degree of confidence (e.g., 0.95)\n\\[ \\bar X - x_{\\alpha/2} * SE  \\leq \\mu_{true} \\leq \\bar X + x_{\\alpha/2} * SE\\]\n\n\\(\\alpha\\) - Significance level (e.g. 0.05)\n\\(1 - \\alpha\\) - Confidence level (e.g. 0.95)\n\\(x_{\\alpha/2}\\) - values of \\(\\alpha/2\\) quantile in standart. normal distribution (mean=0, sd=1)\n\n(e.g. 0.025 and 0.975 quantiles for \\(\\alpha=0.05\\))\n((they are equal))\n\nLet’s calculate it in R!"
+  },
+  {
+    "objectID": "presentations/distributions_clt_ci_revised.html#what-does-confidence-level-mean",
+    "href": "presentations/distributions_clt_ci_revised.html#what-does-confidence-level-mean",
+    "title": "Distributions and statistics",
+    "section": "What does confidence level mean?",
+    "text": "What does confidence level mean?\n\n\n\n\n\n\n\n\n\n\n\n\nAbout 95% of intervals constructed this way contain the true mean in repeated sampling.\nThe mean is fixed; the intervals vary. Shown: 60 of the same 1,000 samples. Normal approximation, known σ.\n\n\nContinue using the same Uniform(0, 10) samples of size 30 and the known SE. Each horizontal interval is centred on a different sample mean; the dashed vertical line is the fixed population mean μ = 5. The graph displays the first 60 intervals to keep individual intervals legible. The 95% confidence level describes the long-run coverage of the procedure, not a guarantee that exactly 95% of any finite collection will contain μ. Coverage here is approximate because the normal critical value is applied to uniform sample means. Once an interval has been observed, both the interval and μ are fixed; do not assign a frequentist 95% probability to μ lying in that particular interval."
+  },
+  {
+    "objectID": "presentations/distributions_clt_ci_revised.html#students-t--distribution",
+    "href": "presentations/distributions_clt_ci_revised.html#students-t--distribution",
+    "title": "Distributions and statistics",
+    "section": "Student’s (t-) distribution",
+    "text": "Student’s (t-) distribution\nComparing to standard (!) normal distribution, t-distribution have heavier tails.\n\nIt means that t-distribution’s quantiles have bigger values comparing to normal\n\n\nAs \\(df\\) increases, the t-distribution approaches the standard normal distribution."
+  },
+  {
+    "objectID": "presentations/distributions_clt_ci_revised.html#students-t--distribution-1",
+    "href": "presentations/distributions_clt_ci_revised.html#students-t--distribution-1",
+    "title": "Distributions and statistics",
+    "section": "Student’s (t-) distribution",
+    "text": "Student’s (t-) distribution\nDegrees of freedom (df) - the only parameter of distribution!\nIt always have mean = 0 and “spread” defined by df\n\nDegrees of freedom = \\(N - 1\\)\n\\(N\\) - size of sample"
+  },
+  {
+    "objectID": "presentations/distributions_clt_ci_revised.html#students-t--distribution-2",
+    "href": "presentations/distributions_clt_ci_revised.html#students-t--distribution-2",
+    "title": "Distributions and statistics",
+    "section": "Student’s (t-) distribution",
+    "text": "Student’s (t-) distribution\nDegrees of freedom (df) - the only parameter of distribution!\nIt always have mean = 0 and “width” defined by df\n\nDegrees of freedom = N - 1\nN - size of sample"
+  },
+  {
+    "objectID": "presentations/distributions_clt_ci_revised.html#confidence-interval-using-quantiles-from-t-distribution",
+    "href": "presentations/distributions_clt_ci_revised.html#confidence-interval-using-quantiles-from-t-distribution",
+    "title": "Distributions and statistics",
+    "section": "Confidence interval using quantiles from t-distribution",
+    "text": "Confidence interval using quantiles from t-distribution\n\n\\[\\bar x\\ \\pm\\ \\underbrace{t_{1-\\alpha/2,\\,n-1}}_{\\text{positive t-quantile}}*\\ \\underbrace{\\frac{s}{\\sqrt n}}_{\\widehat{SE}}\\]\nα: significance level; 1 − α: confidence level. For 95%: α = 0.05, so use the 97.5% t-quantile, with df = n − 1.\n\nMatch the earlier central-95% normal illustration: orange centre, grey tails, thick orange dashed critical-value lines and direct endpoint labels. Here the reference is t with 29 degrees of freedom, corresponding to samples of size 30. The positive critical value is qt(0.975, df = 29), approximately 2.05, rather than 1.96. Multiplying this critical value by s/sqrt(n) gives the interval half-width. Exact 95% coverage requires independent normal observations; for the earlier uniform example this is a normality-based approximation. The two-sided formula uses the positive upper quantile, not the negative lower quantile."
+  },
+  {
+    "objectID": "presentations/distributions_clt_ci_revised.html#confidence-interval-using-quantiles-from-t-distribution-1",
+    "href": "presentations/distributions_clt_ci_revised.html#confidence-interval-using-quantiles-from-t-distribution-1",
+    "title": "Distributions and statistics",
+    "section": "Confidence interval using quantiles from t-distribution",
+    "text": "Confidence interval using quantiles from t-distribution\n\\[ \\bar X - t_{1-\\alpha/2,\\,n-1} \\, \\widehat{SE} \\leq \\mu_{true} \\leq \\bar X + t_{1-\\alpha/2,\\,n-1} \\, \\widehat{SE}\\]\n\nBecause of heavier tails, such CI can be more accurate for small \\(n\\)\nAnd for large \\(n\\) it looks like standard normal\n\nLet’s calculate it in R!"
+  },
+  {
+    "objectID": "presentations/distributions_clt_ci_revised.html#different-samples-different-means",
+    "href": "presentations/distributions_clt_ci_revised.html#different-samples-different-means",
+    "title": "Distributions and statistics",
+    "section": "Different samples, different means",
+    "text": "Different samples, different means\n\nThe sample mean varies from sample to sample and have its own distribution!. The standard deviation of this distribution called Standard Error\n\nThe diagram runs left to right. Each of 1000 samples contains 30 independent observations from the same Uniform(0, 10) population. The three displayed sample histograms and their numerical means are the first three columns of the simulation used for the final histogram. The final histogram contains all 1000 means, not just the three displayed values. Its X axis is zoomed in, with explicit tick labels. Blue dashed lines mark the fixed population mean; orange dashed lines mark the displayed sample means. SE describes variability across repeated samples, not the spread of individual observations."
+  },
+  {
+    "objectID": "presentations/distributions_clt_ci_revised.html#what-counts-as-an-independent-observation",
+    "href": "presentations/distributions_clt_ci_revised.html#what-counts-as-an-independent-observation",
+    "title": "Distributions and statistics",
+    "section": "What counts as an independent observation?",
+    "text": "What counts as an independent observation?\n\n100 measurements do not necessarily mean 100 independent observations.\nRepeated measurements from the same patient can be correlated.\n\nThe diagrams both contain 100 dots. On the left, the dots represent different patients; independence still depends on the sampling design. On the right, measurements are grouped within five patients and can be correlated. The formula σ/√n cannot automatically treat those 100 measurements as independent patients. The appropriate analysis depends on the design and correlation structure."
+  },
+  {
+    "objectID": "presentations/distributions_clt_ci_revised.html#what-if-measurements-are-dependent",
+    "href": "presentations/distributions_clt_ci_revised.html#what-if-measurements-are-dependent",
+    "title": "Distributions and statistics",
+    "section": "What if measurements are dependent?",
+    "text": "What if measurements are dependent?\nRepeated measurements from one patient can share the same influences.\n\nPositive within-patient correlation: ignoring it can make SE too small and confidence intervals too narrow.\nUse patient-level summaries or a model for repeated measurements, as appropriate for the question.\n\nThis is a hypothetical equal-cluster-size random-intercept model. There are five independent patients, each with 20 measurements. Marginal measurement SD is 1 and within-patient correlation is 0.5. Under this model, Var(grand mean) = σ²[1 + (m − 1)ρ]/(km), giving SE about 0.324 rather than 0.1. The curves show the sampling distribution of the grand mean under the actual model and the narrower distribution incorrectly assumed under independence. The numerical values are model-specific, not a universal correction. In general, variance of a mean also includes covariance terms. Negative correlation can reduce variance; other dependence structures require their own analysis. Aggregation must match the estimand and study design; mixed-effects models or other appropriate repeated-measures methods can account for within-patient dependence."
+  },
+  {
+    "objectID": "presentations/distributions_clt_ci_revised.html#does-this-distribution-look-familiar",
+    "href": "presentations/distributions_clt_ci_revised.html#does-this-distribution-look-familiar",
+    "title": "Distributions and statistics",
+    "section": "Does this distribution look familiar?",
+    "text": "Does this distribution look familiar?\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThe magic of the Central Limit Theorem! It’s the normal distribution! The original distribution does not have to be normal!\n\n\nThe centre stays at μ. The spread gets smaller as n grows.\n\nIndependent observations from the same distribution, with finite variance.\n\nThe population is Uniform(0, 10). Each of the same 1000 samples shown on the preceding slides contains 30 independent observations. First ask students to identify the histogram’s shape. Reveal a matching normal density on the first click, and the fixed population mean on the second. For an existing finite mean, E(sample mean) = μ at every n; increasing n reduces the sampling variance. Increasing the number of repetitions makes the simulated histogram more stable, but does not itself change the SE. The plotted normal curve is an approximation, not an assertion that the sample means are exactly normal. The classical iid CLT requires finite variance; Cauchy is a counterexample, not merely a slow case."
+  },
+  {
+    "objectID": "presentations/distributions_clt_ci_revised.html#how-large-should-the-sample-be",
+    "href": "presentations/distributions_clt_ci_revised.html#how-large-should-the-sample-be",
+    "title": "Distributions and statistics",
+    "section": "How large should the sample be?",
+    "text": "How large should the sample be?\n\nThere is no universal sample size that guarantees a good normal approximation.\nEach panel: 3000 sample means. Black curve: normal reference with matching mean and SE.\n\nRows correspond to normal, uniform and exponential populations. Columns increase the size of each sample, not the number of repetitions. Each panel has 5000 means. Axes are free across panels so that the distributional shapes remain visible. Normal sample means are exactly normally distributed for every n under this model. Uniform means become approximately normal quickly, whereas exponential means retain right skew longer. The displayed n values illustrate these distributions and are not universal thresholds. The black reference is based on the known population mean and σ/sqrt(n); it is not fitted to the simulated means. The finite-variance iid assumptions from the previous slide still apply. For a Cauchy population, the classical CLT does not apply and sample means do not concentrate into a normal distribution."
+  },
+  {
+    "objectID": "presentations/distributions_clt_ci_revised.html#standardization",
+    "href": "presentations/distributions_clt_ci_revised.html#standardization",
+    "title": "Distributions and statistics",
+    "section": "Standardization",
+    "text": "Standardization\nSubtract μ to centre at 0. Divide by SE to obtain SD = 1.\n\\[Z = \\frac{\\bar{X}-\\mu}{SE}\\]\n\n\nOne graph overlays the original means (blue) and the standardized means (orange), with error bars μ ± SE and 0 ± 1. The transformation uses those exact sample means and histogram bin boundaries using the known Uniform(0, 10) mean μ = 5 and SE = sqrt(100/12)/sqrt(30). Histogram density heights change with the units, preserving total area 1. The transformed sampling distribution has theoretical mean 0 and variance 1; empirical values from finite simulations need not be exactly 0 and 1. This standardization uses known σ, not the estimated s from an individual sample. Standardization alone does not make a distribution normal; approximate normality here comes from the CLT."
+  },
+  {
+    "objectID": "presentations/distributions_clt_ci_revised.html#three-sigma-rule-3",
+    "href": "presentations/distributions_clt_ci_revised.html#three-sigma-rule-3",
+    "title": "Distributions and statistics",
+    "section": "Three sigma rule!",
+    "text": "Three sigma rule!\n\n\nWe know that ~95% of the data lies between the two orange lines (\\(\\mu_z \\pm 2 \\sigma\\))\nMore precisely: \\(\\mu_z \\pm 1.96 \\ \\sigma\\)\nHere \\(\\sigma_z\\) is SE = 1\n\\(\\mu_z = 0\\) (standardisized mean of means)\n\nDistribution of means"
+  },
+  {
+    "objectID": "presentations/distributions_clt_ci_revised.html#where-does-1.96-come-from",
+    "href": "presentations/distributions_clt_ci_revised.html#where-does-1.96-come-from",
+    "title": "Distributions and statistics",
+    "section": "Where does 1.96 come from?",
+    "text": "Where does 1.96 come from?\n\n\\[\\Pr(-1.96 &lt; Z &lt; 1.96) \\approx 0.95\\]\nThe middle 95% leaves 2.5% in each tail of the standard normal distribution.\n\nThe curve is a standard normal reference, matching the previous slide’s approximation to standardized sample means. The exact normal critical values are approximately ±1.959964. The 95% central probability is approximate for finite-n uniform sample means, and exact up to numerical rounding for the standard normal reference. With known population SD, Z = (sample mean − μ)/(σ/sqrt(n))."
+  },
+  {
+    "objectID": "presentations/distributions_clt_ci_revised.html#back-to-the-original-units",
+    "href": "presentations/distributions_clt_ci_revised.html#back-to-the-original-units",
+    "title": "Distributions and statistics",
+    "section": "Back to the original units",
+    "text": "Back to the original units\n\n\n\\[-1.96 &lt; \\frac{\\bar{X}-\\mu}{SE} &lt; 1.96\\]\n\n\n\\[\\bar{X}-1.96SE &lt; \\mu &lt; \\bar{X}+1.96SE\\]\n\n\nThe graph transforms the preceding normal reference back to the original sample-mean scale using μ = 5 and the same known SE as on earlier slides. It shows the sampling distribution of the estimator centred on the fixed true mean, not a probability distribution for μ. Algebraically rearranging the standardized-error inequality produces the random interval centred on the sample mean. Coverage is approximate for the current uniform model because the normal approximation is used."
+  },
+  {
+    "objectID": "presentations/distributions_clt_ci_revised.html#a-confidence-interval-from-one-sample",
+    "href": "presentations/distributions_clt_ci_revised.html#a-confidence-interval-from-one-sample",
+    "title": "Distributions and statistics",
+    "section": "A confidence interval from one sample",
+    "text": "A confidence interval from one sample\n\nEstimate ± uncertainty\n\\[\\bar{x} \\pm \\underbrace{z_{0.975}}_{\\approx 1.96}\\,SE\\]\nHere σ is known. With unknown σ, we estimate SE and use an appropriate t critical value.\n\nThe estimate uses the first of the same 1000 samples of size 30 from Uniform(0, 10); no new data are drawn. SE uses the known population SD. The interval shown is a normal-approximation confidence interval. Its two endpoints are random before sampling; once observed, the interval is fixed. Do not interpret this graphic as assigning 95% probability to the fixed parameter being inside this particular interval. Repeated-sampling coverage is explained on the next slide. Replacing unknown σ by s and using t quantiles gives exact coverage for independent normal observations; for non-normal observations this too requires an appropriate approximation. The subsequent t-distribution section develops that distinction."
+  },
+  {
+    "objectID": "presentations/distributions_clt_ci_revised.html#from-two-sd-to-the-central-95",
+    "href": "presentations/distributions_clt_ci_revised.html#from-two-sd-to-the-central-95",
+    "title": "Distributions and statistics",
+    "section": "From two SD to the central 95%",
+    "text": "From two SD to the central 95%\nTwo SD is a useful approximation. For 95%, use 1.96.\n\n\\[\\underbrace{\\Pr(-2 &lt; Z &lt; 2) \\approx 95.45\\%}_{\\text{two SD: approximate rule}}\n\\quad\\longrightarrow\\quad\n\\underbrace{\\Pr(-1.96 &lt; Z &lt; 1.96) \\approx 95\\%}_{\\text{more precise cutoff}}\\]\n1.96 is the 97.5% quantile of the standard normal distribution: \\(z_{0.975} \\approx 1.96\\); \\(z_{0.025} \\approx -1.96\\). Each tail contains 2.5%.\n\nThe curve is a standard normal reference, matching the previous slide’s approximation to standardized sample means. The exact normal critical values are approximately ±1.959964. The 95% central probability is approximate for finite-n uniform sample means, and exact up to numerical rounding for the standard normal reference. With known population SD, Z = (sample mean − μ)/(σ/sqrt(n))."
+  },
+  {
+    "objectID": "presentations/distributions_clt_ci_revised.html#what-does-confidence-level-e.g.-95-mean",
+    "href": "presentations/distributions_clt_ci_revised.html#what-does-confidence-level-e.g.-95-mean",
+    "title": "Distributions and statistics",
+    "section": "What does confidence level (e.g. 95%) mean?",
+    "text": "What does confidence level (e.g. 95%) mean?\n\n\n\n\n\n\n\n\n\n\n\n\nAbout 95% of intervals constructed this way from the same population will contain the true mean in repeated sampling.\nThe mean is fixed, the intervals vary\nShown: 60 of the same 1,000 samples\n\n\nContinue using the same Uniform(0, 10) samples of size 30 and the known SE. Each horizontal interval is centred on a different sample mean; the dashed vertical line is the fixed population mean μ = 5. The graph displays the first 60 intervals to keep individual intervals legible. The 95% confidence level describes the long-run coverage of the procedure, not a guarantee that exactly 95% of any finite collection will contain μ. Coverage here is approximate because the normal critical value is applied to uniform sample means. Once an interval has been observed, both the interval and μ are fixed; do not assign a frequentist 95% probability to μ lying in that particular interval."
+  },
+  {
+    "objectID": "presentations/distributions_clt_ci_revised.html#why-do-we-need-the-t-distribution",
+    "href": "presentations/distributions_clt_ci_revised.html#why-do-we-need-the-t-distribution",
+    "title": "Distributions and statistics",
+    "section": "Why do we need the t-distribution?",
+    "text": "Why do we need the t-distribution?\nThe population SD σ is usually unknown. We replace it with the sample SD s.\n\n\nKnown σ\n\\[SE=\\frac{\\sigma}{\\sqrt n}\\]\n\\[Z=\\frac{\\bar X-\\mu}{\\sigma/\\sqrt n}\\]\nStandard normal for independent normal observations.\n\nEstimated from the sample\n\\[\\widehat{SE}=\\frac{s}{\\sqrt n}\\]\n\\[T=\\frac{\\bar X-\\mu}{s/\\sqrt n}\\sim t_{n-1}\\]\nExactly t for independent normal observations, even at small n.\n\n\n\n\n\nBoth exact distributional claims assume independent, identically distributed normal observations with positive variance and n at least 2. The numerator of T is divided by an estimated, random standard error, whereas Z uses the fixed population SD. Under normal sampling this ratio has a t-distribution with n − 1 degrees of freedom. With independent non-normal observations of finite positive variance, the studentized mean is asymptotically standard normal; a t interval is then an approximation whose adequacy depends on the population distribution and sample size. This does not correct dependence or biased sampling."
+  },
+  {
+    "objectID": "presentations/distributions_clt_ci_revised.html#what-can-a-confidence-interval-tell-us",
+    "href": "presentations/distributions_clt_ci_revised.html#what-can-a-confidence-interval-tell-us",
+    "title": "Distributions and statistics",
+    "section": "What can a confidence interval tell us?",
+    "text": "What can a confidence interval tell us?\n\nIncludes zero: the interval is compatible with no difference\nExcludes zero: the interval supports a positive difference\nA wide interval including zero is not evidence that the effect is absent.\n\nThese are schematic confidence intervals, not a new analysis of the Uniform(0, 10) samples. Both have the same point estimate of 2; only precision differs. The wider interval includes zero, negative differences and larger positive differences. Failing to exclude zero does not establish equivalence or absence of an effect. The narrower interval excludes zero but whether its values matter in practice depends on the subject and measurement units. Confidence intervals reflect uncertainty under the sampling and analysis assumptions and do not automatically account for bias or model misspecification. Formal hypothesis testing and equivalence can be introduced in a later lecture."
+  },
+  {
+    "objectID": "presentations/distributions_clt_ci_revised.html#confidence-interval-using-t-quantiles",
+    "href": "presentations/distributions_clt_ci_revised.html#confidence-interval-using-t-quantiles",
+    "title": "Distributions and statistics",
+    "section": "Confidence interval using t-quantiles",
+    "text": "Confidence interval using t-quantiles\n\n\\[\\bar x\\ \\pm\\ \\underbrace{t_{1-\\alpha/2,\\,n-1}}_{\\text{positive t-quantile}}\\ \\underbrace{\\frac{s}{\\sqrt n}}_{\\widehat{SE}}\\]\nα: significance level; 1 − α: confidence level. For 95%: α = 0.05, so use the 97.5% t-quantile, with df = n − 1.\n\nMatch the earlier central-95% normal illustration: orange centre, grey tails, thick orange dashed critical-value lines and direct endpoint labels. Here the reference is t with 29 degrees of freedom, corresponding to samples of size 30. The positive critical value is qt(0.975, df = 29), approximately 2.05, rather than 1.96. Multiplying this critical value by s/sqrt(n) gives the interval half-width. Exact 95% coverage requires independent normal observations; for the earlier uniform example this is a normality-based approximation. The two-sided formula uses the positive upper quantile, not the negative lower quantile."
+  },
+  {
+    "objectID": "presentations/distributions_clt_ci_revised.html#a-t-interval-from-one-sample",
+    "href": "presentations/distributions_clt_ci_revised.html#a-t-interval-from-one-sample",
+    "title": "Distributions and statistics",
+    "section": "A t-interval from one sample",
+    "text": "A t-interval from one sample\n\n\\[\\bar x\\ \\pm\\ t_{0.975,\\,n-1}\\,\\frac{s}{\\sqrt n}\\]\nHeavier tails give a larger critical value than 1.96. As df grows, the t critical value approaches the normal one.\nLet’s calculate it in R!\n\nReuse the same first sample of 30 observations from Uniform(0, 10) as in the earlier known-sigma interval. This time estimate SE from that sample’s SD and use the t critical value with 29 degrees of freedom. The diagram matches the earlier one-sample confidence interval, with a thick orange interval, centre point and blue half-width arrow. This is an approximate interval for uniform observations; exact coverage of this procedure requires independent normal data. A larger t critical value does not guarantee that this realised interval is wider than the previous known-sigma interval, because the SE has also changed."
   }
 ]
