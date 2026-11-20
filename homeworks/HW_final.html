@@ -102,7 +102,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
 
-<link rel="stylesheet" href="../styles.css?v=5cdac66f93bd">
+<link rel="stylesheet" href="../styles.css?v=f84c59ae3817">
 </head>
 
 <body class="nav-fixed">
@@ -135,10 +135,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Presentations</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../index.html#trainers">
+    <a class="nav-link" href="../index.html#trainers"> 
 <span class="menu-text">Trainers</span></a>
-  </li>
-    <li class="nav-item">
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="../index.html#homeworks"> 
 <span class="menu-text">Homeworks</span></a>
   </li>  
@@ -162,7 +162,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#patients-dataset" id="toc-patients-dataset" class="nav-link active" data-scroll-target="#patients-dataset">Patients dataset</a>
+  <li><a href="#getting-started" id="toc-getting-started" class="nav-link active" data-scroll-target="#getting-started">Getting started</a></li>
+  <li><a href="#patients-dataset" id="toc-patients-dataset" class="nav-link" data-scroll-target="#patients-dataset">Patients dataset</a>
   <ul class="collapse">
   <li><a href="#dataset" id="toc-dataset" class="nav-link" data-scroll-target="#dataset">1. Dataset</a>
   <ul class="collapse">
@@ -179,19 +180,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#distributions-of-continuous-data" id="toc-distributions-of-continuous-data" class="nav-link" data-scroll-target="#distributions-of-continuous-data">3.1 Distributions of continuous data</a></li>
   <li><a href="#distribution-of-factor-variables" id="toc-distribution-of-factor-variables" class="nav-link" data-scroll-target="#distribution-of-factor-variables">3.2 Distribution of factor variables</a></li>
   </ul></li>
-  <li><a href="#association" id="toc-association" class="nav-link" data-scroll-target="#association">4. Association</a>
+  <li><a href="#testing-averages-between-2-groups" id="toc-testing-averages-between-2-groups" class="nav-link" data-scroll-target="#testing-averages-between-2-groups">4. Testing averages between 2 groups</a>
   <ul class="collapse">
-  <li><a href="#do-males-have-high-cholesterol-more-often-than-females-calculate-risks-odds-their-ratios-and-risk-difference." id="toc-do-males-have-high-cholesterol-more-often-than-females-calculate-risks-odds-their-ratios-and-risk-difference." class="nav-link" data-scroll-target="#do-males-have-high-cholesterol-more-often-than-females-calculate-risks-odds-their-ratios-and-risk-difference.">4.1 Do males have high <code>Cholesterol</code> more often than females? Calculate Risks, Odds, their ratios and Risk difference.</a></li>
-  <li><a href="#are-age-and-glucose-correlated" id="toc-are-age-and-glucose-correlated" class="nav-link" data-scroll-target="#are-age-and-glucose-correlated">4.2 Are <code>Age</code> and <code>Glucose</code> correlated?</a></li>
+  <li><a href="#does-mean-age-differ-between-the-two-sex-groups" id="toc-does-mean-age-differ-between-the-two-sex-groups" class="nav-link" data-scroll-target="#does-mean-age-differ-between-the-two-sex-groups">4.1 Does mean <code>Age</code> differ between the two <code>Sex</code> groups?</a></li>
+  <li><a href="#does-mean-glucose-differ-between-the-two-cholesterol-groups" id="toc-does-mean-glucose-differ-between-the-two-cholesterol-groups" class="nav-link" data-scroll-target="#does-mean-glucose-differ-between-the-two-cholesterol-groups">4.2 Does mean <code>Glucose</code> differ between the two <code>Cholesterol</code> groups?</a></li>
   </ul></li>
-  <li><a href="#testing-averages-between-2-groups" id="toc-testing-averages-between-2-groups" class="nav-link" data-scroll-target="#testing-averages-between-2-groups">5. Testing averages between 2 groups</a>
+  <li><a href="#testing-the-independence-between-two-categories" id="toc-testing-the-independence-between-two-categories" class="nav-link" data-scroll-target="#testing-the-independence-between-two-categories">5. Testing the independence between two categories</a>
   <ul class="collapse">
-  <li><a href="#do-average-ages-significantly-differ-between-2-sex-groups" id="toc-do-average-ages-significantly-differ-between-2-sex-groups" class="nav-link" data-scroll-target="#do-average-ages-significantly-differ-between-2-sex-groups">5.1 Do average <code>Age</code>s significantly differ between 2 <code>Sex</code> groups?</a></li>
-  <li><a href="#do-average-glucose-significantly-differ-between-two-cholesterol-groups" id="toc-do-average-glucose-significantly-differ-between-two-cholesterol-groups" class="nav-link" data-scroll-target="#do-average-glucose-significantly-differ-between-two-cholesterol-groups">5.2 Do average <code>Glucose</code> significantly differ between two <code>Cholesterol</code> groups?</a></li>
+  <li><a href="#are-blood-pressure-bp-and-cholesterol-levels-associated" id="toc-are-blood-pressure-bp-and-cholesterol-levels-associated" class="nav-link" data-scroll-target="#are-blood-pressure-bp-and-cholesterol-levels-associated">5.1 Are blood pressure (<code>BP</code>) and <code>Cholesterol</code> levels associated?</a></li>
   </ul></li>
-  <li><a href="#testing-the-independence-between-two-categories" id="toc-testing-the-independence-between-two-categories" class="nav-link" data-scroll-target="#testing-the-independence-between-two-categories">6. Testing the independence between two categories</a>
+  <li><a href="#association" id="toc-association" class="nav-link" data-scroll-target="#association">6. Association</a>
   <ul class="collapse">
-  <li><a href="#do-blood-pressure-bp-levels-depend-on-cholesterol-levels" id="toc-do-blood-pressure-bp-levels-depend-on-cholesterol-levels" class="nav-link" data-scroll-target="#do-blood-pressure-bp-levels-depend-on-cholesterol-levels">6.1 Do Blood pressure (<code>BP</code>) levels depend on <code>Cholesterol</code> levels?</a></li>
+  <li><a href="#how-common-is-high-cholesterol-in-each-sex-group" id="toc-how-common-is-high-cholesterol-in-each-sex-group" class="nav-link" data-scroll-target="#how-common-is-high-cholesterol-in-each-sex-group">6.1 How common is high <code>Cholesterol</code> in each <code>Sex</code> group?</a></li>
+  <li><a href="#are-age-and-glucose-correlated" id="toc-are-age-and-glucose-correlated" class="nav-link" data-scroll-target="#are-age-and-glucose-correlated">6.2 Are <code>Age</code> and <code>Glucose</code> correlated?</a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -224,6 +225,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<section id="getting-started" class="level2">
+<h2 class="anchored" data-anchor-id="getting-started">Getting started</h2>
+<p>Extract both files into one folder and open <code>HW_final.qmd</code> in RStudio. Click <strong>Render</strong> to run your code in Quarto and create an HTML report.</p>
+<p><strong>Write your answers and conclusions below the relevant task, outside the R code chunks.</strong></p>
+</section>
 <section id="patients-dataset" class="level1">
 <h1>Patients dataset</h1>
 <p><strong>Columns</strong></p>
@@ -240,7 +246,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="read-the-data-from-file-patients.csv" class="level3">
 <h3 class="anchored" data-anchor-id="read-the-data-from-file-patients.csv">1.1 Read the data from file <code>patients.csv</code></h3>
 <ul>
-<li><u>Don’t forget about parameters for reading</u></li>
+<li>Treat empty fields as missing values. In <code>read.csv()</code>, use <code>na.strings = c("", "NA")</code>.</li>
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -252,7 +258,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>1.2.1 Don’t you see something strange?</strong></p>
-<p><code>&lt;...WRITE HERE...&gt;</code></p>
 </section>
 </section>
 <section id="cleaning" class="level2">
@@ -287,8 +292,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><code>&lt;...WRITE HERE what column have outliers ...&gt;</code></p>
-<p><strong>2.2.2 <u>Filter</u> out rows with obvious outliers in this column</strong></p>
+<p><strong>2.2.2 Filter out rows with obvious outliers. Briefly justify what you removed.</strong></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -307,7 +311,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="distribution-of-factor-variables" class="level3">
 <h3 class="anchored" data-anchor-id="distribution-of-factor-variables">3.2 Distribution of factor variables</h3>
-<p><strong>3.2.1 Draw a <u>barplot</u> where the height represents the number of obseravtions in each blood pressure (<code>BP</code>) group and the <code>fill</code> represents <code>Sex</code></strong></p>
+<p><strong>3.2.1 Draw a <u>barplot</u> where the height represents the number of observations in each blood pressure (<code>BP</code>) group and the <code>fill</code> represents <code>Sex</code></strong></p>
 <ul>
 <li>X-axis = <code>BP</code>, fill = <code>Sex</code></li>
 <li>“dodge” or “stack” barplot</li>
@@ -326,101 +330,96 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><em>P.S. We will test the independence of <code>BP</code> and <code>Cholesterol</code> in 5.1</em></p>
 </section>
 </section>
-<section id="association" class="level2">
-<h2 class="anchored" data-anchor-id="association">4. Association</h2>
-<section id="do-males-have-high-cholesterol-more-often-than-females-calculate-risks-odds-their-ratios-and-risk-difference." class="level3">
-<h3 class="anchored" data-anchor-id="do-males-have-high-cholesterol-more-often-than-females-calculate-risks-odds-their-ratios-and-risk-difference.">4.1 Do males have high <code>Cholesterol</code> more often than females? Calculate Risks, Odds, their ratios and Risk difference.</h3>
-<p><strong>4.1.1 Create contingency table</strong></p>
+<section id="testing-averages-between-2-groups" class="level2">
+<h2 class="anchored" data-anchor-id="testing-averages-between-2-groups">4. Testing averages between 2 groups</h2>
+<section id="does-mean-age-differ-between-the-two-sex-groups" class="level3">
+<h3 class="anchored" data-anchor-id="does-mean-age-differ-between-the-two-sex-groups">4.1 Does mean <code>Age</code> differ between the two <code>Sex</code> groups?</h3>
+<p><strong>4.1.0 (*) Use any suitable plot to compare <code>Age</code> across <code>Sex</code> groups.</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># cont_table = </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><strong>4.1.2 Calculate Risks and Odds</strong></p>
+<p><strong>4.1.1 Conduct the test</strong></p>
+<ul>
+<li>Choose appropriate <strong>test</strong></li>
+</ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><strong>4.1.3 Calculate RR, RD and OR</strong></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># RR = </span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># RR</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># RD = </span></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co"># RD</span></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="co"># OR = </span></span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="co"># OR</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><strong>4.1.4 Are there significant association between <code>Sex</code> and having high <code>Cholesterol</code> ?</strong></p>
-<p><code>&lt;...WRITE HERE...&gt;</code></p>
+<p><strong>4.1.2 Write the conclusion</strong></p>
 </section>
-<section id="are-age-and-glucose-correlated" class="level3">
-<h3 class="anchored" data-anchor-id="are-age-and-glucose-correlated">4.2 Are <code>Age</code> and <code>Glucose</code> correlated?</h3>
-<p><strong>4.2.0 (*) Draw scatter-plot <code>Age</code> vs <code>Glucose</code></strong></p>
+<section id="does-mean-glucose-differ-between-the-two-cholesterol-groups" class="level3">
+<h3 class="anchored" data-anchor-id="does-mean-glucose-differ-between-the-two-cholesterol-groups">4.2 Does mean <code>Glucose</code> differ between the two <code>Cholesterol</code> groups?</h3>
+<p><strong>4.2.0 (*) Use any suitable plot to compare <code>Glucose</code> across <code>Cholesterol</code> groups.</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>4.2.1 Conduct the test</strong></p>
+<ul>
+<li>Choose appropriate <strong>test</strong></li>
+</ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><strong>4.2.1 Show Pearson’s correlation value</strong></p>
-<ul>
-<li>Additionally <strong>test</strong> <strong>how far the coefficient is from zero</strong></li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><strong>4.2.2 Is correlation is significant?</strong></p>
-<p><code>&lt;...WRITE HERE...&gt;</code></p>
-</section>
-</section>
-<section id="testing-averages-between-2-groups" class="level2">
-<h2 class="anchored" data-anchor-id="testing-averages-between-2-groups">5. Testing averages between 2 groups</h2>
-<section id="do-average-ages-significantly-differ-between-2-sex-groups" class="level3">
-<h3 class="anchored" data-anchor-id="do-average-ages-significantly-differ-between-2-sex-groups">5.1 Do average <code>Age</code>s significantly differ between 2 <code>Sex</code> groups?</h3>
-<p><strong>5.1.0 (*) Draw the plot with two histograms of <code>Age</code>s for each <code>Sex</code> group</strong></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><strong>5.1.1 Conduct the test</strong></p>
-<ul>
-<li>Choose appropriate <strong>test</strong></li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><strong>5.1.2 Write the conclusion</strong></p>
-<p><code>&lt;...WRITE HERE...&gt;</code></p>
-</section>
-<section id="do-average-glucose-significantly-differ-between-two-cholesterol-groups" class="level3">
-<h3 class="anchored" data-anchor-id="do-average-glucose-significantly-differ-between-two-cholesterol-groups">5.2 Do average <code>Glucose</code> significantly differ between two <code>Cholesterol</code> groups?</h3>
-<p><strong>5.2.0 (*) Draw the plot with two histograms of <code>Glucose</code> for each <code>Cholesterol</code> group</strong></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><strong>5.2.1 Conduct the test</strong></p>
-<ul>
-<li>Choose appropriate <strong>test</strong></li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><strong>5.2.2 Write the conclusion</strong></p>
-<p><code>&lt;...WRITE HERE...&gt;</code></p>
+<p><strong>4.2.2 Write the conclusion</strong></p>
 </section>
 </section>
 <section id="testing-the-independence-between-two-categories" class="level2">
-<h2 class="anchored" data-anchor-id="testing-the-independence-between-two-categories">6. Testing the independence between two categories</h2>
-<section id="do-blood-pressure-bp-levels-depend-on-cholesterol-levels" class="level3">
-<h3 class="anchored" data-anchor-id="do-blood-pressure-bp-levels-depend-on-cholesterol-levels">6.1 Do Blood pressure (<code>BP</code>) levels depend on <code>Cholesterol</code> levels?</h3>
-<p><strong>6.1.1 Create contingency table</strong></p>
+<h2 class="anchored" data-anchor-id="testing-the-independence-between-two-categories">5. Testing the independence between two categories</h2>
+<section id="are-blood-pressure-bp-and-cholesterol-levels-associated" class="level3">
+<h3 class="anchored" data-anchor-id="are-blood-pressure-bp-and-cholesterol-levels-associated">5.1 Are blood pressure (<code>BP</code>) and <code>Cholesterol</code> levels associated?</h3>
+<p><strong>5.1.1 Create contingency table</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><strong>6.1.2 Conduct the test</strong></p>
+<p><strong>5.1.2 Conduct the test</strong></p>
 <ul>
 <li><em>Chi-square or Fisher exact?</em></li>
 </ul>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>5.1.3 Write the conclusion</strong></p>
+</section>
+</section>
+<section id="association" class="level2">
+<h2 class="anchored" data-anchor-id="association">6. Association</h2>
+<section id="how-common-is-high-cholesterol-in-each-sex-group" class="level3">
+<h3 class="anchored" data-anchor-id="how-common-is-high-cholesterol-in-each-sex-group">6.1 How common is high <code>Cholesterol</code> in each <code>Sex</code> group?</h3>
+<p><strong>6.1.1 Create contingency table</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># cont_table &lt;-</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>6.1.2 Calculate Risks and Odds</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>6.1.3 Calculate RR, RD and OR</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># RR &lt;-</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="co"># RR</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co"># RD &lt;-</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="co"># RD</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="co"># OR &lt;-</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="co"># OR</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>6.1.4 Interpret RR, RD and OR in the context of high cholesterol.</strong></p>
+</section>
+<section id="are-age-and-glucose-correlated" class="level3">
+<h3 class="anchored" data-anchor-id="are-age-and-glucose-correlated">6.2 Are <code>Age</code> and <code>Glucose</code> correlated?</h3>
+<p><strong>6.2.0 (*) Draw scatter-plot <code>Age</code> vs <code>Glucose</code></strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>6.2.1 Show Pearson’s correlation value</strong></p>
+<ul>
+<li>Additionally <strong>test</strong> <strong>how far the coefficient is from zero</strong></li>
+</ul>
+<div class="cell">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><strong>6.1.3 Write the conclusion</strong></p>
-<p><code>&lt;...WRITE HERE...&gt;</code></p>
+<p><strong>6.2.2 Is the correlation statistically significant?</strong></p>
 
 
 </section>

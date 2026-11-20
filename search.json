@@ -1393,55 +1393,6 @@
     "text": "Are observed ratios of pea plant traits consistent with Mendel’s expected 9:3:3:1 ratio?\n\nData\n\nobserved &lt;- c(435, 150, 160, 55)\nexpected &lt;- c(9, 3, 3, 1) / sum(c(9, 3, 3, 1)) * sum(observed)\n\n\nbarplot(rbind(observed, expected), \n        beside = TRUE, \n        col = c(\"blue\", \"red\"), \n        legend = c(\"Observed\", \"Expected\"))\n\n\n\n\n\n\n\n\n\n\nCode\n\nchisq.test(x=observed, p=expected/sum(expected))\n\n\n    Chi-squared test for given probabilities\n\ndata:  observed\nX-squared = 1.6667, df = 3, p-value = 0.6444\n\n\n\np - expected proportions (instead of values)\n\\(p &gt; 0.05\\). We fail to reject the expected 9:3:3:1 ratio."
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Biostatistics in R",
-    "section": "",
-    "text": "Course materials, practical exercises, presentations, and assignments in one place."
-  },
-  {
-    "objectID": "index.html#lessons",
-    "href": "index.html#lessons",
-    "title": "Biostatistics in R",
-    "section": "Lessons",
-    "text": "Lessons\n\nNotes and reproducible files for the practical classes.\n\n\n\n\n00\n\nGetting Started with RStudio\nInterface, projects, and workflow\n\n\n\n\n\n01\n\nBasic R\nPractice material\n\n\nDownload .qmd\n\n\n\n02\n\nWorking with Dataframes\nPractice material\n\n\nDownload ZIP\n\n\n\n03\n\nVisualization\nPractice material\n\n\nDownload .zip\n\n\n\n04\n\nStatistical tests\nPractice material\n\n\nDownload .qmd"
-  },
-  {
-    "objectID": "index.html#presentations",
-    "href": "index.html#presentations",
-    "title": "Biostatistics in R",
-    "section": "Presentations",
-    "text": "Presentations\n\nSlides used during the course.\n\n\n\n\n\n01\n\nDistributions and statistics\nDistributions, descriptive statistics, the CLT, and confidence intervals\n\n\n\n\n\n02\n\nIntroduction to statistical tests\nHypotheses, p-values, and confidence intervals"
-  },
-  {
-    "objectID": "index.html#interactive-apps",
-    "href": "index.html#interactive-apps",
-    "title": "Biostatistics in R",
-    "section": "Interactive apps",
-    "text": "Interactive apps\n\nExplore statistical concepts through interactive simulations.\n\n\n\n\n01\n\nDistributions and samples\nExplore distributions, samples, and quantiles.\n\n\nOpen app\n\n\n\n02\n\nSample means and confidence intervals\nExplore the CLT, confidence intervals, and coverage.\n\n\nOpen app"
-  },
-  {
-    "objectID": "index.html#trainers",
-    "href": "index.html#trainers",
-    "title": "Biostatistics in R",
-    "section": "Trainers",
-    "text": "Trainers\n\nIndependent practice in R.\n\n\n\n\n01\n\nBasic R practice\nVectors, lists, and data frames\n\n\n\nCourse on Stepik\nDownload .qmd"
-  },
-  {
-    "objectID": "index.html#homeworks",
-    "href": "index.html#homeworks",
-    "title": "Biostatistics in R",
-    "section": "Homeworks",
-    "text": "Homeworks\n\nAssignment descriptions and downloadable starter files.\n\n\n\n\n01\n\nHomework 1\nExploring elephant data. Versions with and without hints.\n\n\nDownload ZIP\n\n\n\n02\n\nHomework 2\nReference plots\n\n\nDownload .zip"
-  },
-  {
-    "objectID": "index.html#reference-materials",
-    "href": "index.html#reference-materials",
-    "title": "Biostatistics in R",
-    "section": "Reference materials",
-    "text": "Reference materials\n\nSetup guides and useful resources for working with R.\n\n\n\n\n01\n\nInstalling R and RStudio\nInstallation and setup guide"
-  },
-  {
     "objectID": "presentations/testing_revised.html#testing-plan",
     "href": "presentations/testing_revised.html#testing-plan",
     "title": "Introduction to statistical tests",
@@ -1657,5 +1608,110 @@
     "title": "Introduction to statistical tests",
     "section": "Multiple comparisons",
     "text": "Multiple comparisons\nCorrections!\nControlling the FWER - probability of making at least one Type I error.\n\nBonferroni\nHolm-Bonferroni\nŠidák\n\nControlling the FDR — expected proportion of false rejections among all rejections, with proportion zero if there are no rejections.\n\nBenjamini-Hochberg\nBenjamini-Yekutieli"
+  },
+  {
+    "objectID": "homeworks/HW_final.html",
+    "href": "homeworks/HW_final.html",
+    "title": "Homework #3",
+    "section": "",
+    "text": "library(ggplot2)\nlibrary(dplyr)\nlibrary(tidyr)"
+  },
+  {
+    "objectID": "homeworks/HW_final.html#getting-started",
+    "href": "homeworks/HW_final.html#getting-started",
+    "title": "Homework #3",
+    "section": "Getting started",
+    "text": "Getting started\nExtract both files into one folder and open HW_final.qmd in RStudio. Click Render to run your code in Quarto and create an HTML report.\nWrite your answers and conclusions below the relevant task, outside the R code chunks."
+  },
+  {
+    "objectID": "homeworks/HW_final.html#dataset",
+    "href": "homeworks/HW_final.html#dataset",
+    "title": "Homework #3",
+    "section": "1. Dataset",
+    "text": "1. Dataset\n\n1.1 Read the data from file patients.csv\n\nTreat empty fields as missing values. In read.csv(), use na.strings = c(\"\", \"NA\").\n\n\n#\n\n\n\n1.2 Show summary\n\n#\n\n1.2.1 Don’t you see something strange?"
+  },
+  {
+    "objectID": "homeworks/HW_final.html#cleaning",
+    "href": "homeworks/HW_final.html#cleaning",
+    "title": "Homework #3",
+    "section": "2. Cleaning",
+    "text": "2. Cleaning\n\n2.1. Deal with NAs\n2.1.1 Count number of NAs in each column\n\n#\n\n2.1.2 Show rows with at least one NA in any column\n\nuse complete.cases()\n\n\n#\n\n2.1.3 Do something with rows with NAs\n\nDelete or remain ..?\n\n\n#\n\n\n\n2.2 Deal with outliers\n2.2.1 Which columns have outliers?\n\nCreate box-plots of continuous variables (columns)\n\n\n#\n\n2.2.2 Filter out rows with obvious outliers. Briefly justify what you removed.\n\n#"
+  },
+  {
+    "objectID": "homeworks/HW_final.html#eda",
+    "href": "homeworks/HW_final.html#eda",
+    "title": "Homework #3",
+    "section": "3. EDA",
+    "text": "3. EDA\n\n3.1 Distributions of continuous data\n\nShow histograms of Age, Na_to_K, Glucose\n\n\n#\n\n\n\n3.2 Distribution of factor variables\n3.2.1 Draw a barplot where the height represents the number of observations in each blood pressure (BP) group and the fill represents Sex\n\nX-axis = BP, fill = Sex\n“dodge” or “stack” barplot\n\n\n#\n\n3.2.2 Draw barplot where the height represents number of observations in each Cholesterol group and the fill represents blood pressure (BP)\n\nX-axis = Cholesterol, fill = BP\n“dodge” or “stack” barplot\n\n\n#\n\nP.S. We will test the independence of BP and Cholesterol in 5.1"
+  },
+  {
+    "objectID": "homeworks/HW_final.html#testing-averages-between-2-groups",
+    "href": "homeworks/HW_final.html#testing-averages-between-2-groups",
+    "title": "Homework #3",
+    "section": "4. Testing averages between 2 groups",
+    "text": "4. Testing averages between 2 groups\n\n4.1 Does mean Age differ between the two Sex groups?\n4.1.0 (*) Use any suitable plot to compare Age across Sex groups.\n\n#\n\n4.1.1 Conduct the test\n\nChoose appropriate test\n\n\n#\n\n4.1.2 Write the conclusion\n\n\n4.2 Does mean Glucose differ between the two Cholesterol groups?\n4.2.0 (*) Use any suitable plot to compare Glucose across Cholesterol groups.\n\n#\n\n4.2.1 Conduct the test\n\nChoose appropriate test\n\n\n#\n\n4.2.2 Write the conclusion"
+  },
+  {
+    "objectID": "homeworks/HW_final.html#testing-the-independence-between-two-categories",
+    "href": "homeworks/HW_final.html#testing-the-independence-between-two-categories",
+    "title": "Homework #3",
+    "section": "5. Testing the independence between two categories",
+    "text": "5. Testing the independence between two categories\n\n5.1 Are blood pressure (BP) and Cholesterol levels associated?\n5.1.1 Create contingency table\n\n#\n\n5.1.2 Conduct the test\n\nChi-square or Fisher exact?\n\n\n#\n\n5.1.3 Write the conclusion"
+  },
+  {
+    "objectID": "homeworks/HW_final.html#association",
+    "href": "homeworks/HW_final.html#association",
+    "title": "Homework #3",
+    "section": "6. Association",
+    "text": "6. Association\n\n6.1 How common is high Cholesterol in each Sex group?\n6.1.1 Create contingency table\n\n# cont_table &lt;-\n\n6.1.2 Calculate Risks and Odds\n\n#\n\n6.1.3 Calculate RR, RD and OR\n\n# RR &lt;-\n# RR\n\n# RD &lt;-\n# RD\n\n# OR &lt;-\n# OR\n\n6.1.4 Interpret RR, RD and OR in the context of high cholesterol.\n\n\n6.2 Are Age and Glucose correlated?\n6.2.0 (*) Draw scatter-plot Age vs Glucose\n\n#\n\n6.2.1 Show Pearson’s correlation value\n\nAdditionally test how far the coefficient is from zero\n\n\n#\n\n6.2.2 Is the correlation statistically significant?"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Biostatistics in R",
+    "section": "",
+    "text": "Course materials, practical exercises, presentations, and assignments in one place."
+  },
+  {
+    "objectID": "index.html#lessons",
+    "href": "index.html#lessons",
+    "title": "Biostatistics in R",
+    "section": "Lessons",
+    "text": "Lessons\n\nNotes and reproducible files for the practical classes.\n\n\n\n\n00\n\nGetting Started with RStudio\nInterface, projects, and workflow\n\n\n\n\n\n01\n\nBasic R\nPractice material\n\n\nDownload .qmd\n\n\n\n02\n\nWorking with Dataframes\nPractice material\n\n\nDownload ZIP\n\n\n\n03\n\nVisualization\nPractice material\n\n\nDownload .zip\n\n\n\n04\n\nStatistical tests\nPractice material\n\n\nDownload .qmd"
+  },
+  {
+    "objectID": "index.html#presentations",
+    "href": "index.html#presentations",
+    "title": "Biostatistics in R",
+    "section": "Presentations",
+    "text": "Presentations\n\nSlides used during the course.\n\n\n\n\n\n01\n\nDistributions and statistics\nDistributions, descriptive statistics, the CLT, and confidence intervals\n\n\n\n\n\n02\n\nIntroduction to statistical tests\nHypotheses, p-values, and confidence intervals"
+  },
+  {
+    "objectID": "index.html#interactive-apps",
+    "href": "index.html#interactive-apps",
+    "title": "Biostatistics in R",
+    "section": "Interactive apps",
+    "text": "Interactive apps\n\nExplore statistical concepts through interactive simulations.\n\n\n\n\n01\n\nDistributions and samples\nExplore distributions, samples, and quantiles.\n\n\nOpen app\n\n\n\n02\n\nSample means and confidence intervals\nExplore the CLT, confidence intervals, and coverage.\n\n\nOpen app\n\n\n\n03\n\nHypothesis testing and sample size\nSimulate samples to explore confidence intervals and p-values. See how effect size changes test results and calculate sample size for a target power.\n\n\nOpen app"
+  },
+  {
+    "objectID": "index.html#trainers",
+    "href": "index.html#trainers",
+    "title": "Biostatistics in R",
+    "section": "Trainers",
+    "text": "Trainers\n\nIndependent practice in R.\n\n\n\n\n01\n\nBasic R practice\nVectors, lists, and data frames\n\n\n\nCourse on Stepik\nDownload .qmd"
+  },
+  {
+    "objectID": "index.html#homeworks",
+    "href": "index.html#homeworks",
+    "title": "Biostatistics in R",
+    "section": "Homeworks",
+    "text": "Homeworks\n\nAssignment descriptions and downloadable starter files.\n\n\n\n\n01\n\nHomework 1\nExploring elephant data. Versions with and without hints.\n\n\nDownload ZIP\n\n\n\n02\n\nHomework 2\nReference plots\n\n\nDownload .zip\n\n\n\n\n03\n\nFinal homework\nFinal assignment\n\n\nDownload ZIP"
+  },
+  {
+    "objectID": "index.html#reference-materials",
+    "href": "index.html#reference-materials",
+    "title": "Biostatistics in R",
+    "section": "Reference materials",
+    "text": "Reference materials\n\nSetup guides and useful resources for working with R.\n\n\n\n\n01\n\nInstalling R and RStudio\nInstallation and setup guide"
   }
 ]
