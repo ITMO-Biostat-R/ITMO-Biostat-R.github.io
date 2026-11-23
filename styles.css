@@ -160,7 +160,10 @@ main.content h2 {
   display: inline-flex;
   flex: 0 0 auto;
   align-items: center;
+  justify-content: center;
   gap: 0.4rem;
+  min-inline-size: 8.5rem;
+  min-block-size: 2.35rem;
   padding: 0.5rem 0.75rem;
   border: 1px solid #aec3df;
   border-radius: 0.5rem;
@@ -186,6 +189,7 @@ main.content h2 {
 .resource-actions {
   display: flex;
   flex-wrap: wrap;
+  justify-content: flex-end;
   gap: 0.5rem;
 }
 
@@ -247,25 +251,18 @@ main.content h2 {
   }
 
   .resource-download {
+    min-inline-size: 7.5rem;
+    min-block-size: 2.2rem;
     padding: 0.45rem 0.6rem;
     font-size: 0.78rem;
   }
-}
 
-@media (max-width: 420px) {
   .resource-row:not(.resource-row-simple) {
     flex-direction: column;
   }
 
-  .resource-row:not(.resource-row-simple) .resource-download {
-    margin-left: 3.1rem;
-  }
-
   .resource-actions {
-    margin-left: 3.1rem;
-  }
-
-  .resource-row:not(.resource-row-simple) .resource-actions .resource-download {
-    margin-left: 0;
+    justify-content: flex-start;
+    margin-inline-start: 3.1rem;
   }
 }
